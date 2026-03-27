@@ -22,6 +22,8 @@ bootstrap.jl
 *.run.xml
 *.synctex.gz
 *.toc
+*.nav
+*.snm
 
 # Local LaTeX build output.
 paper/build/

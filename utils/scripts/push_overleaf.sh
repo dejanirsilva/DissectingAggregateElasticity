@@ -48,6 +48,26 @@ fi
 find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 git -C "$repo_root" archive --format=tar HEAD "$prefix" | tar -xf - --strip-components=1
 
+# Drop local LaTeX build outputs while keeping manuscript assets such as figure PDFs.
+find . -type d \( -name build -o -name .vscode -o -name __pycache__ \) -prune -exec rm -rf {} +
+find . -type f \( \
+  -name '*.aux' -o \
+  -name '*.bbl' -o \
+  -name '*.bcf' -o \
+  -name '*.blg' -o \
+  -name '*.fdb_latexmk' -o \
+  -name '*.fls' -o \
+  -name '*.log' -o \
+  -name '*.out' -o \
+  -name '*.run.xml' -o \
+  -name '*.synctex.gz' -o \
+  -name '*.toc' -o \
+  -name '*.nav' -o \
+  -name '*.snm' \
+  \) -delete
+find . -maxdepth 1 -type f -name '*.pdf' -delete
+find slides -type f -name '*.pdf' -delete 2>/dev/null || true
+
 # Also include shared utility files when present.
 for extra_dir in utils/references utils/styles; do
   if git -C "$repo_root" cat-file -e "HEAD:$extra_dir" >/dev/null 2>&1; then

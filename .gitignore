@@ -18,6 +18,8 @@ Manifest.toml
 *.run.xml
 *.synctex.gz
 *.toc
+*.nav
+*.snm
 
 # Common build output
 paper/build/

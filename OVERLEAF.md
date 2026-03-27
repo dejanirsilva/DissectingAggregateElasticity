@@ -56,6 +56,8 @@ utils/scripts/push_overleaf.sh overleaf master paper
 
 This push is non-force. The script creates a commit on top of the current Overleaf branch and makes the Overleaf root match the committed `paper/` tree from your current `HEAD`. It also includes committed files under `utils/references/` and `utils/styles/` when present.
 
+Before pushing, the script strips common LaTeX build artifacts such as `.aux`, `.log`, `.synctex.gz`, `build/`, Beamer `.nav`/`.snm`, and top-level compiled PDFs like the manuscript or slide output. Figure PDFs inside `figures/` are kept.
+
 ## 4) Recommended workflow
 
 - Keep the full project in this repo.
