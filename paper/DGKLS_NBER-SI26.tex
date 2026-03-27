@@ -1,0 +1,1181 @@
+\documentclass[12pt,english]{article}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{newtxtext,newtxmath}
+% \usepackage[T1]{fontenc}
+\usepackage{fix-cm}
+\usepackage{anyfontsize}
+\let\Bbbk\relax
+\let\openbox\undefined
+\usepackage[bottom]{footmisc}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{amsmath,enumerate}
+\usepackage{amsthm}
+\usepackage{grffile}
+\usepackage{booktabs}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{enumitem} 
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{mathrsfs}
+\usepackage{natbib}
+\usepackage[justification=justified,labelfont=bf,font=small,skip=2pt,labelsep=period]{caption}
+\captionsetup[table]{justification=raggedright,singlelinecheck=false}
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage{arydshln}
+\usepackage{chngpage}
+\usepackage{graphicx}
+\usepackage{float,appendix}
+\usepackage{afterpage}
+\usepackage{verbatim,lscape}
+\usepackage{indentfirst}
+\usepackage[margin=1in]{geometry}
+% \usepackage[usenames, dvipsnames]{color} % causes option clash; color already loaded via other packages
+\usepackage{hyperref}
+\usepackage{adjustbox}
+% \usepackage{longtable}
+\usepackage{booktabs, makecell, longtable,ltxtable}
+\usepackage{pdflscape}
+\usepackage{siunitx}
+\usepackage{chngcntr}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage[normalem]{ulem}
+\usepackage{chngcntr,apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\sisetup{table-format=-1.3, table-space-text-post={**}}
+\usepackage{xr}
+\usepackage{etoolbox}
+\usetikzlibrary{positioning}
+\newcommand\fnsep{\textsuperscript{,}}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage[normalem]{ulem}
+\usepackage{chngcntr,apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usepackage{xr}
+\usepackage{etoolbox}
+\usetikzlibrary{positioning}
+\usepackage{subcaption}
+
+% \renewcommand{\topfraction}{0.95}
+% \renewcommand{\bottomfraction}{0.8}
+% \renewcommand{\textfraction}{0.05}
+% \renewcommand{\floatpagefraction}{0.8}
+
+\definecolor{UCLAblue}{RGB}{30, 75, 135} % secondary color	
+\definecolor{UCLAgold}{RGB}{255, 232, 0} % UCLA Gold
+\definecolor{usccardinal}{rgb}{0.6, 0.0, 0.0}
+\definecolor{Matlabblue}{rgb}{0,0.447,0.741}
+\definecolor{bleudefrance}{rgb}{0.19,0.55, 0.91}
+\definecolor{cobalt}{rgb}{0.0, 0.28,0.67}
+\definecolor{darkblue}{rgb}{0.0, 0.0,0.55}
+\definecolor{darkcerulean}{rgb}{0.03,0.27, 0.49}
+\definecolor{darkpowderblue}{rgb}{0.0,0.2, 0.6}
+\definecolor{bleudefrance}{rgb}{0.19,0.55, 0.91}
+%\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
+
+\hypersetup{
+	colorlinks,
+	linkcolor={UCLAblue},
+	citecolor={UCLAblue},
+	urlcolor={UCLAblue},
+}
+
+\bibpunct{(}{)}{;}{a}{,}{,}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\var}{\mathrm{Var}}
+\newcommand{\cov}{\mathrm{Cov}}
+\setcounter{MaxMatrixCols}{20}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{defn}{Definition}
+\newtheorem{assump}{Assumption}
+\newtheorem{lesson}{Lesson}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+\urlstyle{same}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{groupplots}
+% \pgfplotsset{compat=newest} 
+\usetikzlibrary{arrows.meta, positioning}
+\pgfplotsset{plot coordinates/math parser=false} 
+
+%% puts figures and tables at the end of the document
+%\usepackage[nomarkers,nolists]{endfloat}               
+
+%% puts ONLY figures at the end of the document
+%\usepackage[nomarkers,nolists,figuresonly]{endfloat}  
+
+%% allows more than one figure per page for endfloat
+%\renewcommand{\efloatseparator}{\mbox{}}              
+
+\usepackage{rotating}
+
+% allows sideways tables and figures to be placed at the end of the document
+%\DeclareDelayedFloatFlavor{sidewaystable}{table}
+%\DeclareDelayedFloatFlavor{sidewaysfigure}{figure}
+
+% \usepackage[nomarkers,nolists]{endfloat} 
+% \renewcommand{\efloatseparator}{\mbox{}}         % allows more than one figure per page for endfloat
+
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false} 
+\newlength\figureheight 
+\newlength\figurewidth 
+\usepackage{mathtools}
+\usetikzlibrary{calc}
+
+
+%%%%%%%%%%%%
+% Notes customization %
+%%%%%%%%%%%%
+\definecolor{webblue}{rgb}{0,0,0.6}
+\definecolor{webgreen}{rgb}{0,.6,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+
+\definecolor{goodsblue}{RGB}{60,120,216}
+\definecolor{goodsgold}{RGB}{230,160,40}
+\definecolor{riskgreen}{RGB}{40,120,60}
+\definecolor{mygreen2}{RGB}{110,170,120}
+\definecolor{myred}{RGB}{200,40,50}
+\interfootnotelinepenalty=10000
+
+
+% %- Commenting
+% \let\oldmarginpar\marginpar
+% \renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\tiny #1]%
+% {\raggedright\tiny #1}}
+% \newcommand{\mknote}[1]{\marginpar{\textcolor{webblue}{\tiny{Mahyar: #1}}}}
+% \newcommand{\dsnote}[1]{\marginpar{\textcolor{webgreen}{\tiny{Dejanir: #1}}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[en-US]{datetime2}
+\usepackage{mathtools}
+\usepackage{xcolor}
+% \usepackage[textsize=footnotesize]{todonotes}
+% Uncomment this line to disable notes
+\presetkeys{todonotes}{disable}{}
+
+% \usepackage{physics}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{mathdots}
+% \usepackage{yhmath}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{tabularx}
+\usepackage{extarrows}
+\usepackage{booktabs}
+\usetikzlibrary{fadings}
+\usetikzlibrary{patterns}
+\usetikzlibrary{shadows.blur}
+\usetikzlibrary{shapes}
+
+%- Allows to have only the cited equations be numbered
+\usepackage{mathtools}\mathtoolsset{showonlyrefs}
+
+\newcommand{\comments}[1]
+{\par {\bfseries \color{blue} #1 \par}}
+
+\title{\textbf{Dissecting the Aggregate Market Elasticity\thanks{We thank Andy Atkeson, Tim Johnson, Ralph Koijen, Tyler Muir, Stavros Panageas, Yinan Su, Fabrice Tourre, and Pierre-Olivier Weill; and conference and seminar participants at AFA 2026 Annual Meeting, Liquidity in Macroeconomics Workshop at St. Louis Fed, UIUC, UCLA macro-finance lunch, and University of Zurich for valuable comments and suggestions. All errors are our own.}}
+\author{ 
+Victor Duarte\thanks{Gies College of Business, University of Illinois Urbana-Champaign, \href{mailto:vduarte@illinois.edu}{vduarte@illinois.edu}}\and 
+Goutham Gopalakrishna\thanks{Rotman School of Management, University of Toronto, \href{mailto:goutham.gopalakrishna@rotman.utoronto.ca}{goutham.gopalakrishna@rotman.utoronto.ca}}\and
+Mahyar Kargar\thanks{Gies College of Business, University of Illinois Urbana-Champaign, \href{mailto:kargar@illinois.edu}{kargar@illinois.edu}}\and Jiacui Li\thanks{David Eccles School of Business, University of Utah; \href{mailto:jiacui.li@eccles.utah.edu}{jiacui.li@eccles.utah.edu}} \and Dejanir Silva\thanks{Daniels School of Business, Purdue University, \href{dejanir@purdue.edu}{dejanir@purdue.edu}}}
+}
+%\author{ 
+%Victor Duarte
+%\and 
+%Mahyar Kargar\and 
+%Dejanir Silva
+%}
+\date{\today}
+% \date{\today \\
+% 	\vspace{0.5cm}
+% 	\textit{Preliminary \& Incomplete --- Please Do Not Circulate}
+% 	\vspace{1cm}
+%  }
+
+
+\begin{document}
+  \sloppy
+  \maketitle
+  \thispagestyle{empty}
+  
+  \begin{abstract} 
+  \noindent 
+  %%%%%%%%%%%%%%%%%%%%
+  % 100-word version %
+  %%%%%%%%%%%%%%%%%%%%
+  We study the aggregate stock market elasticity in a general equilibrium model with heterogeneous investors, passive demand, and financial constraints. We establish two results. First, the aggregate elasticity of the endowment claim is infinite without frictions, regardless of individual elasticities: interest rate and risk premium responses to portfolio flows nearly cancel. Even with frictions, the price impact of the endowment claim remains modest (0.67 in our calibration). Second, and in sharp contrast, the equity (dividend) claim exhibits substantially larger price impact (above 8), consistent with empirical estimates, because the near-cancellation does not extend to a levered claim on output. We develop a state-global perturbation method that delivers closed-form, state-dependent expressions for aggregate elasticity. A mutual fund theorem in a heterogeneous-agent model separates the aggregate equilibrium from individual claim pricing. We solve the full dynamic model numerically using deep neural networks and calibrate it to Flow of Funds data and asset pricing moments. The calibrated model matches both the magnitude and countercyclical dynamics of price impact in the data.  
+  % We study why the aggregate stock market is so inelastic and why price impact rises in bad times. In a general equilibrium model with heterogeneous investors, passive demand, and financial constraints, a representative firm issues a risky dividend claim and corporate debt. Because dividends are a levered share of output, equity prices respond more strongly to portfolio flows. A mutual fund theorem reduces the equilibrium to a single-claim economy, and state-global perturbations deliver closed-form expressions for aggregate elasticity. Elasticity is governed by risk allocation: when risk is misallocated, interest rates cannot fully offset risk premium changes, generating finite and time-varying price impact. We solve the full model using deep neural networks, calibrate it to Flow of Funds data and asset pricing moments, and match the magnitude and dynamics of aggregate price impact documented in the empirical literature.  
+  \vspace{10mm} 
+  \bigskip
+  
+  \noindent 
+  \textsc{\textbf{Keywords}}: Aggregate market elasticity, risk misallocation, demand shocks, demand shifters, excess volatility, asset pricing. 
+  
+  \medskip
+  \noindent
+  \textsc{\textbf{JEL Classification}}: G12, G11, G21.   
+\end{abstract}
+	
+\newpage
+\doublespacing
+\setcounter{page}{1}
+	
+% \listoftodos[Notes]
+
+\newpage
+
+% \input{sections/intro}
+\section{Introduction}\label{sec:intro}
+\noindent Why is the stock market so volatile? This question has long been central to asset pricing research. Classic tests of excess volatility attribute the puzzle to unobserved ``dark matter'' factors.\footnote{See \citet{leroy1981present}, \citet{shiller1981,shiller1992market}, and \citet{cochrane1992explaining}; and \citet{chen2024measuring} for a recent discussion.} More recent evidence points to a demand-based channel: asset prices react strongly to portfolio flows. Yet these flows are small in magnitude relative to market capitalization (Figure~\ref{fig:facts-vol-flow}), implying that markets must be highly \emph{inelastic}, with even modest quantity shifts generating large price changes \citep{gabaix2020search}. The ratio of return volatility to flows, the ``volatility multiplier,'' is itself time-varying and countercyclical, spiking during periods of financial stress.
+
+These facts raise three questions. Why is the aggregate stock market so inelastic? Does price impact increase in bad times? Which frictions are essential to explain the observed magnitude and dynamics of the price impact of portfolio flows?
+
+To address these questions, we build a general equilibrium model with heterogeneous investors, passive demand, and financial constraints. A representative firm issues two claims whose payoffs sum to aggregate output: a risky \emph{dividend claim} (equity) and a safer \emph{corporate bond}. To capture the well-documented fact that dividends are more volatile than consumption (see, e.g., \citealt{Abel1999LeverageDividends}; \citealt{Campbell1999AssetPrices}), we follow \citet{MenzlySantosVeronesi2004} and model the dividend as a mean-reverting stochastic share of output. Investors also trade a derivative in zero net supply. The general equilibrium perspective is essential: the key object of interest is the \emph{aggregate (macro) elasticity}, the change in the total stock market value in response to a \$1 flow between bonds and stocks.\footnote{We use ``aggregate elasticity'' and ``macro elasticity'' interchangeably.} Unlike micro elasticities, which capture substitution across individual stocks, aggregate elasticity reflects market-wide reallocations between risky and risk-free assets and therefore requires tracking how both the risk-free rate and the risk premium adjust simultaneously to portfolio flows.
+
+Our first main contribution concerns the elasticity of the \emph{endowment claim}, the claim on aggregate output. We show that, in the absence of frictions, the aggregate market elasticity of this claim is infinite, regardless of how price-inelastic individual investors are.\footnote{A portfolio-flow shock is an asymmetric shock to risky-asset demand, affecting only a subset of investors and triggering portfolio reallocation in equilibrium.} The mechanism operates through the endogenous response of the interest rate to portfolio-flow shocks.\footnote{\citet{johnson2006dynamic} studies equilibrium price changes in response to shifts in risky-asset supply. While his definition of liquidity differs from ours, it also allows for interest rate adjustments when stock prices change.} If investors' cross-price elasticity is zero, so that demand for the risky asset does not depend on the interest rate, aggregate elasticity reduces to a weighted average of individual elasticities, as in \citet{gabaix2020search}. By contrast, when cross-price elasticity is nonzero and interest rates adjust endogenously, a portfolio inflow into the risky asset lowers the risk premium while simultaneously raising the interest rate. The key determinant is the initial allocation of risk: when risk is allocated efficiently, these two forces cancel exactly, leaving asset prices unchanged. When risk is misallocated, portfolio reallocation alters aggregate savings, preventing full offset and generating finite elasticity. Even with frictions (passive demand, preference heterogeneity, leverage constraints), this near-cancellation persists, so that the endowment claim exhibits only a modest price impact of 0.67 in our calibration. We establish these results first in a transparent two-period model and then extend them to a fully dynamic setting.
+
+Studying aggregate elasticity in models with frictions is challenging because closed-form solutions are rarely available. A key methodological contribution of our paper is a tractable analytical approach that delivers closed-form characterizations of elasticity using perturbations that are global in the state variables. This method reveals that aggregate elasticity is state-dependent and time-varying, governed by both the distribution of wealth between active and passive investors and how risk is allocated within the active sector. Passive investors amplify price impacts; preference heterogeneity can increase elasticity via risk misallocation; and binding leverage constraints further amplify the price impact of flows. We decompose aggregate elasticity into components driven by the response of the risk premium, the risk-free rate, and the drift of the risky asset to passive flows. This decomposition highlights the opposing general equilibrium forces through which interest rate and risk premium movements shape aggregate elasticity and, ultimately, excess market volatility. Inelasticity alone does not generate excess volatility, nor do flows in infinitely elastic markets; both are required.
+
+Our second main contribution is to show that, in contrast to the endowment claim, the \emph{equity} (dividend) claim exhibits a substantially larger price impact, with a multiplier above 8 in our calibration, consistent with the empirical estimates of \citet{gabaix2020search} and \citet{koijen2024investors}. The reason is that the near-cancellation of interest rate and risk premium responses that keeps the endowment claim nearly elastic does not carry over to the dividend claim. Because dividends are a levered share of aggregate output, the dividend claim's price depends on the dividend share, which introduces additional risk exposure that is not offset by the same general equilibrium forces. This result highlights that modeling the dividend claim, rather than a claim on aggregate consumption, is essential for generating realistic levels of price impact.
+
+The methodological innovation enabling this result is a mutual fund theorem in our dynamic heterogeneous-agent model. Despite access to separate equity and debt claims plus a derivative, all investors optimally hold the risky claims at market-capitalization weights. The derivative plays a key role: by spanning the non-traded Brownian factor, it allows investors to achieve their desired risk exposures without taking asymmetric positions in the individual claims. Consequently, the aggregate equilibrium (risk-free rate, risk premia, wealth dynamics, stochastic discount factor) is identical to that of a single-claim economy, and individual claim prices are obtained in a second step. This separation is also computationally essential: it reduces the dimensionality of the problem, allowing us to solve the full model numerically using the deep neural network method of \citet{duarte2024machine}. We calibrate the model to Flow of Funds data and asset pricing moments, and the calibrated model matches both the magnitude of aggregate price impact and, importantly, generates time-varying price impact dynamics with a countercyclical volatility multiplier consistent with the data.
+
+The dynamic model features one passive and two active investor types with recursive preferences. Two frictions shape aggregate elasticity: passive investment, consistent with household portfolio inertia and target-date fund allocations, and leverage constraints on active investors, consistent with evidence on margin requirements and intermediary behavior.\footnote{See, e.g., \citet{brunnermeier2009market}, \citet{garleanu2011margin}, \citet{chabakauri2013dynamic}, and \citet{adrian2014procyclical}.} These frictions, combined with flow shocks, determine market volatility, with price impact rising during periods of financial stress as the wealth share of active investors declines and leverage constraints bind more frequently.
+
+
+\subsubsection*{Related literature}
+Our work relates to the literature on macro demand elasticity. The papers closest to ours are \cite{johnson2006dynamic}, who finds finite elasticity even in a frictionless Lucas economy by perturbing risky asset supply, and \cite{gabaix2020search}, who introduce a behavioral element that fixes interest rates and generates large price impacts. We build on this literature by developing a GE model with heterogeneous investors and financial frictions, showing that both GE effects and constraints are central for obtaining inelastic markets.\footnote{For more on macro elasticity, see \cite{johnson2008volume,johnson2009liquid}, \cite{Deuskar/Johnson/2011}, \cite{Li/Pearson/Zhang/2020}, \cite{Hartzmark/Solomon/2021}, among others.} This contrasts with the larger body of work on micro elasticity, which examines relative price changes across individual stocks (e.g., \citealp{Shleifer/1986}; \citealp{Harris/Gurel/1986}; \citealp{chang2015regression}; \citealp{pavlova2021benchmarking}; \citealp{Schmickler/2020}) and finds much larger elasticities, consistent with stocks being closer substitutes for each other than for bonds.
+
+We also connect to demand-system asset pricing \citep{Koijen/Yogo/19} and its extensions incorporating cross-asset elasticities \citep{fuchs2023demand,haddad2025causal}. Our framework shows that even small cross-elasticities between equities and bonds generate large effects on macro elasticities, and extends the analysis to dynamic settings where the persistence of shocks and the evolution of risk premia shape both short-run and long-run adjustments \citep{Binsbergen-David-Opp2025,he-kondor-Li2025demand,DKLS}. Our model of passive investors also connects to the literature on intermittent rebalancing \citep{ChienColeLustig2012}, where sluggish portfolio adjustments are themselves an important source of aggregate inelasticity. Finally, our paper relates to preferred-habitat models \citep{VayanosVila2021,KekreLenelMainardi2025,RayDroste2025}, which emphasize intermediary frictions and market segmentation. By contrast, our framework highlights wealth effects as a distinct channel through which shifts in aggregate wealth alter portfolio demand and amplify price movements. 
+
+
+\input{sections/simple} 
+
+
+\section{A Dynamic Asset Pricing Model with Passive Investors}\label{sec:model}
+
+This section develops a dynamic heterogeneous-agent asset pricing model that provides a micro-founded demand system. A representative firm finances its operations by issuing two types of claims: a \emph{dividend claim} (equity) and a \emph{risky corporate bond}, whose payoffs sum to the aggregate endowment. To capture the well-documented fact that dividends are more volatile than consumption (see, e.g., \citealt{Abel1999LeverageDividends}; \citealt{Campbell1999AssetPrices}), we follow \citet{MenzlySantosVeronesi2004} and model the dividend as a mean-reverting stochastic share of output. In addition, investors can trade a derivative in zero net supply. The derivative plays a key role: by spanning the non-traded Brownian factor, it allows investors to achieve their desired risk exposures without taking asymmetric positions in the individual claims, and is therefore essential for the mutual fund theorem described below.
+
+A central result of this section is a \emph{mutual fund theorem}: despite access to separate equity and debt claims, all investors optimally hold these claims in proportion to their market-capitalization weights. Because the derivative completes markets with respect to the priced sources of risk, investors can adjust their exposure to the non-dividend-share factor through the derivative alone, and optimally hold the risky claims at market-cap weights. Consequently, the aggregate equilibrium, including the risk-free rate, risk premia, wealth dynamics, and the stochastic discount factor, is identical to that of an economy with a single claim on aggregate output. This separation implies that the perturbation analysis of Section~\ref{sec:elasticity} applies directly to the aggregate equilibrium derived here. Individual claim prices are then obtained by solving an auxiliary valuation equation, conditional on the aggregate equilibrium.
+
+
+\subsection{Environment}
+
+\paragraph{Financial markets.}
+The aggregate endowment $Y_t$ follows a geometric Brownian motion:
+\begin{equation}\label{eq:agg_endow}
+    \frac{dY_t}{Y_t} = \mu\,dt + \sigma\,dZ_t,
+\end{equation}
+where $\mu \in \mathbb{R}$ and $\sigma \in \mathbb{R}^{1\times d}$ are constants. The process
+$Z=\{Z_t\}_{t\ge0}$ is a standard $d$-dimensional Brownian motion on the filtered probability space
+$(\Omega,\mathcal{F},(\mathcal{F}_t)_{t\ge0},\mathbb{P})$ satisfying the usual conditions.
+In the baseline model, $d = 3$, capturing fundamental shocks to cash flows, portfolio demand shocks to passive investors, and shocks to the dividend share.
+
+The firm issues two claims to finance its operations. The first is a \emph{dividend claim} (equity), with payoff flow $D_t = s_t Y_t$. Following \citet{MenzlySantosVeronesi2004}, the dividend share $s_t \in (0,1)$ follows the mean-reverting process:
+\begin{equation}\label{eq:s_process}
+    ds_t = \kappa_s(\overline{s} - s_t)\,dt + s_t(1-s_t)\,\sigma_s\,dZ_t,
+\end{equation}
+given $s_0 \in (0,1)$, with $\overline{s} \in (0,1)$, $\kappa_s > 0$, and $\sigma_s \in \mathbb{R}^{1\times d}$. This specification ensures $s_t \in [0,1]$ at all times and yields a stationary share process, so consumption and dividends are cointegrated. By It\^{o}'s lemma, dividends follow:
+\begin{equation}\label{eq:D_dynamics}
+    \frac{dD_t}{D_t} = \mu_D(s_t)\,dt + \sigma_D(s_t)\,dZ_t,
+\end{equation}
+where
+\begin{equation}\label{eq:D_vol}
+    \sigma_D(s) = \sigma + (1-s)\,\sigma_s, \qquad 
+    \mu_D(s) = \mu + \kappa_s\!\left(\frac{\overline{s}}{s}-1\right) + (1-s)\,\sigma\sigma_s'.
+\end{equation}
+Since $\sigma_D(s) \neq \sigma$ when $\sigma_s \neq 0$, dividends are more volatile than aggregate consumption. Moreover, dividend volatility increases after negative shocks to $s_t$, capturing a form of leverage effect.
+
+The second claim is a \emph{corporate bond} (risky debt), with payoff flow $B_t = (1-s_t)Y_t$. Since $D_t + B_t = Y_t$, the bond payoff is smoother than aggregate consumption, reflecting the safer nature of debt.
+
+Let $P_{D,t}$ and $P_{B,t}$ denote the ex-dividend prices of the dividend and bond claims, with returns:
+\begin{align}
+    dR_{D,t} &= \frac{dP_{D,t}+D_t\,dt}{P_{D,t}}
+    = \mu_{R_D,t}\,dt+\sigma_{R_D,t}\,dZ_t, \label{eq:RD_def}\\
+    dR_{B,t} &= \frac{dP_{B,t}+B_t\,dt}{P_{B,t}}
+    = \mu_{R_B,t}\,dt+\sigma_{R_B,t}\,dZ_t. \label{eq:RB_def}
+\end{align}
+Since $D_t+B_t=Y_t$, the combined claim replicates the aggregate endowment, with price $P_{Y,t} = P_{D,t}+P_{B,t}$. The return on the aggregate claim follows:
+\begin{equation}\label{eq:risky-asset-ret}
+    dR_{Y,t} = \mu_{R_Y,t}\,dt + \sigma_{R_Y,t}\,dZ_t,
+\end{equation}
+where $\mu_{R_Y,t} \equiv \frac{Y_t}{P_{Y,t}} + \mu_{P_Y,t}$ and $\sigma_{R_Y,t} = \sigma_{P_Y,t}$.
+
+Investors also have access to a risk-free asset paying rate $r_t$ and a derivative in zero net supply. The derivative provides risk exposure $\sigma_{R_F,t} \in \mathbb{R}^{1\times d}$, orthogonal to the aggregate claim, $\sigma_{R_F,t}\,\sigma_{R_Y,t}' = 0$, with normalization $\|\sigma_{R_F,t}\| = \|\sigma_{R_Y,t}\|$. This ensures dynamic market completeness with respect to the first two Brownian factors.
+
+Absence of arbitrage implies the existence of a stochastic discount factor $\eta_t$ with
+\begin{equation}
+    \frac{d\eta_t}{\eta_t} = -r_t\,dt - \lambda_t\,dZ_t,
+\end{equation}
+where $\lambda_t \in \mathbb{R}^{1\times d}$ is the market price of risk vector. Risk premia satisfy $\pi_{k,t} = \sigma_{R_k,t}\,\lambda_t'$ for each claim $k \in \{D,B,F\}$.
+
+Let $\Sigma_t$ denote the $3 \times d$ matrix of risk exposures for the dividend claim, bond claim, and derivative:
+\begin{equation}
+    \Sigma_t = \begin{pmatrix}
+        \sigma_{R_D,t} \\
+        \sigma_{R_B,t} \\
+        \sigma_{R_F,t}
+    \end{pmatrix},
+\end{equation}
+and $\pi_t \equiv [\pi_{D,t}, \pi_{B,t}, \pi_{F,t}]'$, so that $\pi_t = \Sigma_t\,\lambda_t'$.
+
+In equilibrium, prices depend on an aggregate state vector $X_t \in \mathbb{R}^N$, so we write $r_t = r(X_t)$, $\lambda_t = \lambda(X_t)$, and return coefficients as functions of $X_t$. The state vector evolves as
+\begin{equation}\label{eq:state_dynamics}
+    dX_t = \mu_{X,t}\,dt + \sigma_{X,t}\,dZ_t,
+\end{equation}
+with drift $\mu_{X,t} \in \mathbb{R}^N$ and exposure matrix $\sigma_{X,t} \in \mathbb{R}^{N\times d}$, both determined in equilibrium.
+
+
+\paragraph{Demography.}
+
+The economy consists of three investor types ($J=2$), indexed by $j=0,1,2$, with population mass $\omega_j$: one passive type ($j=0$) and two active types ($j=1,2$). Investors die with Poisson intensity $\kappa$, and each instant a mass $\kappa\,\omega_j$ of type-$j$ agents are born, so the total population remains constant and normalized to one. Newborns inherit parental wealth. 
+Mortality risk ensures a nondegenerate stationary wealth distribution.
+
+Preferences are recursive as in  \citet{duffie1992stochastic}, with type-$j$ risk aversion $\gamma_j$ and a common elasticity of intertemporal substitution (EIS) $\psi$. Each investor chooses consumption $C_{j,t}$ and portfolio allocations across the dividend claim, the bond claim, and the derivative, subject to constraints specified below.
+
+
+\paragraph{Passive investors.}
+Agents of type $j=0$ are \emph{passive investors}, who hold the dividend and bond claims in proportion to their market-capitalization weights:
+\begin{equation}
+    \alpha_{0,D,t} = \overline{\alpha}_{p,t}\,\omega_{D,t}, \qquad 
+    \alpha_{0,B,t} = \overline{\alpha}_{p,t}\,\omega_{B,t}, \qquad 
+    \theta_{0,t} = 0,
+\end{equation}
+where $\omega_{D,t} \equiv \frac{P_{D,t}}{P_{Y,t}}$ and $\omega_{B,t} \equiv \frac{P_{B,t}}{P_{Y,t}}$ are the market weights of the dividend and bond claims. The total risky share $\overline{\alpha}_{p,t}$ evolves according to an Ornstein-Uhlenbeck process:
+\begin{equation}\label{eq:alpha_p_process}
+    d\overline{\alpha}_{p,t}
+    \;=\;
+    \theta_p\!\left(\overline{\alpha}-\overline{\alpha}_{p,t}\right)\!dt
+    \;+\;
+    \sigma_{\alpha_p}\,dZ_t,
+\end{equation}
+with long-run mean $\overline{\alpha}>0$, mean-reversion $\theta_p>0$, and loading $\sigma_{\alpha_p}\in\mathbb{R}^{1\times d}$ on the $d$-dimensional Brownian motion $Z_t$. Innovations to $\overline{\alpha}_{p,t}$ represent \emph{portfolio flow shocks}, i.e., fluctuations in the fraction of wealth passive investors allocate to risky claims. As in Section~\ref{sec:simple}, a flow shock is an asymmetric demand shock that affects only the passive investors and triggers portfolio reallocation.
+
+
+Portfolio flows may comove with cash-flow shocks or arise independently. For example, with $d=3$, take $\sigma=(\sigma_1,0,0)$ for endowment risk and $\sigma_{\alpha_p}=(\sigma_{\alpha_p,1},\sigma_{\alpha_p,2},0)$ for the passive-share process: the first factor generates correlation with fundamentals, while the second delivers portfolio-flow shocks orthogonal to cash-flow risk. The third factor captures dividend-share shocks.
+
+The exposure of the passive share to aggregate shocks can reflect \emph{imperfect rebalancing} or \emph{performance-induced flows}. Without rebalancing, a positive return on the risky asset raises the passive share when $\overline{\alpha}_{p,t}<1$; similarly, investors may increase risky exposure after good performance. This specification aligns with evidence on passive behavior: households exhibit substantial portfolio inertia \citep{ameriks2011household,brunnermeier2008wealth}; flows chase performance \citep{chevalier1997risk,dannhauser2024flow}; and regulatory changes can sharply increase equity allocations via TDF adoption \citep{parker2022household}, illustrating portfolio flow shocks not tied to cash flow fundamentals.
+
+
+\paragraph{Active investors.} 
+
+Investors of type $j = 1,\ldots, J$ are \textit{active investors}, who rebalance portfolios subject to a leverage constraint on total risk exposure:
+\begin{equation}\label{eq:leverage_constraint}
+    \|\Sigma_{j,t}\| \leq \overline{\sigma},
+\end{equation}
+where $\Sigma_{j,t} = \alpha_{j,D,t}\,\sigma_{R_D,t} + \alpha_{j,B,t}\,\sigma_{R_B,t} + \theta_{j,t}\,\sigma_{R_F,t}$ is the investor's total risk exposure and $\|\cdot\|$ denotes the Euclidean norm. This constraint resembles a Value-at-Risk (VaR) limit, often applied to banks and leveraged institutions (see, e.g., \citealt{adrian2014procyclical} and \citealt{brunnermeier2009market}).
+
+
+\paragraph{Investors' problem.} 
+
+An investor of type $j = 0,\ldots,J$ solves
+\begin{equation}\label{eq:inv-problem}
+    V_{j,t} = \max_{[C_j,\alpha_{j,D},\alpha_{j,B},\theta_j]} 
+    \mathbb{E}_t \left[ \int_t^\infty f_j(C_{j,s},V_{j,s})\, ds \right], \qquad s.t.
+\end{equation}
+\begin{equation}\label{eq:budget_constraint}
+dW_{j,t} = \big[(r_t + \pi_{D,t}\,\alpha_{j,D,t} + \pi_{B,t}\,\alpha_{j,B,t} + \pi_{F,t}\,\theta_{j,t}) W_{j,t} - C_{j,t}\big]\,dt 
+    + \Sigma_{j,t}\, W_{j,t}\, dZ_t,
+\end{equation}
+with $W_{j,t} \geq 0$ and $(\alpha_{j,D,t}, \alpha_{j,B,t}, \theta_{j,t}) \in \Omega_{j,t}$. For passive investors ($j=0$),  
+$\Omega_{0,t} = \{(\alpha_{0,D}, \alpha_{0,B}, \theta_0): \alpha_{0,D} = \overline{\alpha}_{p,t}\,\omega_{D,t},\; \alpha_{0,B} = \overline{\alpha}_{p,t}\,\omega_{B,t},\; \theta_0 = 0\}$. For active investors ($j=1,\ldots,J$),  
+$\Omega_{j,t} = \{(\alpha_{j,D}, \alpha_{j,B}, \theta_j): \|\Sigma_{j,t}\| \leq \overline{\sigma}\}$. 
+
+Preferences are recursive with aggregator  
+\begin{equation}
+    f_j(C,V) = \rho \frac{(1-\gamma_j) V}{1-\psi^{-1}} 
+    \left[ \left( \frac{C}{\big((1-\gamma_j)V\big)^{\frac{1}{1-\gamma_j}}} \right)^{1-\psi^{-1}} - 1 \right],
+\end{equation}
+where the discount factor $\rho \equiv \hat{\rho}+\kappa$ reflects both time impatience $\hat{\rho}$ and the death probability $\kappa$.
+
+
+\paragraph{Market clearing and equilibrium.} 
+
+We define equilibrium as follows:
+
+\begin{defn}
+A competitive equilibrium consists of stochastic processes adapted to the filtration generated by $Z_t$: the aggregate endowment $Y$, the prices of the dividend and bond claims $P_D$ and $P_B$, the risk-free rate $r$; and, for each investor $j \in \{0,\ldots,J\}$, wealth $W_j$, consumption $C_j$, and portfolio allocations $(\alpha_{j,D}, \alpha_{j,B}, \theta_j)$, such that
+\begin{enumerate}[label=(\roman*)]
+    \item The aggregate endowment evolves according to \eqref{eq:agg_endow}, with $Y_0 > 0$.
+    \item Given $\{P_{D,t}, P_{B,t}, r_t\}$, the choices $(C_j,\alpha_{j,D},\alpha_{j,B},\theta_j)$ solve investor $j$'s problem in \eqref{eq:inv-problem}.
+    \item Markets clear for goods, the dividend claim, the bond claim, riskless bonds, and the derivative:
+    \begin{equation}
+        \sum_{j=0}^J \omega_j C_{j,t} = Y_t, 
+        \;\;
+        \sum_{j=0}^J \omega_j Q_{j,D,t} = 1, 
+        \;\;
+        \sum_{j=0}^J \omega_j Q_{j,B,t} = 1, 
+        \;\;
+        \sum_{j=0}^J \omega_j B_{j,t} = 0,
+        \;\;
+        \sum_{j=0}^J \omega_j W_{j,t}\theta_{j,t} = 0,
+    \end{equation}
+    where $Q_{j,D,t} = \alpha_{j,D,t} W_{j,t} / P_{D,t}$ and $Q_{j,B,t} = \alpha_{j,B,t} W_{j,t} / P_{B,t}$ denote units held of the dividend and bond claims, and $B_{j,t} = (1-\alpha_{j,D,t}-\alpha_{j,B,t}) W_{j,t}$ denotes riskless holdings. 
+\end{enumerate}
+\end{defn}
+
+
+\subsection{Equilibrium characterization}\label{sec:equilibrium-char}
+
+We first present the investors' optimality conditions in the multi-asset economy, then establish a mutual fund theorem that reduces the aggregate equilibrium to a single-claim problem.
+
+\paragraph{Value function and consumption-wealth ratio.} With homothetic preferences, investor $j$'s value function can be written as
+\begin{equation}\nonumber
+    V_{j,t} = \left( \frac{c_{j,t}}{\rho^\psi} \right)^{\frac{1-\gamma_j}{1-\psi}} 
+    \frac{W_{j,t}^{1-\gamma_j}}{1-\gamma_j}, \qquad \text{where} \qquad \frac{dc_{j,t}}{c_{j,t}} = \mu_{c_j,t}\, dt + \sigma_{c_j,t}\, dZ_t,
+\end{equation}
+and $c_{j,t} = c_j(X_t)$ corresponds to the consumption-wealth ratio: $C_{j,t}/W_{j,t} = c_{j,t}$.
+
+From the Hamilton-Jacobi-Bellman equation, the consumption-wealth ratio satisfies
+\begin{equation}\label{eq:HJB_complete}
+    c_{j,t} = \psi \rho 
+    + (1-\psi) \left[ r_t + \pi_{D,t}\,\alpha_{j,D,t} + \pi_{B,t}\,\alpha_{j,B,t} + \pi_{F,t}\,\theta_{j,t}
+        - \frac{\gamma_j}{2} \|\Sigma_{j,t}\|^2 \right] 
+    + \xi_{j,t},
+\end{equation}
+where 
+\[
+    \xi_{j,t} \equiv \mu_{c_j,t} 
+    + (1-\gamma_j) \sigma_{c_j,t} \Sigma_{j,t}' 
+    + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}.
+\]
+
+\paragraph{Optimal portfolio and derivative exposure.} 
+An active investor chooses $(\alpha_{j,D,t},\alpha_{j,B,t},\theta_{j,t})$ to maximize the right-hand side of \eqref{eq:HJB_complete} subject to $\|\Sigma_{j,t}\|\le\overline{\sigma}$. 
+Let $\nu_{j,t}\ge 0$ denote the Lagrange multiplier on the leverage constraint. The first-order conditions imply
+\begin{equation}\label{eq:foc_lambda}
+    \lambda_{j,t} = \lambda_t,
+\end{equation}
+where $\lambda_{j,t} \equiv \gamma_j \left[\Sigma_{j,t} + \frac{1 - \gamma_j^{-1}}{1-\psi} \sigma_{c_j,t}\right] + \frac{\nu_{j,t}}{1-\psi} \Sigma_{j,t}$ is investor $j$'s marginal price of risk. That is, each investor's marginal valuation of risk is equalized to the market price of risk $\lambda_t$.
+
+\paragraph{Mutual fund theorem.}
+The availability of three tradable assets (the dividend claim, the bond claim, and the derivative) raises the question of whether the decomposition of the aggregate endowment into separate claims affects equilibrium allocations. The following proposition shows that it does not.
+
+\begin{prop}[Mutual fund theorem]\label{prop:mft}
+Let $(c_{j,t}^*, \alpha_{j,t}^*, \theta_{j,t}^*)$ denote the equilibrium allocation in the economy with a single claim on the aggregate endowment and a derivative. Then the equilibrium of the economy with separate dividend and bond claims is given by:
+\begin{enumerate}[label=(\roman*)]
+    \item $c_{j,t} = c_{j,t}^*$ for all $j$;
+    \item $\alpha_{j,D,t} = \omega_{D,t}\,\alpha_{j,t}^*$ and $\alpha_{j,B,t} = \omega_{B,t}\,\alpha_{j,t}^*$ for all active $j$;
+    \item $\theta_{j,t} = \theta_{j,t}^*$ for all $j$.
+\end{enumerate}
+All investors hold the dividend and bond claims in market-capitalization weights.
+\end{prop}
+
+The proof proceeds by verification. Under the conjectured allocation, each investor's total risk exposure becomes $\Sigma_{j,t} = \alpha_{j,t}^*\,\sigma_{R_Y,t} + \theta_{j,t}^*\,\sigma_{R_F,t}$, which has zero loading on the dividend-share shock (the third Brownian component). Since the risk premium on the aggregate claim satisfies $\pi_{Y,t} = \omega_{D,t}\,\pi_{D,t} + \omega_{B,t}\,\pi_{B,t}$ and the aggregate return exposure satisfies $\sigma_{R_Y,t} = \omega_{D,t}\,\sigma_{R_D,t} + \omega_{B,t}\,\sigma_{R_B,t}$, it follows that $c_{j,t} = c_{j,t}^*$ satisfies the HJB equation. The first-order conditions and all market clearing conditions are also satisfied, as the value-weighted sum of market-cap-weighted claims replicates the aggregate endowment.
+
+Proposition~\ref{prop:mft} has two important implications. First, the stochastic discount factor, risk-free rate, and aggregate risk premium depend only on the aggregate state $X_t$ and are independent of the dividend share $s_t$. The perturbation analysis of Section~\ref{sec:elasticity} therefore applies directly to the aggregate equilibrium. Second, individual claim prices can be computed in a second step, by solving a valuation equation conditional on the aggregate equilibrium, as described in Section~\ref{sec:pricing_claims}.
+
+In light of Proposition~\ref{prop:mft}, we characterize the aggregate equilibrium in terms of the total risky share $\alpha_{j,t} \equiv \alpha_{j,D,t} + \alpha_{j,B,t}$, the risk premium on the aggregate claim $\pi_t \equiv \mu_{R_Y,t} - r_t$, and the return exposure $\sigma_{R,t} \equiv \sigma_{R_Y,t}$.
+
+\paragraph{Optimal portfolio share.}
+The optimal total risky share for an active investor is
+\begin{equation}\label{eq:portfolio_share}
+    \alpha_{j,t} = \min \left\{ 
+        \frac{\pi_t}{\gamma_j \|\sigma_{R,t}\|^2} + \varsigma_{j,t}, \,
+        \frac{\overline{\sigma}}{\|\sigma_{R,t}\|} 
+    \right\},
+\end{equation}
+where $\varsigma_{j,t} \equiv \frac{1-\gamma_j^{-1}}{\psi-1} 
+\dfrac{\sigma_{c_j,t} \sigma_{R,t}'}{\|\sigma_{R,t}\|^2}$ is the hedging component. The myopic demand, $\frac{\pi_t}{\gamma_j \|\sigma_{R,t}\|^2}$, reflects the investor's risk tolerance, while the hedging demand captures the covariance between $c_{j,t}$ and risky returns. The leverage constraint caps exposure at $\overline{\sigma}/\|\sigma_{R,t}\|$.
+
+From the Hamilton-Jacobi-Bellman equation, the consumption-wealth ratio is
+\begin{equation}\label{eq:xi_j}
+    c_{j,t} = \psi \rho 
+    + (1-\psi) \left[ r_t + \pi_t \alpha_{j,t} 
+        - \frac{\gamma_j}{2} \|\sigma_{R,t}\|^2 \alpha_{j,t}^2 \right] 
+    + \xi_{j,t},
+\end{equation}
+where 
+\[
+    \xi_{j,t} \equiv \mu_{c_j,t} 
+    + (1-\gamma_j) \sigma_{c_j,t} \sigma_{R,t}' \alpha_{j,t} 
+    + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}
+\]
+is a forward-looking term capturing how expected shifts in $c_{j,t}$ affect consumption choices.
+The consumption--wealth ratio depends both on current investment opportunities, summarized by $r_t + \pi_t \alpha_{j,t} - \frac{\gamma_j}{2} \alpha_{j,t}^2 \|\sigma_{R,t}\|^2$, and on future opportunities, summarized by $\xi_{j,t}$. 
+
+\paragraph{Pricing condition.} 
+
+Let $p_t \equiv P_{Y,t}/Y_t$ denote the price-dividend ratio of the aggregate claim. Since the expected return is $r_t + \pi_t = \frac{1}{p_t} + \mu_{P,t}$, the price-dividend ratio satisfies
+\begin{equation}\label{eq:pricing_cond}
+    \frac{1}{p_t} = r_t + \pi_t - (\mu + \mu_{p,t} + \sigma \sigma_{p,t}'),
+\end{equation}
+where $\sigma_{R,t} = \sigma + \sigma_{p,t}$ and $(\mu_{p,t},\sigma_{p,t})$ follow from It\^{o}'s lemma.
+
+\paragraph{Aggregate state variable.} 
+
+Let $x_{j,t}$ denote the wealth share of type-$j$ investors:
+\begin{equation}\nonumber
+    x_{j,t} \equiv \frac{\omega_j W_{j,t}}{P_{Y,t}}.
+\end{equation}
+The aggregate state is $X_t = (x_t, \overline{\alpha}_{p,t})$, where $x_t = (x_{1,t}, x_{2,t}, \ldots, x_{J,t})$ and $\overline{\alpha}_{p,t}$ evolves as in \eqref{eq:alpha_p_process}. By It\^{o}'s lemma, the law of motion for $x_{j,t}$ is
+\begin{align*}
+    \frac{dx_{j,t}}{x_{j,t}} 
+    &= \Big[ r_t + \pi_t \alpha_{j,t} - c_{j,t} - \mu_{P,t} 
+        + (1-\alpha_{j,t}) \|\sigma_{R,t}\|^2 
+        + \kappa \frac{\omega_j - x_{j,t}}{x_{j,t}} \Big] dt  + (\alpha_{j,t} - 1)\, \sigma_{R,t}\, dZ_t.
+\end{align*}
+
+
+\paragraph{Risk premium and interest rate.} 
+
+Let $\mathcal{J}_t^u$ and $\mathcal{J}_t^c$ denote the sets of unconstrained and constrained active investors at time $t$, with wealth shares $x_{u,t} \equiv \sum_{j\in \mathcal{J}_t^u} x_{j,t}$ and $x_{c,t} \equiv \sum_{j\in \mathcal{J}_t^c} x_{j,t}$. From market clearing for the risky asset, demand from unconstrained investors satisfies
+\begin{equation}\label{eq:mkt-clearing}
+    \underbrace{\sum_{j \in \mathcal{J}_t^u} x_{j,t} \alpha_{j,t} }_{\substack{\text{unconstrained active demand}}} = \underbrace{1 - x_{0,t} \overline{\alpha}_{p,t} - x_{c,t} \overline{\alpha}_{c,t} }_{\text{net supply}},
+\end{equation}
+where $\overline{\alpha}_{c,t} \equiv \overline{\sigma}/\|\sigma_{R,t}\|$ is the portfolio share of constrained agents.
+
+Combining this condition with the optimal portfolios yields the risk premium:
+\begin{equation}\label{eq:sharpe_ratio}
+    \pi_t = \frac{\gamma_{u,t} \|\sigma_{R,t}\|^2}{x_{u,t}}
+    \left[ 1 - x_{0,t}\, \overline{\alpha}_{p,t} 
+    - x_{c,t}\, \overline{\alpha}_{c,t} 
+    - x_{u,t}\, \varsigma_t \right],
+\end{equation}
+where $\gamma_{u,t} \equiv [\sum_{j\in\mathcal{J}_t^u} \frac{x_{j,t}}{x_{u,t}} \frac{1}{\gamma_j}]^{-1}$ is the average risk aversion and $\varsigma_t \equiv \sum_{j\in \mathcal{J}_t^u} \frac{x_{j,t}}{x_{u,t}} \varsigma_{j,t}$ the average hedging demand of unconstrained investors.  
+Equation~\eqref{eq:sharpe_ratio} shows that the risk premium rises with higher risk aversion, lower passive demand, tighter leverage constraints, or weaker hedging motives.
+
+Goods market clearing requires
+\begin{equation}
+    \sum_{j=0}^J x_{j,t} c_{j,t} = \frac{1}{p_t}.
+\end{equation}
+Combining this with \eqref{eq:xi_j} gives the equilibrium interest rate:
+\begin{align}\label{eq:interest_rate}
+    r_t &= \rho + \psi^{-1} (\mu_{P,t} + \xi_t )
+    + (1-\psi^{-1}) \sum_{j=0}^J x_{j,t} 
+        \frac{\gamma_j \alpha_{j,t}^2}{2} \|\sigma_{R,t}\|^2
+    - \pi_t,
+\end{align}
+where $\xi_t \equiv \sum_{j=0}^J x_{j,t} \xi_{j,t}$.  
+The first two terms reflect impatience and intertemporal substitution, while the third term captures precautionary savings.
+
+\paragraph{Endogenous volatility.} 
+
+Return volatility has both an exogenous and an endogenous component, $\sigma_{R,t} = \sigma + \sigma_{p,t}$, where $\sigma$ reflects cash-flow volatility and $\sigma_{p,t}$ arises from movements in the price-dividend ratio $p_t$. 
+By It\^{o}'s lemma,  
+\begin{equation}\label{eq:_endogenous_vol}
+    \sigma_{p,t} = \frac{p_x(X_t)}{p(X_t)} \sigma_{x,t} 
+    + \frac{p_{\overline{\alpha}_p}(X_t)}{p(X_t)} \sigma_{\alpha_p}.
+\end{equation}
+
+Equation~\eqref{eq:_endogenous_vol} shows that endogenous volatility depends on (i) the sensitivity of $p_t$ to changes in the wealth distribution $x_{j,t}$ and the response of wealth shares to shocks, $\sigma_{x,t}$, and (ii) the sensitivity of $p_t$ to changes in passive portfolios and the response of $\overline{\alpha}_{p,t}$ to shocks. The first term is standard in heterogeneous-agent models \citep[see][]{panageas2020implications}, while the second arises only with exogenous portfolio flow shocks and is quantitatively relevant when markets are sufficiently inelastic (i.e., when $\frac{p_{\overline{\alpha}_p}(X_t)}{p(X_t)}$ is large). Thus, \eqref{eq:_endogenous_vol} links market elasticity to return volatility $\|\sigma+\sigma_{p,t}\|$.
+
+\paragraph{Markov equilibrium.} 
+
+Equations \eqref{eq:sharpe_ratio} and \eqref{eq:interest_rate} allow us to express $\pi_t$ and $r_t$ in terms of $c_{j,t}$, $p_t$, and their derivatives, once $(\mu_{c_j,t}, \mu_{p,t})$ and $(\sigma_{c_j,t}, \sigma_{p,t})$ are written as functions of $(\mu_{X,t}, \sigma_{X,t})$ via It\^{o}'s lemma. Substituting these into \eqref{eq:xi_j} and \eqref{eq:pricing_cond}, together with the laws of motion for the state variables, yields a system of four PDEs in $\{c_j(X_t)\}_{j=0}^2$ and $p(X_t)$. These functions depend on three state variables: the two active wealth shares $x_{1,t}$ and $x_{2,t}$, and the passive portfolio share $\overline{\alpha}_{p,t}$.  
+
+
+\subsection{Pricing the dividend and risky debt claims}\label{sec:pricing_claims}
+
+By Proposition~\ref{prop:mft}, the stochastic discount factor depends only on the aggregate state $X_t$ and is independent of the dividend share $s_t$. Individual claim prices can therefore be determined in a second step, conditional on the equilibrium objects $r(X_t)$ and $\lambda(X_t)$ from the aggregate economy.
+
+Let $\hat{X}_t = (X_t, s_t)$ denote the extended state vector. Define the valuation ratio of claim $k \in \{D,B\}$ as $p_{k,t} \equiv P_{k,t}/Y_t = p_k(X_t,s_t)$. Since $P_{k,t} = p_{k,t}\,Y_t$, the return on claim $k$ satisfies
+\begin{equation}
+    \sigma_{R_k,t} = \sigma + \sigma_{p_k,t}, \qquad 
+    \mu_{R_k,t} = \frac{s_{k,t}}{p_{k,t}} + \mu + \mu_{p_k,t} + \sigma\,\sigma_{p_k,t}',
+\end{equation}
+where $s_{D,t} = s_t$, $s_{B,t} = 1-s_t$, and the diffusion of the valuation ratio is
+\begin{equation}
+    \sigma_{p_k,t} = \frac{1}{p_{k,t}}\!\left(p_{k,X}\,\sigma_X + p_{k,s}\,\sigma_s\right),
+\end{equation}
+with $p_{k,X} \equiv \frac{\partial p_k}{\partial X}$ and $p_{k,s} \equiv \frac{\partial p_k}{\partial s}$. Substituting into the pricing condition $\mu_{R_k,t} - r_t = \sigma_{R_k,t}\,\lambda_t'$ yields the partial differential equation for the valuation ratio $p_k(X,s)$:
+\begin{align}\label{eq:pde_claim}
+0 =\;&\, p_{k,X}\,\mu_X + p_{k,s}\,\mu_s 
++ \frac{1}{2}\Big[\mathrm{tr}\!\left(\sigma_X\sigma_X'\,p_{k,XX}\right) + 2\,p_{k,Xs}\,(\sigma_X\sigma_s') + (\sigma_s\sigma_s')\,p_{k,ss}\Big] \nonumber\\
+&- (r(X)-\mu)\,p_k(X,s) + s_k(s) \nonumber\\
+&+ p_k(X,s)\,\sigma\,\sigma_{p_k}(X,s)' - p_k(X,s)\,\sigma\,\lambda(X)' - p_k(X,s)\,\sigma_{p_k}(X,s)\,\lambda(X)'.
+\end{align}
+This equation can be solved numerically given the equilibrium functions $r(X)$ and $\lambda(X)$ from the aggregate economy. Since $p_{D}(X,s) + p_{B}(X,s) = p(X)$ by construction, only one of the two claim prices needs to be solved independently.
+
+% \input{sections/elasticity}
+\section{The Determinants of the Aggregate Market Elasticity}\label{sec:elasticity}
+
+In this section, we analyze how the \emph{aggregate market elasticity} governs the price impact of portfolio flows.  
+The elasticity is determined by the coupled PDE system \eqref{eq:xi_j}–\eqref{eq:pricing_cond}, which generally has no closed-form solution. To study its determinants, we extend the perturbation method of \citet{kogan2001risk} and derive asymptotic closed-form approximations.
+
+\paragraph{State-global perturbations}
+
+Our perturbation approach studies economies in a neighborhood of a benchmark that admits a closed-form solution.
+A convenient benchmark arises when preferences are homogeneous, $\gamma_j=\gamma$, and passive investors are fully invested in the risky asset, $\overline{\alpha}_{p,t}=1$. In this case, the economy collapses to a Lucas economy, as shown in Lemma~\ref{lemma:benchmark}. Throughout, a superscript $\star$ denotes benchmark values.
+
+
+\begin{lemma}[Benchmark economy]\label{lemma:benchmark}
+Suppose $\gamma_j = \gamma$, $\overline{\alpha}_{p,t} = 1$, and $\rho>\big(1-\psi^{-1}\big)\big(\mu - \frac{\gamma \|\sigma\|^2}{2}\big)$. Then, 
+\begin{equation}
+        \pi^\star = \gamma \|\sigma\|^2, \qquad 
+        r^\star = \rho + \psi^{-1}\mu - \big(1+\psi^{-1}\big)\frac{\gamma \|\sigma\|^2}{2}, \qquad 
+        p^\star = \Big[\rho - \big(1-\psi^{-1}\big)\Big(\mu - \frac{\gamma \|\sigma\|^2}{2}\Big)\Big]^{-1},
+\end{equation}
+$c_{j}^\star = (p^\star)^{-1}$, and $\alpha_{j}^\star = 1$ for $j = 0, \ldots, J$.
+\end{lemma}
+
+We analyze small deviations from this benchmark. Formally, consider a family of economies indexed by $\epsilon>0$, where $\epsilon$ scales departures from the benchmark along the following dimensions.
+
+First, investors have heterogeneous risk aversion:
+\begin{equation}\label{eq:gamma-perturb}
+    \gamma_j=\gamma\big(1+\hat{\gamma}_j\epsilon\big), 
+    \qquad
+    \sum_{j=0}^J \omega_j \hat{\gamma}_j=0,
+\end{equation}
+so that $\gamma$ is the population-weighted average and $\hat{\gamma}_j$ measures deviations. When $\epsilon=0$, preferences are homogeneous; when $\epsilon=1$, we recover the heterogeneous-investor economy.
+
+
+Second, passive investors need not be fully invested in the risky asset. Their portfolio share is  
+\begin{equation}\label{eq:apbar_index}
+    \overline{\alpha}_{p,t}=1+\hat{\alpha}_{p,t}\,\epsilon,
+\end{equation}
+where $\hat{\alpha}_{p,t}$ measures deviations from full investment benchmark and evolves as an Ornstein-Uhlenbeck process, consistent with Equation~\eqref{eq:alpha_p_process}.
+
+
+Third, the leverage constraint coefficient is perturbed according to
+\begin{equation}\label{eq:sig_bar-perturb}
+    \overline{\sigma}=\|\sigma\|\big(1+\hat{\sigma}\,\epsilon\big),
+\end{equation}
+so that the tightness of the constraint is of order $\mathcal{O}(\epsilon)$, matching the order of leverage demand. Finally, we assume a small mortality rate, $\kappa=\hat{\kappa}\,\epsilon$.
+
+
+Equilibrium objects now depend on both the state $X_t$ and the parameter $\epsilon$. We expand them to second order:
+\begin{align}
+    p(X,\epsilon) &= p_0(X) + p_1(X)\epsilon + p_2(X)\epsilon^2 + \mathcal{O}(\epsilon^3), \\
+    c_j(X,\epsilon) &= c_{j,0}(X) + c_{j,1}(X)\epsilon + c_{j,2}(X)\epsilon^2 + \mathcal{O}(\epsilon^3),
+\end{align}
+where $p_k(X)$ and $c_{j,k}(X)$, $k\in\{0,1,2\}$, are functions of the state $X$.
+
+Unlike standard DSGE perturbations, which linearize in both $X$ and $\epsilon$, our method is \emph{state-global}: we solve directly for functions of $X$ rather than coefficients around a steady state.\footnote{See \citet{kargar2020competitive} for a comparison with standard perturbation methods.} 
+We refer to this approach as a \emph{state-global perturbation}. 
+This approach builds on the perturbation method of \citet{kogan2001risk} and, more closely, the extension 
+by \citet{Silva/riskchannel}.
+This method allows us to characterize how aggregate market elasticity varies with the state of the economy.
+
+We proceed in two steps. First, we compute the first-order corrections $p_1(X)$ and $c_{j,1}(X)$. Second, we solve for the second-order terms $p_2(X)$ and $c_{j,2}(X)$. Zeroth-order terms are given by Lemma~\ref{lemma:benchmark}, i.e., $p_0(X)=p^\star$ and $c_{j,0}(X)=c_j^\star$.
+
+
+\subsection{The first-order demand system}
+
+\paragraph{Demand for risky asset.}  
+Investor $j$’s demand for the risky asset is 
+\[
+    Q_j(X;\epsilon)=\alpha_j(X;\epsilon)\,\frac{x_j}{\omega_j},
+\]
+where $x_j$ is the wealth share. Define the proportional deviation from the benchmark as
+\begin{equation}
+    q_{j,t}\;\equiv\;\frac{Q_j(X_t;\epsilon)- Q_j(X_t;0)}{Q_j(X_t;0)}
+    \;=\;\alpha_{j,1}(X_t)\,\epsilon+\mathcal{O}(\epsilon^2),
+\end{equation}
+where $\alpha_{j,1}(X)$ is the first-order correction to the portfolio weight.  
+
+Three results determine $\alpha_{j,1}(X)$. First, the volatility of the price-dividend ratio is second order:
+\[
+    \sigma_{p,t}=\frac{p_X(X_t)}{p(X_t)}\,\sigma_X(X_t)=\mathcal{O}(\epsilon^2),
+\]
+since $p_{X,0}=\sigma_{X,0}=0$ (Lemma~\ref{lemma:benchmark}). Second, hedging demand is also $\mathcal{O}(\epsilon^2)$ because $\sigma_{c_j}(X_t)$ is second order. Third, expanding the pricing condition \eqref{eq:pricing_cond} gives
+\begin{equation}
+    \hat{\pi}_t=-\,\hat{r}_t-\frac{1}{p^\star}\hat{p}_t+\mathcal{O}(\epsilon^2),
+\end{equation}
+where $\hat{\pi}_t\equiv \pi_t-\pi^\star$, $\hat{r}_t\equiv r_t-r^\star$, and $\hat{p}_t\equiv \frac{p_t-p^\star}{p^\star}$, using $\mu_{p,t}=\mathcal{O}(\epsilon^2)$.
+
+Substituting into \eqref{eq:portfolio_share}, the first-order demand system is
+\begin{equation}\label{eq:demand_risky}
+    q_{j,t}=-\,\zeta_{j,p}\,\hat{p}_t-\zeta_{j,r}\,\hat{r}_t+f_{j,t}+\mathcal{O}(\epsilon^2),
+\end{equation}
+where, for unconstrained investors,
+\[
+    \zeta_{j,p}=\frac{1}{p^\star}\frac{1}{\gamma\|\sigma\|^2}, 
+    \qquad
+    \zeta_{j,r}=\frac{1}{\gamma\|\sigma\|^2}, 
+    \qquad
+    f_{j,t}=-\,\hat{\gamma}_j\,\epsilon.
+\]
+For passive and constrained investors, own- and cross-price elasticities vanish, $\zeta_{j,p}=\zeta_{j,r}=0$, with demand shifters $f_{j,t}=\hat{\sigma}\,\epsilon$ for constrained investors and $f_{0,t}=\hat{\alpha}_{p,t}\,\epsilon$ for passive investors.  
+
+Equation~\eqref{eq:demand_risky} shows that the first-order approximation to the dynamic heterogeneous agent model in Section~\ref{sec:model} provides microfoundations for the demand system in Section~\ref{sec:simple}. As in the simple model, unconstrained active investors exhibit nonzero own- and cross-price elasticities, here explicitly linked to structural parameters. Shocks to $\overline{\alpha}_{p,t}$ move the passive investors’ demand shifter $f_{0,t}$—the dynamic analog of the comparative statics in Section~\ref{sec:simple}. In addition, the model generates further demand shifts from occasionally binding leverage constraints faced by active investors.
+
+
+\paragraph{Consumption-wealth ratio.}  
+A first-order expansion of \eqref{eq:xi_j} yields
+\begin{equation}
+    c_{j,t}
+    \;=\;
+    \psi\rho \;+\; (1-\psi)\!\left[r_t + \pi_t - \frac{\gamma_j\|\sigma\|^2}{2}\right]
+    \;+\; \mathcal{O}(\epsilon^2).
+\end{equation}
+Consistent with Assumption~\ref{assump:c_w_property}, the risk-free rate and the risk premium enter symmetrically at first order. Substituting the expansion
+\(\hat{\pi}_t = -\,\hat{r}_t - p^{\star\,-1}\hat{p}_t + \mathcal{O}(\epsilon^2)\) gives
+\begin{equation}
+    \hat c_{j,t} \;\equiv\; c_{j,t} - c_j^\star
+    \;=\; \chi_{j,0} \;+\; \chi_{j,p}\,\hat{p}_t \;+\; \mathcal{O}(\epsilon^2),
+\end{equation}
+with coefficients
+\[
+    \chi_{j,p}=(\psi-1)\,\frac{1}{p^\star},
+    \qquad 
+    \chi_{j,0}=(\psi-1)\,\frac{\gamma\|\sigma\|^2}{2}\,\hat{\gamma}_j\,\epsilon.
+\]
+
+Hence, conditional on $p_t$, the consumption-wealth ratio is independent of $r_t$, as in Section~\ref{sec:simple}. Its slope with respect to $p_t$ depends on the EIS: it rises with $p_t$ when $\psi>1$, the standard assumption in macro-finance models. Finally, to first order, the consumption–wealth ratio is unaffected by $\overline{\alpha}_{p,t}$, a property that will be central for aggregate market elasticity.
+
+
+\paragraph{Aggregate market elasticity.}  
+Given the demand system, equilibrium prices follow from market clearing in the risky-asset and goods markets:
+\[
+    \sum_{j=0}^J x_{j,t}\, q_{j,t} = 0,
+    \qquad
+    \sum_{j=0}^J x_{j,t}\, \hat{c}_{j,t} = -\frac{1}{p^\star}\,\hat{p}_t .
+\]
+
+Aggregating across investors, and dropping the $j$ subscript on coefficients that are common across types, yields the linear system
+\[
+    \begin{bmatrix}
+        \zeta_p & \zeta_r \\
+        \chi_p + \tfrac{1}{p^\star} & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        \hat{p}_t \\[4pt]
+        \hat{r}_t
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        f_t \\[4pt]
+        -\,\chi_{0,t}
+    \end{bmatrix},
+\]
+where $f_t \equiv \sum_{j=0}^J x_{j,t} f_{j,t}$ and $\chi_{0,t} \equiv \sum_{j=0}^J x_j \chi_{j,0}$.
+
+\begin{defn}[Aggregate market elasticity]
+The aggregate market elasticity $\epsilon_{M,t}$ is defined as the inverse of the proportional change in the price of the risky asset in response to a flow shock $f_t$:
+\[
+    \epsilon_{M,t} \;\equiv\; \Big[\,\frac{\partial \hat{p}_t}{\partial f_t}\,\Big]^{-1}.
+\]
+\end{defn}
+
+\begin{prop}[First-order impact of portfolio flows]\label{prop:first_order}
+Suppose $\rho>\big(1-\psi^{-1}\big)\big(\mu - \tfrac{\gamma\|\sigma\|^2}{2}\big)$. Then:
+\begin{enumerate}[label=(\roman*)]
+    \item The price impact is zero to first order:
+    \(
+        \epsilon_{M,t}^{-1}=\frac{\partial \hat{p}_t}{\partial f_t}=0 .
+    \)
+    \item The interest rate and risk premium responses satisfy
+    \[
+        \frac{\partial \hat{r}_t}{\partial f_t}=\frac{1}{\zeta_r},
+        \qquad
+        \frac{\partial \hat{\pi}_t}{\partial f_t}=-\,\frac{1}{\zeta_r}.
+    \]
+\end{enumerate}
+\end{prop}
+
+Proposition~\ref{prop:first_order} shows that the main lesson from the simple model in Section~\ref{sec:simple} extends to the dynamic economy: portfolio inflows into the risky asset reduce the risk premium, while the corresponding shift out of bonds raises the risk-free rate. To first order, these effects offset exactly, leaving the price-dividend ratio unchanged. Hence, the aggregate market is infinitely elastic, regardless of the individual investors’ own-price elasticities $\zeta_{j,p}$.
+
+
+\paragraph{Why is the market infinitely elastic?}  
+As shown in Figure~\ref{fig:mkt_equilibrium}, price impact is absent as long as the consumption-wealth ratio does not respond directly to the portfolio-flow shock. Otherwise, price changes would generate excess demand or supply in the goods market.
+
+To see why flows leave consumption unchanged to first order, differentiate \eqref{eq:xi_j} with respect to $\alpha_{j,t}$:
+\begin{equation}
+    \frac{\partial c_{j,t}}{\partial \alpha_{j,t}}
+    \;=\;
+    (1-\psi)\,\gamma_j\,\|\sigma_{R,t}\|^2
+    \left[
+        \frac{\pi_t}{\gamma_j \|\sigma_{R,t}\|^2}
+        + \frac{1-\gamma_j^{-1}}{\psi-1}\,
+          \frac{\sigma_{c_j,t}\,\sigma_{R,t}^\top}{\|\sigma_{R,t}\|^2}
+        - \alpha_{j,t}
+    \right]\!.
+\end{equation}
+
+The term in brackets is equal to zero at the privately optimal portfolio, as implied by the investor’s first-order condition. By the envelope theorem, small changes in $\alpha_{j,t}$ around the optimum have negligible welfare effects on welfare and hence do not affect $c_{j,t}$.    
+
+In the first-order approximation, this derivative is evaluated at the benchmark Lucas economy, where all investors hold optimal portfolios. The derivative is thus zero, and by Proposition~\ref{prop:first_order}, price impact is negligible for small (first-order) deviations from the frictionless allocation: the consumption-wealth ratio does not react to flow shocks. In the simple model of Section~\ref{sec:simple}, this was imposed as an \emph{assumption}; here it emerges as a \emph{result} of expanding around the efficient allocation.
+
+This reasoning also clarifies when aggregate elasticity becomes finite: when the initial allocation of risk is \textit{inefficient}. To study such economies requires larger departures from the benchmark, captured by a second-order approximation of the demand system.
+
+\subsection{Inefficient passive demand}
+
+We next turn to a second-order approximation of the demand system to study how risk allocation affects aggregate market elasticity. To focus on the mechanism most clearly, consider the special case without preference heterogeneity or leverage constraints.  
+
+\paragraph{The role of risk misallocation.}  
+In this setting, demand for the risky asset is still given by \eqref{eq:demand_risky} up to second order. Without heterogeneity, the relevant demand shifter is  
+\[
+    f_t \equiv x_{0,t}\left(\overline{\alpha}_{p,t}-1\right),
+\]
+where $x_{0,t}$ denotes the wealth share of passive investors.  
+
+The key difference relative to the benchmark arises from the consumption-wealth ratio. Aggregating \eqref{eq:xi_j} across investors, letting $c_t \equiv \sum_{j=0}^J x_{j,t} c_{j,t}$, and imposing market clearing $\sum_{j=0}^J x_{j,t}\alpha_{j,t}=1$, yields
+\begin{equation}
+    c_t
+    \;=\;
+    \psi\rho
+    \;+\;
+    (1-\psi)\!\left[
+        r_t+\pi_t
+        - \frac{\gamma\|\sigma\|^2}{2}\sum_{j=0}^J x_{j,t}\alpha_{j,t}^2
+    \right]
+    \;+\; \mathcal{O}(\epsilon^3).
+\end{equation}
+Under the efficient allocation $\alpha_{j,t}=1$, so $\sum_{j} x_{j,t}\alpha_{j,t}^2 = 1$. 
+Any deviation from this efficient allocation creates dispersion in portfolios, leading to $\sum_j x_{j,t}\alpha_{j,t}^2>1$ by Jensen’s inequality, which lowers the risk-adjusted expected return $r_t+\pi_t - \tfrac{\gamma\|\sigma\|^2}{2}\sum_j x_{j,t}\alpha_{j,t}^2$. When $\psi>1$, this reduction weakens incentives to save and raises the consumption-wealth ratio for a given $r_t+\pi_t$.  
+
+Movements in the passive portfolio therefore shift the aggregate consumption–wealth ratio. Its second-order expansion is
+\begin{equation}
+    \hat c_t \;\equiv\; c_t - c^\star
+    \;=\; \chi_{0,t} \;+\; \chi_p\,\hat p_t \;+\; \mathcal{O}(\epsilon^3),
+\end{equation}
+with coefficients
+\[
+    \chi_p = (\psi-1)\,\frac{1}{p^\star},
+    \qquad
+    \chi_{0,t} = (\psi-1)\,\frac{\gamma\|\sigma\|^2}{2}\,
+                    \frac{f_t^2}{x_{0,t}(1-x_{0,t})}.
+\]
+Because $\chi_{0,t}$ is quadratic in the flow $f_t$, it is $\mathcal{O}(\epsilon^2)$. For example, when passive investors are initially underexposed to the risky asset ($\overline{\alpha}_{p,t}<1$ and $\psi>1$), an inflow into stocks reduces the consumption-wealth ratio:
+\[
+    \frac{\partial \chi_{0,t}}{\partial f_t}
+    \;=\;
+    -\,(\psi-1)\,\gamma\|\sigma\|^2\,\frac{1-\overline{\alpha}_{p,t}}{1-x_{0,t}}.
+\]
+Note that $\chi_{0,t}$ is locally insensitive to portfolio flow changes when passive portfolio is efficient ($\overline{\alpha}_{p,t}=1$), consistent with the first-order analysis.  
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width=0.95\linewidth]{figures/mkt_equilibrium2.pdf}
+    \vspace{2mm}
+    \caption{Equilibrium with inefficient risk allocation: risky asset (left) and goods (right) markets.}
+    \label{fig:mkt_equilibrium2}
+\end{figure}
+
+Figure~\ref{fig:mkt_equilibrium2} illustrates the effects of portfolio flows when passive investors are initially underexposed to risk, i.e., $\overline{\alpha}_{p,t}<1$. An inflow into the risky asset shifts both the net supply curve (left panel) and the average consumption-wealth ratio schedule (right panel) leftward. The interest rate adjusts so that active demand meets net supply at the goods market clearing price. In this case, portfolio flows have a positive price impact and the aggregate elasticity is \textit{finite}.  
+
+\begin{prop}[Aggregate elasticity: inefficient passive demand]\label{prop:elasticity_passive_demand}
+Without preference heterogeneity or leverage constraints, the inverse aggregate elasticity is
+\begin{equation}\label{eq:elasticity_passive_demand}
+    \varepsilon_{M,t}^{-1}
+    \;=\;
+    -\,(\chi_{p}+y^\star)^{-1}\,\frac{\partial \chi_{0,t}}{\partial f_t}
+    \;=\;
+    \left(1-\psi^{-1}\right)\frac{\gamma \|\sigma\|^{2}}{y^\star}
+    \frac{1-\overline{\alpha}_{p,t}}{x_{a,t}}
+    \;+\;\mathcal{O}\!\left(\epsilon^{2}\right),
+\end{equation}
+where $x_{a,t}=1-x_{0,t}$ is the wealth share of active investors and $y^\star=1/p^\star$ is the dividend-price ratio in the benchmark economy.
+\end{prop}
+
+Proposition~\ref{prop:elasticity_passive_demand} shows that, unlike in \citet{gabaix2020search}, the risky-asset elasticities $\zeta_p$ and $\zeta_r$ are not the direct drivers of aggregate elasticity. Because the demand system is recursive (interest rates only enters the risky asset demand) the overall price impact is governed instead by how portfolio flows impact the consumption-wealth ratio. %In other words, aggregate elasticity reflects changes in savings behavior rather than the direct slope of risky asset demand.
+
+
+The macro elasticity is finite whenever $\overline{\alpha}_{p,t}\neq 1$ and $\psi\neq 1$. In the unit EIS case, the price-dividend ratio is pinned down by the subjective discount rate, so portfolio flows generate offsetting movements in the risk premium and the risk-free rate. With efficient risk allocation ($\overline{\alpha}_{p,t}=1$), there is again no price impact.  
+
+The price impact is positive when $\psi>1$ and $\overline{\alpha}_{p,t}<1$: interest rate adjustments no longer fully offset the risk premium response, so the latter dominates. This mirrors representative agent models in which uncertainty shocks affect prices only when $\psi>1$ \citep[e.g.,][]{bansal2004risks}.  
+
+The state-global perturbation analysis also makes clear that elasticity is state dependent. Figure~\ref{Fig:elasticity_passive-demand} plots the price impact as a function of active investors' wealth for different passive-share levels.  Price impact rises when active investors are under capitalized, reflecting their limited risk-bearing capacity, and when the passive share deviates further from its efficient level. In the extreme case where passive investors hold no equities ($\overline{\alpha}_{p,t}=0$), we recover a version of \citet{basak1998equilibrium} in which price impact is maximized.  
+
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./figures/price_impact_passive2.pdf}
+    \vspace{2mm}
+    \caption{Price impact: inefficient passive demand.}
+    \label{Fig:elasticity_passive-demand}
+\end{figure}
+
+\subsection{Preference heterogeneity and leverage constraints}
+
+We now reintroduce preference heterogeneity and leverage constraints into the model. These features shift the conditions under which passive investors’ portfolios are efficient and therefore alter the aggregate market elasticity. The next proposition provides the main result.
+
+\begin{prop}[Aggregate elasticity: heterogeneity and leverage constraints]\label{prop_elasticity_pref_heterog}
+The inverse aggregate market elasticity is
+\begin{equation}\label{eq:elasticity_pref_heterog}
+    \varepsilon_{M,t}^{-1}
+    \;=\;
+    \bigl(1-\psi^{-1}\bigr)\,
+    \frac{\gamma\,\|\sigma\|^{2}}{y^\star}\,
+    \frac{\overline{\alpha}_{p,t}^{\mathrm{opt}}-\overline{\alpha}_{p,t}}{x_{a,t}-x_{c,t}}\,
+    \bigl(1-x_{c,t}\bigr)
+    \;+\;\mathcal{O}\!\left(\epsilon^{2}\right),
+\end{equation}
+where $x_{c,t}$ is the wealth share of constrained active investors and the passive investors’ optimal portfolio share is
+\begin{equation}\label{eq:optimal_alpha_p}
+    \overline{\alpha}_{p,t}^{\mathrm{opt}}
+    \;=\;
+    1
+    \;-\;
+    \frac{x_{a,t}-x_{c,t}}{1-x_{c,t}}\,
+    \frac{\gamma_{0}-\mathbb{E}^{u}_{t}[\gamma_{j}]}{\gamma}
+    \;-\;
+    \frac{x_{c,t}}{1-x_{c,t}}
+    \Bigl(\frac{\overline{\sigma}}{\|\sigma\|}-1\Bigr),
+\end{equation}
+with $x_{u,t}\equiv x_{a,t}-x_{c,t}$ the wealth share of unconstrained active investors and 
+\[
+    \mathbb{E}^{u}_{t}[\gamma_{j}]
+    \;\equiv\;
+    \sum_{j\in\mathcal{J}^{u}}\frac{x_{j,t}}{x_{u,t}}\,\gamma_{j}.
+\]
+\end{prop}
+
+Proposition~\ref{prop_elasticity_pref_heterog} characterizes aggregate market elasticity in the full model. As in the frictionless benchmark, the market remains infinitely elastic when passive investors hold their optimal portfolio share, $\overline{\alpha}_{p,t}=\overline{\alpha}_{p,t}^{\mathrm{opt}}$. 
+The optimal portfolio share corresponds to the value of $\overline{\alpha}_{p,t}$ such that the passive investor would have no incentive to change their portfolio. 
+Under homogeneous preferences ($\gamma_j=\gamma$) and slack leverage constraints ($x_{c,t}=0$), this condition reduces to $\overline{\alpha}_{p,t}=1$. More generally, preference heterogeneity and binding leverage constraints shift the efficient passive share away from unity, with its level determined by the wealth distribution and the relative risk aversion of different investor types.
+
+\paragraph{Preference heterogeneity.}
+With slack leverage constraints ($x_{c,t}=0$), \eqref{eq:optimal_alpha_p} simplifies to
+\[
+\overline{\alpha}_{p,t}^{\mathrm{opt}}
+= 1 - x_{a,t}\,\frac{\gamma_0-\mathbb{E}^u_t[\gamma_j]}{\gamma},
+\]
+so, unlike the homogeneous preference case, the efficient passive share $\overline{\alpha}_{p,t}^{\mathrm{opt}}$ differs from unity whenever $\gamma_0 \neq \mathbb{E}^u_t[\gamma_j]$. The inverse elasticity in \eqref{eq:elasticity_pref_heterog} becomes
+\[
+\varepsilon_{M,t}^{-1}
+= \bigl(1-\psi^{-1}\bigr)\,\frac{\gamma\|\sigma\|^2}{y^\star}\,
+\frac{\overline{\alpha}_{p,t}^{\mathrm{opt}}-\overline{\alpha}_{p,t}}{x_{a,t}}
+\;+\;\mathcal{O}(\epsilon^2).
+\]
+
+Optimal risk sharing implies that when passive investors are more risk averse than the average unconstrained active ($\gamma_0>\mathbb{E}^u_t[\gamma_j]$),
+\[
+\frac{\partial \overline{\alpha}_{p,t}^{\mathrm{opt}}}{\partial x_{a,t}}
+= -\,\frac{\gamma_0-\mathbb{E}^u_t[\gamma_j]}{\gamma} < 0,
+\]
+so the efficient passive equity share rises as the active wealth share falls, typically after adverse aggregate shocks that erode active wealth that is more exposed to risk. If passive investors do not rebalance in such episodes, market inelasticity increases because $x_{a,t}$ declines (reducing risk-bearing capacity) while the gap $\overline{\alpha}_{p,t}^{\mathrm{opt}}-\overline{\alpha}_{p,t}$ widens (moving the economy farther from the efficient allocation). Consequently, price impact rises as $x_{a,t}$ falls, as shown in the left panel (a) of Figure~\ref{fig:price_impact_comparison}: the heterogeneous- and homogeneous-preference curves coincide at $x_{a}=0.20$, but only the former steepens markedly as $x_a$ declines.
+
+
+\begin{figure}[t!]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/price_impact_heterogeneity1.pdf}
+        \caption{Homogeneous vs. heterogeneous preferences}
+        \label{fig:impact_het_vs_hom}
+    \end{subfigure}\hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/price_impact_heterogeneity2.pdf}
+        \caption{Role of wealth distribution of active investors}
+        \label{fig:impact_vs_w1_by_alphap}
+    \end{subfigure}
+    \vspace{2mm}
+    \caption{Price impact comparisons. Panel (a) compares heterogeneous and homogeneous preferences. Panel (b) shows the sensitivity of the price impact to wealth distribution among active investors when $J=2$ for different passive portfolio shares.}
+    \label{fig:price_impact_comparison}
+\end{figure}
+
+Panel (b) of Figure~\ref{fig:price_impact_comparison} shows how the distribution of wealth across active investors shapes price impact. With two active types ($J=2$) and $\gamma_1>\gamma_2$, the average risk active aversion is
+\[
+\mathbb{E}^u_t[\gamma_j] \;=\; w_{1,t}\gamma_1 + \bigl(1-w_{1,t}\bigr)\gamma_2,
+\qquad
+w_{1,t}\equiv \frac{x_{1,t}}{x_{a,t}}.
+\]
+When leverage constraints are slack ($x_{c,t}=0$), the efficient passive share satisfies
+\(
+\overline{\alpha}_{p,t}^{\mathrm{opt}}
+= 1 - x_{a,t}\,(\gamma_0-\mathbb{E}^u_t[\gamma_j])/\gamma,
+\)
+so holding $x_{a,t}$ fixed,
+\[
+\frac{\partial\,\overline{\alpha}_{p,t}^{\mathrm{opt}}}{\partial w_{1,t}}
+= \frac{x_{a,t}}{\gamma}\,(\gamma_1-\gamma_2) \;>\; 0.
+\]
+Thus, as the wealth share of the more risk averse active type rises, $\mathbb{E}^u_t[\gamma_j]$ increases and the passive sector should optimally hold more of the risky asset. If the passive portfolio is not adjusted, the deviation $\overline{\alpha}_{p,t}^{\mathrm{opt}}-\overline{\alpha}_{p,t}$ widens, worsening risk allocation and raising price impact, consistent with the upward shift in the panel~(b) of Figure~\ref{fig:price_impact_comparison}.
+
+
+
+\paragraph{Leverage constraints.}
+When some active investors are constrained ($x_{c,t}>0$), the marginal investors are the \emph{unconstrained} active agents, and their risk-bearing capacity,
+\[
+x_{u,t}\;\equiv\;x_{a,t}-x_{c,t},
+\]
+becomes the key determinant of price impact. The panel (a) of Figure~\ref{fig:price_impact_leverage_constraints} plots price impact against the active wealth share $x_{a,t}=1-x_{0,t}$, with and without binding constraints. To isolate the role of constraints, we set $\gamma_0=\mathbb{E}_t^{u}[\gamma_j]$, removing pure preference heterogeneity effects. As $x_{a,t}$ declines, e.g., after a negative aggregate shock when $\overline{\alpha}_{p,t}<1$, price impact rises more sharply under binding constraints because $x_{u,t}$ shrinks and the risk-bearing capacity of marginal investors is depleted. Panel (b) holds $x_{a,t}$ fixed and varies the constrained share $x_{c,t}$. The price impact increases monotonically with $x_{c,t}$. This is intuitive: price impact is larger when a larger share of active investors is constrained.
+
+\begin{figure}[t!]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/price_impact_lev_constraints1.pdf}
+        \caption{Role of leverage constraints \emph{(assumes $x_{c,t}=0.10$)}}
+    \end{subfigure}\hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/price_impact_lev_constraints2.pdf}
+        \caption{Varying the wealth share of constrained actives, $x_{c,t}$}
+    \end{subfigure}
+    \vspace{2mm}
+    \caption{Price impact under leverage constraints. Panel (a) compares the cases with and without leverage constraints (holding $x_{c,t}=0.10$). Panel (b) plots the price impact as a function of $x_{c,t}$ for different values of $x_{a,t}$.}
+    \label{fig:price_impact_leverage_constraints}
+\end{figure}
+
+\paragraph{Taking stock.}
+Proposition~\ref{prop_elasticity_pref_heterog} clarifies the main determinants of aggregate market elasticity. The elasticity is \emph{finite} only when risk is misallocated: small portfolio flows around the frictionless allocation have no first-order price impact. Preference heterogeneity amplifies price impact in downturns because, as the active wealth share falls, the efficient passive share rises, widening the gap between efficient and actual portfolios. Binding leverage constraints further increase price impact by shrinking the marginal (unconstrained) risk-bearing capacity, $x_{u,t}$. Taken together, these forces imply rich state dependence of aggregate elasticity in economies with heterogeneous investors and financial frictions.
+
+
+% \input{sections/quantitative}
+\section{Quantitative Implications}
+
+In this section, we turn to the quantitative implications of the model described in Section~\ref{sec:model}. We begin by describing our calibration strategy before presenting numerical results.  
+
+\subsection{Calibration strategy}
+To calibrate the model, we process Flow of Funds (FoF) data to construct $J=3$ major sectors: passive, constrained, and constrained. The passive sector includes households and non-profits (L.101), government (L.105), the monetary authority (L.109), and money market funds (L.121). Its risky asset holdings is dominated by household. The constrained sector includes depository institutions (L.110), mutual funds (L.122), close-end funds (L.123), ETFs (L.124), government-sponsored enterprises (L.125), agency and GSE-backed mortgage pools (L.126), asset backed securities (L.127), finance companies (L.128), REITs (L.129), and broker-dealers (L.130). The unconstrained sector, which represents relatively long-horizoned investors, include insurance companies (L.115 and L.116), pensions (L.118, L.119, and L.120), and rest of the world (L.133). 
+
+% To calibrate the model, we process Flow of Funds (FoF) data to construct $J=6$ major sectors: household mutual fund holdings, household non-mutual fund holdings, hedge funds, broker-dealers (L.130), the rest of the world (L.133), and the insurance-pension sector. Figure~\ref{fig:sectors} plots the fraction of the U.S. stock market held by each of these sectors since 2012, the year when hedge fund holdings became separately available in the FoF. The legend reports the average fraction held by each sector. Households are the largest holders, accounting for 17.3\% of the market through mutual funds and 43.3\% through other vehicles. Foreign investors and the insurance-pension sector hold 17.5\% and 17.3\%, respectively. Hedge funds and broker-dealers are comparatively small, with average holdings of 5.8\% and 0.5\%, consistent with Figure~1 in \citet{koijen2024investors}.  
+
+% \begin{figure}[t]
+%     \centering
+%     \includegraphics[width=0.9\linewidth]{figures/break_down_of_holdings.png}
+%     \caption{Fraction of stock market held by different sectors from 2012 to 2022. The average fraction held is reported in the legend. Source: Flow of Funds.}
+%     \label{fig:sectors}
+% \end{figure}
+
+% We exclude sectors with negligible stock market exposure, such as nonfinancial business (L.102), general government (L.105), the monetary authority (L.109), private depository institutions (L.110), money market funds (L.121), government-sponsored enterprises (L.125), agency- and GSE-backed mortgage pools (L.126), asset-backed security issuers (L.127), finance companies (L.128), REITs (L.129), holding companies (L.131), and other financial businesses (L.132). We then aggregate pass-through sectors back to their ultimate end users. For example, closed-end funds (L.123) and exchange-traded funds (L.124) are consolidated into the household (L.101) balance sheet, while mutual funds (L.122) are allocated across end investors based on the FOF breakdown. Defined contribution pensions (Tables L.118.c, L.119.c, and L.120.c) are also aggregated into the household sector.  
+
+% We separately construct the hedge fund sector, since both households (L.101) and foreign investors (L.133) include hedge funds in their reported holdings. Domestic hedge funds are identified from Table B.101.f, while foreign hedge funds are obtained from the Enhanced Financial Accounts. We subtract hedge fund holdings from both the household and foreign sectors and treat them as a distinct category. Finally, we combine the remaining insurance and pension subsectors, including property-casualty insurance (L.115), life insurance (L.116), and defined benefit pensions and retirement plans (L.118.b, L.119.b, L.120.b).  
+
+We assign sectoral masses $\omega_j$ and risk aversion coefficients $\gamma_j$ to match two sets of moments. First, average sectoral wealth shares are calibrated to match the empirical distribution of stock market holdings. Second, we match sectoral betas from time-series regressions of risky asset holdings on aggregate risky asset supply. These regression coefficients provide an empirical analog to the model-implied relationship between sectoral and aggregate risky positions.  
+
+% A key parameter in the calibration is the average passive portfolio share, $\overline{\alpha}$. Estimates in the literature vary widely. \citet{chinco2024passive} infer a passive share of about one third from index reconstitution events, while \citet{koijen2024investors} report a much higher estimate of roughly two thirds in 2016Q4, based on measures of active share \citep{cremers2009active}. We calibrate the passive share by aggregating total passive wealth and dividing by total risky holdings.  
+
+The process for passive demand is modeled as the exogenous CIR process in Equation~\eqref{eq:alpha_p_process}. Its parameters are calibrated as follows. The mean of the process, $\overline{\alpha}$, is chosen to match the average portfolio share of the passive sector. The volatility $\sigma_p$ is disciplined by observed fluctuations in equity flows, which we measure by scaling quarterly flows by lagged market capitalization, following Appendix~D3 of \citet{gabaix2020search}. We use indirect inference to align model-implied aggregate flows with those in the data (blue line, left panel of Figure~\ref{fig:facts-vol-flow}), in line with their approach. The persistence parameter $\theta_p$ is informed by evidence on household portfolio inertia. \citet{brunnermeier2008wealth} document substantial inertia using PSID data, finding that household portfolios change little absent major events, consistent with slow rebalancing. Their regression analysis suggests an inertia coefficient near 0.75, indicating strong persistence.\footnote{Relatedly, \citet{parker2023retail} show that the adoption of target-date funds has contributed to highly stable household portfolio shares.} Finally, we calibrate the correlation between passive flow shocks and aggregate shocks by regressing quarterly flows (again, blue line in the left panel of Figure~\ref{fig:facts-vol-flow}) on aggregate market returns, with the estimated beta providing the implied correlation. The parameter values are summarized in Table~\ref{tab:calib}.  
+
+
+\begin{figure}[!t]
+    \centering
+    \subfloat{\resizebox{0.49\textwidth}{!}{\input{figures/time-series-vol-flow.tex}}}
+    \subfloat{\resizebox{0.49\textwidth}{!}{\input{figures/time-series-vol-multiplier.tex}}}
+    \vspace{2mm}
+    \caption{Quarterly flows and return volatility. The left panel plots quarterly flows (in blue) and return volatility (in red). The right panel plots the ``volatility multiplier,'' defined as the ratio of return volatility to flows. Source: Flow of Funds and CRSP.}\label{fig:facts-vol-flow}
+\end{figure}
+
+
+
+\begin{table}[t]    
+    \centering
+    \resizebox{.62\linewidth}{!}{\input{tables/calibration}}
+    % \captionsetup{font=normalsize,labelfont=bf,skip=2pt,labelsep=period}
+	\vspace{2mm}
+    \captionsetup{type=table,font=footnotesize,justification=centering,singlelinecheck=false}
+    \caption{\textbf{Parameter values.}\\This table reports the parameter values used in calibrating the model.}\label{tab:calib}
+	% \caption*{\footnotesize{This table reports the parameter values used in calibrating the model.}}    
+\end{table}
+
+\subsection{Quantitative results}
+
+To evaluate the quantitative implications of the model, we solve the full dynamic system numerically rather than relying on the perturbation approach of Section~\ref{sec:elasticity}. A global solution method is necessary given the dimensionality of the state space, which includes 4 state variables corresponding to one passive sector, one constrained sector, one unconstrained sector, and a dividend share. We adopt the neural network-based method of \citet{duarte2024machine}, which is well suited for high-dimensional problems. Details of the solution method are provided in the appendix. We then simulate the model to generate time series of prices, returns, and flows, which we compare to empirical data. Table~\ref{tab:simulation_moments} reports unconditional moments from the simulated data alongside their empirical counterparts. For the dividend claim, the model delivers a risk premium of 6.9\%, a risk-free rate of 0.43\%, and return volatility of 20.9\%, all close to the corresponding empirical targets. The model also generates a sizable price impact of 8.31 and a flow volatility of 2.8\%. 
+This is in the ballpark of the empirically estimated price impact of around 6.90.\footnote{Price impact in the model is defined as $\frac{d\log(p/d)}{d\alpha_p}$. \citet{gabaix2020search} estimate a price multiplier of around 5, while \citet{Hartzmark/Solomon/2021} estimate a multiplier of 1.9. Taking an average between the two yields 3.45. Considering that the passive investor share is around half, this amounts to a price impact of approximately $3.45 \times 2 = 6.90$.} The model also broadly matches the average asset/equity ratio and risky asset shares of the main sectors.
+
+\begin{table}[!t]    
+    \centering% \captionsetup{font=normalsize,labelfont=bf,skip=2pt,labelsep=period}
+	\resizebox{.8\linewidth}{!}{\input{./tables/simulation.tex}}
+    \vspace{2mm}
+    \captionsetup{type=table,font=footnotesize,justification=centering,singlelinecheck=false}
+    \caption{\textbf{Simulation results.}\\This table reports the model-implied and empirical moments. All values are annualized.}\label{tab:simulation_moments} 
+	% \caption*{\footnotesize{This table reports the model-implied and empirical moments. All values are annualized.}}    
+\end{table}
+
+Figure~\ref{fig:price_impact_dynamic} presents the model-implied conditional price impact. The right panel of the figure shows that, as the wealth share of constrained active investors increases, the price impact goes up, as more agents are constrained in the economy. 
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=\linewidth]{figures/xu_xc_price_impact.png}
+    \caption{This figure shows the price impact of active investors from the dynamic model.}
+    \label{fig:price_impact_dynamic}
+\end{figure}
+
+Next, we run return predictability tests by regressing the cumulative future returns on the price-dividend ratio. Table~\ref{tab:return_predictability} presents the slope coefficients in (1) the full sample and (2) conditional on bad states defined as time periods when the price-dividend ratio is below 25th percentile of its long-run mean. The table shows that realized future excess returns are negatively predicted by the price-dividend ratio, and this predictability is stronger in bad times.  
+
+\begin{figure}[!t]
+\begin{minipage}[t]{0.48\textwidth}
+\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{archive/figures/return_predictability.png}
+\captionof{figure}{Return predictability}
+\label{fig:return_predictability}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\vspace{0pt}
+
+{\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{0.92}
+
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Dependent Variable: & \multicolumn{2}{c}{Cumulative ex. ret.} \\
+Model: & (1) & (2) \\
+Sample: & Full & Bad state \\
+\midrule
+\textit{Variables} & & \\
+$\log(P_t/D_t)$ & -0.49 & -0.66 \\
+                & (0.0005) & (0.0019) \\
+\midrule
+$R^2$ & 0.45 & 0.21 \\
+Observations & 989,000 & 247,250 
+\vspace{0.25cm} \\ 
+\bottomrule  \\ \\
+\end{tabular}
+
+\par
+}
+
+\captionsetup{type=table,font=footnotesize,justification=centering,singlelinecheck=false}
+\captionof{table}{Return predictability regression}
+\label{tab:return_predictability}
+\end{minipage}
+
+\vspace{0.8em}
+\begin{minipage}{0.98\textwidth}
+\footnotesize
+\textit{Note:} The left panel shows the relationship between the price-dividend ratio and future cumulative returns. Blue points correspond to normal state and red points correspond to bad state defined as time periods when price-dividend ratio is less than the 25-pctl of its long-run mean. The lines represent the regression fit. 
+The right panel reports estimates from the return-predictability regression
+$\sum_{k=1}^T r_{t+k} -r_t=a+b \log(P_t/D_t)+\varepsilon_{t+k}$, where $T=4$ quarters.
+Entries in parentheses are standard errors.
+\end{minipage}
+
+\end{figure}
+
+\input{sections/conclusion}
+
+
+\newpage
+\singlespacing
+\bibliographystyle{jf}
+\phantomsection\addcontentsline{toc}{section}{\refname}
+\clearpage
+%{\small
+\bibliography{references.bib}
+
+
+\clearpage
+\numberwithin{equation}{section}
+\setcounter{table}{0}
+\renewcommand{\thetable}{A.\arabic{table}}
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{A.\arabic{figure}}
+\setcounter{footnote}{0} 
+% \renewcommand{\theprop}{A.\arabic{prop}}
+% \setcounter{prop}{0}
+
+\appendix
+\onehalfspacing
+% \newgeometry{left=1in,bottom=1in, top=1in, right=1in}
+\part*{Appendix}\label{appendix}
+
+\input{sections/appendix}
+
+
+\end{document}

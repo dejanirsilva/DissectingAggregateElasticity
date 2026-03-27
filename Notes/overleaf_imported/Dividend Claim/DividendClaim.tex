@@ -1,0 +1,722 @@
+\documentclass[11pt,english]{article}
+\bibliographystyle{jf}
+\usepackage[longnamesfirst]{natbib}
+%\usepackage[T1]{fontenc}
+\usepackage{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bottom]{footmisc}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{amsmath,enumerate}
+\usepackage{amsthm}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage[labelfont=bf,justification=justified,font=small,skip=2pt,labelsep=period]{caption}
+%\usepackage[labelfont=bf,justification=justified,labelsep=period]{caption}
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage{arydshln}
+\usepackage{chngpage}
+\usepackage{float,appendix}
+\usepackage{afterpage}
+\usepackage{verbatim}
+\usepackage{indentfirst}
+\usepackage[margin=1in]{geometry}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+% \usepackage{longtable}
+\usepackage{booktabs, makecell, longtable,ltxtable}
+\usepackage{lipsum}
+\usepackage{pdflscape}
+\usepackage{siunitx}
+\usepackage{chngcntr}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage[normalem]{ulem}
+\usepackage{chngcntr,apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\sisetup{table-format=-1.3, table-space-text-post={**}}
+\usepackage{xr}
+\usepackage{etoolbox}
+\usetikzlibrary{positioning}
+\newcommand\fnsep{\textsuperscript{,}}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage[normalem]{ulem}
+\usepackage{chngcntr,apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usepackage{xr}
+\usepackage{etoolbox}
+\usetikzlibrary{positioning}
+
+%% UCLA colors: 
+% https://brand.ucla.edu/wp-content/uploads/ucla-color-palette-v10.pdf
+%\definecolor{UCLA}{RGB}{50, 132, 191}   % UCLA Blue primary
+%\definecolor{UCLA}{RGB}{52, 123, 173}   % UCLA Blue text only
+\definecolor{UCLAblue}{RGB}{30, 75, 135} % secondary color	
+\definecolor{UCLAgold}{RGB}{255, 232, 0} % UCLA Gold
+
+\definecolor{usccardinal}{rgb}{0.6, 0.0, 0.0}
+\definecolor{Matlabblue}{rgb}{0,0.447,0.741}
+\definecolor{bleudefrance}{rgb}{0.19,0.55, 0.91}
+\definecolor{cobalt}{rgb}{0.0, 0.28,0.67}
+\definecolor{darkblue}{rgb}{0.0, 0.0,0.55}
+\definecolor{darkcerulean}{rgb}{0.03,0.27, 0.49}
+\definecolor{darkpowderblue}{rgb}{0.0,0.2, 0.6}
+\definecolor{bleudefrance}{rgb}{0.19,0.55, 0.91}
+%\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
+
+\hypersetup{
+	colorlinks,
+	linkcolor={UCLAblue},
+	citecolor={UCLAblue},
+	urlcolor={UCLAblue},
+}
+
+\bibpunct{(}{)}{;}{a}{,}{,}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\var}{\mathrm{Var}}
+\newcommand{\cov}{\mathrm{Cov}}
+\setcounter{MaxMatrixCols}{20}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+\urlstyle{same}
+\usepackage{pgfplots} 
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false} 
+% puts figures and tables at the end of the document
+%\usepackage[nomarkers,nolists]{endfloat}               
+% puts ONLY figures at the end of the document
+%\usepackage[nomarkers,nolists,figuresonly]{endfloat}  
+% allows more than one figure per page for endfloat
+%\renewcommand{\efloatseparator}{\mbox{}}              
+\usepackage{rotating}
+% allows sideways tables and figures to be placed at the end of the document
+%\DeclareDelayedFloatFlavor{sidewaystable}{table}
+%\DeclareDelayedFloatFlavor{sidewaysfigure}{figure}
+
+% \usepackage[nomarkers,nolists]{endfloat} 
+% \renewcommand{\efloatseparator}{\mbox{}}              % allows more than one figure per page for endfloat
+
+%\usepackage{mathpazo}
+%\usepackage{mathpple}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{palatino}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false} 
+\newlength\figureheight 
+\newlength\figurewidth 
+\usepackage{mathtools}
+\usetikzlibrary{calc}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Notes customization %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{webblue}{rgb}{0,0,0.6}
+\definecolor{webgreen}{rgb}{0,.6,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+
+
+%- Commenting
+\let\oldmarginpar\marginpar
+\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\tiny #1]%
+{\raggedright\tiny #1}}
+\newcommand{\mknote}[1]{\marginpar{\textcolor{webblue}{\tiny{Mahyar: #1}}}}
+\newcommand{\dsnote}[1]{\marginpar{\textcolor{webgreen}{\tiny{Dejanir: #1}}}}
+\usepackage[en-US]{datetime2}
+\usepackage{mathtools}
+ \usepackage{xcolor}
+
+\newcommand{\comments}[1]
+{\par {\bfseries \color{blue} #1 \par}}
+
+\usepackage[draft]{todonotes}
+
+\title{\textbf{Extension: A Model with Equity and Risky Debt Claims}}
+\author{Mahyar Kargar\thanks{University of Illinois at Urbana-Champaign, e-mail: \href{mailto:kargar@illinois.edu}{kargar@illinois.edu}.} and Dejanir Silva\thanks{Daniels School of Business, Purdue University, e-mail: \href{dejanir@purdue.edu}{dejanir@purdue.edu}.}}
+\date{\today}
+%\date{\today\\
+%	\begin{small}
+%		First draft: May 5, 2018
+%\end{small}}
+\onehalfspacing
+\begin{document}
+	\maketitle
+	
+\section{A Lucas Economy with a Levered Claim}
+
+Consider an economy where the output of the representative firm follows a geometric Brownian motion:
+\begin{equation}\label{eq:agg_endow}
+    \frac{d Y_t}{Y_t} = \mu dt + \sigma d Z_t.
+\end{equation}
+
+The firm issues two types claims to finance its operation, capturing different equity and debt instruments. 
+The first instrument is a claim on the firm's dividends. 
+To capture the fact that dividends are more volatile than consumption (see, e.g., \citealt{Abel1999LeverageDividends}; \citealt{Campbell1999AssetPrices}), we follow \citet{MenzlySantosVeronesi2004} and assume the dividend process of the form $D_t = s_t Y_t$, where the share $s_t$ follows the process:
+\begin{equation}
+    d s_t = \kappa_s (\overline{s} - s_t)\, dt + \sigma_s s_t (1-s_t)\, dZ_t,
+\end{equation}
+given $s_0 \in (0,1)$, where $\overline{s} \in (0,1)$ and $\kappa_s > 0$. This ensures that $s_t \in [0,1]$ at all times. 
+
+Ito's lemma implies that dividends follow the process:
+\begin{equation}
+    \frac{d D_t}{D_t} = \mu_D(s_t)\, dt + \sigma_D(s_t)\, dZ_t,
+\end{equation}
+where
+\begin{equation}
+    \sigma_{D}(s_t) = \sigma + \sigma_s (1-s_t), \qquad \qquad 
+    \mu_D(s_t) = \mu + \kappa_s \left( \frac{\overline{s}}{s_t}-1\right) + \sigma \sigma_s(1-s_t).
+\end{equation}
+
+This implies that $\sigma_{D}(s_t) > \sigma$ for $\sigma_s > 0$. 
+Therefore, dividends are more volatile than consumption. 
+Moreover, this volatility process captures a form of ``leverage effect," where volatility increases after a negative shock. 
+Finally, this process ensures that the share process is stationary, so consumption and dividends are co-integrated. 
+
+The second instrument is a claim on the remaining payoff, $B_t = (1-s_t) Y_t$, which we refer to as a \textit{corporate bond}.
+Notice that the corporate bond payoff will be smoother than aggregate consumption, capturing the idea this is a safer claim.
+
+We denote the price of a claim on aggregate endowment by $P_{Y,t}$, the price of a claim on dividends by $P_{D,t}$, and the price of the corporate bond by $P_{B,t}$.
+Since $B_t+D_t = Y_t$, we have $P_{B,t} +P_{D,t}= P_{Y,t}$.
+
+\section{Completing the Financial Market}\label{sec:market_completion}
+
+In the baseline model (Section~3 of the main paper), investors trade a single risky asset (the claim on $Y_t$) and a risk-free asset. With a $d$-dimensional Brownian motion $Z_t$ ($d\ge 2$), these two assets span only a one-dimensional subspace of aggregate risk, leaving markets incomplete. In particular, the stochastic discount factor (SDF) is not unique: the market price of risk $\lambda_t$ is pinned down only in the direction of $\sigma_{R_Y,t}$. As we show in Section~\ref{sec:mf_separation}, a unique SDF is essential for pricing the dividend and risky debt claims via the CAPM relation. Following \citet{DiTella2017}, we introduce derivative contracts in zero net supply that complete the financial market.
+
+\subsection{Derivative contracts and market structure}
+
+In addition to the endowment claim and the risk-free asset, investors can continuously trade $d$ derivative contracts on aggregate risk. Derivative $k$ ($k=1,\ldots,d$) is a short-lived contract in zero net supply whose return loads on the $k$-th component of the Brownian motion $Z_t$. Since the endowment claim already provides exposure to aggregate shocks, one of the $d$ derivatives is redundant. In particular, assume that the first derivative (which loads on $Z_t^{(1)}$, the endowment shock) is spanned by the endowment claim together with the remaining $d-1$ derivatives. The collection of the endowment claim and any $d-1$ derivatives thus spans all $d$ dimensions of $dZ_t$, and the financial market is complete.
+
+Market completeness implies the existence of a unique SDF $\eta_t$ with dynamics
+\begin{equation}\label{eq:SDF_complete}
+    \frac{d\eta_t}{\eta_t} = -r_t\,dt - \lambda_t\,dZ_t,
+\end{equation}
+where $\lambda_t=(\lambda_{1,t},\ldots,\lambda_{d,t})\in\mathbb{R}^{1\times d}$ is the market price of risk vector, fully determined by the equilibrium. No-arbitrage pricing of the endowment claim gives
+\begin{equation}\label{eq:no_arb_Y}
+    \pi_{Y,t} = \sigma_{R_Y,t}\,\lambda_t'.
+\end{equation}
+
+\subsection{Portfolio problem with derivative contracts}
+
+Let $\alpha_{j,t}$ denote the portfolio share in the endowment claim (as in the main paper) and let $\theta_{j,t}=(\theta_{j,1,t},\ldots,\theta_{j,d,t})\in\mathbb{R}^{1\times d}$ denote the portfolio exposure obtained through derivative positions. Since the first derivative is redundant with the endowment claim, we set $\theta_{j,1,t}=0$ and let $\theta_{j,k,t}$ for $k=2,\ldots,d$ represent the investor's exposure to the $k$-th aggregate shock through derivatives. The total portfolio exposure to aggregate risk is
+\begin{equation}\label{eq:total_exposure}
+    \Sigma_{j,t} = \alpha_{j,t}\,\sigma_{R_Y,t} + \theta_{j,t} \;\in\; \mathbb{R}^{1\times d}.
+\end{equation}
+
+Investor $j$'s wealth evolves as
+\begin{equation}\label{eq:wealth_complete}
+    \frac{dW_{j,t}}{W_{j,t}} = \big(r_t + \alpha_{j,t}\,\pi_{Y,t} + \theta_{j,t}\,\lambda_t' - c_{j,t}\big)\,dt + \Sigma_{j,t}\,dZ_t,
+\end{equation}
+where $\theta_{j,t}\,\lambda_t'=\sum_{k=2}^d \theta_{j,k,t}\,\lambda_{k,t}$ is the risk premium earned on derivative positions.
+
+Passive investors hold only the endowment claim: $(\alpha_{0,t},\theta_{0,t})=(\overline{\alpha}_{p,t},\,0)$, where $\overline{\alpha}_{p,t}$ follows the process in equation~(2) of the main paper. Active investors choose $(\alpha_{j,t},\theta_{j,t})$ to maximize utility, subject to the leverage constraint
+\begin{equation}\label{eq:leverage_complete}
+    \|\Sigma_{j,t}\| = \|\alpha_{j,t}\,\sigma_{R_Y,t} + \theta_{j,t}\| \le \overline{\sigma}.
+\end{equation}
+
+\subsection{Market clearing}
+
+The endowment claim is in unit net supply:
+\[
+    \sum_{j=0}^J \omega_j\, x_{j,t}\,\alpha_{j,t} = 1.
+\]
+Derivative contracts are in zero net supply:
+\[
+    \sum_{j=0}^J \omega_j\, x_{j,t}\,\theta_{j,k,t} = 0, \qquad k=2,\ldots,d.
+\]
+Goods market clearing is as in the baseline: $\sum_{j=0}^J \omega_j C_{j,t} = Y_t$.
+
+\subsection{Equilibrium and the market price of risk}\label{sec:eq_lambda}
+
+The HJB equation for the consumption-wealth ratio takes the same form as in the main paper (equation~(7)), with the portfolio risk premium and exposure generalized to
+\begin{equation}\label{eq:HJB_complete}
+    c_{j,t} = \rho\psi + (1-\psi)\!\left[r_t + \alpha_{j,t}\pi_{Y,t} + \theta_{j,t}\lambda_t' - \frac{\gamma_j}{2}\|\Sigma_{j,t}\|^2\right] + \xi_{j,t},
+\end{equation}
+where the forward-looking shifter is
+\begin{equation}\label{eq:xi_complete}
+    \xi_{j,t} \equiv \mu_{c_j,t} + (1-\gamma_j)\,\sigma_{c_j,t}\,\Sigma_{j,t}' + \frac{\psi-\gamma_j}{1-\psi}\,\frac{\|\sigma_{c_j,t}\|^2}{2},
+\end{equation}
+as in the main paper, with $\alpha_{j,t}\sigma_{R_Y,t}$ replaced by $\Sigma_{j,t}$.
+
+\paragraph{First-order conditions and optimal derivative positions.}
+The investor chooses $(\alpha_{j,t},\theta_{j,t})$ to maximize the right-hand side of \eqref{eq:HJB_complete} subject to $\|\Sigma_{j,t}\|\le\overline{\sigma}$ and $\theta_{j,1,t}=0$. Denote the Lagrange multiplier on the leverage constraint by $\nu_{j,t}\ge 0$ and let $\widehat{\Sigma}_{j,t}\equiv\Sigma_{j,t}/\|\Sigma_{j,t}\|$. The FOC with respect to $\alpha_{j,t}$ is
+\begin{equation}\label{eq:FOC_alpha_complete}
+    (1-\psi)\Big[\pi_{Y,t} - \gamma_j\,\Sigma_{j,t}\,\sigma_{R_Y,t}'\Big] + (1-\gamma_j)\,\sigma_{c_j,t}\,\sigma_{R_Y,t}' = \nu_{j,t}\,\widehat{\Sigma}_{j,t}\,\sigma_{R_Y,t}'.
+\end{equation}
+The FOC with respect to $\theta_{j,k,t}$ for $k=2,\ldots,d$ is
+\begin{equation}\label{eq:FOC_theta_complete}
+    (1-\psi)\Big[\lambda_{k,t} - \gamma_j\,\Sigma_{j,k,t}\Big] + (1-\gamma_j)\,\sigma_{c_j,k,t} = \nu_{j,t}\,\widehat{\Sigma}_{j,k,t},
+\end{equation}
+where $\Sigma_{j,k,t}$ and $\sigma_{c_j,k,t}$ are the $k$-th components of $\Sigma_{j,t}$ and $\sigma_{c_j,t}$, respectively.
+
+\paragraph{Unconstrained solution.}
+When the leverage constraint is slack ($\nu_{j,t}=0$), the FOCs \eqref{eq:FOC_alpha_complete}--\eqref{eq:FOC_theta_complete} yield the optimal total exposure component by component. For $k=2,\ldots,d$, equation \eqref{eq:FOC_theta_complete} gives
+\begin{equation}\label{eq:Sigma_jk_unconstrained}
+    \Sigma_{j,k,t} = \frac{\lambda_{k,t}}{\gamma_j} + \varsigma_{j,k,t}^{\theta},
+\end{equation}
+where
+\begin{equation}\label{eq:hedging_theta}
+    \varsigma_{j,k,t}^{\theta} \equiv \frac{1-\gamma_j^{-1}}{\psi-1}\,\sigma_{c_j,k,t}
+\end{equation}
+is the hedging demand for the $k$-th aggregate shock. The optimal derivative position is then
+\begin{equation}\label{eq:theta_jk_optimal}
+    \theta_{j,k,t} = \frac{\lambda_{k,t}}{\gamma_j} + \varsigma_{j,k,t}^{\theta} - \alpha_{j,t}\,\sigma_{R_Y,k,t}, \qquad k=2,\ldots,d,
+\end{equation}
+where $\sigma_{R_Y,k,t}$ is the $k$-th component of $\sigma_{R_Y,t}$. The first term is the myopic demand (proportional to the market price of the $k$-th risk), the second is the hedging demand, and the third subtracts the exposure to the $k$-th shock already obtained through the endowment claim.
+
+Similarly, the FOC for $\alpha_{j,t}$ together with $\pi_{Y,t}=\sigma_{R_Y,t}\lambda_t'$ implies that the first component of the total exposure satisfies $\Sigma_{j,1,t} = \lambda_{1,t}/\gamma_j + \varsigma_{j,1,t}^{\theta}$, where $\varsigma_{j,1,t}^{\theta}$ is defined as in \eqref{eq:hedging_theta} with $k=1$. Since $\theta_{j,1,t}=0$, the portfolio share in the endowment claim is
+\begin{equation}\label{eq:alpha_j_complete}
+    \alpha_{j,t} = \frac{\Sigma_{j,1,t}}{\sigma_{R_Y,1,t}} = \frac{1}{\sigma_{R_Y,1,t}}\!\left(\frac{\lambda_{1,t}}{\gamma_j} + \varsigma_{j,1,t}^{\theta}\right).
+\end{equation}
+
+\paragraph{Constrained solution.}
+When the leverage constraint binds ($\|\Sigma_{j,t}\|=\overline{\sigma}$), the FOCs \eqref{eq:FOC_alpha_complete}--\eqref{eq:FOC_theta_complete} imply that the direction of the optimal exposure is the same as in the unconstrained case, but the magnitude is scaled down. Define the unconstrained optimal exposure
+\[
+    \Sigma_{j,t}^{*} \equiv \frac{\lambda_t}{\gamma_j} + \varsigma_{j,t}^{\theta}, \qquad \text{where}\;\; \varsigma_{j,k,t}^{\theta} = \frac{1-\gamma_j^{-1}}{\psi-1}\,\sigma_{c_j,k,t}\;\;\text{for all}\;\;k.
+\]
+If $\|\Sigma_{j,t}^{*}\|>\overline{\sigma}$, the constrained optimal exposure is
+\begin{equation}\label{eq:Sigma_constrained}
+    \Sigma_{j,t} = \frac{\overline{\sigma}}{\|\Sigma_{j,t}^{*}\|}\,\Sigma_{j,t}^{*}.
+\end{equation}
+As in the unconstrained case, the portfolio share and derivative positions are recovered from $\alpha_{j,t}=\Sigma_{j,1,t}/\sigma_{R_Y,1,t}$ and $\theta_{j,k,t}=\Sigma_{j,k,t}-\alpha_{j,t}\sigma_{R_Y,k,t}$ for $k=2,\ldots,d$.
+
+\paragraph{Market price of risk.}
+The unique market price of risk decomposes as
+\begin{equation}\label{eq:lambda_decomp}
+    \lambda_t = (\lambda_{1,t},\,\lambda_{2,t},\,\ldots,\,\lambda_{d,t}).
+\end{equation}
+The endowment-claim no-arbitrage condition $\pi_{Y,t}=\sigma_{R_Y,t}\,\lambda_t'$ together with the asset market clearing condition for the endowment claim pins down a linear combination of the $\lambda_{k,t}$'s. The remaining degrees of freedom are pinned down by the derivative market clearing conditions $\sum_{j}\omega_j x_{j,t}\theta_{j,k,t}=0$ for $k=2,\ldots,d$, which, after substituting the optimal derivative positions \eqref{eq:theta_jk_optimal}, determine $\lambda_{k,t}$ as a function of the state. By no-arbitrage, the risk premium on any traded asset $i$ with return volatility $\sigma_{R_i,t}$ satisfies
+\begin{equation}\label{eq:pi_general}
+    \pi_{i,t} = \sigma_{R_i,t}\,\lambda_t'.
+\end{equation}
+
+The essential gain from completing the market is the \emph{uniqueness} of $\lambda_t$. With the unique market price of risk in hand, we can price any additional claim---in particular, the equity and risky debt claims introduced in Section~\ref{sec:divclaim_passive_extension}.
+
+\section{Extension: two risky claims with passive investors}\label{sec:divclaim_passive_extension}
+
+This section extends the baseline levered-claim setup to an environment with \emph{three} traded assets: (i) equity, modeled as a claim to dividends $D_t$, (ii) risky debt, modeled as a claim to the residual cash flow $B_t$, and (iii) a risk-free asset. The key friction is a \emph{segmented asset market}: passive investors can trade only equity and the risk-free asset, while active investors can trade all assets, including risky debt. The new state variable is the dividend share process $s_t$.
+
+\subsection{Cash flows and state dynamics}
+
+To match the notation in Section~3 of the main paper, we similarly allow a $d$-dimensional Brownian motion. Aggregate endowment follows
+\[
+    \frac{dY_t}{Y_t}=\mu\,dt+\sigma\,dZ_t,
+\]
+where $Z_t$ is a $d$-dimensional Brownian motion and $\sigma\in\mathbb{R}^{1\times d}$.
+
+Dividends are a stochastic share of output, $D_t=s_tY_t$, where the share $s_t\in(0,1)$ follows
+\begin{equation}\label{eq:s_process}
+    ds_t=\kappa_s(\overline{s}-s_t)\,dt + s_t(1-s_t)\,\sigma_s\,dZ_t,
+\end{equation}
+with $\kappa_s>0$, $\overline{s}\in(0,1)$, and $\sigma_s\in\mathbb{R}^{1\times d}$. The risky-debt cash flow is the residual
+\[
+    B_t=(1-s_t)Y_t,
+    \qquad\text{so that}\qquad
+    D_t+B_t=Y_t.
+\]
+
+As shown above, applying It\^{o}'s lemma implies
+\begin{equation}\label{eq:D_dynamics_vector}
+    \frac{dD_t}{D_t}=\mu_D(s_t)\,dt+\sigma_D(s_t)\,dZ_t,
+\end{equation}
+where
+\begin{equation}\label{eq:D_mu_sigma_vector}
+    \sigma_D(s)=\sigma + (1-s)\sigma_s,
+    \qquad
+    \mu_D(s)=\mu + \kappa_s\!\left(\frac{\overline{s}}{s}-1\right) + (1-s)\,\sigma\sigma_s',
+\end{equation}
+and $\sigma\sigma_s'$ denotes the scalar inner product.
+
+Similarly, for risky debt,
+\begin{equation}\label{eq:B_dynamics_vector}
+    \frac{dB_t}{B_t}=\mu_B(s_t)\,dt+\sigma_B(s_t)\,dZ_t,
+\end{equation}
+with
+\begin{equation}\label{eq:B_mu_sigma_vector}
+    \sigma_B(s)=\sigma - s\sigma_s,
+    \qquad
+    \mu_B(s)=\mu - \kappa_s\!\left(\frac{\overline{s}-s}{1-s}\right) - s\,\sigma\sigma_s'.
+\end{equation}
+Equations \eqref{eq:D_mu_sigma_vector}--\eqref{eq:B_mu_sigma_vector} show how $s_t$ generates time risk premia for both claims.
+
+\subsection{Traded assets and returns}
+
+Let $P_{D,t}$ and $P_{B,t}$ denote the ex-dividend prices of claims to dividend and bond cash flows, respectively. Let $r_t$ be the risk-free rate. Define instantaneous returns on the two risky claims:
+\begin{align}
+    dR_{D,t} &\equiv \frac{dP_{D,t}+D_t\,dt}{P_{D,t}}
+    = \mu_{R_D,t}\,dt+\sigma_{R_D,t}\,dZ_t, \label{eq:RD_def}\\
+    dR_{B,t} &\equiv \frac{dP_{B,t}+B_t\,dt}{P_{B,t}}
+    = \mu_{R_B,t}\,dt+\sigma_{R_B,t}\,dZ_t. \label{eq:RB_def}
+\end{align}
+In a Markov equilibrium, prices depend on an aggregate state vector that includes $s_t$; thus $(r_t,\mu_{R_i,t},\sigma_{R_i,t})$ are functions of $(\ldots,s_t)$.
+
+Since $D_t+B_t=Y_t$, the combined claim replicates a claim to the aggregate endowment. Denoting the endowment-claim price by $P_{Y,t}$, we must have
+\begin{equation}\label{eq:replication_prices}
+    P_{Y,t}=P_{D,t}+P_{B,t}.
+\end{equation}
+
+\subsection{Investors and portfolio restrictions}
+
+As in the main paper, there are $(J{+}1)$ types indexed by $j=0,1,\ldots,J$. Type $j=0$ investors are \textit{passive} and have an exogenous portfolio share in the \textit{dividend claim},
+\[
+    \alpha_{0,D,t}=\overline{\alpha}_{p,t},
+    \qquad
+    \alpha_{0,B,t}=0,
+\]
+where $\overline{\alpha}_{p,t}$ may follow the same Ornstein--Uhlenbeck process as in the main paper. Type $j=1,\ldots,J$ investors are \emph{active} and can trade all assets. Let $\alpha_{j,D,t}$ and $\alpha_{j,B,t}$ be the fractions of wealth invested in the dividend claim and risky debt, with residual $1-\alpha_{j,D,t}-\alpha_{j,B,t}$ invested in the risk-free asset.
+
+\paragraph{Wealth dynamics.}
+Let $W_{j,t}$ be wealth and $C_{j,t}$ consumption. Using \eqref{eq:RD_def}--\eqref{eq:RB_def}, wealth evolves as
+\begin{align}\label{eq:wealth_2risky}
+    dW_{j,t}
+    &=
+    \Big[r_t W_{j,t}
+    +\alpha_{j,D,t}W_{j,t}\left(\mu_{R_D,t}-r_t\right)
+    +\alpha_{j,B,t}W_{j,t}\left(\mu_{R_B,t}-r_t\right)
+    -C_{j,t}\Big]dt \\
+    &\quad
+    +W_{j,t}\Big(\alpha_{j,D,t}\sigma_{R_D,t}+\alpha_{j,B,t}\sigma_{R_B,t}\Big)\,dZ_t. \nonumber
+\end{align}
+%where $ \pi_{D,t}\equiv\mu_{R_D,t}-r_t$ and $\pi_{B,t}=\mu_{R_B,t}-r_t$ are the risk premiums on the dividend claim and corporate bond, respectively.
+
+\paragraph{Portfolio constraints.}
+Passive investors are restricted to $(\alpha_{0,D,t},\alpha_{0,B,t})=(\overline{\alpha}_{p,t},0)$. Active investors choose $(\alpha_{j,D,t},\alpha_{j,B,t})$ subject to leverage constraints. 
+Similar to the leverage constraint in the main paper, active investors face a cap on portfolio return volatility,
+\begin{equation}\label{eq:var_constraint_2risky}
+    \left\|\alpha_{j,D,t}\sigma_{R_D,t}+\alpha_{j,B,t}\sigma_{R_B,t}\right\|
+    \le \overline{\sigma},
+    \qquad j=1,\ldots,J,
+\end{equation}
+where $\|\cdot\|$ is the Euclidean norm and $\overline{\sigma}>0$ is constant. This constraint preserves the key economic force: in high-volatility states, active investors' ability to absorb net supply is limited.
+
+\subsection{Equilibrium and pricing}
+
+\paragraph{Market clearing.}
+Let $Q_{j,D,t}$ and $Q_{j,B,t}$ denote holdings (in shares) of the dividend and risky debt claims. With unit supplies of each claim and zero net supply of the risk-free asset, market clearing is
+\[
+    \sum_{j=0}^J \omega_j Q_{j,D,t}=1,
+    \qquad
+    \sum_{j=0}^J \omega_j Q_{j,B,t}=1,
+    \qquad
+    \sum_{j=0}^J \omega_j B^{(f)}_{j,t}=0,
+\]
+where $B^{(f)}_{j,t}$ is dollar holdings of the risk-free asset. Goods market clearing implies: 
+\[\sum_{j=0}^J\omega_j C_{j,t}=Y_t.\]
+
+\paragraph{Risk premia.}
+To align with the notation in the main paper, we work directly with expected returns and define risk premia as expected excess returns over the risk-free rate. For each risky claim $i\in\{D,B\}$, with return process
+\[
+    dR_{i,t}=\mu_{R_i,t}\,dt+\sigma_{R_i,t}\,dZ_t,
+\]
+the (instantaneous) risk premium is
+\begin{equation}\label{eq:premia_def}
+    \pi_{i,t}\equiv \mu_{R_i,t}-r_t,
+    \qquad i\in\{D,B\}.
+\end{equation}
+
+\paragraph{Risk premium for the dividend claim.}
+The object of interest is the risk premium on equity (the dividend claim),
+\begin{equation}\label{eq:pi_D_def}
+    \pi_{D,t}\equiv \mu_{R_D,t}-r_t.
+\end{equation}
+Passive investors' demand affects equilibrium only through the dividend claim market clearing condition, shifting the \emph{net supply} that must be absorbed by active investors. But, the risky debt must be absorbed entirely by active investors. So, changes in the passive portfolio share $\overline{\alpha}_{p,t}$ can alter the composition of risk borne by active investors across $(D,B)$, which in turn shifts equilibrium expected returns and therefore the equity risk premium \eqref{eq:pi_D_def}.
+
+\paragraph{First-order impact of portfolio flows on the dividend claim risk premium.}% (and why the DKLS offset need not hold).}
+To follow the logic behind Proposition~2 in the main paper, consider an unanticipated \emph{portfolio flow shock} that increases passive investors' portfolio share in the \textit{dividend claim}, $\overline{\alpha}_{p,t}$, financed by trading the risk-free asset. This shifts net supply in the dividend claim market (passive cannot hold $B$), and forces rebalancing by active investors.
+
+The key difference relative to the main paper is that there are now \emph{two} risky assets. The goods market can at most pin down the value of the \emph{aggregate endowment}, but it does not pin down the \emph{relative} valuation of $D$ versus $B$.
+
+Define \emph{valuation ratios} (scaled by $Y$)
+\[
+    p_{D,t}\equiv \frac{P_{D,t}}{Y_t},\qquad
+    p_{B,t}\equiv \frac{P_{B,t}}{Y_t},\qquad
+    p_{Y,t}\equiv \frac{P_{Y,t}}{Y_t}=p_{D,t}+p_{B,t},
+\]
+where the last equality follows from \eqref{eq:replication_prices}. Let hats denote first-order deviations from a benchmark economy (denoted by $\star$), as in the state-global perturbation in the main paper. Let $f_{D,t}$ denote the (normalized) first-order flow shock shifting demand for the dividend claim.
+
+
+\paragraph{State vector.}
+Relative to the main paper, there is an additional state variable $s_t$. In particular, if the original state is $(x_t,\overline{\alpha}_{p,t})$ (active wealth shares and passive portfolio share), then the natural state for this extension is $(x_t,\overline{\alpha}_{p,t},s_t)$. The dynamics of $s_t$ in \eqref{eq:s_process} generate state dependence in return volatilities $\sigma_{R_D,t}$ and $\sigma_{R_B,t}$ and also in risk premia via \eqref{eq:premia_def}.
+
+
+\begin{prop}[First-order response of the dividend claim premium]\label{prop:first_order_dividend_claim}
+Suppose the economy is perturbed around a benchmark economy where the aggregate consumption-wealth ratio is locally insensitive to the flow shock $f_{D,t}$ (the envelope logic used in Proposition~2 of the main paper). Then:
+\begin{enumerate}[(i)]
+    \item The flow shock has no first-order effect on the \emph{aggregate} valuation ratio:
+    \[
+        \frac{\partial \hat p_{Y,t}}{\partial f_{D,t}}=0.
+    \]
+    \item In general, the flow shock \emph{does} shift the \emph{relative} valuation of the dividend claim:
+    \[
+        \frac{\partial \hat p_{D,t}}{\partial f_{D,t}}\neq 0,
+        \qquad\text{and from (i) we must have}\qquad
+        \frac{\partial \hat p_{B,t}}{\partial f_{D,t}}=-\,\frac{\partial \hat p_{D,t}}{\partial f_{D,t}},
+    \]
+    unless an additional knife-edge restriction makes the goods market also pin down $p_{D,t}$ separately.
+    \item Therefore, unlike the main paper, the interest rate and the dividend claim risk premium generally \emph{do not} offset one-for-one. In particular, %writing $\pi_{D,t}\equiv \mu_{R_D,t}-r_t$, 
+    we typically have
+    \[
+        \frac{\partial \hat \pi_{D,t}}{\partial f_{D,t}}
+        \;\neq\;
+        -\,\frac{\partial \hat r_t}{\partial f_{D,t}},
+    \]
+    because the dividend claim valuation (and thus its expected return for a given cash-flow process) adjusts at first order through $\hat p_{D,t}$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Part (i): In the benchmark used for the state-global perturbation in the main paper, the aggregate consumption-wealth ratio is locally insensitive to portfolio reallocations because all agents hold optimal portfolios. Therefore, a first-order flow shock does not shift aggregate saving incentives (goods market). Exactly as in Proposition~2 of the main paper, this implies that the goods market pins down the valuation ratio of aggregate wealth at first order, so $\partial \hat p_{Y,t}/\partial f_{D,t}=0$.
+
+Part (ii): With two risky claims, market clearing determines \emph{two} valuation ratios $(p_{D,t},p_{B,t})$, but the goods market provides only one restriction on their sum $p_{Y,t}=p_{D,t}+p_{B,t}$. A flow shock $f_{D,t}$ directly shifts net supply in the $D$-market and leaves passive demand for $B$ at zero. So, generally, equilibrium requires a change in the relative valuation between $D$ and $B$, i.e., $\partial \hat p_{D,t}/\partial f_{D,t}\neq 0$, while maintaining $\partial \hat p_{Y,t}/\partial f_{D,t}=0$. Using $p_{B,t}=p_{Y,t}-p_{D,t}$ yields the stated relation for $\hat p_{B,t}$.
+
+Part (iii): In the main paper, the one-for-one offset $\partial \hat\pi_t/\partial f_t=-\partial \hat r_t/\partial f_t$ follows because the risky-asset valuation ratio is pinned down (so $\hat p_{Y,t}=0$) and the only way to clear the risky-asset market is via movements in $(r_t,\pi_t)$ that leave $r_t+\pi_t$ unchanged. Here, by contrast, the flow shock generally moves the dividend claim valuation $p_{D,t}$ at first order (Part (ii)), so expected returns on the dividend claim adjust through both $r_t$ and the valuation channel, therefore the exact one-for-one offset between $\pi_{D,t}$ and $r_t$ does not hold.
+\end{proof}
+
+\subsection{Mutual fund separation when passive investors hold the market portfolio}\label{sec:mf_separation}
+
+We study a version of the model where passive investors do not hold the dividend claim directly. Instead, they invest in a \textit{mutual fund} that holds the \emph{market portfolio} of the two risky claims $(D,B)$, with portfolio weights given by relative valuations. 
+The central conjecture is a mutual fund separation result: active investors optimally hold a scaled version of the same market portfolio (combined with the risk-free asset), so the equilibrium in aggregate quantities coincides with the baseline model for the aggregate endowment claim.
+
+\paragraph{The market-portfolio mutual fund.}
+Define the market-portfolio weights of the two risky claims by
+\[
+    \omega_{D,t}\equiv \frac{P_{D,t}}{P_{Y,t}},
+    \qquad
+    \omega_{B,t}\equiv \frac{P_{B,t}}{P_{Y,t}},
+    \qquad
+    \omega_{D,t}+\omega_{B,t}=1,
+\]
+where $P_{Y,t}=P_{D,t}+P_{B,t}$ from \eqref{eq:replication_prices}. The return on a mutual fund investing one dollar according to $(\omega_{D,t},\omega_{B,t})$ is
+\[
+    \omega_{D,t}\,dR_{D,t}+\omega_{B,t}\,dR_{B,t}
+    \;=\;
+    \frac{dP_{D,t}+D_t\,dt+dP_{B,t}+B_t\,dt}{P_{Y,t}}
+    \;=\;
+    \frac{dP_{Y,t}+Y_t\,dt}{P_{Y,t}}
+    \;\equiv\; dR_{Y,t},
+\]
+so the fund exactly replicates the claim to the aggregate endowment.
+Write
+\[
+    dR_{Y,t}\equiv \mu_{R_Y,t}\,dt+\sigma_{R_Y,t}\,dZ_t,
+    \qquad
+    \pi_{Y,t}\equiv \mu_{R_Y,t}-r_t,
+\]
+where $\sigma_{R_Y,t}=\omega_{D,t}\sigma_{R_D,t}+\omega_{B,t}\sigma_{R_B,t}$.
+
+\paragraph{Portfolio mapping.}
+Let $\alpha_{j,t}$ denote investor $j$'s overall portfolio share in the market-portfolio mutual fund (equivalently, in the aggregate endowment claim). The induced holdings of the underlying claims are
+\begin{equation}\label{eq:mf_mapping}
+    \alpha_{j,D,t}= \alpha_{j,t}\,\omega_{D,t}=\alpha_{j,t}\frac{P_{D,t}}{P_{Y,t}},
+    \qquad
+    \alpha_{j,B,t}= \alpha_{j,t}\,\omega_{B,t}=\alpha_{j,t}\frac{P_{B,t}}{P_{Y,t}}.
+\end{equation}
+Substituting \eqref{eq:mf_mapping} into budget constraint \eqref{eq:wealth_2risky} yields
+\[
+    dW_{j,t}
+    =\Big[\big(r_t+\alpha_{j,t}\pi_{Y,t}\big)W_{j,t}-C_{j,t}\Big]dt
+    +\alpha_{j,t}W_{j,t}\sigma_{R_Y,t}\,dZ_t,
+\]
+which is identical to the baseline single-risky-asset budget equation (with risky return $dR_{Y,t}$).
+
+\paragraph{HJB equation and FOCs in the $(D,B)$ economy.}
+We now derive the HJB and FOCs for active investor $j\in\{1,\ldots,J\}$ in the two-claim economy, and verify that the conjectured mapping \eqref{eq:mf_mapping} satisfies them.
+
+As in the main paper, homothetic preferences imply the value function takes the form
+\begin{equation}\label{eq:Vj_DB}
+    V_{j,t} = \left(\frac{c_{j,t}}{\rho^\psi}\right)^{\!\frac{1-\gamma_j}{1-\psi}}
+    \frac{W_{j,t}^{1-\gamma_j}}{1-\gamma_j},
+\end{equation}
+where $c_{j,t}\equiv C_{j,t}/W_{j,t}$ is the consumption-wealth ratio and $c_{j,t}=c_j(\widetilde{X}_t)$ is a function of the extended state $\widetilde{X}_t \equiv (X_t,s_t)$. Write the dynamics of the consumption-wealth ratio as
+\[
+    \frac{dc_{j,t}}{c_{j,t}} = \mu_{c_j,t}\,dt + \sigma_{c_j,t}\,dZ_t.
+\]
+
+Define the \emph{total portfolio exposure} $\Sigma_{j,t}\equiv\alpha_{j,D,t}\sigma_{R_D,t}+\alpha_{j,B,t}\sigma_{R_B,t}\in\mathbb{R}^{1\times d}$ and the \emph{total portfolio risk premium} $\Pi_{j,t}\equiv\alpha_{j,D,t}\pi_{D,t}+\alpha_{j,B,t}\pi_{B,t}$. The wealth dynamics \eqref{eq:wealth_2risky} become
+\begin{equation}\label{eq:wealth_compact}
+    \frac{dW_{j,t}}{W_{j,t}} = \big(r_t + \Pi_{j,t} - c_{j,t}\big)\,dt + \Sigma_{j,t}\,dZ_t.
+\end{equation}
+Substituting \eqref{eq:Vj_DB}--\eqref{eq:wealth_compact} into the Epstein-Zin aggregator, the HJB equation for the consumption--wealth ratio is
+\begin{equation}\label{eq:HJB_DB}
+    c_{j,t} = \rho\psi + (1-\psi)\!\left[r_t + \Pi_{j,t} - \frac{\gamma_j}{2}\|\Sigma_{j,t}\|^2\right] + \xi_{j,t},
+\end{equation}
+where the forward-looking shifter is
+\begin{equation}\label{eq:xi_DB}
+    \xi_{j,t} \equiv \mu_{c_j,t} + (1-\gamma_j)\,\sigma_{c_j,t}\,\Sigma_{j,t}' + \frac{\psi-\gamma_j}{1-\psi}\,\frac{\|\sigma_{c_j,t}\|^2}{2}.
+\end{equation}
+This is exactly the main paper's HJB (equation~(7) in the main paper), with $\pi_t\alpha_{j,t}$ replaced by $\Pi_{j,t}$ and $\alpha_{j,t}\sigma_{R,t}$ replaced by $\Sigma_{j,t}$.
+
+\paragraph{First-order conditions.}
+The investor chooses $(\alpha_{j,D,t},\alpha_{j,B,t})$ to maximize the right-hand side of \eqref{eq:HJB_DB}, subject to the leverage constraint $\|\Sigma_{j,t}\|\le\overline{\sigma}$. Denote the Lagrange multiplier on the constraint by $\nu_{j,t}\ge 0$, and $\widehat{\Sigma}_{j,t}\equiv\Sigma_{j,t}/\|\Sigma_{j,t}\|$ when $\Sigma_{j,t}\neq 0$. The first-order conditions with respect to $\alpha_{j,D,t}$ and $\alpha_{j,B,t}$ are, respectively,
+\begin{align}
+    (1-\psi)\Big[\pi_{D,t} - \gamma_j\,\Sigma_{j,t}\,\sigma_{R_D,t}'\Big]
+    + (1-\gamma_j)\,\sigma_{c_j,t}\,\sigma_{R_D,t}'
+    &= \nu_{j,t}\,\widehat{\Sigma}_{j,t}\,\sigma_{R_D,t}', \label{eq:FOC_D}\\[4pt]
+    (1-\psi)\Big[\pi_{B,t} - \gamma_j\,\Sigma_{j,t}\,\sigma_{R_B,t}'\Big]
+    + (1-\gamma_j)\,\sigma_{c_j,t}\,\sigma_{R_B,t}'
+    &= \nu_{j,t}\,\widehat{\Sigma}_{j,t}\,\sigma_{R_B,t}'. \label{eq:FOC_B}
+\end{align}
+% These two conditions, together with the complementary slackness condition $\lambda_{j,t}\big(\|\Sigma_{j,t}\|-\overline{\sigma}\big)=0$, characterize the optimal portfolio in the $(D,B)$ economy.
+
+Note that $\pi_{i,t}$ is the myopic reward from asset $i$; $\gamma_j\Sigma_{j,t}\sigma_{R_i,t}'$ penalizes the marginal contribution to portfolio variance; and $\sigma_{c_j,t}\sigma_{R_i,t}'$ is the hedging demand term reflecting the covariance of claim $i$'s return with changes in the consumption-wealth ratio $c_{j,t}$.
+
+\paragraph{Verification that the mapping \eqref{eq:mf_mapping} satisfies the FOCs.}
+Under the conjecture $$(\alpha_{j,D,t},\alpha_{j,B,t})=\alpha_{j,t}(\omega_{D,t},\omega_{B,t})$$
+ the portfolio aggregates reduce to
+\begin{equation}\label{eq:Sigma_Pi_under_conjecture}
+    \Sigma_{j,t}=\alpha_{j,t}\sigma_{R_Y,t},
+    \qquad
+    \Pi_{j,t}=\alpha_{j,t}\pi_{Y,t}.
+\end{equation}
+As shown in the portfolio mapping above, the wealth dynamics, the HJB \eqref{eq:HJB_DB}, and the constraint $\|\Sigma_{j,t}\|\le\overline{\sigma}$ all coincide with the baseline single-risky-asset problem. Therefore, $c_{j,t}$ is a function of the baseline state $X_t$ alone (it does not depend on $s_t$), and its diffusion satisfies $\sigma_{c_j,t}=\nabla_{\!X}c_j\cdot\sigma_{X,t}$, again with no loading on $s_t$.
+
+In the baseline single risky asset economy, the leverage constraint is one-sided, $\alpha_{j,t}\|\sigma_{R_Y,t}\|\le\overline{\sigma}$ (as in the main paper). The optimal $\alpha_{j,t}$ satisfies the FOC
+\begin{equation}\label{eq:FOC_baseline}
+    (1-\psi)\Big[\pi_{Y,t}-\gamma_j\,\alpha_{j,t}\|\sigma_{R_Y,t}\|^2\Big]
+    + (1-\gamma_j)\,\sigma_{c_j,t}\,\sigma_{R_Y,t}'
+    = \nu_{j,t}\,\|\sigma_{R_Y,t}\|,
+\end{equation}
+where $\nu_{j,t}\ge 0$ is the multiplier with complementary slackness $\nu_{j,t}\big(\alpha_{j,t}\|\sigma_{R_Y,t}\|-\overline{\sigma}\big)=0$.
+
+We now verify that $(\alpha_{j,D,t},\alpha_{j,B,t})=\alpha_{j,t}(\omega_{D,t},\omega_{B,t})$ satisfies \eqref{eq:FOC_D}--\eqref{eq:FOC_B}. Under the conjecture, $\alpha_{j,t}>0$ in equilibrium (investors are long the market), so $\widehat{\Sigma}_{j,t}=\sigma_{R_Y,t}/\|\sigma_{R_Y,t}\|$. Substituting \eqref{eq:Sigma_Pi_under_conjecture} into \eqref{eq:FOC_D}:
+\begin{equation}\label{eq:FOC_D_verify}
+    (1-\psi)\Big[\pi_{D,t} - \gamma_j\,\alpha_{j,t}\,\sigma_{R_Y,t}\,\sigma_{R_D,t}'\Big]
+    + (1-\gamma_j)\,\sigma_{c_j,t}\,\sigma_{R_D,t}'
+    = \nu_{j,t}\,\frac{\sigma_{R_Y,t}\,\sigma_{R_D,t}'}{\|\sigma_{R_Y,t}\|}.
+\end{equation}
+Similarly, substituting into \eqref{eq:FOC_B}:
+\begin{equation}\label{eq:FOC_B_verify}
+    (1-\psi)\Big[\pi_{B,t} - \gamma_j\,\alpha_{j,t}\,\sigma_{R_Y,t}\,\sigma_{R_B,t}'\Big]
+    + (1-\gamma_j)\,\sigma_{c_j,t}\,\sigma_{R_B,t}'
+    = \nu_{j,t}\,\frac{\sigma_{R_Y,t}\,\sigma_{R_B,t}'}{\|\sigma_{R_Y,t}\|}.
+\end{equation}
+Both \eqref{eq:FOC_D_verify} and \eqref{eq:FOC_B_verify} are satisfied if and only if, for each $i\in\{D,B\}$:
+\begin{equation}\label{eq:FOC_generic_i}
+    (1-\psi)\pi_{i,t}
+    + (1-\gamma_j)\,\sigma_{c_j,t}\,\sigma_{R_i,t}'
+    =\Big[(1-\psi)\gamma_j\alpha_{j,t}\|\sigma_{R_Y,t}\|^2 + \nu_{j,t}\,\|\sigma_{R_Y,t}\|\Big]\,
+    \frac{\sigma_{R_Y,t}\,\sigma_{R_i,t}'}{\|\sigma_{R_Y,t}\|^2}.
+\end{equation}
+From the baseline FOC \eqref{eq:FOC_baseline}, the bracketed expression on the right equals $(1-\psi)\pi_{Y,t}+(1-\gamma_j)\sigma_{c_j,t}\sigma_{R_Y,t}'$. Substituting, \eqref{eq:FOC_generic_i} reduces to
+\begin{equation}\label{eq:verification_reduced}
+    (1-\psi)\pi_{i,t}
+    + (1-\gamma_j)\,\sigma_{c_j,t}\,\sigma_{R_i,t}'
+    = \Big[(1-\psi)\pi_{Y,t}
+    + (1-\gamma_j)\,\sigma_{c_j,t}\,\sigma_{R_Y,t}'\Big]\,
+    \frac{\sigma_{R_Y,t}\,\sigma_{R_i,t}'}{\|\sigma_{R_Y,t}\|^2}.
+\end{equation}
+This condition is verified in two parts. First, we need
+\begin{equation}\label{eq:verify_premium}
+    \pi_{i,t} = \frac{\sigma_{R_Y,t}\,\sigma_{R_i,t}'}{\|\sigma_{R_Y,t}\|^2}\,\pi_{Y,t},
+\end{equation}
+which is the CAPM relation. To see why it holds, note that the return volatility of claim $i\in\{D,B\}$ can be decomposed as $\sigma_{R_i,t}=\beta_{i,t}\,\sigma_{R_Y,t}+\sigma_{R_i,t}^{\perp}$, where $\beta_{i,t}=\sigma_{R_i,t}\sigma_{R_Y,t}'/\|\sigma_{R_Y,t}\|^2$ and $\sigma_{R_i,t}^{\perp}\perp\sigma_{R_Y,t}$. By no-arbitrage in the complete market (equation~\eqref{eq:pi_general}), $\pi_{i,t}=\sigma_{R_i,t}\lambda_t'=\beta_{i,t}\,\pi_{Y,t}+\sigma_{R_i,t}^{\perp}\lambda_t'$. The orthogonal component $\sigma_{R_i,t}^{\perp}$ lies in the span of $\sigma_s$ (the new risk introduced by $s_t$). Since $s_t$ does not affect aggregate consumption or the baseline equilibrium objects (as shown in the role-of-$s_t$ discussion below), the derivative market equilibrium in Section~\ref{sec:eq_lambda} implies that $\lambda_t$ does not load on the $\sigma_s$-direction: the optimal derivative positions \eqref{eq:theta_jk_optimal} have zero myopic demand (because $\lambda_t$ has no component in the $\sigma_s$-direction) and zero hedging demand (because $\sigma_{c_j,t}$ does not load on $\sigma_s$) for $\sigma_s$-risk. Therefore $\sigma_{R_i,t}^{\perp}\lambda_t'=0$ and the CAPM relation \eqref{eq:verify_premium} holds. Second, we need
+\begin{equation}\label{eq:verify_hedging}
+    \sigma_{c_j,t}\,\sigma_{R_i,t}'
+    = \frac{\sigma_{R_Y,t}\,\sigma_{R_i,t}'}{\|\sigma_{R_Y,t}\|^2}\;\sigma_{c_j,t}\,\sigma_{R_Y,t}'.
+\end{equation}
+This holds because $c_{j,t}$ depends only on $X_t$ (not on $s_t$), so $\sigma_{c_j,t}=\nabla_{\!X}c_j\cdot\sigma_{X,t}$, which has no loading on the $\sigma_s$-direction. Using the decomposition $\sigma_{R_i,t}=\beta_{i,t}\sigma_{R_Y,t}+\sigma_{R_i,t}^{\perp}$, we get $\sigma_{c_j,t}\sigma_{R_i,t}'=\beta_{i,t}\,\sigma_{c_j,t}\sigma_{R_Y,t}'+\sigma_{c_j,t}(\sigma_{R_i,t}^{\perp})'=\beta_{i,t}\,\sigma_{c_j,t}\sigma_{R_Y,t}'$, where the last equality uses $\sigma_{c_j,t}(\sigma_{R_i,t}^{\perp})'=0$ since $\sigma_{R_i,t}^{\perp}$ lies in the $\sigma_s$-direction and $\sigma_{c_j,t}$ does not.
+
+Since both \eqref{eq:verify_premium} and \eqref{eq:verify_hedging} are satisfied, the mapping $(\alpha_{j,D,t},\alpha_{j,B,t})=\alpha_{j,t}(\omega_{D,t},\omega_{B,t})$ satisfies the FOCs \eqref{eq:FOC_D}--\eqref{eq:FOC_B} with the same multiplier $\nu_{j,t}$ and complementary slackness as the baseline problem.
+
+\paragraph{Optimality.}\textcolor{red}{I am not sure if this is necessary. Please check.}
+It remains to verify that no other feasible portfolio achieves a strictly higher value. Consider a deviation $(\alpha_{j,D,t},\alpha_{j,B,t}) = (\alpha_{j,t}\omega_{D,t}+\varepsilon_{D},\,\alpha_{j,t}\omega_{B,t}+\varepsilon_{B})$, where $\varepsilon_D\sigma_{R_D,t}+\varepsilon_B\sigma_{R_B,t}\equiv\delta\Sigma\neq 0$. Decompose $\delta\Sigma=\delta\Sigma^{\parallel}+\delta\Sigma^{\perp}$ into components parallel and orthogonal to $\sigma_{R_Y,t}$.
+
+The parallel component $\delta\Sigma^{\parallel}$ shifts effective $\alpha_{j,t}$, but the baseline FOC \eqref{eq:FOC_baseline} already optimizes over this scalar---so a first-order parallel deviation cannot improve value (it violates the baseline FOC or the constraint).
+
+For the orthogonal component $\delta\Sigma^{\perp}$, which lies in the $\sigma_s$-direction, the contribution to the portfolio risk premium is $\delta\Sigma^{\perp}\cdot\lambda_t'=0$ because $\lambda_t$ does not load on the $\sigma_s$-direction (Section~\ref{sec:eq_lambda}). The hedging benefit is $\sigma_{c_j,t}\,(\delta\Sigma^{\perp})'=0$ because $\sigma_{c_j,t}$ has no loading on this direction. The only effect is an increase in portfolio variance of $\|\delta\Sigma^{\perp}\|^2>0$, which strictly reduces the HJB objective \eqref{eq:HJB_DB}. Therefore the market-portfolio mapping is optimal (and generically the unique optimizer; non-uniqueness arises only when $\sigma_{R_D,t}$ and $\sigma_{R_B,t}$ are collinear, so $\delta\Sigma^{\perp}$ cannot be constructed).
+
+\begin{prop}[Mutual-fund separation with a market-portfolio fund]\label{prop:mf_separation}
+Consider the variant economy in which passive investors have an exogenous share $\alpha_{0,t}=\overline{\alpha}_{p,t}$ in the market-portfolio mutual fund (and can otherwise trade the risk-free asset). Suppose that the leverage constraint on active investors is specified in terms of overall portfolio return volatility and is calibrated so that a scaled market-portfolio position faces the same constraint as in the baseline model, e.g.,
+\[
+    \|\alpha_{j,t}\sigma_{R_Y,t}\|\le \overline{\sigma},
+    \qquad j=1,\ldots,J.
+\]
+Then the portfolio problem of each investor reduces to choosing the scalar $\alpha_{j,t}$, and an optimal allocation in the baseline model can be implemented in the $(D,B)$ economy by holdings \eqref{eq:mf_mapping}. In particular, active investors optimally hold a scaled version of the market portfolio.
+\end{prop}
+
+\begin{proof}
+The argument proceeds in three steps, each developed formally above.
+
+\emph{Step~1 (Feasibility and equivalence).} Under the mapping \eqref{eq:mf_mapping}, the portfolio aggregates reduce to $\Sigma_{j,t}=\alpha_{j,t}\sigma_{R_Y,t}$ and $\Pi_{j,t}=\alpha_{j,t}\pi_{Y,t}$ (see \eqref{eq:Sigma_Pi_under_conjecture}). Each investor's wealth dynamics, HJB equation \eqref{eq:HJB_DB}, and leverage constraint $\|\Sigma_{j,t}\|\le\overline{\sigma}$ therefore coincide with the baseline single-risky-asset problem with return $dR_{Y,t}$.
+
+\emph{Step~2 (The mapping satisfies the FOCs).} As verified in \eqref{eq:FOC_D_verify}--\eqref{eq:verification_reduced}, the conjectured allocation satisfies both portfolio first-order conditions \eqref{eq:FOC_D}--\eqref{eq:FOC_B} with the same multiplier $\nu_{j,t}$ and complementary slackness as the baseline FOC \eqref{eq:FOC_baseline}. The key ingredients are: (a) the CAPM relation \eqref{eq:verify_premium}, which holds because the unique market price of risk from the complete-market equilibrium (Section~\ref{sec:eq_lambda}) does not load on $s_t$-risk; and (b) the hedging-demand projection \eqref{eq:verify_hedging}, which holds because $c_{j,t}$ depends only on $X_t$.
+
+\emph{Step~3 (Optimality).} \textcolor{red}{Again, I am not sure if this is necessary. Please check.} As shown in the optimality discussion above, any deviation from the market portfolio can be decomposed into a parallel component (which cannot improve on the baseline optimum) and an orthogonal component (which earns zero risk premium, provides zero hedging benefit, and strictly increases variance). Hence no feasible portfolio achieves a higher value, and the mapping \eqref{eq:mf_mapping} is optimal.
+\end{proof}
+
+% \paragraph{The role of $s_t$.}
+% A central feature of the mutual-fund-separation equilibrium is that the dividend share $s_t$ does not affect the price of the aggregate endowment claim. Aggregate consumption equals $Y_t$ regardless of how output is split between dividends and bond coupons, so $s_t$ enters neither the agents' Euler equations nor the goods-market-clearing condition that pins down $p_{Y,t}$. In particular, $p_Y$, $r_t$, and $\pi_{Y,t}$ are all functions of the baseline state $X_t$ alone. Because the stochastic discount factor is determined by aggregate consumption and the continuation values---none of which depend on $s_t$---the risk associated with fluctuations in $s_t$ is not priced. Movements in $s_t$ redistribute cash flows across the two claims and therefore shift their \emph{relative} valuations ($p_{D,t}$ vs.\ $p_{B,t}$), but these shifts wash out in the aggregate ($p_{D,t}+p_{B,t}=p_{Y,t}$). It is precisely this property that makes the second-step pricing problem linear: the ``hard'' nonlinear fixed-point problem of determining the SDF is entirely confined to the first step, and the dividend share only matters for the cross-section of claim values.
+\paragraph{The role of $s_t$.}
+A central feature of the mutual fund separation equilibrium is that the dividend share $s_t$ does not affect the price of the aggregate endowment claim. Aggregate consumption equals $Y_t$ regardless of how output is split between dividends and bond coupons, so $s_t$ enters neither the agents' Euler equations nor the goods market clearing condition that pins down $p_{Y,t}$. In particular, $p_Y$, $r_t$, and $\pi_{Y,t}$ are all functions of the baseline state $X_t$ alone. Because the SDF is determined by aggregate consumption and the continuation values, none of which depend on $s_t$, the risk associated with fluctuations in $s_t$ is not priced. Movements in $s_t$ redistribute cash flows across the two claims and therefore shift their \emph{relative} valuations ($p_{D,t}$ vs.\ $p_{B,t}$), but these shifts wash out in the aggregate ($p_{D,t}+p_{B,t}=p_{Y,t}$). It is precisely this property that makes the second-step pricing problem linear: the ``hard'' nonlinear fixed-point problem of determining the SDF in the baseline economy is only limited to the first step, and the dividend share $s_t$ only matters for the prices of dividend and risky debt claims.
+
+\paragraph{Implication for solving the model.}
+Proposition~\ref{prop:mf_separation} suggests a two-step solution strategy in this economy. First, solve the equilibrium for the aggregate endowment claim exactly as in the baseline model (determining $r_t$, $\pi_{Y,t}$, $\sigma_{R_Y,t}$, and $P_{Y,t}$ as functions of the aggregate state $X_t$). Second, conditional on the baseline solution and the dynamics of $s_t$, determine the individual valuation ratios $(p_{D,t},p_{B,t})$ as follows.
+
+\paragraph{Pricing equation for the dividend claim.}
+Recall the valuation ratio for the dividend claim is $p_D(s,X)\equiv P_{D,t}/Y_t$.
+Note the dividend yield on the dividend claim is $D_t/P_{D,t}=s_t/p_{D,t}$
+rather than $Y_t/P_{Y,t} = 1/p_{Y,t}$. Since the expected return on the dividend claim is $r_t+\pi_{D,t} = s_t/p_{D,t} + \mu_{P_D,t}$, the valuation ratio satisfies
+\begin{equation}\label{eq:pD_pricing_cond}
+    \frac{s_t}{p_{D,t}} = r_t + \pi_{D,t} - \big(\mu + \mu_{p_D,t} + \sigma\,\sigma_{p_D,t}'\big),
+\end{equation}
+where $\sigma_{R_D,t} = \sigma + \sigma_{p_D,t}$. Since $p_D$ is a function of $(s_t,X_t)$, with state dynamics given by \eqref{eq:s_process} and $dX_t = \mu_{X,t}\,dt + \sigma_{X,t}\,dZ_t$ (as in the main paper), It\^{o}'s lemma gives the diffusion
+\begin{equation}\label{eq:sigma_pD}
+    \sigma_{p_D,t}
+    = \frac{\partial_s p_D}{p_D}\,s_t(1-s_t)\,\sigma_s
+    + \frac{\nabla_{\!X}\, p_D}{p_D}\,\sigma_{X,t},
+\end{equation}
+and the drift
+\begin{align}\label{eq:mu_pD}
+    \mu_{p_D,t}
+    &= \frac{1}{p_D}\bigg[
+    \partial_s p_D\;\kappa_s(\overline{s}-s_t)
+    + \nabla_{\!X}\, p_D\;\mu_{X,t}
+    + \tfrac{1}{2}\,\partial_{ss} p_D\;s_t^2(1-s_t)^2\|\sigma_s\|^2\nonumber\\
+    &+ \partial_s \nabla_{\!X}\, p_D\;s_t(1-s_t)\,\sigma_s\,\sigma_{X,t}'
+    + \tfrac{1}{2}\,\mathrm{tr}\big(\sigma_{X,t}'\,\nabla_{\!XX}\, p_D\;\sigma_{X,t}\big)
+    \bigg],
+\end{align}
+where all partial derivatives are evaluated at $(s_t,X_t)$. In \eqref{eq:sigma_pD}, the first term captures the direct exposure of $p_D$ to shocks through the dividend share $s_t$, and the second captures its exposure through the baseline state $X_t$.
+
+In the mutual fund separation equilibrium, the market portfolio is the tangency portfolio, so the risk premium on the dividend claim satisfies the CAPM relation
+\begin{equation}\label{eq:piD_CAPM}
+    \pi_{D,t} = \frac{\sigma_{R_D,t}\,\sigma_{R_Y,t}'}{\|\sigma_{R_Y,t}\|^2}\;\pi_{Y,t},
+\end{equation}
+where $\pi_{Y,t}$ and $\sigma_{R_Y,t}$ are determined in the first step. Substituting \eqref{eq:sigma_pD}--\eqref{eq:piD_CAPM} into \eqref{eq:pD_pricing_cond} yields a PDE for $p_D(s,X)$ in which all baseline objects ($r_t$, $\pi_{Y,t}$, $\sigma_{R_Y,t}$, $p_{Y,t}$, $\mu_{X,t}$, $\sigma_{X,t}$) are known functions of $X_t$. The valuation ratio of the dividend claim adds $s_t$ as a state variable, but the resulting PDE is \emph{linear} in $p_D$---the nonlinear fixed-point problem is confined entirely to the first step.
+
+Equation \eqref{eq:piD_CAPM} is crucial: the dividend share $s_t$ redistributes cash flows across the two claims but does not affect aggregate consumption ($C_t=Y_t$ is not a function of $s_t$). By the unique SDF from the complete-market equilibrium (Section~\ref{sec:market_completion}), the market price of risk $\lambda_t$ does not load on $s_t$-risk. The only compensated risk factor for the dividend claim is therefore its covariance with the market return---exactly the CAPM beta.
+
+Finally, the risky debt valuation ratio is
+\begin{equation}\label{eq:pB_residual}
+    p_B(s,X)=p_Y(X)-p_D(s,X),
+\end{equation}
+which can be computed from $p_D$ and $p_Y$.
+
+
+
+
+
+
+\newpage
+\singlespacing
+%\bibliographystyle{jf}
+\phantomsection\addcontentsline{toc}{section}{\refname}
+\clearpage
+%{\small
+\bibliography{references.bib}
+\end{document}

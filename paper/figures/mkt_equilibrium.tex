@@ -1,0 +1,62 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+  \begin{groupplot}[
+    group style={group size=2 by 1, horizontal sep=2.2cm},
+    width=0.48\textwidth, height=0.42\textwidth,
+    axis line style={thick},
+    tick style={thick},
+    grid=both, grid style={dotted,gray!60},
+    xmin=-1, xmax=1, ymin=-1, ymax=1,
+    every axis/.append style={font=\small},
+    legend style={draw=none, fill=none, font=\small, at={(0.02,0.98)}, anchor=north west},
+    xlabel style={yshift=0.2em},
+    ylabel style={yshift=-0.2em},
+    xticklabel style={/pgf/number format/fixed, yshift=-1pt},
+    yticklabel style={/pgf/number format/fixed, xshift=-1pt}
+  ]
+
+  % ==============================
+  % (1) RISKY-ASSET MARKET (left)
+  % ==============================
+  \nextgroupplot[
+    title={\textbf{Market for risky asset}},
+    xlabel={$q$},
+    ylabel={$\hat{p}$},
+  ]
+    % Solid lines through (0,0)
+    \addplot[line width=1.2pt, green!60!black, domain=-1:1, samples=2] {-0.9*x}; % active demand
+    \addlegendentry{active demand}
+    \addplot[line width=1.2pt, red,             domain=-1:1, samples=2] { 0.9*x}; % net supply
+    \addlegendentry{net supply}
+
+    % Dashed curves shifted right by delta=0.5: p = m*(q - delta)
+    \def\delta{0.5}
+    \addplot[line width=1.2pt, dashed, green!60!black, domain=-1:1, samples=2] {-0.9*(x - \delta)};
+    \addplot[line width=1.2pt, dashed, red,             domain=-1:1, samples=2] { 0.9*(x - \delta)};
+
+    % Intersections at (0,0) and (0.5,0)
+    \addplot[only marks, mark=*, mark size=1.6pt, black] coordinates {(0,0) (0.5,0)};
+
+  % =========================
+  % (2) GOODS MARKET (right)
+  % =========================
+  \nextgroupplot[
+    title={\textbf{Market for goods}},
+    xlabel={$c,\, y$},
+    ylabel={$\hat{p}$},
+  ]
+    % avg. c/w ratio and dividend yield, both through (0,0)
+    \addplot[line width=1.2pt, blue,   domain=-1:1, samples=2] {-1.2*x}; % avg. c/w ratio
+    \addlegendentry{avg.\ $c/w$ ratio}
+    \addplot[line width=1.2pt, orange, domain=-1:1, samples=2] { 1.0*x}; % dividend yield
+    \addlegendentry{div.\ yield}
+
+    % Equilibrium marker at (0,0)
+    \addplot[only marks, mark=*, mark size=1.6pt, black] coordinates {(0,0)};
+
+  \end{groupplot}
+\end{tikzpicture}
+\caption{Left: risky-asset market (active demand in green, net supply in red; dashed curves show a rightward shift that preserves the equilibrium price). Right: goods market (average consumption–wealth ratio in blue and dividend yield in orange).}
+\label{fig:mkt_equilibrium}
+\end{figure}

@@ -1,0 +1,961 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass[11pt,english]{article}
+\bibliographystyle{jf}
+\usepackage[longnamesfirst]{natbib}
+%\usepackage[T1]{fontenc}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[bottom]{footmisc}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{amsmath,enumerate}
+\usepackage{amsthm}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage[labelfont=bf,justification=justified,font=small,skip=2pt,labelsep=period]{caption}
+%\usepackage[labelfont=bf,justification=justified,labelsep=period]{caption}
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage{arydshln}
+\usepackage{chngpage}
+\usepackage{float,appendix}
+\usepackage{afterpage}
+\usepackage{verbatim}
+\usepackage{indentfirst}
+\usepackage[margin=1in]{geometry}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+% \usepackage{longtable}
+\usepackage{booktabs, makecell, longtable,ltxtable}
+\usepackage{lipsum}
+\usepackage{pdflscape}
+\usepackage{siunitx}
+\usepackage{chngcntr}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage[normalem]{ulem}
+\usepackage{chngcntr,apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\sisetup{table-format=-1.3, table-space-text-post={**}}
+\usepackage{xr}
+\usepackage{etoolbox}
+\usetikzlibrary{positioning}
+\newcommand\fnsep{\textsuperscript{,}}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage[normalem]{ulem}
+\usepackage{chngcntr,apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usepackage{xr}
+\usepackage{etoolbox}
+\usetikzlibrary{positioning}
+
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{mathdots}
+\usepackage{yhmath}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{tabularx}
+\usepackage{extarrows}
+\usepackage{booktabs}
+\usetikzlibrary{fadings}
+\usetikzlibrary{patterns}
+\usetikzlibrary{shadows.blur}
+\usetikzlibrary{shapes}
+
+
+
+
+%% UCLA colors: 
+% https://brand.ucla.edu/wp-content/uploads/ucla-color-palette-v10.pdf
+%\definecolor{UCLA}{RGB}{50, 132, 191}   % UCLA Blue primary
+%\definecolor{UCLA}{RGB}{52, 123, 173}   % UCLA Blue text only
+\definecolor{UCLAblue}{RGB}{30, 75, 135} % secondary color	
+\definecolor{UCLAgold}{RGB}{255, 232, 0} % UCLA Gold
+
+\definecolor{usccardinal}{rgb}{0.6, 0.0, 0.0}
+\definecolor{Matlabblue}{rgb}{0,0.447,0.741}
+\definecolor{bleudefrance}{rgb}{0.19,0.55, 0.91}
+\definecolor{cobalt}{rgb}{0.0, 0.28,0.67}
+\definecolor{darkblue}{rgb}{0.0, 0.0,0.55}
+\definecolor{darkcerulean}{rgb}{0.03,0.27, 0.49}
+\definecolor{darkpowderblue}{rgb}{0.0,0.2, 0.6}
+\definecolor{bleudefrance}{rgb}{0.19,0.55, 0.91}
+%\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
+
+\hypersetup{
+	colorlinks,
+	linkcolor={UCLAblue},
+	citecolor={UCLAblue},
+	urlcolor={UCLAblue},
+}
+
+\bibpunct{(}{)}{;}{a}{,}{,}
+\newcommand{\E}{\mathbb{E}}
+% \newcommand{\var}{\mathrm{Var}}
+\newcommand{\cov}{\mathrm{Cov}}
+\setcounter{MaxMatrixCols}{20}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+\urlstyle{same}
+\usepackage{pgfplots} 
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false} 
+% puts figures and tables at the end of the document
+%\usepackage[nomarkers,nolists]{endfloat}               
+% puts ONLY figures at the end of the document
+%\usepackage[nomarkers,nolists,figuresonly]{endfloat}  
+% allows more than one figure per page for endfloat
+%\renewcommand{\efloatseparator}{\mbox{}}              
+\usepackage{rotating}
+% allows sideways tables and figures to be placed at the end of the document
+%\DeclareDelayedFloatFlavor{sidewaystable}{table}
+%\DeclareDelayedFloatFlavor{sidewaysfigure}{figure}
+
+% \usepackage[nomarkers,nolists]{endfloat} 
+% \renewcommand{\efloatseparator}{\mbox{}}              % allows more than one figure per page for endfloat
+
+%\usepackage{mathpazo}
+%\usepackage{mathpple}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{palatino}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false} 
+\newlength\figureheight 
+\newlength\figurewidth 
+\usepackage{mathtools}
+\usetikzlibrary{calc}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Notes customization %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{webblue}{rgb}{0,0,0.6}
+\definecolor{webgreen}{rgb}{0,.6,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+
+
+%- Commenting
+\let\oldmarginpar\marginpar
+\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\tiny #1]%
+{\raggedright\tiny #1}}
+\newcommand{\mknote}[1]{\marginpar{\textcolor{webblue}{\tiny{Mahyar: #1}}}}
+\newcommand{\dsnote}[1]{\marginpar{\textcolor{webgreen}{\tiny{Dejanir: #1}}}}
+\usepackage[en-US]{datetime2}
+\usepackage{mathtools}
+ \usepackage{xcolor}
+
+\newcommand{\comments}[1]
+{\par {\bfseries \color{blue} #1 \par}}
+
+\usepackage[draft]{todonotes}
+
+\title{\textbf{A Perturbation Approach for Economies with Heterogeneous Preferences}}
+\author{ Dejanir Silva\thanks{Gies College of Business, University of Illinois at Urbana-Champaign, e-mail: \href{dejanir@illinois.edu}{dejanir@illinois.edu}.}}
+\date{November 2020}
+%\date{\today\\
+%	\begin{small}
+%		First draft: May 5, 2018
+%\end{small}}
+\begin{document}
+	%\maketitle
+\onehalfspacing	
+
+\section{A model with passive investors}
+
+\subsection{The model}
+
+Consider a version of the problem with only two investors, $j = \{0,1\}$, where the type-$0$ represent passive investors, who maintains a fixed portfolio share, and type-$1$ represents an active investor, who continuous rebalance their portfolio.
+
+\paragraph{Financial markets.} Investors have access to a riskless asset, which pays instantaneous return $r_t$, and a risky asset, which is a claim to dividends $Y_t$ that follows the process:
+\begin{equation}
+    \frac{d Y_t}{Y_t} = \mu dt + \sigma d Z_t.
+\end{equation}
+
+The price of the risky asset is given by $P_t$, which follows the process:
+\begin{equation}
+    \frac{d P_{t}}{P_t} = \mu_{P,t} dt + \sigma_{P,t} dZ_t.
+\end{equation}
+
+Let $p_t \equiv \frac{P_t}{Y_t}$ denote the price-dividend ratio, so the risk premium $\pi_t$ and return volatility are given by:
+\begin{equation}
+    \pi_t = \frac{1}{p_t} + \mu+\mu_{p,t} + \sigma \sigma_{p,t}  - r_t, \qquad \qquad
+    \sigma_{R,t} = \sigma +\sigma_{p,t}
+\end{equation}
+
+The drift and diffusion of the price-dividend ratio are given by Ito's lemma:
+\begin{equation}
+    \mu_{p,t} =  \frac{p_{x,t}}{p_t} \mu_{x,t}+\frac{1}{2} \frac{p_{xx,t}}{p_t} \sigma_{x,t}^2, \qquad \qquad
+    \sigma_{p,t} = \frac{p_{x,t}}{p_t} \sigma_{x,t}.
+\end{equation}
+
+In terms of the dividend yield, $y_t \equiv \frac{Y_t}{P_t}$, we obtain
+\begin{equation}
+    \pi_t = y_t + \mu-\mu_{y,t} + \sigma_{y,t}^2 - \sigma \sigma_{y,t}  - r_t, \qquad \qquad
+    \sigma_{R,t} = \sigma -\sigma_{y,t}.
+\end{equation}
+
+\paragraph{Investors.} The portfolio share of passive investors is exogenously given by $\alpha_{0,t} = \overline{\alpha}_{p}$, and the portfolio share of the active investor is given by
+\begin{equation}
+    \alpha_{1,t} = \frac{\pi_t}{\gamma_1 \sigma_{R,t}^2} + \varsigma_{1,t},
+\end{equation}
+where $\varsigma_{1,t} \equiv \frac{1-\gamma_1^{-1}}{\psi-1} \frac{\sigma_{c_1,t}}{\sigma_{R,t}}$.
+
+The consumption-wealth ratio of a type-$j$ investor is given by
+\begin{equation}
+    c_{j,t} = \psi \rho + (1-\psi) \left[ r_t + \pi_t \alpha_{j,t} - \frac{\gamma_j}{2} \sigma_{R,t}^2 \alpha_{j,t}^2 \right] + \xi_{j,t},
+\end{equation}
+where
+\begin{equation}
+    \xi_{j,t} \equiv \mu_{c_j,t} + (1-\gamma_j) \sigma_{c_j,t} \sigma_{R,t} \alpha_{j,t} + \frac{\psi-\gamma_j}{1-\psi} \frac{\sigma_{c,t}^2}{2}.
+\end{equation}
+
+\paragraph{Market clearing.} The market clearing condition for risky assets and goods are given by
+\begin{equation}
+    (1-x) \overline{\alpha}_p +x \alpha_{1,t} = 1, \qquad \qquad 
+    (1-x) c_{0,t}+ x c_{1,t} = \frac{1}{p_t}.
+\end{equation}
+
+Rearranging the expressions above, we obtain
+\begin{equation}
+    \alpha_{1}(x_t) = \frac{1 - (1-x) \overline{\alpha}_p}{x}.
+\end{equation}
+
+The risk premium is given by
+\begin{equation}
+    \pi_t = \gamma_1 \sigma_{R,t}^2 \left[ \alpha_{1}(x_t) - \varsigma_{1,t} \right].
+\end{equation}
+
+\paragraph{State variable dynamics.} The aggregate state variables corresponds to the share of wealth of active investors $x$, which evolves according to: 
+\begin{equation}
+d x_t = x_t \left[  (\pi_t-\sigma_{R,t}^2) (\alpha_{1,t}  -1)+ \kappa \frac{\omega_1 - x_t}{x_t} \right]dt + x_t (\alpha_{1,t}-1) \sigma_{R,t} dZ_t.
+\end{equation}
+
+Notice that we can write $\sigma_{x,t}$ as follows:
+\begin{equation}
+    \sigma_{x,t} = x_t (\alpha_{1,t}-1) \left(\sigma+\frac{p_{x,t}}{p_t} \sigma_{x,t}\right) \Rightarrow \sigma_{x,t} = \frac{x_t (\alpha_{1,t} -1)}{1- x_t (\alpha_{1,t}-1) \frac{p_{x,t}}{p}} \sigma.
+\end{equation}
+
+% \paragraph{Price dynamics.} The consumption-wealth ratio is given by $c_{1,t} \equiv \frac{1}{p_t}$, so the law of motion of $c_{1,t}$ is given by
+% \begin{equation}
+%     \frac{d c_{1,t}}{c_{1,t}} = -\frac{dp_t}{p_t} + \left( \frac{d p_t}{p_t} \right)^2 = \left[ -\mu_{p,t} +\sigma_{p,t}^2 \right] dt - \sigma_{p,t} dZ_t. 
+% \end{equation}
+
+\paragraph{The differential equation.}
+
+\begin{equation}
+c_{j,t} = \psi \rho + (\psi^{-1}-1) \left[y_t +\mu-\mu_{y,t} + \sigma_{y,t}^2- \sigma \sigma_{y,t} + \pi_t (\alpha_{j,t}-1) - \frac{\gamma_j}{2} \sigma_{R,t}^2 \alpha_{j,t}^2 \right] + \xi_{j,t}.
+\end{equation}
+
+\subsection{A convenient change of variables}
+
+Define $s_t \equiv - \log x_t$, so $x_t = e^{-s_t}$. Let $w_{j}(s_t) \equiv \log c_{j}(e^{-s_t})$ and $w(s_t) \equiv \log y(e^{-s_t})$. The derivatives of $w_{j,t}$ are given by:
+\begin{equation}
+    w_{j,s} = -\frac{c_{j,x}}{c_{j}} x, \qquad \qquad w_{j,ss} = x^2 \frac{c_{j,xx}}{c_{j}} - (w_{j,s} + w_{j,s}^2).
+\end{equation}
+and the derivative of $w(s_t)$ is given by:
+\begin{equation}
+    w_{s} = -\frac{y_{x}}{y} x = x_t \frac{c_{2} - c_{1}}{y} + \frac{x_t c_{1}}{y} w_{1,s} + \frac{(1-x_t) c_{2}}{y} w_{2,s}.
+\end{equation}
+
+The diffusion of $x_t$ is given by:
+\begin{equation}
+    \sigma_{x,t} = \frac{(1-x_t)(1-\alpha_p) \sigma}{1+(1-x_t)(1-\alpha_p)  \frac{y_{x,t}}{y_t}} = \frac{x_t (1-x_t)(1-\alpha_p) \sigma}{x_t-(1-x_t)(1-\alpha_p)  w_{s,t}}
+\end{equation}
+
+The return volatility is given by:
+\begin{equation}
+    \sigma_{R,t} = \sigma + \frac{w_{s,t}}{x_t} \sigma_{x,t} = \frac{x_t  \sigma}{x_t-(1-x_t)(1-\alpha_p)  w_{s,t}}.
+\end{equation}
+
+
+
+The diffusion of $c_{j,t}$ is given by:
+\begin{equation}
+    \sigma_{c_j,t} = \frac{c_{j,x,t}}{c_{j,t}} x_t (\alpha_{j,t}-1) \sigma = -w_{j,s,t} (\alpha_{j,t}-1) \sigma,
+\end{equation}
+
+The scaled hedging demand is given by:
+\begin{equation}
+    x_t \varsigma_{j,t} = \frac{1-\gamma_j^{-1}}{\psi-1} x_t \frac{c_{j,x}}{c_{j}} \frac{\sigma_{x,t}}{\sigma_{R,t}} = -\frac{1-\gamma_j^{-1}}{\psi-1} w_{j,s,t} (1-x_t)(1-\alpha_p) .
+\end{equation}
+
+Define the scaled risk premium as $\tilde{\pi}_t \equiv \pi_t x_t$, which can be expressed as follows:
+\begin{equation}
+    \tilde{\pi}_t = \gamma_1 \sigma_{R,t}^2 \left[ x_t + x_t (\alpha_{1,t}-1) \left(1 + w_{j,s,t} \frac{1-\gamma_1^{-1}}{\psi-1} \frac{\sigma}{\sigma_{R,t}} \right)\right].
+\end{equation}
+
+Using the fact that $x_t (\alpha_{1,t}-1) = (1-x_t)(1 - \alpha_p) $, we obtain
+\begin{equation}
+    \tilde{\pi}_t = \gamma_1 \sigma_{R,t}^2 \left[ x_t + (1-x_t)(1 - \alpha_p) \left(1 + w_{j,s,t} \frac{1-\gamma_1^{-1}}{\psi-1}  \right)\right].
+\end{equation}
+
+
+
+
+    
+
+% In terms of the dividend yield, we obtain
+% \begin{equation}
+%     y_t =  \rho + (\psi^{-1}-1) \left[ \mu-\mu_{y,t}+\sigma_{y,t}^2 - \sigma \sigma_{y,t} + \pi_t (\alpha_{1,t}-1) - \frac{\gamma_1}{2} \sigma_{R,t}^2 \alpha_{1,t}^2 \right] + \psi^{-1}\xi_{1,t},
+% \end{equation}
+% where
+% \begin{equation}
+    % \xi_{1,t} \equiv \mu_{y,t} + (1-\gamma_1) \sigma_{y,t} (\sigma-\sigma_{y,t}) \alpha_{1,t} + \frac{\psi-\gamma_1}{1-\psi} \frac{\sigma_{y,t}^2}{2}.
+% \end{equation}
+
+
+% \subsection{Regular perturbation}
+
+% Suppose $\overline{\alpha}_p = 1 + \hat{\alpha}_p \epsilon$. We can then write the dividend-yield  as follows:
+% \begin{equation}
+%     y(x;\epsilon) = \sum_{j=0}^\infty y_{j}(x) \epsilon^j.
+% \end{equation}
+
+% The zeroth-order term is given by
+% \begin{equation}
+%     y_0(x) =  \rho + \left(\psi^{-1}-1\right) \left[\mu - \frac{\gamma_1 \sigma^2}{2}  \right].  
+% \end{equation}
+
+% The risk-premium and interest rate are given by
+% \begin{equation}
+%     \pi_0(x) = \gamma_1 \sigma^2, \qquad \qquad 
+%     r_0(x) = y^\star + \mu  - \gamma_1 \sigma^2,
+% \end{equation}
+% where $y^\star \equiv y_0(x)$.
+
+% \paragraph{First-order correction.} The first-order correction is given by
+% \begin{equation}
+%     y_1(x) = (\psi^{-1}-1) \left[ \pi_0\left( -\frac{1-x}{x} \hat{\alpha}_p \right) - \gamma_1 \sigma^2 \left( - \frac{1-x}{x} \hat{\alpha}_p\right) \right] \Rightarrow y_1(x) = 0.
+% \end{equation}
+
+% The risk premium and interest rate are given by
+% \begin{equation}
+%     \pi_1(x) = -\gamma_1 \sigma^2  \frac{1-x}{x} \hat{\alpha}_p, \qquad \qquad 
+%     r_1(x) = \gamma_1 \sigma^2  \frac{1-x}{x} \hat{\alpha}_p.
+% \end{equation}
+
+% The diffusion and drift of the state variable are given by:
+% \begin{equation}
+%     \sigma_{x,1}(x) = -(1-x) \hat{\alpha}_p \sigma, \qquad \mu_{x,1}(x) = -(\gamma_1 -1)\sigma^2 (1-x) \hat{\alpha}_p \sigma + \hat{\kappa} (\omega_1 - x_t).
+% \end{equation}
+
+% The drift and diffusion for the dividend yield are given by $\mu_{y,1}(x) = \sigma_{y,1}(x) = 0$.
+
+% \paragraph{Second-order correction.} 
+% Notice that $\sigma_{y,2} = \mu_{y,2} = 0$, as $y_{1,x}(x)= y_{1,xx}(x) = 0$. 
+
+% The second-order correction is given by
+% \begin{equation}
+%     y_{2}(x) = (\psi^{-1}-1) \left[ \pi_1(x) \hat{\alpha}_{a}(x) - \frac{\gamma_1 \sigma^2}{2} \hat{\alpha}_{a}(x)^2 \right] = -(1-\psi^{-1})\frac{\gamma_1\sigma^2 }{2} \hat{\alpha}_{a}(x)^2,
+% \end{equation}
+% where $\hat{\alpha}_{a}(x) \equiv -\frac{1-x}{x} \hat{\alpha}_{p}$.
+
+% The second-order correction for the risk-premium are given by
+% \begin{equation}
+%     \pi_2(x) = 0, \qquad \qquad
+%     r_2(x) = y_2(x).
+% \end{equation}
+
+% The diffusion and drift of the state variable:
+% \begin{equation}
+%     \sigma_{x,2}(x) = \mu_{x,2}(x) = 0.
+% \end{equation}
+
+% \paragraph{Third-order correction.} The derivative of the dividend yield with respect to $x$ is given by
+% \begin{equation}
+%     y_{2,x}(x) = -(1-\psi^{-1}) \gamma_1 \sigma^2 \left[ 1 -\frac{1}{x}\right] \frac{\hat{\alpha}_p^2}{x^2}.
+% \end{equation}
+
+% The second-order derivative is given by
+% \begin{equation}
+%     y_{2,xx}(x) = -(1-\psi^{-1}) \gamma_1 \sigma^2 \left[ -\frac{2}{x^3} +\frac{3}{x^4}\right] \hat{\alpha}_p^2.
+% \end{equation}
+
+% The diffusion of $y$ is given by 
+% \begin{equation}
+%     \sigma_{y,3}(x) = \frac{y_{2}(x)}{y_0(x)} \sigma_{x,1}(x).
+% \end{equation}
+
+% The drift term is given by
+% \begin{equation}
+%     \mu_{y,3}(x) = \frac{y_{2,x}(x)}{y_0(x)}\mu_{y,1}(x)
+% \end{equation}
+
+% \paragraph{Higher-order perturbation.} Let $\tilde{y}(x) \equiv \frac{y_x(x)}{y(x)}$, then we can write the diffusion of the dividend yield as follows:
+% \begin{equation}
+%     \sigma_{y,k}(x) = \sum_{j=0}^{k} \tilde{y}_{j}(x) \sigma_{x,k-j}(x) = \sum_{j=2}^{k-1} \tilde{y}_{j}(x) \sigma_{x,k-j}(x),
+% \end{equation}
+% using the fact that $\sigma_{x,0}(x) = \tilde{y}_{0}(x) = \tilde{y}_{1}(x) = 0$. 
+% Therefore, we only need terms of order $k-1$ and lower to compute the $k$-th order term diffusion.
+% Then, we only need to compute terms of order $k-1$ and lower to compute the $k$-th order term return volatility.
+% A similar argument shows that we only need terms of order $k-1$ and lower to compute the $k$-th order term drift.
+
+% Notice that the $k$-th order term of $z(x;\epsilon) \equiv \pi(x;\epsilon) (  \alpha_{a}(x;\epsilon)-1)$ is given by
+% \begin{equation}
+%     z_k(x) = \pi_{k-1}(x) \hat{\alpha}_{a}(x).
+% \end{equation}
+% which also only depends on terms of order $k-1$ and lower. 
+
+
+% These facts together imply that we only need terms of order $k-1$ and lower to compute the $k$-th order term of the dividend yield.
+
+% \subsection{The boundary layer}
+
+% The description shows how to compute a higher-order expansion of the dividend yield. 
+% As $x$ gets closer to the boundary $x=0$, the term of order $k$ in the expansion of the dividend yield becomes increasingly important. 
+% This implies that the approximation of the dividend yield is not accurate for $x$ close to the boundary.
+% We next show how to compute an accurate approximation of the dividend yield for $x$ close to the boundary, a problem known as the boundary layer.
+
+% Define the variable $\tilde{x} \equiv x / \epsilon$, so $\tilde{x} = \mathcal{O}(1)$ for $x$ close to the boundary. Define the price-dividend ratio as $\tilde{p}(\tilde{x}) \equiv p(\tilde{x} \epsilon)$. 
+% The derivatives of the price-dividend ratio in terms of $\tilde{x}$ are given by:
+% \begin{equation}
+%     \tilde{p}_{\tilde{x}}(\tilde{x}) = p_x(\tilde{x} \epsilon) \epsilon, \qquad \qquad
+%     \tilde{p}_{\tilde{x} \tilde{x}}(\tilde{x}) = p_{xx}(\tilde{x} \epsilon) \epsilon^2.
+% \end{equation}
+
+% The diffusion term of $x$ is given by:
+% \begin{equation}
+%      \sigma_{x}(x;\epsilon) = \frac{x (\alpha_{a}(x;\epsilon) -1)}{1- x (\alpha_{a}(x;\epsilon)-1) \frac{p_{x}(x;\epsilon)}{p(x;\epsilon)}} \sigma =  -\frac{(1-\tilde{x}\epsilon) \hat{\alpha}_p }{1 + (1-\tilde{x}\epsilon) \hat{\alpha}_p \frac{\tilde{p}_{x}(\tilde{x})}{\tilde{p}(\tilde{x})}} \sigma  \epsilon  \equiv \sigma_{\tilde{x}}(\tilde{x};\epsilon) \epsilon.
+% \end{equation}
+
+% The diffusion term of $p$ is given by:
+% \begin{equation}
+%     \sigma_{p}(x;\epsilon) = \frac{p_{x}(x;\epsilon)}{p(x;\epsilon)} \sigma_{x}(x;\epsilon) =\frac{\tilde{p}_{\tilde{x}}(\tilde{x};\epsilon)}{\tilde{p}(\tilde{x};\epsilon)} \sigma_{\tilde{x}}(\tilde{x};\epsilon).
+% \end{equation}
+
+% The drift term of $x$ is given by:
+% \begin{equation}
+%     \mu_{x,t} = \left[ \hat{x}_t (\sigma_{R,t}^2 - \pi_t) (1-\hat{x}_t) \hat{\alpha}_p \epsilon  + \hat{\kappa} (\omega_1 - \tilde{x}_t \epsilon )\right] \epsilon \equiv \mu_{\tilde{x}}(\tilde{x};\epsilon) \epsilon.
+% \end{equation}
+
+% The drift term of $p$ is given by:
+% \begin{equation}
+%     \mu_{p}(x;\epsilon) = \frac{p_{x}(x;\epsilon)}{p(x;\epsilon)} \mu_{x}(x;\epsilon) + \frac{1}{2} \frac{p_{xx}(x;\epsilon)}{p(x;\epsilon)} \sigma_{x}(x;\epsilon)^2 =\frac{\tilde{p}_{\tilde{x}}(\tilde{x};\epsilon)}{\tilde{p}(\tilde{x};\epsilon)} \mu_{\tilde{x}}(\tilde{x};\epsilon) + \frac{1}{2} \frac{\tilde{p}_{\tilde{x} \tilde{x}}(\tilde{x};\epsilon)}{\tilde{p}(\tilde{x};\epsilon)} \sigma_{\tilde{x}}(\tilde{x};\epsilon)^2.
+% \end{equation}
+
+% Given these expressions, we can express the dividend yield in terms of $\tilde{x}$ instead of $x$. 
+% We proceed by computing the perturbation of $\tilde{p}(\tilde{x};\epsilon)$ in $\epsilon$, given the assumption that $\tilde{x} = \mathcal{O}(1)$.
+
+% \paragraph{Zeroth-order term.} The zeroth-order term corresponds to the limit as $\epsilon \to 0$. In this case, the drift and diffusion of $\tilde{x}$ are given by:
+% \begin{equation}
+%     \sigma_{\tilde{x},0}(\tilde{x}) =  - \frac{\hat{\alpha}_p }{1 + \hat{\alpha}_p \frac{\tilde{p}_{x,0}(\tilde{x})}{\tilde{p}_0(\tilde{x})}} \sigma, \qquad \qquad
+%     \mu_{\tilde{x},0}(\tilde{x}) = \hat{\kappa} \omega_1. 
+% \end{equation}
+
+% The portfolio share of the active investor is given by:
+% \begin{equation}
+%     \alpha_{a,0}(\tilde{x}) = 1 - \frac{\hat{\alpha}_p}{\hat{x}}.
+% \end{equation}
+
+% The risk premium is given by:
+% \begin{equation}
+%     \pi_{0}(\tilde{x}) = \gamma_1 \sigma_{R,0}^2 \left( 1 - \frac{\hat{\alpha}_p}{\hat{x}} + \frac{1-\gamma_1^{-1}}{\psi-1} \frac{\sigma_{p,0}}{\sigma_{R,0}} \right).
+% \end{equation}
+
+% The price-dividend ratio is given by:
+% \begin{equation}
+%     \frac{1}{\tilde{p}_0(\tilde{x})} = \rho + (\psi^{-1}-1) \left[\mu+\mu_{p,t} + \sigma \sigma_{p,t} + \pi_t (\alpha_{1,t}-1) - \frac{\gamma_1}{2} \sigma_{R,t}^2 \alpha_{1,t}^2 \right] + \psi^{-1}\xi_{1,t}.
+% \end{equation}
+% \begin{equation}
+%     \xi_{1,t} \equiv -\mu_{p,t} + \sigma_{p,t}^2- (1-\gamma_1) \sigma_{p,t} (\sigma+\sigma_{p,t})  + \frac{\psi-\gamma_1}{1-\psi} \frac{\sigma_{p,t}^2}{2}.
+% \end{equation}
+
+% Combining all the terms gives a second-order differential equation for $\tilde{p}_0(\tilde{x})$. We have two boundary conditions: $\tilde{p}_0(0) = 0$ and $\tilde{p}_0(\infty) = p^\star$.
+
+% \newpage
+
+\section{A heterogeneous-agents model}
+
+\subsection{The model}
+
+Consider a version of the problem with two investors, $j = \{1,2\}$, which differ in their level of risk aversion, $\gamma_1 \neq \gamma_2$.
+
+\paragraph{Financial markets.} Investors have access to a riskless asset, which pays instantaneous return $r_t$, and a risky asset, which is a claim to dividends $Y_t$ that follows the process:
+\begin{equation}
+    \frac{d Y_t}{Y_t} = \mu dt + \sigma d Z_t.
+\end{equation}
+
+The price of the risky asset is given by $P_t$, which follows the process:
+\begin{equation}
+    \frac{d P_{t}}{P_t} = \mu_{P,t} dt + \sigma_{P,t} dZ_t.
+\end{equation}
+
+Let $p_t \equiv \frac{P_t}{Y_t}$ denote the price-dividend ratio, so the risk premium $\pi_t$ and return volatility are given by:
+\begin{equation}
+    \pi_t = \frac{1}{p_t} + \mu+\mu_{p,t} + \sigma \sigma_{p,t}  - r_t, \qquad \qquad
+    \sigma_{R,t} = \sigma +\sigma_{p,t}
+\end{equation}
+
+The drift and diffusion of the price-dividend ratio are given by Ito's lemma:
+\begin{equation}
+    \mu_{p,t} =  \frac{p_{x,t}}{p_t} \mu_{x,t}+\frac{1}{2} \frac{p_{xx,t}}{p_t} \sigma_{x,t}^2, \qquad \qquad
+    \sigma_{p,t} = \frac{p_{x,t}}{p_t} \sigma_{x,t}.
+\end{equation}
+
+\paragraph{Investors.} The portfolio share of investor $j$ is given by
+\begin{equation}
+    \alpha_{j,t} = \frac{\pi_t}{\gamma_j \sigma_{R,t}^2} + \varsigma_{j,t},
+\end{equation}
+where $\varsigma_{j,t} \equiv \frac{1-\gamma_j^{-1}}{\psi-1} \frac{\sigma_{c_j,t}}{\sigma_{R,t}}$.
+
+The consumption-wealth ratio is given by
+\begin{equation}
+    c_{j,t} = \psi \rho + (1-\psi) \left[ r_t + \pi_t \alpha_{j,t} - \frac{\gamma_j}{2} \sigma_{R,t}^2 \alpha_{j,t}^2 \right] + \xi_{j,t},
+\end{equation}
+where
+\begin{equation}
+    \xi_{j,t} \equiv \mu_{c_j,t} + (1-\gamma_j) \sigma_{c_j,t} \sigma_{R,t} \alpha_{j,t} + \frac{\psi-\gamma_j}{1-\psi} \frac{\sigma_{c_j,t}^2}{2}.
+\end{equation}
+
+\paragraph{Market clearing.} The market clearing condition for risky assets and goods are given by
+\begin{equation}
+    \sum_{j=1}^2 x_{j,t}\alpha_{j,t} = 1, \qquad \qquad 
+    \sum_{j=1}^2 x_{j,t} c_{j,t} = \frac{1}{p_t},
+\end{equation}
+where $x_{j,t}$ is the wealth share of investor $j$.
+
+The risk premium is given by
+\begin{equation}
+    \pi_t = \gamma_t \sigma_{R,t}^2 \left[ 1 - \sum_{j=1}^2 x_{j,t} \varsigma_{j,t} \right],
+\end{equation}
+where $\gamma_t \equiv \left[\sum_{j=1}^2 x_{j,t} \gamma_j^{-1}\right]^{-1}$.
+
+The interest rate can be computed as follows:
+\begin{equation}
+    r_t = \frac{1}{p_t} + \mu+\mu_{p,t} + \sigma \sigma_{p,t}  - \pi_t.
+\end{equation}
+
+\paragraph{State variable dynamics.} Let $x_t \equiv x_{1,t}$, so the aggregate state variables corresponds to the wealth share of type-$1$ investors, which evolves according to: 
+\begin{equation}
+d x_t = x_t \left[  (\pi_t-\sigma_{R,t}^2) (\alpha_{1,t}  -1)+ \kappa \frac{\omega_1 - x_t}{x_t} \right]dt + x_t (\alpha_{1,t}-1) \sigma_{R,t} dZ_t.
+\end{equation}
+
+Given the expression for the risk premium, we can write the portfolio share as follows:
+\begin{equation}
+    \alpha_{j,t} = \frac{\gamma_t}{\gamma_j} \left[ 1 - \sum_{j=1}^2 x_{j,t} \varsigma_{j,t} \right] + \varsigma_{j,t}.
+\end{equation}
+
+Multiplying by $\sigma_{R,t}$, and expanding, we obtain:
+\begin{equation}
+    \alpha_{j,t} \sigma_{R,t} = \frac{\gamma_t}{\gamma_j} \left[ \sigma - \frac{y_x}{y} \sigma_{x,t} - \sum_{k=1}^2 x_{k,t} \frac{1-\gamma_k^{-1}}{\psi-1} \frac{c_{k,x,t}}{c_{k,t}} \sigma_{x,t} \right] + \frac{1-\gamma_j^{-1}}{\psi-1} \frac{c_{j,x,t}}{c_{j,t}} \sigma_{x,t}.
+\end{equation}
+
+Taking the between the two agents, we obtain
+\begin{equation}
+    \left( \alpha_{1,t} - \alpha_{2,t}\right) \sigma_{R,t} = \left(\frac{\gamma_t}{\gamma_1} - \frac{\gamma_t}{\gamma_2} \right) \sigma + \chi_{\Delta \alpha, x}(x_t) \sigma_{x,t},
+\end{equation}
+where
+\begin{equation}
+    \chi_{\Delta \alpha, x}(x_t) \equiv 
+    -\left(\frac{\gamma_t}{\gamma_1} - \frac{\gamma_t}{\gamma_2} \right) \left[
+    \frac{y_x}{y}  + \sum_{k=1}^2 x_{k,t} \frac{1-\gamma_k^{-1}}{\psi-1} \frac{c_{k,x,t}}{c_{k,t}} 
+    \right] + \frac{1-\gamma_1^{-1}}{\psi-1} \frac{c_{1,x,t}}{c_{1,t}} -\frac{1-\gamma_2^{-1}}{\psi-1} \frac{c_{2,x,t}}{c_{2,t}}.
+\end{equation}
+
+
+Notice that we can write $\sigma_{x,t}$ as follows:
+\begin{equation}
+    \sigma_{x,t} = x_t (1-x_t) (\alpha_{1,t}-\alpha_{2,t}) \sigma_{R,t} \Rightarrow \sigma_{x,t} = \frac{x_t (1-x_t)\left(\frac{\gamma_t}{\gamma_1} - \frac{\gamma_t}{\gamma_2} \right)}{1- x_t (1-x_t) \chi_{\Delta \alpha, x}(x_t)} \sigma.
+\end{equation}
+
+\paragraph{Dividend yield.} The dividend yield is given by $y_{t} \equiv \frac{1}{p_t}$, so the law of motion of $y_{t}$ is given by
+\begin{equation}
+    \frac{d y_{t}}{y_{t}} = -\frac{dp_t}{p_t} + \left( \frac{d p_t}{p_t} \right)^2 = \left[ -\mu_{p,t} +\sigma_{p,t}^2 \right] dt - \sigma_{p,t} dZ_t. 
+\end{equation}
+
+The dividend yield is given by 
+\begin{equation}
+    y_t = x_t c_{1,t} + (1-x_t) c_{2,t}. 
+\end{equation}
+
+The derivative with respect to $x_t$ is given by
+\begin{equation}
+    \frac{y_{x,t}}{y_t} = \frac{c_{1,t} - c_{2,t}}{y_t} + \frac{x_t c_{1,t}}{y_t} \frac{c_{1,x,t}}{c_{1,t}} + \frac{(1-x_t) c_{2,t}}{y_t} \frac{c_{2,x,t}}{c_{2,t}}.
+\end{equation}
+
+The second derivative is given by
+\begin{equation}
+    \frac{y_{xx,t}}{y_t} = 2 \frac{c_{1,x,t} - c_{2,x,t}}{y_t} + \frac{x_t c_{1,t}}{y_t} \frac{c_{1,xx,t}}{c_{1,t}} + \frac{(1-x_t) c_{2,t}}{y_t} \frac{c_{2,xx,t}}{c_{2,t}}.
+\end{equation}
+
+\paragraph{The system of differential equations.} We need to solve for $(c_1(x_t), c_{2}(x_t))$. The system of differential equations for $c_{1,t}$ and $c_{2,t}$ is given by:
+\begin{equation}
+    c_{j,t} = \psi \rho + (1-\psi) \left[ x_t c_{1,t} + (1-x_t) c_{2,t} + \mu - \mu_{y,t} +\sigma_{y,t}^2 - \sigma \sigma_{y,t} + \pi_t (\alpha_{j,t}-1) - \frac{\gamma_j}{2} \sigma_{R,t}^2 \alpha_{j,t}^2 \right] + \xi_{j,t},
+\end{equation}
+where $y_t = x_t c_{1,t} + (1-x_t) c_{2,t}$ is given by
+\begin{equation}
+    y_{t} =  \rho + (\psi^{-1}-1) \left[ \mu - \mu_{y,t} +\sigma_{y,t}^2 - \sigma \sigma_{y,t}  - \sum_{j=1}^2  x_{j,t}\frac{\gamma_j}{2} \sigma_{R,t}^2 \alpha_{j,t}^2 \right] + \psi^{-1}\xi_{t},
+\end{equation}
+
+\subsection{Regular perturbation}
+
+Suppose $\gamma_j = \gamma (1+\hat{\gamma}_j \epsilon)$ and $\kappa = \hat{\kappa} \epsilon$, where $\epsilon$ is a small parameter. 
+We can then write the the consumption-wealth ratios as follows:
+\begin{equation}
+    c_j(x;\epsilon) = \sum_{k=0}^\infty c_{j,k}(x) \epsilon^k.
+\end{equation}
+
+\paragraph{Zeroth-order term.} The zeroth-order term is given by
+\begin{equation}
+    c_{j,0}(x) =  \rho + \left(\psi^{-1}-1\right) \left[\mu - \frac{\gamma \sigma^2}{2}  \right].  
+\end{equation}
+
+The risk-premium and interest rate are given by
+\begin{equation}
+    \pi_0(x) = \gamma \sigma^2, \qquad \qquad 
+    r_0(x) = y^\star + \mu  - \gamma \sigma^2,
+\end{equation}
+where $y^\star \equiv c_{j,0}(x)$. The portfolio share is given by $\alpha_{j,0}(x) = 1$.
+
+\paragraph{First-order correction.} Notice that $\mu_{c_j}(x,\epsilon) = \mathcal{O}(\epsilon^2)$ and $\sigma_{c_j}(x,\epsilon) = \mathcal{O}(\epsilon^2)$, so the term $\xi_{j,1}(x,\epsilon) = \mathcal{O}(\epsilon^2)$. This implies that $\sigma_{y}(x;\epsilon) = \mathcal{O}(\epsilon^2)$. We can then write the risk premium as follows:
+\begin{equation}
+    \pi_1(x) = \gamma \sigma^2 \sum_{j=1}^2 x_{j,t} \hat{\gamma}_j.
+\end{equation}
+
+The portfolio share is then given by
+\begin{equation}
+    \alpha_{j,1}(x) = \frac{\pi_1(x)}{\gamma \sigma^2}  -\hat{\gamma}_j = - (1-x_j) (\hat{\gamma}_j - \hat{\gamma}_{-j}).
+\end{equation}
+
+The dividend yield is then given by
+\begin{equation}
+    y_1(x) = (1-\psi^{-1}) \frac{\gamma \sigma^2}{2} \sum_{j=1}^2 x_{j,t} \hat{\gamma}_j.
+\end{equation}
+
+The consumption-wealth ratio is then given by
+\begin{equation}
+    c_{j,1}(x) = (1-\psi) \frac{\gamma \sigma^2 }{2}\left[ \left(1-\psi^{-1}\right) \sum_{k=1}^2 x_{k,t} \hat{\gamma}_k - \hat{\gamma}_j \right] .
+\end{equation}
+
+The diffusion term of $x$ is given by:
+\begin{equation}
+    \sigma_{x,1}(x) = x \alpha_{1,1}(x) \sigma = x (1-x)\left[ \hat{\gamma}_2 - \hat{\gamma}_1  \right] \sigma.
+\end{equation}
+
+The drift term of $x$ is given by:
+\begin{equation}
+    \mu_{x,1}(x) = x (1-x) (\gamma-1) \sigma^2 (\hat{\gamma}_2 - \hat{\gamma}_1) + \hat{\kappa} (\omega_1 - x).
+\end{equation}
+
+\paragraph{Second-order correction.} The diffusion term of $y$ is given by:
+\begin{equation}
+    \sigma_{y,2}(x) = \frac{y_{1}(x)}{y_0(x)} \sigma_{x,1}(x) = - (1-\psi^{-1}) \frac{\gamma \sigma^2}{2 y^\star} \left[ \hat{\gamma}_2 - \hat{\gamma}_1  \right]^2 \sigma.
+\end{equation}
+
+The drift term of $y$ is given by:
+\begin{equation}
+    \mu_{y,2}(x) = - (1-\psi^{-1}) \frac{\gamma \sigma^2}{2 y^\star} \left[ \hat{\gamma}_2 - \hat{\gamma}_1  \right]  \left[x (1-x) (\gamma-1) \sigma^2 (\hat{\gamma}_2 - \hat{\gamma}_1) + \hat{\kappa} (\omega_1 - x) \right].
+\end{equation}
+
+Notice that $\mu_{c_j,2}(x) $ and $\sigma_{c_j,2}(x)$ are given by:
+\begin{equation}
+    \mu_{c_j,2}(x) = -(\psi-1) \mu_{y,2}(x), \qquad \qquad
+    \sigma_{c_j,2}(x) = -(\psi-1) \sigma_{y,2}(x).
+\end{equation}
+
+The hedging demand is given by:
+\begin{equation}
+    \varsigma_{j,2}(x) = -(1-\gamma^{-1}) \frac{\sigma_{y,2}(x)}{\sigma}.
+\end{equation}
+
+The average risk aversion can be expanded as follows:
+\begin{equation}
+    \gamma_m(x;\epsilon) = \gamma + \gamma_{m,1}(x) \epsilon +\gamma_{m,2}(x) \epsilon^2 + \mathcal{O}(\epsilon^3),
+\end{equation}
+where 
+\[\gamma_{m,1}(x) \equiv \gamma\sum_{j=1}^2 x_j \hat{\gamma}_j,\quad\text{and}\quad 
+\gamma_{m,2}(x) \equiv - \gamma \left(\sum_{j=1}^2 x_j \hat{\gamma}_j^2 - \left(\sum_{j=1}^2 x_j \hat{\gamma}_j\right)^2\right).\]
+
+The risk premium is given by:
+\begin{equation}
+    \pi_2(x) = \gamma \sigma^2 \left[ \frac{\gamma_{m,2}(x)}{\gamma} - (1+\gamma^{-1}) \frac{\sigma_{y,2}(x)}{\sigma} \right].
+\end{equation}
+The portfolio share is then given by:
+\begin{equation}
+    \alpha_{j,2}(x) = \frac{\gamma_{m,2}(x)}{\gamma} + \hat{\gamma}_j^2  - \hat{\gamma}_j \frac{\pi_1(x)}{\pi_0(x)}.
+\end{equation}
+
+The shifter of the consumption-wealth ratio is given by:
+\begin{equation}
+    \xi_{j,2}(x) = -(\psi-1) \left[\mu_{y,2}(x) + (1-\gamma) \sigma_{y,2}(x) \sigma\right].
+\end{equation}
+
+The dividend yield is then given by:
+\begin{equation}
+    y_{2}(x) =   (1-\psi^{-1}) \gamma \sigma^2 \left[  \sum_{j=1}^2  x_{j,t} \hat{\gamma}_j \alpha_{j,1}(x) + \sum_{j=1}^2  x_{j,t}\frac{\alpha_{j,1}^2(x)}{2}  \right].
+\end{equation}
+
+The consumption-wealth ratio is then given by:
+\begin{equation}
+    c_{j,2}(x) = (1-\psi) \left[ y_2(x)  + \pi_1(x) \alpha_{j,1}(x) - \gamma \sigma^2 \hat{\gamma}_j \alpha_{j,1}(x)- \frac{\gamma \sigma^2}{2} \alpha_{j,1}^2(x) \right].
+\end{equation}
+
+The diffusion term of $x$ is given by:
+\begin{equation}
+    \sigma_{x,2}(x) = x \alpha_{1,2}(x) \sigma.
+\end{equation}
+
+The drift term of $x$ is given by:
+\begin{equation}
+    \mu_{x,2}(x) = x \left[ \pi_1(x) \alpha_{1,1}(x) + (\gamma-1) \sigma^2 \alpha_{1,2}(x) \right].
+\end{equation}
+
+\paragraph{Higher-order perturbation}
+
+Consider the expression for the consumption-wealth ratio:
+\begin{equation}
+    \left[ 
+        \begin{matrix}
+            c_{1,t}\\
+            c_{2,t}
+        \end{matrix}
+    \right]= \left[ 
+        \begin{matrix}
+            1 - (1-\psi) x & - (1-\psi) (1-x) \\
+            - (1-\psi) x & 1 - (1-\psi) (1-x)
+        \end{matrix}
+    \right]^{-1} \left[ 
+        \begin{matrix}
+            b_{1,t}\\
+            b_{2,t}
+        \end{matrix}
+     \right],
+\end{equation}
+where 
+\begin{equation}
+    b_{j,t} = \psi \rho + (1-\psi) \left[ \mu - \mu_{y,t} +\sigma_{y,t}^2 - \sigma \sigma_{y,t} + \pi_t (\alpha_{j,t}-1) - \frac{\gamma_j}{2} \sigma_{R,t}^2 \alpha_{j,t}^2 \right] + \xi_{j,t},
+\end{equation}
+
+The $k$-th order correction depends then on $b_{j,k}(x)$, which depends only on $c_{j,l}(x)$ for $l < k$. Hence, we can use the expression above to compute the higher-order perturbation. 
+
+\subsection{Inner solution}
+
+Consider the solution in the inner region, where $x \to 0$. Let's work with the transformed variable: $\hat{x} = x / \epsilon$, so the consumption-wealth ratio is given by 
+\begin{equation}
+    c_{j}(x;\epsilon) = \hat{c}_j(\hat{x};\epsilon), \qquad \hat{x} \equiv \frac{x}{\epsilon},
+\end{equation}
+which gives the derivatives
+\begin{equation}
+    c_{j,x}(x) = \epsilon^{-1} \hat{c}_{j,\hat{x}}(\hat{x}), \qquad \qquad 
+    c_{j,xx}(x) = \epsilon^{-2} \hat{c}_{j,\hat{x}\hat{x}}(\hat{x}).
+\end{equation}
+
+We are interested in computing the expansion:
+\begin{equation}
+    \hat{c}_{j}(\hat{x};\epsilon) = \hat{c}_{j,0}(\hat{x}) +\hat{c}_{j,1}(\hat{x}) \epsilon + \hat{c}_{j,2}(\hat{x}) \epsilon^2 +\ldots.
+\end{equation}
+
+The drift of the state variable is given by
+\begin{equation}
+    \sigma_{\hat{x},t} = \frac{\hat{x}_t (\alpha_{1,t} -1)}{1+ \hat{x}_t (\alpha_{1,t}-1) \frac{\hat{y}_{\hat{x},t}}{\hat{y}}} \sigma = \mathcal{O}(\epsilon),
+\end{equation}
+as $\alpha_{1,t} -1= \mathcal{O}(\epsilon)$.
+
+This implies that the diffusion of $y$ is given by
+\begin{equation}
+    \sigma_{y}(x;\epsilon) = \frac{\hat{y}_{\hat{x}}(\hat{x};\epsilon)}{\hat{y}(\hat{x};\epsilon)} \sigma_{\hat{x}}(\hat{x};\epsilon) = \mathcal{O}(\epsilon^2),
+\end{equation}
+as $\hat{y}_{\hat{x}}(\hat{x};\epsilon) = \mathcal{O}(\epsilon)$.
+
+Similarly, the drift of the state variable is given by
+\begin{equation}
+    \mu_{\hat{x}}(\hat{x};\epsilon) = \hat{x}_t \left[  (\pi_t-\sigma_{R,t}^2) (\alpha_{1,t}  -1)+ \hat{\kappa} \frac{\omega_1 - \hat{x}_t \epsilon}{\hat{x}_t} \right] = \mathcal{O}(1),
+\end{equation}
+as $\alpha_{1,t} -1 = \mathcal{O}(\epsilon)$ and $\hat{\kappa} = \mathcal{O}(1)$.
+
+The drift of $y$ is given by
+\begin{equation}
+    \mu_{y}(x;\epsilon) = \frac{\hat{y}_{\hat{x}}(\hat{x};\epsilon)}{\hat{y}(\hat{x};\epsilon)} \mu_{\hat{x}}(\hat{x};\epsilon) + \frac{1}{2} \frac{\epsilon^{-2}\hat{y}_{\hat{x}\hat{x}}(\hat{x};\epsilon)}{\hat{y}(\hat{x};\epsilon)} (\sigma_{\hat{x}}(\hat{x};\epsilon) \epsilon)^ 2
+\end{equation}
+Notice that the second term is of order $\mathcal{O}(\epsilon^2)$, so $\mu_{\hat{y}}(\hat{x};\epsilon) = \mathcal{O}(\epsilon)$. 
+
+\paragraph{Zeroth-order term.} 
+The system of equations determining $\hat{c}_{j}(\hat{x};\epsilon)$ is given by:
+\begin{equation}
+    \hat{c}_{j,t} = \psi \rho + (1-\psi) \left[ \hat{y}_t + \mu - \mu_{y,t} +\sigma_{y,t}^2 - \sigma \sigma_{y,t} + \pi_t (\alpha_{j,t}-1) - \frac{\gamma_j}{2} \sigma_{R,t}^2 \alpha_{j,t}^2 \right] + \xi_{j,t},
+\end{equation}
+
+The zero-order term of the inner expansion of the consumption-wealth is given by
+\begin{equation}
+    \hat{c}_{j,0}(\hat{x}) = \psi \rho + (1-\psi) \left[ \hat{y}_0(x) + \mu - \mu_{y,0}  - \frac{\gamma}{2} \sigma^2 \right] + \mu_{y,0}.
+\end{equation}
+
+Using the fact that $\hat{c}_{j,0} = \hat{y}_0$, we obtain
+\begin{equation}
+    \hat{y}_0 = \rho + (\psi^{-1}-1) \left[ \mu - \frac{\gamma \sigma^2}{2}\right] = y^\star.
+\end{equation}
+
+The risk premium and interest rate are given by
+\begin{equation}
+    \hat{\pi}_0(\hat{x}) = \gamma \sigma^2, \qquad \qquad 
+    \hat{r}_0(\hat{x}) = \rho + \psi^{-1} \mu - \frac{\gamma \sigma^2}{2} (1+\psi^{-1}).
+\end{equation}
+
+\paragraph{First-order term.} The risk premium is given by
+\begin{equation}
+    \hat{\pi}_t = \hat{\gamma}_m(\hat{x};\epsilon) \hat{\sigma}_R(\hat{x};\epsilon)^2 \left[ 1 - \sum_{j=1}^2 x_j \hat{\varsigma}_{j}(\hat{x};\epsilon)\right],
+\end{equation}
+where
+\begin{equation}
+    \hat{\gamma}_m(\hat{x};\epsilon) = \frac{\gamma}{\frac{\hat{x}\epsilon}{1+\hat{\gamma}_1\epsilon} +\frac{1-\hat{x}\epsilon}{1+\hat{\gamma}_2 \epsilon}} = \frac{\gamma}{1 - \left(\frac{\hat{x} +\hat{\gamma}_2}{1+\hat{\gamma}_2 \epsilon}-\frac{\hat{x}}{1+\hat{\gamma}_1\epsilon}\right)\epsilon } = \gamma \left[1 + \hat{\gamma}_2\epsilon \right] +\mathcal{O}(\epsilon^2).
+\end{equation}
+
+The first-order correction for the risk premium is given by
+\begin{equation}
+    \hat{\pi}_{1}(\hat{x}) = \gamma \sigma^2 \hat{\gamma}_2.
+\end{equation}
+
+The portfolio share of type $j$ is given by
+\begin{equation}
+    \hat{\alpha}_{j,1}(\hat{x}) = \hat{\gamma}_2 - \hat{\gamma}_j.
+\end{equation}
+
+The dividend yield is given by
+\begin{equation}
+    \hat{y}(\hat{x};\epsilon) = \hat{x} \epsilon \hat{c}_{1}(\hat{x};\epsilon) +(1-\hat{x}\epsilon) \hat{c}_{2}(\hat{x};\epsilon) = y^\star +\hat{c}_{2,1}(\hat{x})\epsilon+\mathcal{O}(\epsilon^2).
+\end{equation}
+Hence, $\hat{y}_1(\hat{x}) = \hat{c}_{2,1}(\hat{x})$ and $\mu_{\hat{y},1} = \mu_{\hat{c}_2,1} = \frac{\hat{y}_{\hat{x}}(\hat{x})}{y^\star} \hat{\kappa} \omega_1$.
+
+From the expression for the consumption-wealth ratio of the type $2$ agent is:
+\begin{equation}
+    \hat{y}_{1,\hat{x}}(\hat{x})-\delta \hat{y}_{1} = -(1-\psi^{-1}) \delta  \frac{\gamma\sigma^2 }{2} \hat{\gamma}_2,
+\end{equation}
+where $\delta \equiv \frac{y^\star}{\hat{\kappa} \omega_1}$.
+
+The solution to this differential equation is given by
+\begin{equation}
+    e^ {-\delta \hat{x}} \hat{y}_1(\hat{x}) - \hat{y}_1(0) = - (1-\psi^{-1}) \delta  \frac{\gamma\sigma^2 }{2} \hat{\gamma}_2 \frac{1 - e^{-\delta \hat{x}}}{\delta}.
+\end{equation}
+As $\delta > 0$ and the solution is bounded, we obtain
+\begin{equation}
+    \hat{y}_1(\hat{x}) = (1-\psi^{-1}) \frac{\gamma\sigma^2 }{2} \hat{\gamma}_2 .
+\end{equation}
+This implies that the drift of $\hat{y}$ is $\mu_{\hat{y},1}(\hat{x}) = 0$.
+
+The interest rate is given by
+\begin{equation}
+    \hat{r}_1(\hat{x}) = \hat{y}_1(\hat{x}) - \hat{\pi}_1(\hat{x}).
+\end{equation}
+
+The consumption-wealth ratio of the type-1 investor is:
+\begin{equation}
+    \hat{c}_{1,1}(\hat{x}) = (1-\psi) \left[ \hat{y}_1(\hat{x})   - \frac{\gamma \sigma^2}{2} \hat{\gamma}_1 \right] + \frac{\hat{c}_{1,1,x}(\hat{x})}{y^\star} \hat{\kappa} \omega_1.
+\end{equation}
+Solving the differential equation, we obtain
+\begin{equation}
+    e^{-\delta \hat{x}} \hat{c}_{1,1}(\hat{x})-\hat{c}_{1,1}(0)  = -(1-\psi) \delta \left[ \hat{y}_1(\hat{x})   - \frac{\gamma \sigma^2}{2} \hat{\gamma}_1 \right] \frac{1 - e^{-\delta \hat{x}}}{\delta}.
+\end{equation}
+This implies that
+\begin{equation}
+    \hat{c}_{1,1}(\hat{x}) = (1-\psi) \left[ \hat{y}_1(\hat{x})   - \frac{\gamma \sigma^2}{2} \hat{\gamma}_1 \right] = \hat{y}_1(\hat{x}) - (\psi-1) \frac{\gamma \sigma^2}{2}\left[ \hat{\gamma}_2 -\hat{\gamma}_1 \right].
+\end{equation}
+
+The drift of $\hat{x}$ is given by
+\begin{equation}
+    \sigma_{\hat{x},1}(\hat{x}) = \hat{x} (\hat{\gamma}_2-\hat{\gamma}_1) \sigma.
+\end{equation}
+
+The drift of $\hat{x}$ is given by
+\begin{equation}
+    \mu_{\hat{x},1}(\hat{x}) = \hat{x} (\gamma-1) \sigma^2 (\hat{\gamma}_2-\hat{\gamma}_1) - \hat{\kappa} \hat{x}.
+\end{equation}
+
+\paragraph{Second-order term.} Because the first-order correction of $\hat{c}_{j}$ is constant, we have that $\sigma_{\hat{c}_j,2} = \sigma_{y,2}=  0$. 
+This implies that the hedging demands are also equal to zero: $\hat{\varsigma}_{j,2}(\hat{x})=0$.
+
+The second-order correction for the average risk aversion is
+\begin{equation}
+    \hat{\gamma}_{m,2}(\hat{x}) = -\gamma (\hat{\gamma}_2-\hat{\gamma}_1) \hat{x}.
+\end{equation}
+
+The risk premium is given by
+\begin{equation}
+    \hat{\pi}_2(\hat{x}) = -\gamma \sigma^2(\hat{\gamma}_2-\hat{\gamma}_1) \hat{x}. 
+\end{equation}
+
+The portfolio share of type $j$ is given by:
+\begin{equation}
+    \hat{\alpha}_{j,2}(\hat{x}) = \frac{\hat{\pi}_2(\hat{x})}{\gamma \sigma^2} - \frac{\hat{\pi}_1(\hat{x})}{\gamma \sigma^2} \hat{\gamma}_j + \hat{\gamma}_{j}^2.
+\end{equation}
+
+The drift of $\hat{y}$ is given by
+\begin{equation}
+    \mu_{\hat{y},2}(\hat{x}) = \frac{\hat{y}_{2,\hat{x}}(\hat{x})}{y^\star} \hat{\kappa} \omega_1.
+\end{equation}
+
+The dividend yield is given by
+\begin{equation}
+    \hat{y}_2(\hat{x}) = \hat{x} (\hat{c}_{1,1}(\hat{x})-\hat{c}_{2,1}(\hat{x})) + \hat{c}_{2,2}(\hat{x}).
+\end{equation}
+
+This implies that the drift of $\hat{y}$ satisfies the condition:
+\begin{equation}
+    \mu_{\hat{y},2} = \frac{\hat{c}_{1,1}(\hat{x})-\hat{c}_{2,1}(\hat{x})}{y^\star} \hat{\kappa} \omega_1 +\mu_{\hat{c}_2,2}.
+\end{equation}
+
+The consumption-wealth ratio for $j=2$ satisfies the condition:
+\begin{equation}
+    \hat{c}_{j,2}(\hat{x}) = (1-\psi) \left[ \hat{y}_2(\hat{x}) - \mu_{\hat{y},2}(\hat{x})  + (\hat{\pi}_1(\hat{x})-\hat{\gamma}_j \gamma \sigma^2)\hat{\alpha}_{j,1}(\hat{x})- \frac{\gamma}{2} \sigma^2 \hat{\alpha}_{j,1}(\hat{x})^2 
+  \right] + \mu_{\hat{c}_2,2}(\hat{x})
+\end{equation}
+
+For $j = 2$, we have $\hat{\alpha}_{j,1}(\hat{x}) = 0$. This implies that the consumption-wealth ratio for the type $j=2$ satisfies:
+\begin{equation}
+    \hat{c}_{2,2,\hat{x}}(\hat{x})-\delta \hat{c}_{2,2}(\hat{x}) = -(\psi^{-1}-1) \left[ \hat{x} \delta (\hat{c}_{1,1}(\hat{x})-\hat{c}_{2,1}(\hat{x}))  - (\hat{c}_{1,1}(\hat{x})-\hat{c}_{2,1}(\hat{x})) 
+  \right]= - A(\delta \hat{x}-1),
+\end{equation}
+where $A \equiv (\psi^{-1}-1) \left[ \hat{c}_{1,1}(\hat{x})-\hat{c}_{2,1}(\hat{x})\right]$.
+
+
+Solving the differential equation, we obtain
+\begin{equation}
+    e^{-\delta \hat{x}} \hat{c}_{2,2}(\hat{x})-\hat{c}_{2,2}(0)  =  A \hat{x} e^{-\delta \hat{x}} \Rightarrow \hat{c}_{2,2}(\hat{x}) = e^{\delta \hat{x}} \hat{c}_{2,2}(0) + A \hat{x}
+\end{equation}
+
+To ensure the solution is bounded, we need to have that $\hat{c}_{2,2}(0) = 0$. This implies that the dividend yield is given by
+\begin{equation}
+    \hat{y}_2(\hat{x}) = \psi^{-1} \left[ \hat{c}_{1,1}(\hat{x}) - \hat{c}_{2,1}(\hat{x}) \right] \hat{x}.
+\end{equation}
+
+
+
+
+The consumption-wealth ratio for $j=1$ is given by
+\begin{equation}
+    \hat{c}_{j,2}(\hat{x}) = (1-\psi) \left[ \hat{y}_2(\hat{x}) - \mu_{\hat{y},2}(\hat{x})  + (\hat{\pi}_1(\hat{x})-\hat{\gamma}_j \gamma \sigma^2)\hat{\alpha}_{j,1}(\hat{x})- \frac{\gamma}{2} \sigma^2 \hat{\alpha}_{j,1}(\hat{x})^2 
+  \right] + \mu_{\hat{c}_2,2}(\hat{x})
+\end{equation}
+
+
+
+\newpage
+\singlespacing
+%\bibliographystyle{jf}
+\phantomsection\addcontentsline{toc}{section}{\refname}
+\clearpage
+%{\small
+\bibliography{references.bib}
+\end{document}

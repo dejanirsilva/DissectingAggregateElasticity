@@ -1,0 +1,764 @@
+\documentclass[11pt,english]{article}
+\bibliographystyle{jf}
+\usepackage[longnamesfirst]{natbib}
+%\usepackage[T1]{fontenc}
+\usepackage{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bottom]{footmisc}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{amsmath,enumerate}
+\usepackage{amsthm}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage[labelfont=bf,justification=justified,font=small,skip=2pt,labelsep=period]{caption}
+%\usepackage[labelfont=bf,justification=justified,labelsep=period]{caption}
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage{arydshln}
+\usepackage{chngpage}
+\usepackage{float,appendix}
+\usepackage{afterpage}
+\usepackage{verbatim}
+\usepackage{indentfirst}
+\usepackage[margin=1in]{geometry}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+% \usepackage{longtable}
+\usepackage{booktabs, makecell, longtable,ltxtable}
+\usepackage{lipsum}
+\usepackage{pdflscape}
+\usepackage{siunitx}
+\usepackage{chngcntr}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage[normalem]{ulem}
+\usepackage{chngcntr,apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\sisetup{table-format=-1.3, table-space-text-post={**}}
+\usepackage{xr}
+\usepackage{etoolbox}
+\usetikzlibrary{positioning}
+\newcommand\fnsep{\textsuperscript{,}}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage[normalem]{ulem}
+\usepackage{chngcntr,apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usepackage{xr}
+\usepackage{etoolbox}
+\usetikzlibrary{positioning}
+
+%% UCLA colors: 
+% https://brand.ucla.edu/wp-content/uploads/ucla-color-palette-v10.pdf
+%\definecolor{UCLA}{RGB}{50, 132, 191}   % UCLA Blue primary
+%\definecolor{UCLA}{RGB}{52, 123, 173}   % UCLA Blue text only
+\definecolor{UCLAblue}{RGB}{30, 75, 135} % secondary color	
+\definecolor{UCLAgold}{RGB}{255, 232, 0} % UCLA Gold
+
+\definecolor{usccardinal}{rgb}{0.6, 0.0, 0.0}
+\definecolor{Matlabblue}{rgb}{0,0.447,0.741}
+\definecolor{bleudefrance}{rgb}{0.19,0.55, 0.91}
+\definecolor{cobalt}{rgb}{0.0, 0.28,0.67}
+\definecolor{darkblue}{rgb}{0.0, 0.0,0.55}
+\definecolor{darkcerulean}{rgb}{0.03,0.27, 0.49}
+\definecolor{darkpowderblue}{rgb}{0.0,0.2, 0.6}
+\definecolor{bleudefrance}{rgb}{0.19,0.55, 0.91}
+%\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
+
+\hypersetup{
+	colorlinks,
+	linkcolor={UCLAblue},
+	citecolor={UCLAblue},
+	urlcolor={UCLAblue},
+}
+
+\bibpunct{(}{)}{;}{a}{,}{,}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\var}{\mathrm{Var}}
+\newcommand{\cov}{\mathrm{Cov}}
+\setcounter{MaxMatrixCols}{20}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+\urlstyle{same}
+\usepackage{pgfplots} 
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false} 
+% puts figures and tables at the end of the document
+%\usepackage[nomarkers,nolists]{endfloat}               
+% puts ONLY figures at the end of the document
+%\usepackage[nomarkers,nolists,figuresonly]{endfloat}  
+% allows more than one figure per page for endfloat
+%\renewcommand{\efloatseparator}{\mbox{}}              
+\usepackage{rotating}
+% allows sideways tables and figures to be placed at the end of the document
+%\DeclareDelayedFloatFlavor{sidewaystable}{table}
+%\DeclareDelayedFloatFlavor{sidewaysfigure}{figure}
+
+% \usepackage[nomarkers,nolists]{endfloat} 
+% \renewcommand{\efloatseparator}{\mbox{}}              % allows more than one figure per page for endfloat
+
+%\usepackage{mathpazo}
+%\usepackage{mathpple}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{palatino}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false} 
+\newlength\figureheight 
+\newlength\figurewidth 
+\usepackage{mathtools}
+\usetikzlibrary{calc}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Notes customization %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{webblue}{rgb}{0,0,0.6}
+\definecolor{webgreen}{rgb}{0,.6,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+
+
+%- Commenting
+\let\oldmarginpar\marginpar
+\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\tiny #1]%
+{\raggedright\tiny #1}}
+\newcommand{\mknote}[1]{\marginpar{\textcolor{webblue}{\tiny{Mahyar: #1}}}}
+\newcommand{\dsnote}[1]{\marginpar{\textcolor{webgreen}{\tiny{Dejanir: #1}}}}
+
+\title{\textbf{A Model with Equity and Risky Debt Claims}}
+\author{ Dejanir Silva\thanks{Daniels School of Business, Purdue University, e-mail: \href{dejanir@purdue.edu}{dejanir@purdue.edu}.} \and Mahyar Kargar\thanks{University of Illinois at Urbana-Champaign, e-mail: \href{mailto:kargar@illinois.edu}{kargar@illinois.edu}.}}
+% \date{October 2019}
+%\date{\today\\
+%	\begin{small}
+%		First draft: May 5, 2018
+%\end{small}}
+\begin{document}
+	\sloppy
+	\maketitle
+	\thispagestyle{empty}
+	
+\doublespacing
+
+In these notes, we extend the baseline model to allow investors to trade a claim on equity and risky debt. 
+We proceed in two steps. 
+First, we consider a version where a claim on the aggregate endowment is the only asset in positive net supply. 
+In addition to the claim on the aggregate endowment, investors can trade a derivative, so markets are dynamically complete. 
+Then, we extend the model to allow for investors to trade an equity claim and a risky debt claim, where the dividends and debt payments add up to the aggregate endowment.
+
+
+\section{The economy with an aggregate claim}
+
+\subsection{Environment}
+
+\paragraph{Asset structure.}
+The aggregate endowment, $Y_t$, follows the process:
+\begin{equation}
+    \frac{d Y_t}{Y_t} = \mu dt + \sigma d Z_t,
+\end{equation}
+where $Z_t \in \mathbb{R}^d$ is a vector of independent standard Brownian motions. 
+The diffusion term $\sigma$ is a $d$-dimensional row vector. 
+In the baseline model, we have $d = 2$, capturing fundamental shocks to cash-flows and portfolio demand shocks to passive investors. 
+
+The price of the aggregate claim is $P_{Y,t}$, and it follows the process:
+\begin{equation}
+    \frac{d P_{Y,t}}{P_{Y,t}} = \mu_{P_Y,t} dt + \sigma_{P_Y,t} d Z_t.
+\end{equation}
+
+The return on a claim on the aggregate endowment follows the process:
+\begin{equation}
+    d R_{Y,t} = \mu_{R_Y,t} dt + \sigma_{R_Y,t} d Z_t,
+\end{equation}
+where $\mu_{R_Y,t} \equiv \frac{Y_t}{P_{Y,t}} + \mu_{P_Y,t}$ and $\sigma_{R_Y,t} = \sigma_{P_Y,t}$.
+
+Absence of arbitrage opportunities implies the existence of a stochastic discount factor (SDF), $eta_t$, which follows the process:
+\begin{equation}
+    \frac{d \eta_t}{\eta_t} = -r_t dt - \lambda_t d Z_t,
+\end{equation}
+where $r_t$ is the risk-free rate and $\lambda_t$ is the vector of market prices of risk.
+
+The risk premium on the aggregate claim is given by
+\begin{equation}
+    \pi_{Y,t} \equiv \mu_{R_Y,t} - r_t = \sigma_{R_Y,t} \lambda_t'.
+\end{equation}
+
+Investors can also trade a derivative in zero net supply. 
+The derivative gives a risk exposure $\sigma_{R_F,t}$ for a premium $\pi_{F,t} \equiv \sigma_{R_F,t} \lambda_t'$.
+As long as $\sigma_{R_F,t}$ is not proportional to $\sigma_{R_Y,t}$, markets are dynamically complete.
+We focus on the case where $\sigma_{R_F,t}$ is orthogonal to $\sigma_{R_Y,t}$, $\sigma_{R_F,t} \sigma_{R_Y,t}' = 0$, and we adopt the normalization $\|\sigma_{R_F,t}\|  = \|\sigma_{R_Y,t}\|$.
+
+Let $\Sigma_t$ denote the matrix of risk exposures:
+\begin{equation}
+    \Sigma_t = \begin{pmatrix}
+        \sigma_{R_Y,t} \\
+		 \sigma_{R_F,t}
+    \end{pmatrix},
+\end{equation}
+and $\pi_t \equiv [\pi_{Y,t}, \pi_{F,t} ]'$.
+
+The no-arbitrage condition can be written as
+\begin{equation}
+    \pi_t = \Sigma_t \lambda_t' \iff \lambda_t'  = \Sigma_t^{-1} \pi_t.
+\end{equation}
+
+\paragraph{Investors' problem.} 
+
+An investor of type $j = 0,\ldots,J$ solves
+\begin{equation}\label{eq:inv-problem}
+    V_{j,t} = \max_{[C_j,\alpha_j,\theta_j]} 
+    \mathbb{E}_t \left[ \int_t^\infty f_j(C_{j,s},V_{j,s})\, ds \right], \qquad s.t.
+\end{equation}
+% subject to the budget constraint  
+\begin{equation}
+dW_{j,t} = \big[(r_t + \pi_{Y,t} \alpha_{j,t} + \pi_{F,t} \theta_{j,t}) W_{j,t} - C_{j,t}\big] dt 
+    + \Sigma_{j,t} W_{j,t} \, dZ_t,
+\end{equation}
+where 
+\begin{equation}
+    \Sigma_{j,t} = \alpha_{j,t} \sigma_{R_Y,t} + \theta_{j,t} \sigma_{R_F,t},
+\end{equation}
+with $W_{j,t} \geq 0$ and $(\alpha_{j,t}, \theta_{j,t}) \in \Omega_{j,t}$. 
+
+For passive investors ($j=0$),  
+$\Omega_{0,t} = \{(\alpha_{0,t}, \theta_{0,t}): \alpha_{0,t} = \overline{\alpha}_{p,t}, \theta_{0,t} = 0\}$, where $\overline{\alpha}_{p,t}$ follows 
+\begin{equation}
+    d \overline{\alpha}_{p,t} = \theta_p (\overline{\alpha} - \overline{\alpha}_{p,t}) dt + \sigma_{p}  d Z_t.
+\end{equation}	
+For active investors ($j=1,\ldots,J$),  
+$\Omega_{j,t} = \{(\alpha_j, \theta_j): \| \Sigma_{j,t} \| \leq \overline{\sigma}\}$. 
+
+\paragraph{Market clearing.} The  market clearing conditions are
+\begin{equation}
+	\sum_{j=0}^J \omega_j C_{j,t} = Y_t, 
+	\qquad 
+	\sum_{j=0}^J \omega_j Q_{j,t} = 1, 
+	\qquad 
+	\sum_{j=0}^J \omega_j B_{j,t} = 0,
+	\qquad
+	\sum_{j=0}^J \omega_j W_{j,t} \theta_{j,t} = 0,
+\end{equation}
+where $Q_{j,t} = \alpha_{j,t} W_{j,t} / P_t$ and $B_{j,t} = (1-\alpha_{j,t}) W_{j,t}$ denote holdings of the risky and riskless assets. 
+
+\subsection{Characterization of the equilibrium}
+
+\paragraph{Value function and consumption-wealth ratio.} With homothetic preferences, investor $j$'s value function can be written as
+\begin{equation}\nonumber
+    V_{j,t} = \left( \frac{c_{j,t}}{\rho^\psi} \right)^{\frac{1-\gamma_j}{1-\psi}} 
+    \frac{W_{j,t}^{1-\gamma_j}}{1-\gamma_j}, \qquad \text{where} \qquad \frac{dc_{j,t}}{c_{j,t}} = \mu_{c_j,t}\, dt + \sigma_{c_j,t}\, dZ_t,
+\end{equation}
+and $c_{j,t} = c_j(X_t)$ corresponds to the consumption-wealth ratio: $\frac{C_{j,t}}{W_{j,t}} = c_{j,t}$.
+
+From the Hamilton-Jacobi-Bellman equation, the consumption-wealth ratio is
+\begin{equation}\label{eq:HJB_complete}
+    c_{j,t} = \psi \rho 
+    + (1-\psi) \left[ r_t + \pi_{Y,t} \alpha_{j,t} + \pi_{F,t} \theta_{j,t}
+        - \frac{\gamma_j}{2} \|\Sigma_{j,t}\|^2 \right] 
+    + \xi_{j,t},
+\end{equation}
+where 
+\[
+    \xi_{j,t} \equiv \mu_{c_j,t} 
+    + (1-\gamma_j) \sigma_{c_j,t} \Sigma_{j,t}' 
+    + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}.
+\]
+
+\paragraph{Optimal portfolio share and derivative exposure.} 
+The active investor chooses $(\alpha_{j,t},\theta_{j,t})$ to maximize the right-hand side of \eqref{eq:HJB_complete} subject to $\|\Sigma_{j,t}\|\le\overline{\sigma}$. 
+Denote the Lagrange multiplier on the leverage constraint by $\nu_{j,t}\ge 0$. The FOC with respect to $\alpha_{j,t}$ is
+\begin{equation}\label{eq:FOC_alpha_complete}
+    (1-\psi)\Big[\pi_{Y,t} - \gamma_j\,\Sigma_{j,t}\,\sigma_{R_Y,t}'\Big] + (1-\gamma_j)\,\sigma_{c_j,t}\,\sigma_{R_Y,t}' = \nu_{j,t}\,\Sigma_{j,t}\,\sigma_{R_Y,t}'.
+\end{equation}
+The FOC with respect to $\theta_{j,t}$ is
+\begin{equation}\label{eq:FOC_theta_complete}
+    (1-\psi)\Big[\pi_{F,t} - \gamma_j\,\Sigma_{j,t}\,\sigma_{R_F,t}'\Big] + (1-\gamma_j)\,\sigma_{c_j,t}\,\sigma_{R_F,t}' = \nu_{j,t}\,\Sigma_{j,t}\,\sigma_{R_F,t}'.
+\end{equation}
+
+Using the fact that $\pi_{Y,t} = \sigma_{R_Y,t} \lambda_t'$ and $\pi_{F,t} = \sigma_{R_F,t} \lambda_t'$, we can rewrite the FOC as follows:
+\begin{equation}
+	\left[ \lambda_t - \lambda_{j,t}  \right] \sigma_{R_Y,t}'  = 0, \qquad 
+	\left[ \lambda_t - \lambda_{j,t}  \right] \sigma_{R_F,t}'  = 0,
+\end{equation}
+where
+\begin{equation}
+	\lambda_{j,t} \equiv \gamma_j \left[\Sigma_{j,t} + \frac{1 - \gamma_j^{-1}}{1-\psi} \sigma_{c_j,t}\right] + \frac{\nu_{j,t}}{1-\psi} \Sigma_{j,t}.
+\end{equation}
+
+The optimality conditions above imply that
+\begin{equation}
+    \lambda_{j,t} = \lambda_t \iff \lambda_{j,t}' = \Sigma_t^{-1} \pi_t.
+\end{equation}
+
+\paragraph{Unconstrained solution.} 
+When the leverage constraint is not binding, $\nu_{j,t} = 0$, the optimality conditions above imply that
+\begin{equation}
+    \Sigma_{j,t} = \frac{\lambda_t}{\gamma_j} + \frac{1 - \gamma_j^{-1}}{\psi-1} \sigma_{c_j,t}.
+\end{equation}
+
+We can write $\Sigma_{j,t}$ as
+\begin{equation}
+    \Sigma_{j,t} = 
+	\begin{pmatrix}
+		\alpha_{j,t}, 
+		\theta_{j,t}
+	\end{pmatrix}
+	\Sigma_t \iff 
+	\begin{pmatrix}
+		\alpha_{j,t}, 
+		\theta_{j,t}
+	\end{pmatrix} = \Sigma_{j,t}\Sigma_t^{-1}.
+\end{equation}
+
+Equivalently, we can write the $\alpha_{j,t}$ and $\theta_{j,t}$ as
+\begin{equation}
+    \alpha_{j,t} = \frac{\pi_{Y,t}}{\gamma_j \|\sigma_{R_Y,t}\|^2} + \varsigma_{Y,j,t},
+\end{equation}
+where $\varsigma_{Y,j,t} \equiv \frac{1 - \gamma_j^{-1}}{\psi-1} \frac{\sigma_{c_j,t} \sigma_{R_Y,t}'}{\sigma_{R_Y,t} \sigma_{R_Y,t}'}$, 
+and
+\begin{equation}
+    \theta_{j,t} = \frac{\pi_{F,t}}{\gamma_j \|\sigma_{R_F,t}\|^2} + \varsigma_{F,j,t},
+\end{equation}
+where $\varsigma_{F,j,t} \equiv \frac{1 - \gamma_j^{-1}}{\psi-1} \frac{\sigma_{c_j,t} \sigma_{R_F,t}'}{\sigma_{R_F,t} \sigma_{R_F,t}'}$.
+
+\paragraph{Constrained solution.}
+When the leverage constraint is binding, $\nu_{j,t} > 0$, the optimality conditions above imply that
+\begin{equation}
+	\Sigma_{j,t} = \frac{\lambda_t}{\gamma_j} + \frac{1 - \gamma_j^{-1}}{\psi-1} \sigma_{c_j,t}+ \frac{\nu_{j,t}\gamma_j^{-1}}{\psi-1} \Sigma_{j,t},
+\end{equation}
+
+We can then write $\Sigma_{j,t}$ as:	
+\begin{equation}
+    \Sigma_{j,t} = \frac{\overline{\sigma}}{\|\Sigma_{j,t}^*\|}\,\Sigma_{j,t}^{*}.
+\end{equation}
+
+\paragraph{Risk premium and interest rate.} 
+
+Consider the case where the constraint is not binding for all active investors.
+Let $\mathcal{J}_t^u$ and $\mathcal{J}_t^c$ denote the sets of unconstrained and constrained active investors at time $t$, with wealth shares $x_{u,t} \equiv \sum_{j\in \mathcal{J}_t^u} x_{j,t}$ and $x_{c,t} \equiv \sum_{j\in \mathcal{J}_t^c} x_{j,t}$. From market clearing for the risky asset, demand from unconstrained investors satisfies
+\begin{equation}\label{eq:mkt-clearing}
+    \underbrace{\sum_{j=1}^J x_{j,t} \alpha_{j,t} }_{\substack{\text{active demand}}} = \underbrace{1 - x_{0,t} \overline{\alpha}_{p,t} }_{\text{net supply}}.
+\end{equation}
+% \footnote{
+% % This condition is the dynamic analogue of the static risky-asset market clearing condition. 
+% % since $\omega_j Q_{j,t} = x_{j,t} \alpha_{j,t}$. 
+% When all active investors are unconstrained, this condition collapses to the benchmark in Section~\ref{sec:simple}: the demand from active investors must equal the total supply minus the amount held by passive investors.}  
+
+Combining this condition with the optimal portfolios yields the risk premium:
+\begin{equation}\label{eq:sharpe_ratio}
+    \pi_{Y,t} = \frac{\gamma_{u,t} \|\sigma_{R_Y,t}\|^2}{x_{a,t}}
+    \left[ 1 - x_{0,t}\, \overline{\alpha}_{p,t}
+    - x_{a,t}\, \varsigma_{Y,t} \right],
+\end{equation}
+where $\gamma_{u,t} \equiv [\sum_{j=1}^J \frac{x_{j,t}}{x_{a,t}} \frac{1}{\gamma_j}]^{-1}$ is the average risk aversion and $\varsigma_{Y,t} \equiv \sum_{j=1}^J \frac{x_{j,t}}{x_{a,t}} \varsigma_{Y,j,t}$ the average hedging demand of unconstrained investors.  
+
+The market clearing condition for the derivative is:	
+\begin{equation}
+    \sum_{j=1}^J x_{j,t} \theta_{j,t} = 0.
+\end{equation}
+Combining this condition with the optimal portfolios yields the risk premium:
+\begin{equation}
+    \pi_{F,t} = -\gamma_{u,t} \|\sigma_{R_F,t}\|^2
+     \varsigma_{F,t},
+\end{equation}
+where $\varsigma_{F,t} \equiv \sum_{j=1}^J \frac{x_{j,t}}{x_{a,t}} \varsigma_{F,j,t}$ the average hedging demand of unconstrained investors.  
+Goods market clearing requires
+\begin{equation}
+    \sum_{j=0}^J x_{j,t} c_{j,t} = \frac{1}{p_t}.
+\end{equation}
+The equilibrium interest rate:
+\begin{align}\label{eq:interest_rate}
+    r_t &= \rho + \psi^{-1} (\mu_{P,t} + \xi_t )
+    + (1-\psi^{-1}) \sum_{j=0}^J x_{j,t} 
+        \frac{\gamma_j}{2} \|\Sigma_{j,t}\|^2
+    - \pi_{Y,t},
+\end{align}
+where $\xi_t \equiv \sum_{j=0}^J x_{j,t} \xi_{j,t}$.  
+
+\section{The economy with equity and risky debt claims}
+
+\subsection{Environment}
+
+Aggregate endowment follows
+\[
+    \frac{dY_t}{Y_t}=\mu\,dt+\sigma\,dZ_t,
+\]
+where $Z_t$ is a $d$-dimensional Brownian motion and $\sigma\in\mathbb{R}^{1\times d}$.
+
+Dividends are a stochastic share of output, $D_t=s_tY_t$, where the share $s_t\in(0,1)$ follows
+\begin{equation}\label{eq:s_process}
+    ds_t=\kappa_s(\overline{s}-s_t)\,dt + s_t(1-s_t)\,\sigma_s\,dZ_t,
+\end{equation}
+with $\kappa_s>0$, $\overline{s}\in(0,1)$, and $\sigma_s\in\mathbb{R}^{1\times d}$. 
+In this version of the model, we will have $d = 3$, capturing fundamental shocks to cash-flows, portfolio demand shocks to passive investors, and a dividend share shock.
+
+The risky-debt cash flow is the residual
+\[
+    B_t=(1-s_t)Y_t,
+    \qquad\text{so that}\qquad
+    D_t+B_t=Y_t.
+\]
+
+As shown above, applying It\^{o}'s lemma implies
+\begin{equation}\label{eq:D_dynamics_vector}
+    \frac{dD_t}{D_t}=\mu_D(s_t)\,dt+\sigma_D(s_t)\,dZ_t,
+\end{equation}
+where
+\begin{equation}\label{eq:D_mu_sigma_vector}
+    \sigma_D(s)=\sigma + (1-s)\sigma_s,
+    \qquad
+    \mu_D(s)=\mu + \kappa_s\!\left(\frac{\overline{s}}{s}-1\right) + (1-s)\,\sigma\sigma_s',
+\end{equation}
+and $\sigma\sigma_s'$ denotes the scalar inner product.
+
+Similarly, for risky debt,
+\begin{equation}\label{eq:B_dynamics_vector}
+    \frac{dB_t}{B_t}=\mu_B(s_t)\,dt+\sigma_B(s_t)\,dZ_t,
+\end{equation}
+with
+\begin{equation}\label{eq:B_mu_sigma_vector}
+    \sigma_B(s)=\sigma - s\sigma_s,
+    \qquad
+    \mu_B(s)=\mu - \kappa_s\!\left(\frac{\overline{s}-s}{1-s}\right) - s\,\sigma\sigma_s'.
+\end{equation}
+
+\paragraph{Equity and debt claims.} Let $P_{D,t}$ and $P_{B,t}$ denote the ex-dividend prices of claims to dividend and bond cash flows, respectively. Define instantaneous returns on the two risky claims:
+\begin{align}
+    dR_{D,t} &\equiv \frac{dP_{D,t}+D_t\,dt}{P_{D,t}}
+    = \mu_{R_D,t}\,dt+\sigma_{R_D,t}\,dZ_t, \label{eq:RD_def}\\
+    dR_{B,t} &\equiv \frac{dP_{B,t}+B_t\,dt}{P_{B,t}}
+    = \mu_{R_B,t}\,dt+\sigma_{R_B,t}\,dZ_t. \label{eq:RB_def}
+\end{align}
+In a Markov equilibrium, prices depend on an aggregate state vector that includes $s_t$; thus $(r_t,\mu_{R_i,t},\sigma_{R_i,t})$ are functions of $(\ldots,s_t)$.
+
+Absence of arbitrage opportunities implies the risk premium is given by
+\begin{equation}
+    \pi_{D,t} = \sigma_{R_D,t} \lambda_t', \qquad \qquad 
+	\pi_{B,t} = \sigma_{R_B,t} \lambda_t',
+\end{equation}
+where $\lambda_t$ is the market price of risk.
+
+Since $D_t+B_t=Y_t$, the combined claim replicates a claim to the aggregate endowment. Denoting the endowment-claim price by $P_{Y,t}$, we must have
+\begin{equation}\label{eq:replication_prices}
+    P_{Y,t}=P_{D,t}+P_{B,t}.
+\end{equation}
+
+\paragraph{Derivative claim.}
+Let $\sigma_{R_F,t}$ be the $1\times 3$ vector of risk exposure of the derivative claim. 
+We assume that the last component of $\sigma_{R_F,t}$ is equal to zero, $\sigma_{R_F,3,t} = 0$. 
+As before, we assume that $\sigma_{R_F,t}$ is orthogonal to $\sigma_{R_Y,t}$, $\sigma_{R_F,t} \sigma_{R_Y,t}' = 0$, and we adopt the normalization $\|\sigma_{R_F,t} \| = \|\sigma_{R_Y,t} \|$.
+
+\paragraph{Price of risk.} Let $\Sigma_t$ denote the matrix of risk exposures:
+\begin{equation}
+    \Sigma_t = \begin{pmatrix}
+        \sigma_{R_B,t} \\
+		\sigma_{R_D,t} \\
+		 \sigma_{R_F,t}
+    \end{pmatrix}.
+\end{equation}
+and $\pi_t \equiv [\pi_{B,t}, \pi_{D,t}, \pi_{F,t} ]'$.
+
+The no-arbitrage condition can be written as
+\begin{equation}
+    \pi_t = \Sigma_t \lambda_t' \iff \lambda_t'  = \Sigma_t^{-1} \pi_t.
+\end{equation}
+
+\paragraph{Investors' problem.} 
+
+An investor of type $j = 0,\ldots,J$ solves
+\begin{equation}\label{eq:inv-problem}
+    V_{j,t} = \max_{[C_j,\alpha_j,\theta_j]} 
+    \mathbb{E}_t \left[ \int_t^\infty f_j(C_{j,s},V_{j,s})\, ds \right], \qquad s.t.
+\end{equation}
+% subject to the budget constraint  
+\begin{equation}
+dW_{j,t} = \big[(r_t + \pi_{B,t} \alpha_{j,B,t}+ \pi_{D,t} \alpha_{j,D,t} + \pi_{F,t} \theta_{j,t}) W_{j,t} - C_{j,t}\big] dt 
+    + \Sigma_{j,t} W_{j,t} \, dZ_t,
+\end{equation}
+where 
+\begin{equation}
+    \Sigma_{j,t} = \alpha_{j,D,t} \sigma_{R_D,t} +\alpha_{j,B,t} \sigma_{R_B,t} + \theta_{j,t} \sigma_{R_F,t},
+\end{equation}
+with $W_{j,t} \geq 0$ and $(\alpha_{j,D,t}, \alpha_{j,B,t}, \theta_{j,t}) \in \Omega_{j,t}$. 
+
+For passive investors ($j=0$),  
+$\Omega_{0,t} = \{(\alpha_{0,D,t}, \alpha_{0,B,t}, \theta_{0,t}): \alpha_{0,D,t} = \overline{\alpha}_{p,t} \omega_{D,t}, \alpha_{0,B,t} = \overline{\alpha}_{p,t} \omega_{B,t}, \theta_{0,t} = 0\}$, where $\overline{\alpha}_{p,t}$ follows 
+\begin{equation}
+    d \overline{\alpha}_{p,t} = \theta_p (\overline{\alpha} - \overline{\alpha}_{p,t}) dt + \sigma_{p}  d Z_t,
+\end{equation}	
+and $\omega_{D,t} \equiv \frac{P_{D,t}}{P_{D,t}+P_{B,t}}$ and $\omega_{B,t} \equiv \frac{P_{B,t}}{P_{D,t}+P_{B,t}}$ are the market weights of the dividend and bond claims.
+For active investors ($j=1,\ldots,J$),  
+$\Omega_{j,t} = \{(\alpha_j, \theta_j): \| \Sigma_{j,t} \| \leq \overline{\sigma}\}$. 
+
+\paragraph{Market clearing.} The  market clearing conditions are
+\begin{equation}
+	\sum_{j=0}^J \omega_j C_{j,t} = Y_t, 
+	\qquad 
+	\sum_{j=0}^J \omega_j Q_{j,D,t} = 1, 
+	\qquad 
+	\sum_{j=0}^J \omega_j Q_{j,B,t} = 1, 
+	\qquad 
+	\sum_{j=0}^J \omega_j B_{j,t} = 0,
+	\qquad
+	\sum_{j=0}^J \omega_j W_{j,t} \theta_{j,t} = 0,
+\end{equation}
+where $Q_{j,D,t} = \alpha_{j,D,t} W_{j,t} / P_{D,t}$ and $Q_{j,B,t} = \alpha_{j,B,t} W_{j,t} / P_{B,t}$ denote holdings of the dividend and bond claims. 
+
+\subsection{Characterization of the equilibrium}
+
+\paragraph{Value function and consumption-wealth ratio.} With homothetic preferences, investor $j$'s value function can be written as
+\begin{equation}\nonumber
+    V_{j,t} = \left( \frac{c_{j,t}}{\rho^\psi} \right)^{\frac{1-\gamma_j}{1-\psi}} 
+    \frac{W_{j,t}^{1-\gamma_j}}{1-\gamma_j}, \qquad \text{where} \qquad \frac{dc_{j,t}}{c_{j,t}} = \mu_{c_j,t}\, dt + \sigma_{c_j,t}\, dZ_t,
+\end{equation}
+and $c_{j,t} = c_j(X_t)$ corresponds to the consumption-wealth ratio: $\frac{C_{j,t}}{W_{j,t}} = c_{j,t}$.
+
+From the Hamilton-Jacobi-Bellman equation, the consumption-wealth ratio is
+\begin{equation}\label{eq:HJB_complete}
+    c_{j,t} = \psi \rho 
+    + (1-\psi) \left[ r_t + \pi_{D,t} \alpha_{j,D,t} + \pi_{B,t} \alpha_{j,B,t} + \pi_{F,t} \theta_{j,t}
+        - \frac{\gamma_j}{2} \|\Sigma_{j,t}\|^2 \right] 
+    + \xi_{j,t},
+\end{equation}
+where 
+\[
+    \xi_{j,t} \equiv \mu_{c_j,t} 
+    + (1-\gamma_j) \sigma_{c_j,t} \Sigma_{j,t}' 
+    + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}.
+\]
+
+\paragraph{Optimal portfolio share and derivative exposure.} 
+The active investor chooses $(\alpha_{j,D,t},\alpha_{j,B,t},\theta_{j,t})$ to maximize the right-hand side of \eqref{eq:HJB_complete} subject to $\|\Sigma_{j,t}\|\le\overline{\sigma}$. 
+Denote the Lagrange multiplier on the leverage constraint by $\nu_{j,t}\ge 0$. The FOC with respect to $\alpha_{j,D,t}$ and $\alpha_{j,B,t}$ are respectively:
+\begin{align}\label{eq:FOC_alpha_D_complete}
+    (1-\psi)\Big[\pi_{D,t} - \gamma_j\,\Sigma_{j,t}\,\sigma_{R_D,t}'\Big] + (1-\gamma_j)\,\sigma_{c_j,t}\,\sigma_{R_D,t}' &= \nu_{j,t}\,\Sigma_{j,t}\,\sigma_{R_D,t}'\\
+    (1-\psi)\Big[\pi_{B,t} - \gamma_j\,\Sigma_{j,t}\,\sigma_{R_B,t}'\Big] + (1-\gamma_j)\,\sigma_{c_j,t}\,\sigma_{R_B,t}' &= \nu_{j,t}\,\Sigma_{j,t}\,\sigma_{R_B,t}'.
+\end{align}
+The FOC with respect to $\theta_{j,t}$ is
+\begin{equation}\label{eq:FOC_theta_complete}
+    (1-\psi)\Big[\pi_{F,t} - \gamma_j\,\Sigma_{j,t}\,\sigma_{R_F,t}'\Big] + (1-\gamma_j)\,\sigma_{c_j,t}\,\sigma_{R_F,t}' = \nu_{j,t}\,\Sigma_{j,t}\,\sigma_{R_F,t}'.
+\end{equation}
+
+Using the fact that $\pi_{D,t} = \sigma_{R_D,t} \lambda_t'$, $\pi_{B,t} = \sigma_{R_B,t} \lambda_t'$, and $\pi_{F,t} = \sigma_{R_F,t} \lambda_t'$, we can rewrite the FOC as follows:
+\begin{equation}
+	\left[ \lambda_t - \lambda_{j,t}  \right] \sigma_{R_B,t}'  = 0, \qquad 
+	\left[ \lambda_t - \lambda_{j,t}  \right] \sigma_{R_D,t}'  = 0, \qquad 
+	\left[ \lambda_t - \lambda_{j,t}  \right] \sigma_{R_F,t}'  = 0,
+\end{equation}
+where
+\begin{equation}
+	\lambda_{j,t} \equiv \gamma_j \left[\Sigma_{j,t} + \frac{1 - \gamma_j^{-1}}{1-\psi} \sigma_{c_j,t}\right] + \frac{\nu_{j,t}}{1-\psi} \Sigma_{j,t}.
+\end{equation}
+
+The optimality conditions above imply that
+\begin{equation}
+    \lambda_{j,t} = \lambda_t \iff \lambda_{j,t}' = \Sigma_t^{-1} \pi_t.
+\end{equation}
+
+\subsection{Verifying the conjecture}
+
+Let $(c_{j,t}^ *, \alpha_{j,t}^ *, \theta_{j,t}^ *)$ denote the solution to the investors' problem in the economy with the aggregate claim.
+We conjecture that $c_{j,t} = c_{j,t}^*$, $\alpha_{j,D,t} = \omega_{D,t} \alpha_{j,t}^*$, $\alpha_{j,B,t} = \omega_{B,t} \alpha_{j,t}^*$, and $\theta_{j,t} = \theta_{j,t}^*$ for all $j$.
+This implies that $\Sigma_{j,t} = (\Sigma_{j,t}^ *, 0)$, as investors are not exposed to the dividend share shock in the baseline model.
+Similarly, we have $\sigma_{c_j,t} = (\sigma_{c_j,t}^*,0)$ and $\lambda_{j,t} = (\lambda_{j,t}^*,0)$.
+
+Using the fact that $\pi_{Y,t} = \omega_{D,t} \pi_{D,t} + \omega_{B,t} \pi_{B,t}$ and 
+$\sigma_{R_Y,t} = \omega_{D,t} \sigma_{R_D,t} + \omega_{B,t} \sigma_{R_B,t}$, we have that $c_{j,t} = c_{j,t}^*$ for all $j$ satisfies the HJB equation.
+Given $\Sigma_{j,t} = (\Sigma_{j,t}^*,0)$, and the fact that the third entry of $\sigma_{c_j,t}$ is zero, we have that the first-order condition for the derivative is satisfied.
+
+
+Using the fact that $\pi_{D,t} = \sigma_{R_D,t} \lambda_t'$ and $\pi_{B,t} = \sigma_{R_B,t} \lambda_t'$, and that the third entry of $\lambda_t$ is zero, we have that the first-order condition for the equity and debt claims are satisfied.
+
+The market clearing conditions for the equity and debt claims can be written as
+\begin{equation}
+	\sum_{j=0}^J x_{j,t} \alpha_{j,D,t} = \omega_{D,t}, 
+	\qquad 
+	\sum_{j=0}^J x_{j,t} \alpha_{j,B,t} = \omega_{B,t}
+\end{equation}
+
+Using the fact that $\alpha_{0,D,t} = \overline{\alpha}_{p,t} \omega_{D,t}$, we obtain
+\begin{equation}
+	\left(x_{0,t}\overline{\alpha}_{p,t} + \sum_{j=1}^J x_{j,t} \alpha_{j,t}\right) \omega_{k,t} = \omega_{k,t} \Rightarrow x_{0,t}\overline{\alpha}_{p,t} + \sum_{j=1}^J x_{j,t} \alpha_{j,t} = 1,
+\end{equation}
+for $k = \{D, B\}$. Hence, the market clearing conditions for the equity and debt claims are satisfied.
+
+Our conjecture implies that the remaining market clearing conditions are also satisfied.
+This completes the verification of the conjecture.
+
+\subsection{Pricing the dividend and risky debt claims}
+
+Let $\hat X_t = (X_t,s_t)$ denote the vector of aggregate state variables in the model with the dividend and risky-debt claims, where $X_t$ is the vector of aggregate state variables in the baseline model.
+
+From the baseline model (which only includes the aggregate endowment claim), the stochastic discount factor satisfies
+\begin{equation}
+\frac{d\eta_t}{\eta_t} = -r(X_t)dt - \lambda(X_t)dZ_t,
+\end{equation}
+where $r(X_t)$ is the short rate and $\lambda(X_t)$ is the market price of risk. Importantly, these objects depend only on $X_t$ and are therefore independent of the dividend share $s_t$. This property allows us to solve first for the equilibrium dynamics of $X_t$ and the SDF in the baseline economy and then price individual claims given these dynamics.
+
+The pricing condition for each asset $k \in \{D,B\}$ is
+\begin{equation}
+\mu_{R_k,t} - r_t = \sigma_{R_k,t}\lambda_t',
+\end{equation}
+where diffusion terms are written as row vectors.
+
+\paragraph{Valuation ratios.}
+
+Let $p_{k,t} \equiv P_{k,t}/Y_t$ denote the valuation ratio of claim $k$, where $Y_t$ follows
+\begin{equation}
+\frac{dY_t}{Y_t} = \mu dt + \sigma dZ_t,
+\end{equation}
+with constant $\mu$ and $\sigma$ (with $\sigma$ a $1\times d$ row vector). Since the valuation ratio may depend on both the aggregate state and the dividend share, we write
+\begin{equation}
+p_{k,t} = p_k(X_t,s_t).
+\end{equation}
+
+The state variables evolve according to
+\begin{align}
+dX_t &= \mu_X(X_t)dt + \sigma_X(X_t)dZ_t, \\
+ds_t &= \mu_s(s_t)dt + \sigma_s(s_t)dZ_t,
+\end{align}
+where $\sigma_X(X_t)$ is an $m \times d$ diffusion matrix and $\sigma_s(s_t)$ is a $1\times d$ row vector. In our specification
+\begin{equation}
+\mu_s(s_t) = \kappa_s(\bar s - s_t),
+\qquad
+\sigma_s(s_t) = s_t(1-s_t)\bar\sigma_s,
+\end{equation}
+with constant $\bar\sigma_s$.
+
+Using the convention that derivatives are row vectors, define
+\[
+p_X \equiv \frac{\partial p_k}{\partial X}\in\mathbb{R}^{1\times m},
+\qquad
+p_s \equiv \frac{\partial p_k}{\partial s}\in\mathbb{R},
+\]
+and let $p_{XX}\in\mathbb{R}^{m\times m}$, $p_{Xs}\in\mathbb{R}^{1\times m}$, and $p_{ss}\in\mathbb{R}$ denote the corresponding second derivatives.
+
+Applying It\^{o}'s lemma to $p_{k,t}=p_k(X_t,s_t)$ yields
+\begin{equation}
+\frac{dp_{k,t}}{p_{k,t}} = \mu_{p_k,t}dt + \sigma_{p_k,t}dZ_t,
+\end{equation}
+where the diffusion term is
+\begin{equation}
+\sigma_{p_k,t}
+=
+\frac{1}{p_{k,t}}
+\left(
+p_X\sigma_X + p_s\sigma_s
+\right)
+\end{equation}
+and the drift term is
+\begin{align}
+\mu_{p_k,t}
+=
+\frac{1}{p_{k,t}}
+\Bigg[
+&p_X\mu_X + p_s\mu_s \notag\\
+&+\frac12
+\Big(
+\mathrm{tr}(\sigma_X\sigma_X' p_{XX})
++2\,p_{Xs}(\sigma_X\sigma_s')
++(\sigma_s\sigma_s')p_{ss}
+\Big)
+\Bigg].
+\end{align}
+The cross term $p_{Xs}(\sigma_X\sigma_s')$ reflects the instantaneous covariance $d\langle X,s\rangle_t=\sigma_X\sigma_s' dt$; it disappears if $\sigma_X\sigma_s'=0$.
+
+\paragraph{Returns.}
+
+Since $P_{k,t}=p_{k,t}Y_t$, the return volatility is
+\begin{equation}
+\sigma_{R_k,t} = \sigma + \sigma_{p_k,t},
+\end{equation}
+and the expected return is
+\begin{equation}
+\mu_{R_k,t}
+=
+\frac{s_{k,t}}{p_{k,t}}
++
+\mu
++
+\mu_{p_k,t}
++
+\langle \sigma, \sigma_{p_k,t} \rangle,
+\qquad
+\langle a,b\rangle \equiv a b'.
+\end{equation}
+Here $s_{D,t}=s_t$ and $s_{B,t}=1-s_t$.
+
+Substituting these expressions into the pricing condition
+$\mu_{R_k,t}-r_t=\sigma_{R_k,t}\lambda_t'$ yields the partial differential equation for the valuation ratio $p_k(X,s)$:
+\begin{align}
+0=&\;
+p_X\,\mu_X(X)+p_s\,\mu_s(s) \notag\\
+&+
+\frac12
+\Big[
+\mathrm{tr}(\sigma_X(X)\sigma_X(X)'p_{XX})
++
+2\,p_{Xs}(\sigma_X(X)\sigma_s(s)')
++
+(\sigma_s(s)\sigma_s(s)')p_{ss}
+\Big] \notag\\
+&-(r(X)-\mu)p_k(X,s)
++
+s_k(s) \notag\\
+&+
+p_k(X,s)\,\sigma\,\sigma_{p_k}(X,s)' \notag\\
+&-
+p_k(X,s)\,\sigma\,\lambda(X)' \notag\\
+&-
+p_k(X,s)\,\sigma_{p_k}(X,s)\lambda(X)' .
+\end{align}
+
+% \paragraph{Risk-neutral generator form.}
+
+% Define the risk-neutral drifts
+% \[
+% \tilde\mu_X(X) \equiv \mu_X(X) - \sigma_X(X)\lambda(X)',
+% \qquad
+% \tilde\mu_s(X,s) \equiv \mu_s(s) - \sigma_s(s)\lambda(X)'.
+% \]
+% Let the corresponding generator acting on $p_k(X,s)$ be
+% \begin{align}
+% \tilde{\mathcal L}p_k
+% \equiv&\;
+% p_X\,\tilde\mu_X(X) + p_s\,\tilde\mu_s(X,s) \notag\\
+% &+\frac12\Big[
+% \mathrm{tr}(\sigma_X(X)\sigma_X(X)' p_{XX})
+% +2\,p_{Xs}(\sigma_X(X)\sigma_s(s)')
+% +(\sigma_s(s)\sigma_s(s)')p_{ss}
+% \Big].
+% \end{align}
+% Then the valuation ratio $p_k(X,s)$ solves
+% \begin{equation}
+% \tilde{\mathcal L}p_k(X,s)
+% -(r(X)-\mu+\sigma\lambda(X)')\,p_k(X,s)
+% +s_k(s)
+% +p_k(X,s)\,(\sigma-\lambda(X))\,\sigma_{p_k}(X,s)'
+% =0,
+% \end{equation}
+% where
+% \[
+% \sigma_{p_k}(X,s)=\frac{1}{p_k(X,s)}\Big(p_X\sigma_X(X)+p_s\sigma_s(s)\Big).
+% \]
+
+
+\newpage
+\singlespacing
+%\bibliographystyle{jf}
+\phantomsection\addcontentsline{toc}{section}{\refname}
+\clearpage
+%{\small
+\bibliography{../references.bib}
+\end{document}

@@ -1,0 +1,226 @@
+\documentclass[11pt,english]{article}
+\bibliographystyle{jf}
+\usepackage[longnamesfirst]{natbib}
+%\usepackage[T1]{fontenc}
+\usepackage{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bottom]{footmisc}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{amsmath,enumerate}
+\usepackage{amsthm}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage[labelfont=bf,justification=justified,font=small,skip=2pt,labelsep=period]{caption}
+%\usepackage[labelfont=bf,justification=justified,labelsep=period]{caption}
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage{arydshln}
+\usepackage{chngpage}
+\usepackage{float,appendix}
+\usepackage{afterpage}
+\usepackage{verbatim}
+\usepackage{indentfirst}
+\usepackage[margin=1in]{geometry}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+% \usepackage{longtable}
+\usepackage{booktabs, makecell, longtable,ltxtable}
+\usepackage{lipsum}
+\usepackage{pdflscape}
+\usepackage{siunitx}
+\usepackage{chngcntr}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage[normalem]{ulem}
+\usepackage{chngcntr,apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\sisetup{table-format=-1.3, table-space-text-post={**}}
+\usepackage{xr}
+\usepackage{etoolbox}
+\usetikzlibrary{positioning}
+\newcommand\fnsep{\textsuperscript{,}}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage[normalem]{ulem}
+\usepackage{chngcntr,apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usepackage{xr}
+\usepackage{etoolbox}
+\usetikzlibrary{positioning}
+
+%% UCLA colors: 
+% https://brand.ucla.edu/wp-content/uploads/ucla-color-palette-v10.pdf
+%\definecolor{UCLA}{RGB}{50, 132, 191}   % UCLA Blue primary
+%\definecolor{UCLA}{RGB}{52, 123, 173}   % UCLA Blue text only
+\definecolor{UCLAblue}{RGB}{30, 75, 135} % secondary color	
+\definecolor{UCLAgold}{RGB}{255, 232, 0} % UCLA Gold
+
+\definecolor{usccardinal}{rgb}{0.6, 0.0, 0.0}
+\definecolor{Matlabblue}{rgb}{0,0.447,0.741}
+\definecolor{bleudefrance}{rgb}{0.19,0.55, 0.91}
+\definecolor{cobalt}{rgb}{0.0, 0.28,0.67}
+\definecolor{darkblue}{rgb}{0.0, 0.0,0.55}
+\definecolor{darkcerulean}{rgb}{0.03,0.27, 0.49}
+\definecolor{darkpowderblue}{rgb}{0.0,0.2, 0.6}
+\definecolor{bleudefrance}{rgb}{0.19,0.55, 0.91}
+%\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
+
+\hypersetup{
+	colorlinks,
+	linkcolor={UCLAblue},
+	citecolor={UCLAblue},
+	urlcolor={UCLAblue},
+}
+
+\bibpunct{(}{)}{;}{a}{,}{,}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\var}{\mathrm{Var}}
+\newcommand{\cov}{\mathrm{Cov}}
+\setcounter{MaxMatrixCols}{20}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+\urlstyle{same}
+\usepackage{pgfplots} 
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false} 
+% puts figures and tables at the end of the document
+%\usepackage[nomarkers,nolists]{endfloat}               
+% puts ONLY figures at the end of the document
+%\usepackage[nomarkers,nolists,figuresonly]{endfloat}  
+% allows more than one figure per page for endfloat
+%\renewcommand{\efloatseparator}{\mbox{}}              
+\usepackage{rotating}
+% allows sideways tables and figures to be placed at the end of the document
+%\DeclareDelayedFloatFlavor{sidewaystable}{table}
+%\DeclareDelayedFloatFlavor{sidewaysfigure}{figure}
+
+% \usepackage[nomarkers,nolists]{endfloat} 
+% \renewcommand{\efloatseparator}{\mbox{}}              % allows more than one figure per page for endfloat
+
+%\usepackage{mathpazo}
+%\usepackage{mathpple}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{palatino}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false} 
+\newlength\figureheight 
+\newlength\figurewidth 
+\usepackage{mathtools}
+\usetikzlibrary{calc}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Notes customization %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{webblue}{rgb}{0,0,0.6}
+\definecolor{webgreen}{rgb}{0,.6,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+
+
+%- Commenting
+\let\oldmarginpar\marginpar
+\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\tiny #1]%
+{\raggedright\tiny #1}}
+\newcommand{\mknote}[1]{\marginpar{\textcolor{webblue}{\tiny{Mahyar: #1}}}}
+\newcommand{\dsnote}[1]{\marginpar{\textcolor{webgreen}{\tiny{Dejanir: #1}}}}
+\usepackage[en-US]{datetime2}
+\usepackage{mathtools}
+ \usepackage{xcolor}
+
+\newcommand{\comments}[1]
+{\par {\bfseries \color{blue} #1 \par}}
+
+\usepackage[draft]{todonotes}
+
+\title{\textbf{A Note on Portfolio Demand Elasticities}}
+\author{ Dejanir Silva\thanks{Gies College of Business, University of Illinois at Urbana-Champaign, e-mail: \href{dejanir@illinois.edu}{dejanir@illinois.edu}.}}
+\date{November 2020}
+%\date{\today\\
+%	\begin{small}
+%		First draft: May 5, 2018
+%\end{small}}
+\begin{document}
+	\maketitle
+	
+\section{A Lucas Economy with Labor Income}
+
+Consider an economy where aggregate endowment follows a geometric Brownian motion
+\begin{equation*}
+    \frac{d Y_t}{Y_t} = \mu dt + \sigma d Z_t.
+\end{equation*}
+
+Investors have access to a riskless and a risky asset paying dividends $D_t = \psi Y_t$. Investors also receive non-business (labor) income $I_t = (1-\psi) Y_t$. In equilibrium, the interest rate $r$ and the risk premium $\pi$ will be constant. The price of the risky asset will be given by $P_t = \frac{D_t}{r+\pi -\mu}$. 
+
+Investors have CRRA preferences and choose consumption $C_t$ and the share of financial wealth invested in the risky asset:
+\begin{equation*}
+    V(W, I) = \max_{[C_s, Q_s]} \mathbb{E}_t\left[ \int_t^\infty e^{-\rho (s- t)} C_{s} ds \right]
+\end{equation*}
+subject to
+\begin{equation*}
+    d W_t = \left[ r W_t + \pi \alpha_t W_t + I_t - C_t  \right] dt + \sigma \alpha_t W_t d Z_t.
+\end{equation*}
+
+The HJB equation for this problem is
+\begin{equation*}
+    \rho V = \max_{C, \alpha} \frac{C^{1-\gamma}}{1-\gamma} + V_W\left[ r W + \pi \alpha W + I  - C\right] + V_I \mu I+ \frac{1}{2} V_{WW} W^2 \alpha^2 \sigma^2 + V_{WI} W  I \alpha \sigma^2 + \frac{1}{2} V_{II} I^2 \sigma^2
+\end{equation*}
+
+The optimal consumption and portfolio share satisfy the conditions
+\begin{equation*}
+ C = V_W^{-\frac{1}{\gamma}}, \qquad     \alpha = -\frac{V_{W} \pi}{V_{WW} W \sigma^2}   - \frac{V_{WI}I}{V_{WW} W}
+\end{equation*}
+
+The value function for this problem is given by
+\begin{equation*}
+    V(W,I) = A \frac{\left( W + H(I) \right)^{1-\gamma}}{1-\gamma},
+\end{equation*}
+where $H(I) = \frac{I}{r+ \pi - \mu}$ is the investor's human wealth.
+
+The portfolio share is given by
+\begin{equation*}
+    \frac{\alpha W}{W+H} = \frac{\pi}{\gamma\sigma^2} - \frac{H}{W+H} 
+\end{equation*}
+
+\begin{equation*}
+    \frac{P Q}{W} = \frac{1+\frac{H}{W}}{\gamma \sigma^2} \pi - \frac{H}{W} 
+\end{equation*}
+
+
+Using $W = \psi (W+H)$ and $H = (1-\psi) (W+H)$ and denoting the quantity demanded by the investor is given by
+\begin{equation*}
+    \psi \frac{P Q}{W} = \frac{\pi}{\gamma\sigma^2} - (1-\psi)
+\end{equation*}
+
+In equilibrium, we have that $P = W$, $Q = 1$, and $\pi = \gamma \sigma^2$. The impact of a small (permanent) change in the price on the quantity demanded is given by
+\begin{equation*}
+    q = - \frac{1}{\psi \pi} \frac{D_t}{P_t} p
+\end{equation*}
+where $p = \frac{dP}{P}$. 
+
+\begin{equation*}
+    \frac{d q}{q} = (1-\psi^{-1}) \frac{1-\alpha_p}{\omega_A} \frac{\gamma \sigma^2}{c^*}  \frac{F}{W}
+\end{equation*}
+
+\newpage
+\singlespacing
+%\bibliographystyle{jf}
+\phantomsection\addcontentsline{toc}{section}{\refname}
+\clearpage
+%{\small
+\bibliography{references.bib}
+\end{document}

@@ -1,0 +1,27 @@
+# Keep Overleaf focused on the paper project only.
+src/
+literature/
+Notes/
+submissions/
+.vscode/
+
+# Local environments / tooling files not needed in Overleaf.
+Manifest.toml
+Project.toml
+bootstrap.jl
+
+# LaTeX build artifacts.
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+
+# Local LaTeX build output.
+paper/build/

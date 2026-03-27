@@ -1,0 +1,381 @@
+\input{../setup.tex} % 
+\usepackage[en-US]{datetime2}
+\usepackage{mathtools}
+\usepackage{xcolor}
+% \usepackage[textsize=footnotesize]{todonotes}
+% Uncomment this line to disable notes
+\presetkeys{todonotes}{disable}{}
+
+% \usepackage{physics}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{mathdots}
+% \usepackage{yhmath}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{tabularx}
+\usepackage{extarrows}
+\usepackage{booktabs}
+\usetikzlibrary{fadings}
+\usetikzlibrary{patterns}
+\usetikzlibrary{shadows.blur}
+\usetikzlibrary{shapes}
+\DeclareMathOperator{\tr}{tr}
+
+
+
+\newcommand{\comments}[1]
+{\par {\bfseries \color{blue} #1 \par}}
+
+% \usepackage[draft]{todonotes}
+
+%\title{\textbf{Asset Pricing Implications of Portfolio Flows\thanks{We thank TBD.}}
+%\title{\textbf{The Origins of the Inelastic Market Hypothesis\thanks{We thank TBD.}}
+\title{\textbf{Detailed Model Solution for\\ ``Dissecting the Aggregate Market Elasticity''}}
+\begin{document}
+\author{}
+\date{\today}
+\maketitle
+\doublespacing
+\section{Baseline model}
+The aggregate endowment, $Y_t$, follows a geometric Brownian motion:
+\begin{equation}\label{eq:agg_endow}
+	\frac{d Y_t}{Y_t} = \mu dt + \sigma dZ_t,
+\end{equation}
+where $\mu\in\mathbb{R}$ and the $1\times d$ vector $\sigma\in\mathbb{R}^d$ are constants.
+
+The economy is populated by $J+1$ types of investors, indexed by $j = 0, 1, \ldots, J$. The mass of type $j$ investors is denoted by $\omega_j$. We assume that investors die with Poisson intensity $\kappa$ and a mass $\kappa \omega_j$ of type $j$ agents are born every period, such that total population is constant and normalized to one. 
+Newborn agents inherit the wealth from their parents.
+\paragraph{Passive investors.} Investors face different financial constraints. Agents of type $j = 0 $ are \textit{passive investors}, as their portfolio share is given by $\alpha_{0,t} = \overline{\alpha}_{p,t}$, where $\overline{\alpha}_{p,t}$ follows an exogenous square-root process (Cox, Ingersoll, and Ross, 1985):
+\begin{equation}\label{eq:alpha_p_process}
+	d \overline{\alpha}_{p,t} = \theta_p (\overline{\alpha} - \overline{\alpha}_{p,t}) dt + \sigma_{p} \sqrt{\overline{\alpha}_{p,t}}\, d Z_t,
+\end{equation}
+where $\overline{\alpha}$ is the long-run mean and $\theta_p$ is the mean-reversion parameter, which controls the speed which passive investors rebalance their portfolios. 
+
+\paragraph{Active investors.} We refer to investors of type $j = 1,\ldots, J$ as \textit{active investors}. Active investors continuously rebalance their portfolios subject to state-dependent leverage constraints. We assume that the maximum portfolio share for an active investor is decreasing in aggregate volatility:
+\begin{equation}\label{eq:leverage_constraint}
+	\alpha_{j,t} \leq \frac{\overline{\sigma}}{\|\sigma_{R,t}\|},
+\end{equation}
+where we assume $\overline{\sigma} \geq \|\sigma\|$.
+
+\paragraph{Active investors' problem.} 
+Given the homotheticity of preferences, the value function for investor $j$ can be written as
+\begin{equation}\label{eq:value-func}
+	V_{j,t} = \left( \frac{c_{j,t}}{\rho^\psi} \right)^{\frac{1-\gamma_j}{1-\psi}} \frac{W_{j,t}^{1-\gamma_j}}{1-\gamma_j},
+\end{equation}
+The HJB equation for agent $ j $ is
+\begin{align}\label{eq:HJB}
+	0=\max_{C_j,\alpha_j}\,\,&\frac{1}{1-\psi^{-1}}\left[\left(\frac{C_j/W_j}{c_j^{1/(1-\psi)}}\right)^{1-\psi^{-1}}-\rho\right]+
+	\left(r+\pi\alpha_{j}-\frac{C_j}{W_j}-\frac{\gamma_j}{2}\alpha_j^2\|\sigma_{R}\|^2\right)\nonumber\\
+	&+\frac{1}{1-\psi}\left[\mu_{c_j}+(1-\gamma_j)\alpha_j\sigma_{c_j}\sigma_R'\right]+\frac{1}{2}\left(\frac{1}{1-\psi}\right)\left(\frac{\psi-\gamma_j}{1-\psi}\right)\|\sigma_{c_j}\|^2
+\end{align}
+%\begin{align}\label{eq:HJB}
+%	0=\max_{c_j,\alpha_j}\,\,&\frac{1}{1-\psi^{-1}}(c_j-\rho)+\left(r+\pi\alpha_{j}-c_j-\frac{\gamma_j}{2}\alpha_j^2\|\sigma_{R}\|^2\right)\nonumber\\
+%	&+\frac{1}{1-\psi}\left[\frac{c_{j,X}}{c_j}X\mu_X+(1-\gamma_j)\frac{c_{j,X}}{c_j}X\sigma_X\alpha_j\sigma_R+\frac{1}{2}\frac{c_{j,XX}}{c_j}X^2\sigma_X^2\right]\nonumber\\
+%	&+\frac{1}{2}\left(\frac{1}{1-\psi}\right)\left[\left(\frac{\psi-\gamma_j}{1-\psi}\right)\left(\frac{c_{j,X}}{c_j}X\sigma_X\right)^2\right]
+%\end{align}
+where, from the FOC for consumption, $c_{j,t}$ is agent $j$'s consumption-wealth ratio and is a function of the aggregate state variable $X_t$, that is, $c_{j,t} = c_j(X_t)$:
+\begin{equation}\label{eq:consumption-wealth}
+	c_{j,t}=\frac{C_{j,t}}{W_{j,t}}.
+\end{equation}
+Also posit the following Ito process for marginal value of wealth
+\begin{equation}\label{key}
+	\frac{dc_{j,t}}{c_{j,t}}=\mu_{c_j,t}dt+\sigma_{c_j,t}dZ_t.
+\end{equation}
+We can express the portfolio weight $\alpha_{j,t}$ in terms of $c_{j,t}$ and asset prices: 
+\begin{equation}\label{eq:portfolio_share}
+	\alpha_{j,t} = \min \left\{ \frac{\pi_t}{\gamma_j \|\sigma_{R,t}\|^2}  + \varsigma_{j,t}\,\,, \,\,\frac{\overline{\sigma}}{\|\sigma_{R,t}\|} \right\}, 
+\end{equation}
+where $ \pi_t=\mu_{R,t}-r_t $ is the risk premium, and 
+\begin{equation}\label{eq:hedging-demand}
+	\varsigma_{j,t} \equiv \frac{1-\gamma_j^{-1}}{\psi-1} \frac{\sigma_{c_j,t} \sigma_{R,t}'}{\|\sigma_{R,t}\|^2}
+\end{equation} 
+is the hedging demand component.
+
+From the Hamilton-Jacobi-Bellman (HJB) equation, we obtain an expression for $c_{j,t}$:
+\begin{equation}\label{eq:xi_j}
+	c_{j,t} = \psi \rho + (1-\psi) \left[ r_t + \pi_t \alpha_{j,t} - \frac{\gamma_j}{2} \|\sigma_{R,t}\|^2 \alpha_{j,t}^2\right] + \xi_{j,t},
+\end{equation}
+where 
+\begin{equation}\label{eq:shifter}
+	\xi_{j,t} \equiv \mu_{c_j,t} + (1-\gamma_j)  \sigma_{c_j,t} \sigma_{R,t}' \alpha_{j,t} + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2},
+\end{equation} corresponds to a forward-looking shifter of the consumption-wealth ratio, which depends on the drift and diffusion of $c_j$.
+
+\paragraph{Pricing condition.} Let $p_t \equiv P_t/Y_t$ denote the price-dividend ratio for the risky asset. Since the expected return is given by $r_t + \pi_t = \frac{1}{p_t} + \mu_{P,t}$, the price-dividend ratio satisfies the condition
+\begin{equation}\label{eq:pricing_cond}
+	\frac{1}{p_t} = r_t + \pi_t  -(\mu + \mu_{p,t} + \sigma \sigma_{p,t}'),
+\end{equation}
+where $\sigma_{R,t} = \sigma + \sigma_{p,t}$, $(\mu_{p,t}, \sigma_{p,t})$ is given by Ito's lemma, and we used $\mu_{P,t} =\mu + \mu_{p,t} + \sigma \sigma_{p,t}' $.
+
+\paragraph{Aggregate state variable.} Let $x_j$ be the wealth share of type-$j$ investors:
+\begin{equation}
+	x_{j,t} \equiv \frac{\omega_j W_{j,t}}{P_t}.\nonumber
+\end{equation}
+We define the aggregate state variable as 
+\begin{equation}\label{eq:agg-state-var}
+	X_t = (x_t, \overline{\alpha}_{p,t}), 
+\end{equation}
+where $x_t \equiv \left(x_{1,t}, x_{2,t}, \ldots, x_{J,t}\right )$. 
+
+The law of motion for the exogenous state variable $\overline{\alpha}_{p,t}$ is given in Equation~\eqref{eq:alpha_p_process}.
+
+
+From Ito's lemma, the law of motion of $x_{j,t}$ is given by
+\begin{small}
+	\begin{align*}
+		\frac{d x_{j,t}}{x_{j,t}} &= \left( r_t + \pi_t \alpha_{j,t} - c_{j,t} -\mu - \mu_{p,t} - \sigma \sigma_{p,t}'  +(1- \alpha_{j,t}) \|\sigma_{R,t}\|^2  +\kappa \frac{\omega_j-x_{j,t}}{x_{j,t}}  \right) dt + \left (\alpha_{j,t} - 1\right ) \sigma_{R,t} d Z_t.
+	\end{align*}
+\end{small}
+
+
+\paragraph{Market clearing conditions.} 
+Let $\mathcal{J}_t^u \subseteq \{1,2,\ldots, J\}$ and $\mathcal{J}_t^c \subseteq \{1,2,\ldots, J\}$ denote the set of unconstrained and constrained active investors at time $t$, respectively.
+Define the wealth share of unconstrained investors as $x_{u,t} \equiv \sum_{j\in \mathcal{J}_t^u} x_{j,t}$, and the wealth share of constrained investors as  $x_{c,t} \equiv \sum_{j\in \mathcal{J}_t^c} x_{j,t}$
+The market clearing condition for the risky asset is:
+\begin{equation}\label{eq:risky-asset-mc2}
+	\sum_{j=0}^Jx_{j,t}\alpha_{j,t}=1.
+\end{equation}
+From the market clearing for the risky asset above, we obtain
+\begin{equation}\label{eq:risky-asset-mc}
+	\underbrace{\sum_{j \in \mathcal{J}_t^u} x_{j,t} \alpha_{j,t} }_{\substack{\textbf{active unconstrained}\\
+			\textbf{demand}}} = \underbrace{1 - x_{0,t} \overline{\alpha}_{p,t} - x_{c,t} \overline{\alpha}_{c,t} }_{\textbf{net supply}},
+\end{equation}
+where $\overline{\alpha}_{c,t} \equiv\frac{\overline{\sigma}}{\|\sigma_{R,t}\|}$ is the portfolio share of constrained agents. 
+
+We can write the market-clearing condition for goods as follows:
+\begin{equation}\label{eq:goods-mc}
+	\sum_{j=0}^J x_j c_{j,t} = \frac{1}{p_t}.
+\end{equation}
+
+The risk-free bond market clears by Walras's law:
+\begin{equation}\label{eq:risk-free-mc}
+	\sum_{j=0}^Jx_{j,t}(1-\alpha_{j,t})=0.
+\end{equation}
+
+\paragraph{Risk premium and interest rate.} 
+
+
+Combining the market clearing condition in Equation~\eqref{eq:risky-asset-mc} with the optimal portfolio of active investors in \eqref{eq:portfolio_share}, we obtain an expression for the risk premium:
+\begin{align} \label{eq:sharpe_ratio}
+	\pi_{t} =  \frac{\gamma_{u,t} \|\sigma_{R,t}\|^2}{x_{u,t}} \left[ 1 - x_{0,t} \overline{\alpha}_{p,t} - x_{c,t} \overline{\alpha}_{c,t} - x_{u,t} \varsigma_{t} \right]
+\end{align}
+where $\gamma_{u,t} \equiv \left[ \sum_{j\in\mathcal{J}_t^u} \frac{x_{j,t}}{x_{u,t}} \frac{1}{\gamma_j}\right]^{-1}$ denotes the average risk aversion, $ \overline{\alpha}_{c,t}=\frac{\overline{\sigma}}{\|\sigma_{R,t}\|} $ is the portfolio share of constrained agents, and $\varsigma_t \equiv \sum_{j\in \mathcal{J}_t^u} \frac{x_{j,t}}{x_{u,t}} \varsigma_{j,t} $ the average hedging demand of unconstrained investors.
+
+%Equation~\eqref{eq:sharpe_ratio} captures the effect of heterogeneity, passive investment, and leverage constraints on the risk premium. Keeping everything else constant, an increase in the average risk aversion of unconstrained agents (higher $\gamma_{u,t}$), a reduction in passive investors' demand (lower $\overline{\alpha}_{p,t}$), a reduction in the risk bearing capacity of constrained investor (lower $\overline{\alpha}_{c,t}$), or a reduction in hedging demands (lower $\varsigma_t$) all tend to increase the risk premium. 
+
+From the Equations~\eqref{eq:goods-mc} and \eqref{eq:xi_j}, we obtain
+\begin{align}\label{eq:interest_rate}
+	r_t  &  =  \rho  +\psi^{-1} \mu_{P,t} + \left (1-\psi^{-1}\right )  \sum_{j=0}^J x_{j,t}\frac{\gamma_j \alpha_{j,t}^2}{2} ||\sigma_{R,t}||^2- \pi_t +\psi^{-1} \xi_t,
+\end{align}
+where $\xi_t \equiv \sum_{j=0}^J x_{j,t} \xi_{j,t}$.
+
+%\paragraph{Endogenous volatility.} The exposure of returns to shocks has both an exogenous component and an endogenous component, $\sigma_{R,t} = \sigma + \sigma_{p,t}$. 
+%The exogenous component corresponds to the volatility of cash flows. 
+%The endogenous component corresponds to changes in the valuation ratio $p_t$. 
+%As dividend growth is iid, movements in the price-dividend ratio are entirely driven by movements in expected returns. 
+%The term $\sigma_{p,t}$ is given by Ito's lemma:
+%\begin{equation}\label{eq:_endogenous_vol}
+%	\sigma_{p,t} = \frac{p_x(X_t)}{p(X_t)} \sigma_{x,t} + \frac{p_{\overline{\alpha}_p}(X_t)}{p(X_t)} \sigma_{p} \sqrt{\overline{\alpha}_{p,t}}. 
+%\end{equation}
+\paragraph{Dynamics of consumption-wealth and price-dividend ratios.}
+By Ito's lemma we can get drift and diffusion of consumption-wealth ratio for agent $ j $:
+\begin{align}
+	\mu_{c_{j},t}&=\frac{c_{j,x}(X_t)}{c_j(X_t)}\mu_{x,t}+\frac{c_{j,\overline{\alpha}_p}(X_t)}{c_j(X_t)}\mu_{\overline{\alpha}_p}+
+	\frac{1}{2}\text{tr}\left(\sigma_{x,t}'\frac{c_{j,xx}(X_t)}{c_j(X_t)}\sigma_{x,t}\right)\label{eq:mu-cj},\\%,\frac{1}{2}\sum_{i,j=1}^J\frac{c_{j,x_ix_j}}{c_j(X_t)}\sigma_{x,i}'\sigma_{x,j}\\
+	\sigma_{c_j,t}&=\frac{c_{j,x}(X_t)}{c_j(X_t)} \sigma_{x,t} + \frac{c_{j,{\overline{\alpha}_p}}(X_t)}{c_j(X_t)}\sigma_{\overline{\alpha}_p}, \label{eq:sigma-cj}
+\end{align}
+where $ c_{j,x} $ is a $ (1\times J )$ row vector of gradients, $ c_{j,xx} $ is a $ (J\times J) $ Hessian matrix, $ \mu_{x,t} $ is a $ (J\times 1) $ vector of drifts and $ \sigma_{x,t} $ is a $ (J\times2) $ vector of the diffusions of the $ J $ endogenous state variables, $\mu_{\overline{\alpha}_p}= \theta_p\left(\overline{\alpha}-\overline{\alpha}_{p,t}\right) $ is a scalar drift and $ \sigma_{\overline{\alpha}_p}\equiv \sigma_{p} \sqrt{\overline{\alpha}_{p,t}} $ is a $ (1\times 2) $ vector of diffusion of the exogenous state variable.
+
+By Ito's lemma we can get drift and diffusion of the price-dividend ratio $ p $:
+\begin{align}
+	\mu_{p,t}&=\frac{p_x(X_t)}{p(X_t)}\mu_{x,t}+\frac{p_{\overline{\alpha}_p}(X_t)}{p(X_t)}\mu_{\overline{\alpha}_p}+\frac{1}{2}\tr\left(\sigma_{x,t}'\frac{p_{xx}(X_t)}{p(X_t)}\sigma_{x,t}\right),\\
+	\sigma_{p,t} &= \frac{p_x(X_t)}{p(X_t)} \sigma_{x,t} + \frac{p_{\overline{\alpha}_p}(X_t)}{p(X_t)} \sigma_{\overline{\alpha}_p}. 
+\end{align}
+where $ p_{x} $ is a $ (1\times J) $ row vector of gradients, $ p_{xx} $ is a $ (J\times J) $ Hessian matrix. 
+%$ \mu_{x,t} $ is a $ (J\times 1) $ vector of drifts and $ \sigma_{x,t} $ is a $ (J\times2) $ vector of the diffusions of the $ J $ endogenous state variables, $\mu_{\overline{\alpha}_p}= \theta_p\left(\overline{\alpha}-\overline{\alpha}_{p,t}\right) $ is a scalar drift and $ \sigma_{\overline{\alpha}_p}\equiv \sigma_{p} \sqrt{\overline{\alpha}_{p,t}} $ is a $ (1\times 2) $ vector of diffusion of the exogenous state variable.
+
+\section{Solution Method}
+
+\paragraph{Endogenous volatility and portfolios.} The diffusion term for the $(J\times1)$ vector $x$ is given by
+\begin{equation}\label{eq:sigmax}
+	\sigma_{x,t} = \widetilde{\sigma}_{x,t} \sigma_{R,t},
+\end{equation}
+where $\sigma_{x,t}$ is a $(J\times 2)$ matrix, $\widetilde{\sigma}_{x,t}$ is a $(J\times 1)$ vector, and $\sigma_{R,t}$ is a $(1\times 2)$ (row) vector. The $j$-th element of $\widetilde{\sigma}_{x,t}$ is given by 
+\begin{equation}
+	\widetilde{\sigma}_{x,j}=x_{j,t}(\alpha_{j,t}-1).
+\end{equation}
+Using the expression for the risk premium and assuming $ x_c=0 $, we can the portfolio share of investor $j =1,\ldots, J$ as follows:
+\begin{equation}
+	\alpha_{j,t} = \frac{\gamma_{u,t}}{\gamma_j} \frac{1-x_{0,t} \overline{\alpha}_{p,t}}{x_{u,t}} - \frac{\gamma_{u,t}}{\gamma_j} \sum_{j=1} \frac{x_{i,t}}{x_{u,t}} \varsigma_{i,t} + \varsigma_{j,t},
+\end{equation}
+where $x_{u,t} = \sum_{j=1}^J x_{j,t} $ and $x_{0,t} = 1-x_{u,t}$.
+
+The hedging demand is given 
+\begin{equation}
+	\varsigma_{j,t} = \frac{1-\gamma_j^{-1}}{\psi-1} \frac{\sigma_{c_j,t} \sigma_{R,t}'}{\sigma_{R,t}\sigma_{R,t}'},
+\end{equation}
+where $\sigma_{c_j,t} = \frac{c_{j,x}}{c_{j,t}} \sigma_{x,t} + \frac{c_{j,\overline{\alpha}_p}}{c_{j,t}} \sigma_{\overline{\alpha}_p,t}$.
+
+Using the expression for $\sigma_{x,t}$, we can write the hedging demand as follows
+\begin{equation}
+	\varsigma_{j,t} = \frac{1-\gamma_j^{-1}}{\psi-1} \left[\frac{c_{j,x}}{c_{j,t}} \widetilde{\sigma}_{x,t}+\frac{c_{j,\overline{\alpha}_p}}{c_{j,t}} \frac{\sigma_{\overline{\alpha}_p,t} \sigma_{R,t}'}{\sigma_{R,t}\sigma_{R,t}'}\right].
+\end{equation}
+
+Combining the previous expressions, we can write the $ j $-th element of $\widetilde{\sigma}_{x,t}$ as follows:
+\begin{align}
+	\widetilde{\sigma}_{x,j,t} &= x_{j,t} \left[ \frac{\gamma_{u,t}}{\gamma_j} \frac{1-x_{0,t} \overline{\alpha}_{p,t}}{x_{u,t}} - \frac{\gamma_{u,t}}{\gamma_j} \sum_{i=1} \frac{x_{i,t}}{x_{u,t}} \frac{1-\gamma_i^{-1}}{\psi-1} \left[\frac{c_{i,x}}{c_{i,t}} \widetilde{\sigma}_{x,t}+\frac{c_{i,\overline{\alpha}_p}}{c_{i,t}} \frac{\sigma_{\overline{\alpha}_p,t} \sigma_{R,t}'}{\sigma_{R,t}\sigma_{R,t}'}\right] \right.\nonumber\\
+	&\left.+ \frac{1-\gamma_j^{-1}}{\psi-1} \left[\frac{c_{j,x}}{c_{j,t}} \widetilde{\sigma}_{x,t}+\frac{c_{j,\overline{\alpha}_p}}{c_{j,t}} \frac{\sigma_{\overline{\alpha}_p,t} \sigma_{R,t}'}{\sigma_{R,t}\sigma_{R,t}'}\right]-1\right].
+\end{align}
+
+In matrix form, the expression can be written as follows:
+\begin{equation}
+	\widetilde{\sigma}_{x} = a_{0} + a_1 \frac{\sigma_{\overline{\alpha}_p} \sigma_{R}'}{\sigma_{R}\sigma_{R}'} + A \widetilde{\sigma}_x,
+\end{equation}
+where $a_{0,j} = x_{j,t} \left( \frac{\gamma_{u,t}}{\gamma_j} \frac{1-x_{0,t} \overline{\alpha}_{p,t}}{x_{u,t}}  - 1\right) $, $a_{1,j} = x_{j,t} \left[ \frac{1-\gamma_j^{-1}}{\psi-1} \frac{c_{j,\overline{\alpha}_p}}{c_{j,t}} -  
+\frac{\gamma_{u,t}}{\gamma_j} \sum_{j=1} \frac{x_{i,t}}{x_{u,t}} \frac{1-\gamma_i^{-1}}{\psi-1} \frac{c_{i,\overline{\alpha}_p}}{c_{i,t}}
+\right]$, and the $j$-th row of the $ (J\times J )$ matrix $A$ is given by $A_j = x_{j,t} \left[ \frac{1-\gamma_j^{-1}}{\psi-1} \frac{c_{j,x}}{c_{j,t}} - \frac{\gamma_{u,t}}{\gamma_j} \sum_{i=1} \frac{x_{i,t}}{x_{u,t}} \frac{1-\gamma_i^{-1}}{\psi-1} \frac{c_{i,x}}{c_{i,t}} \right] $.
+
+Therefore, we can write $\widetilde{\sigma}_x$ as follows:
+\begin{equation}\label{eq:tilde-sigmax}
+	\widetilde{\sigma}_{x} = [I-A]^{-1} \left[ a_{0} + a_1 \frac{\sigma_{\overline{\alpha}_p} \sigma_{R}'}{\sigma_{R}\sigma_{R}'} \right],
+\end{equation}
+where $ I $ is the $ (J\times J) $ identity matrix and we assume that the matrix $\left[I-A\right]$ is invertible.
+
+The diffusion term for returns is given by
+\begin{equation}
+	\sigma_R = \sigma + \frac{p_x}{p} \sigma_x + \frac{p_{\overline{\alpha}_p}}{p} \sigma_{\overline{\alpha}_p}.
+\end{equation}
+
+Using the expression for $\sigma_{x}$, we can rewrite the expression for $ \sigma_R $ as follows:
+\begin{equation}\label{eq:sigmaR}
+	\sigma_{R} = \frac{\sigma + \frac{p_{\overline{\alpha}_p}}{p} \sigma_{\overline{\alpha}_p}}{1-\frac{p_x}{p} \widetilde{\sigma}_x}. 
+\end{equation}
+
+Notice that this implies that the following term is given by
+\begin{equation}\label{eq:aux}
+	\frac{\sigma_{\overline{\alpha}_p} \sigma_{R}'}{\sigma_{R}\sigma_{R}'} = 
+	\frac{\sigma_{\overline{\alpha}_p}\left(\sigma' + \frac{p_{\overline{\alpha}_p}}{p} \sigma_{\overline{\alpha}_p}'\right)}{\left(\sigma + \frac{p_{\overline{\alpha}_p}}{p} \sigma_{\overline{\alpha}_p}\right)\left(\sigma' + \frac{p_{\overline{\alpha}_p}}{p} \sigma_{\overline{\alpha}_p}'\right)} \left( 1-\frac{p_x}{p} \widetilde{\sigma}_x \right).
+\end{equation}
+
+Multiplying both sides of \eqref{eq:tilde-sigmax} by $ \frac{p_x}{p} $ and using \eqref{eq:aux}, we can then solve for $\frac{p_x}{p} \widetilde{\sigma}_x$:
+\begin{equation}\label{eq:px-p-tilde-sigma-x}
+	\frac{p_x}{p} \widetilde{\sigma}_x = \frac{\frac{p_x}{p} [I-A]^{-1} \left[a_0+a_1 \frac{\sigma_{\overline{\alpha}_p}\left(\sigma' + \frac{p_{\overline{\alpha}_p}}{p} \sigma_{\overline{\alpha}_p}'\right)}{\left(\sigma + \frac{p_{\overline{\alpha}_p}}{p} \sigma_{\overline{\alpha}_p}\right)\left(\sigma' + \frac{p_{\overline{\alpha}_p}}{p} \sigma_{\overline{\alpha}_p}'\right)}\right]}{1+\frac{p_x}{p} [I-A]^{-1} a_1 \frac{\sigma_{\overline{\alpha}_p}\left(\sigma' + \frac{p_{\overline{\alpha}_p}}{p} \sigma_{\overline{\alpha}_p}'\right)}{\left(\sigma + \frac{p_{\overline{\alpha}_p}}{p} \sigma_{\overline{\alpha}_p}\right)\left(\sigma' + \frac{p_{\overline{\alpha}_p}}{p} \sigma_{\overline{\alpha}_p}'\right)} }.
+\end{equation}
+
+The expression above gives us the scalar $\frac{p_x}{p} \widetilde{\sigma}_x$. 
+
+Given this scalar from Equation~\eqref{eq:px-p-tilde-sigma-x}, we can solve for $\sigma_R$ using Equation~\eqref{eq:sigmaR} and $\widetilde{\sigma}_x$ from Equation~\eqref{eq:tilde-sigmax}. Knowing $ \sigma_R $ and $ \widetilde{\sigma}_x $, we can obtain $\sigma_x$ from Equation~\eqref{eq:sigmax}. This allow us to solve for the hedging demands $\varsigma_{j,t}$ and portfolio choices $\alpha_{j,t}$. Given the hedging demands and the volatility, we can solve for $\pi_t$.
+
+
+\paragraph{Drift of the state variable.}
+
+Using the expression for the interest rate in \eqref{eq:interest_rate}, we can write the drift of $ x_j $ as 
+\begin{equation}\label{eq:mu_xj}
+	\mu_{x_j,t}=\widetilde{\mu}_{x_j}-\left(1-\psi^{-1}\right)x_j\frac{p_x}{p}\mu_x+\psi^{-1}x_j\sum_{j=0}^{J}x_j\frac{c_{j,x}}{c_j}\mu_x,
+\end{equation}
+
+where $ \widetilde{\mu}_{x_j} $ is the part of $ \mu_{x_j} $ that does not depend on $ \mu_x $ and be computed directly:
+\begin{align*}
+	\widetilde{\mu}_{x_j}/x_j&\equiv \rho+\psi^{-1}(\mu+\sigma\sigma_p')+ \left (1-\psi^{-1}\right )  \sum_{j=0}^J x_{j,t}\frac{\gamma_j \alpha_{j,t}^2}{2} ||\sigma_{R,t}||^2- \pi_t\nonumber\\
+	& +\psi^{-1}\sum_{j=0}^Jx_j\left[\frac{c_{j,\overline{\alpha}_p}}{c_j}\mu_{\overline{\alpha}_p}+\frac{1}{2}\tr\left(\sigma_{x,t}'\frac{c_{j,xx}}{c_j}\sigma_{x,t}\right)+ (1-\gamma_j)  \sigma_{c_j,t} \sigma_{R,t}' \alpha_{j,t} + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}\right]\nonumber\\
+	&+ \pi_t \alpha_{j,t} - c_{j,t} -\mu - \sigma \sigma_{p,t}'  +(1- \alpha_{j,t}) \|\sigma_{R,t}\|^2  +\kappa \frac{\omega_j-x_{j,t}}{x_{j,t}} \nonumber\\
+	&-(1-\psi^{-1})\left[\frac{p_{\overline{\alpha}_p}}{p}\mu_{\overline{\alpha}_p}+\frac{1}{2}\tr\left(\sigma_{x,t}'\frac{p_{xx}}{p}\sigma_{x,t}\right)\right]
+\end{align*}
+
+Then in the vector format, we have
+\begin{equation}\label{eq:mux}
+	\mu_x=\widetilde{\mu}_x+\left[\psi^{-1}x'\sum_{j=0}^{J}x_j\frac{c_{j,x}}{c_j}-\left(1-\psi^{-1}\right)x'\frac{p_x}{p}\right]\mu_x,
+\end{equation}
+Denote the $ (J\times J) $ matrix in the square brackets in the previous expression as $ B $:
+\begin{equation}\label{key}
+	B\equiv\left[\psi^{-1}x'\sum_{j=0}^{J}x_j\frac{c_{j,x}}{c_j}-\left(1-\psi^{-1}\right)x'\frac{p_x}{p}\right]
+\end{equation}
+Then we can solve for $ \mu_x $:
+\begin{equation}\label{eq:mux2}
+	\mu_x=\left[I-B\right]^{-1}\widetilde{\mu}_x
+\end{equation}
+where as above, $ I $ is the $ (J\times J) $ identity matrix and we assume that the matrix $\left[I-B\right]$ is invertible.
+Knowing $ \mu_x $, we can solve for interest rate using \eqref{eq:interest_rate}.
+
+Finally functions $ c_j(X_t) $ for $ j=0,\ldots,J $ and $ p(X_t) $ satisfy the following system of PDEs:
+\begin{footnotesize}
+	\begin{align}\label{eq:PDEs}
+		\frac{\rho}{1-\psi^{-1}}&=\frac{1}{1-\psi^{-1}}\left(\frac{c_j}{c_j^{1/(1-\psi)}}\right)^{1-\psi^{-1}}+
+		\left(r+\pi\alpha_{j}-c_j-\frac{\gamma_j}{2}\alpha_j^2\|\sigma_{R}\|^2\right)\nonumber\\
+		&+\frac{1}{1-\psi}\left[\frac{c_{j,x}(X_t)}{c_j(X_t)}\mu_{x,t}+\frac{c_{j,\overline{\alpha}_p}(X_t)}{c_j(X_t)}\mu_{\overline{\alpha}_p}+
+		\frac{1}{2}\text{tr}\left(\sigma_{x,t}'\frac{c_{j,xx}(X_t)}{c_j(X_t)}\sigma_{x,t}\right)\right]\nonumber\\
+		&+\frac{1-\gamma_j}{1-\psi}\left[\alpha_j\left(\frac{c_{j,x}(X_t)}{c_j(X_t)} \sigma_{x,t} + \frac{c_{j,{\overline{\alpha}_p}}(X_t)}{c_j(X_t)}\sigma_{\overline{\alpha}_p}\right)\sigma_R'\right]\nonumber\\
+		&+\frac{1}{2}\left(\frac{1}{1-\psi}\right)\left(\frac{\psi-\gamma_j}{1-\psi}\right)\left|\left|\left(\frac{c_{j,x}(X_t)}{c_j(X_t)} \sigma_{x,t} + \frac{c_{j,{\overline{\alpha}_p}}(X_t)}{c_j(X_t)}\sigma_{\overline{\alpha}_p}\right)\right|\right|^2\\
+		\frac{1}{p_t} &= r_t + \pi_t  -\left[\mu +\frac{p_x(X_t)}{p(X_t)}\mu_{x,t}+\frac{p_{\overline{\alpha}_p}(X_t)}{p(X_t)}\mu_{\overline{\alpha}_p}+\frac{1}{2}\tr\left(\sigma_{x,t}'\frac{p_{xx}(X_t)}{p(X_t)}\sigma_{x,t}\right) + \sigma \left(\frac{p_x(X_t)}{p(X_t)} \sigma_{x,t} + \frac{p_{\overline{\alpha}_p}(X_t)}{p(X_t)} \sigma_{\overline{\alpha}_p}\right)'\right].
+	\end{align}
+\end{footnotesize}
+
+
+
+
+
+\begin{comment}
+	
+\section{Solution Method: Mahyar}
+To solve for the equilibrium of this economy, we need to find consumption-wealth ratio functions $ c_j(X) $ and price-dividend ratio $ p(X) $. Given these two functions, we can solve for all remaining equilibrium objects as follows:
+\begin{enumerate}
+	\item Let   
+	\[\sigma_{x,t}=\widetilde{\sigma}_{x,t}\sigma_{R,t},\]
+	where $ \sigma_{x,t} $ is $J\times2$, $ \sigma_{R} $ is $ 1\times2 $, and $ \widetilde{\sigma}_x $ is a $J\times1$ vector whose $j$th element is defined as:
+	\[\widetilde{\sigma}_{x,j}=x_{j,t}(\alpha_{j,t}-1).\]
+	
+	From the definition of the hedging demand in Equation~\eqref{eq:hedging-demand} and the expression for $ \sigma_{c_j,t} $ in Equation~\eqref{eq:sigma-cj}, we have
+	\[\varsigma_{j,t}=\frac{1-\gamma_j^{-1}}{\psi-1}\left(\frac{c_{j,x}}{c_j}\widetilde{\sigma}_x+\frac{c_{j,\overline{\alpha}_p}}{c_j}\frac{\sigma_{\overline{\alpha}_p}\sigma_R'}{\sigma_R\sigma_{R}'}\right)\]
+	
+	Let $ \varsigma_t $ be the $ J\times1 $ vector agents' hedging demands. Then we can write
+	\begin{equation}\label{key}
+		\varsigma=A\widetilde{\sigma}_x+\frac{\sigma_{\overline{\alpha}_p}\sigma'_R}{\sigma_R\sigma'_R}b,
+	\end{equation}
+	where $ A $ is $ J\times J $ matrix whose $ j $-th row is $ \frac{1-\gamma_j^{-1}}{\psi-1}\frac{c_{j,x}}{c_j} $, and $ b $ is a $ J\times 1 $ vector whose $ j $-th element is $ \frac{1-\gamma_j^{-1}}{\psi-1}\frac{c_{j,\overline{\alpha}_p}}{c_j} $.
+	
+	Let $ \overline{\varsigma}=x'\varsigma $ be the weighted average hedging demand. Then using the expression for portfolio weight in \eqref{eq:portfolio_share} and risk premium in \eqref{eq:sharpe_ratio}, we can write 
+	\begin{equation}\label{key}
+		\widetilde{\sigma}_{x,j}=x_{j,t}(\alpha_{j,t}-1)=k_j+K_j\widetilde{\sigma}_x+\ell_j\frac{\sigma_{\overline{\alpha}_p}\sigma'_R}{\sigma_R\sigma'_R},
+	\end{equation}
+	where
+	\begin{align*}
+		k_j&=x_j\frac{\gamma_j^{-1}}{\sum_jx_j\gamma_j^{-1}}(1-x_0\overline{\alpha}_p)-1,\\
+		K_j&=x_j\frac{\gamma_j^{-1}}{\sum_jx_j\gamma_j^{-1}}\left(-x'A\right)+\frac{1-\gamma_j^{-1}}{\psi-1}A_j\\
+		\ell_j&=x_j\frac{\gamma_j^{-1}}{\sum_jx_j\gamma_j^{-1}}\left(-x'b\right)+b_j
+	\end{align*}
+
+Then, we can have the following system of equations to solve for $ \sigma_R $ and $ \widetilde{\sigma}_x $:
+\begin{align}
+	\left(I-K\right)\widetilde{\sigma}_x&=k+\ell\frac{\sigma_{\overline{\alpha}_p}\sigma'_R}{\sigma_R\sigma'_R}\\
+	\sigma_R\left(1-\frac{p_x}{p}\widetilde{\sigma}_x\right)&=\sigma+\frac{p_{\overline{\alpha}_p}}{p} \sigma_{\overline{\alpha}_p}
+\end{align}
+
+where $ K $	 is $ J\times J $ matrix whose $ j $-th row is $ K_j $, and $ k $ and $ \ell $ are $ J\times 1 $ vectors whose $ j $-th elements are $ k_j $ and $ \ell_j $ respectively.
+	
+	
+	
+	
+	
+%	Aggregate state variable: $ X_t = (x_t, \overline{\alpha}_{p,t})  $ with $x_t \equiv \left(x_{1,t}, x_{2,t}, \ldots, x_{J,t}\right )$, and
+%	\begin{equation*}
+%		x_{j,t} \equiv \frac{\omega_j W_{j,t}}{P_t}.
+%	\end{equation*}
+%	The law of motion for the exogenous state variable $\overline{\alpha}_{p,t}$ is given by:
+%	\begin{equation*}
+%		d \overline{\alpha}_{p,t} = \theta_p (\overline{\alpha} - \overline{\alpha}_{p,t}) dt + \sigma_{p} \sqrt{\overline{\alpha}_{p,t}}\, d Z_t,
+%	\end{equation*}
+%	\item Return volatility and diffusion terms for state variables
+%	\[\sigma_R(X)=\frac{\sigma+\frac{p_{\overline{\alpha}_p}(X_t)}{p(X_t)} \sigma_{p} \sqrt{\overline{\alpha}_{p,t}}}{1-\frac{p_x(X_t)}{p(X_t)}\tilde{\sigma}_x}\]
+%	\[\tilde{\sigma}_{x,j}(X)=x_{j,t}(\alpha_{j,t}-1)\sigma_R(X)\]
+%	\[\sigma_x=\tilde{\sigma}_x\sigma_R(X)\]
+	
+	
+\end{enumerate}
+
+\end{comment}
+\end{document}

@@ -1,0 +1,383 @@
+\documentclass[11pt,english]{article}
+\bibliographystyle{jf}
+\usepackage[longnamesfirst]{natbib}
+%\usepackage[T1]{fontenc}
+\usepackage{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bottom]{footmisc}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{amsmath,enumerate}
+\usepackage{amsthm}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage[labelfont=bf,justification=justified,font=small,skip=2pt,labelsep=period]{caption}
+%\usepackage[labelfont=bf,justification=justified,labelsep=period]{caption}
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage{arydshln}
+\usepackage{chngpage}
+\usepackage{float,appendix}
+\usepackage{afterpage}
+\usepackage{verbatim}
+\usepackage{indentfirst}
+\usepackage[margin=1in]{geometry}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+% \usepackage{longtable}
+\usepackage{booktabs, makecell, longtable,ltxtable}
+\usepackage{lipsum}
+\usepackage{pdflscape}
+\usepackage{siunitx}
+\usepackage{chngcntr}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage[normalem]{ulem}
+\usepackage{chngcntr,apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\sisetup{table-format=-1.3, table-space-text-post={**}}
+\usepackage{xr}
+\usepackage{etoolbox}
+\usetikzlibrary{positioning}
+\newcommand\fnsep{\textsuperscript{,}}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage[normalem]{ulem}
+\usepackage{chngcntr,apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usepackage{xr}
+\usepackage{etoolbox}
+\usetikzlibrary{positioning}
+
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{mathdots}
+\usepackage{yhmath}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{tabularx}
+\usepackage{extarrows}
+\usepackage{booktabs}
+\usetikzlibrary{fadings}
+\usetikzlibrary{patterns}
+\usetikzlibrary{shadows.blur}
+\usetikzlibrary{shapes}
+
+
+
+
+%% UCLA colors: 
+% https://brand.ucla.edu/wp-content/uploads/ucla-color-palette-v10.pdf
+%\definecolor{UCLA}{RGB}{50, 132, 191}   % UCLA Blue primary
+%\definecolor{UCLA}{RGB}{52, 123, 173}   % UCLA Blue text only
+\definecolor{UCLAblue}{RGB}{30, 75, 135} % secondary color	
+\definecolor{UCLAgold}{RGB}{255, 232, 0} % UCLA Gold
+
+\definecolor{usccardinal}{rgb}{0.6, 0.0, 0.0}
+\definecolor{Matlabblue}{rgb}{0,0.447,0.741}
+\definecolor{bleudefrance}{rgb}{0.19,0.55, 0.91}
+\definecolor{cobalt}{rgb}{0.0, 0.28,0.67}
+\definecolor{darkblue}{rgb}{0.0, 0.0,0.55}
+\definecolor{darkcerulean}{rgb}{0.03,0.27, 0.49}
+\definecolor{darkpowderblue}{rgb}{0.0,0.2, 0.6}
+\definecolor{bleudefrance}{rgb}{0.19,0.55, 0.91}
+%\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
+
+\hypersetup{
+	colorlinks,
+	linkcolor={UCLAblue},
+	citecolor={UCLAblue},
+	urlcolor={UCLAblue},
+}
+
+\bibpunct{(}{)}{;}{a}{,}{,}
+\newcommand{\E}{\mathbb{E}}
+% \newcommand{\var}{\mathrm{Var}}
+\newcommand{\cov}{\mathrm{Cov}}
+\setcounter{MaxMatrixCols}{20}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+\urlstyle{same}
+\usepackage{pgfplots} 
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false} 
+% puts figures and tables at the end of the document
+%\usepackage[nomarkers,nolists]{endfloat}               
+% puts ONLY figures at the end of the document
+%\usepackage[nomarkers,nolists,figuresonly]{endfloat}  
+% allows more than one figure per page for endfloat
+%\renewcommand{\efloatseparator}{\mbox{}}              
+\usepackage{rotating}
+% allows sideways tables and figures to be placed at the end of the document
+%\DeclareDelayedFloatFlavor{sidewaystable}{table}
+%\DeclareDelayedFloatFlavor{sidewaysfigure}{figure}
+
+% \usepackage[nomarkers,nolists]{endfloat} 
+% \renewcommand{\efloatseparator}{\mbox{}}              % allows more than one figure per page for endfloat
+
+%\usepackage{mathpazo}
+%\usepackage{mathpple}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{palatino}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false} 
+\newlength\figureheight 
+\newlength\figurewidth 
+\usepackage{mathtools}
+\usetikzlibrary{calc}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Notes customization %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{webblue}{rgb}{0,0,0.6}
+\definecolor{webgreen}{rgb}{0,.6,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+
+
+%- Commenting
+\let\oldmarginpar\marginpar
+\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\tiny #1]%
+{\raggedright\tiny #1}}
+\newcommand{\mknote}[1]{\marginpar{\textcolor{webblue}{\tiny{Mahyar: #1}}}}
+\newcommand{\dsnote}[1]{\marginpar{\textcolor{webgreen}{\tiny{Dejanir: #1}}}}
+\usepackage[en-US]{datetime2}
+\usepackage{mathtools}
+ \usepackage{xcolor}
+
+\newcommand{\comments}[1]
+{\par {\bfseries \color{blue} #1 \par}}
+
+\usepackage[draft]{todonotes}
+
+\title{\textbf{A Perturbation Approach for Economies with Heterogeneous Preferences}}
+\author{ Dejanir Silva\thanks{Gies College of Business, University of Illinois at Urbana-Champaign, e-mail: \href{dejanir@illinois.edu}{dejanir@illinois.edu}.}}
+\date{November 2020}
+%\date{\today\\
+%	\begin{small}
+%		First draft: May 5, 2018
+%\end{small}}
+\begin{document}
+	%\maketitle
+\onehalfspacing	
+
+\section{A boundary layer problem}
+
+\subsection{A simplified version of the problem}
+
+Consider a version of the problem with only two investors, $j = \{0,1\}$, where the type-$0$ represent passive investors, who maintains a fixed portfolio share, and type-$1$ represents an active investor, who continuous rebalance their portfolio.
+
+\paragraph{Financial markets.} Investors have access to a riskless asset, which pays instantaneous return $r_t$, and a risky asset, which is a claim to dividends $Y_t$ that follows the process:
+\begin{equation}
+    \frac{d Y_t}{Y_t} = \mu dt + \sigma d Z_t.
+\end{equation}
+
+The price of the risky asset is given by $P_t$, which follows the process:
+\begin{equation}
+    \frac{d P_{t}}{P_t} = \mu_{P,t} dt + \sigma_{P,t} dZ_t.
+\end{equation}
+
+Let $p_t \equiv \frac{P_t}{Y_t}$ denote the price-dividend ratio, so the risk premium $\pi_t$ and return volatility are given by:
+\begin{equation}
+    \pi_t = \frac{1}{p_t} + \mu+\mu_{p,t} + \sigma \sigma_{p,t}  - r_t, \qquad \qquad
+    \sigma_{R,t} = \sigma +\sigma_{p,t}
+\end{equation}
+
+The drift and diffusion of the price-dividend ratio are given by Ito's lemma:
+\begin{equation}
+    \mu_{p,t} =  \frac{p_{x,t}}{p_t} \mu_{x,t}+\frac{1}{2} \frac{p_{xx,t}}{p_t} \sigma_{x,t}^2, \qquad \qquad
+    \sigma_{p,t} = \frac{p_{x,t}}{p_t} \sigma_{x,t}.
+\end{equation}
+
+\paragraph{Active investor.} The portfolio share of the active investor is given by
+\begin{equation}
+    \alpha_{1,t} = \frac{\pi_t}{\gamma_1 \sigma_{R,t}^2} + \varsigma_{1,t},
+\end{equation}
+where $\varsigma_{1,t} \equiv \frac{1-\gamma_1^{-1}}{\psi-1} \frac{\sigma_{c_1,t}}{\sigma_{R,t}}$.
+
+The consumption-wealth ratio is given by
+\begin{equation}
+    c_{1,t} = \psi \rho + (1-\psi) \left[ r_t + \pi_t \alpha_{1,t} - \frac{\gamma_1}{2} \sigma_{R,t}^2 \alpha_{1,t}^2 \right] + \xi_{1,t},
+\end{equation}
+where
+\begin{equation}
+    \xi_{1,t} \equiv \mu_{c_1,t} + (1-\gamma_1) \sigma_{c_1,t} \sigma_{R,t} \alpha_{1,t} + \frac{\psi-\gamma_1}{1-\psi} \frac{\sigma_{c,t}^2}{2}.
+\end{equation}
+
+\paragraph{Passive investors.} The portfolio share of passive investors is exogenously given by $\alpha_{0,t} = \overline{\alpha}_{p}$ and the consumption-wealth ratio is given by
+$c_{0,t} = \frac{1}{p_t}$, the dividend-price ratio. 
+
+\paragraph{Market clearing.} The market clearing condition for risky assets and goods are given by
+\begin{equation}
+    (1-x) \overline{\alpha}_p +x \alpha_{1,t} = 1, \qquad \qquad 
+    (1-x) c_{0,t}+ x c_{1,t} = \frac{1}{p_t}.
+\end{equation}
+
+Rearranging the expressions above, we obtain
+\begin{equation}
+    \alpha_{1,t} = \frac{1 - (1-x) \overline{\alpha}_p}{x}, \qquad \qquad c_{1,t} = \frac{1}{p_t}.
+\end{equation}
+
+The risk premium is given by
+\begin{equation}
+    \pi_t = \gamma_1 \sigma_{R,t}^2 \left[ \frac{1-(1-x) \overline{\alpha}_p}{x} - \varsigma_{1,t} \right].
+\end{equation}
+
+\paragraph{State variable dynamics.} The aggregate state variables corresponds to the share of wealth of active investors $x$, which evolves according to: 
+\begin{equation}
+d x_t = x_t \left[  (\pi_t-\sigma_{R,t}^2) (\alpha_{1,t}  -1)+ \kappa \frac{\omega_1 - x_t}{x_t} \right]dt + x_t (\alpha_{1,t}-1) \sigma_{R,t} dZ_t.
+\end{equation}
+
+Notice that we can write $\sigma_{x,t}$ as follows:
+\begin{equation}
+    \sigma_{x,t} = x_t (\alpha_{1,t}-1) \left(\sigma+\frac{p_{x,t}}{p_t} \sigma_{x,t}\right) \Rightarrow \sigma_{x,t} = \frac{x_t (\alpha_{1,t} -1)}{1- x_t (\alpha_{1,t}-1) \frac{p_{x,t}}{p}} \sigma.
+\end{equation}
+
+\paragraph{Price dynamics.} The consumption-wealth ratio is given by $c_{1,t} \equiv \frac{1}{p_t}$, so the law of motion of $c_{1,t}$ is given by
+\begin{equation}
+    \frac{d c_{1,t}}{c_{1,t}} = -\frac{dp_t}{p_t} + \left( \frac{d p_t}{p_t} \right)^2 = \left[ -\mu_{p,t} +\sigma_{p,t}^2 \right] dt - \sigma_{p,t} dZ_t. 
+\end{equation}
+
+\paragraph{The differential equation.}
+
+\begin{equation}
+    \frac{1}{p_t} =  \rho + (\psi^{-1}-1) \left[\mu+\mu_{p,t} + \sigma \sigma_{p,t} + \pi_t (\alpha_{1,t}-1) - \frac{\gamma_1}{2} \sigma_{R,t}^2 \alpha_{1,t}^2 \right] + \psi^{-1}\xi_{1,t}.
+\end{equation}
+
+In terms of the dividend yield, we obtain
+\begin{equation}
+    y_t =  \rho + (\psi^{-1}-1) \left[ \mu-\mu_{y,t}+\sigma_{y,t}^2 - \sigma \sigma_{y,t} + \pi_t (\alpha_{1,t}-1) - \frac{\gamma_1}{2} \sigma_{R,t}^2 \alpha_{1,t}^2 \right] + \psi^{-1}\xi_{1,t},
+\end{equation}
+where
+\begin{equation}
+    \xi_{1,t} \equiv \mu_{y,t} + (1-\gamma_1) \sigma_{y,t} (\sigma-\sigma_{y,t}) \alpha_{1,t} + \frac{\psi-\gamma_1}{1-\psi} \frac{\sigma_{y,t}^2}{2}.
+\end{equation}
+
+
+\subsection{Regular perturbation}
+
+Suppose $\overline{\alpha}_p = 1 + \hat{\alpha}_p \epsilon$. We can then write the dividend-yield  as follows:
+\begin{equation}
+    y(x;\epsilon) = \sum_{j=0}^\infty y_{j}(x) \epsilon^j.
+\end{equation}
+
+The zeroth-order term is given by
+\begin{equation}
+    y_0(x) =  \rho + \left(\psi^{-1}-1\right) \left[\mu - \frac{\gamma_1 \sigma^2}{2}  \right].  
+\end{equation}
+
+The risk-premium and interest rate are given by
+\begin{equation}
+    \pi_0(x) = \gamma_1 \sigma^2, \qquad \qquad 
+    r_0(x) = y^\star + \mu  - \gamma_1 \sigma^2,
+\end{equation}
+where $y^\star \equiv y_0(x)$.
+
+\paragraph{First-order correction.} The first-order correction is given by
+\begin{equation}
+    y_1(x) = (\psi^{-1}-1) \left[ \pi_0\left( -\frac{1-x}{x} \hat{\alpha}_p \right) - \gamma_1 \sigma^2 \left( - \frac{1-x}{x} \hat{\alpha}_p\right) \right] \Rightarrow y_1(x) = 0.
+\end{equation}
+
+The risk premium and interest rate are given by
+\begin{equation}
+    \pi_1(x) = -\gamma_1 \sigma^2  \frac{1-x}{x} \hat{\alpha}_p, \qquad \qquad 
+    r_1(x) = \gamma_1 \sigma^2  \frac{1-x}{x} \hat{\alpha}_p.
+\end{equation}
+
+The diffusion and drift of the state variable are given by:
+\begin{equation}
+    \sigma_{x,1}(x) = -(1-x) \hat{\alpha}_p \sigma, \qquad \mu_{x,1}(x) = -(\gamma_1 -1)\sigma^2 (1-x) \hat{\alpha}_p \sigma + \hat{\kappa} (\omega_1 - x_t).
+\end{equation}
+
+The drift and diffusion for the dividend yield are given by $\mu_{y,1}(x) = \sigma_{y,1}(x) = 0$.
+
+\paragraph{Second-order correction.} 
+Notice that $\sigma_{y,2} = \mu_{y,2} = 0$, as $y_{1,x}(x)= y_{1,xx}(x) = 0$. 
+
+The second-order correction is given by
+\begin{equation}
+    y_{2}(x) = (\psi^{-1}-1) \left[ \pi_1(x) \hat{\alpha}_{a}(x) - \frac{\gamma_1 \sigma^2}{2} \hat{\alpha}_{a}(x)^2 \right] = -(1-\psi^{-1})\frac{\gamma_1\sigma^2 }{2} \hat{\alpha}_{a}(x)^2,
+\end{equation}
+where $\hat{\alpha}_{a}(x) \equiv -\frac{1-x}{x} \hat{\alpha}_{p}$.
+
+The second-order correction for the risk-premium are given by
+\begin{equation}
+    \pi_2(x) = 0, \qquad \qquad
+    r_2(x) = y_2(x).
+\end{equation}
+
+The diffusion and drift of the state variable:
+\begin{equation}
+    \sigma_{x,2}(x) = \mu_{x,2}(x) = 0.
+\end{equation}
+
+\paragraph{Third-order correction.} The derivative of the dividend yield with respect to $x$ is given by
+\begin{equation}
+    y_{2,x}(x) = -(1-\psi^{-1}) \gamma_1 \sigma^2 \left[ 1 -\frac{1}{x}\right] \frac{\hat{\alpha}_p^2}{x^2}.
+\end{equation}
+
+The second-order derivative is given by
+\begin{equation}
+    y_{2,xx}(x) = -(1-\psi^{-1}) \gamma_1 \sigma^2 \left[ -\frac{2}{x^3} +\frac{3}{x^4}\right] \hat{\alpha}_p^2.
+\end{equation}
+
+The diffusion of $y$ is given by 
+\begin{equation}
+    \sigma_{y,3}(x) = \frac{y_{2}(x)}{y_0(x)} \sigma_{x,1}(x).
+\end{equation}
+
+The drift term is given by
+\begin{equation}
+    \mu_{y,3}(x) = \frac{y_{2,x}(x)}{y_0(x)}\mu_{y,1}(x)
+\end{equation}
+
+\paragraph{Higher-order perturbation.} Let $\tilde{y}(x) \equiv \frac{y_x(x)}{y(x)}$, then we can write the diffusion of the dividend yield as follows:
+\begin{equation}
+    \sigma_{y,k}(x) = \sum_{j=0}^{k} \tilde{y}_{j}(x) \sigma_{x,k-j}(x) = \sum_{j=2}^{k-1} \tilde{y}_{j}(x) \sigma_{x,k-j}(x),
+\end{equation}
+using the fact that $\sigma_{x,0}(x) = \tilde{y}_{0}(x) = \tilde{y}_{1}(x) = 0$. 
+Therefore, we only need terms of order $k-1$ and lower to compute the $k$-th order term diffusion.
+Then, we only need to compute terms of order $k-1$ and lower to compute the $k$-th order term return volatility.
+A similar argument shows that we only need terms of order $k-1$ and lower to compute the $k$-th order term drift.
+
+Notice that the $k$-th order term of $z(x;\epsilon) \equiv \pi(x;\epsilon) (  \alpha_{a}(x;\epsilon)-1)$ is given by
+\begin{equation}
+    z_k(x) = \pi_{k-1}(x) \hat{\alpha}_{a}(x).
+\end{equation}
+which also only depends on terms of order $k-1$ and lower. 
+
+
+These facts together imply that we only need terms of order $k-1$ and lower to compute the $k$-th order term of the dividend yield.
+
+\subsection{The boundary layer}
+
+
+
+\newpage
+\singlespacing
+%\bibliographystyle{jf}
+\phantomsection\addcontentsline{toc}{section}{\refname}
+\clearpage
+%{\small
+\bibliography{references.bib}
+\end{document}

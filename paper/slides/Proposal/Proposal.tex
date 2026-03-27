@@ -1,0 +1,146 @@
+\input{setup.tex} % 
+\usepackage[en-US]{datetime2}
+\usepackage{mathtools}
+ \usepackage{xcolor}
+
+\newcommand{\comments}[1]
+{\par {\bfseries \color{blue} #1 \par}}
+
+\usepackage[draft]{todonotes}
+
+\title{\textbf{Asset Pricing Implications of Portfolio Flows}
+\author{ 
+Victor Duarte\thanks{Gies College of Business, University of Illinois at Urbana-Champaign, e-mail: \href{mailto:vduarte@illinois.edu}{vduarte@illinois.edu}.}\and 
+Mahyar Kargar\thanks{Gies College of Business, University of Illinois at Urbana-Champaign, e-mail: \href{mailto:kargar@illinois.edu}{kargar@illinois.edu}.}\and  Dejanir Silva\thanks{Gies College of Business, University of Illinois at Urbana-Champaign, e-mail: \href{dejanir@illinois.edu}{dejanir@illinois.edu}.}}
+}
+\author{ 
+Victor Duarte
+\and 
+Mahyar Kargar\and 
+Dejanir Silva
+}
+\date{March 2021}
+%\date{\today\\
+%	\begin{small}
+%		First draft: May 5, 2018
+%\end{small}}
+\begin{document}
+	\sloppy
+	\maketitle
+	\thispagestyle{empty}
+	
+	\begin{abstract} 
+	\noindent 
+	In this project, we study the role of portfolio flows in determining asset prices and market volatility. 
+	We consider a quantitative general-equilibrium model with rich heterogeneity and portfolio frictions to study this question. 
+	We provide a new analytical characterization of the market  elasticity. We show  how different frictions can make the market more inelastic, which is necessary to amplify the effect of portfolio flows.
+	We also estimate our quantitative model and provide a structural decomposition of the market elasticity. We document which frictions considered by the macro-finance literature are quantitatively important to generate inelastic markets and, consequently, high market volatility. 
+	\vspace{10mm}	
+	\bigskip
+	
+	\noindent	
+	\textsc{Keywords}: Portfolio flows, Asset Pricing, Market Elasticity. 
+	
+	\medskip
+	\noindent
+	\textsc{JEL Classification}: G12, G11, G21.		
+\end{abstract}
+	
+\newpage
+\setcounter{page}{1}
+
+\doublespacing
+% \section{Introduction  }
+
+Why are asset prices so volatile? 
+This question has been the source of intense research and much controversy over the years.\footnote{See e.g. the work on excess volatility tests \citet{leroy1981present}, \citet{shiller1983stock}, \citet{shiller1992market}, and \citet{cochrane1992explaining}. Robert Shiller's Nobel prize was attributed to his contribution on excess volatility. 
+More recently, \citet{giglio2018excess} show how the price of long-maturity instruments are significantly more variable than what is predicted by standard asset pricing models. }
+Recent evidence by \citet{gabaix2020search} suggests a new hypothesis: asset prices move in response to portfolio flows.\footnote{For early evidence on the role of portfolio flows and asset prices, see \citet{deuskar2011market}.}
+However, given the relatively small magnitude of these flows in the data, this hypothesis requires markets to be very \textit{inelastic}, so small movements in quantities induce a large price response. 
+This new explanation leads naturally to several new questions: Why are markets so inelastic? Can standard frictionless models generate low levels of market elasticity? 
+If not, what are the frictions that are necessary to quantitatively explain the impact of portfolio flows on asset prices? 
+Only by answering these questions we are able to disentangle the different forces that lead to inelastic markets and, consequently, high market volatility. 
+
+
+
+In this paper, we provide a new framework to answer these questions.
+We study a quantitative general equilibrium model with rich heterogeneity and portfolio frictions.\footnote{Our work is closely related to \citeauthor{johnson2006dynamic} (\citeyear{johnson2006dynamic}, \citeyear{johnson2008volume}, and \citeyear{johnson2009liquid}), who provided an early characterization of market liquidity in frictionless environments.}
+The general equilibrium perspective is necessary, as the relevant elasticity is a \textit{macro elasticity} which takes into account the market-wide implications of investors' change in portfolio holdings. 
+In contrast to much of the literature, we allow for rich heterogeneity. 
+Most of the macro-finance literature focus on models with at most two agents. By considering a larger number of agents, we can capture the implications of reallocation among different sectors in the economy, such as mutual funds, households, broker-dealers, foreigners, and so on. 
+Finally, we consider the role of portfolio frictions. 
+We allow for two types of frictions: limited participation and margin constraints. 
+We assume that households do not actively trade in financial markets, that is, they hold a passive investment strategy, consistent with empirical evidence (e.g., \citealp{brunnermeier2008wealth}).
+The economy is also populated by active investors who are subject to margin constraints. 
+A large literature documents the importance of such constraints in determining market outcomes and the behavior of financial intermediaries.\footnote{See e.g. \citet{brunnermeier2009market}, \citet{garleanu2011margin}, \citet{chabakauri2013dynamic}, and \citet{adrian2014procyclical}.}
+
+We provide two main contributions. 
+First, we obtain an analytical characterization of the market elasticity. 
+Studying the market elasticity in economies with frictions is challenging, as closed-form solutions are typically not available in those situations. 
+We develop new perturbation techniques that enable us to obtain closed-form expressions for the market elasticity. 
+Second, we provide a quantitative assessment of the model. 
+This requires solving and estimating a high-dimensional asset pricing model.
+Part of our contribution is to show how to handle this problem computationally. 
+We discuss these two contributions in more detail below. 
+
+\paragraph{Market elasticity} We have already some preliminary results on the analytical characterization of the market elasticity. 
+In particular, we show that the price-dividend ratio $q$ can be expressed in terms of the (inverse) market elasticity and portfolio flows:\footnote{This expression is obtained using the novel method of \textit{state-global perturbations} developed in \citet{silva2019risk} and \citet{kargar2020competitive}.}    
+\begin{equation}\label{eq:market_elasticity}
+    \frac{d q}{q} = \underbrace{(1-\psi^{-1}) \frac{1-\alpha_p}{\omega_A} \frac{\gamma \sigma^2}{c^*}}_{\text{inverse market elasticity}} \times \underbrace{ \frac{F}{W}}_{\text{portfolio flows}}, 
+\end{equation}
+where $\psi$ is the elasticity of intertemporal substitution (EIS), $\alpha_p$ is the portfolio share of passive investors, $\omega_A$ is the wealth share of active investors, $\gamma$ is the risk aversion, $\sigma$ is the endowment volatility, $c^*$  is the consumption-wealth ratio, $F$ is the flow from bonds to equities, and $W$ is total wealth. 
+
+Formula \eqref{eq:market_elasticity} captures the role of several frictions considered by the macro-finance literature on the market elasticity. 
+First, flows generate a positive price impact only if $\psi > 1$.
+As funds move away from bonds and into equities, they tend to reduce the risk premium and raise the interest rate. 
+The net impact on the price will be positive if $\psi > 1$, such that the risk premium effect dominates. 
+This highlights the importance of taking a general equilibrium perspective, where the prices of bonds and equities are jointly determined. 
+
+Second, the market elasticity depends on the degree of market participation. 
+If $\alpha_p = 0$, then passive investors do not participate in equity markets and the model boils down to the limited participation model of \citet{basak1998equilibrium}. 
+In the other extreme where $\alpha_p = 1$, the economy behaves as in the frictionless model of \citet{lucas1978asset}. 
+Markets become more inelastic as $\alpha_p$ approaches the Basak-Cuouco case and they are perfectly elastic in the case $\alpha_p = 1$.
+
+Third, portfolio flows have a larger impact on asset prices when active investors have a relatively low share of wealth, that is, $\omega_A$ is relatively low.
+To the extent that active investors include financial intermediaries, this result provides a connection between the inelastic markets hypothesis and recent work on  intermediary asset pricing.\footnote{See e.g., \citet{he2013intermediary}, \citet{he2017intermediary}, and \citet{adrian2014financial}.} 
+As active investors become relatively undercapitalized, they are less able to absorb inflows, which leads to a larger price impact. 
+
+In the paper, we consider two additional frictions that are potentially quantitatively relevant. 
+In particular, we allow for preference heterogeneity as in \citet{garleanu2015young} and
+margin constraints as in \citet{adrian2014financial}.
+Preliminary results indicate that both frictions contribute to raise the impact of portfolio flows on asset prices.
+
+
+\paragraph{Computational method} 
+The model we consider allows for different channels considered by the macro-finance literature. 
+We then assess which one of these channels is quantitatively important to explain the degree of market volatility. Since the distribution of wealth across different types of agents is a state variable in our model setup, standard partial differential equations approaches commonly used in the literature are not applicable to our setting. Models featuring only 2 types of agents can be solved by appealing to homotheticity and eliminating the wealth state variable from the system of PDEs, reducing the problem to a system of ordinary differential equations that can be easily solved with canned solvers. With multiple agents, this approach naturally fails. Our approach, on the other hand, relies on a generalized policy iteration algorithm that uses neural networks to approximate the value functions and works in environments with multiple state variables.
+In general equilibrium, on top of the value function, we need to determine endogenous objects like the risk-free rate, prices of risk, and the dividend yield of the risky asset. In our model setup, all these objects can be written as closed-form expressions of the value functions (and their drifts and volatilities), so the problem reduces to a problem of computing the value functions of the different types of agents. As a proof of concept, we have implemented a simplified version of the model with up to 10 different types of agents. This approach also facilitates calibration/estimation. Indeed, by including key model parameters as inputs for the neural networks, we can approximate value functions (and other equilibrium objects) for entire ranges of parameters. Having solved for the equilibrium objects for a continuum of parameters makes it easier to conduct simulation-based estimation like the Simulated Method of Moments or Indirect Inference.
+
+
+\paragraph{Data Needs} 
+We intend to acquire data from three sources: eMaxx, Morningstar Direct, and National
+Association of Insurer Commissioners (NAIC). These data sets allow us to quantitatively assess model's implications in relating portfolio flows and asset prices. The eMaxx data set from Refinitiv allows us to gain information about the distribution of bond holdings across US institutional investors, Morningstar Direct data provide mutual fund quarterly holdings (and flows), and data from the NAIC make available a record of the corporate bond transactions of life insurance companies.
+
+\paragraph{Broader Impact for Gies}\label{sec:impact} 
+This project is part of a research agenda that aims to study the impact of portfolio flows on asset prices and market liquidity. Building on the seminal works of \cite{Koijen/Yogo/19}, and \cite{gabaix2020search}, we will write down and quantitatively evaluate a general equilibrium model with heterogeneous agents that is suitable for properly characterizing the macro elasticity and solve the inelastic market puzzle. As highlighted above, a general equilibrium framework with rich heterogeneity is essential to tackle this question. The challenge is that the existing solution methods based on numerically solving PDEs quickly become intractable as the number of agents goes beyond three. Our novel solution method allows us to solve the model even in the presence of many heterogeneous agents. 
+I believe this proposal will significantly and positively impact our research output. Obtaining the requested data sources will allow us to assess our models' implications quantitatively. We strongly believe that this fruitful research agenda will produce several published (potentially with yet unknown Gies colleagues) in the top finance or economics journals. Moreover, the data sets that we plan to acquire, if we receive funding, can contribute to multiple projects across researches in the finance department at Gies.
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\singlespacing
+%\bibliographystyle{jf}
+\phantomsection\addcontentsline{toc}{section}{\refname}
+\clearpage
+%{\small
+\bibliography{references.bib}
+\end{document}

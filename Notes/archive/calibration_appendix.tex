@@ -1,0 +1,117 @@
+\documentclass[pdftex,12pt,a4paper]{article}
+
+% use user packages
+\usepackage[margin=1in]{geometry}  % set the margins to 1in on all sides
+\usepackage{graphicx}              % to include figures
+\usepackage{amsmath}               % great math stuff
+\usepackage{amsfonts}              % for blackboard bold, etc
+\usepackage{amsthm}                % better theorem environments
+\usepackage{xcolor}
+
+\usepackage{accents,hyperref}
+% use theorems
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{assu}[thm]{Assumption}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{rmk}[thm]{Remark}
+
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+\newcommand{\dhat}[1]{\hat{\hat{#1}}}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\usepackage{parskip}
+
+
+\begin{document}
+
+\title{Calibration background}
+\author{J}
+\date{\today}
+\maketitle
+
+\abstract 
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5\baselineskip}
+
+To map out the main sectors, we use the Federal Reserve's Flow of Funds data (henceforth FOF). 
+
+\subsection{Asset} 
+FOF contains all major financial assets in the U.S., and we consider corporate equities the risky asset in our model \cite{he2013intermediary,Kargar/2021}. All the other financial instruments such as deposits, Treasury debt, loans, etc, are considered riskless borrowing in the model. Following \cite{abel1999risk,campbell2003consumption}, and many others, we model the aggregate stock dividend process as a levered claim on the aggregate consumption. Therefore, if $Y$ is the ... 
+
+PAUSE
+
+Following Abel (1999), Campbell (2003), and
+many others, you can model the dividend processes for the aggregate stock market as a levered claim on aggregate consumption. So if Y is the agg endowment and D is the stock market dividend, you model $D = Y * \lambda$. By Ito’s lemma, vol of D is $\lambda$ times vol of Y. We express all positions using stock holdings, with the implicit understanding that the actual holding on the consumption asset is a few times higher. 
+
+% While some low credit quality corporate bonds/loans may also be considered as having some loadings on the risky asset, overall, the loading is small. (perhaps discuss a bit). Therefore from a quantitative perspective, it doesn't lose much. The implied FOF corp beta is 0.058. If we use TRACE, and if we separately estimate IG and HY, we get a weighted average of 0.067 (folder 2). This is small. In terms of total risk contribution, this means that the corporate debt is only XX\% of the stock market, so we don't think adding (or not) adding it is going to change conclusions that much. 
+
+\subsection{Sectors}
+We consider the net amount of outstanding corporate securities as the total risky asset supply. All the other sectors are possible investors in the risky asset. Below describes how we aggregate the FOF sectors into four active ones and a passive one. 
+
+\paragraph{Attributing pass-through sectors holdings to ultimate holders.}
+Our model features investors with well-defined balance sheets. Some FOF sectors such as mutual funds, however, act as pass-throughs. We thus need to aggregate them onto the balance sheet of ultimate investors.
+
+The money market fund sector (L121) is a mere pass-through for safe debt and does not hold any equities. As such, it is simply dropped from the list of sectors, and all other sectors' holdings of money market fund shares are treated as holdings of riskless debt. The same treatment is applied to Government-sponsored enterprises (L125), Agency-and GSE-backed mortgage pools (L126), and L127 (Issuers of asset-backed securities). 
+
+PAUSE
+
+We assume the closed-end-fund (L123), exchange-traded-fund (L124), and defined contribution pension (L118c and L118c) sectors are held by the household sector. Therefore, their stock holdings are directly put onto the household balance sheet. The main complication is the mutual fund sector (L122) because it is widely held by many other sectors, and FOF also reports the value of mutual fund shares held by each. We thus attribute mutual fund holdings separately to all its end users, and we use a regression-based methodology to infer the fraction of stock versus bond mutual funds held by each sector.\footnote{While one can assume that all sectors hold stock versus bond mutual funds in equal proportions, this is unlikely to be the case. For instance, households are more likely to hold more stock mutual funds while insurance companies are more likely to hold more bond mutual funds, so the former's total mutual fund holdings would likely have a higher stock beta than the latter. 
+
+To accommodate possible different differences in stock beta exposure, we use time-series regressions to estimate the stock beta exposure of each sector's mutual fund holdings. Specifically, for each sector $i$, we infer the loading $\beta_i$ of $\log\left( \frac{V_{i,t}}{V_{i,t-1}} \right)$ on CRSP stock market return in quarter $t$ where $\text{MFMV}_{i,t}$ is the total value of mutual fund shares held by sector $i$ by the end of quarter $t$. We also use a similar method to infer the beta of the aggregate mutual fund sector as $\hat{\beta}^\text{MF}$. To accommodate time-varying differences, we use rolling regressions over three-year windows to estimate time-varying betas. We find that the following relationship holds quite tightly in the data:
+
+\begin{align*}
+\hat{\beta}^\text{MF}_t & = \sum_i w_{i,t} \cdot \hat{\beta}_{i,t}
+\end{align*}
+
+\noindent where $w_{i,t}$ is the fraction of mutual funds held by sector $i$. Given this, we thus assume that each sector $i$'s indirect holding of stocks through mutual funds as $\frac{w_{i,t} \cdot \hat{\beta}_{i,t}}{\hat{\beta}_t^\text{MF}}$ fraction of the total. 
+}
+
+\paragraph{Aggregating similar sectors.} 
+While our model can accommodate as many sectors as needed, many are related so we aggregate them together for simplicity. We end up with four active sectors. 
+
+The largest one is the household sector (L101). In addition to direct stock holdings, it also holds stocks indirectly via mutual fund shares. 
+
+
+
+We end up aggregating similar sectors together as we expect their behavior to be similar. Table XX shows the mapping, as well as the fraction of overall/equity assets they hold on average and by the end of the sample. 
+
+[Table to show sector mapping. Some are lumped to others, some are aggregated.]
+
+In addition to sizes, we also show the fraction of their wealth dedicated to equity. Some sectors such as banks, while large, are not directly relevant to the stock market. 
+
+\paragraph{Sizing the passive sector (folder 4)}
+A critical assumption is the size of passive sector. To begin with, we think of sectors such as the government as passive. Those are collectively small, and the question is how much is the other part passive. 
+
+G-K says many are passive. K-R-Y says even more are passive. 
+
+While it is difficult to make this assumption, we borrow from a few sources. \begin{itemize}
+	\item Household: Schwab says around half are passive. This is perhaps the most crucial assumption as we have...
+	\item Insurance and pension: DB is almost entirely (BC thingy). 
+	\item Broker-dealers should be entirely active. 
+	\item ROW: we learn from Treasuries. 
+\end{itemize}
+
+As a sanity check, we can compare with... 
+Another thing we can somewhat learn from is K-R-Y. They have a slightly different concept (active share), and should be thought of as an upper bound. (Explain that active doesn't have to be 100\% AS). 
+
+Of course, it is worth noting that these are slightly different concepts. One is stock/bond allocation, and the other is cross-sectional. 
+
+
+\paragraph{Sizes and preferences by sector.}
+For each sector, risk aversion is pinned down by the fraction of wealth dedicated to stock. It is important to emphasize that we are talking about net debt. On average:
+\begin{align*}
+\alpha = \frac{\mu}{\sigma \sigma^2}
+\end{align*}
+
+The other preference parameters just follow tradition. EIS, time discount. 
+
+As for passive folks' processes, we just estimate empirically. (folder 5)
+
+As for sizes, we only know the actual wealth. We don't know mass. We basically simulate and then hit those parameters.
+
+\bibliographystyle{jf}
+\bibliography{references.bib}
+
+\end{document}

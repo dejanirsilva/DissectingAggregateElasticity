@@ -1,0 +1,26 @@
+.DS_Store
+.vscode/
+__pycache__/
+*.pyc
+
+# Julia environments
+Manifest.toml
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+
+# Common build output
+paper/build/
+Notes/build/
+
+# Editor settings

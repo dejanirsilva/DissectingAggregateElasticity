@@ -1,0 +1,573 @@
+\section{A Dynamic Asset Pricing Model with Passive Investors}\label{sec:model}
+We now develop a dynamic heterogeneous-agent asset pricing model that provides a micro-founded demand system. This framework allows us to trace how portfolio reallocation shocks affect both stock and bond demand, and thereby determine aggregate market elasticity.
+
+\subsection{Environment}
+
+\paragraph{Financial markets.}
+The aggregate endowment $Y_t$ follows a geometric Brownian motion:
+\begin{equation}\label{eq:agg_endow}
+    \frac{dY_t}{Y_t} = \mu\,dt + \sigma\,dZ_t,
+\end{equation}
+where $\mu \in \mathbb{R}$ and $\sigma \in \mathbb{R}^d$ are constants. The process
+$Z=\{Z_t\}_{t\ge0}$ is a standard $d$-dimensional Brownian motion on the filtered probability space
+$(\Omega,\mathcal{F},(\mathcal{F}_t)_{t\ge0},\mathbb{P})$ satisfying the usual conditions.
+The multidimensional structure of $Z$ allows arbitrary correlation between endowment shocks and portfolio-flow shocks (introduced below).
+
+Investors trade a unit-supply risky asset, which is a claim to the aggregate endowment $Y_t$. Let $P_t$ denote the ex-dividend price and $Y_t\,dt$ the dividend flow. The instantaneous return process is
+\begin{equation}\label{eq:risky-asset-ret}
+    dR_t \;=\; \frac{dP_t + Y_t\,dt}{P_t}
+    \;\equiv\; \mu_{R,t}\,dt + \sigma_{R,t}\,dZ_t,
+\end{equation}
+where $\mu_{R,t}$ is the expected return and $\sigma_{R,t}\in\mathbb{R}^{1\times d}$ is the vector of exposures. 
+% we write $\|\sigma_{R,t}\|$ for its Euclidean norm.
+
+Investors also have access to a risk-free asset paying the rate $r_t$.
+% ; equivalently, a money-market account $B_t$ satisfies $dB_t=r_t B_t\,dt$.
+In equilibrium, prices depend on an aggregate state vector $X_t\in\mathbb{R}^N$, so we write $r_t=r(X_t)$, $\mu_{R,t}=\mu_R(X_t)$, and $\sigma_{R,t}=\sigma_R(X_t)$.
+The state vector evolves as
+\begin{equation}\label{eq:state_dynamics}
+    dX_t \;=\; \mu_{X,t}\,dt + \sigma_{X,t}\,dZ_t,
+\end{equation}
+with drift $\mu_{X,t}\in\mathbb{R}^N$ and exposure matrix $\sigma_{X,t}\in\mathbb{R}^{N\times d}$, both determined in equilibrium.
+
+
+\paragraph{Demography.}
+
+The economy consists of $(J{+}1)$ investor types, indexed by $j=0,1,\ldots,J$, with population mass $\omega_j$. Investors die with Poisson intensity $\kappa$, and each instant a mass $\kappa\,\omega_j$ of type-$j$ agents are born, so the total population remains constant and normalized to one. Newborns inherit parental wealth. 
+Mortality risk ensures a nondegenerate stationary wealth distribution.
+
+Preferences are recursive as in  \citet{duffie1992stochastic}, with type-$j$ risk aversion $\gamma_j$ and a common elasticity of intertemporal substitution (EIS) $\psi$. Each investor chooses consumption $C_{j,t}$ and a portfolio share $\alpha_{j,t}$ in the risky asset, subject to portfolio constraints specified below. 
+% Given wealth $W_{j,t}$, holdings of the risky asset and the riskless asset are
+% \[
+% Q_{j,t} \;=\; \frac{\alpha_{j,t}\,W_{j,t}}{P_t}, 
+% \qquad
+% B_{j,t} \;=\; (1-\alpha_{j,t})\,W_{j,t}.
+% \]
+% where $B_{j,t}$ denotes \emph{dollar} holdings in the money–market account.
+
+\paragraph{Passive investors.}
+Agents of type $j=0$ are \emph{passive investors}, who maintain a fixed portfolio share $\alpha_{0,t}=\overline{\alpha}_{p,t}$. The share $\overline{\alpha}_{p,t}$ evolves according to an Ornstein-Uhlenbeck process:
+\begin{equation}\label{eq:alpha_p_process}
+    d\overline{\alpha}_{p,t}
+    \;=\;
+    \theta_p\!\left(\overline{\alpha}-\overline{\alpha}_{p,t}\right)\!dt
+    \;+\;
+    \sigma_{\alpha_p}\,dZ_t,
+\end{equation}
+with long-run mean $\overline{\alpha}>0$, mean-reversion $\theta_p>0$, and loading $\sigma_{\alpha_p}\in\mathbb{R}^{1\times d}$ on the $d$-dimensional Brownian motion $Z_t$. Innovations to $\overline{\alpha}_{p,t}$ represent \emph{portfolio flow shocks}, i.e., fluctuations in the fraction of wealth passive investors allocate to the risky asset. As in Section~\ref{sec:simple}, a flow shock is an asymmetric demand shock that affects only the passive investors and triggers portfolio reallocation.
+
+
+Portfolio flows may comove with cash–flow shocks or arise independently. For example, if $d=2$, take $\sigma=(\sigma_1,0)$ for endowment risk and $\sigma_{\alpha_p}=(\sigma_{\alpha_p1},\sigma_{\alpha_p2})$ for the passive-share process: the first factor generates correlation with fundamentals, while the second delivers portfolio–flow shocks orthogonal to cash-flow risk.
+
+The exposure of the passive share to aggregate shocks can reflect, for instance, \emph{imperfect rebalancing} or \emph{performance-induced flows}. Without rebalancing, a positive return on the risky asset raises the passive share when $\overline{\alpha}_{p,t}<1$ (and lowers it when $\overline{\alpha}_{p,t}>1$); similarly, investors may follow a rule-of-thumb behavior where they increase their risky exposure after good performance. In both cases, the passive portfolio share responds to aggregate shocks.
+
+This specification aligns with evidence on passive behavior: households exhibit substantial portfolio inertia \citep{ameriks2011household,brunnermeier2008wealth}; flows chase performance \citep{chevalier1997risk,dannhauser2024flow}; and regulatory changes can sharply increase equity allocations via TDF adoption \citep{parker2022household}, illustrating portfolio flow shocks not tied to cash flow fundamentals.
+
+
+% \paragraph{Passive investors.} 
+% Agents of type $j=0$ are \emph{passive investors}, with portfolio share fixed at $\alpha_{0,t}=\overline{\alpha}_{p,t}$, where $\overline{\alpha}_{p,t}$ follows an exogenous square-root (CIR) process:
+% \begin{equation}\label{eq:alpha_p_process}
+%     d\overline{\alpha}_{p,t}
+%     \;=\;
+%     \theta_p\big(\overline{\alpha}-\overline{\alpha}_{p,t}\big)\,dt
+%     \;+\;
+%     \sqrt{\overline{\alpha}_{p,t}}\;\sigma_p\,dZ_t,
+% \end{equation}
+% with long-run mean $\overline{\alpha}>0$, mean-reversion $\theta_p>0$, and loading $\sigma_p\in\mathbb{R}^{1\times d}$ on the $d$-dimensional Brownian motion $Z_t$.
+% Innovations to $\overline{\alpha}_{p,t}$ represent \emph{portfolio-flow shocks}, i.e., fluctuations in the fraction of wealth passive investors allocate to the risky asset.
+% As in Section~\ref{sec:simple}, a flow shock corresponds to an asymmetric demand shock that affects only a subset of agents---namely, the passive investors--- leading to portfolio reallocation in equilibrium. 
+
+% Portfolio flows may comove with cash-flow shocks or arise independently. For example, if $d=2$, take $\sigma=(\sigma_1,0)$ for endowment risk and $\sigma_p=(\sigma_{p1},\sigma_{p2})$ for the passive-share process. 
+% The first factor generates correlation with fundamentals, while the second delivers portfolio-flow shocks orthogonal to cash-flow risk.
+
+% The exposure of the passive portfolio share to aggregate shocks could reflect either \textit{imperfect rebalancing} or \textit{performance-induced flows}. 
+% For instance, if the passive investor does not adjust $Q_j$ in response to a positive aggregate shock, then her portfolio share would increase if $\overline{\alpha}_{p,t} < 1$---and decrease otherwise.\footnote{
+% For a discussion of how target-date funds may provide a countervailing force, see \citet{parker2023retail}.} 
+% Similarly, passive investors may follow a rule-of-thumb where they increase their exposure to risky assets after a positive shock. 
+% In either case, the portfolio share of passive investors would react to aggregate shocks. 
+% % Moreover, households may shift resources between equity and bond funds for reasons unrelated to fundamentals, leading to pure portfolio-flow shocks. 
+
+% This specification is consistent with evidence on passive behavior: households exhibit substantial portfolio inertia \citep{ameriks2011household,brunnermeier2008wealth}; flows chase performance \citep{chevalier1997risk, dannhauser2024flow}; and regulatory changes can shift equity allocations sharply via TDF adoption \citep{parker2022household}, illustrating flow shocks not tied to cash-flow fundamentals.
+
+
+% \paragraph{Passive investors.} 
+
+% Agents of type $j=0$ are \textit{passive investors}, with portfolio share fixed at $\alpha_{0,t} = \overline{\alpha}_{p,t}$, where $\overline{\alpha}_{p,t}$ follows an exogenous process. Outside a boundary region, $\overline{\alpha}_{p,t}$ evolves as a square-root process \citep*{CIR/1985}:
+% \begin{equation}\label{eq:alpha_p_process}
+%     d \overline{\alpha}_{p,t} = \theta_p \big(\overline{\alpha} - \overline{\alpha}_{p,t}\big)\,dt 
+%     + \sigma_p \sqrt{\overline{\alpha}_{p,t}}\, dZ_t,
+% \end{equation}
+% where $\overline{\alpha}$ is the long-run mean, and $\theta_p$ is the mean-reversion parameter controlling how quickly passive investors rebalance. Innovations to $\overline{\alpha}_{p,t}$ represent \textit{portfolio flow shocks}, i.e., fluctuations in the fraction of wealth passive investors allocate to the risky asset.\footnote{Alternatively, shocks could occur through changes in the mass of passive investors $\omega_0$. In equilibrium, only the total risky holdings of passive investors matter.}  
+
+% Portfolio flows may arise as responses to aggregate shocks, amplifying endowment volatility, or as an independent source of fluctuations. The specification in \eqref{eq:alpha_p_process} captures both. For example, if $d=2$, $\sigma=(\sigma_1,0)$, and $\sigma_p=(\sigma_{p1},\sigma_{p2})$, then the first component of $dZ$ drives aggregate endowment shocks, while the second captures pure portfolio-flow shocks.  
+
+% This framework aligns with evidence on passive investor behavior. \citet{ameriks2011household} and \citet{brunnermeier2008wealth} document substantial portfolio inertia among households, consistent with $\overline{\alpha}_p$ being exposed to aggregate shocks in Equation~\eqref{eq:alpha_p_process}. %adjusting with return shocks. 
+% \citet{parker2023retail} show that target-date funds (TDFs) generate stable portfolio shares, while \citet{gabaix2020search} find similar patterns for institutional investors. \citet{parker2022household} further demonstrate that regulatory changes sharply increased household equity shares through TDF adoption, illustrating how portfolio flows can be driven by forces orthogonal to fundamentals.
+
+% \paragraph{Behavior at the boundary region.} 
+
+% To prevent irregularities when passive investors’ wealth share approaches one, we assume that passive investors increase their portfolio share once their wealth share exceeds a threshold, ensuring that active investors’ leverage remains bounded.
+% Our approach ensures that passive investors’ portfolio share converges to one as their wealth converges to one, similar in spirit to the free-entry mechanism in \citet{khorrami2022entry}.\footnote{Without this assumption, 
+% % if passive investors held nearly all the wealth but a disproportionately small share of risky assets, 
+% the average portfolio share of active investors would diverge, potentially leading to equilibrium multiplicity and violations of no-arbitrage conditions \citep[see][]{hugonnier2012rational}. Under our calibration, the economy spends virtually all of its time away from this boundary.}
+
+% \paragraph{Behavior at the boundary region.} 
+
+% As the wealth share of passive investors approaches one, we impose modified dynamics for their portfolio share. If passive investors hold nearly all the wealth but a disproportionately small fraction of risky assets, the average portfolio share of active investors would diverge. Such behavior can generate equilibrium multiplicity and even violations of no-arbitrage conditions \citep[see][]{hugonnier2012rational}.  
+% To rule out these irregularities, we assume that passive investors increase their portfolio share once their wealth share exceeds a threshold, ensuring that active investors’ leverage remains bounded.\footnote{This assumption is analogous to the free-entry mechanism in \citet{khorrami2022entry}, which prevents similar pathologies in entry models.} This guarantees that the portfolio share of passive investors converges to one as their wealth converges to one. In our calibration, the economy spends virtually all its time away from this boundary region.
+
+
+
+
+
+% There is widespread evidence of inertial behavior in households' portfolios. 
+
+
+% \todo[inline]{PASSIVE COULD REFLECT INSTITUTIONAL MANDATES (AS IN KOIJEN AND GABAIX) OR CAPTURING INERTIA IN INVESTORS PORTFOLIOS (BRUNNERMEIER AND NAGEL/GIGLIO ET AL)}
+
+% \textcolor{red}{How does this look?} Passive demand in our model is meant to reflect investment mandates for funds that the passive agents can choose (e.g, \citealp{gabaix2020search}) or capture the inertia in investors' portfolios (e.g., \citealp{brunnermeier2008wealth}; \citealp{Giglio/Maggiori/Stroebel/Utkus/2021}).
+
+% \paragraph{Active investors.} We refer to investors of type $j = 1,\ldots, J$ as \textit{active investors}. Active investors continuously rebalance their portfolios subject to state-dependent leverage constraints. Following the literature on leverage or margin constraints, we assume that the maximum portfolio share for an active investor is decreasing in aggregate volatility:\footnote{See e.g., \citet{brunnermeier2009market}, \citet{garleanu2011margin}, and \citet{adrian2014procyclical}.}
+% \begin{equation}\label{eq:leverage_constraint}
+%     \alpha_{j,t} \leq \frac{\overline{\sigma}}{\|\sigma_{R,t}\|},
+% \end{equation}
+% where we assume $\overline{\sigma} \geq \|\sigma\|$.
+
+% Constraint \eqref{eq:leverage_constraint} resembles a Value-at-Risk (VaR) constraint, which is common for banks and other leveraged financial institutions.
+% %typically assumed in the literature.
+% It captures the fact that either margin requirements or financial intermediaries' regulatory or risk-management constraints become tighter in periods of high volatility. 
+% Allowing for leverage constraints plays a potential important role in determining the aggregate market elasticity, as they may limit the ability of some active investors to provide an elastic response to shocks during periods of high volatility. 
+
+
+\paragraph{Active investors.} 
+
+Investors of type $j = 1,\ldots, J$ are \textit{active investors}, who rebalance portfolios subject to state-dependent leverage constraints:  
+\begin{equation}\label{eq:leverage_constraint}
+    \alpha_{j,t} \leq \frac{\overline{\sigma}}{\|\sigma_{R,t}\|},
+\end{equation}
+where $\|\sigma_{R,t}\|$ corresponds to return volatility, the Euclidean norm of the vector of risk exposure.  
+
+% where $\overline{\sigma} \geq \|\sigma\|$.\footnote{Following \citet{brunnermeier2009market}, \citet{garleanu2011margin}, and \citet{adrian2014procyclical}, we assume the maximum portfolio share declines with aggregate volatility, capturing the idea that margin requirements or regulatory/risk-management constraints tighten in volatile periods.} 
+This constraint resembles a Value-at-Risk (VaR) limit, often applied to banks and leveraged institutions (see, e.g., \citealt{adrian2014procyclical} and \citealt{brunnermeier2009market}). 
+% Such leverage constraints affect aggregate market elasticity by restricting active investors’ ability to absorb shocks during high-volatility states. 
+%Constraint \eqref{eq:leverage_constraint} resembles a Value-at-Risk (VaR) constraint, capturing that margin requirements or intermediaries’ regulatory and risk-management limits tighten during periods of high volatility.
+
+% \paragraph{Investors' problem.}  The problem of an investor of type $j = 0, \ldots, J$ is given by
+% \begin{equation}\label{eq:inv-problem}
+%     V_{j,t} = \max_{[C_j,\alpha_j]} \mathbb{E}_t\left[ \int_t^\infty f_j(C_{j,s},V_{j,s}) ds \right], 
+% \end{equation}
+% subject to the flow budget constraint, 
+% \begin{equation}
+%     d W_{j,t} = \left[ (r_t  + \pi_t \alpha_{j,t}) W_{j,t} - C_{j,t} \right] dt + \alpha_{j,t} W_{j,t} \sigma_{R,t} d Z_{t},
+% \end{equation}
+% a non-negativity condition on wealth, $W_{j,t} \geq 0$, and the portfolio constraint $\alpha_{j,t} \in \Omega_{j,t}$, where $\Omega_{0,t} = \left\lbrace\alpha_0: \alpha_0 = \overline{\alpha}_{p,t}\right\rbrace $ and $\Omega_{j,t} = \{\alpha_j: \alpha_j \leq \frac{\overline{\sigma}}{\|\sigma_{R,t}\|} \}$ for $j = 1,\ldots, J$, where $\overline{\alpha}_{p,t}$ follows the process \eqref{eq:alpha_p_process}, and $\pi_t = \mu_{R,t}-r_t$ denotes the risk premium. The aggregator for investor $j$, $f_j(C,V)$, is given by
+% \begin{equation}
+%     f_j(C,V) = \rho \frac{(1-\gamma_j) V}{1-\psi^{-1}} \left\{ \left( \frac{C}{\left( (1-\gamma_j) V \right)^{\frac{1}{1-\gamma_j}}} \right)^{1-\psi^{-1}} -1 \right\},
+% \end{equation}
+% where the discount factor $\rho \equiv \hat{\rho}+\kappa$ incorporates not only the investors' impatience $\hat{\rho}$, but also the death probability $\kappa$.
+
+\paragraph{Investors' problem.} 
+
+An investor of type $j = 0,\ldots,J$ solves
+\begin{equation}\label{eq:inv-problem}
+    V_{j,t} = \max_{[C_j,\alpha_j]} 
+    \mathbb{E}_t \left[ \int_t^\infty f_j(C_{j,s},V_{j,s})\, ds \right], \qquad s.t.
+\end{equation}
+% subject to the budget constraint  
+\begin{equation}
+dW_{j,t} = \big[(r_t + \pi_t \alpha_{j,t}) W_{j,t} - C_{j,t}\big] dt 
+    + \alpha_{j,t} W_{j,t} \sigma_{R,t}\, dZ_t,
+\end{equation}
+with $W_{j,t} \geq 0$ and $\alpha_{j,t} \in \Omega_{j,t}$. For passive investors ($j=0$),  
+$\Omega_{0,t} = \{\alpha_0: \alpha_0 = \overline{\alpha}_{p,t}\}$, where $\overline{\alpha}_{p,t}$ follows \eqref{eq:alpha_p_process}. For active investors ($j=1,\ldots,J$),  
+$\Omega_{j,t} = \{\alpha_j: \alpha_j \leq \overline{\sigma}/\|\sigma_{R,t}\|\}$. 
+The risk premium is $\pi_t = \mu_{R,t} - r_t$.  
+
+Preferences are recursive with aggregator  
+\begin{equation}
+    f_j(C,V) = \rho \frac{(1-\gamma_j) V}{1-\psi^{-1}} 
+    \left[ \left( \frac{C}{\big((1-\gamma_j)V\big)^{\frac{1}{1-\gamma_j}}} \right)^{1-\psi^{-1}} - 1 \right],
+\end{equation}
+where the discount factor $\rho \equiv \hat{\rho}+\kappa$ reflects both time impatience $\hat{\rho}$ and the death probability $\kappa$.
+
+
+% \paragraph{Market clearing and equilibrium.}
+% We provide the definition of equilibrium below.
+% \begin{defn}
+% A competitive equilibrium is a set of stochastic processes adapted to the filtration created by $Z_t$: the aggregate endowment $Y$, the price of the claim on the aggregate endowment $P$, and the risk-free rate $r$; and a set of stochastic processes for each investor $j\in\{0,\ldots,J\}$: wealth $W_j$, consumption $C_j$, and stock holdings $\alpha_j$, such that
+% \begin{enumerate}[(i)]
+%     \item Aggregate endowment evolves according to \eqref{eq:agg_endow}, given $Y_0>0$.
+%     \item Given the stochastic processes $\left(P_t, r_t\right)$, choices $\left(C_j,\alpha_j\right)$ solve agent $j$'s problem in \eqref{eq:inv-problem}.
+%     \item Markets for consumption goods, risky asset, and risk-free bonds clear
+%     \begin{equation}
+%     \sum_{j=0}^J \omega_j C_{j,t} = Y_t, \qquad \qquad 
+%     \sum_{j=0}^J \omega_j Q_{j,t}= 1, \qquad \qquad 
+% \sum_{j=0}^J \omega_j B_{j,t}= 0,
+% \end{equation}
+% where $Q_{j,t} = \alpha_{j,t} W_{j,t} / P_t$ and $B_{j,t} = (1-\alpha_{j,t}) W_{j,t}$.
+% \end{enumerate}
+% \end{defn}
+
+\paragraph{Market clearing and equilibrium.} 
+
+We define equilibrium as follows:
+
+\begin{defn}
+A competitive equilibrium consists of stochastic processes adapted to the filtration generated by $Z_t$: the aggregate endowment $Y$, the price of risky asset $P$, the risk-free rate $r$; and, for each investor $j \in \{0,\ldots,J\}$, wealth $W_j$, consumption $C_j$, and portfolio share $\alpha_j$, such that
+\begin{enumerate}[label=(\roman*)]
+    \item The aggregate endowment evolves according to \eqref{eq:agg_endow}, with $Y_0 > 0$.
+    \item Given $\{P_t, r_t\}$, the choices $(C_j,\alpha_j)$ solve investor $j$'s problem in \eqref{eq:inv-problem}.
+    \item Markets clear for goods, risky assets, and bonds:
+    \begin{equation}
+        \sum_{j=0}^J \omega_j C_{j,t} = Y_t, 
+        \qquad 
+        \sum_{j=0}^J \omega_j Q_{j,t} = 1, 
+        \qquad 
+        \sum_{j=0}^J \omega_j B_{j,t} = 0,
+    \end{equation}
+    $Q_{j,t} = \alpha_{j,t} W_{j,t} / P_t$ and $B_{j,t} = (1-\alpha_{j,t}) W_{j,t}$ denote holdings of the risky and riskless assets. 
+\end{enumerate}
+\end{defn}
+
+
+% \subsection{Equilibrium characterization}\label{sec:equilibrium-char}
+
+% %We consider next the characterization of the equilibrium. In particular, we derive a system of partial differential equations (PDEs) that one needs to solve to compute the equilibrium of this economy. 
+% % In this section, we characterize the equilibrium by deriving a system of partial differential equations (PDEs) that needs to solved to compute the equilibrium dynamics of this economy.  
+% In this section, we provide a characterization of the equilibrium conditions and define a Markov equilibrium in terms of the wealth distribution and the portfolio share of passive investors. 
+
+% \paragraph{Investors' problem.} Given the homotheticity of preferences, the value function for investor $j$ can be written as
+% \begin{equation}\nonumber
+%     V_{j,t} = \left( \frac{c_{j,t}}{\rho^\psi} \right)^{\frac{1-\gamma_j}{1-\psi}} \frac{W_{j,t}^{1-\gamma_j}}{1-\gamma_j},
+% \end{equation}
+% where $c_{j,t}$ is a function of the aggregate state variable $X_t$, that is, $c_{j,t} = c_j(X_t)$. The function $c_{j,t}$ evolves according to
+% \begin{equation}\nonumber
+%     \frac{d c_{j,t}}{c_{j,t}} = \mu_{c_j,t} dt + \sigma_{c_j,t} d Z_t,
+% \end{equation}
+% where $\mu_{c_j,t}$ and $\sigma_{c_j,t}$ are given by Ito's lemma. 
+% Given the process for $c_{j,t}$, one can solve for investors' policy functions. In particular, the function $c_{j,t}$ corresponds to agent $j$'s consumption-wealth ratio:
+% \begin{equation}\nonumber
+%     \frac{C_{j,t}}{W_{j,t}} = c_{j,t}.
+% \end{equation}
+
+% We can express the portfolio weight $\alpha_{j,t}$ in terms of $c_{j,t}$ and asset prices: 
+% % It is convenient to consider investors' \textit{risk exposure} $\sigma_{j} \equiv  \alpha_j \|\sigma_R\|$, given by
+% \begin{equation}\label{eq:portfolio_share}
+%     \alpha_{j,t} = \min \left\{ \frac{\pi_t}{\gamma_j \|\sigma_{R,t}\|^2}  + \varsigma_{j,t}, \frac{\overline{\sigma}}{\|\sigma_{R,t}\|} \right\}, 
+% \end{equation}
+% where $\varsigma_{j,t} \equiv \frac{1-\gamma_j^{-1}}{\psi-1} \frac{\sigma_{c_j,t} \sigma_{R,t}'}{\|\sigma_{R,t}\|^2}$ is the hedging demand component.
+% The risk exposure of unconstrained investors is given by the usual myopic and hedging components. The myopic component depends on the investor's risk tolerance $1/\gamma_j$, the risk premium $\pi_t$, and return variance $\|\sigma_{R,t}\|^2$. The hedging demand depends on the correlation of $c_{j,t}$, which affects the investor's marginal utility of wealth, and the risky asset. The leverage constraint limits the maximum risk exposure an investor can achieve at any point in time. 
+% % \begin{equation}
+% %     \sigma_{j,t} = \min \left\{ \frac{\eta_t}{\gamma_j}  + \frac{1-\gamma_j^{-1}}{\psi-1} \frac{\sigma_{c_j,t} \sigma_{R,t}'}{\|\sigma_{R,t}\|}, \overline{\sigma} \right\}, \nonumber
+% % \end{equation}
+% % where $\eta_t \equiv \dfrac{\mu_{R,t} - r_t}{\|\sigma_{R,t}\|}$ denotes the Sharpe ratio of the risky asset.
+% % The risk exposure of unconstrained investors is given by the usual myopic and hedging components. The myopic component depends on the investor's risk tolerance $1/\gamma_j$ and the asset's Sharpe ratio $\eta_t$. The hedging demand depends on the correlation of $c_{j,t}$, which affects the investor's marginal utility of wealth, and the risky asset. The leverage constraint limits the maximum risk exposure an investor can achieve at any point in time. 
+
+% From the Hamilton-Jacobi-Bellman (HJB) equation, we obtain an expression for $c_{j,t}$:
+% \begin{equation}\label{eq:xi_j}
+%     c_{j,t} = \psi \rho + (1-\psi) \left[ r_t + \pi_t \alpha_{j,t} - \frac{\gamma_j}{2} \|\sigma_{R,t}\|^2 \alpha_{j,t}^2\right] + \xi_{j,t},
+% \end{equation}
+% where $\xi_{j,t} \equiv \mu_{c_j,t} + (1-\gamma_j)  \sigma_{c_j,t} \sigma_{R,t}' \alpha_{j,t} + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}$ corresponds to a forward-looking shifter of the consumption-wealth ratio, which depends on the drift and diffusion of $c_j$.
+
+
+% The consumption-wealth ratio depends on current investment opportunities, captured by the risk-adjusted return $r_t + \pi_t \alpha_{j,t} - \frac{\gamma_j}{2} \alpha_{j,t}^2 \|\sigma_{R,t}\|^2$, as well as future investment opportunities, captured by $\xi_{j,t}$. Note that, as usual, movements in returns have income and substitution effects and the net response of the consumption-wealth ratio depends on the EIS.
+
+\subsection{Equilibrium characterization}\label{sec:equilibrium-char}
+
+In this section, we characterize equilibrium by defining a Markov equilibrium in terms of the wealth distribution and the portfolio share of passive investors.
+
+\paragraph{Investors' problem.} 
+With homothetic preferences, investor $j$'s value function can be written as
+\begin{equation}\nonumber
+    V_{j,t} = \left( \frac{c_{j,t}}{\rho^\psi} \right)^{\frac{1-\gamma_j}{1-\psi}} 
+    \frac{W_{j,t}^{1-\gamma_j}}{1-\gamma_j}, \qquad \text{where} \qquad \frac{dc_{j,t}}{c_{j,t}} = \mu_{c_j,t}\, dt + \sigma_{c_j,t}\, dZ_t,
+\end{equation}
+and $c_{j,t} = c_j(X_t)$ corresponds to the consumption-wealth ratio: $\frac{C_{j,t}}{W_{j,t}} = c_{j,t}$.
+% Its dynamics follows
+% \begin{equation}\nonumber
+%     \frac{dc_{j,t}}{c_{j,t}} = \mu_{c_j,t}\, dt + \sigma_{c_j,t}\, dZ_t,
+% \end{equation}
+% The function $c_{j,t}$ corresponds to agent $j$'s consumption-wealth ratio:
+% \begin{equation}\nonumber
+%     \frac{C_{j,t}}{W_{j,t}} = c_{j,t}.
+% \end{equation}
+
+The optimal portfolio weight for an active investor is
+\begin{equation}\label{eq:portfolio_share}
+    \alpha_{j,t} = \min \left\{ 
+        \frac{\pi_t}{\gamma_j \|\sigma_{R,t}\|^2} + \varsigma_{j,t}, \,
+        \frac{\overline{\sigma}}{\|\sigma_{R,t}\|} 
+    \right\},
+\end{equation}
+where $\varsigma_{j,t} \equiv \frac{1-\gamma_j^{-1}}{\psi-1} 
+\dfrac{\sigma_{c_j,t} \sigma_{R,t}'}{\|\sigma_{R,t}\|^2}$ is the hedging component. The risk exposure of unconstrained investors thus combines a myopic demand, $\frac{\pi_t}{\gamma_j \|\sigma_{R,t}\|^2}$, with a hedging demand reflecting the covariance between $c_{j,t}$ and risky returns. The leverage constraint caps exposure at $\overline{\sigma}/\|\sigma_{R,t}\|$.
+
+From the Hamilton-Jacobi-Bellman equation, the consumption-wealth ratio is
+\begin{equation}\label{eq:xi_j}
+    c_{j,t} = \psi \rho 
+    + (1-\psi) \left[ r_t + \pi_t \alpha_{j,t} 
+        - \frac{\gamma_j}{2} \|\sigma_{R,t}\|^2 \alpha_{j,t}^2 \right] 
+    + \xi_{j,t},
+\end{equation}
+where 
+\[
+    \xi_{j,t} \equiv \mu_{c_j,t} 
+    + (1-\gamma_j) \sigma_{c_j,t} \sigma_{R,t}' \alpha_{j,t} 
+    + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2},
+\]
+is a forward-looking term capturing how expected shifts in $c_{j,t}$ affect consumption choices.
+
+Thus, the consumption–wealth ratio depends both on current investment opportunities, summarized by $r_t + \pi_t \alpha_{j,t} - \frac{\gamma_j}{2} \alpha_{j,t}^2 \|\sigma_{R,t}\|^2$, and on future opportunities, summarized by $\xi_{j,t}$. 
+% As usual, return movements induce income and substitution effects, with the net response determined by the elasticity of intertemporal substitution.
+
+% \paragraph{Pricing condition.} As in Section~\ref{sec:simple}, let $p_t \equiv P_t/Y_t$ denote the price-dividend ratio for the risky asset. Since the expected return is given by $r_t + \pi_t = \frac{1}{p_t} + \mu_{P,t}$, the price-dividend ratio satisfies the condition
+% \begin{equation}\label{eq:pricing_cond}
+%     \frac{1}{p_t} = r_t + \pi_t  -(\mu + \mu_{p,t} + \sigma \sigma_{p,t}'),
+% \end{equation}
+% where $\sigma_{R,t} = \sigma + \sigma_{p,t}$, $(\mu_{p,t}, \sigma_{p,t})$ is given by Ito's lemma, and we used $\mu_{P,t} =\mu + \mu_{p,t} + \sigma \sigma_{p,t}' $. 
+% % Let $ \pi_t\equiv\eta_t \|\sigma_{R,t}\|  $ denote the risk premium on the endowment claim.
+% % \begin{equation}
+% %     \mu_{y,t} = y_{X,t} \mu_{X,t} + \frac{1}{2}\sum_{k=1}^d \sigma_{X,k,t}'  y_{j,XX} \sigma_{X,k,t}, \qquad \qquad 
+% %     \sigma_{y,t} = y_{X,t} \sigma_{X,t}.
+% % \end{equation}
+
+% \paragraph{Aggregate state variable.} Let $x_j$ be the wealth share of type-$j$ investors:
+% \begin{equation}
+%     x_{j,t} \equiv \frac{\omega_j W_{j,t}}{P_t}.\nonumber
+% \end{equation}
+% We define the aggregate state variable as $X_t = (x_t, \overline{\alpha}_{p,t})$, where $x_t \equiv \left(x_{1,t}, x_{2,t}, \ldots, x_{J,t}\right )$. The law of motion of $\overline{\alpha}_{p,t}$ is given by \eqref{eq:alpha_p_process}. 
+% % To derive the law of motion of $x_{j,t}$, note that the law of motion of wealth for a type-$j$ investor can be written as
+% % \begin{equation}
+% %     \frac{d W_{j,t}}{W_{j,t}} = \left[ r_t + \eta_t \sigma_{j,t} - \xi_{j,t} \right]dt +  \frac{\sigma_{j,t}}{\|\sigma_{R,t}\|}  \sigma_{R,t}Z_t\nonumber
+% % \end{equation}
+% From Ito's lemma, the law of motion of $x_{j,t}$ is given by
+% \begin{small}
+% 	\begin{align*}
+% 		\frac{d x_{j,t}}{x_{j,t}} &= \left( r_t + \pi_t \alpha_{j,t} - c_{j,t} -\mu - \mu_{p,t} - \sigma \sigma_{p,t}'  +(1- \alpha_{j,t}) \|\sigma_{R,t}\|^2  +\kappa \frac{\omega_j-x_{j,t}}{x_{j,t}}  \right) dt + \left (\alpha_{j,t} - 1\right ) \sigma_{R,t} d Z_t.
+% 	\end{align*}
+% \end{small}
+
+
+\paragraph{Pricing condition.} 
+
+Let $p_t \equiv P_t/Y_t$ denote the price-dividend ratio of the risky asset. Since the expected return is $r_t + \pi_t = \frac{1}{p_t} + \mu_{P,t}$, the price-dividend ratio satisfies
+\begin{equation}\label{eq:pricing_cond}
+    \frac{1}{p_t} = r_t + \pi_t - (\mu + \mu_{p,t} + \sigma \sigma_{p,t}'),
+\end{equation}
+where $\sigma_{R,t} = \sigma + \sigma_{p,t}$ and $(\mu_{p,t},\sigma_{p,t})$ follow from Itô’s lemma.
+% \footnote{Using $\mu_{P,t} = \mu + \mu_{p,t} + \sigma \sigma_{p,t}'$, the condition links the price-dividend ratio to the risk-free rate, the risk premium, and the dynamics of the endowment.}
+
+\paragraph{Aggregate state variable.} 
+
+Let $x_{j,t}$ denote the wealth share of type-$j$ investors:
+\begin{equation}\nonumber
+    x_{j,t} \equiv \frac{\omega_j W_{j,t}}{P_t}.
+\end{equation}
+The aggregate state is $X_t = (x_t, \overline{\alpha}_{p,t})$, where $x_t = (x_{1,t}, x_{2,t}, \ldots, x_{J,t})$ and $\overline{\alpha}_{p,t}$ evolves as in \eqref{eq:alpha_p_process}. By Itô’s lemma, the law of motion for $x_{j,t}$ is
+%\begin{small}
+\begin{align*}
+    \frac{dx_{j,t}}{x_{j,t}} 
+    &= \Big[ r_t + \pi_t \alpha_{j,t} - c_{j,t} - \mu_{P,t} 
+        + (1-\alpha_{j,t}) \|\sigma_{R,t}\|^2 
+        + \kappa \frac{\omega_j - x_{j,t}}{x_{j,t}} \Big] dt  + (\alpha_{j,t} - 1)\, \sigma_{R,t}\, dZ_t.
+\end{align*}
+%\end{small}
+
+
+% \paragraph{Risk premium and interest rate.} 
+% % We can write the market clearing conditions in terms of the wealth shares:
+% % \begin{equation}
+% %     \sum_{j=0}^J x_{j,t} \xi_{j,t} = y_t, \qquad \qquad 
+% %     \sum_{j=0}^J x_{j,t} \sigma_{j,t} = \|\sigma_{R_t}\|, \qquad \qquad 
+% %     \sum_{j=0}^J x_{j,t} = 1.
+% % \end{equation}
+% Let $\mathcal{J}_t^u \subseteq \{1,2,\ldots, J\}$ and $\mathcal{J}_t^c \subseteq \{1,2,\ldots, J\}$ denote the set of unconstrained and constrained active investors at time $t$, respectively.
+% Define the wealth share of unconstrained investors as $x_{u,t} \equiv \sum_{j\in \mathcal{J}_t^u} x_{j,t}$, and the wealth share of constrained investors as  $x_{c,t} \equiv \sum_{j\in \mathcal{J}_t^c} x_{j,t}$.
+% From the market clearing for the risky asset, we obtain
+% \begin{equation}
+%     \underbrace{\sum_{j \in \mathcal{J}_t^u} x_{j,t} \alpha_{j,t} }_{\substack{\textbf{active unconstrained}\\
+%     \textbf{demand}}} = \underbrace{1 - x_{0,t} \overline{\alpha}_{p,t} - x_{c,t} \overline{\alpha}_{c,t} }_{\textbf{net supply}},
+% \end{equation}
+% where $\overline{\alpha}_{c,t} \equiv\frac{\overline{\sigma}}{\|\sigma_{R,t}\|}$ is the portfolio share of constrained agents. 
+% The expression above is the analogous in our dynamic setting of Equation \eqref{eq: risky_mkt}, as $\omega_j Q_{j,t} = x_{j,t} \alpha_{j,t}$.
+% The net supply of risky assets to unconstrained (or marginal) investors is given by $1 - x_{0,t} \overline{\alpha}_{p,t} - x_{c,t} \overline{\alpha}_{c,t}$, that is, the total supply minus the demand from constrained (or infra-marginal) investors.
+% When all active investors are unconstrained, we recover the condition from Section \ref{sec:simple}, Equation \eqref{eq: risky_mkt}, where the demand from active investors must equal the total supply minus the amount held by passive investors. 
+
+
+% Combining the expression above with the optimal portfolio of active investors, we obtain an expression for the risk premium:
+% \begin{equation}\label{eq:sharpe_ratio}
+%     \pi_{t} =  \frac{\gamma_{u,t} \|\sigma_{R,t}\|^2}{x_{u,t}} \left[ 1 - x_{0,t} \overline{\alpha}_{p,t} - x_{c,t} \overline{\alpha}_{c,t} - x_{u,t} \varsigma_{t} \right] ,
+% \end{equation}
+% where $\gamma_{u,t} \equiv \left[ \sum_{j\in\mathcal{J}_t^u} \frac{x_{j,t}}{x_{u,t}} \frac{1}{\gamma_j}\right]^{-1}$ denotes the average risk aversion and $\varsigma_t \equiv \sum_{j\in \mathcal{J}_t^u} \frac{x_{j,t}}{x_{u,t}} \varsigma_{j,t} $ the average hedging demand of unconstrained investors.
+
+% Equation~\eqref{eq:sharpe_ratio} captures the effect of heterogeneity, passive investment, and leverage constraints on the risk premium. Keeping everything else constant, an increase in the average risk aversion of unconstrained agents (higher $\gamma_{u,t}$), a reduction in passive investors' demand (lower $\overline{\alpha}_{p,t}$), a reduction in the risk bearing capacity of constrained investor (lower $\overline{\alpha}_{c,t}$), or a reduction in hedging demands (lower $\varsigma_t$) all tend to increase the risk premium. 
+
+% We can write the market-clearing condition for goods as follows:
+% \begin{equation}
+%     \sum_{j=0}^J x_j c_{j,t} = \frac{1}{p_t}, 
+% \end{equation}
+% % which is the analogous of condition \eqref{eq:consumption_mkt_clearing1}. 
+% From the equation above and Equation~\eqref{eq:xi_j}, we obtain
+% \begin{align}\label{eq:interest_rate}
+%      r_t  &  =  \rho  +\psi^{-1} \mu_{P,t} + \left (1-\psi^{-1}\right )  \sum_{j=0}^J x_{j,t}\frac{\gamma_j \alpha_{j,t}^2}{2} ||\sigma_{R,t}||^2- \pi_t +\psi^{-1} \xi_t,
+% \end{align}
+% where $\xi_t \equiv \sum_{j=0}^J x_{j,t} \xi_{j,t}$.
+
+% The first two terms of the right-hand side capture the effect of impatience and intertemporal substitution, the next term capture the effect of uncertainty, while the last term captures the effect of time-varying investment opportunities. Note that the risk-free interest rate depends on the risk premium $\pi_t$ and the distribution of risk across investors $\{\alpha_j\}$, which will be important when considering the equilibrium impact of portfolio flows in Section~\ref{sec:elasticity}.
+
+\paragraph{Risk premium and interest rate.} 
+
+Let $\mathcal{J}_t^u$ and $\mathcal{J}_t^c$ denote the sets of unconstrained and constrained active investors at time $t$, with wealth shares $x_{u,t} \equiv \sum_{j\in \mathcal{J}_t^u} x_{j,t}$ and $x_{c,t} \equiv \sum_{j\in \mathcal{J}_t^c} x_{j,t}$. From market clearing for the risky asset, demand from unconstrained investors satisfies
+\begin{equation}\label{eq:mkt-clearing}
+    \underbrace{\sum_{j \in \mathcal{J}_t^u} x_{j,t} \alpha_{j,t} }_{\substack{\text{unconstrained active demand}}} = \underbrace{1 - x_{0,t} \overline{\alpha}_{p,t} - x_{c,t} \overline{\alpha}_{c,t} }_{\text{net supply}},
+\end{equation}
+where $\overline{\alpha}_{c,t} \equiv \overline{\sigma}/\|\sigma_{R,t}\|$ is the portfolio share of constrained agents.
+% \footnote{
+% % This condition is the dynamic analogue of the static risky-asset market clearing condition. 
+% % since $\omega_j Q_{j,t} = x_{j,t} \alpha_{j,t}$. 
+% When all active investors are unconstrained, this condition collapses to the benchmark in Section~\ref{sec:simple}: the demand from active investors must equal the total supply minus the amount held by passive investors.}  
+
+Combining this condition with the optimal portfolios yields the risk premium:
+\begin{equation}\label{eq:sharpe_ratio}
+    \pi_t = \frac{\gamma_{u,t} \|\sigma_{R,t}\|^2}{x_{u,t}}
+    \left[ 1 - x_{0,t}\, \overline{\alpha}_{p,t} 
+    - x_{c,t}\, \overline{\alpha}_{c,t} 
+    - x_{u,t}\, \varsigma_t \right],
+\end{equation}
+where $\gamma_{u,t} \equiv [\sum_{j\in\mathcal{J}_t^u} \frac{x_{j,t}}{x_{u,t}} \frac{1}{\gamma_j}]^{-1}$ is the average risk aversion and $\varsigma_t \equiv \sum_{j\in \mathcal{J}_t^u} \frac{x_{j,t}}{x_{u,t}} \varsigma_{j,t}$ the average hedging demand of unconstrained investors.  
+Equation~\eqref{eq:sharpe_ratio} shows that the risk premium rises with higher risk aversion, lower passive demand, tighter leverage constraints, or weaker hedging motives.
+
+Goods market clearing requires
+\begin{equation}
+    \sum_{j=0}^J x_{j,t} c_{j,t} = \frac{1}{p_t}.
+\end{equation}
+Combining this with \eqref{eq:xi_j} gives the equilibrium interest rate:
+\begin{align}\label{eq:interest_rate}
+    r_t &= \rho + \psi^{-1} (\mu_{P,t} + \xi_t )
+    + (1-\psi^{-1}) \sum_{j=0}^J x_{j,t} 
+        \frac{\gamma_j \alpha_{j,t}^2}{2} \|\sigma_{R,t}\|^2
+    - \pi_t,
+\end{align}
+where $\xi_t \equiv \sum_{j=0}^J x_{j,t} \xi_{j,t}$.  
+The first two terms reflect impatience and intertemporal substitution, while the third term captures precautionary savings.
+% , while the last term accounts for time-varying investment opportunities. 
+% The interest rate thus depends directly on the risk premium $\pi_t$ and the distribution of risk across investors, $\{\alpha_j\}$.
+
+% \paragraph{Endogenous volatility.} The exposure of returns to shocks has both an exogenous component and an endogenous component, $\sigma_{R,t} = \sigma + \sigma_{p,t}$. 
+% The exogenous component corresponds to the volatility of cash flows. 
+% The endogenous component corresponds to changes in the valuation ratio $p_t$. 
+% As dividend growth is iid, movements in the price-dividend ratio are entirely driven by movements in expected returns. 
+% The term $\sigma_{p,t}$ is given by Ito's lemma:
+% \begin{equation}\label{eq:_endogenous_vol}
+%     \sigma_{p,t} = \frac{p_x(X_t)}{p(X_t)} \sigma_{x,t} + \frac{p_{\overline{\alpha}_p}(X_t)}{p(X_t)} \sigma_{p} \sqrt{\overline{\alpha}_{p,t}}. 
+% \end{equation}
+
+% The endogenous volatility then depends on two terms. First, the product of the sensitivity of the price-dividend ratio to changes in the wealth distribution (given by $x_{j,t}$ for $j = 1,\ldots, J$) and the response of the wealth distribution to shocks, $\sigma_{x,t}$. Second, the product of the sensitivity of the price-dividend ratio to changes in the passive portfolio and the response of the passive portfolio to shocks. 
+% The first term is standard in heterogeneous-agent models (see e.g., \citealt{panageas2020implications}).
+% The second term is only present in economies with exogenous portfolio-flow shocks, and it is only quantitatively relevant in economies where the market is sufficiently inelastic, or $\frac{p_{\overline{\alpha}_p}(X_t)}{p(X_t)} $ is sufficiently large.
+% Therefore, Equation \eqref{eq:_endogenous_vol} provides the link between the aggregate market elasticity and return volatility $\|\sigma+\sigma_{p,t}\|$.
+
+\paragraph{Endogenous volatility.} 
+
+Return volatility has both an exogenous and an endogenous component, $\sigma_{R,t} = \sigma + \sigma_{p,t}$, where $\sigma$ reflects cash-flow volatility and $\sigma_{p,t}$ arises from movements in the price-dividend ratio $p_t$. 
+% Since dividend growth is i.i.d., all variation in $p_t$ comes from expected returns. 
+By Itô’s lemma,  
+\begin{equation}\label{eq:_endogenous_vol}
+    \sigma_{p,t} = \frac{p_x(X_t)}{p(X_t)} \sigma_{x,t} 
+    + \frac{p_{\overline{\alpha}_p}(X_t)}{p(X_t)} \sigma_{\alpha_p}. %\sqrt{\overline{\alpha}_{p,t}}. 
+\end{equation}
+
+Equation~\eqref{eq:_endogenous_vol} shows that endogenous volatility depends on (i) the sensitivity of $p_t$ to changes in the wealth distribution $x_{j,t}$ and the response of wealth shares to shocks, $\sigma_{x,t}$, and (ii) the sensitivity of $p_t$ to changes in passive portfolios and the response of $\overline{\alpha}_{p,t}$ to shocks. The first term is standard in heterogeneous-agent models \citep[see][]{panageas2020implications}, while the second arises only with exogenous portfolio flow shocks and is quantitatively relevant when markets are sufficiently inelastic (i.e., when $\frac{p_{\overline{\alpha}_p}(X_t)}{p(X_t)}$ is large). Thus, \eqref{eq:_endogenous_vol} links market elasticity to return volatility $\|\sigma+\sigma_{p,t}\|$.
+
+% Given that $\mu_{\xi_j,t}$ and $\sigma_{\xi_j,t}$ depend on the derivatives $\xi_{j,t}$, equation \eqref{eq:xi_j} will be part of a system of partial differential equations (PDEs) one needs to solve to compute the equilibrium of this economy. Similarly, given the dependence of $\mu_{y,t}$ and $\sigma_{y,t}$ on the derivatives of $y_{t}$, expression \eqref{eq:pricing_cond} will also be part of the system of PDEs that characterize the equilibrium of the economy.
+
+% \paragraph{Markov equilibrium.}
+% Equations \eqref{eq:sharpe_ratio} and \eqref{eq:interest_rate} allow us to express $\pi_{t}$ and $r_t$ as functions of $c_{j,t}$ and $p_t$ and their derivatives, after expressing $(\mu_{c_j,t}, \mu_{p,t})$ and $(\sigma_{c_j,t},\sigma_{p,t})$ as a function of $(\mu_{X,t}, \sigma_{X,t})$ and the derivatives of $c_{j,t}$ and $p_t$ using Ito's lemma. Plugging the values of $\pi_t$ and $r_t$ into \eqref{eq:xi_j} and \eqref{eq:pricing_cond}, and using the expression for the law of motion of the state variables, we obtain a system of $J+2$ PDEs involving $c_{j}(X_t)$, for $j = 0,1,\ldots, J$, and $p(X_t)$. These functions depend on $J+1$ state variables, corresponding to $J$ wealth shares, $x_{j,t}$ for $j = 1,2,\ldots,J $, and the portfolio share of passive investors $\overline{\alpha}_{p,t}$.
+% We define the Markov equilibrium in state variable $X_t$ below.
+% \begin{defn}
+% A Markov equilibrium in state variable $X_t=\left(x_t, \overline{\alpha}_{p,t}\right)$, where $x_{t} \equiv\left(x_{1, t}, x_{2, t}, \ldots, x_{J, t}\right)$ and law of motion for $\overline{\alpha}_p$ is given in \eqref{eq:alpha_p_process}, is the set of functions: price-dividend ratio $p(X)$, interest rate $r(X)$, consumption-wealth ratio $c_j(X)$, policy functions $\{C_j(X), \alpha_j(X)\}$, for $j\in\{0,\ldots,J\}$, and laws of motion for the endogenous state variable $\mu_X(X)$ and $\sigma_X(X)$, such that:
+% \begin{enumerate}[(i)]
+%     \item The consumption-wealth ratio $c_j$ solves agent $j$'s HJB equation~\eqref{eq:xi_j}, and $C_j$ and $\alpha_j$ are the corresponding policy functions, taking $p$, $r$ and laws of motion for $X$ as given.
+%     \item Markets for the consumption good, the risky asset, and the risk-free bond clear:
+%     \begin{equation}
+%         \sum_{j=0}^{J} x_{j, t} c_{j, t}=\frac{1}{p_t}, \qquad 
+%     \sum_{j=0}^{J} x_{j, t} \alpha_{j, t}=1,\qquad 
+%     \sum_{j=0}^{J} x_{j, t} (1-\alpha_{j,t})=0.\label{eq:mkt-clearing}
+%     \end{equation}
+% \end{enumerate}
+% \end{defn}
+
+\paragraph{Markov equilibrium.} 
+
+Equations \eqref{eq:sharpe_ratio} and \eqref{eq:interest_rate} allow us to express $\pi_t$ and $r_t$ in terms of $c_{j,t}$, $p_t$, and their derivatives, once $(\mu_{c_j,t}, \mu_{p,t})$ and $(\sigma_{c_j,t}, \sigma_{p,t})$ are written as functions of $(\mu_{X,t}, \sigma_{X,t})$ via Itô’s lemma. Substituting these into \eqref{eq:xi_j} and \eqref{eq:pricing_cond}, together with the laws of motion for the state variables, yields a system of $J+2$ PDEs in $\{c_j(X_t)\}_{j=0}^J$ and $p(X_t)$. These functions depend on $J+1$ state variables: the $J$ wealth shares $x_{j,t}$ for $j=1,\ldots,J$ and the passive portfolio share $\overline{\alpha}_{p,t}$.  
+
+% \begin{defn}
+% A Markov equilibrium in state variable $X_t = (x_t, \overline{\alpha}_{p,t})$, where $x_t \equiv (x_{1,t}, \ldots, x_{J,t})$ and $\overline{\alpha}_{p,t}$ follows \eqref{eq:alpha_p_process}, is a set of functions: the price–dividend ratio $p(X)$, interest rate $r(X)$, consumption–wealth ratios $\{c_j(X)\}$, policy functions $\{C_j(X), \alpha_j(X)\}$ for $j=0,\ldots,J$, and the laws of motion $\mu_X(X), \sigma_X(X)$, such that:
+% \begin{enumerate}[(i)]
+%     \item For each $j$, $c_j$ solves the HJB equation~\eqref{eq:xi_j}, and $C_j$ and $\alpha_j$ are the corresponding policies, taking $p$, $r$, and the laws of motion for $X$ as given.
+%     \item Markets clear for goods, risky assets, and bonds:
+%     \begin{equation}\label{eq:mkt-clearing}
+%         \sum_{j=0}^{J} x_{j,t} c_{j,t} = \frac{1}{p_t}, \qquad 
+%         \sum_{j=0}^{J} x_{j,t} \alpha_{j,t} = 1, \qquad 
+%         \sum_{j=0}^{J} x_{j,t} (1-\alpha_{j,t}) = 0.
+%     \end{equation}
+% \end{enumerate}
+% \end{defn}
+
+
+% \section{The Determinants of the Aggregate Market Elasticity}\label{sec:elasticity}
+
+% In this section, we consider the effects of portfolio flows on asset prices. The response of the price of the risky asset to passive portfolio flows is determined by the (inverse) aggregate market elasticity. Computing this elasticity requires solving the system of PDEs given by \eqref{eq:xi_j} and \eqref{eq:pricing_cond}, which is not available in closed-form. To isolate the economic mechanisms by which different frictions affect the aggregate market elasticity, we extend the perturbation method used in \citet{Silva/riskchannel} to obtain asymptotic closed-form expression for this elasticity. 
+
+% \subsection{Perturbation method}
+
+% We consider a family of economies indexed by the parameter $\epsilon > 0$. This parameter simultaneously controls the degree of preference heterogeneity, 
+% risky asset demand by passive investors,
+% and the tightness of the leverage constraint that active investors face. The coefficient of relative risk aversion of investor $j=0,\ldots, J$ is given by 
+% \begin{equation}\label{eq:gamma-perturb}
+%     \gamma_j = \gamma ( 1 + \hat{\gamma}_j \epsilon),
+% \end{equation}
+% where 
+% \begin{equation*}
+%     \sum_{j=0}^J \omega_j \hat{\gamma}_j = 0. 
+% \end{equation*}
+% Parameter $\gamma$ captures the average risk aversion in the economy weighted by population shares, and $\hat{\gamma}_j$ controls the proportional deviation of investor $j$'s risk aversion from this weighted average. When $\epsilon = 0$, we have an economy with homogeneous preferences, and when $\epsilon = 1$, we have our economy of interest with heterogeneous investors. 
+
+% Parameter $\epsilon$ also affects the portfolio share of passive investors. For simplicity, we abstract from time-variation in the portfolio of passive investors, that is, we assume throughout this section that $\theta_p = 0 $ and $\sigma_p = 0$ in Equation~\eqref{eq:alpha_p_process}. 
+% We then assume that $Z_t$ is uni-dimensional and write $\sigma$ instead of $||\sigma||$.
+% The portfolio share of passive investors is given by 
+% \begin{equation}\label{eq:apbar_index}
+%     \overline{\alpha}_p = 1 + \hat{\alpha}_p \epsilon.
+% \end{equation}
+% Note that when $\epsilon = 0$, passive investors are \textit{fully invested} in the risky asset. Parameter $\hat{\alpha}_p$ controls the deviations from this benchmark. 
+
+% To allow for a first-order role of the leverage constraints, we also assume that $\overline{\sigma}$ in Equation~\eqref{eq:leverage_constraint} is given by
+% \begin{equation}\label{eq:sig_bar-perturb}
+%     \overline{\sigma} = \sigma + \hat{\sigma} \epsilon.
+% \end{equation}
+% This assumption guarantees that the tightness of the leverage constraint will be of the order $\mathcal{O}(\epsilon)$, the same order as the demand for leverage in this economy. 
+% Finally, to focus on the role of heterogeneity, passive demand, and leverage constraints, we abstract from the overlapping generations feature, that is, we set $\kappa = 0$. 
+% % Finally, to simplify the derivations, we assume that the intensity at which investors switch types is also of order $\epsilon$, that is,
+% % \begin{equation}
+% %     \kappa = \hat{\kappa} \epsilon.
+% % \end{equation}
+% % This assumption is not strictly necessary for our results, but it simplifies the derivations below. 
+
+% By considering a family of economies, the values of endogenous variables depend not only on the aggregate state variable $X_t$ but also on the parameter indexing the specific economy, i.e., $\epsilon$. For instance, the price-dividend and the consumption-wealth ratios for investor $j$ are now given by $p(X,\epsilon)$ and  $c_j(X,\epsilon)$, respectively. 
+% % This dependence on $X$ and $\epsilon$ is common for all endogenous variables. (\textcolor{red}{Is this last sentence really necessary?})
+
+% We are interested in a second-order expansion of the equilibrium objects on the parameter $\epsilon$:
+% \begin{align}
+%     p(X,\epsilon) &= p_{0}(X) + p_{1}(X) \epsilon + p_{2}(X) \epsilon^2 + \mathcal{O}(\epsilon^3), \\
+%     c_{j}(X,\epsilon) &= c_{j,0}(X) + c_{j,1}(X) \epsilon + c_{j,2}(X) \epsilon^2 + \mathcal{O}(\epsilon^3),
+% \end{align}
+% where the $k$-th order corrections $p_k(X)$ and $c_{j,k}(X)$, for $k\in\{0,1,2\}$, are functions of the state variable $X$ that we need to determine.%\footnote{\textcolor{red}{Note that $y_k(X)$ and $\xi_{j,k}(X)$ are, respectively, the $k$-th partial derivatives of $ y(X,\epsilon) $ and $ \xi_j(X,\epsilon) $ with respect to $ \epsilon $ divided by $ k! $ and evaluated at $ \epsilon =0 $.}} 
+
+% Notice that our method is different from the standard perturbation of dynamic stochastic general equilibrium (DSGE) models in which the function $p(X,\epsilon)$ is typically linearized in both $X$ \textit{and} $\epsilon$. This standard approach makes the analysis local in both $\epsilon$ and the distance of $X$ to the non-stochastic steady state. In contrast, we do not assume that the aggregate state is close to the steady state, which requires us to solve for arbitrary functions of $X$ instead of coefficients on a linear or quadratic approximations in DSGE models.\footnote{The linearization of $p$ gives $p(X,\epsilon) = \overline{p}_0 + \overline{p}_{1,X} \left(X-\overline{X}\right) + \overline{p}_{1,\epsilon} \epsilon + \mathcal{O}\left(\|X-\overline{X}\|^2, \epsilon^2\right)$, where $\overline{X}$ is the non-stochastic steady state, and the coefficients are independent of $X$. Parameter $\epsilon$ typically controls the variance of aggregate shocks in these applications. See \citet{schmitt2004solving} for a discussion of these methods.} 
+% Given that our approach provides a global method with respect to the states, we refer to this procedure as \textit{state-global perturbations}.\footnote{See \citet{kargar2020competitive} for an application of the state-global perturbation method to an environment with endogenous transaction costs.}
+
+% We proceed by computing the functions $\left (p_{k}(X), c_{j,k}(X)\right )$, $k=0,1,2$, in three steps. First, we consider the behavior in the benchmark economy, that is, $\epsilon = 0$. We then solve for the first-order and second-order corrections, $p_1(X)$ and $p_2(X)$, respectively.
+
+% \section{The Determinants of the Aggregate Market Elasticity}\label{sec:elasticity}
+
+% In this section, we analyze how the aggregate market elasticity shapes how portfolio flows affect asset prices. This elasticity is determined by solving the system of PDEs in \eqref{eq:xi_j} and \eqref{eq:pricing_cond}, which is not available in closed form. To highlight the mechanisms by which preference heterogeneity, passive demand, and leverage constraints shape elasticity, we extend the perturbation method of \citet{Silva/riskchannel} and derive asymptotic closed-form expressions.  

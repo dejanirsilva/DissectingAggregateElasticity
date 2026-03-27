@@ -1,0 +1,244 @@
+\input{setup.tex} % 
+\usepackage[en-US]{datetime2}
+\usepackage{mathtools}
+\usepackage{xcolor}
+
+\newcommand{\comments}[1]
+{\par {\bfseries \color{blue} #1 \par}}
+
+\usepackage[draft]{todonotes}
+
+\title{\textbf{Notes on time-varying passive demand}}
+\author{ Dejanir Silva\thanks{Krannert School of Management, Purdue University, e-mail: \href{dejanir@purdue.edu}{dejanir@purdue.edu}.}}
+% \date{October 2019}
+%\date{\today\\
+%	\begin{small}
+%		First draft: May 5, 2018
+%\end{small}}
+\begin{document}
+	\sloppy
+	\maketitle
+	\thispagestyle{empty}
+	
+\begin{abstract} 
+	\noindent We show...
+	\vspace{10mm}	
+	\bigskip
+	
+	\noindent	
+	\textsc{Keywords}: Heterogeneous Agents, Incomplete Markets, Asset Pricing.
+	
+	\medskip
+	\noindent
+	\textsc{JEL Classification}: G12, G11, G21.		
+\end{abstract}
+	
+\newpage
+\doublespacing
+\setcounter{page}{1}
+	
+\doublespacing
+
+\section{Environment}
+
+\paragraph{Endowment.} Aggregate endowment is given by
+\begin{equation}
+    \frac{d Y_t}{Y_t} = \mu dt + \sigma d Z_t. 
+\end{equation}
+
+Investors can trade a riskless asset, with instantaneous return $r_t$, and a risky asset which is a claim on aggregate endowment. Let $P_t$ denote the price of the risky asset, which follows the diffusion process $d P_t = \mu_{P,t} P_t dt + \sigma_{P,t} P_t dZ_t$. The (cumulative) return on the risky asset evolves according to
+\begin{equation}
+    d R_t = \frac{Y_t}{P_t} dt + \frac{d P_t}{P_t} = \left( r_t + \pi_t \right) dt + \sigma_{R,t} d Z_t,
+\end{equation}
+where $\pi_t = \frac{Y_t}{P_t} + \mu_{P,t} - r_t$ and $\sigma_{R,t} = \sigma_{P,t}$.
+
+\paragraph{Investors.} Investor's problem
+\begin{equation}
+V_{j}(W,X) = \max_{C_i, \omega_{i}}  \mathbb{E}_{i,t}\left[ \int_t^\infty \frac{C_{s}^{1-\gamma}}{1-\gamma} ds \right],
+\end{equation}
+subject to the natural borrowing limit, the law of motion of financial wealth $W_{j,t}$
+\begin{equation}
+    d W_{j,t} = \left[ r_t W_{j,t} +\pi_{t} \alpha_{j,t} W_{j,t} - C_{j,t}  \right] dt + \alpha_{j,t} W_{j,t} \sigma_{R,t} dZ_{t},
+\end{equation}
+subject to $\alpha_{j,t} = \overline{\alpha}_{p,t}$ if $j = 0$, where
+\begin{equation}
+    d \overline{\alpha}_{j,t} = \theta_p ( \overline{\alpha} - \overline{\alpha}_{p,t}) dt + \sigma_p \sqrt{\overline{\alpha}_{p,t}} d Z_t,
+\end{equation}
+and prices are a function of the aggregate state variable $X = (x,\overline{\alpha}_{p,t})$, that is, $r_t = r(X_t)$, $\eta_t = \eta(X_t)$, and $\sigma_{R}(X_t)$. We assume that the portfolio flow shocks are perfectly correlated with the aggregate endowment. 
+
+The HJB equation for this problem is given by
+\begin{align}
+    \rho V &=  \max_{C,\alpha}\frac{C^{1-\gamma}}{1-\gamma} + V_W \left[ r W + \pi \alpha W -C  \right] + V_x \mu_x + V_{\overline{\alpha}_p} \theta_p (\overline{\alpha}-\overline{\alpha}_{p,t})+ \frac{1}{2} V_{WW} \sigma_R^2 \alpha^2 W^2 \nonumber\\
+    &+ V_{Wx} \sigma_R \alpha W \sigma_x  + V_{W\overline{\alpha}} \alpha W \sigma_R \sigma_p \sqrt{\overline{\alpha}_p}+ \frac{1}{2} \left[V_{xx} \sigma_x^2 + 2 V_{x \overline{\alpha}_p} \sigma_x \sigma_p \sqrt{\overline{\alpha}_{p,t}} + V_{\overline{\alpha}_p\overline{\alpha}_p} \sigma_p^2\overline{\alpha}_p\right].
+\end{align}
+
+It will be convenient to work with detrended variables: $\hat{W}_t \equiv \frac{W_t}{Y_t}$, $\hat{C}_t = \frac{C_t}{Y_t}$. The value function can be written as $V(W,x, \overline{\alpha}_p) = Y_t^{1-\gamma} \hat{V}(\hat{W}_t, x_t, \overline{\alpha}_p)$, where $\hat{V}(\hat{W},x, \overline{\alpha}_p)$ satisfies the HJB equation\small
+\begin{align}
+    &\hat{\rho} \hat{V} =  \max_{\hat{C},\alpha}\frac{\hat{C}^{1-\gamma}}{1-\gamma} + \hat{V}_{\hat{W}} \left[ \hat{r} \hat{W} + \hat{\pi}\alpha \hat{W} -\hat{C}  \right] + \hat{V}_x \left(\mu_x +(1-\gamma) \sigma \sigma_x \right)+ \hat{V}_{\overline{\alpha}_p} \left[\theta_p (\overline{\alpha}-\overline{\alpha}_{p,t})+(1-\gamma) \sigma \sigma_p \sqrt{\overline{\alpha}_{p,t}} \right] \nonumber\\
+    &+ \frac{1}{2} \hat{V}_{\hat{W}\hat{W}} \left(\sigma_R \alpha-\sigma\right)^2 \hat{W}^2+(\sigma_R \alpha -\sigma) \hat{W} \left( \hat{V}_{\hat{W}x} \sigma_x  + \hat{V}_{\hat{W}\overline{\alpha}_p} \sigma_p \sqrt{\overline{\alpha}_p}\right)+ \frac{1}{2} \left[
+        \hat{V}_{xx} \sigma_x^2 
+    + 2 \hat{V}_{x \overline{\alpha}_p} \sigma_x \sigma_p \sqrt{\overline{\alpha}_{p,t}} 
+    + \hat{V}_{\overline{\alpha}_p\overline{\alpha}_p} \sigma_p^2\overline{\alpha}_p\right],\nonumber
+\end{align}
+where $\hat{\rho} \equiv \rho - (1-\gamma) \left(\mu - \frac{\gamma \sigma^2}{2} \right)$, $\hat{r} \equiv r + \gamma \sigma^2 - \mu$, and $\hat{\pi} \equiv \pi - \gamma \sigma \sigma_R$.
+
+\paragraph{Aggregate state variable.} Applying Ito's lemma, we obtain the law of motion of $x_t \equiv \frac{\omega_1 W_{1,t}}{\omega_0 W_{0,t} + \omega_1 W_{1,t}}$ is given by
+\begin{align}
+    d x_t &= \frac{d W_{1,t}}{W_{1,t}} - \frac{d \left(\omega_{0} W_{0,t} + \omega_{1} W_{1,t} \right)}{\omega_{0} W_{0,t} + \omega_{1} W_{1,t}} + \left( \frac{d \left(\omega_{0} W_{0,t} + \omega_{1} W_{1,t} \right)}{\omega_{0} W_{0,t} + \omega_{1} W_{1,t}} \right)^2 -  \frac{d \left(\omega_{0} W_{0,t} + \omega_{1} W_{1,t} \right)}{\omega_{0} W_{0,t} + \omega_{1} W_{1,t}} \frac{d W_{1,t}}{W_{1,t}}\\
+    &= (1-x_t) \left[\frac{d W_{1,t}}{W_{1,t}}-\frac{d W_{0,t}}{W_{0,t}} - \sigma_{R,t}^2 (\alpha_{1,t} - \alpha_{0,t}) dt    \right].
+\end{align}
+
+We can then write the process for $x_t$ as follows
+\begin{equation}
+    d x_t = \mu_{x,t} dt + \sigma_{x,t} d Z_t,
+\end{equation}
+where, using the definition $c_{j} \equiv \frac{C_{j,t}}{W_{j,t}}$, we have
+\begin{equation}
+    \mu_{x,t} = x_t(1-x_t) \left[ (\pi_t-\sigma_{R,t}^2) \left( \alpha_{1,t} - \overline{\alpha}_{p,t} \right) + c_0 - c_1 \right], \qquad \qquad 
+    \sigma_{x,t} = x_t (1-x_t) \sigma_{R,t} \left( \alpha_{1,t} - \overline{\alpha}_{p,t}\right).
+\end{equation}
+
+
+
+\paragraph{Market clearing.} The market clearing condition for consumption, riskless bonds, and the risky asset are given by
+\begin{equation}
+    \sum_{j=0}^1 \omega_j C_{j,t} = Y_t, \qquad \qquad 
+    \sum_{j=0}^1 \omega_j \alpha_{j,t} W_{j,t} = P_t, \qquad  \qquad 
+    \sum_{j=0}^1 \omega_j (1-\alpha_{j,t}) W_{j,t} = 0.
+\end{equation}
+
+\section{Perturbation}
+
+We assume that $\alpha_{p,t} = 1 -\epsilon + \epsilon \overline{\alpha}_{p,t} \epsilon$, $\overline{\alpha} = 1 + \hat{\alpha} \epsilon$, and $\sigma_p = \hat{\sigma}_p \epsilon $. Plugging these expressions into the law of motion of $\overline{\alpha}_{p,t}$, we obtain
+\begin{equation}
+    d \overline{\alpha}_{p,t}  = \theta_p ( \overline{\alpha} - \overline{\alpha}_{p,t}) \epsilon dt + \hat{\sigma}_p \epsilon \sqrt{\overline{\alpha}_{p,t} } d Z_t
+\end{equation}
+
+Notice that this implies that $\hat{\alpha}_{p,t}$ follows the process
+\begin{equation}
+    d \hat{\alpha}_{p,t} = \theta_p ( \hat{\alpha} -\hat{\alpha}_{p,t}) dt + \hat{\sigma}_p \sqrt{1 + \hat{\alpha}_{p,t} \epsilon } d Z_t
+\end{equation}
+
+The diffusion term for $\hat{\alpha}_{p,t}$ can be expanded as follows
+\begin{equation}
+    \sigma_{\hat{\alpha}_p,t} = \hat{\sigma}_p \left[ 1 + \frac{1}{2} \hat{\alpha}_{p,t} \epsilon - \frac{1}{8} \hat{\alpha}_{p,t}^2 \epsilon^2 \right] + \mathcal{O}(\epsilon^3).
+\end{equation}
+
+
+If we assume that $\hat{\sigma}_p = \theta_p = 0$, then the formulation above captures the case of constant $\alpha_{p,t}$. 
+
+
+\section{Perturbation}
+
+We consider a parametric family of economies indexed by $\epsilon \geq 0$. The parameter $\epsilon$ controls the process for the portfolio of passive investors:
+\begin{equation}
+    \theta_p = \overline{\theta}_p \epsilon^2; \qquad \qquad \sigma_p = \overline{\sigma}_p \epsilon,
+\end{equation}
+where we assume that the initial condition for the portfolio share is given by
+\begin{equation}
+    \overline{\alpha}_{p} = 1 + \hat{\alpha}_{p} \epsilon
+    \end{equation}
+
+We are looking for solutions of the form:
+\begin{equation}
+r(x, 1+\hat{\alpha}_p \epsilon; \epsilon) = r_0(x,1) + \left[ \left.\frac{\partial r(x,1+\hat{\alpha}_p \epsilon; \epsilon)}{\partial \epsilon}\right|_{\epsilon=0}  +\left. \frac{\partial r (x,1+\hat{\alpha}_p \epsilon; \epsilon)}{\partial \overline{\alpha}_p} \hat{\alpha}_p\right|_{\epsilon=0}  \right] \epsilon + \mathcal{O}(\epsilon^2)
+\end{equation}
+
+\subsection{Benchmark economy}
+
+In the benchmark case $\epsilon = 0$, the portfolio share is constant and given by $\overline{\alpha}_{p,t} = 1.0$. In the case passive investors could freely choose their portfolio share without any frictions, they would choose $\alpha_{0,t} = 1.0$, so the benchmark case coincides with a Lucas economy where the interest rate $r_t=r(x_t,\overline{\alpha}_{p,t})$, the risk premium $\pi_t=\pi(x_t, \overline{\alpha}_{p,t})$, and the dividend-yield $y_t = y(x_t,\overline{\alpha}_{p,t})$ are constant:
+\begin{equation}
+    r_0(x,1) = \rho + \gamma \mu - \frac{\gamma (\gamma+1)}{2} \sigma^2; \qquad \pi_0(x,1) = \gamma \sigma^2; \qquad y_0(x,1) = \rho - (1-\gamma) \left( \mu - \frac{\gamma \sigma^2}{2} \right).
+\end{equation}
+The value function is given by $V(W,x,1) = \xi(x,1)^{-\gamma} \frac{W^{1-\gamma}}{1-\gamma}$, the policy functions are given by $c_{j,0}(x,1) = y_0(x,1)$ and $\alpha_{j}(x,1) = 1$, the drift and diffusion of $x$ are given by $\mu_x(x,1) = \sigma_{x}(x,1) = 0$. Note that prices, the value function, and the policy functions are independent of $x$ when $\overline{\alpha}_p = 1$.
+
+
+Notice that the assumption that  $\overline{\alpha}_{p,t}$ is not only constant, but $\overline{\alpha}_{p,t} = 1$ is important, as a solution for the general case $\overline{\alpha}_p \neq 1$ is not available in closed-form. To obtain the perturbation of the economy with time-varying passive demand, it is important to derive the behavior of the benchmark economy for $\overline{\alpha}_p$ in the neighborhood of $\overline{\alpha}_{p} =1$.
+
+\paragraph{First-order correction.} The HJB in the case of constant, but general $\overline{\alpha}_{p}$, is given by\small
+\begin{align}
+    &\hat{\rho} \hat{V} = \frac{\hat{C}^{1-\gamma}}{1-\gamma} + \hat{V}_{\hat{W}} \left[ \hat{r} \hat{W} + \hat{\pi}\alpha \hat{W} -\hat{C}  \right] + \hat{V}_x \left(\mu_x +(1-\gamma) \sigma \sigma_x \right) + \frac{1}{2} \hat{V}_{\hat{W}\hat{W}} \left(\sigma_R \alpha-\sigma\right)^2 \hat{W}^2+(\sigma_R \alpha -\sigma) \hat{W} \hat{V}_{\hat{W}x} \sigma_x+ \frac{1}{2} 
+        \hat{V}_{xx} \sigma_x^2 ,\nonumber
+\end{align}
+Taking the derivative with respect to $\overline{\alpha}_p$ and evaluating at $\overline{\alpha}_p = 1$, we obtain
+\begin{equation}
+    \hat{\rho} \hat{V}_{\overline{\alpha}_p} = \hat{V}_{W} \hat{W} \left[ r_{\overline{\alpha}_p} + \pi_{\overline{\alpha}_p} \alpha  \right] + \left[\hat{V}_{\hat{W}} \hat{W}\hat{\pi} 
+    + \hat{V}_{\hat{W}\hat{W}}\hat{W}^2 (\sigma_R \alpha - \sigma) \sigma_R + \sigma_R\sigma_x \hat{W} \hat{V}_{\hat{W}x}
+    \right]
+\end{equation}
+
+The second term in brackets in the expression above is equal to zero at $\overline{\alpha}_{p} = 1$ for both active and passive investors. Given that $\xi_0(x,1)$ and $y_0(x,1)$ do not depend on $x$, then we can write 
+\begin{align}
+    \xi_x(x,\overline{\alpha}_p) &= \xi_x(x,1) + \xi_{x\overline{\alpha}_p}(x,\overline{\alpha}_p)\hat{\alpha}_p \epsilon + \mathcal{O}(\epsilon^2) = \mathcal{O}(\epsilon)\\
+    y_x(x,\overline{\alpha}_p) &= y_x(x,1) + y_{x\overline{\alpha}_p}(x,\overline{\alpha}_p)\hat{\alpha}_p \epsilon + \mathcal{O}(\epsilon^2) = \mathcal{O}(\epsilon),
+\end{align}
+using the fact that $\xi_{x}(x,1) = y_x(x,1) = 0$. This implies that $\frac{y_x}{y} \sigma_x = \mathcal{O}(\epsilon^2)$ and $\frac{\xi_x}{\xi} \sigma_x = \mathcal{O}(\epsilon^2)$, so endogenous volatility and the hedging demands are second-order in $\epsilon$. 
+
+The demand for the risky asset for the active investor is then given by
+\begin{equation}
+    \alpha_{1,1} = \frac{\pi_1}{\gamma \sigma^2}.
+\end{equation}
+
+From the market clearing for the risky asset, we have that 
+\begin{equation}
+ (1-x) \overline{\alpha}_p + x \alpha_{1,t} = 1 \Rightarrow (1-x) \hat{\alpha}_p + x \frac{\pi_1}{\gamma \sigma^2} = 0.
+\end{equation}
+
+Solving the equation above, we obtain
+\begin{equation}
+    \pi_1 = - \gamma \sigma^2 \frac{1-x}{x} \hat{\alpha}_p.
+\end{equation}
+
+
+Using the fact that the consumption-wealth is given by $\xi$, we obtain
+\begin{equation}
+    (1-x) \xi_0 + x \xi_1 = y \Rightarrow (1-x) \xi_{0,1} + x \xi_{1,1} = r_1 + \pi_1 
+\end{equation}
+
+Using the expression for the value function, we obtain $r_1 + \pi_1 = 0$, which gives the first-order correction for the interest rate
+\begin{equation}
+    r_1 = \gamma \sigma^2 \frac{1-x}{x} \hat{\alpha}_p.
+\end{equation}
+
+
+\paragraph{Second-order correction.} The HJB equation is given by
+\begin{align}
+    &\hat{\rho} \hat{V} = \frac{\hat{C}^{1-\gamma}}{1-\gamma} + \hat{V}_{\hat{W}} \left[ \hat{r} \hat{W} + \hat{\pi}\alpha \hat{W} -\hat{C}  \right] + \hat{V}_x \left(\mu_x +(1-\gamma) \sigma \sigma_x \right) + \frac{1}{2} \hat{V}_{\hat{W}\hat{W}} \left(\sigma_R \alpha-\sigma\right)^2 \hat{W}^2+(\sigma_R \alpha -\sigma) \hat{W} \hat{V}_{\hat{W}x} \sigma_x+ \frac{1}{2} 
+        \hat{V}_{xx} \sigma_x^2 ,\nonumber
+\end{align}
+
+Plugging the second-order expansion of the value function and policy functions, we obtain
+\begin{align}
+    &\hat{\rho} \hat{V}_2 = \hat{V}_{\hat{W},0}\left[ \hat{r}_2 \hat{W} + \hat{\pi}_2 \alpha_0 \hat{W} + \hat{\pi}_1 \alpha_1 \hat{W}\right]  +
+    \hat{V}_{x,1} \left(\mu_{x,1} +(1-\gamma) \sigma \sigma_{x,1} \right)+ \frac{1}{2} \hat{V}_{\hat{W}\hat{W},0} \left(\sigma \alpha_1\right)^2 \hat{W}^2,\nonumber
+\end{align}
+using the fact that $\hat{C}_1 = 0$.
+
+As $\hat{V}_1$ is independent of $x$, we have that $\hat{V}_{x,1} = 0$. From the expression for the value function at $\epsilon = 0$, we obtain
+\begin{equation}
+    \hat{\rho} \hat{V}_2 = \xi_0^{-\gamma} \hat{W}^ {1-\gamma}\left[ \hat{r}_2+ \hat{\pi}_2   + \hat{\pi}_1 \alpha_1  - \frac{\gamma \sigma^ 2}{2} \alpha_1^ 2\right],
+\end{equation}
+where $\alpha_1 = \hat{\alpha}_p$ for the passive investor and $\alpha_1 = \frac{\pi_1}{\gamma \sigma^ 2}$ for the active investor.
+
+Using the fact that the value function is given by $V(W,X,\epsilon) = \xi(X,\epsilon)^{-\gamma} \frac{W^ {1-\gamma}}{1-\gamma}$, we obtain
+\begin{equation}
+    \frac{\hat{\xi}_2}{\xi_0} = \frac{\gamma-1}{\gamma \hat{\rho}} \left[ \hat{r}_2+ \hat{\pi}_2   + \hat{\pi}_1 \alpha_1  - \frac{\gamma \sigma^ 2}{2} \alpha_1^ 2\right].
+\end{equation}
+
+Note that the hedging demand is equal to zero, given that $\xi_{x,1} = 0$. Similarly, endogenous volatility is also equal to zero up to second order. As the demand for the passive investor has no second-order component, then $\pi_2 = 0$.
+
+A similar argument implies that the second-order correction for the drift of the price is equal to zero, so the market clearing condition for goods can be written as
+\begin{equation}
+    (1-x) \xi_0 + x \xi_1 = y \Rightarrow (1-x) \xi_{0,2} + x \xi_{1,2} = r_2   
+\end{equation}
+
+The interest rate is then given by
+\begin{equation}
+    r_2 = - (\gamma-1) \frac{\gamma \sigma^2}{2} \sum_{j=0}^{1} x_j \alpha_{j,1}^2
+\end{equation}
+\subsection{First-order correction}
+
+
+
+
+\end{document}

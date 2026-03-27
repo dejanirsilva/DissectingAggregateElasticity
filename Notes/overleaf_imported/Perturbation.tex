@@ -1,0 +1,1437 @@
+\documentclass[11pt,english]{article}
+\bibliographystyle{jf}
+\usepackage[longnamesfirst]{natbib}
+%\usepackage[T1]{fontenc}
+\usepackage{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bottom]{footmisc}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{amsmath,enumerate}
+\usepackage{amsthm}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage[labelfont=bf,justification=justified,font=small,skip=2pt,labelsep=period]{caption}
+%\usepackage[labelfont=bf,justification=justified,labelsep=period]{caption}
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage{arydshln}
+\usepackage{chngpage}
+\usepackage{float,appendix}
+\usepackage{afterpage}
+\usepackage{verbatim}
+\usepackage{indentfirst}
+\usepackage[margin=1in]{geometry}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+% \usepackage{longtable}
+\usepackage{booktabs, makecell, longtable,ltxtable}
+\usepackage{lipsum}
+\usepackage{pdflscape}
+\usepackage{siunitx}
+\usepackage{chngcntr}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage[normalem]{ulem}
+\usepackage{chngcntr,apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\sisetup{table-format=-1.3, table-space-text-post={**}}
+\usepackage{xr}
+\usepackage{etoolbox}
+\usetikzlibrary{positioning}
+\newcommand\fnsep{\textsuperscript{,}}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage[normalem]{ulem}
+\usepackage{chngcntr,apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usepackage{xr}
+\usepackage{etoolbox}
+\usetikzlibrary{positioning}
+
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{mathdots}
+\usepackage{yhmath}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{tabularx}
+\usepackage{extarrows}
+\usepackage{booktabs}
+\usetikzlibrary{fadings}
+\usetikzlibrary{patterns}
+\usetikzlibrary{shadows.blur}
+\usetikzlibrary{shapes}
+
+
+
+
+%% UCLA colors: 
+% https://brand.ucla.edu/wp-content/uploads/ucla-color-palette-v10.pdf
+%\definecolor{UCLA}{RGB}{50, 132, 191}   % UCLA Blue primary
+%\definecolor{UCLA}{RGB}{52, 123, 173}   % UCLA Blue text only
+\definecolor{UCLAblue}{RGB}{30, 75, 135} % secondary color	
+\definecolor{UCLAgold}{RGB}{255, 232, 0} % UCLA Gold
+
+\definecolor{usccardinal}{rgb}{0.6, 0.0, 0.0}
+\definecolor{Matlabblue}{rgb}{0,0.447,0.741}
+\definecolor{bleudefrance}{rgb}{0.19,0.55, 0.91}
+\definecolor{cobalt}{rgb}{0.0, 0.28,0.67}
+\definecolor{darkblue}{rgb}{0.0, 0.0,0.55}
+\definecolor{darkcerulean}{rgb}{0.03,0.27, 0.49}
+\definecolor{darkpowderblue}{rgb}{0.0,0.2, 0.6}
+\definecolor{bleudefrance}{rgb}{0.19,0.55, 0.91}
+%\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
+
+\hypersetup{
+	colorlinks,
+	linkcolor={UCLAblue},
+	citecolor={UCLAblue},
+	urlcolor={UCLAblue},
+}
+
+\bibpunct{(}{)}{;}{a}{,}{,}
+\newcommand{\E}{\mathbb{E}}
+% \newcommand{\var}{\mathrm{Var}}
+\newcommand{\cov}{\mathrm{Cov}}
+\setcounter{MaxMatrixCols}{20}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+\urlstyle{same}
+\usepackage{pgfplots} 
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false} 
+% puts figures and tables at the end of the document
+%\usepackage[nomarkers,nolists]{endfloat}               
+% puts ONLY figures at the end of the document
+%\usepackage[nomarkers,nolists,figuresonly]{endfloat}  
+% allows more than one figure per page for endfloat
+%\renewcommand{\efloatseparator}{\mbox{}}              
+\usepackage{rotating}
+% allows sideways tables and figures to be placed at the end of the document
+%\DeclareDelayedFloatFlavor{sidewaystable}{table}
+%\DeclareDelayedFloatFlavor{sidewaysfigure}{figure}
+
+% \usepackage[nomarkers,nolists]{endfloat} 
+% \renewcommand{\efloatseparator}{\mbox{}}              % allows more than one figure per page for endfloat
+
+%\usepackage{mathpazo}
+%\usepackage{mathpple}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{palatino}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false} 
+\newlength\figureheight 
+\newlength\figurewidth 
+\usepackage{mathtools}
+\usetikzlibrary{calc}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Notes customization %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{webblue}{rgb}{0,0,0.6}
+\definecolor{webgreen}{rgb}{0,.6,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+
+
+%- Commenting
+\let\oldmarginpar\marginpar
+\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\tiny #1]%
+{\raggedright\tiny #1}}
+\newcommand{\mknote}[1]{\marginpar{\textcolor{webblue}{\tiny{Mahyar: #1}}}}
+\newcommand{\dsnote}[1]{\marginpar{\textcolor{webgreen}{\tiny{Dejanir: #1}}}}
+\usepackage[en-US]{datetime2}
+\usepackage{mathtools}
+ \usepackage{xcolor}
+
+\newcommand{\comments}[1]
+{\par {\bfseries \color{blue} #1 \par}}
+
+\usepackage[draft]{todonotes}
+
+\title{\textbf{A Perturbation Approach for Economies with Heterogeneous Preferences}}
+\author{ Dejanir Silva\thanks{Gies College of Business, University of Illinois at Urbana-Champaign, e-mail: \href{dejanir@illinois.edu}{dejanir@illinois.edu}.}}
+\date{November 2020}
+%\date{\today\\
+%	\begin{small}
+%		First draft: May 5, 2018
+%\end{small}}
+\begin{document}
+	\maketitle
+\onehalfspacing	
+
+
+\section{Model}
+
+In this section, we consider an economy with different types of investors which can differ on their preferences. We first present the environment and then discuss a characterization of the equilibrium using perturbation techniques.
+
+\subsection{Environment}
+
+\paragraph{Endowment and market structure.} Time is continuous and the aggregate endowment follows a geometric Brownian motion
+\begin{equation*}
+    \frac{d Y_t}{Y_t} = \mu dt + \sigma d Z_t.
+\end{equation*}
+
+Investors have access to a riskless asset and a risky asset. The interest rate on the riskless asset is denoted by $r_t$. The risky asset is a claim on the aggregate endowment whose price is denoted by $P_t$. The price of the risky asset evolves according to a diffusion process
+\begin{equation}
+    \frac{d P_t}{P_t} = \mu_{P,t} dt + \sigma_{P,t} d Z_t,
+\end{equation}
+where $\mu_{P,t},$ and $\sigma_{P,t}$ need to be determined in equilibrium.
+
+Let $\pi_t = \frac{Y_t}{P_t} + \mu_{P,t}- r_t$ denote the expected excess return and $\sigma_{R,t} = \sigma_{P,t}$ the volatility of returns of the risky asset. Expected returns and volatility are functions of the aggregate state variable $X_t$, that is, we can write $r_t = r(X_t)$, $\pi_t = \pi(X_t)$, and $\sigma_{R,t} = \sigma_R(X_t)$, where $X_t$ evolves according to
+\begin{equation*}
+    d X_t = \mu_{X_t} dt + \sigma_{X,t} d Z_t,
+\end{equation*}
+where $\mu_{X,t} = (\mu_{X1}(X_t), \ldots, \mu_{XK}(X_t))$ and $\sigma_{X,t} = (\sigma_{X1}(X_t), \ldots, \sigma_{XK}(X_t))$ need to be determined in equilibrium.
+
+\paragraph{Investors.} The economy is populated by $K+1$ types of investors, indexed by $j = 0, 1, \ldots, K$. The mass of investors of type $j$ are denoted by $\omega_k$. Investors have \citet{duffie1992stochastic} preferences, where investor $j$ has EIS $\psi_j$ and risk aversion coefficient $\gamma_j$. 
+
+The investors' problem can be written as 
+\begin{equation*}
+    V_{j,t} = \max_{[C_{j}, \alpha_j]} \mathbb{E}_t\left[ \int_t^\infty f_j(C_{j,s}, V_{j,s}) ds \right], 
+\end{equation*}
+subject to
+\begin{equation*}
+    d W_{j,t} = \left[ r_t W_{j,t} + \pi_t \alpha_{j,t} W_{j,t} - C_{j,t}  \right] dt + \sigma_{R,t} \alpha_{j,t} W_{j,t} d Z_t,
+\end{equation*}
+where $f_j(C,V)$ is the aggregator for investor $j$, which is given by
+\begin{equation}
+f_{j}(C, V) = \rho \frac{(1-\gamma_{j}) V}{1-\psi_j^{-1}}  \left\{ \left( \frac{C}{((1-\gamma_{j}) V)^{\frac{1}{1-\gamma_{j}}}}\right)^{1-\psi_j^{-1}} - 1\right\}.\label{EZ}
+\end{equation}
+
+Given the homotheticity of preferences, we can write the investor's value function as follows
+\begin{equation}
+    V_{j,t} =  \frac{(\zeta_{j,t} W_{j,t}) ^{1-\gamma_j}}{1-\gamma_j},  
+\end{equation}
+where $\zeta_{j,t}$ is the \textit{net-worth multiplier} and it is a function of the aggregate state variable $\zeta_{j,t} = \zeta_j(X_t)$.
+
+\paragraph{Market clearing} Markets for consumption, the risky asset, and the riskless asset clear
+\begin{align}
+    \sum_{j=0}^J \omega_j C_{j,t} = Y_t, \qquad \qquad
+    \sum_{j=0}^J \omega_j \alpha_{j,t} W_{j,t} = P_t, \qquad \qquad
+    \sum_{j=0}^J \omega_j W_{j,t} = P_t.
+\end{align}
+
+The aggregate state variable consists of the share of wealth of investors $j=1,\ldots, K$, that is, $X_t = (x_{1,t}, x_{2,t}, \ldots, x_{K,t})$, where
+\begin{equation*}
+    x_{j,t} = \frac{\omega_j W_{j,t}}{\sum_{k=0}^K \omega_k W_{k,t}}.
+\end{equation*}
+
+Notice that we can rewrite the market clearing conditions as follows
+\begin{equation*}
+    \sum_{j=0}^K x_{j,t} \frac{C_{j,t}}{W_{j,t}} = y_t, \qquad \qquad 
+    \sum_{j=0}^K x_{j,t} \alpha_{j,t}  = 1,
+\end{equation*}
+where $x_{0,t} \equiv 1- \sum_{j=1}^K x_{j,t}$ and $y_t \equiv \frac{Y_t}{P_t}$ is the dividend-yield.
+
+\subsection{Equilibrium characterization}
+
+\paragraph{Investor's problem.} We consider first the characterization of investors' problem. The HJB equation is given by
+\begin{equation*}
+    0 = \max_{C, \alpha} f(C,V) + V_W\left[ r W + \pi \alpha W  - C\right] +V_X \mu_X+ \frac{1}{2} V_{WW} W^2 \alpha^2 \sigma_R^2 + V_{WX} W \alpha \sigma_R \sigma_X + \frac{1}{2} \sigma_X' V_{XX} \sigma_X,
+\end{equation*}
+where we dropped the $j$ subscript for simplicity.
+
+The optimal consumption and the portfolio share satisfy the conditions
+\begin{equation*}
+ C = \rho^\psi ((1-\gamma) V)^{\frac{1-\gamma\psi }{1-\gamma}}V_W^{-\psi}, \qquad     \alpha = -\frac{V_{W} \pi}{V_{WW} W \sigma_R^2}   - \frac{V_{WX}}{V_{WW} W} \frac{\sigma_X}{\sigma_R}.
+\end{equation*}
+
+Using the homotheticity property, we can write
+\begin{equation*}
+    C = \rho^\psi \zeta^{1-\psi}, \qquad \alpha \sigma_R = \frac{\eta}{\gamma} +  \frac{1-\gamma}{\gamma} \sigma_{\zeta},
+\end{equation*}
+where $\sigma_\zeta = \frac{\zeta_X}{\zeta} \sigma_X$ and $\eta = \pi/\sigma_R $.
+
+
+
+The HJB equation can then be written as
+\begin{equation*}
+     \frac{\rho}{1-\psi^{-1}} =
+     \frac{\psi^{-1}}{1-\psi^{-1}} \rho^{\psi} \zeta^{1-\psi} + r + \pi \alpha + \mu_\zeta - \frac{\gamma}{2} (\alpha \sigma_R)^2 + (1-\gamma) \alpha \sigma_R \sigma_\zeta - \frac{\gamma}{2} \sigma_\zeta^2.
+\end{equation*}
+
+Rearranging the expression above, we obtain
+\begin{equation*}
+    \rho^{\psi_j} \zeta_{j,t}^{1-\psi_j} = \psi_j \rho + (1-\psi_j) \left[ r_t + \sigma_{j,t} \eta_t + \mu_{\zeta_j,t} - \frac{\gamma_j}{2} \left( \sigma_{j,t}^2 + 2 \frac{\gamma_j-1}{\gamma_j} \sigma_{j,t} \sigma_{\zeta_j,t} + \sigma_{\zeta_{j},t}^2 \right)   \right],
+\end{equation*}
+where $\sigma_{j,t} \equiv \alpha_{j,t} \sigma_{R,t}$.
+
+It is convenient to adopt the following change of variables: $\xi_{j,t} \equiv \rho^{\psi_j} \zeta_{j,t}^{1-\psi_j}$. This allow us to write the HJB equation as follows
+\begin{equation*}
+   \boxed{ \xi_{j,t} = \psi_j \rho + (1-\psi_j) \left[ r_t + \sigma_{j,t} \eta_t - \frac{\gamma_j}{2}  \sigma_{j,t}^2    \right] + \mu_{\xi_j,t} 
+    + (1-\gamma_j) \sigma_{j,t} \sigma_{\xi_j,t}
+    + \frac{\psi_j - \gamma_j}{1-\psi_j} \frac{\sigma_{\xi_j,t}^2}{2},}
+\end{equation*}
+where we used the fact that
+\begin{equation*}
+    \sigma_{\xi_j,t} = (1-\psi_j) \sigma_{\zeta_j,t}, \qquad 
+    \mu_{\xi_j,t} = (1-\psi_j) \left[ \mu_{\zeta_j,t}- \psi_j \frac{1}{2} \sigma_{\zeta_j,t}^2\right].
+\end{equation*}
+
+Similarly, the risk exposure of investor $j$ is given by
+\begin{equation}
+    \boxed{\sigma_{j,t} = \frac{\eta_t}{\gamma_j} + \frac{1-\gamma_j}{\gamma_j (1-\psi_j)} \sigma_{\xi_j,t}}.
+\end{equation}
+
+The drift and diffusion of $\xi_{j,t}$ are given by Ito's lemma:
+\begin{align}
+    \mu_{\xi_j,t} &= \frac{\xi_{jX,t}}{\xi_{j,t}} \mu_{X,t} + \frac{1}{2} \sigma_{X,t}'  \frac{\xi_{jXX,t}}{\xi_{j,t}} \sigma_{X,t}\\
+    \sigma_{\xi_j,t} &=  \frac{\xi_{jX,t}}{\xi_{j,t}} \sigma_{X,t}.
+\end{align}
+
+\paragraph{Law of motion of the aggregate state variables.} The law of motion of investor j's wealth is given by
+\begin{equation*}
+    \frac{d W_{j,t}}{W_{j,t}} = \left[ r_t + \eta_t \sigma_{j,t} - \xi_{j,t} \right] dt + \sigma_{j,t} d Z_t
+\end{equation*}
+
+Using Ito's lemma, we obtain the law of motion of $x_{j,t}$:
+\begin{equation*}
+    \frac{d x_{j,t}}{x_{j,t}} = \left[ r_t + \eta_t \sigma_{j,t} - \mu_{P,t} + \sigma_{R,t}^2 - \sigma_{R,t} \sigma_{j,t} - \xi_{j,t} \right] dt + (\sigma_{j,t} - \sigma_{R,t})   d Z_t.
+\end{equation*}
+
+\paragraph{Pricing condition.} The dividend-yield satisfies the condition
+\begin{equation}
+    r_t + \eta_t \sigma_{R,t} = y_t + \mu - \mu_{y,t} + \sigma_{R,t}^2 - \sigma_{R,t} \sigma,
+\end{equation}
+where we used the fact that $\mu_{P,t} = \mu - \mu_{y,t} + \sigma_{R,t}^2 - \sigma_{R,t} \sigma$.
+
+Rearranging the equation above, we obtain
+\begin{equation}
+    y_t = r_t + \eta_t \sigma_{R,t} + \mu_{y,t} - \mu + \sigma_{R,t} \sigma - \sigma_{R,t}^2,
+\end{equation}
+where the return volatility is given by
+\begin{equation}
+    \sigma_{R,t} = \sigma - \sigma_{y,t}
+\end{equation}
+
+\paragraph{Market clearing conditions.} The market clearing condition for goods and the risky asset can be written as
+\begin{equation*}
+    \sum_{j=0}^J x_{j,t} \xi_{j,t} = y_t, \qquad \sum_{j=0}^J x_{j,t} \sigma_{j,t} = \sigma_{R,t},
+ \end{equation*}
+where $\sigma_{j,t} \equiv \alpha_{j,t} \sigma_{R,t}$ is the volatility of investor $j$'s wealth.
+
+Given the $(J+1)-$dimensional vector $\xi_t = (\xi_{0,t}, \xi_{1,t},\ldots, \xi_{K,t})$ and the dividend-yield $y_t$, we can solve for the interest rate $r_t$ and the market price of risk $\eta_t$. Plugging the expression for $\xi_{j,t}$ and $y_t$ into the market clearing condition for goods, we obtain\small
+\begin{align}
+    \sum_{j=0}^K x_{j,t} \left[ \psi_j \rho + (1-\psi_j) \left[ r_t + \sigma_{j,t} \eta_t - \frac{\gamma_j}{2}  \sigma_{j,t}^2    \right] + \mu_{\xi_j,t} 
+    + (1-\gamma_j) \sigma_{j,t} \sigma_{\xi_j,t}
+    + \frac{\psi_j - \gamma_j}{1-\psi_j} \frac{\sigma_{\xi_j,t}^2}{2} \right] = r_t + \nonumber\\
+    \eta_t \sigma_{R,t} + \mu_{y,t} - \mu + \sigma_{R,t} \sigma - \sigma_{R,t}^2,
+\end{align}\normalsize
+
+Rearranging the expression above, we obtain
+\begin{align}
+    r_t &= \rho + \psi_t^{-1} \left[ \mu - \mu_{y,t} - \sigma_{R,t} \sigma  + \sigma_{R,t}^2\right] - \psi_t^{-1}\eta_t \sigma_{R,t} + \psi_t^{-1}\sum_{j=0}^K x_{j,t}   (1-\psi_j) \left( \sigma_{j,t} \eta_t - \frac{\gamma_j}{2}  \sigma_{j,t}^2    \right)  \nonumber\\
+    &+ \psi_t^{-1}\sum_{j=0}^K x_{j,t} \left[ \mu_{\xi_j,t} 
+    + (1-\gamma_j) \sigma_{j,t} \sigma_{\xi_j,t}
+    + \frac{\psi_j - \gamma_j}{1-\psi_j} \frac{\sigma_{\xi_j,t}^2}{2} \right],
+\end{align}
+where $\psi_t = \sum_{j=0}^K x_{j,t} \psi_j$.
+
+Similarly, from the market clearing condition for the risky asset, we obtain an expression for $\eta_t$
+\begin{equation*}
+    \boxed{\eta_t = \gamma_t \sigma_{R,t} - \gamma_t \sum_{j=0}^K x_{j,t} \frac{1-\gamma_j}{\gamma_j (1-\psi_j)} \sigma_{\xi_j,t}, }
+\end{equation*}
+where $\gamma_t = \left[ \sum_{j=0}^K \frac{x_{j,t}}{\gamma_j}  \right]^{-1}$.
+
+\section{Perturbation analysis}
+
+\subsection{The benchmark economy}
+
+We will consider a parametric family of economies indexed by $\epsilon$. The EIS and CRRA of investor $j$ are a function of the parameter $\epsilon$:
+\begin{equation}
+    \psi_j = \psi\left(1 + \delta_{j,\psi} \epsilon\right), \qquad 
+    \gamma_j = \gamma\left(1 + \delta_{j,\gamma} \epsilon\right),
+\end{equation}
+where
+\begin{equation}
+    \sum_{j=0}^K \omega_j \delta_{j,\psi} = 0, \qquad \sum_{j=0}^K \omega_j \delta_{j,\gamma} = 0.
+\end{equation}
+
+For concreteness, we will assume that our economy of interest correspond to the case $\epsilon=1$. 
+Equilibrium objects are a function of $\epsilon$, for instance, $r_t = r(X_t;\epsilon)$. We will assume that these functions are smooth enough in $\epsilon$ such that we can write:
+\begin{equation}
+    r(X,\epsilon) = \sum_{n=0}^\infty r_n(X) \epsilon^n.
+\end{equation}
+
+Similarly, we can write the risk premium, the variance of returns, and the net-worth multiplier as follows
+\begin{equation}
+    \pi(X,\epsilon) = \sum_{n=0}^\infty \pi_n(X) \epsilon^n, \qquad
+    \sigma^2_R(X,\epsilon) = \sum_{n=0}^\infty \sigma^2_n(X)\epsilon^n, \qquad 
+    \zeta_j(X,\epsilon) = \sum_{n=0}^\infty \zeta_{j,n}(X)\epsilon^n.
+\end{equation}
+
+The next lemma provides a characterization of the zeroth-order terms.
+
+\begin{lemma}[Benchmark economy] Suppose $\rho > (1-\psi^{-1}) \left(\mu - \frac{\gamma \sigma^2}{2}\right) $. The zeroth-order terms for the interest rate, risk premium, volatility, and the consumption-wealth ratio are given by
+\begin{align*}
+    r_0(X) &= \rho + \psi^{-1} \mu -(1+\psi^{-1}) \frac{\gamma \sigma^2}{2}, \qquad
+    \pi_0(X) = \gamma \sigma^2, \qquad
+    \sigma_{R,0}(X) = \sigma,\\
+    \rho^\psi \zeta_{j,0}^{1-\gamma} &= \rho -   (1-\psi^{-1}) \left(\mu - \frac{\gamma \sigma^2}{2}\right), \qquad j = 0, \ldots, K.
+\end{align*}
+
+Moreover, the zeroth-order terms for the drift and diffusion terms of the aggregate state variable are given by
+\begin{equation}
+    \mu_{Xj,0}(X) = \sigma_{Xj,0}(X) = 0,
+\end{equation}
+for $j = 1, \ldots, K$.  
+\end{lemma}
+
+\begin{proof}
+In the absence of heterogeneity, we must have $\xi_{j,t} = y_t$ and $\sigma_{j,t} = \sigma_{R,t}$ for all $j=0,1,\ldots,K$. This fact, combined with the pricing condition for the risky asset, implies that $x_{j,t}$ is constant for all investors. Therefore, the drift and diffusion of $y_t$ and $\xi_{j,t}$ are also zero, since they are functions of the state variables. The fact that $y_t$ is constant implies that $\sigma_{R,t} = \sigma$. The market price of risk is then given by $\eta_t = \gamma \sigma$. From the expression for the interest rate, we obtain
+\begin{equation*}
+    r_t = \rho + \psi^{-1} \mu - (1+\psi^{-1})\frac{\gamma \sigma^2}{2}.
+\end{equation*}
+
+From the pricing condition for the risky asset, we obtain
+\begin{equation}
+    y_t = r_t + \eta_t \sigma_{R,t} - \mu = \rho -\left( 1 - \psi^{-1}\right) \left( \mu - \frac{\gamma \sigma^2}{2} \right).
+\end{equation}
+\end{proof}
+
+
+
+\subsection{First-order correction} 
+
+The next proposition gives the first-order correction of the equilibrium objects.
+\begin{prop}[First-order correction]
+Suppose $\rho > (1-\psi^{-1}) \left(\mu - \frac{\gamma \sigma^2}{2}\right) $. The first-order correction terms for the investor's choices, asset prices, and the law of motion of the aggregate state variables are given by:
+
+\begin{enumerate}
+    \item Investor's choices:
+\begin{align}
+    \sigma_{j1}(X_t) &= \frac{\eta_1}{\gamma} - \frac{\eta_0}{\gamma} \delta_{j,\gamma},\\
+    \xi_{j1}(X_t) &= -\delta_{\psi,j} \left[\mu - \frac{\gamma\sigma^2}{2} \right]+(1-\psi) \left(r_1 + \sigma \eta_1 - \delta_{\gamma,j}\frac{\gamma \sigma^2}{2}\right).
+\end{align}
+\item Asset prices:
+\begin{align}
+    \eta_1(X_t) &= \gamma \sigma \sum_{j=0}^K x_{j,t} \delta_{j,\gamma},\\
+    r_1(X_t) &=  -\psi^{-1} \sum_{j=0}^K x_{j,t} \delta_{j,\psi}  \left(\mu -\frac{\gamma \sigma^2}{2}\right)   - (1+\psi^{-1}) \frac{\gamma \sigma^2}{2} \sum_{j=0}^K x_{j,t} \delta_{j,\gamma},\\
+    y_1(X_t) &=  - \psi^{-1}\sum_{j=0}^K x_{j,t} \delta_{j,\psi} \left( \mu - \frac{\gamma \sigma^2}{2} \right) + (1- \psi^{-1})  \sum_{j=0}^K x_{j,t} \delta_{j,\gamma} \frac{\gamma \sigma^2}{2}.
+\end{align}
+
+\item State-variable dynamics:\small
+\begin{align}
+\sigma_{Xj1} &= \sigma x_{j,t} \left[ \sum_{i=0}^K x_{i,t} \delta_{i,\gamma} - \delta_{j,\gamma} \right],\\
+    \mu_{Xj1}(X_t) &= x_{j,t} \left[  (\gamma  -1) \sigma \sigma_{j,1} +\left(\delta_{j,\psi} -\sum_{i=0}^K x_{i,t} \delta_{i,\gamma}\right)\left(\mu - \frac{\gamma\sigma^2}{2}\right) +(1-\psi) \left(\delta_{\gamma,j} - \sum_{i=0}^K x_{i,t} \delta_{i,\gamma} \right) \frac{\gamma\sigma^2}{2} \right].
+\end{align}\normalsize
+\end{enumerate}
+
+
+
+\end{prop}
+
+\begin{proof}
+We start by deriving the first-order correction for the investor's choices. We consider next the behavior of prices and then the dynamics of the aggregate state variables.
+\paragraph{Investor's choices.} First, notice that $\sigma_{\xi_j,t} = \mathcal{O}(\epsilon^2)$, because $\xi_{jX} = \mathcal{O}(\epsilon)$ and $\sigma_X = \mathcal{O}(\epsilon)$. This imply that the first-order correction for the risk exposure $\sigma_j$ is given by
+\begin{equation*}
+    \sigma_{j1} = \frac{\eta_1}{\gamma} - \frac{\eta_0}{\gamma} \delta_{j,\gamma}.
+\end{equation*}
+
+The first-order correction for $\xi_{j,t}$ satisfy the condition
+\begin{align*}
+    \xi_{j1} = -\delta_{j,\psi} \left[\mu - \frac{\gamma\sigma^2}{2} \right]+(1-\psi) \left(r_1 + \sigma \eta_1 + \sigma_{j1} \eta_0 - \delta_{\gamma,j} \frac{\gamma\sigma^2}{2} - \gamma \sigma \sigma_{j1}\right),
+\end{align*}
+where we used the fact that $\mu_{\xi_j,t}=\mathcal{O}(\epsilon^2)$. We obtain the expression in the proposition using the fact that $\eta_0 = \gamma \sigma$.
+
+\paragraph{Asset prices.} We consider next the aggregate variables. The market clearing condition for the risky asset is given by
+\begin{equation*}
+    \sum_{j=0}^K x_{j,t} \sigma_{j,t} = \sigma -  \sigma_{y,t}.
+\end{equation*}
+
+Notice that $\sigma_{y,t} = \frac{y_{X,t}}{y_t} \sigma_{X,t} = \mathcal{O}(\epsilon^2)$, as $y_{X,t} = \mathcal{O}(\epsilon)$ and $\sigma_{X,t} = \mathcal{O}(\epsilon)$. Plugging the expression for $\sigma_{j,1}$, we obtain
+\begin{equation*}
+    \eta_1(X_t) = \eta_0 \sum_{j=0}^K x_{j,t} \delta_{j,\gamma}.
+\end{equation*}
+
+The interest rate is given by the condition
+\begin{align}
+    r_t &= \rho + \psi_t^{-1} \left[ \mu - \mu_{y,t} - \sigma_{R,t} \sigma  + \sigma_{R,t}^2\right] - \psi_t^{-1}\eta_t \sigma_{R,t} + \psi_t^{-1}\sum_{j=0}^K x_{j,t}   (1-\psi_j) \left( \sigma_{j,t} \eta_t - \frac{\gamma_j}{2}  \sigma_{j,t}^2    \right)  \nonumber\\
+    &+ \psi_t^{-1}\sum_{j=0}^K x_{j,t} \left[ \mu_{\xi_j,t} 
+    + (1-\gamma_j) \sigma_{j,t} \sigma_{\xi_j,t}
+    + \frac{\psi_j - \gamma_j}{1-\psi_j} \frac{\sigma_{\xi_j,t}^2}{2} \right],
+\end{align}
+
+The first-order correction is then given by
+\begin{align}
+    r_1 &=  -\psi^{-1} \sum_{j=0}^K x_{j,t} \delta_{j,\psi}  \left(\mu -(1+\psi) \frac{\gamma \sigma^2}{2}\right) - \sum_{j=0}^K x_{j,t} \delta_{j,\psi} \frac{\gamma \sigma^2}{2}  - \psi^{-1}\eta_1 \sigma + \psi^{-1}\sum_{j=0}^K x_{j,t}   (1-\psi) \left( \sigma \eta_1 -\delta_{j,\gamma} \frac{\gamma \sigma^2}{2} \right).
+\end{align}
+
+Rearranging the expression above, we obtain
+\begin{align}
+    r_1 &=  -\psi^{-1} \sum_{j=0}^K x_{j,t} \delta_{j,\psi}  \left(\mu -\frac{\gamma \sigma^2}{2}\right)   - (1+\psi^{-1}) \frac{\gamma \sigma^2}{2} \sum_{j=0}^K x_{j,t} \delta_{j,\gamma}.
+\end{align}
+
+The market clearing condition for goods is given by
+\begin{equation*}
+    \sum_{j=0}^K x_{j,t} \xi_{j,t} = y_t.
+\end{equation*}
+
+The first-order correction for the dividend yield is
+\begin{align*}
+    y_1 &= - \sum_{j=0}^K x_{j,t} \delta_{j,\psi} \left[ \mu - \frac{\gamma \sigma^2}{2} \right] + (1-\psi)\left(r_1 + \sigma \eta_1 - \sum_{j=0}^K x_{j,t} \delta_{j,\gamma} \frac{\gamma \sigma^2}{2} \right)\\
+    &= - \psi^{-1}\sum_{j=0}^K x_{j,t} \delta_{j,\psi} \left[ \mu - \frac{\gamma \sigma^2}{2} \right] + (1- \psi^{-1})  \sum_{j=0}^K x_{j,t} \delta_{j,\gamma} \frac{\gamma \sigma^2}{2}.
+\end{align*}
+
+\paragraph{State variables.} We consider next the law of motion of the state variables. The diffusion term is given by
+\begin{align*}
+    \sigma_{Xj,t} &= \sigma_{j,t} - \sigma + \sigma_{y,t} 
+\end{align*}
+
+The first-order correction is given by
+\begin{equation}
+    \sigma_{Xj1} = \sigma x_{j,t} \left[ \sum_{i=0}^K x_{i,t} \delta_{i,\gamma} - \delta_{j,\gamma} \right].
+\end{equation}
+
+The drift term is given by
+\begin{equation*}
+    \mu_{Xj,t} = x_{j,t} \left[ r_t + \eta_t \sigma_{j,t} - \mu_{P,t} + \sigma_{R,t}^2 - \sigma_{R,t} \sigma_{j,t} - \xi_{j,t} \right]
+\end{equation*}
+
+The first-order correction is given by
+\begin{align}
+    \mu_{Xj1} &= x_{j,t} \left[ r_1 + \eta_1 \sigma + \eta_0 \sigma_{j,1} - \sigma \sigma_{j,1} - \xi_{j1}  \right] \nonumber\\
+    &= x_{j,t} \left[ \psi (r_1 + \eta_1 \sigma )+ (\eta_0  - \sigma) \sigma_{j,1} +\delta_{j,\psi} \left(\mu - \frac{\gamma\sigma^2}{2}\right) +(1-\psi) \delta_{\gamma,j} \frac{\gamma\sigma^2}{2} \right] \nonumber\\
+    &= x_{j,t} \left[  (\eta_0  - \sigma) \sigma_{j,1} +\left(\delta_{j,\psi} -\sum_{i=0}^K x_{i,t} \delta_{i,\gamma}\right)\left(\mu - \frac{\gamma\sigma^2}{2}\right) +(1-\psi) \left(\delta_{\gamma,j} - \sum_{i=0}^K x_{i,t} \delta_{i,\gamma} \right) \frac{\gamma\sigma^2}{2} \right]
+\end{align}
+
+\end{proof}
+
+\subsection{Second-order correction}
+
+\begin{prop}[Second-order correction]
+Suppose $\rho > (1-\psi^{-1}) \left(\mu - \frac{\gamma \sigma^2}{2}\right) $. The second-order correction terms for the investor's choices, asset prices, and the law of motion of the aggregate state variables are given by:
+\begin{enumerate}
+    \item Investor's choices:\small
+\begin{align}
+    \sigma_{j2} &= \frac{\eta_2}{\gamma} - \frac{\eta_1}{\gamma} \delta_{j,\gamma} + \frac{\eta_0}{\gamma} \delta_{j,\gamma}^2 + \frac{(1-\gamma)}{\gamma(1-\psi)} \sigma_{\xi_j2},\nonumber\\
+    \xi_{j2} &= -\psi \delta_{j,\psi} ( r_1 +  \sigma \eta_1 - \frac{\gamma \sigma^2}{2} \delta_{j,\gamma} ) + (1-\psi) (r_2 + \sigma_{j,1} \eta_1 + \sigma_{j2} \eta_0 + \sigma \eta_2 - \gamma \delta_{j,\gamma} \sigma \sigma_{j1})+\mu_{\xi_j2}+(1-\gamma) \sigma \sigma_{\xi_j2}.\nonumber
+\end{align}\normalsize
+\item Asset prices:
+\begin{align}
+    \eta_2 &= \gamma_2 \sigma  - \gamma \sigma_{y2} -  \frac{1-\gamma}{1-\psi}\sum_{j=0}^K x_{j,t}  \sigma_{\xi_j2},\\
+     r_2 &= \psi_2^{-1} \left(\mu - (1+\psi) \frac{\gamma\sigma^2}{2}  \right)  
+    -\psi_1^{-1} \eta_1 \sigma
+    +\psi_1^{-1} \sum_{j=0}^K x_{j,t}   (1-\psi) \left( \sigma \eta_1 - \frac{\gamma \sigma}{2}  \delta_{j,\gamma}\right) -\psi_1^{-1} \sum_{j=0}^K x_{j,t}   \psi \delta_{j,\psi} \frac{\gamma \sigma^2}{2}\nonumber\\
+    &-\psi^{-1} \left[ \mu_{y2} + \sigma \sigma_{y2} \right]
+    +\psi^{-1} \eta_0 \sigma_{y2}- \psi^{-1} \eta_2 \sigma+ \psi^{-1}\sum_{j=0}^K x_{j,t}   (1-\psi) \left(\sigma_{j1}\eta_1 + \sigma \eta_2 - \frac{\gamma}{2}  \sigma_{j1}^2\right)   \\
+    &-\sum_{j=0}^K x_{j,t} \delta_{j,\psi} \left( \sigma \eta_1  - \frac{\gamma \sigma^2}{2} \delta_{j,\gamma}    \right)
+    + \psi^{-1}\sum_{j=0}^K x_{j,t} \left[ \mu_{\xi_j2}
+    + (1-\gamma) \sigma \sigma_{\xi_j2} \right].
+\end{align}
+
+\item State-variable dynamics:
+\begin{align}
+    \sigma_{Xj2} &= \sigma_{j2} + \sigma_{y2},\\
+    \mu_{Xj2} &= x_{j,t} \left[ r_2 + \eta_2\sigma + \eta_1 \sigma_1 + \mu_{y2} - \xi_{j2} \right].
+\end{align}
+\end{enumerate}
+
+\end{prop}
+
+\begin{proof}
+
+We start by deriving the diffusion term for the consumption-wealth ratio and the dividend-yield. We then consider the investor's choices, the asset prices, and aggregate state variables in turn.
+
+\paragraph{Diffusion and drift terms.} The diffusion term for the dividend-yield is given by
+\begin{equation}
+    \sigma_{y,t} = \sum_{j=1}^K \frac{y_{Xj,t}}{y_t} \sigma_{Xj,t}
+\end{equation}
+
+The first-order correction for the expression above is zero. The second-order correction is
+\begin{equation}
+    \sigma_{y2} = \sum_{j=1}^K\left[- \psi^{-1}(\delta_{j,\psi}-\delta_{0,\psi}) \left( \mu - \frac{\gamma \sigma^2}{2} \right) + (1- \psi^{-1}) ( \delta_{j,\gamma}- \delta_{0,\gamma}) \frac{\gamma \sigma^2}{2} \right] \frac{\sigma x_{j,t} }{y_0}\left( \sum_{i=0}^K x_{i,t} \delta_{i,\gamma} - \delta_{j,\gamma} \right).
+\end{equation}
+
+The diffusion term for investor i's consumption-wealth ratio is given by
+\begin{equation}
+    \sigma_{\xi_i,t} = \sum_{j=1}^K \frac{\xi_{ij,t}}{\xi_{i,t}} \sigma_{Xj,t}.
+\end{equation}
+
+The consumption-wealth ratio can be written as
+\begin{align*}
+    \xi_{i1} = -\delta_{i,\psi} \left[\mu - \frac{\gamma\sigma^2}{2} \right]+(1-\psi) \left( -\psi^{-1} \sum_{j=0}^K x_{j,t} \delta_{j,\psi}  \left(\mu -\frac{\gamma \sigma^2}{2}\right) + (1-\psi^{-1}) \frac{ \gamma \sigma^2 }{2} \sum_{j=0}^K x_{j,t} \delta_{j,\gamma}   - \delta_{i,\gamma} \frac{\gamma\sigma^2}{2} \right),
+\end{align*}
+
+The second-order correction for $\sigma_{\xi_i,t}$ is given by
+\begin{equation*}
+    \sigma_{\xi_i2} = \sum_{j=1}^K (1-\psi) \left( -\psi^{-1} (\delta_{j,\psi}-\delta_{0,\psi})  \left(\mu -\frac{\gamma \sigma^2}{2}\right) + (1-\psi^{-1}) \frac{ \gamma \sigma^2 }{2} ( \delta_{j,\gamma}- \delta_{0,\gamma})   - \mathbf{1}_{j=i} \frac{\gamma\sigma^2}{2} \right) \frac{\sigma_{Xj1}}{\xi_{i0}}
+\end{equation*}
+
+The drift of the dividend-yield is given by
+\begin{align}
+    \mu_{y,t} = \sum_{j=1}^K \frac{y_{j,t}}{y_t} \mu_{Xj,t} + \frac{1}{2} \sum_{i=1}^K \sum_{j=1}^K \frac{y_{ij,t}}{y_t} \sigma_{Xi,t} \sigma_{Xj,t}
+\end{align}
+    
+The second-order correction is given by 
+\begin{equation}
+    \mu_{y2} = \sum_{j=1}^K\left[- \psi^{-1}(\delta_{j,\psi}-\delta_{0,\psi}) \left( \mu - \frac{\gamma \sigma^2}{2} \right) + (1- \psi^{-1}) ( \delta_{j,\gamma}- \delta_{0,\gamma}) \frac{\gamma \sigma^2}{2} \right] \frac{\mu_{Xj,t}  }{y_0},
+\end{equation}
+where we used the fact that the term involving the second derivatives are $\mathcal{O}(\epsilon^2)$.
+
+Similarly, the drift of the consumption-wealth ratio is given by
+\begin{equation*}
+    \mu_{\xi_i2} = \sum_{j=1}^K (1-\psi) \left( -\psi^{-1} (\delta_{j,\psi}-\delta_{0,\psi})  \left(\mu -\frac{\gamma \sigma^2}{2}\right) + (1-\psi^{-1}) \frac{ \gamma \sigma^2 }{2} ( \delta_{j,\gamma}- \delta_{0,\gamma})   - \mathbf{1}_{j=i} \frac{\gamma\sigma^2}{2} \right) \frac{\mu_{Xj1}}{\xi_{i0}}
+\end{equation*}
+    
+\paragraph{Investor's choices.} The risk exposure of investor $j$ is given by
+\begin{equation*}
+    \sigma_{j2} = \frac{\eta_2}{\gamma} - \frac{\eta_1}{\gamma} \delta_{j,\gamma} + \frac{\eta_0}{\gamma} \delta_{j,\gamma}^2 + \frac{(1-\gamma)}{\gamma(1-\psi)} \sigma_{\xi_j2}
+\end{equation*}
+
+The consumption-wealth ratio is given by\small
+\begin{align}
+    \xi_{j2} &= -\psi \delta_{j,\psi} ( r_1 +  \sigma \eta_1 - \frac{\gamma \sigma^2}{2} \delta_{j,\gamma} ) + (1-\psi) (r_2 + \sigma_{j,1} \eta_1 + \sigma_{j2} \eta_0 + \sigma \eta_2 - \gamma \delta_{j,\gamma} \sigma \sigma_{j1})+\mu_{\xi_j2}+(1-\gamma) \sigma \sigma_{\xi_j2} \nonumber
+\end{align}\normalsize
+
+\paragraph{Asset prices.} The market price of risk is given by
+\begin{equation*}
+    \eta_2 = \gamma_2 \sigma  - \gamma \sigma_{y2} -  \frac{1-\gamma}{1-\psi}\sum_{j=0}^K x_{j,t}  \sigma_{\xi_j2},
+\end{equation*}
+where $\gamma_2$ is the second-order term in the expansion of the aggregate risk aversion $\gamma_t$.
+
+The interest rate is given by
+\begin{align}
+    r_2 &= \psi_2^{-1} \left(\mu - (1+\psi) \frac{\gamma\sigma^2}{2}  \right)  
+    -\psi_1^{-1} \eta_1 \sigma
+    +\psi_1^{-1} \sum_{j=0}^K x_{j,t}   (1-\psi) \left( \sigma \eta_1 - \frac{\gamma \sigma}{2}  \delta_{j,\gamma}\right) -\psi_1^{-1} \sum_{j=0}^K x_{j,t}   \psi \delta_{j,\psi} \frac{\gamma \sigma^2}{2}\nonumber\\
+    &-\psi^{-1} \left[ \mu_{y2} + \sigma \sigma_{y2} \right]
+    +\psi^{-1} \eta_0 \sigma_{y2}- \psi^{-1} \eta_2 \sigma+ \psi^{-1}\sum_{j=0}^K x_{j,t}   (1-\psi) \left(\sigma_{j1}\eta_1 + \sigma \eta_2 - \frac{\gamma}{2}  \sigma_{j1}^2\right)   \\
+    &-\sum_{j=0}^K x_{j,t} \delta_{j,\psi} \left( \sigma \eta_1  - \frac{\gamma \sigma^2}{2} \delta_{j,\gamma}    \right)
+    + \psi^{-1}\sum_{j=0}^K x_{j,t} \left[ \mu_{\xi_j2}
+    + (1-\gamma) \sigma \sigma_{\xi_j2} \right],
+\end{align}
+
+The second-order correction for the dividend-yield is given by
+\begin{equation}
+    y_2 = \sum_{j=0}^K x_{j,t} \xi_{j2}
+\end{equation}
+
+\paragraph{State variables.} The second-order correction for the diffusion term of the state variables is
+\begin{equation}
+    \sigma_{Xj2} = \sigma_{j2} + \sigma_{y2}
+\end{equation}
+
+The second-order correction for the drift is
+\begin{equation*}
+    \mu_{Xj2} = x_{j,t} \left[ r_2 + \eta_2\sigma + \eta_1 \sigma_1 + \mu_{y2} - \xi_{j2} \right]
+\end{equation*}
+
+\end{proof}
+
+
+\section{Higher-order correction terms}
+
+We next show how to compute higher-order terms recursively. Suppose all terms of order $n-1$ and lower are known, for $n\geq 2$. Our goal is to compute the $n-$th order terms.
+
+\paragraph{Diffusion and drift terms.} The diffusion term for the dividend-yield is given by
+\begin{equation}
+    \sigma_{y,t} = \sum_{j=1}^K \tilde{y}_{j,t} \sigma_{Xj,t}
+\end{equation}
+where $\tilde{y}_{j,t} \equiv \frac{y_{j,t}}{y_{t}} $.
+
+The $n-$th term in the expansion is given by
+\begin{equation*}
+    \sigma_{yn} = \sum_{j=1}^K \sum_{k=0}^n \tilde{y}_{j,n-k} \sigma_{Xjk}.
+\end{equation*}
+
+Note that $\sigma_{Xj0} = 0$ and $\tilde{y}_{j,0}=0$, so we can write the expression above as
+\begin{equation*}
+    \sigma_{yn} = \sum_{j=1}^K \sum_{k=1}^{n-1} \tilde{y}_{j,n-k} \sigma_{Xjk}.
+\end{equation*}
+
+Similarly, the diffusion for the consumption-wealth ratio can be written as
+\begin{equation*}
+    \sigma_{\xi_in} = \sum_{j=1}^K \sum_{k=1}^{n-1} \tilde{\xi}_{ij,n-k} \sigma_{Xjk},
+\end{equation*}
+where $\tilde{\xi}_{ij,t} \equiv \frac{\xi_{ij,t}}{\xi_{i,t}} $.
+
+The drift of the dividend-yield is given by
+\begin{align}
+    \mu_{y,t} = \sum_{j=1}^K \tilde{y}_{j,t} \mu_{Xj,t} + \frac{1}{2} \sum_{i=1}^K \sum_{j=1}^K \hat{y}_{ij,t} \sigma_{Xi,t} \sigma_{Xj,t},
+\end{align}
+where $\hat{y}_{ij,t} \equiv \frac{y_{ij,t}}{y_{t}}$.
+
+The term of order $n$ of the expansion in $\epsilon$ is given by
+\begin{equation*}
+    \mu_{yn} = \sum_{j=1}^K \sum_{k=0}^n \tilde{y}_{j,n-k} \mu_{Xjk} + \frac{1}{2} \sum_{i=1}^K \sum_{j=1}^K \sum_{k_1=0}^n \sum_{k_2=0}^{n-k_1}  \hat{y}_{ij,n-k_1-k_2} \sigma_{Xik_1} \sigma_{Xjk_j}.
+\end{equation*}
+
+Using the fact that $\mu_{Xj0} = \sigma_{Xj0} = \tilde{y}_{j0} = \hat{y}_{ij0} = 0$, we obtain
+\begin{equation*}
+    \mu_{yn} = \sum_{j=1}^K \sum_{k=1}^{n-1} \tilde{y}_{j,n-k} \mu_{Xjk} + \frac{1}{2} \sum_{i=1}^K \sum_{j=1}^K \sum_{k_1=1}^{n-1} \sum_{k_2=1}^{n-k_1-1}  \hat{y}_{ij,n-k_1-k_2} \sigma_{Xik_1} \sigma_{Xjk_j}.
+\end{equation*}
+
+Note that the term involving second derivatives is non-zero only for $n\geq 3$. 
+
+\paragraph{Investor's choices.} The term of order $n$ in the expansion of investor j' risk exposure is
+\begin{equation*}
+    \sigma_{jn} = \sum_{k=0}^n \varrho_{j,n-k} \eta_k + \sum_{k=2}^n \theta_{k,n-k} \sigma_{\xi_jk} 
+\end{equation*}
+where $\varrho_j \equiv \gamma_{j}^{-1}$ and $\varrho_{jn}$ is the term of order $n$ in the expansion of $\varrho$. Similarly, $\theta_{j} \equiv \frac{1-\gamma_j}{\gamma_j (1-\psi_j)}$ and $\theta_{jn}$ is the term of order $n$ in the expansion of $\theta_j$.
+
+The consumption-wealth ratio is given by
+\begin{align*}
+    \xi_{jn} &= -\psi \delta_{j,\psi} \left[ r_{n-1} + \sum_{k=0}^{n-1}\sigma_{j,n-1-k} \eta_k - \frac{\gamma}{2}  (\sigma_{j}^2)_{n-1}    - \frac{\gamma}{2}  (\sigma_{j}^2)_{n-2} \delta_{j,\gamma}    \right]\\
+    &+(1-\psi) \left[r_{n} + \sum_{k=0}^{n}\sigma_{j,n-1-k} \eta_k - \frac{\gamma}{2}  (\sigma_{j}^2)_{n}    - \frac{\gamma}{2}  (\sigma_{j}^2)_{n-1} \delta_{j,\gamma}   \right] + \mu_{\xi_jn} \\
+    &+ (1-\gamma) \sum_{k=0}^n \sigma_{j,n-k} \sigma_{\xi_jk}-\gamma \delta_{j,\gamma} \sum_{k=0}^{n-1} \sigma_{j,n-1-k} \sigma_{\xi_jk}
+    + \sum_{k=0}^n \tilde{\theta}_{j,n-k}\frac{(\sigma_{\xi_j}^2)_k}{2}
+\end{align*}
+where $\tilde{\theta}_{j} \equiv \frac{\psi_j - \gamma_j}{1-\psi_j} $ and $\tilde{\theta}_{jn}$ is the term of order $n$ in the expansion.
+
+Note that the $n-$th order term for risk exposure and consumption-wealth ration depend on the terms of order $n$ for prices.
+
+\paragraph{Asset prices.} The market price of risk is given by
+\begin{equation}
+    \eta_t = \gamma_t (\sigma - \sigma_{y,t}) - \sum_{j=0}^K x_{j,t}\gamma_t  \theta_j \sigma_{\xi_j,t}, 
+\end{equation}
+where $\theta_j \equiv \frac{1-\gamma_j}{\gamma_j (1-\psi_j)}$.
+
+The term of order $n$ is given by
+\begin{equation}
+    \eta_n = \gamma_n \sigma - \sum_{k=0}^n \gamma_{n-k} \sigma_{yk} - \sum_{j=0}^K x_{j,t} \sum_{k_1=0}^n \sum_{k_2 = 0}^{n-k_1} \gamma_{n-k_1-k_2}  \theta_{k_1} \sigma_{\xi_j k_2}
+\end{equation}
+
+Using the fact that $\sigma_{y0} = \sigma_{\xi_j0} = 0$, we obtain
+\begin{equation*}
+    \eta_n = \gamma_n \sigma - \sum_{k=1}^n \gamma_{n-k} \sigma_{yk} - \sum_{j=0}^K x_{j,t} \sum_{k_1=0}^n \sum_{k_2 = 1}^{n-k_1} \gamma_{n-k_1-k_2}  \theta_{k_1} \sigma_{\xi_j k_2}
+\end{equation*}
+
+The interest rate is given by
+\begin{align}
+    r_t &= \rho + \psi_t^{-1} \left[ \mu - \mu_{y,t} - (\sigma - \sigma_{y,t}) \sigma_{y,t}\right] - \psi_t^{-1}\eta_t (\sigma - \sigma_{y,t}) + \psi_t^{-1}\sum_{j=0}^K x_{j,t}   (1-\psi_j) \left( \sigma_{j,t} \eta_t - \frac{\gamma_j}{2}  \sigma_{j,t}^2    \right)  \nonumber\\
+    &+ \psi_t^{-1}\sum_{j=0}^K x_{j,t} \left[ \mu_{\xi_j,t} 
+    + (1-\gamma_j) \sigma_{j,t} \sigma_{\xi_j,t}
+    + \tilde{\theta}_j \frac{\sigma_{\xi_j,t}^2}{2} \right],
+\end{align}
+
+The term of order $n$ is given by
+\begin{align}
+    r_n &= \sum_{k=0}^n \psi_{n-k}^{-1} \left( (\sigma_y^2)_k - \sigma \sigma_{yk} - \mu_{yk} - \sigma \eta_k \right) + \sum_{k_1=0}^n \sum_{k_2 = 0}^{n-k_1} \psi_{n-k_1-k_2}^{-1} \eta_{k_1} \sigma_{yk_2}\\
+    &+\sum_{j=0}^K x_{j,t} (1-\psi) \sum_{k_1=0}^n \sum_{k_2 = 0}^{n-k_1} \psi_{n-k_1-k_2}^{-1}\left( \sigma_{jk_1} \eta_{k_2} - \frac{\gamma_{k_1}}{2} (\sigma_{j}^2)_{k_2} \right)\\
+    &-\sum_{j=0}^K x_{j,t} \psi \delta_{j,\psi} \sum_{k_1=0}^{n-1} \sum_{k_2 = 0}^{n-1-k_1} \psi_{n-1-k_1-k_2}^{-1}\left( \sigma_{jk_1} \eta_{k_2} - \frac{\gamma_{k_1}}{2} (\sigma_{j}^2)_{k_2} \right)\\
+    &+\sum_{j=0}^K x_{j,t} \sum_{k=0}^n \psi_{n-k}^{-1} \mu_{\xi_jk}
+    +\sum_{j=0}^K x_{j,t} \sum_{k_1=0}^n \sum_{k_2=0}^{n-k_1} \psi_{n-k_1-k_2}^{-1} \left[ (1-\gamma) \sigma_{jk_1} \sigma_{\xi_j k_2}+ \tilde{\theta}_{jk_1} \frac{(\sigma_{\xi_j})^2_{k_2}}{2}\right] \\
+    &- \sum_{j=0}^K x_{j,t} \gamma \delta_{j,\gamma} \sum_{k_1=0}^{n-1} \sum_{k_2=0}^{n-1-k_1} \sigma_{jk_1} \sigma_{\xi_jk_2}.
+\end{align}
+
+Because $\sigma_{yn}$ and $\sigma_{\xi_jn}$ depend only on the value of terms of order $n-1$ or lower for $y_t$ and $\xi_{j,t}$, we can solve for $r_n$ and $\eta_n$ without the knowledge of $y_n$ and $\xi_{jn}$. Given $r_n$ and $\eta_n$, we can compute $\xi_{jn}$. Given $\xi_{jn}$, we can compute $y_n$ by averaging out $\xi_n$.
+
+\paragraph{Law of motion of state variables.} The diffusion term for the state variable is given by
+\begin{equation}
+    \sigma_{Xj,t} = x_{j,t} \left[\sigma_{j,t} - \sigma + \sigma_{y,t}\right]
+\end{equation}
+
+The term of order $n$ is given by
+\begin{equation*}
+    \sigma_{Xjn} = x_{j,t} \left[\sigma_{jn} +\sigma_{yn}\right]
+\end{equation*}
+
+The drift term is given by
+\begin{equation}
+    \mu_{Xj,t} = x_{j,t} \left[ r_t + \eta_t \sigma_{j,t} - \mu +\mu_{y,t} - \xi_{j,t} \right]
+\end{equation}
+
+The term of order $n$ is given by
+\begin{equation}
+    \mu_{Xjn} = x_{j,t} \left[ r_n + \sum_{k=0}^n \eta_{n-k} \sigma_{jk} + \mu_{yn} - \xi_{jn} \right]
+\end{equation}
+
+Therefore, given the knowledge of the terms of order $n-1$, we can compute the law of motion of the state variables.
+
+\section{Entry and exit}
+
+One important limitation of the framework considered in the previous section is that a (non-degenerate) stationary distribution does not exist. In this section, we introduce turnover among investors, that is, investors randomly switch section. 
+First, we consider the implications of type-switching for the dynamics of the aggregate variables. 
+Second, we derive the investor's HJB equation equation in the presence of type-switching risk. 
+
+% Following \citet{gomez2016asset}, we consider initially the case where investors are myopic with respect to switching risk. In this case, the possibility of entry and exit do not affect investors decisions, but it affects the evolution of the aggregate state variables. 
+% We then consider the case where investors take into account the possibility of switching. 
+
+\subsection{Law of motion of aggregates state variables}
+
+As in the discussion in the previous section, we consider an economy with $K+1$ types indexed by $j = 0, 1, \ldots, J$. 
+We assume that there is a continuum of investors of each type and denote the set of investors of type $j$ by $\mathcal{I}_j$, where $\omega_j$ is the mass of investors of type $j$. 
+The investor's type follows a continuous-time Markov chain. With intensity $\kappa \omega_{j}$ an investor of type $i$ switches to type $j$.\footnote{In principle, one could the switching probability to depend on the investor's type. For instance, we could allow for $\kappa \omega_{i,j}$, where $\omega_{i,j}$ denotes the probability of switching from $i$ to $j$.} This implies that the total wealth of type $j$ investors evolve according to
+\begin{equation*}
+    d \left(\int_{\mathcal{I}_j} W_{j,t}(i)di \right) =   \int_{\mathcal{I}_j} d W_{j,t} di - \kappa \int_{\mathcal{I}_j} W_{j,t}(i)di +\kappa \omega_j \sum_{k=0}^K  \int_{\mathcal{I}_k} W_{k,t}(i)di.
+\end{equation*}
+
+The first term corresponds to the change in wealth conditional on no type switching. The second term correspond to the flow out of type $j$, while the third term corresponds to the flow into type $j$. 
+We define the share of wealth of type $j$ as follows
+\begin{equation*}
+    x_{j,t} \equiv \frac{\int_{\mathcal{I}_j} W_{j,t}(i)di}{\sum_{k=0}^K \int_{\mathcal{I}_k} W_{k,t}(i)di}
+\end{equation*}
+
+Using Ito's lemma, the law of motion of $x_{j,t}$ is given by 
+\begin{equation*}
+    \frac{d x_{j,t}}{x_{j,t}} = \frac{d \int_{\mathcal{I}_j} W_{j,t}(i)di }{\int_{\mathcal{I}_j} W_{j,t}(i)di } - \frac{d P_t}{P_t} + \left( \frac{d P_t}{P_t} \right)^2 -  \frac{d P_t}{P_t}  \frac{d \int_{\mathcal{I}_j} W_{j,t}(i)di}{\int_{\mathcal{I}_j} W_{j,t}(i)di}
+\end{equation*}
+
+Therefore, the law of motion of $x_{j,t}$ can be written as
+\begin{equation*}
+    \frac{d x_{j,t}}{x_{j,t}} = \left[ r_t + \eta_t \sigma_{j,t}  - \xi_{j,t} - \mu_{P,t} + \sigma_{R,t}^2 - \sigma_{R,t} \sigma_{j,t}  - \kappa \left( 1 - \frac{\omega_j}{x_{j,t}} \right)\right] dt + (\sigma_{j,t} - \sigma_{R,t})   d Z_t.
+\end{equation*}
+
+Given the pricing condition for the risky asset, the market clearing condition for goods and the risky asset, 
+\begin{equation*}
+    r_t + \sigma_{R,t} \eta_t = y_t + \mu_{P,t}, \qquad y_t = \sum_{k=0}^K x_{k,t} \xi_{k,t}, \qquad \sigma_{R,t} = \sum_{k=0}^K x_{j,t} \sigma_{j,t},
+ \end{equation*}
+we can write the law of motion of $x_{j,t}$ as follows
+\begin{equation*}
+    d x_{j,t} = x_{j,t}\left[ \sum_{k=0}^K x_{j,t} \xi_{k,t} -  \xi_{j,t} + (\eta_t-\sigma_{R,t}) (\sigma_{j,t}-\sigma_{R,t})   - \kappa \left( 1 - \frac{\omega_j}{x_{j,t}} \right)\right] dt + x_{j,t}(\sigma_{j,t} - \sigma_{R,t})   d Z_t.
+\end{equation*}
+
+Note that the drift of $x_{j,t}$ is positive if $x_{j,t} = 0$ and it is negative if $x_{j,t} = 1$ when $\kappa > 0$.\footnote{The result that the drift is negative at $x_{j,t}=1$ comes from noting that $\sum_{k=0}^K x_{j,t} \xi_{k,t} =  \xi_{j,t}$ and $\sigma_{j,t} = \sigma_{R,t}$ in this case, so $\mu_{x_j,t} = -\kappa (1-\omega_j) <0$.} 
+In the case $\kappa = 0$, both $x_{j,t} = 0$ and $x_{j,t} = 1$ are absorbing states where both the drift and diffusion of $x_{j,t}$ are equal to zero. 
+
+\subsection{HJB equation}
+
+For simplicity, consider initially the case of only two types. 
+Value functions with type-switching risk satisfy then the following conditions:
+\begin{align*}
+    \hat{V}_{1,t} &= \max_{C_1,\alpha_1}\left\{ (1-e^{-\rho \Delta}) C_{1,t}^{1-\psi^{-1}} + e^{-\rho \Delta} \mathbb{E}_t\left[  \left( e^{-\kappa_{1} \Delta } \hat{V}_{1,t+\Delta}^{1-\chi_j} + (1-e^{-\kappa_1 \Delta} ) \hat{V}_{2,t+\Delta}^{1-\chi_j}\right)^{\frac{1-\gamma_1}{1-\chi_j}} \right]^{\frac{1-\psi^{-1}}{1-\gamma_1}}\right\}^{\frac{1}{1-\psi^{-1}}}\\
+    \hat{V}_{2,t} &= \max_{C_2,\alpha_2}\left\{ (1-e^{-\rho \Delta}) C_{2,t}^{1-\psi^{-1}} + e^{-\rho \Delta} \mathbb{E}_t\left[  \left( e^{-\kappa_{2} \Delta } \hat{V}_{2,t+\Delta}^{1-\chi_j} + (1-e^{-\kappa_2 \Delta} ) \hat{V}_{1,t+\Delta}^{1-\chi_j}\right)^{\frac{1-\gamma_2}{1-\chi_j}} \right]^{\frac{1-\psi^{-1}}{1-\gamma_2}}\right\}^{\frac{1}{1-\psi^{-1}}}.
+\end{align*}
+
+The parameter $\chi_j$ controls the preference for early of late resolution of type-uncertainty. This parameter was originally introduced by \citet{garleanu2015young} in the context of a model with mortality risk.
+
+Consider the following monotonic transformation of the problem above
+\begin{equation*}
+    \frac{\hat{V}_{j,t}^{1-\psi^{-1}}}{1-\psi^{-1}} = \max_{C_j,\alpha_j}\left\{ (1-e^{-\rho \Delta}) \frac{C_{j,t}^{1-\psi^{-1}}}{1-\psi^{-1}} + \frac{e^{-\rho \Delta}}{1-\psi^{-1}} \mathbb{E}_t\left[  \left( e^{-\kappa_{j} \Delta } \hat{V}_{j,t+\Delta}^{1-\chi_j} + (1-e^{-\kappa_j \Delta} ) \hat{V}_{-j,t+\Delta}^{1-\chi_j}\right)^{\frac{1-\gamma_j}{1-\chi_j}} \right]^{\frac{1-\psi^{-1}}{1-\gamma_j}}\right\}.
+\end{equation*}
+
+We can write the expression above as follows
+\begin{align*}
+    0 &= \max_{C_j,\alpha_j}\left\{ \rho \Delta \frac{C_{j,t}^{1-\psi^{-1}}}{1-\psi^{-1}} + \frac{1}{1-\psi^{-1}} \mathbb{E}_t\left[  \left( (1-\kappa_{j} \Delta) \hat{V}_{j,t+\Delta}^{1-\chi_j} + \kappa_j \Delta  \hat{V}_{-j,t+\Delta}^{1-\chi_j}\right)^{\frac{1-\gamma_j}{1-\chi_j}} \right]^{\frac{1-\psi^{-1}}{1-\gamma_j}} -\frac{\hat{V}_{j,t}^{1-\psi^{-1}}}{1-\psi^{-1}}\right.
+    \\
+    &\left.-\frac{\rho \Delta}{1-\psi^{-1}} \hat{V}_{j,t}^{1-\psi^{-1}}\right\} + o(\Delta).
+\end{align*}
+
+Note that we can write the term in expectations as follows\small
+\begin{align*}
+    \mathbb{E}_t&\left[  \left( (1-\kappa_{j} \Delta) \hat{V}_{j,t+\Delta}^{1-\chi_j} + \kappa_j \Delta  \hat{V}_{-j,t+\Delta}^{1-\chi_j}\right)^{\frac{1-\gamma_j}{1-\chi_j}} \right]^{\frac{1-\psi^{-1}}{1-\gamma_j}} = 
+    \mathbb{E}_t\left[  \left( \hat{V}_{j,t+\Delta}^{1-\chi_j}+ \kappa_j \Delta  (\hat{V}_{-j,t}^{1-\chi_j}-\hat{V}_{j,t}^{1-\chi_j})\right)^{\frac{1-\gamma_j}{1-\chi_j}} \right]^{\frac{1-\psi^{-1}}{1-\gamma_j}}+o(\Delta)\\
+    & = 
+    \mathbb{E}_t\left[ \hat{V}_{j,t+\Delta}^{1-\gamma_j} + \frac{1-\gamma_j}{1-\chi_j}   \left( \hat{V}_{j,t}^{1-\chi_j}\right)^{\frac{1-\gamma_j}{1-\chi_j}-1}\kappa_j \Delta  (\hat{V}_{-j,t}^{1-\chi_j}-\hat{V}_{j,t}^{1-\chi_j}) \right]^{\frac{1-\psi^{-1}}{1-\gamma_j}}+o(\Delta)\\
+    &= \hat{V}_{j,t}^{1-\psi^{-1}}+\frac{1-\psi^{-1}}{1-\gamma_j} \left[  \hat{V}_{j,t}^{1-\gamma_j}  \right]^{\frac{1-\psi^{-1}}{1-\gamma_j}-1} \left[ 
+    \lim_{\Delta \rightarrow 0} \frac{\mathbb{E}_t[\hat{V}_{j,t+\Delta}^{1-\gamma_j}] -\hat{V}_{j,t}^{1-\gamma_j} }{\Delta} +
+     \kappa_j\frac{1-\gamma_j}{1-\chi_j} \left[ \hat{V}_{j,t}^{1-\chi_j}\right]^{\frac{1-\gamma_j}{1-\chi_j}-1}\left(  \hat{V}_{-j,t}^{1-\chi_j}-\hat{V}_{j,t}^{1-\chi_j} \right)\right]\Delta+o(\Delta)
+\end{align*}\normalsize
+
+
+
+Combining the expression above with the HJB equation, dividing by $\Delta$ and taking the limit as $\Delta \rightarrow 0$, we obtain
+\begin{align*}
+    \frac{\rho}{1-\psi^{-1}} \hat{V}_{j,t}^{1-\gamma_j} &= \max_{C_j,\alpha_j}\left\{ \frac{\rho \hat{V}_t^{1-\gamma_j} }{1-\psi^{-1}}
+     \frac{C_{j,t}^{1-\psi^{-1}}}{\hat{V}_{j,t}^{1-\psi^{-1}}} + \frac{1}{1-\gamma_j} \lim_{\Delta \rightarrow 0} \frac{\mathbb{E}_t[\hat{V}_{j,t+\Delta}^{1-\gamma_j}] -\hat{V}_{j,t}^{1-\gamma_j} }{\Delta} + \frac{\kappa_j}{1-\chi_j}  \hat{V}_{j,t}^{1-\gamma_j}\left( \frac{\hat{V}_{-j,t}^{1-\chi_j}}{\hat{V}_{j,t}^{1-\chi_j}} -1 \right)\right\}
+\end{align*}
+
+Define the following transformation of the value function
+\begin{equation*}
+    V_{j,t} = \frac{\hat{V}_{j,t}^{1-\gamma_j}}{1-\gamma_j}.
+\end{equation*} 
+
+Consider first the case $\chi_j = \gamma_j$. Plugging the definition above into the HJB equation, we get
+\begin{align*}
+    \frac{\rho (1-\gamma_j) V_{j,t}}{1-\psi^{-1}} &= \max_{C_j,\alpha_j}\left\{ \frac{\rho (1-\gamma_j) V_{j,t} }{1-\psi^{-1}}
+     \frac{C_{j,t}^{1-\psi^{-1}}}{((1-\gamma_j)V_{j,t})^{\frac{1-\psi^{-1}}{1-\gamma_j}}} +  \lim_{\Delta \rightarrow 0} \frac{\mathbb{E}_t[V_{j,t+\Delta}] -V_{j,t} }{\Delta}  \right.\\
+     &+\left.\kappa_j V_{j,t} \left[ \frac{\left((1-\gamma_{-j})V_{-j,t}\right)^{\frac{1-\gamma_j}{1-\gamma_{-j}}}}{(1-\gamma_j)V_{j,t}} -1 \right]\right\}
+\end{align*}
+
+Given that the value function takes the following form:
+\begin{equation*}
+    V_{j,t} = \frac{(\zeta_{j,t} W_{j,t})^{1-\gamma_j}}{1-\gamma_j},
+\end{equation*}
+we can write the HJB equation as follows
+\begin{align*}
+    \frac{\rho}{1-\psi^{-1}} &= \max_{C_j,\sigma_j}\left\{ \frac{\rho }{1-\psi^{-1}}
+     \left(\frac{C_{j,t}}{\zeta_{j,t} W_{j,t}} \right)^{1-\psi^{-1}}  +r_t + \sigma_{j,t} \eta_t - \frac{C_{j,t}}{W_{j,t}} + \mu_{\zeta_j,t} - \frac{\gamma_j}{2} \left[\sigma_{j,t}^2 -2 (\gamma_j^{-1}-1) \sigma_{\zeta_j,t} \sigma_{j,t}+ \sigma_{\zeta_j,t}^2\right]   \right.\\
+     &+\left.\frac{\kappa_j}{1-\gamma_j} \left[\left( \frac{\zeta_{-j,t}}{\zeta_{j,t}}\right)^{1-\gamma_j} -1 \right]\right\}.
+\end{align*}
+
+The formulation above corresponds to the case of no preference for early or late resolution of type-uncertainty and it is the case considered by \citet{di2017uncertainty}. \citet{garleanu2015young} consider an alternative assumption, where $\alpha = \psi^{-1}$, so the HJB equation would then be given by
+\begin{align*}
+    \frac{\rho}{1-\psi^{-1}} &= \max_{C_j,\sigma_j}\left\{ \frac{\rho }{1-\psi^{-1}}
+     \left(\frac{C_{j,t}}{\zeta_{j,t} W_{j,t}} \right)^{1-\psi^{-1}}  +r_t + \sigma_{j,t} \eta_t - \frac{C_{j,t}}{W_{j,t}} + \mu_{\zeta_j,t} - \frac{\gamma_j}{2} \left[\sigma_{j,t}^2 -2 (\gamma_j^{-1}-1) \sigma_{\zeta_j,t} \sigma_{j,t}+ \sigma_{\zeta_j,t}^2\right]   \right.\\
+     &+\left.\frac{\kappa_j}{1-\psi^{-1}} \left[\left( \frac{\zeta_{-j,t}}{\zeta_{j,t}}\right)^{1-\psi^{-1}} -1 \right]\right\}.
+\end{align*}
+
+The derivation of the case with case many types is analogous, where the HJB equation is given by
+\begin{align*}
+    \frac{\rho}{1-\psi^{-1}} &= \max_{C_j,\sigma_j}\left\{ \frac{\rho }{1-\psi^{-1}}
+     \left(\frac{C_{j,t}}{\zeta_{j,t} W_{j,t}} \right)^{1-\psi^{-1}}  +r_t + \sigma_{j,t} \eta_t - \frac{C_{j,t}}{W_{j,t}} + \mu_{\zeta_j,t} - \frac{\gamma_j}{2} \left[\sigma_{j,t}^2 -2 (\gamma_j^{-1}-1) \sigma_{\zeta_j,t} \sigma_{j,t}+ \sigma_{\zeta_j,t}^2\right]   \right.\\
+     &+\left.\frac{\kappa}{1-\psi^{-1}} \left[\sum_{k\neq j} \omega_k\left( \frac{\zeta_{k,t}}{\zeta_{j,t}}\right)^{1-\psi^{-1}} -1 \right]\right\}.
+\end{align*}
+
+\section{Passive demand and connection with Gabaix and Koijen (2022)}
+
+The demand for stock from passive investors is given by
+\begin{equation}
+    P_t Q_{0,t} = \overline{\alpha}_{p,t} W_{0,t},
+\end{equation}
+where $Q_{0,t}$ is the quantity of shares held by investor $0$ and wealth is given by $W_{0,t} =  P_t Q_{0,t} + B_{0,t}$, given bond holdings $B_{0,t}$. 
+
+Equilibrium variables depend on a small parameter $\epsilon $. The case $\epsilon = 0$ represents a reference value for each variable and we will focus on (log) deviations around this reference values. Let's consider the log deviations from a reference level:
+\begin{equation}
+    p_t = \log \frac{P_t}{P_t^*}, \qquad q_{0,t} \equiv \log \frac{Q_{0,t}}{Q_{0,t}^*}, \qquad w_{0,t}
+\equiv \log \frac{W_{0,t}}{W^*_{0,t}}, 
+\end{equation}
+where the values at $\epsilon = 0$ are denoted with a $*$ superscript.
+
+Log-linearizing the demand for stocks, we obtain
+\begin{equation}
+    q_{0,t} = - p_t +   \hat{\alpha}_{p,t} \epsilon + w_{0,t},
+\end{equation}
+\begin{equation}
+w_{0,t} = \log \left( 1 + \frac{P_t^{*} Q_{0,t}^{*} }{P_t^* Q_{0,t}^* + B_{0,t}^*}(e^{p_{t} } -1)\right) = \alpha_{p}^* \sum_{k=1}^2p_{k,t}\epsilon^ k + \frac{1}{2} \alpha_p^* (1-\alpha_p^*) (p_{1,t} \epsilon)^2.
+\end{equation}
+
+\begin{equation}
+    \alpha_{j,t} x_t = 
+\end{equation}
+
+
+Using the fact that $w_{0,t} = \overline{\alpha}_{p,t} p_{t}$, we obtain
+\begin{equation}
+    q_{0,t} = - \zeta_{p,t} p_t + \hat{\alpha}_{p,t},
+\end{equation}
+where $\zeta_{p,t} \equiv 1 - \overline{\alpha}_{p,t}$ and 
+$\hat{\alpha}_{p,t}$ denotes log deviations from the reference portfolio. 
+
+Suppose passive investors keep a constant portfolio share, $\hat{\alpha}_{p,t} = 0$. 
+Notice that if $\overline{\alpha}_{p,t} = 1$, then passive investors do not change their share holdings with movements in prices. If $\overline{\alpha}_{p,t} < 1$, passive investors buy shares after a decline in prices. 
+
+The market clearing condition is given by 
+\begin{equation}
+    \sum_{j=0}^J \mu_j Q_{j,t} = 1 \Rightarrow \sum_{j=0}^J \mu_j \overline{Q}_{j,t} q_{j,t} = 0.
+\end{equation}
+
+If other investors have zero elasticity, then prices must be given by 
+\begin{equation}
+    p_t = \frac{\hat{\alpha}_{p,t}}{\zeta_{p,t}}.
+\end{equation}
+
+Define the market elasticity as $\epsilon_{M,t}^{-1} \equiv \frac{\partial p}{\partial \hat{\alpha}_{p,t}} \frac{1}{x_0}$, so the multiplier is given by
+\begin{equation}
+    \epsilon_{M,t} = (1-\overline{\alpha}_{p,t}) x_0.
+\end{equation}
+
+
+The expected return on the risky asset is given by
+\begin{equation}
+    y_t + \mu_{Y} + \mu_{p,t} + \sigma_{p,t} \sigma_{Y} = r_t + \eta_t \sigma_{R,t},
+\end{equation}
+where $p_t = P_t/ Y_t$.
+
+
+
+
+
+\begin{equation}
+    y_{1,t} = r_{1,t} + \eta_{1,t} \sigma_{R,1} = - p_{1,t} \Rightarrow\eta_{1,t} = -\frac{p_{1,t}+r_{1,t}}{\sigma_{R,1}}
+\end{equation}
+
+\begin{equation}
+    \alpha_{j,t} = \frac{P_t Q_{j,t}}{\mu_j W_{j,t}} \mu_j \Rightarrow \alpha_{j,t} = \frac{\mu_j Q_{j,t}}{x_{j,t}} 
+\end{equation}
+
+The demand for investor $j$ is given by
+\begin{equation}
+    Q_{j,t} = \alpha_{j,t} \frac{x_{j,t}}{\mu_j} \Rightarrow q_{j,t} =  - \frac{1}{\gamma \sigma^2} (p_{1,t}+r_{1,t})
+\end{equation}
+
+The consumption-wealth ratio up to first-order is given by
+\begin{equation}
+    c_{j,t} = (1-\psi) ( r_{1,t} + \eta_{1,t} \sigma). 
+\end{equation}
+
+We can write the investors' demands as follows:
+\begin{align}
+    q_{j,t} &= -\zeta_{p,t}^j p_t - \zeta_{r,t}^j r_t + f_{j,t}\\
+    c_{j,t} &= -\xi_{p,t}^j p_t - \xi_{r,t}^j r_t.
+\end{align}
+where $p_t = r_t + \eta_t \sigma_{R,t}$ and $f_{j,t}=F$ for $j=0$.
+
+Aggregating the demands, we obtain
+\begin{align}
+    \sum_{j} x_{j,t} q_{j,t} &= - (x_{0,t} \zeta_{p,t}^0 + (1-x_{0,t}) \zeta_{p,t}^1) p_t - (1-x_0) \zeta_{r,t}^1 r_t + x_0 \hat{\alpha}_{p,t}\\
+    \sum_{j} x_{j,t} c_{j,t} &= -(1-\psi) p_t,
+\end{align}
+where we used the fact that $r_{1,t}+ \eta_{1,t} \sigma = - p_{1,t}$.
+
+We can write the system in matrix form:
+\begin{align}
+    \left[
+    \begin{matrix}
+        x_{0,t} \zeta_{p,t}^0 + (1-x_0) \zeta_{p,t}^1 & (1-x_0) \zeta_{r,t}^1\\
+        1-\psi & \xi_{r,t}^1
+    \end{matrix}
+    \right] \left[ 
+  \begin{matrix}
+      p_t\\
+      r_t
+  \end{matrix}  
+    \right] = \left[ 
+  \begin{matrix}
+      \hat{\alpha}_{p,t} x_0 \\
+      y_t
+  \end{matrix}  
+    \right]. 
+\end{align}
+
+Solving the system above, we obtain
+\begin{equation}
+    p_t = 0, \qquad \qquad r_t = \frac{x_0 \gamma \sigma^2}{1-x_0} \hat{\alpha}_{p,t}.
+\end{equation}
+
+If $\zeta_{r,t}^1 = 0$ and $\xi_{r,t}^1 > 0$, then 
+\begin{equation}
+    p_t = \frac{1}{x_{0,t} \zeta_{p,t}^0 + (1-x_0) \zeta_{p,t}^1} \hat{\alpha}_{p,1} x_0, \qquad \qquad r_t = - \frac{(1-\psi)}{\xi_{r,t}^1} \frac{1}{x_{0,t} \zeta_{p,t}^0 + (1-x_0) \zeta_{p,t}^1} \hat{\alpha}_{p,1} x_0
+\end{equation}
+
+\begin{equation}
+    \sum_{j} x_{j,t} q_{j,t} = 0, \qquad \qquad 
+    \sum_{j} x_{j,t} c_{j,t} = y_t, 
+\end{equation}
+
+\begin{equation}
+    w_{j,t} = \frac{\mu_j Q_{j,t}}{\sum_j \mu_j Q_{j,t}} = \frac{ \alpha_{j,t} x_{j,t}}{\sum_{j=1}^J \alpha_{j,t} x_{j,t}}
+\end{equation}
+\begin{equation}
+    x_{j,t} = \frac{\mu_j (P_t Q_{j,t} + B_{j,t})}{\sum_j \mu_j  (P_t Q_{j,t} + B_{j,t})}
+\end{equation}
+
+\begin{equation}
+    x_{j,0} = \frac{\mu_j (P_0 Q_{j}^* + B_{j}^*)}{\sum_j \mu_j  (P_0 Q_{j}^* + B_{j}^*)}
+\end{equation}
+
+
+
+First-order
+\begin{itemize}
+    \item No wealth effects
+    \begin{itemize}
+    \item Derive $q_{j,t}$ and $c_{j,t}$
+    \item Solve the system given by the market clearing conditions, taking $x$ as given
+    \item Derive price impact (ideally we should get the same expression as in the slides)
+\end{itemize}
+\item With wealth effects
+\begin{itemize}
+    \item Allow x to change with P and solve the system given by market clearing conditions again
+    \item Derive price impact with wealth effects
+\end{itemize}
+\end{itemize}
+
+
+\section{Micro vs. macro elasticities}
+
+\subsection{First-order analysis}
+
+\paragraph{Investors' demand.} Let $Q_{j,t} = Q_j(X_t;\epsilon)$ denote the number of shares an investor of type $j = 0, \ldots, J$ holds. We can expand the expression for $Q_{j}(X;\epsilon)$ in terms of $\epsilon$:
+\begin{equation}
+    Q_j(X;\epsilon) = Q_{j,0}(X) + Q_{j,1}(X) \epsilon + Q_{j,2}(X) \epsilon^2 + \mathcal{O}(\epsilon^3).
+\end{equation}
+
+Denote the proportional deviation from the benchmark economy, $\epsilon = 0$, by $q_{j}(X;\epsilon) = \frac{Q_{j}(X;\epsilon) - Q_{j,0}(X)}{Q_{j,0}(X)} \approx \log [Q_{j}(X)/Q_{j,0}(X)]$. Notice that $q_{j}(X;\epsilon)$ can be expanded as
+\begin{equation}
+    q_{j}(X;\epsilon) = q_{j,1}(X) \epsilon + q_{j,2}(X) \epsilon^2 + \mathcal{O}(\epsilon^2).
+\end{equation}
+
+To solve for $q_{j,t}$, we start by considering the portfolio share of investor $j$:
+\begin{equation}
+\alpha_{j,t} = \frac{P_t Q_{j,t}}{W_{j,t}} \Rightarrow   Q_{j}(X;\epsilon) = \alpha_j(X;\epsilon) \frac{x_{j}}{\omega_j}.
+\end{equation}
+
+When $\epsilon = 0$, we obtain $Q_{j,0} = x_j/\omega_j$, using $\alpha_{j,0} = 1$. This implies that, for an active investor, the first-order term of $q_{j,t}$ is given by
+\begin{equation}\label{eq:q_eta}
+q_{j,1}(X) = \alpha_{j,1}(X) = \frac{\eta_1(X)}{\gamma \sigma}.
+\end{equation}
+
+The expression above shows how the quantity demanded depends on the market price of risk. To obtain the investor's \textit{micro-elasticity} with respect to the price of the risky asset, it is convenient to express the demand in terms of the price instead. From the definition of expected returns, we obtain
+\begin{equation}
+    r_t + \eta_t \sigma_{R,t} = \frac{Y_t}{P_t} +\mu_{P,t}.
+\end{equation}
+% \begin{equation}
+%     \frac{Y_t}{P_0(X_t) + P_1(X_t) \epsilon} = - \frac{Y_t}{P_0(X_t)^2}  P_1(X_t) = -\frac{Y_t}{P_0(X_t)} \frac{P_1(X_t)}{P_0(X_t)}
+% \end{equation}
+% \begin{equation}
+%     p(X;\epsilon) =  \frac{P_0(X)+P_1(X) \epsilon - P_0(X)}{P_0(X)} + \mathcal{O}(\epsilon^2) = \frac{P_1(X) }{P_0(X)} \epsilon
+% \end{equation}
+
+Let $p(X;\epsilon) = \frac{P(X;\epsilon) - P_0(X)}{P_0(X)}$ denote the price's proportional deviation from the benchmark. 
+Expanding the expression above up to first-order in $\epsilon$, we obtain
+\begin{equation}
+    r_{1}(X) + \eta_1(X) \sigma = -y_0 p_1(X),
+\end{equation}
+using the fact that $\mu_{P,t} = \mu - \mu_y - \sigma \sigma_y'$ and $\mu_y = o(\epsilon)$ and $\sigma_y = o(\epsilon)$.
+
+Rearranging the expression above, we obtain
+\begin{equation}
+    \eta_1(X) = - \frac{y_0}{\sigma} p_1(X) - \frac{1}{\sigma} r_1(X).
+\end{equation}
+
+Combining the expression above with \eqref{eq:q_eta}, we obtain the first-order term for the demand for shares:
+\begin{equation}
+    q_{j,1}(X) = - \zeta_{j,p}^q p_1(X)- \zeta_{j,r}^q r_1(X),
+ \end{equation}
+ where $\zeta_{j,p}^q$ and $\zeta_{j,r}^q$ are given by
+\begin{equation}
+\zeta_{j,p}^q \equiv \frac{y_0}{\gamma \sigma^2}, \qquad \qquad \zeta_{j,r}^q \equiv \frac{1}{\gamma \sigma^2}.
+\end{equation}
+
+Equivalently, we can write the expression for $q_{j,t}$ as follows:
+\begin{equation}
+q_{j,t} = - \zeta_{j,p}^q p_t- \zeta_{j,r}^q (r_t -r^*) + \mathcal{O}(\epsilon^2).
+\end{equation}
+where $r^*$ is the interest rate in the benchmark economy. Notice that $\zeta_{j,p}^q$ denotes the price-elasticity of investor $j$'s shares demand, a micro elasticity, and $\zeta_{j,r}^q$ denotes the cross-elasticity of shares demand, that is, how the return on the safe affects the demand for the risky asset. 
+
+We can proceed in a similarly fashion to obtain the demand for the passive investor. Following \citet{gabaix2020search}, we assume that the portfolio share of the passive investor has an endogenous and an exogenous component: $\alpha_{p,t
+} = f(y_t) \overline{\alpha}_{p,t}$, where $\overline{\alpha}_{p,t}$ is exogenously given and $f(y_t)$ captures any potential reactions of passive investors to changes in expected returns.\footnote{As the cash-flow process in this economy is iid, then all movements in $y_t$ are due to changes in expected returns.} 
+The first-order term of the portfolio share for passive investors is given by
+\begin{equation}
+    \alpha_{p,1}(X) = \hat{\alpha}_{p,1} + f'(y_0) y_1(X).
+\end{equation}
+
+The demand for the passive investor can then be written as
+\begin{equation}
+    q_{0,t} = - \zeta_{0,p}^q p_t + f_{0,t} + \mathcal{O}(\epsilon^2),
+\end{equation}
+where $\zeta_{0,p}^q = f'(y_0) y_0$ and $f_{0,t} = \hat{\alpha}_{p,1}(X_t) \epsilon$.
+
+\paragraph{Consumption.} Let $c_{j,t} = c_j(X;\epsilon)$ denote the consumption-wealth ratio for investor $j$. The first-order term for the consumption-wealth ratio is given by
+\begin{equation}
+    c_{j,1}(X) = (1-\psi) \left[ r_1(X) + \eta_1(X) \sigma\right]. 
+\end{equation}
+
+We can eliminate the market price of risk, so we can express the consumption-wealth ratio in terms of price of the risky asset and interest rates:
+\begin{equation}
+    c_{j,1}(X) = -(1-\psi)  y_0 p_1(X).
+\end{equation}
+Alternatively, we can write the expression above as follows:
+\begin{equation}
+    c_{j,t} = - \zeta_{j,p}^c p_t + \mathcal{O}(\epsilon^2),
+\end{equation}
+where $\zeta_{j,p}^c \equiv (1-\psi) y_0$.
+
+\paragraph{Aggregation.} The demand for shares of investor $j$, $j = 0, \ldots, J$, is given by
+\begin{equation}
+    q_{j,t} = -\zeta_{j,p}^q p_t - \zeta_{j,r}^q (r_t - r^*) + f_{j,t} + \mathcal{O}(\epsilon^2),
+\end{equation}
+where $f_{j,t}= 0$ for $j > 0$. 
+
+The aggregate demand for shares is given by
+\begin{equation}
+    \sum_{j=0}^J x_j q_{j,t} = -\zeta_{p}^q p_t - \zeta_{r}^q (r_t - r^*) + f_{t}+ \mathcal{O}(\epsilon^2),
+\end{equation}
+where $\zeta_{p}^q \equiv \sum_{j=0}^J x_j \zeta_{j,p}^q$, $\zeta_{r}^q \equiv \sum_{j=0}^J x_j \zeta_{j,r}^q$, and $f_t \equiv \sum_{j=0}^J x_j f_{j,t}$.
+
+Similarly, the average consumption-wealth ratio in the economy is given by
+\begin{equation}
+    \sum_{j=0}^J x_j c_{j,t} = - \zeta_{p}^c p_t + \mathcal{O}(\epsilon^2),
+\end{equation}
+where $\zeta_p^c \equiv \sum_{j=0}^J x_j \zeta_{j,p}^c$.
+
+\paragraph{Equilibrium.} The market clearing conditions are given by 
+\begin{equation}
+    \sum_{j=0}^J \omega_j Q_{j,t} = 1, \qquad \qquad \sum_{j=0}^J x_{j,t} c_{j,t} = y_t.
+\end{equation}
+
+Using the fact that $Q_{j,0}(X) = x_j/\omega_j$, we can write the market clearing condition for the risky asset as follows:
+\begin{equation}
+    \sum_{j=0}^J \omega_j Q_{j,0}(X_t)\frac{Q_{j,t} - Q_{j,0}(X_t)}{Q_{j,0}(X_t)} = 0 \Rightarrow 
+    \sum_{j=0}^J x_{j,t} q_{j,t} = 0.
+\end{equation}
+
+We can write the market clearing conditions in matrix form:
+\begin{equation}
+\left[ \begin{matrix}
+\zeta_{p}^q & \zeta_r^q\\
+\zeta_{p}^c-y_0 & 0
+\end{matrix} \right] \left[ 
+\begin{matrix}
+    p_t\\
+r_t-r^*
+\end{matrix}
+\right]
+= \left[\begin{matrix}
+    f_t\\
+    0
+\end{matrix} \right].
+\end{equation}
+
+Inverting the matrix above, we obtain
+\begin{equation}
+\left[ 
+\begin{matrix}
+    p_t\\
+r_t-r^*
+\end{matrix}
+\right]
+= - \frac{1}{\zeta_r^q(\zeta_p^c-y_0)}\left[ \begin{matrix}
+0 & -\zeta_r^q\\
+y_0-\zeta_{p}^c & \zeta_{p}^q
+\end{matrix} \right] 
+\left[\begin{matrix}
+    f_t\\
+    0
+\end{matrix} \right].
+\end{equation}
+
+The solution is given by 
+\begin{equation}
+p_t = 0, \qquad \qquad 
+r_t - r^* = \frac{1}{\zeta_r^q} f_t = \frac{\gamma \sigma^2}{1-x_0} f_t.
+\end{equation}
+
+\paragraph{The importance of cross-elasticities: the GK economy.} An important implication of the expression above is that the inverse macro elasticity in this setting is zero, up to first order, regardless of the level of micro elasticity:
+\begin{equation}
+    \frac{\partial p_t}{\partial f_t} = 0.
+\end{equation}
+
+This results relies on the fact that there is a non-zero cross-elasticity in this setting.  
+It is instructive to consider the case where this cross-elasticity is zero. 
+In our setting this corresponds to the case $x_0 \rightarrow 1$, such that there is only passive investors in this economy. Equivalently, there are households who chooses how much to allocate between stock and bond funds with fixed mandates.\footnote{\citet{gabaix2020search} assume a representative households who invest in funds with different mandates and then aggregate. In contrast, we specify directly the exposure of the representative household to stocks. The distinction is inessential, as it is possible to aggregate the position of the different funds to obtain the position of passive investors. The crucial distinction is that the institutions have zero cross-elasticities. }
+The important feature of the passive investors is that they have zero cross-elasticity. 
+This can be seen by considering the value of $\zeta_{r}^q$:\footnote{Note that since $\zeta_{0,r}^q=0$ and $\zeta_{j,r}^q=\frac{1}{\gamma\sigma^2}$ for $j\neq0$, we have \[\zeta_{r}^q \equiv \sum_{j=0}^J x_j \zeta_{j,r}^q=\frac{\sum_{j=1}^J x_j}{\gamma\sigma^2}=\frac{1-x_0}{\gamma\sigma^2}.\]}
+\begin{equation}
+\zeta_r^q = \frac{1-x_0}{\gamma\sigma^2}.
+\end{equation}
+
+Hence, if $x_0 \rightarrow 1$, then $\zeta_r^q \rightarrow 0$. In this case, the price of the risky asset is given by
+\begin{equation}
+    p_t = \frac{f_t}{\zeta_p^q} \Rightarrow \frac{\partial p_t}{\partial f_t} = \frac{1}{\zeta_p^q},
+\end{equation}
+where $\zeta_{p}^q$ captures the sensitivity of passive flows to the price. 
+
+The result above holds if $x_0 = 1$, that is, passive investors are the only market participants in this economy. If $x_0 < 1$, even only slightly, results are markedly different. In this case, $\zeta_r^q > 0$ and we obtain $\frac{\partial p_t}{\partial f_t} = 0$. Moreover, the result is independent of the level of $\gamma$. 
+The direct and cross-elasticities can be as small as desired, $\gamma$ can be arbitrarily large, and it would still be the case that the aggregate price impact is zero. 
+Therefore, the macro elasticity will be infinity in this case even if an arbitrarily fraction of wealth is in the hands of active investors, as long as active investors reaction to interest rates is non-zero (even if arbitrarily small). 
+
+\subsection{Second-order expansion of investor demand }
+
+The demand for the risky asset is given by 
+\begin{equation}
+    1+q_{j,t} = \alpha_{j,t} = \frac{\eta_t \sigma_{R,t}}{\gamma_j \sigma_{R,t}^2} + \frac{1-\gamma_j^{-1}}{\psi-1} \frac{\sigma_{\xi_j,t}}{\sigma_{R,t}} = \frac{\frac{y_0}{1+p_t} - r_t + (\mu + \mu_{p,t}+\sigma_{p,t}\sigma_{R,t})}{\gamma \sigma_{R,t}^2} + \frac{1-\gamma_j^{-1}}{\psi-1} \frac{\sigma_{\xi_j,t}}{\sigma_{R,t}}.
+\end{equation}
+
+Expanding the expression above up to second order, we obtain
+\begin{equation}
+    q_{j,t} = \frac{1}{\gamma \sigma^2}\left[ y_0 ( 1- p_t+p_t^2) - r_t +\mu+ \mu_{p,t} + \sigma_{p,t} \sigma  \right] - 2 \frac{\sigma_{p,t}}{\sigma}+ \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{\xi_j,t}}{\sigma} - 1 + \mathcal{O}(\epsilon^3)
+\end{equation}
+
+Using the fact that $\sigma_{\xi_j}(X,\epsilon) = (\psi-1) \sigma_{p}(X,\epsilon) + \mathcal{O}(\epsilon^3)$, we obtain
+\begin{equation}
+    q_{j,t} = -\frac{y_0}{\gamma \sigma^2} p_t - \frac{1}{\gamma \sigma^2} (r_t-r_0(X_t)) + \frac{y_0}{\gamma \sigma^2} p_t^2 + \frac{1}{\gamma \sigma^2}\mu_{p,t} -  \frac{\sigma_{p,t}}{\sigma} + \mathcal{O}(\epsilon^3).
+\end{equation}
+
+We can also write the expression above as follows:
+\begin{equation}
+    q_{j}(X,\epsilon) = q_{j,1}(X) \epsilon + q_{j,2}(X)\epsilon^2 + \mathcal{O}(\epsilon^3),
+\end{equation}
+where
+\begin{align}
+    q_{j,1}(X) &\equiv -\frac{y_0}{\gamma \sigma^2} p_{1}(X) - \frac{1}{\gamma \sigma^2} r_1(X) \nonumber\\
+    q_{j,2}(X) &\equiv -\frac{y_0}{\gamma \sigma^2} p_{2}(X) - \frac{1}{\gamma \sigma^2} r_2(X)  + \frac{y_0}{\gamma \sigma^2} p_1(X)^2 + \frac{1}{\gamma \sigma^2} \mu_{p,2}(X) - \frac{\sigma_{p,2}(X)}{\sigma}.
+\end{align}
+
+\newpage
+
+\section{A boundary layer problem}
+
+\subsection{A simplified version of the problem}
+
+Consider a version of the problem with only two investors, $j = \{0,1\}$, where the type-$0$ represent passive investors, who maintains a fixed portfolio share, and type-$1$ represents an active investor, who continuous rebalance their portfolio.
+
+\paragraph{Financial markets.} Investors have access to a riskless asset, which pays instantaneous return $r_t$, and a risky asset, which is a claim to dividends $Y_t$ that follows the process:
+\begin{equation}
+    \frac{d Y_t}{Y_t} = \mu dt + \sigma d Z_t.
+\end{equation}
+
+The price of the risky asset is given by $P_t$, which follows the process:
+\begin{equation}
+    \frac{d P_{t}}{P_t} = \mu_{P,t} dt + \sigma_{P,t}.
+\end{equation}
+
+Let $p_t \equiv \frac{P_t}{Y_t}$ denote the price-dividend ratio, so the risk premium $\pi_t$ and return volatility are given by:
+\begin{equation}
+    \pi_t = \frac{1}{p_t} + \mu+\mu_{p,t} + \sigma \sigma_{p,t}  - r_t, \qquad \qquad
+    \sigma_{R,t} = \sigma +\sigma_{p,t}
+\end{equation}
+
+\paragraph{Active investor.} The portfolio share of the active investor is given by
+\begin{equation}
+    \alpha_{1,t} = \frac{\pi_t}{\gamma_1 \sigma_{R,t}^2} + \varsigma_{1,t},
+\end{equation}
+where $\varsigma_{1,t} \equiv \frac{1-\gamma_1^{-1}}{\psi-1} \frac{\sigma_{c_1,t}}{\sigma_{R,t}}$.
+
+The consumption-wealth ratio is given by
+\begin{equation}
+    c_{1,t} = \psi \rho + (1-\psi) \left[ r_t + \pi_t \alpha_{1,t} - \frac{\gamma_1}{2} \sigma_{R,t}^2 \alpha_{1,t}^2 \right] + \xi_{1,t},
+\end{equation}
+where
+\begin{equation}
+    \xi_{1,t} \equiv \mu_{c_1,t} + (1-\gamma_1) \sigma_{c_1,t} \sigma_{R,t} \alpha_{1,t} + \frac{\psi-\gamma_1}{1-\psi} \frac{\sigma_{c,t}^2}{2}.
+\end{equation}
+
+\paragraph{Passive investors.} The portfolio share of passive investors is exogenously given by $\alpha_{0,t} = \overline{\alpha}_{p}$ and the consumption-wealth ratio is given by
+$c_{0,t} = \frac{1}{p_t}$, the dividend-price ratio. 
+
+\paragraph{Market clearing.} The market clearing condition for risky assets and goods are given by
+\begin{equation}
+    (1-x) \overline{\alpha}_p +x \alpha_{1,t} = 1, \qquad \qquad 
+    (1-x) c_{0,t}+ x c_{1,t} = \frac{1}{p_t}.
+\end{equation}
+
+Rearranging the expressions above, we obtain
+\begin{equation}
+    \alpha_{1,t} = \frac{1 - (1-x) \overline{\alpha}_p}{x}, \qquad \qquad c_{1,t} = \frac{1}{p_t}.
+\end{equation}
+
+The risk premium is given by
+\begin{equation}
+    \pi_t = \gamma_1 \sigma_{R,t}^2 \left[ \frac{1-(1-x) \overline{\alpha}_p}{x} - \varsigma_{1,t} \right].
+\end{equation}
+
+\paragraph{State variable dynamics.} The aggregate state variables corresponds to the share fo wealth of active investors $x$, which evolves according to: 
+\begin{equation}
+d x_t = \left[  (\pi_t-\sigma_{R,t}^2) (\alpha_{1,t}  -1)+ \kappa \frac{\omega_1 - x_t}{x_t} \right]dt +(\alpha_{1,t}-1) \sigma_{R,t} dZ_t.
+\end{equation}
+
+Notice that we can write $\sigma_{x,t}$ as follows:
+\begin{equation}
+    \sigma_{x,t} = (\alpha_{1,t}-1) \left(\sigma+\frac{p_{x,t}}{p_t} \sigma_{x,t}\right) \Rightarrow \sigma_{x,t} = \frac{\alpha_{1,t} -1}{1- (\alpha_{1,t}-1) \frac{p_{x,t}}{p}} \sigma.
+\end{equation}
+
+\paragraph{Price dynamics.} The consumption-wealth ratio is given by $c_{1,t} \equiv \frac{1}{p_t}$, so the law of motion of $c_{1,t}$ is given by
+\begin{equation}
+    \frac{d c_{1,t}}{c_{1,t}} = -\frac{dp_t}{p_t} + \left( \frac{d p_t}{p_t} \right)^2 = \left[ -\mu_{p,t} +\sigma_{p,t}^2 \right] dt - \sigma_{p,t} dZ_t. 
+\end{equation}
+
+\paragraph{The differential equation.}
+
+\begin{equation}
+    \frac{1}{p_t} =  \rho + (\psi^{-1}-1) \left[\mu+\mu_{p,t} + \sigma \sigma_{p,t} + \pi_t (\alpha_{1,t}-1) - \frac{\gamma_1}{2} \sigma_{R,t}^2 \alpha_{1,t}^2 \right] + \psi^{-1}\xi_{1,t}.
+\end{equation}
+
+In terms of the dividend yield, we obtain
+\begin{equation}
+    y_t =  \rho + (\psi^{-1}-1) \left[ \mu-\mu_{y,t}+\sigma_{y,t}^2 - \sigma \sigma_{y,t} + \pi_t (\alpha_{1,t}-1) - \frac{\gamma_1}{2} \sigma_{R,t}^2 \alpha_{1,t}^2 \right] + \psi^{-1}\xi_{1,t}.
+\end{equation}
+
+
+\subsection{Regular perturbation}
+
+Suppose $\overline{\alpha}_p = 1 + \hat{\alpha}_p \epsilon$. We can then write the dividend-yield  as follows:
+\begin{equation}
+    y(x;\epsilon) = \sum_{j=0^\infty} y_{j}(x) \epsilon^j.
+\end{equation}
+
+The zeroth-order term is given by
+\begin{equation}
+    y_0(x) =  \rho + \left(\psi^{-1}-1\right) \left[\mu - \frac{\gamma_1 \sigma^2}{2}  \right].  
+\end{equation}
+
+The risk-premium and interest rate are given by
+\begin{equation}
+    \pi_0(x) = \gamma_1 \sigma^2, \qquad \qquad 
+    r_0(x) = y^\star + \mu  - \gamma_1 \sigma^2,
+\end{equation}
+where $y^\star \equiv y_0(x)$.
+
+\paragraph{First-order correction.} The first-order correction is given by
+\begin{equation}
+    y_1(x) = (\psi^{-1}-1) \left[ \pi_0\left( -\frac{1-x}{x} \hat{\alpha}_p \right) - \gamma_1 \sigma^2 \left( - \frac{1-x}{x} \hat{\alpha}_p\right) \right] \Rightarrow y_1(x) = 0.
+\end{equation}
+
+The risk premium and interest rate are given by
+\begin{equation}
+    \pi_1(x) = -\gamma_1 \sigma^2  \frac{1-x}{x} \hat{\alpha}_p, \qquad \qquad 
+    r_1(x) = \gamma_1 \sigma^2  \frac{1-x}{x} \hat{\alpha}_p.
+\end{equation}
+
+The diffusion and drift of the state variable are given by:
+\begin{equation}
+    \sigma_{x,1}(x) = -\frac{1-x}{x} \hat{\alpha}_p \sigma, \qquad \mu_{x,1}(x) = -(\gamma_1 -1)\sigma^2 \frac{1-x}{x} \hat{\alpha}_p \sigma + \hat{\kappa} \frac{\omega_1 - x_t}{x_t}.
+\end{equation}
+
+The drift and diffusion for the dividend yield are given by $\mu_{y,1}(x) = \sigma_{y,1}(x) = 0$.
+
+\paragraph{Second-order correction.} 
+Notice that $\sigma_{y,2} = \mu_{y,2} = 0$, as $y_{1,x}(x)= y_{1,xx}(x) = 0$. 
+
+The second-order correction is given by
+\begin{equation}
+    y_{2}(x) = (\psi^{-1}-1) \left[ \pi_1(x) \hat{\alpha}_{a}(x) - \frac{\gamma_1 \sigma^2}{2} \hat{\alpha}_{a}(x)^2 \right] = -(1-\psi^{-1})\frac{\gamma_1\sigma^2 }{2} \hat{\alpha}_{a}(x)^2,
+\end{equation}
+where $\hat{\alpha}_{a}(x) \equiv -\frac{1-x}{x} \hat{\alpha}_{p}$.
+
+The second-order correction for the risk-premium are given by
+\begin{equation}
+    \pi_2(x) = 0, \qquad \qquad
+    r_2(x) = y_2(x).
+\end{equation}
+
+The diffusion and drift of the state variable:
+\begin{equation}
+    \sigma_{x,2}(x) = \mu_{x,2}(x) = 0.
+\end{equation}
+
+\paragraph{Third-order correction.} The derivative of the dividend yield with respect to $x$ is given by
+\begin{equation}
+    y_{2,x}(x) = -(1-\psi^{-1}) \gamma_1 \sigma^2 \left[ 1 -\frac{1}{x}\right] \frac{\hat{\alpha}_p^2}{x^2}.
+\end{equation}
+
+The second-order derivative is given by
+\begin{equation}
+    y_{2,xx}(x) = -(1-\psi^{-1}) \gamma_1 \sigma^2 \left[ -\frac{2}{x^3} +\frac{3}{x^4}\right] \frac{\hat{\alpha}_p^2}{x^2}.
+\end{equation}
+
+The diffusion of $y$ is given by 
+\begin{equation}
+    \sigma_{y,3}(x) = \frac{y_{2}(x)}{y_0(x)} \sigma_{x,1}(x).
+\end{equation}
+
+The drift term is given by
+\begin{equation}
+    \mu_{y,3}(x) = \frac{y_{2,x}(x)}{y_0(x)}\mu_{y,1}(x)
+\end{equation}
+
+\paragraph{Higher-order perturbation.}
+
+The $k$-th order term is given by
+\begin{equation}
+    y_k(x) = \psi^{-1} \left[ -\sigma \frac{y_{x}}{y} \sigma_x \right]
+\end{equation}
+
+
+\newpage
+\singlespacing
+%\bibliographystyle{jf}
+\phantomsection\addcontentsline{toc}{section}{\refname}
+\clearpage
+%{\small
+\bibliography{references.bib}
+\end{document}

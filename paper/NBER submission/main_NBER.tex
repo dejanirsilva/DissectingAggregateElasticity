@@ -1,0 +1,99 @@
+\input{setup.tex} % 
+\usepackage[en-US]{datetime2}
+\usepackage{mathtools}
+ \usepackage{xcolor}
+
+\newcommand{\comments}[1]
+{\par {\bfseries \color{blue} #1 \par}}
+
+\usepackage[draft]{todonotes}
+
+\title{\textbf{Asset Pricing Implications of Portfolio Flows}
+\author{ 
+Victor Duarte\thanks{Gies College of Business, University of Illinois at Urbana-Champaign, e-mail: \href{mailto:vduarte@illinois.edu}{vduarte@illinois.edu}.}\and 
+Mahyar Kargar\thanks{Gies College of Business, University of Illinois at Urbana-Champaign, e-mail: \href{mailto:kargar@illinois.edu}{kargar@illinois.edu}.}\and  Dejanir Silva\thanks{Gies College of Business, University of Illinois at Urbana-Champaign, e-mail: \href{dejanir@illinois.edu}{dejanir@illinois.edu}.}}
+}
+\author{ 
+Victor Duarte
+\and 
+Mahyar Kargar\and 
+Dejanir Silva
+}
+\date{March 2021}
+%\date{\today\\
+% \begin{small}
+%   First draft: May 5, 2018
+%\end{small}}
+\begin{document}
+  \sloppy
+  \maketitle
+  \thispagestyle{empty}
+  
+  \begin{abstract} 
+  \noindent 
+  In this project, we study the role of portfolio flows in determining asset prices and market volatility. 
+  We consider a quantitative general-equilibrium model with rich heterogeneity and portfolio frictions to study this question. 
+  We provide a new analytical characterization of the market elasticity. We show how different frictions can make the market more inelastic, which is necessary to amplify the effect of portfolio flows.
+  We also estimate our quantitative model and provide a structural decomposition of the market elasticity. We document which frictions considered by the macro-finance literature are quantitatively important to generate inelastic markets and, consequently, high market volatility. Finally, we propose an algorithm to compute the equilibrium of heterogeneous-agents structural models like this. By representing the value functions with infinitely wide neural networks (neural tangent kernel), the problem of minimizing the Bellman equation residuals is shown to be convex, and therefore globally convergent. We leverage this solution method to structurally estimate the model order of magnitudes faster than traditional approaches.
+  \vspace{10mm} 
+  \bigskip
+  
+  \noindent 
+  \textsc{Keywords}: Portfolio flows, Asset Pricing, Market Elasticity. 
+  
+  \medskip
+  \noindent
+  \textsc{JEL Classification}: G12, G11, G21.   
+\end{abstract}
+  
+\newpage
+\setcounter{page}{1}
+
+\doublespacing
+% \section{Introduction  }
+
+Why are asset prices so volatile? 
+This question has been the source of intense research and much controversy over the years.\footnote{See e.g. the work on excess volatility tests \citet{leroy1981present}, \citet{shiller1983stock}, \citet{shiller1992market}, and \citet{cochrane1992explaining}. Robert Shiller's Nobel prize was attributed to his contribution on excess volatility. 
+More recently, \citet{giglio2018excess} show how the price of long-maturity instruments are significantly more variable than what is predicted by standard asset pricing models. }
+Recent evidence by \citet{gabaix2020search} suggests a new hypothesis: asset prices move in response to portfolio flows.\footnote{For early evidence on the role of portfolio flows and asset prices, see \citet{deuskar2011market}.}
+However, given the relatively small magnitude of these flows in the data, this hypothesis requires markets to be very \textit{inelastic}, so small movements in quantities induce a large price response. 
+This new explanation leads naturally to several new questions: Why are markets so inelastic? Can standard frictionless models generate low levels of market elasticity? 
+If not, what are the frictions that are necessary to quantitatively explain the impact of portfolio flows on asset prices? 
+Only by answering these questions we are able to disentangle the different forces that lead to inelastic markets and, consequently, high market volatility. 
+
+
+
+In this paper, we provide a new framework to answer these questions.
+We study a quantitative general equilibrium model with rich heterogeneity and portfolio frictions.\footnote{Our work is closely related to \citeauthor{johnson2006dynamic} (\citeyear{johnson2006dynamic}, \citeyear{johnson2008volume}, and \citeyear{johnson2009liquid}), who provided an early characterization of market liquidity in frictionless environments.}
+The general equilibrium perspective is necessary, as the relevant elasticity is a \textit{macro elasticity} which takes into account the market-wide implications of investors' change in portfolio holdings. 
+In contrast to much of the literature, we allow for rich heterogeneity. 
+Most of the macro-finance literature focus on models with at most two agents. By considering a larger number of agents, we can capture the implications of reallocation among different sectors in the economy, such as mutual funds, households, broker-dealers, foreigners, and so on. 
+Finally, we consider the role of portfolio frictions. 
+We allow for two types of frictions: limited participation and margin constraints. 
+We assume that households do not actively trade in financial markets, that is, they hold a passive investment strategy, consistent with empirical evidence (e.g., \citealp{brunnermeier2008wealth}).
+The economy is also populated by active investors who are subject to margin constraints. 
+A large literature documents the importance of such constraints in determining market outcomes and the behavior of financial intermediaries.\footnote{See e.g. \citet{brunnermeier2009market}, \citet{garleanu2011margin}, \citet{chabakauri2013dynamic}, and \citet{adrian2014procyclical}.}
+
+We provide two main contributions. First, we obtain an analytical characterization of the market elasticity. 
+Studying the market elasticity in economies with frictions is challenging, as closed-form solutions are typically not available in those situations. 
+We develop new perturbation techniques that enable us to obtain closed-form expressions for the market elasticity. 
+Second, we provide a quantitative assessment of the model. 
+This requires solving and estimating a high-dimensional asset pricing model. Part of our contribution is to show how to handle this problem computationally. 
+
+
+The model we consider allows for different channels considered by the macro-finance literature. 
+We assess which one of these channels is quantitatively important to explain the degree of market volatility. Since the distribution of wealth across different types of agents is a state variable in our model setup, standard partial differential equations approaches commonly used in the literature in problems with at most two agents are not applicable to our setting. Models featuring only two types of agents can be solved by appealing to homotheticity and eliminating the wealth state variable from the system of PDEs, reducing the problem to a system of ordinary differential equations that can be easily solved with canned solvers. With multiple agents, this approach naturally fails. Our approach, on the other hand, relies on solving the perturbed equilibrium equations. Our perturbation technique is done in the space of parameters, and not around a point in the state space, and therefore the solution is global in the states. Additionally, we show that if the basis functions used to represent the value functions is linear in a set of coefficients, the problem of finding the coefficients that minimize the mean squared errors of the HJB residuals is convex. Finally, we approximate the value functions using the recently developed neural tangent kernel (\citet{neural_tangent}), that shows that infinitely-wide neural networks can be represented with a suitable linear basis.
+In general equilibrium, on top of the value function, we need to determine endogenous objects like the risk-free rate, prices of risk, and the dividend yield of the risky asset. In our model setup, all these objects can be written as closed-form expressions of the value functions (and their drifts and volatilities), so the problem reduces to a problem of computing the value functions of the different types of agents. 
+% As a proof of concept, we have implemented a simplified version of the model with up to 10 different types of agents. 
+This approach also facilitates calibration/estimation. Indeed, by including key model parameters as inputs for the neural networks, we can approximate value functions (and other equilibrium objects) for entire ranges of parameters. Having solved for the equilibrium objects for a continuum of parameters makes it easier to conduct simulation-based estimation like the Simulated Method of Moments or Indirect Inference.
+
+
+
+\newpage
+\singlespacing
+%\bibliographystyle{jf}
+\phantomsection\addcontentsline{toc}{section}{\refname}
+\clearpage
+%{\small
+\bibliography{references.bib}
+\end{document}

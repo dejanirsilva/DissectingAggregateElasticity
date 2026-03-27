@@ -1,0 +1,284 @@
+\documentclass[12pt,english]{article}
+\bibliographystyle{jf}
+\usepackage[longnamesfirst]{natbib}
+%\usepackage[T1]{fontenc}
+\usepackage{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bottom]{footmisc}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{amsmath,enumerate}
+\usepackage{amsthm}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage[labelfont=bf,justification=justified,font=small,skip=2pt,labelsep=period]{caption}
+%\usepackage[labelfont=bf,justification=justified,labelsep=period]{caption}
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage{arydshln}
+\usepackage{chngpage}
+\usepackage{float,appendix}
+\usepackage{afterpage}
+\usepackage{verbatim}
+\usepackage{indentfirst}
+\usepackage[margin=1in]{geometry}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+% \usepackage{longtable}
+\usepackage{booktabs, makecell, longtable,ltxtable}
+\usepackage{lipsum}
+\usepackage{pdflscape}
+\usepackage{siunitx}
+\usepackage{chngcntr}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage[normalem]{ulem}
+\usepackage{chngcntr,apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\sisetup{table-format=-1.3, table-space-text-post={**}}
+\usepackage{xr}
+\usepackage{etoolbox}
+\usetikzlibrary{positioning}
+\newcommand\fnsep{\textsuperscript{,}}
+\usepackage{pdflscape}
+\usepackage[normalem]{ulem}
+\usepackage{chngcntr,apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usepackage{xr}
+\usepackage{etoolbox}
+\usetikzlibrary{positioning}
+
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{mathdots}
+\usepackage{yhmath}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{tabularx}
+\usepackage{extarrows}
+\usepackage{booktabs}
+\usetikzlibrary{fadings}
+\usetikzlibrary{patterns}
+\usetikzlibrary{shadows.blur}
+\usetikzlibrary{shapes}
+\usetikzlibrary{matrix}
+
+
+%% UCLA colors: 
+% https://brand.ucla.edu/wp-content/uploads/ucla-color-palette-v10.pdf
+%\definecolor{UCLA}{RGB}{50, 132, 191}   % UCLA Blue primary
+%\definecolor{UCLA}{RGB}{52, 123, 173}   % UCLA Blue text only
+\definecolor{UCLAblue}{RGB}{30, 75, 135} % secondary color	
+\definecolor{UCLAgold}{RGB}{255, 232, 0} % UCLA Gold
+
+\definecolor{usccardinal}{rgb}{0.6, 0.0, 0.0}
+\definecolor{Matlabblue}{rgb}{0,0.447,0.741}
+\definecolor{bleudefrance}{rgb}{0.19,0.55, 0.91}
+\definecolor{cobalt}{rgb}{0.0, 0.28,0.67}
+\definecolor{darkblue}{rgb}{0.0, 0.0,0.55}
+\definecolor{darkcerulean}{rgb}{0.03,0.27, 0.49}
+\definecolor{darkpowderblue}{rgb}{0.0,0.2, 0.6}
+\definecolor{bleudefrance}{rgb}{0.19,0.55, 0.91}
+%\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
+
+\hypersetup{
+	colorlinks,
+	linkcolor={UCLAblue},
+	citecolor={UCLAblue},
+	urlcolor={UCLAblue},
+}
+
+\bibpunct{(}{)}{;}{a}{,}{,}
+\newcommand{\E}{\mathbb{E}}
+% \newcommand{\var}{\mathrm{Var}}
+\newcommand{\cov}{\mathrm{Cov}}
+\setcounter{MaxMatrixCols}{20}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+\urlstyle{same}
+\usepackage{pgfplots} 
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false} 
+% puts figures and tables at the end of the document
+%\usepackage[nomarkers,nolists]{endfloat}               
+% puts ONLY figures at the end of the document
+%\usepackage[nomarkers,nolists,figuresonly]{endfloat}  
+% allows more than one figure per page for endfloat
+%\renewcommand{\efloatseparator}{\mbox{}}              
+\usepackage{rotating}
+% allows sideways tables and figures to be placed at the end of the document
+%\DeclareDelayedFloatFlavor{sidewaystable}{table}
+%\DeclareDelayedFloatFlavor{sidewaysfigure}{figure}
+
+% \usepackage[nomarkers,nolists]{endfloat} 
+% \renewcommand{\efloatseparator}{\mbox{}}              % allows more than one figure per page for endfloat
+
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false} 
+\newlength\figureheight 
+\newlength\figurewidth 
+\usepackage{mathtools}
+\usetikzlibrary{calc}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Notes customization %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{webblue}{rgb}{0,0,0.6}
+\definecolor{webgreen}{rgb}{0,.6,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+
+
+%- Commenting
+\let\oldmarginpar\marginpar
+\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\tiny #1]%
+{\raggedright\tiny #1}}
+\newcommand{\mknote}[1]{\marginpar{\textcolor{webblue}{\tiny{Mahyar: #1}}}}
+\newcommand{\dsnote}[1]{\marginpar{\textcolor{webgreen}{\tiny{Dejanir: #1}}}}
+\usepackage[en-US]{datetime2}
+\usepackage{mathtools}
+ \usepackage{xcolor}
+ \usepackage{nicematrix}
+ \let\widering\relax
+\usepackage{newtxtext,newtxmath}
+\newcommand{\comments}[1]
+{\par {\bfseries \color{blue} #1 \par}}
+
+\usepackage[draft]{todonotes}
+
+% \title{\textbf{Notes on calibration}}
+% \author{ Dejanir Silva\thanks{Gies College of Business, University of Illinois at Urbana-Champaign, e-mail: \href{dejanir@illinois.edu}{dejanir@illinois.edu}.}}
+\date{}
+%\date{\today\\
+%	\begin{small}
+%		First draft: May 5, 2018
+%\end{small}}
+\begin{document}
+	% \maketitle
+\onehalfspacing	
+
+\section*{Calibration}
+
+\begin{table}[h!]
+    \centering 
+    \caption{Calibration of model parameters}
+    \label{tab:calibration}
+    \NiceMatrixOptions{cell-space-limits = 2.5pt}
+    \begin{NiceTabular}{cll}[colortbl-like,hvlines]
+\toprule
+\rowcolor{gray!30}
+\textbf{Parameter} &  \textbf{Description} &  \textbf{Moment/value} \\ 
+\midrule
+$\mu$ &  Avg. productivity growth & 0.02 \\ 
+$\sigma$ & Productivity growth volatility & 0.03 \\ 
+$\theta_p$ & Mean-reversion passive portfolio & 0.296 \\ 
+$\overline{\alpha}_p$ & Average passive portfolio share & 0.349 \\ 
+$\|\sigma_p\|$ & Passive portfolio volatility & 0.0572 \\ 
+$\rho_p$ & Correlation passive flow and agg. shocks & 0.95 \\ 
+$\overline{\sigma}$ & Leverage constraint parameter &  \\ 
+$J$ & Number of active investors & 6 \\ 
+$\kappa$ & Mortality rate & \\
+$\rho$ & Discount rate &  Literature \\ 
+$\psi$ & Elasticity of intertemporal substitution & 2.0 \\ 
+$\gamma$ & Average risk aversion & 5.1 \\ 
+$\gamma_j/\gamma$ & Relative risk aversion for $j = 0,\ldots, J$& 1.43, 0.58, 0.09, 0.50, 1.33, 0.70 \\ 
+$\omega_j$ & Population weights ($j=0$ is passive) & 
+0.468, 0.217, 0.078, 0.052, 0.005, 0.122, 0.058
+% Share of risky asset holdings
+\\ 
+\bottomrule
+\end{NiceTabular}
+\end{table}
+
+Things to consider:
+\begin{itemize}
+    \item Check J's regression for $\gamma_j$'s and make sure it is consistent with the model
+    \begin{itemize}
+        \item $\mathbb{E}[\sigma_x]$ vs. $\mathbb{E}[\sigma_{\alpha x}]$ ($\alpha$ is portfolio weight, under the ergodic dist.)
+    \end{itemize}
+    \item For $\omega_j$: should we consider \textbf{asset} shares or \textbf{net worth} shares? Probably asset share makes more sense?
+\begin{itemize}
+    \item $\mathbb{E}[x_j]$ vs. $\mathbb{E}[x_j \alpha_j]$.
+\end{itemize}
+    \item Check J's selection of sectors
+    \begin{itemize}
+        \item Some support from literature
+    \end{itemize}
+    \item Similar to the AEJ: Macro paper, below the threshold there is not cost, above there is a cost (similar to an adjustment cost)
+    \item Passive flow:
+    \begin{itemize}
+        \item use the GK aggregate flow and use indirect inference
+        \item create Fig 1 in the model and relate to passive flow
+    \end{itemize}
+\end{itemize}
+
+\section{Calibration details}
+\label{sec:calibration}
+
+We consider corporate equities as the risky asset in our model, following \citep{he2013intermediary,Kargar/2021}. 
+All the other financial instruments such as deposits, Treasury debt, loans, etc, are considered riskless borrowing in the model. To map out the main sectors that invest in the risky asset, we use the Federal Reserve's Flow of Funds data (henceforth FOF). FOF contains quarterly snapshots of the financial assets and liabilities of major sectors in the economy. 
+
+% While some low credit quality corporate bonds/loans may also be considered as having some loadings on the risky asset, overall, the loading is small. (perhaps discuss a bit). Therefore from a quantitative perspective, it doesn't lose much. The implied FOF corp beta is 0.058. If we use TRACE, and if we separately estimate IG and HY, we get a weighted average of 0.067 (folder 2). This is small. In terms of total risk contribution, this means that the corporate debt is only XX\% of the stock market, so we don't think adding (or not) adding it is going to change conclusions that much. 
+
+\subsection{Processing FOF data}
+\label{sec:calibration:sectors}
+
+This subsection describes how we process raw FOF data to arrive at 6 major sectors: household mutual fund holdings, households non-mutual fund holdings, hedge funds, broker-dealers (L130), rest of the world (L133), and hedge funds. To visualize the size of these ultimate sectors, Figure~\ref{fig:holdings_breakdown} plots the fraction of the U.S. stock market held by each sector from 2012 when hedge fund holdings became available. Figure caption reports the average fraction held by each sector. The largest holder is the household sector which holds 17.3\% via mutual funds and 43.3\% through other means. The net largest sectors are foreign investors (``rest of the world'') and pension/insurance sectors which hold 17.5\% and 17.3\%, respectively. Hedge funds and broker-dealers are relatively small and hold 5.8\% and 0.5\%, respectively, consistent with Figure 1 in \citet{koijen2024investors}. 
+
+%\resizebox{0.49\textwidth}{!}
+    
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width = \textwidth]{figures/calibration/break_down_of_holdings.png}
+% \subfloat{{\input{figures/calibration/break_down_of_holdings}}
+    \caption{Fraction of the stock market holding by sectors from 2012 to 2022. The average fraction held is reported in the caption. Source: Flow of Funds.}\label{fig:holdings_breakdown}
+\end{figure}
+
+\begin{enumerate}
+    \item We first drop sectors that have no or minimal investments in the stock market. This includes nonfinancial business (L102), general government (L105), monetary authority (L109), Private depository institutions (L110), money market funds (L121), Government-sponsored enterprises (L125), Agency-and GSE-backed mortgage pools (L126), and Issuers of asset-backed securities (L127), Finance companies (L128), Real estate investment trusts (L129), Holding companies (L131), and Other financial business (L132).
+
+    \item We then aggregate sectors that invest in the stock market but are pass-throughs onto the end users' balance sheets. 
+    \begin{itemize}
+        \item Mutual funds (L122), Closed-end funds (L123), and Exchange-traded funds (L124): we aggregate L123 and L124 onto the household (L101) balance sheet. For mutual fund holdings (L122), FOF provides a detailed breakdown of end investors. We aggregate the non-household holdings onto the respective end investor balance sheets but separately consider the household holdings as a separate sector. 
+        \item We aggregate all defined contribution pensions (Tables L118c, L119c, and  L120c) onto household balance sheet. 
+    \end{itemize} 
+
+    \item We then separate out the hedge fund sector. Both the household (L101) and foreign (L133) sectors contain hedge funds. Because hedge funds likely behave differently from other sectors, we separate them out. We use Table B.101.f to capture domestic hedge funds and use the hedge fund table in enhanced financial accounts to also capture foreign hedge funds. We consider all hedge funds a single sector, and we subtract their holdings from the household and foreign sectors. 
+
+    \item Finally, we aggregate together all remaining insurance and pension sectors. This includes property-casualty insurance (L115), life insurance (L116), and defined benefit pension and retirement plans (L118b, L119b, L120b). 
+\end{enumerate}
+
+\subsection{Calibrating parameters}
+
+The calibrated parameters are collected in Table \ref{tab:calibration}. The drift and volatility of the consumption process, as well as the time discount rate and elasticity of intertemporal substitution, are standard in the literature. 
+
+We calibrate the risk aversion of each investor $j$ using its risky asset share via the relationship $\alpha_j \approx \frac{\mu}{\gamma_j \cdot \sigma^2}$. Note that the risky asset share is expressed for the consumption claim. Following \citet{abel1999risk}, \citet{campbell2003consumption}, and others, we model the aggregate stock dividend as a levered claim on the aggregate consumption. Therefore, the risky asset share is defined as six times the ratio between stock holdings and net worth. 
+
+Not all investors in Figure \ref{fig:holdings_breakdown} are active. We follow industry reports and assume that half of all households are passive.\footnote{An October 2018 survey by Charles Schwab on retail clients reveals that 49\% of holdings are in passive strategies.} As for the insurance and pension sector, we assume that 70\% of them are passive because most defined benefit pension funds have fixed stock/bond allocation targets that change sluggishly. We assume 30\% of foreign investors as passive, and we assume that the broker-dealer and hedge fund sectors are fully active. Later, population weights are just defined as the fraction of risky asset held by sectors. 
+
+To calibrate the trading behavior of passive investors, we first form the aggregate passive sector by a passive fraction-weighted average of all 6 sectors. This aggregate passive sector holds on average 0.468 of all stocks. We then calibrate $\bar{\alpha}_p = 0.349$ using its average risky asset share and estimate the mean-reversion parameter $\theta_p = 0.296$ via a time-series regression of risky share changes on the lagged risky share. Finally, we calibrate the volatility parameter $\sigma_p = 0.0572$ as the annual volatility of $\Delta \alpha_{p,t}/\sqrt{\alpha_{p,t-1}}$. 
+
+% \bibliographystyle{jf}
+\bibliography{references.bib}
+
+
+\end{document}
