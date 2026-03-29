@@ -226,12 +226,12 @@ Jiacui Li\thanks{David Eccles School of Business, University of Utah; \href{mail
   %%%%%%%%%%%%%%%%%%%%
   % 100-word version %
   %%%%%%%%%%%%%%%%%%%%
-    We study aggregate stock market elasticity in a general equilibrium model with heterogeneous investors, passive demand, and financial constraints.
-    Without frictions, aggregate elasticity for the endowment claim is infinite, as interest rate and risk premium responses offset each other.
-    With frictions, price impact for the endowment claim remains modest (about 0.7 in our calibration).
-    In contrast, the equity (dividend) claim exhibits large price impact (above 8), consistent with empirical evidence, as frictions dampen interest rate responses while leverage amplifies risk premium responses to portfolio flows.
-    We introduce a state-global perturbation method that yields closed-form, state-dependent elasticities.
-    Solving the model with deep neural networks and calibrating to Flow of Funds data, we simultaneously match the equity premium and return volatility as well as the level and countercyclical dynamics of price impact.
+  We study aggregate stock market elasticity in a general equilibrium model with heterogeneous investors, passive demand, and financial constraints.
+  Without frictions, the elasticity of the endowment claim is infinite, as interest rate and risk premium responses offset each other.
+  With frictions, price impact for the endowment claim remains modest (about 0.7 in our calibration).
+  In contrast, the equity (dividend) claim exhibits large price impact (above 8), consistent with empirical evidence, as frictions dampen interest rate responses while leverage amplifies risk premia responses to portfolio flows.
+  We introduce a state-global perturbation method that yields closed-form, state-dependent elasticities.
+  Calibrated to match the magnitude of portfolio flows, the model simultaneously matches the equity premium, return volatility, and the level and countercyclical dynamics of price impact.
   % We study why the aggregate stock market is so inelastic and why price impact rises in bad times. In a general equilibrium model with heterogeneous investors, passive demand, and financial constraints, a representative firm issues a risky dividend claim and corporate debt. Because dividends are a levered share of output, equity prices respond more strongly to portfolio flows. A mutual fund theorem reduces the equilibrium to a single-claim economy, and state-global perturbations deliver closed-form expressions for aggregate elasticity. Elasticity is governed by risk allocation: when risk is misallocated, interest rates cannot fully offset risk premium changes, generating finite and time-varying price impact. We solve the full model using deep neural networks, calibrate it to Flow of Funds data and asset pricing moments, and match the magnitude and dynamics of aggregate price impact documented in the empirical literature.  
   \vspace{10mm} 
   \bigskip
@@ -267,51 +267,74 @@ How can small portfolio flows generate large price movements in equilibrium?
 More specifically, what determines the \emph{aggregate} elasticity of the stock market, why does price impact vary over time, and which frictions are essential for matching its magnitude in the data?
 
 To address these questions, we develop a general equilibrium model with heterogeneous investors, passive demand, and financial constraints.
-We study the \emph{aggregate (macro) elasticity}, defined as the change in the total stock market value in response to a $\$1$ flow between (short-term) bonds and stocks.
+We study the \emph{aggregate (macro) elasticity}, defined as the change in total stock market value in response to a $\$1$ flow between (short-term) bonds and stocks.
 Unlike micro elasticities, which capture substitution across individual stocks, aggregate elasticity reflects market-wide reallocations between risky and risk-free assets.
-As a result, understanding aggregate elasticity requires understanding the simultaneous response of the risk-free rate and the risk premium to changes in portfolio flows.
+As a result, understanding aggregate elasticity requires tracking how the risk-free rate and the risk premium respond jointly to portfolio flows.
 
-This joint response is particularly important when studying the elasticity of the \emph{endowment claim}, the claim on aggregate output.
-Our first main contribution is to show that, in the absence of frictions, the aggregate market elasticity of this claim is \emph{infinite}, regardless of how price-inelastic individual investors are.\footnote{A portfolio-flow shock is an asymmetric shock to risky-asset demand, affecting only a subset of investors and triggering portfolio reallocation in equilibrium.}
-In particular, an inflow of funds from bonds to stocks has no price impact in equilibrium.
-The key mechanism is a general equilibrium adjustment in savings behavior.
-When portfolio flows shift demand toward risky assets, the risk premium falls while the interest rate rises.
-When risk is efficiently allocated, these two forces offset exactly, leaving asset prices unchanged.
-As a result, aggregate elasticity is infinite even when individual demand is highly inelastic in a frictionless economy.
+This joint response is central for the elasticity of the \emph{endowment claim}, the claim on aggregate output.
+We show that, in the absence of frictions, the aggregate market elasticity of this claim is \emph{infinite}, regardless of how price-inelastic individual investors are.\footnote{A portfolio-flow shock is an asymmetric shock to risky-asset demand, affecting only a subset of investors and triggering portfolio reallocation in equilibrium.}
+Consider an outflow of funds from stocks to bonds.
+The resulting increase in the risk premium tends to lower stock prices.
+At the same time, the associated decline in wealth would reduce consumption.
+With a fixed endowment, this adjustment cannot occur in equilibrium.
+The interest rate therefore falls to clear the goods market.
+In frictionless economies, it adjusts until it exactly offsets the increase in the risk premium, leaving the price of the risky asset unchanged.
+This result holds regardless of how inelastic individual demand is.
+Aggregate elasticity is therefore infinite even when individual demands are highly inelastic.
 
-This result highlights a central distinction between micro and aggregate elasticities.
+% The key mechanism is a general equilibrium adjustment in savings behavior.
+% When portfolio flows shift demand toward risky assets, the risk premium falls while the interest rate rises.
+% When risk is efficiently allocated, these two forces offset exactly, leaving asset prices unchanged.
+% As a result, aggregate elasticity is infinite even when individual demand is highly inelastic in a frictionless economy.
+
+This result highlights a central distinction between individual and aggregate elasticities.
 If cross-price effects are absent, so that demand for risky assets does not respond to the interest rate, aggregate elasticity reduces to a weighted average of individual elasticities, as in \citet{gabaix2020search}.
-By contrast, once interest rates adjust endogenously, aggregate elasticity is governed by general equilibrium forces rather than by the slope of individual demand.
-In particular, the response of aggregate savings determines whether movements in the risk-free rate can offset changes in risk premia.
-When portfolio flows do not alter saving incentives, movements in the risk-free rate fully offset movements in the risk premium, leaving asset prices unchanged.
+Once interest rates adjust endogenously, however, aggregate elasticity is governed by general equilibrium forces rather than by the average slope of individual demands.
+In particular, aggregate elasticity is governed by how portfolio flows affect saving incentives.
+When flows do not alter these incentives, movements in the risk-free rate fully offset movements in the risk premium, so asset prices remain unchanged.
 
-Aggregate elasticity becomes finite only when risk is misallocated.
-In this case, portfolio reallocation changes saving incentives, preventing interest rates from fully offsetting movements in risk premia.
-This generates a nonzero price impact even in general equilibrium.
-Even with frictions---such as passive demand, preference heterogeneity, and leverage constraints---this near-cancellation remains quantitatively important, so that the endowment claim exhibits only a modest price impact of 0.7 in our calibration.
-We establish these results first in a transparent two-period model and then extend them to a fully dynamic setting.
+Aggregate elasticity becomes finite when risk is misallocated.
+Portfolio reallocation then alters saving incentives, so interest rates can no longer fully offset changes in risk premia.\footnote{
+    Intuitively, risk misallocation means investors hold too much or too little risk relative to the efficient allocation.
+    Investors who are already overexposed to risk are less willing to save in assets that further increase their risk exposure.
+    As a result, interest rates do not need to adjust as much to restore equilibrium after a portfolio-flow shock.
+}
+This generates a nonzero price impact, even in general equilibrium.
+Frictions thus reduce aggregate elasticity.
+Even with frictions---such as passive demand and leverage constraints---the near-cancellation between interest rates and risk premia remains quantitatively important, so the endowment claim exhibits only a modest price impact of 0.7 in our calibration.
+We establish these results first in a transparent two-period model, then extend them to a fully dynamic setting.
 
-Studying aggregate elasticity in models with frictions is challenging because closed-form solutions are rarely available.
-We introduce a tractable analytical approach based on state-global perturbations that delivers closed-form, state-dependent characterizations of aggregate elasticity.
-The method shows that elasticity is time-varying and depends on both the wealth distribution across active and passive investors and the allocation of risk within the active sector.
-Passive investors amplify price impact, preference heterogeneity raises elasticity through risk misallocation, and binding leverage constraints further amplify these effects.
-In this environment, excess volatility arises from the interaction between portfolio-flow shocks and a finite (state-dependent) elasticity.
-Inelasticity alone does not generate excess volatility, and neither do flows in infinitely elastic markets; both are required.
+% Studying aggregate elasticity in models with frictions is challenging because closed-form solutions are rarely available.
+% We introduce a tractable analytical approach based on state-global perturbations that delivers closed-form, state-dependent characterizations of aggregate elasticity.
+% The method shows that elasticity is time-varying and depends on both the wealth distribution across active and passive investors and the allocation of risk within the active sector.
+% Passive investors amplify price impact, preference heterogeneity raises elasticity through risk misallocation, and binding leverage constraints further amplify these effects.
+% In this environment, excess volatility arises from the interaction between portfolio-flow shocks and a finite elasticity.
+% Inelasticity alone does not generate excess volatility, and neither do flows in infinitely elastic markets; both are required.
 
-Our second main contribution is to show that, in contrast to the endowment claim, the \emph{equity} (dividend) claim exhibits a substantially larger price impact, with a multiplier above 8 in our calibration, consistent with the empirical estimates of \citet{gabaix2020search} and \citet{koijen2024investors}.
-This difference arises because the general equilibrium offset between the risk-free rate and the risk premium that renders the endowment claim highly elastic does not carry over to the dividend claim.
-Dividends represent a levered share of aggregate output, so the risk premium on the dividend claim responds more strongly to portfolio flows than the risk premium on the endowment claim.
-As a result, changes in discount rates are not offset by the same general equilibrium forces, leading to a large price response.
-This result highlights that modeling the dividend claim, rather than a claim on aggregate consumption as is standard in the macro-finance literature, is essential for generating realistic levels of price impact.
+Studying aggregate elasticity in models with frictions is challenging because closed-form solutions are typically not available.
+We develop a tractable state-global perturbation method that yields closed-form, state-dependent elasticities.
+Elasticity is time-varying and shaped by both the wealth distribution and risk allocation across investors.
+Passive demand, preference heterogeneity, and leverage constraints each amplify price impact via risk allocation.
+Excess volatility results from the interaction of portfolio-flow shocks with finite (state-dependent) elasticity.
+Neither inelasticity nor flows alone generate excess volatility; both are required.
 
-A key methodological contribution is a tractable way to introduce the dividend claim in a dynamic heterogeneous-agent economy with frictions.
-We provide conditions under which a version of the mutual fund theorem holds: investors optimally hold risky claims at market-capitalization weights.
+Our second main contribution is to provide a characterization of the aggregate elasticity of the equity claim.
+Dividends are modeled as a time-varying share of output, as in \citet{MenzlySantosVeronesi2004}.
+In contrast to the endowment claim, the equity claim exhibits substantially larger price impact, with a multiplier above 8 in our calibration, consistent with \citet{gabaix2020search} and \citet{koijen2024investors}.
+This difference arises because the general equilibrium offset between the risk-free rate and the risk premium that renders the endowment claim highly elastic does not extend to the dividend claim.
+Dividends are a levered share of aggregate output, so the dividend risk premium responds more strongly to portfolio flows than the endowment risk premium.
+Consequently, changes in risk premia are not fully offset, so prices respond strongly to portfolio flows.
+This result highlights that modeling the dividend claim, rather than aggregate consumption as is standard in macro-finance, is essential for generating realistic price impact.
+
+We provide a tractable way to incorporate the dividend claim in a dynamic heterogeneous-agent economy with frictions.
+We establish conditions under which a version of the mutual fund theorem holds in our economy with frictions, so investors optimally hold risky claims at market-capitalization weights.
 This implies that the stochastic discount factor from the aggregate (endowment-claim) economy can be used to price the dividend claim in a second step.
-This separation reduces the effective dimensionality of the problem and greatly simplifies the analysis.
+As a result, the problem separates into an aggregate equilibrium and a simpler pricing problem, reducing its dimensionality.
 
-For the quantitative analysis, we solve the full model numerically using the deep neural network method of \citet{duarte2024machine} and calibrate it to Flow of Funds data.
-The calibrated model matches both the magnitude and countercyclical dynamics of price impact in the data, while also reproducing key asset pricing moments such as the equity premium and return volatility.
-These results highlight the joint role of frictions, which dampen interest rate responses, and leverage, which amplifies risk premia responses to portfolio flows.
+For the quantitative analysis, we solve the full model using the deep neural network method of \citet{duarte2024machine} and calibrate it to Flow of Funds data.
+We target the magnitude of portfolio flows observed in the data.
+The model matches both the level and countercyclical dynamics of price impact, while reproducing key asset pricing moments such as the equity premium and return volatility.
+These results reflect the joint role of frictions, which dampen interest rate responses, and leverage, which amplifies risk premia responses to portfolio flows.
 
 % The dynamic model features one passive and two active investor types with recursive preferences.
 % Two frictions shape aggregate elasticity: passive investment, consistent with household portfolio inertia and target-date fund allocations, and leverage constraints on active investors, consistent with evidence on margin requirements and intermediary behavior.\footnote{See, e.g., \citet{brunnermeier2009market}, \citet{garleanu2011margin}, \citet{chabakauri2013dynamic}, and \citet{adrian2014procyclical}.}
