@@ -82,13 +82,19 @@ using the fact that $\zeta^q_r = x_a g_a'(\mu-p^\star-r^\star)$ and $c_a(\mu-p^\
 The Hamilton-Jacobi-Bellman (HJB) equation for investor $j$ can be written as
 \begin{align}
     0 &= \max_{C_j, \alpha_j} f_j(C_j,V_j) + V_{j,W}\left[ r W_j + \pi^\top \alpha_j W_j  - C_j\right] +V_{j,X} \mu_X\nonumber\\
-    &\qquad + \frac{1}{2} V_{j,WW} W_j^2 \|\Sigma_j\|^2 + V_{j,WX}W_j \sigma_X \Sigma_j^\top    + \frac{1}{2} \sum_{k=1}^d \sigma_{X,k}^\top V_{j,XX} \sigma_{X,k},
+    &\qquad + \frac{1}{2} V_{j,WW} W_j^2 \|\sigma_j\|^2 + V_{j,WX}W_j \sigma_X \sigma_j^\top    + \frac{1}{2} \sum_{k=1}^3\ \sigma_{X,k}^\top V_{j,XX} \sigma_{X,k},
 \end{align}
-subject to $\alpha_j \in \Omega_j$.
+subject to $\alpha_j \in \Omega_j$ and $\sigma_{j} = \alpha_j^\top \Sigma$.
 For ease of notation, we dropped time subscripts.
 Note that  $V_{j,X}$ and $V_{j,WX}$ are $1\times N$ vectors, $V_{j,XX}$ is a $N\times N$ matrix, and both $V_{j,W}$ and $V_{j,WW}$ are scalars.
-The drift $\mu_X$ is a $N\times 1$ vector, the diffusion $\sigma_X$ is a $N\times d$ matrix, while $\sigma_R$ is a $1\times d$ vector.
+The drift $\mu_X$ is a $N\times 1$ vector, the diffusion $\sigma_X$ is a $N\times 3$ matrix, while $\sigma_R$ is a $1\times 3$ vector.
 The notation $\sigma_{X,k}$ denotes the $k-$th column of $\sigma_{X}$, that is, the exposure to the $k-$th Brownian motion.
+
+The optimality condition for consumption and portfolio share are given by
+\begin{align}
+    f_{j,C}(C_j,V_j) &= V_{j,W}\\
+    V_{j,W} \pi &= - V_{j,WW} W_j \Sigma \Sigma^\top \alpha_j -  \Sigma (V_{j,WX} \sigma_X)^\top.
+\end{align}
 
 The optimal consumption is given by
 \begin{equation}
@@ -97,8 +103,9 @@ The optimal consumption is given by
 
 The optimal portfolio share for an active investor is given by
 \begin{equation}
-\alpha_j = \min \left\{ -\frac{V_{j,W} (\mu_R-r)}{V_{j,WW} W \|\sigma_R\|^2}   - \frac{V_{WX}}{V_{WW} W} \frac{\sigma_X \sigma_R^\top}{\|\sigma_R\|^2}, \frac{\overline{\sigma}}{\|\sigma_{R,t}\|} \right\}.
+\sigma_j = \min \left\{ -\frac{V_{j,W}}{V_{j,WW} W_j}  \lambda_j   - \frac{V_{j,WX}}{V_{j,WW} W_j} \sigma_X, \overline{\sigma}_j\right\},
 \end{equation}
+using the fact that $\pi = \Sigma \lambda^\top$, and setting $\overline{\sigma}_j = \infty$ for the unconstrained investor
 
 Given the homotheticity of preferences, the value function for investor $j$ can be written as
 \begin{equation}\label{app:value_function}
@@ -110,17 +117,11 @@ This particular parametrization of the value function implies that the consumpti
     \frac{C_{j,t}}{W_{j,t}} = \xi_{j,t}.
 \end{equation}
 
-The optimal portfolio share for active investors is given by
+The optimal risk exposure for active investors is given by
 \begin{equation}
-    \alpha_{j,t}
-    = \min \left\{ \frac{\mu_{R,t}-r_t}{\gamma_j \|\sigma_{R,t}\|^2}  - \frac{1-\gamma_j^{-1}}{1-\psi} \frac{\sigma_{\xi_j,t} \sigma_{R,t}^\top}{\|\sigma_{R,t}\|^2}, \frac{\overline{\sigma}}{\|\sigma_{R,t}\|} \right\}.
+    \sigma_{j,t}
+    = \min \left\{ \frac{\lambda_t}{\gamma_j}  - \frac{1-\gamma_j^{-1}}{1-\psi} \sigma_{\xi_j,t} , \overline{\sigma}_j\right\}.
 \end{equation}
-
-It is convenient to consider the investor's risk exposure $\sigma_{j} \equiv  \alpha_j \|\sigma_R\|$, which is then given by
-\begin{equation}
-    \sigma_{j,t} = \min \left\{ \frac{\eta_t}{\gamma_j}  - \frac{1-\gamma_j^{-1}}{1-\psi} \frac{\sigma_{\xi_j,t} \sigma_{R,t}^\top}{\|\sigma_{R,t}\|}, \overline{\sigma} \right\},
-\end{equation}
-where $\eta_t \equiv \frac{\mu_{R,t} - r_t}{\|\sigma_{R,t}\|}$ denotes the Sharpe ratio of the risky asset.
 
 Plugging the consumption-wealth ratio into the HJB equation and using Equation \eqref{app:value_function}, we obtain
 \begin{align}

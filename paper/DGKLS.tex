@@ -537,9 +537,9 @@ Active investors optimally rebalance their portfolios, choosing allocations acro
 Type-2 investors have low risk aversion, $\gamma_2 < \gamma_1$, and therefore have an incentive to lever up their exposure to risky assets.
 They borrow short-term to increase their risk exposure, subject to a leverage constraint that limits total portfolio risk:
 \begin{equation}\label{eq:leverage_constraint}
-    \|\Sigma_{j,t}\| \leq \overline{\sigma},
+    \|\sigma_{j,t}\| \leq \overline{\sigma},
 \end{equation}
-where $\Sigma_{j,t} = \alpha_{j,D,t}\,\sigma_{R_D,t} + \alpha_{j,B,t}\,\sigma_{R_B,t} + \alpha_{j,F,t}\,\sigma_{R_F,t}$ is the investor's total risk exposure and $\|\cdot\|$ denotes the Euclidean norm.
+where $\sigma_{j,t} = \alpha_{j,D,t}\,\sigma_{R_D,t} + \alpha_{j,B,t}\,\sigma_{R_B,t} + \alpha_{j,F,t}\,\sigma_{R_F,t}$ is the investor's total risk exposure and $\|\cdot\|$ denotes the Euclidean norm.
 This constraint resembles a Value-at-Risk (VaR) limit commonly applied to banks and leveraged institutions (see, e.g., \citealt{adrian2014procyclical} and \citealt{brunnermeier2009market}).
 Type-1 investors are more risk averse and do not face a leverage constraint.
 
@@ -553,7 +553,7 @@ An investor of type $j = 0,1,2$ chooses consumption $C_{j,t}$ and portfolio allo
 \end{equation}
 \begin{equation}\label{eq:budget_constraint}
     dW_{j,t} = \left[r_t + \pi_{t}^\top \,\alpha_{j,t} - \frac{C_{j,t}}{W_{j,t}}\right] W_{j,t}\,dt 
-    + \Sigma_{j,t}\, W_{j,t}\, dZ_t,
+    + \sigma_{j,t}\, W_{j,t}\, dZ_t,
 \end{equation}
 with $W_{j,t} \geq 0$ and $\alpha_{j,t} \in \Omega_{j,t}$,
 where $W_{j,t}$ denotes the investor's wealth and $\Omega_{j,t}$ is the investment set for type-$j$ investor.
@@ -571,7 +571,7 @@ For passive investors, $j=0$, holdings of the market index fund induce indirect 
 Type-1 investors are unconstrained, so their investment set is given by $\Omega_{1,t} = \mathbb{R}^3$.
 For type-$2$ investors, the investment set reflects their leverage constraint:
 \begin{equation}
-\Omega_{2,t} = \{\alpha_{2,t}: \|\Sigma_{2,t}\| \leq \overline{\sigma}\}.
+\Omega_{2,t} = \{\alpha_{2,t}: \|\sigma_{2,t}\| \leq \overline{\sigma}\}.
 \end{equation}
 
 
