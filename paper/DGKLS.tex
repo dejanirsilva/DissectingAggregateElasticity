@@ -427,7 +427,7 @@ By It\^{o}'s lemma, dividends follow:
 where
 \begin{equation}\label{eq:D_vol}
     \sigma_D(s) = \sigma + (1-s)\,\sigma_s, \qquad 
-    \mu_D(s) = \mu + \kappa_s\!\left(\frac{\overline{s}}{s}-1\right) + (1-s)\,\sigma\sigma_s'.
+    \mu_D(s) = \mu + \kappa_s\!\left(\frac{\overline{s}}{s}-1\right) + (1-s)\,\sigma\sigma_s^\top.
 \end{equation}
 
 This specification captures several key features of the data.
@@ -459,7 +459,7 @@ The derivative provides risk exposure $\sigma_{R_F,t} \in \mathbb{R}^{1\times d}
 \begin{equation}
     \frac{d\eta_t}{\eta_t} = -r_t\,dt - \lambda_t\,dZ_t,
 \end{equation}
-where $\lambda_t \in \mathbb{R}^{1\times d}$ is the market price of risk vector. Risk premia satisfy $\pi_{k,t} = \sigma_{R_k,t}\,\lambda_t'$ for each claim $k \in \{D,B,F\}$.
+where $\lambda_t \in \mathbb{R}^{1\times d}$ is the market price of risk vector. Risk premia satisfy $\pi_{k,t} = \sigma_{R_k,t}\,\lambda_t^\top$ for each claim $k \in \{D,B,F\}$.
 
 Let $\Sigma_t$ denote the $3 \times 3$ matrix collecting the risk exposures of all traded assets:
 \begin{equation}
@@ -469,7 +469,7 @@ Let $\Sigma_t$ denote the $3 \times 3$ matrix collecting the risk exposures of a
         \sigma_{R_F,t}
     \end{pmatrix},
 \end{equation}
-and $\pi_t \equiv [\pi_{D,t}, \pi_{B,t}, \pi_{F,t}]'$, so that $\pi_t = \Sigma_t\,\lambda_t'$.
+and $\pi_t \equiv [\pi_{D,t}, \pi_{B,t}, \pi_{F,t}]^\top$, so that $\pi_t = \Sigma_t\,\lambda_t^\top$.
 
 In equilibrium, prices depend on an aggregate state vector $X_t \in \mathbb{R}^N$, so we write $r_t = r(X_t)$, $\lambda_t = \lambda(X_t)$, and return coefficients as functions of $X_t$. The state vector evolves as
 \begin{equation}\label{eq:state_dynamics}
@@ -630,7 +630,7 @@ From the Hamilton-Jacobi-Bellman equation, the consumption-wealth ratio satisfie
 where 
 \[
     \xi_{j,t} \equiv \mu_{c_j,t} 
-    + (1-\gamma_j) \sigma_{c_j,t} \Sigma_{j,t}' 
+    + (1-\gamma_j) \sigma_{c_j,t} \Sigma_{j,t}^\top 
     + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}.
 \]
 
@@ -670,7 +670,7 @@ The optimal total risky share for an active investor is
     \right\},
 \end{equation}
 where $\varsigma_{j,t} \equiv \frac{1-\gamma_j^{-1}}{\psi-1} 
-\dfrac{\sigma_{c_j,t} \sigma_{R,t}'}{\|\sigma_{R,t}\|^2}$ is the hedging component. The myopic demand, $\frac{\pi_t}{\gamma_j \|\sigma_{R,t}\|^2}$, reflects the investor's risk tolerance, while the hedging demand captures the covariance between $c_{j,t}$ and risky returns. The leverage constraint caps exposure at $\overline{\sigma}/\|\sigma_{R,t}\|$.
+\dfrac{\sigma_{c_j,t} \sigma_{R,t}^\top}{\|\sigma_{R,t}\|^2}$ is the hedging component. The myopic demand, $\frac{\pi_t}{\gamma_j \|\sigma_{R,t}\|^2}$, reflects the investor's risk tolerance, while the hedging demand captures the covariance between $c_{j,t}$ and risky returns. The leverage constraint caps exposure at $\overline{\sigma}/\|\sigma_{R,t}\|$.
 
 From the Hamilton-Jacobi-Bellman equation, the consumption-wealth ratio is
 \begin{equation}\label{eq:xi_j}
@@ -682,7 +682,7 @@ From the Hamilton-Jacobi-Bellman equation, the consumption-wealth ratio is
 where 
 \[
     \xi_{j,t} \equiv \mu_{c_j,t} 
-    + (1-\gamma_j) \sigma_{c_j,t} \sigma_{R,t}' \alpha_{j,t} 
+    + (1-\gamma_j) \sigma_{c_j,t} \sigma_{R,t}^\top \alpha_{j,t} 
     + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}
 \]
 is a forward-looking term capturing how expected shifts in $c_{j,t}$ affect consumption choices.
@@ -692,7 +692,7 @@ The consumption--wealth ratio depends both on current investment opportunities, 
 
 Let $p_t \equiv P_{Y,t}/Y_t$ denote the price-dividend ratio of the aggregate claim. Since the expected return is $r_t + \pi_t = \frac{1}{p_t} + \mu_{P,t}$, the price-dividend ratio satisfies
 \begin{equation}\label{eq:pricing_cond}
-    \frac{1}{p_t} = r_t + \pi_t - (\mu + \mu_{p,t} + \sigma \sigma_{p,t}'),
+    \frac{1}{p_t} = r_t + \pi_t - (\mu + \mu_{p,t} + \sigma \sigma_{p,t}^\top),
 \end{equation}
 where $\sigma_{R,t} = \sigma + \sigma_{p,t}$ and $(\mu_{p,t},\sigma_{p,t})$ follow from It\^{o}'s lemma.
 
@@ -766,18 +766,18 @@ By Proposition~\ref{prop:mft}, the stochastic discount factor depends only on th
 Let $\hat{X}_t = (X_t, s_t)$ denote the extended state vector. Define the valuation ratio of claim $k \in \{D,B\}$ as $p_{k,t} \equiv P_{k,t}/Y_t = p_k(X_t,s_t)$. Since $P_{k,t} = p_{k,t}\,Y_t$, the return on claim $k$ satisfies
 \begin{equation}
     \sigma_{R_k,t} = \sigma + \sigma_{p_k,t}, \qquad 
-    \mu_{R_k,t} = \frac{s_{k,t}}{p_{k,t}} + \mu + \mu_{p_k,t} + \sigma\,\sigma_{p_k,t}',
+    \mu_{R_k,t} = \frac{s_{k,t}}{p_{k,t}} + \mu + \mu_{p_k,t} + \sigma\,\sigma_{p_k,t}^\top,
 \end{equation}
 where $s_{D,t} = s_t$, $s_{B,t} = 1-s_t$, and the diffusion of the valuation ratio is
 \begin{equation}
     \sigma_{p_k,t} = \frac{1}{p_{k,t}}\!\left(p_{k,X}\,\sigma_X + p_{k,s}\,\sigma_s\right),
 \end{equation}
-with $p_{k,X} \equiv \frac{\partial p_k}{\partial X}$ and $p_{k,s} \equiv \frac{\partial p_k}{\partial s}$. Substituting into the pricing condition $\mu_{R_k,t} - r_t = \sigma_{R_k,t}\,\lambda_t'$ yields the partial differential equation for the valuation ratio $p_k(X,s)$:
+with $p_{k,X} \equiv \frac{\partial p_k}{\partial X}$ and $p_{k,s} \equiv \frac{\partial p_k}{\partial s}$. Substituting into the pricing condition $\mu_{R_k,t} - r_t = \sigma_{R_k,t}\,\lambda_t^\top$ yields the partial differential equation for the valuation ratio $p_k(X,s)$:
 \begin{align}\label{eq:pde_claim}
 0 =\;&\, p_{k,X}\,\mu_X + p_{k,s}\,\mu_s 
-+ \frac{1}{2}\Big[\mathrm{tr}\!\left(\sigma_X\sigma_X'\,p_{k,XX}\right) + 2\,p_{k,Xs}\,(\sigma_X\sigma_s') + (\sigma_s\sigma_s')\,p_{k,ss}\Big] \nonumber\\
++ \frac{1}{2}\Big[\mathrm{tr}\!\left(\sigma_X\sigma_X^\top\,p_{k,XX}\right) + 2\,p_{k,Xs}\,(\sigma_X\sigma_s^\top) + (\sigma_s\sigma_s^\top)\,p_{k,ss}\Big] \nonumber\\
 &- (r(X)-\mu)\,p_k(X,s) + s_k(s) \nonumber\\
-&+ p_k(X,s)\,\sigma\,\sigma_{p_k}(X,s)' - p_k(X,s)\,\sigma\,\lambda(X)' - p_k(X,s)\,\sigma_{p_k}(X,s)\,\lambda(X)'.
+&+ p_k(X,s)\,\sigma\,\sigma_{p_k}(X,s)^\top - p_k(X,s)\,\sigma\,\lambda(X)^\top - p_k(X,s)\,\sigma_{p_k}(X,s)\,\lambda(X)^\top.
 \end{align}
 This equation can be solved numerically given the equilibrium functions $r(X)$ and $\lambda(X)$ from the aggregate economy. Since $p_{D}(X,s) + p_{B}(X,s) = p(X)$ by construction, only one of the two claim prices needs to be solved independently.
 
