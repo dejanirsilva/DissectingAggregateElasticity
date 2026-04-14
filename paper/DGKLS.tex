@@ -81,6 +81,7 @@
 \definecolor{darkcerulean}{rgb}{0.03,0.27, 0.49}
 \definecolor{darkpowderblue}{rgb}{0.0,0.2, 0.6}
 \definecolor{bleudefrance}{rgb}{0.19,0.55, 0.91}
+\newcommand{\GG}[1]{{\textcolor{blue}{#1}}} % temporary command for editing.
 %\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
 
 \hypersetup{
@@ -192,13 +193,13 @@
 \newcommand{\comments}[1]
 {\par {\bfseries \color{blue} #1 \par}}
 
-\title{\textbf{Dissecting the Aggregate Market Elasticity\thanks{We thank Andy Atkeson, Tim Johnson, Ralph Koijen, Tyler Muir, Stavros Panageas, Yinan Su, Fabrice Tourre, and Pierre-Olivier Weill; and conference and seminar participants at AFA 2026 Annual Meeting, Liquidity in Macroeconomics Workshop at St. Louis Fed, UIUC, UCLA macro-finance lunch, and University of Zurich for valuable comments and suggestions. All errors are our own.}}}
+\title{\textbf{Dissecting the Aggregate Market Elasticity\thanks{We thank Andy Atkeson, Tim Johnson, Leonid Kogan, Ralph Koijen, Tyler Muir, Stavros Panageas, Yinan Su, Fabrice Tourre, and Pierre-Olivier Weill; and conference and seminar participants at AFA 2026 Annual Meeting, Liquidity in Macroeconomics Workshop at St. Louis Fed, UIUC, UCLA macro-finance lunch, and University of Zurich for valuable comments and suggestions. All errors are our own.}}}
 \author{%
 \begin{tabular}[t]{@{}c@{}}
 Victor Duarte\thanks{Gies College of Business, University of Illinois Urbana-Champaign, \href{mailto:vduarte@illinois.edu}{vduarte@illinois.edu}}
 \quad Goutham Gopalakrishna\thanks{Rotman School of Management, University of Toronto, \href{mailto:goutham.gopalakrishna@rotman.utoronto.ca}{goutham.gopalakrishna@rotman.utoronto.ca}}
 \quad Mahyar Kargar\thanks{Gies College of Business, University of Illinois Urbana-Champaign, \href{mailto:kargar@illinois.edu}{kargar@illinois.edu}}\\[0.75em]
-Jiacui Li\thanks{David Eccles School of Business, University of Utah; \href{mailto:jiacui.li@eccles.utah.edu}{jiacui.li@eccles.utah.edu}}
+Jiacui Li\thanks{David Eccles School of Business, University of Utah, \href{mailto:jiacui.li@eccles.utah.edu}{jiacui.li@eccles.utah.edu}}
 \quad Dejanir Silva\thanks{Daniels School of Business, Purdue University, \href{dejanir@purdue.edu}{dejanir@purdue.edu}}
 \end{tabular}%
 }
@@ -356,39 +357,70 @@ By contrast, our framework highlights wealth effects as a distinct channel throu
 
 \input{sections/simple} 
 
-
 \section{A Dynamic Asset Pricing Model with Passive Investors}\label{sec:model}
 
 This section develops a dynamic heterogeneous-agent asset pricing model that provides a micro-founded demand system.
-A representative firm finances its operations by issuing two types of claims: a \emph{dividend claim} (equity) and a \emph{risky corporate bond}, whose payoffs sum to the aggregate endowment.
-To capture the well-documented fact that dividends are more volatile than consumption (see, e.g., \citealt{Abel1999LeverageDividends}; \citealt{Campbell1999AssetPrices}), we follow \citet{MenzlySantosVeronesi2004} and model the dividend as a mean-reverting stochastic share of output.
-In addition, investors can trade a derivative in zero net supply.
-The derivative plays a key role: by spanning the non-traded Brownian factor, it allows investors to achieve their desired risk exposures without taking asymmetric positions in the individual claims, and is therefore essential for the mutual fund theorem described below.
+Building on the framework of Section~\ref{sec:simple}, the economy features both passive and active investors, but now embeds their behavior in a fully dynamic general equilibrium setting.
 
-A central result of this section is a \emph{mutual fund theorem}: despite access to separate equity and debt claims, all investors optimally hold these claims in proportion to their market-capitalization weights.
-Because the derivative completes markets with respect to the priced sources of risk, investors can adjust their exposure to the non-dividend-share factor through the derivative alone, and optimally hold the risky claims at market-cap weights.
-Consequently, the aggregate equilibrium, including the risk-free rate, risk premia, wealth dynamics, and the stochastic discount factor, is identical to that of an economy with a single claim on aggregate output.
-This separation implies that the perturbation analysis of Section~\ref{sec:elasticity} applies directly to the aggregate equilibrium derived here.
-Individual claim prices are then obtained by solving an auxiliary valuation equation, conditional on the aggregate equilibrium.
+Passive investors hold exogenously specified, stochastic portfolio shares in risky assets. 
+Shocks to their portfolio share generate portfolio-flow (i.e., noisy trading) shocks imperfectly correlated with cash-flow shocks, so the economy is driven by both fundamental and non-fundamental demand disturbances.
+Active investors, in contrast, optimally rebalance their portfolios subject to financial frictions.
+There are two types of active investors with different risk aversion: a high risk-aversion (unconstrained) investor and a low risk-aversion investor subject to a leverage constraint.
+
+A key extension relative to the simple model is that investors trade two distinct claims—a \emph{dividend claim} (equity) and a \emph{risky corporate bond}—whose payoffs sum to the aggregate endowment.
+Explicitly modeling the dividend process allows us to study the response of equity prices to portfolio flows, instead of focusing on the aggregate claim.
+% As we show below, this distinction is central: while the aggregate claim remains highly elastic, the dividend claim exhibits large price impact, consistent with the data.
+As we show below, this distinction is central, as the price impact for the dividend claim can differ substantially from the price impact for the aggregate claim.
+
+% \section{A Dynamic Asset Pricing Model with Passive Investors}\label{sec:model}
+
+% This section develops a dynamic heterogeneous-agent asset pricing model that provides a micro-founded demand system.
+% Building on the framework of Section~\ref{sec:simple}, the economy features both passive and active investors, but now embeds their behavior in a fully dynamic general equilibrium setting.
+
+% Passive investors hold exogenously specified, stochastic portfolio shares in risky assets. 
+% Shocks to their portfolio share generate portfolio-flow (i.e., noisy trading) shocks that are imperfectly correlated with cash-flow shocks, so the economy is driven by both fundamental and non-fundamental demand disturbances.
+% Active investors, in contrast, continuously rebalance their portfolios subject to financial frictions.
+% There are two types of active investors with different risk aversion: a high risk-aversion (unconstrained) investor and a low risk-aversion investor subject to a leverage constraint.
+
+% Relative to the simple model, we allow investors to trade two distinct claims—a \emph{dividend claim} (equity) and a \emph{risky corporate bond}—whose payoffs sum to the aggregate endowment.
+% Explicitly modeling the dividend process allows us to study the response of equity prices to portfolio flows, instead of focusing on the aggregate claim.
+% As we show below, the market elasticity of the dividend claim can differ substantially from the market elasticity of the aggregate claim.
+
+% A representative firm finances its operations by issuing two types of claims: a \emph{dividend claim} (equity) and a \emph{risky corporate bond}, whose payoffs sum to the aggregate endowment.
+% To capture the well-documented fact that dividends are more volatile than consumption (see, e.g., \citealt{Abel1999LeverageDividends}; \citealt{Campbell1999AssetPrices}), we follow \citet{MenzlySantosVeronesi2004} and model the dividend as a mean-reverting stochastic share of output.
+% In addition, investors can trade a derivative in zero net supply.
+% The derivative plays a key role: by spanning the non-traded Brownian factor, it allows investors to achieve their desired risk exposures without taking asymmetric positions in the individual claims, and is therefore essential for the mutual fund theorem described below.
+
+% A central result of this section is a \emph{mutual fund theorem}: despite access to separate equity and debt claims, all investors optimally hold these claims in proportion to their market-capitalization weights.
+% Because the derivative completes markets with respect to the priced sources of risk, investors can adjust their exposure to the non-dividend-share factor through the derivative alone, and optimally hold the risky claims at market-cap weights.
+% Consequently, the aggregate equilibrium, including the risk-free rate, risk premia, wealth dynamics, and the stochastic discount factor, is identical to that of an economy with a single claim on aggregate output.
+% This separation implies that the perturbation analysis of Section~\ref{sec:elasticity} applies directly to the aggregate equilibrium derived here.
+% Individual claim prices are then obtained by solving an auxiliary valuation equation, conditional on the aggregate equilibrium.
 
 
 \subsection{Environment}
 
 \paragraph{Financial markets.}
+We begin by specifying the aggregate endowment process.
 The aggregate endowment $Y_t$ follows a geometric Brownian motion:
 \begin{equation}\label{eq:agg_endow}
     \frac{dY_t}{Y_t} = \mu\,dt + \sigma\,dZ_t,
 \end{equation}
-where $\mu \in \mathbb{R}$ and $\sigma \in \mathbb{R}^{1\times d}$ are constants. The process
-$Z=\{Z_t\}_{t\ge0}$ is a standard $d$-dimensional Brownian motion on the filtered probability space
-$(\Omega,\mathcal{F},(\mathcal{F}_t)_{t\ge0},\mathbb{P})$ satisfying the usual conditions.
-In the baseline model, $d = 3$, capturing fundamental shocks to cash flows, portfolio demand shocks to passive investors, and shocks to the dividend share.
+where $\mu \in \mathbb{R}$ and $\sigma \in \mathbb{R}^{1\times d}$ are constants.
+The process $Z=\{Z_t\}_{t\ge0}$ is a standard $d$-dimensional Brownian motion on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_t)_{t\ge0},\mathbb{P})$ satisfying the usual conditions.
+In the baseline model, $d = 3$, capturing three sources of risk: (i) aggregate endowment shocks, (ii) portfolio-flow shocks to passive investors, and (iii) shocks to the dividend share.
+% We focus on the case $\sigma = [\sigma_1, 0, 0]$, so the first shock can be interpreted as a shock to the aggregate endowment.
 
-The firm issues two claims to finance its operations. The first is a \emph{dividend claim} (equity), with payoff flow $D_t = s_t Y_t$. Following \citet{MenzlySantosVeronesi2004}, the dividend share $s_t \in (0,1)$ follows the mean-reverting process:
+We consider a representative firm that issues two securities whose payoffs sum to the aggregate endowment.
+The first is a \emph{dividend claim} (equity), with payoff flow $D_t = s_t Y_t$.
+Following \citet{MenzlySantosVeronesi2004}, the dividend share $s_t \in (0,1)$ follows the mean-reverting process:
 \begin{equation}\label{eq:s_process}
     ds_t = \kappa_s(\overline{s} - s_t)\,dt + s_t(1-s_t)\,\sigma_s\,dZ_t,
 \end{equation}
-given $s_0 \in (0,1)$, with $\overline{s} \in (0,1)$, $\kappa_s > 0$, and $\sigma_s \in \mathbb{R}^{1\times d}$. This specification ensures $s_t \in [0,1]$ at all times and yields a stationary share process, so consumption and dividends are cointegrated. By It\^{o}'s lemma, dividends follow:
+given $s_0 \in (0,1)$, with $\overline{s} \in (0,1)$, $\kappa_s > 0$, and $\sigma_s \in \mathbb{R}^{1\times d}$.
+This specification ensures $s_t \in [0,1]$ at all times and yields a stationary share process, so consumption and dividends are cointegrated.
+As a result, dividends inherit both aggregate risk and additional variation from movements in the dividend share.
+By It\^{o}'s lemma, dividends follow:
 \begin{equation}\label{eq:D_dynamics}
     \frac{dD_t}{D_t} = \mu_D(s_t)\,dt + \sigma_D(s_t)\,dZ_t,
 \end{equation}
@@ -397,9 +429,15 @@ where
     \sigma_D(s) = \sigma + (1-s)\,\sigma_s, \qquad 
     \mu_D(s) = \mu + \kappa_s\!\left(\frac{\overline{s}}{s}-1\right) + (1-s)\,\sigma\sigma_s'.
 \end{equation}
-Since $\sigma_D(s) \neq \sigma$ when $\sigma_s \neq 0$, dividends are more volatile than aggregate consumption. Moreover, dividend volatility increases after negative shocks to $s_t$, capturing a form of leverage effect.
 
-The second claim is a \emph{corporate bond} (risky debt), with payoff flow $B_t = (1-s_t)Y_t$. Since $D_t + B_t = Y_t$, the bond payoff is smoother than aggregate consumption, reflecting the safer nature of debt.
+This specification captures several key features of the data.
+First, it generates the well-documented fact that dividends are more volatile than consumption (see, e.g., \citealt{Abel1999LeverageDividends}; \citealt{Campbell1999AssetPrices}).
+Second, the dividend share predicts future dividend growth, consistent with \citet{MenzlySantosVeronesi2004}.
+Third, dividend volatility increases after negative shocks to $s_t$, capturing a leverage effect.
+
+The second claim is a \emph{corporate bond} (risky debt), with payoff flow $B_t = (1-s_t)Y_t$. 
+Since $D_t + B_t = Y_t$, the bond payoff is smoother than aggregate consumption, reflecting the safer nature of debt and its lower exposure to aggregate risk.
+This decomposition allows us to distinguish between claims with different risk exposures, which will be central when considering the implications for price impact.
 
 Let $P_{D,t}$ and $P_{B,t}$ denote the ex-dividend prices of the dividend and bond claims, with returns:
 \begin{align}
@@ -408,21 +446,22 @@ Let $P_{D,t}$ and $P_{B,t}$ denote the ex-dividend prices of the dividend and bo
     dR_{B,t} &= \frac{dP_{B,t}+B_t\,dt}{P_{B,t}}
     = \mu_{R_B,t}\,dt+\sigma_{R_B,t}\,dZ_t. \label{eq:RB_def}
 \end{align}
-Since $D_t+B_t=Y_t$, the combined claim replicates the aggregate endowment, with price $P_{Y,t} = P_{D,t}+P_{B,t}$. The return on the aggregate claim follows:
+Since $D_t+B_t=Y_t$, the combined claim replicates the aggregate endowment, with price $P_{Y,t} = P_{D,t}+P_{B,t}$. 
+The return on the aggregate claim follows:
 \begin{equation}\label{eq:risky-asset-ret}
-    dR_{Y,t} = \mu_{R_Y,t}\,dt + \sigma_{R_Y,t}\,dZ_t,
+    dR_{Y,t} = \frac{dP_{Y,t}+Y_t\,dt}{P_{Y,t}} = \mu_{R_Y,t}\,dt + \sigma_{R_Y,t}\,dZ_t.
 \end{equation}
-where $\mu_{R_Y,t} \equiv \frac{Y_t}{P_{Y,t}} + \mu_{P_Y,t}$ and $\sigma_{R_Y,t} = \sigma_{P_Y,t}$.
 
-Investors also have access to a risk-free asset paying rate $r_t$ and a derivative in zero net supply. The derivative provides risk exposure $\sigma_{R_F,t} \in \mathbb{R}^{1\times d}$, orthogonal to the aggregate claim, $\sigma_{R_F,t}\,\sigma_{R_Y,t}' = 0$, with normalization $\|\sigma_{R_F,t}\| = \|\sigma_{R_Y,t}\|$. This ensures dynamic market completeness with respect to the first two Brownian factors.
+Investors also have access to a risk-free asset paying rate $r_t$ and, to ensure markets are dynamically complete, a derivative in zero net supply that spans risks not directly traded through the dividend and bond claims. 
+The derivative provides risk exposure $\sigma_{R_F,t} \in \mathbb{R}^{1\times d}$, orthogonal to the aggregate claim, $\sigma_{R_F,t}\,\sigma_{R_Y,t}^\top = 0$, so that it provides independent risk exposure, with normalization $\|\sigma_{R_F,t}\| = \|\sigma_{R_Y,t}\|$.
 
-Absence of arbitrage implies the existence of a stochastic discount factor $\eta_t$ with
+\paragraph{Stochastic discount factor.} Absence of arbitrage implies the existence of a stochastic discount factor (SDF), $\eta_t$, which prices all assets in the economy:
 \begin{equation}
     \frac{d\eta_t}{\eta_t} = -r_t\,dt - \lambda_t\,dZ_t,
 \end{equation}
 where $\lambda_t \in \mathbb{R}^{1\times d}$ is the market price of risk vector. Risk premia satisfy $\pi_{k,t} = \sigma_{R_k,t}\,\lambda_t'$ for each claim $k \in \{D,B,F\}$.
 
-Let $\Sigma_t$ denote the $3 \times d$ matrix of risk exposures for the dividend claim, bond claim, and derivative:
+Let $\Sigma_t$ denote the $3 \times 3$ matrix collecting the risk exposures of all traded assets:
 \begin{equation}
     \Sigma_t = \begin{pmatrix}
         \sigma_{R_D,t} \\
@@ -438,23 +477,28 @@ In equilibrium, prices depend on an aggregate state vector $X_t \in \mathbb{R}^N
 \end{equation}
 with drift $\mu_{X,t} \in \mathbb{R}^N$ and exposure matrix $\sigma_{X,t} \in \mathbb{R}^{N\times d}$, both determined in equilibrium.
 
+\paragraph{Demography and preferences.}
 
-\paragraph{Demography.}
+The economy consists of three investor types, indexed by $j=0,1,2$, with population mass $\omega_j$: one passive type ($j=0$) and two active types ($j=1,2$). 
+Investors die with Poisson intensity $\kappa$, and each instant a mass $\kappa\,\omega_j$ of type-$j$ agents are born, so the total population remains constant and normalized to one. 
+Newborns inherit parental wealth, so wealth is redistributed across cohorts without affecting aggregate resources. 
+This mortality structure ensures a nondegenerate stationary wealth distribution.
 
-The economy consists of three investor types ($J=2$), indexed by $j=0,1,2$, with population mass $\omega_j$: one passive type ($j=0$) and two active types ($j=1,2$). Investors die with Poisson intensity $\kappa$, and each instant a mass $\kappa\,\omega_j$ of type-$j$ agents are born, so the total population remains constant and normalized to one. Newborns inherit parental wealth. 
-Mortality risk ensures a nondegenerate stationary wealth distribution.
+Preferences are recursive as in \citet{duffie1992stochastic}, with type-$j$ risk aversion $\gamma_j$ and a common elasticity of intertemporal substitution (EIS) $\psi$. 
+The aggregator is given by:
+\begin{equation}
+    f_j(C,V) = \rho \frac{(1-\gamma_j) V}{1-\psi^{-1}} 
+    \left[ \left( \frac{C}{\big((1-\gamma_j)V\big)^{\frac{1}{1-\gamma_j}}} \right)^{1-\psi^{-1}} - 1 \right],
+\end{equation}
+where the discount factor $\rho \equiv \hat{\rho}+\kappa$ reflects both time impatience $\hat{\rho}$ and the death probability $\kappa$.
 
-Preferences are recursive as in  \citet{duffie1992stochastic}, with type-$j$ risk aversion $\gamma_j$ and a common elasticity of intertemporal substitution (EIS) $\psi$. Each investor chooses consumption $C_{j,t}$ and portfolio allocations across the dividend claim, the bond claim, and the derivative, subject to constraints specified below.
-
+Each investor chooses consumption $C_{j,t}$ and portfolio allocations across the dividend claim, the bond claim, and the derivative, subject to the constraints specified below.
 
 \paragraph{Passive investors.}
-Agents of type $j=0$ are \emph{passive investors}, who hold the dividend and bond claims in proportion to their market-capitalization weights:
-\begin{equation}
-    \alpha_{0,D,t} = \overline{\alpha}_{p,t}\,\omega_{D,t}, \qquad 
-    \alpha_{0,B,t} = \overline{\alpha}_{p,t}\,\omega_{B,t}, \qquad 
-    \theta_{0,t} = 0,
-\end{equation}
-where $\omega_{D,t} \equiv \frac{P_{D,t}}{P_{Y,t}}$ and $\omega_{B,t} \equiv \frac{P_{B,t}}{P_{Y,t}}$ are the market weights of the dividend and bond claims. The total risky share $\overline{\alpha}_{p,t}$ evolves according to an Ornstein-Uhlenbeck process:
+Passive investors allocate a fraction $1-\overline{\alpha}_{p,t}$ of their wealth to the risk-free asset and a fraction $\overline{\alpha}_{p,t}$ to a \textit{market index} fund, which holds the dividend and bond claims in proportion to their market-capitalization weights. 
+Passive investors do not trade the derivative.
+
+The share of wealth invested in the market index fund, $\overline{\alpha}_{p,t}$, evolves according to an Ornstein-Uhlenbeck process:
 \begin{equation}\label{eq:alpha_p_process}
     d\overline{\alpha}_{p,t}
     \;=\;
@@ -462,75 +506,113 @@ where $\omega_{D,t} \equiv \frac{P_{D,t}}{P_{Y,t}}$ and $\omega_{B,t} \equiv \fr
     \;+\;
     \sigma_{\alpha_p}\,dZ_t,
 \end{equation}
-with long-run mean $\overline{\alpha}>0$, mean-reversion $\theta_p>0$, and loading $\sigma_{\alpha_p}\in\mathbb{R}^{1\times d}$ on the $d$-dimensional Brownian motion $Z_t$. Innovations to $\overline{\alpha}_{p,t}$ represent \emph{portfolio flow shocks}, i.e., fluctuations in the fraction of wealth passive investors allocate to risky claims. As in Section~\ref{sec:simple}, a flow shock is an asymmetric demand shock that affects only the passive investors and triggers portfolio reallocation.
+with long-run mean $\overline{\alpha}>0$, mean-reversion $\theta_p>0$, and loading $\sigma_{\alpha_p}\in\mathbb{R}^{1\times d}$ on the $d$-dimensional Brownian motion $Z_t$.
+Innovations to $\overline{\alpha}_{p,t}$ represent \emph{portfolio flow shocks}, i.e., fluctuations in the fraction of wealth passive investors allocate to risky claims.
+As in Section~\ref{sec:simple}, a flow shock is an asymmetric demand shock affecting only passive investors and triggering portfolio reallocation.
 
+Portfolio flows may comove with cash-flow shocks or arise independently. 
+For example, consider $\sigma=(\sigma_1,0,0)$ for aggregate endowment risk, $\sigma_{\alpha_p}=(\sigma_{\alpha_p,1},\sigma_{\alpha_p,2},0)$ for the passive-share process, and $\sigma_s=(\sigma_{s,1},0,\sigma_{s,3})$ for the dividend share process.
+The first shock represents aggregate endowment risk, the second represents portfolio-flow shocks, and the third represents dividend-share shocks.
+We allow portfolio-flow shocks and dividend-share shocks to load on the aggregate endowment risk factor.
+This implies that aggregate endowment risk can be correlated with both portfolio flows and dividend-share shocks.
 
-Portfolio flows may comove with cash-flow shocks or arise independently. For example, with $d=3$, take $\sigma=(\sigma_1,0,0)$ for endowment risk and $\sigma_{\alpha_p}=(\sigma_{\alpha_p,1},\sigma_{\alpha_p,2},0)$ for the passive-share process: the first factor generates correlation with fundamentals, while the second delivers portfolio-flow shocks orthogonal to cash-flow risk. The third factor captures dividend-share shocks.
+The exposure of the passive share to aggregate shocks can reflect \emph{imperfect rebalancing} or \emph{performance-induced flows}. 
+Without rebalancing, a positive return on the risky asset mechanically increases the passive share when $\overline{\alpha}_{p,t}<1$. 
+Similarly, investors may increase risky exposure after good performance. 
+This specification aligns with empirical evidence on passive behavior: households exhibit substantial portfolio inertia \citep{ameriks2011household,brunnermeier2008wealth}; flows chase performance \citep{chevalier1997risk,dannhauser2024flow}; and regulatory changes can sharply increase equity allocations via TDF adoption \citep{parker2022household}, illustrating portfolio flow shocks not tied to cash flow fundamentals.
 
-The exposure of the passive share to aggregate shocks can reflect \emph{imperfect rebalancing} or \emph{performance-induced flows}. Without rebalancing, a positive return on the risky asset raises the passive share when $\overline{\alpha}_{p,t}<1$; similarly, investors may increase risky exposure after good performance. This specification aligns with evidence on passive behavior: households exhibit substantial portfolio inertia \citep{ameriks2011household,brunnermeier2008wealth}; flows chase performance \citep{chevalier1997risk,dannhauser2024flow}; and regulatory changes can sharply increase equity allocations via TDF adoption \citep{parker2022household}, illustrating portfolio flow shocks not tied to cash flow fundamentals.
+% We assume passive investors do not trade the derivative, so their portfolio allocations are given by:
+% \begin{equation}
+%     \alpha_{0,D,t} = \overline{\alpha}_{p,t}\,\omega_{D,t}, \qquad 
+%     \alpha_{0,B,t} = \overline{\alpha}_{p,t}\,\omega_{B,t}, \qquad 
+%     \alpha_{0,F,t} = 0.
+% \end{equation}
+% where $\omega_{D,t} \equiv \frac{P_{D,t}}{P_{Y,t}}$ and $\omega_{B,t} \equiv \frac{P_{B,t}}{P_{Y,t}}$ are the market weights of the dividend and bond claims. 
 
 
 \paragraph{Active investors.} 
 
-Investors of type $j = 1,\ldots, J$ are \textit{active investors}, who rebalance portfolios subject to a leverage constraint on total risk exposure:
+Investors of type $j = 1,2$ are \textit{active investors}.
+Active investors optimally rebalance their portfolios, choosing allocations across the dividend claim, the bond claim, and the derivative, $(\alpha_{j,D,t}, \alpha_{j,B,t}, \alpha_{j,F,t})$.
+Type-2 investors have low risk aversion, $\gamma_2 < \gamma_1$, and therefore have an incentive to lever up their exposure to risky assets.
+They borrow short-term to increase their risk exposure, subject to a leverage constraint that limits total portfolio risk:
 \begin{equation}\label{eq:leverage_constraint}
     \|\Sigma_{j,t}\| \leq \overline{\sigma},
 \end{equation}
-where $\Sigma_{j,t} = \alpha_{j,D,t}\,\sigma_{R_D,t} + \alpha_{j,B,t}\,\sigma_{R_B,t} + \theta_{j,t}\,\sigma_{R_F,t}$ is the investor's total risk exposure and $\|\cdot\|$ denotes the Euclidean norm. This constraint resembles a Value-at-Risk (VaR) limit, often applied to banks and leveraged institutions (see, e.g., \citealt{adrian2014procyclical} and \citealt{brunnermeier2009market}).
+where $\Sigma_{j,t} = \alpha_{j,D,t}\,\sigma_{R_D,t} + \alpha_{j,B,t}\,\sigma_{R_B,t} + \alpha_{j,F,t}\,\sigma_{R_F,t}$ is the investor's total risk exposure and $\|\cdot\|$ denotes the Euclidean norm.
+This constraint resembles a Value-at-Risk (VaR) limit commonly applied to banks and leveraged institutions (see, e.g., \citealt{adrian2014procyclical} and \citealt{brunnermeier2009market}).
+Type-1 investors are more risk averse and do not face a leverage constraint.
 
+\paragraph{Investors' problem.}
 
-\paragraph{Investors' problem.} 
-
-An investor of type $j = 0,\ldots,J$ solves
+% An investor of type $j = 0,1,2$ chooses consumption $C_{j,t}$ and portfolio allocations $\alpha_{j,t} \equiv [\alpha_{j,D,t}, \alpha_{j,B,t}, \alpha_{j,F,t}]^\top$ to solve the following problem:
+An investor of type $j = 0,1,2$ chooses consumption $C_{j,t}$ and portfolio allocations $\alpha_{j,t}$, where $\alpha_{j,t} \equiv [\alpha_{j,D,t}, \alpha_{j,B,t}, \alpha_{j,F,t}]^\top$, to solve the following problem:
 \begin{equation}\label{eq:inv-problem}
-    V_{j,t} = \max_{[C_j,\alpha_{j,D},\alpha_{j,B},\theta_j]} 
+    V_{j,t} = \max_{C_{j,t},\alpha_{j,t}} 
     \mathbb{E}_t \left[ \int_t^\infty f_j(C_{j,s},V_{j,s})\, ds \right], \qquad s.t.
 \end{equation}
 \begin{equation}\label{eq:budget_constraint}
-dW_{j,t} = \big[(r_t + \pi_{D,t}\,\alpha_{j,D,t} + \pi_{B,t}\,\alpha_{j,B,t} + \pi_{F,t}\,\theta_{j,t}) W_{j,t} - C_{j,t}\big]\,dt 
+    dW_{j,t} = \left[r_t + \pi_{t}^\top \,\alpha_{j,t} - \frac{C_{j,t}}{W_{j,t}}\right] W_{j,t}\,dt 
     + \Sigma_{j,t}\, W_{j,t}\, dZ_t,
 \end{equation}
-with $W_{j,t} \geq 0$ and $(\alpha_{j,D,t}, \alpha_{j,B,t}, \theta_{j,t}) \in \Omega_{j,t}$. For passive investors ($j=0$),  
-$\Omega_{0,t} = \{(\alpha_{0,D}, \alpha_{0,B}, \theta_0): \alpha_{0,D} = \overline{\alpha}_{p,t}\,\omega_{D,t},\; \alpha_{0,B} = \overline{\alpha}_{p,t}\,\omega_{B,t},\; \theta_0 = 0\}$. For active investors ($j=1,\ldots,J$),  
-$\Omega_{j,t} = \{(\alpha_{j,D}, \alpha_{j,B}, \theta_j): \|\Sigma_{j,t}\| \leq \overline{\sigma}\}$. 
+with $W_{j,t} \geq 0$ and $\alpha_{j,t} \in \Omega_{j,t}$,
+where $W_{j,t}$ denotes the investor's wealth and $\Omega_{j,t}$ is the investment set for type-$j$ investor.
 
-Preferences are recursive with aggregator  
+Portfolio allocations are restricted to lie in an investment set $\Omega_{j,t}$, which depends on investor type and captures differences in financial constraints across investors.\footnote{
+    The differences in investment sets here are reminiscent of the difference in the investment universe emphasized by \citet{Koijen/Yogo/19}.
+    }
+For passive investors, $j=0$, holdings of the market index fund induce indirect holdings of the dividend and bond claims, so their investment set is given by:
 \begin{equation}
-    f_j(C,V) = \rho \frac{(1-\gamma_j) V}{1-\psi^{-1}} 
-    \left[ \left( \frac{C}{\big((1-\gamma_j)V\big)^{\frac{1}{1-\gamma_j}}} \right)^{1-\psi^{-1}} - 1 \right],
+    \Omega_{0,t} = \{\alpha_{0,t}:\;
+\alpha_{0,D,t} = \overline{\alpha}_{p,t}\,\omega_{D,t},
+\; \alpha_{0,B,t} = \overline{\alpha}_{p,t}\,\omega_{B,t},
+\; \alpha_{0,F,t} = 0\}.
 \end{equation}
-where the discount factor $\rho \equiv \hat{\rho}+\kappa$ reflects both time impatience $\hat{\rho}$ and the death probability $\kappa$.
+Type-1 investors are unconstrained, so their investment set is given by $\Omega_{1,t} = \mathbb{R}^3$.
+For type-$2$ investors, the investment set reflects their leverage constraint:
+\begin{equation}
+\Omega_{2,t} = \{\alpha_{2,t}: \|\Sigma_{2,t}\| \leq \overline{\sigma}\}.
+\end{equation}
 
 
-\paragraph{Market clearing and equilibrium.} 
+\paragraph{Market clearing and equilibrium.}
 
-We define equilibrium as follows:
+We define equilibrium as follows.
 
 \begin{defn}
-A competitive equilibrium consists of stochastic processes adapted to the filtration generated by $Z_t$: the aggregate endowment $Y$, the prices of the dividend and bond claims $P_D$ and $P_B$, the risk-free rate $r$; and, for each investor $j \in \{0,\ldots,J\}$, wealth $W_j$, consumption $C_j$, and portfolio allocations $(\alpha_{j,D}, \alpha_{j,B}, \theta_j)$, such that
+A competitive equilibrium consists of stochastic processes, all adapted to the filtration generated by $Z_t$.
+These include the aggregate endowment $Y$, the dividend share $s$, the prices $P_D$ and $P_B$, the risk-free rate $r$, the weight $\overline{\alpha}_p$, and, for each investor $j \in \{0,1,2\}$, wealth $W_j$, consumption $C_j$, and portfolio allocations $\alpha_j$.
+These processes satisfy the following conditions:
 \begin{enumerate}[label=(\roman*)]
-    \item The aggregate endowment evolves according to \eqref{eq:agg_endow}, with $Y_0 > 0$.
-    \item Given $\{P_{D,t}, P_{B,t}, r_t\}$, the choices $(C_j,\alpha_{j,D},\alpha_{j,B},\theta_j)$ solve investor $j$'s problem in \eqref{eq:inv-problem}.
-    \item Markets clear for goods, the dividend claim, the bond claim, riskless bonds, and the derivative:
-    \begin{equation}
-        \sum_{j=0}^J \omega_j C_{j,t} = Y_t, 
-        \;\;
-        \sum_{j=0}^J \omega_j Q_{j,D,t} = 1, 
-        \;\;
-        \sum_{j=0}^J \omega_j Q_{j,B,t} = 1, 
-        \;\;
-        \sum_{j=0}^J \omega_j B_{j,t} = 0,
-        \;\;
-        \sum_{j=0}^J \omega_j W_{j,t}\theta_{j,t} = 0,
-    \end{equation}
-    where $Q_{j,D,t} = \alpha_{j,D,t} W_{j,t} / P_{D,t}$ and $Q_{j,B,t} = \alpha_{j,B,t} W_{j,t} / P_{B,t}$ denote units held of the dividend and bond claims, and $B_{j,t} = (1-\alpha_{j,D,t}-\alpha_{j,B,t}) W_{j,t}$ denotes riskless holdings. 
+
+\item The aggregate endowment $Y_t$ evolves according to \eqref{eq:agg_endow}, with $Y_0 > 0$.
+The dividend share $s_t$ evolves according to \eqref{eq:s_process}.
+
+\item Given prices $\{P_{D,t}, P_{B,t}, r_t\}$ and the passive share $\overline{\alpha}_{p,t}$, the choices $(C_{j,t},\alpha_{j,t})$ solve investor $j$'s problem in \eqref{eq:inv-problem}.
+The weight on the market index fund, $\overline{\alpha}_{p,t}$, evolves according to \eqref{eq:alpha_p_process}.
+
+\item Markets clear for goods, the dividend and bond claims, riskless bonds, and the derivative:
+\begin{equation}
+    \sum_{j=0}^2 \omega_j C_{j,t} = Y_t,
+    \qquad
+    \sum_{j=0}^2 \omega_j Q_{j,k,t} = 1, \qquad 
+    \sum_{j=0}^2 \omega_j B_{j,t} = 0,
+    \qquad
+    \sum_{j=0}^2 \omega_j F_{j,t} = 0,
+\end{equation}
+for $k \in \{D,B\}$. Holdings are defined as follows.
+The number of units of the dividend and bond claims held by investor $j$ are $Q_{j,D,t} = \alpha_{j,D,t} W_{j,t} / P_{D,t}$ and $Q_{j,B,t} = \alpha_{j,B,t} W_{j,t} / P_{B,t}$.
+Riskless bond holdings are given by $B_{j,t} = (1 - \alpha_{j,D,t} - \alpha_{j,B,t}) W_{j,t}$.
+The notional position in the derivative is $F_{j,t} = \alpha_{j,F,t} W_{j,t}$.\footnote{
+    As in a futures contract, there is no initial cash exchange, so wealth invested in the risk-free asset equals total wealth minus the amount invested in the dividend and bond claims.}
+
 \end{enumerate}
 \end{defn}
 
 
 \subsection{Equilibrium characterization}\label{sec:equilibrium-char}
 
-We first present the investors' optimality conditions in the multi-asset economy, then establish a mutual fund theorem that reduces the aggregate equilibrium to a single-claim problem.
+We first present the investors' optimality conditions, then establish a version of the \textit{mutual fund theorem} in our economy with frictions, which simplifies the equilibrium characterization.
 
 \paragraph{Value function and consumption-wealth ratio.} With homothetic preferences, investor $j$'s value function can be written as
 \begin{equation}\nonumber
@@ -542,8 +624,7 @@ and $c_{j,t} = c_j(X_t)$ corresponds to the consumption-wealth ratio: $C_{j,t}/W
 From the Hamilton-Jacobi-Bellman equation, the consumption-wealth ratio satisfies
 \begin{equation}\label{eq:HJB_complete}
     c_{j,t} = \psi \rho 
-    + (1-\psi) \left[ r_t + \pi_{D,t}\,\alpha_{j,D,t} + \pi_{B,t}\,\alpha_{j,B,t} + \pi_{F,t}\,\theta_{j,t}
-        - \frac{\gamma_j}{2} \|\Sigma_{j,t}\|^2 \right] 
+    + (1-\psi) \left[ r_t + \pi_{t}^\top\,\alpha_{j,t} - \frac{\gamma_j}{2} \|\Sigma_{j,t}\|^2 \right] 
     + \xi_{j,t},
 \end{equation}
 where 
@@ -1133,26 +1214,11 @@ In this section, we turn to the quantitative implications of the model described
 \end{figure}
 
 \subsection{Calibration strategy}
-To calibrate the model, we process Flow of Funds (FoF) data to construct $J=3$ major sectors: passive, constrained, and constrained. The passive sector includes households and non-profits (L.101), government (L.105), the monetary authority (L.109), and money market funds (L.121). Its risky asset holdings is dominated by household. The constrained sector includes depository institutions (L.110), mutual funds (L.122), close-end funds (L.123), ETFs (L.124), government-sponsored enterprises (L.125), agency and GSE-backed mortgage pools (L.126), asset backed securities (L.127), finance companies (L.128), REITs (L.129), and broker-dealers (L.130). The unconstrained sector, which represents relatively long-horizoned investors, include insurance companies (L.115 and L.116), pensions (L.118, L.119, and L.120), and rest of the world (L.133). 
-
-% To calibrate the model, we process Flow of Funds (FoF) data to construct $J=6$ major sectors: household mutual fund holdings, household non-mutual fund holdings, hedge funds, broker-dealers (L.130), the rest of the world (L.133), and the insurance-pension sector. Figure~\ref{fig:sectors} plots the fraction of the U.S. stock market held by each of these sectors since 2012, the year when hedge fund holdings became separately available in the FoF. The legend reports the average fraction held by each sector. Households are the largest holders, accounting for 17.3\% of the market through mutual funds and 43.3\% through other vehicles. Foreign investors and the insurance-pension sector hold 17.5\% and 17.3\%, respectively. Hedge funds and broker-dealers are comparatively small, with average holdings of 5.8\% and 0.5\%, consistent with Figure~1 in \citet{koijen2024investors}.  
-
-% \begin{figure}[t]
-%     \centering
-%     \includegraphics[width=0.9\linewidth]{figures/break_down_of_holdings.png}
-%     \caption{Fraction of stock market held by different sectors from 2012 to 2022. The average fraction held is reported in the legend. Source: Flow of Funds.}
-%     \label{fig:sectors}
-% \end{figure}
-
-% We exclude sectors with negligible stock market exposure, such as nonfinancial business (L.102), general government (L.105), the monetary authority (L.109), private depository institutions (L.110), money market funds (L.121), government-sponsored enterprises (L.125), agency- and GSE-backed mortgage pools (L.126), asset-backed security issuers (L.127), finance companies (L.128), REITs (L.129), holding companies (L.131), and other financial businesses (L.132). We then aggregate pass-through sectors back to their ultimate end users. For example, closed-end funds (L.123) and exchange-traded funds (L.124) are consolidated into the household (L.101) balance sheet, while mutual funds (L.122) are allocated across end investors based on the FOF breakdown. Defined contribution pensions (Tables L.118.c, L.119.c, and L.120.c) are also aggregated into the household sector.  
-
-% We separately construct the hedge fund sector, since both households (L.101) and foreign investors (L.133) include hedge funds in their reported holdings. Domestic hedge funds are identified from Table B.101.f, while foreign hedge funds are obtained from the Enhanced Financial Accounts. We subtract hedge fund holdings from both the household and foreign sectors and treat them as a distinct category. Finally, we combine the remaining insurance and pension subsectors, including property-casualty insurance (L.115), life insurance (L.116), and defined benefit pensions and retirement plans (L.118.b, L.119.b, L.120.b).  
-
-We assign sectoral masses $\omega_j$ and risk aversion coefficients $\gamma_j$ to match two sets of moments. First, average sectoral wealth shares are calibrated to match the empirical distribution of stock market holdings. Second, we match sectoral betas from time-series regressions of risky asset holdings on aggregate risky asset supply. These regression coefficients provide an empirical analog to the model-implied relationship between sectoral and aggregate risky positions.  
+To calibrate the model, we process Flow of Funds (FoF) data to construct $J=3$ major sectors: passive, constrained, and constrained.\footnote{The passive sector includes households and non-profits (L.101), government (L.105), the monetary authority (L.109), and money market funds (L.121). Its risky asset holdings is dominated by household. The constrained sector includes depository institutions (L.110), mutual funds (L.122), close-end funds (L.123), ETFs (L.124), government-sponsored enterprises (L.125), agency and GSE-backed mortgage pools (L.126), asset backed securities (L.127), finance companies (L.128), REITs (L.129), and broker-dealers (L.130). The unconstrained sector, which represents relatively long-horizoned investors, include insurance companies (L.115 and L.116), pensions (L.118, L.119, and L.120), and rest of the world (L.133).} We assign sectoral masses $\omega_j$ and risk aversion coefficients $\gamma_j$ to match two sets of moments. First, average sectoral wealth shares are calibrated to match the empirical distribution of stock market holdings. Second, we match sectoral betas from time-series regressions of risky asset holdings on aggregate risky asset supply. These regression coefficients provide an empirical analog to the model-implied relationship between sectoral and aggregate risky positions.  
 
 % A key parameter in the calibration is the average passive portfolio share, $\overline{\alpha}$. Estimates in the literature vary widely. \citet{chinco2024passive} infer a passive share of about one third from index reconstitution events, while \citet{koijen2024investors} report a much higher estimate of roughly two thirds in 2016Q4, based on measures of active share \citep{cremers2009active}. We calibrate the passive share by aggregating total passive wealth and dividing by total risky holdings.  
 
-The process for passive demand is modeled as the exogenous CIR process in Equation~\eqref{eq:alpha_p_process}. Its parameters are calibrated as follows. The mean of the process, $\overline{\alpha}$, is chosen to match the average portfolio share of the passive sector. The volatility $\sigma_p$ is disciplined by observed fluctuations in equity flows, which we measure by scaling quarterly flows by lagged market capitalization, following Appendix~D3 of \citet{gabaix2020search}. We use indirect inference to align model-implied aggregate flows with those in the data (blue line, left panel of Figure~\ref{fig:facts-vol-flow}), in line with their approach. The persistence parameter $\theta_p$ is informed by evidence on household portfolio inertia. \citet{brunnermeier2008wealth} document substantial inertia using PSID data, finding that household portfolios change little absent major events, consistent with slow rebalancing. Their regression analysis suggests an inertia coefficient near 0.75, indicating strong persistence.\footnote{Relatedly, \citet{parker2023retail} show that the adoption of target-date funds has contributed to highly stable household portfolio shares.} Finally, we calibrate the correlation between passive flow shocks and aggregate shocks by regressing quarterly flows (again, blue line in the left panel of Figure~\ref{fig:facts-vol-flow}) on aggregate market returns, with the estimated beta providing the implied correlation. The parameter values are summarized in Table~\ref{tab:calib}.  
+The process for passive demand is modeled as the exogenous CIR process in Equation~\eqref{eq:alpha_p_process}. Its parameters are calibrated as follows. The mean of the process, $\overline{\alpha}$, is chosen to match the average portfolio share of the passive sector. The volatility $\sigma_p$ is disciplined by observed fluctuations in equity flows, which we measure by scaling quarterly flows by lagged market capitalization, following Appendix~D3 of \citet{gabaix2020search}. We use indirect inference to align model-implied aggregate flows with those in the data (blue line, left panel of Figure~\ref{fig:facts-vol-flow}), in line with their approach. The persistence parameter $\theta_p$ is informed by evidence on household portfolio inertia. \citet{brunnermeier2008wealth} document substantial inertia using PSID data, finding that household portfolios change little absent major events, consistent with slow rebalancing. Their regression analysis suggests an inertia coefficient near 0.75, indicating strong persistence.\footnote{Relatedly, \citet{parker2023retail} show that the adoption of target-date funds has contributed to highly stable household portfolio shares.} We calibrate the correlation between passive flow shocks and aggregate shocks to match the correlation between flows and market returns, estimated by regressing quarterly flows (blue line in the left panel of Figure~\ref{fig:facts-vol-flow}) on aggregate market returns. The model-implied correlation is 0.005, close to the empirical value of 0.011. We set the correlation of dividend share and fundamental shock to 0.3, and set the dividend share volatility to 11\% following \cite{LettauWachter2011}. The parameter values are summarized in Table~\ref{tab:calib}.  
 
 
 
@@ -1178,21 +1244,20 @@ The process for passive demand is modeled as the exogenous CIR process in Equati
 
 \subsection{Quantitative results}
 
-To evaluate the quantitative implications of the model, we solve the full dynamic system numerically rather than relying on the perturbation approach of Section~\ref{sec:elasticity}. A global solution method is necessary given the dimensionality of the state space, which includes 4 state variables corresponding to one passive sector, one constrained sector, one unconstrained sector, and a dividend share. We adopt the neural network-based method of \citet{duarte2024machine}, which is well suited for high-dimensional problems. Details of the solution method are provided in the appendix. We then simulate the model to generate time series of prices, returns, and flows, which we compare to empirical data. Table~\ref{tab:simulation_moments} reports unconditional moments from the simulated data alongside their empirical counterparts. For the dividend claim, the model delivers a risk premium of 6.9\%, a risk-free rate of 0.43\%, and return volatility of 20.9\%, all close to the corresponding empirical targets. The model also generates a sizable price impact of 8.31 and a flow volatility of 2.8\%. 
-This is in the ballpark of the empirically estimated price impact of around 6.90.\footnote{Price impact in the model is defined as $\frac{d\log(p/d)}{d\alpha_p}$. \citet{gabaix2020search} estimate a price multiplier of around 5, while \citet{Hartzmark/Solomon/2021} estimate a multiplier of 1.9. Taking an average between the two yields 3.45. Considering that the passive investor share is around half, this amounts to a price impact of approximately $3.45 \times 2 = 6.90$.} The model also broadly matches the average asset/equity ratio and risky asset shares of the main sectors.
+To evaluate the quantitative implications of the model, we solve the full dynamic system numerically rather than relying on the perturbation approach of Section~\ref{sec:elasticity}. A global solution method is necessary given the dimensionality of the state space, which includes 4 state variables corresponding to one passive sector, one constrained sector, one unconstrained sector, and a dividend share. We adopt the neural network-based method of \citet{duarte2024machine}, which is well suited for high-dimensional problems. Details of the solution method are provided in the appendix. 
 
-Figure~\ref{fig:price_impact_dynamic} presents the model-implied conditional price impact. The right panel of the figure shows that, as the wealth share of constrained active investors increases, the price impact goes up, as more agents are constrained in the economy. 
+We then simulate the economy at a monthly frequency for 1000 years to compute the model-implied moments. Table~\ref{tab:simulation_moments} reports unconditional moments from the simulated data alongside their empirical counterparts. For the dividend claim, the model delivers a risk premium of 6.7\%, a risk-free rate of 0.60\%, and return volatility of 22.6\%, all close to the corresponding empirical targets. We compute price impact in the model by regressing the change in log price-dividend ratio on passive flow shock. Specifically, the price impact is the slope coefficient $\hat{b}_1$ estimated from the following regression equation: $d\log (P/D)_t = a_0 + b_1 \overline{\alpha}_{p,t}^s + e_t$, where the flow shock is computed as $\overline{\alpha}_{p,t}^s = \overline{\alpha}_{p,t} - \overline{\alpha}_{p,t-1} - E[d\overline{\alpha}_{p,t}]$. The model generates a sizable price impact of 6.85, matching the empirically estimated price impact of around 6.90.\footnote{Price impact in the model is defined as $\frac{d\log(p/d)}{d\alpha_p}$. \citet{gabaix2020search} estimate a price multiplier of around 5, while \citet{Hartzmark/Solomon/2021} estimate a multiplier of 1.9. Taking an average between the two yields 3.45. Considering that the passive investor share is around half, this amounts to a price impact of approximately $3.45 \times 2 = 6.90$.} The model also broadly matches the average asset/equity ratio and risky asset shares of the main sectors.
+
+Figure~\ref{fig:price_impact_dynamic} presents the model-implied conditional price impact. The impact curves are computed by evaluating equilibrium functions on pre-specified state grids. Fixing $\overline{\alpha}_{p,t}$ and $s_t$ at their unconditional means, we vary one wealth-share coordinate at a time and impose a fixed one-quarter passive-flow shock. The shock is mapped through the dynamic transition equations of the state variables to obtain the corresponding next-quarter state, after which the P/D ratio is revalued at both the initial and shocked states. Conditional price impact is measured as the resulting change in log P/D per unit of passive flow. Repeating this exercise across the state grid yields the conditional price-impact curves reported in the off-equilibrium figures. The right panel of the figure shows that, as the wealth share of constrained active investors increases, the price impact goes up, as more agents are constrained in the economy. 
 
 \begin{figure}[!t]
     \centering
-    \includegraphics[width=\linewidth]{figures/xu_xc_price_impact.png}
+    \includegraphics[width=\linewidth]{figures/xu_xc_price_impact_off_equilibrium.png}
     \caption{This figure shows the price impact of active investors from the dynamic model.}
     \label{fig:price_impact_dynamic}
 \end{figure}
 
 Next, we run return predictability tests by regressing the cumulative future returns on the price-dividend ratio. Table~\ref{tab:return_predictability} presents the slope coefficients in (1) the full sample and (2) conditional on bad states defined as time periods when the price-dividend ratio is below 25th percentile of its long-run mean. The table shows that realized future excess returns are negatively predicted by the price-dividend ratio, and this predictability is stronger in bad times.
-
-\input{sections/conclusion}
 
 \begin{figure}[!t]
 \begin{minipage}[t]{0.48\textwidth}
@@ -1206,7 +1271,6 @@ Next, we run return predictability tests by regressing the cumulative future ret
 \begin{minipage}[t]{0.48\textwidth}
 \centering
 \vspace{0pt}
-
 {\footnotesize
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{0.92}
@@ -1218,11 +1282,11 @@ Model: & (1) & (2) \\
 Sample: & Full & Bad state \\
 \midrule
 \textit{Variables} & & \\
-$\log(P_t/D_t)$ & -0.49 & -0.66 \\
-                & (0.0005) & (0.0019) \\
+$(P/D)_t$ & -0.05 & -0.12 \\
+                & (0.0005) & (0.0048) \\
 \midrule
-$R^2$ & 0.45 & 0.21 \\
-Observations & 989,000 & 247,250 
+$R^2$ & 0.19 & 0.06 \\
+Observations & 79,120 & 19,780 
 \vspace{0.25cm} \\ 
 \bottomrule  \\ \\
 \end{tabular}
@@ -1240,12 +1304,27 @@ Observations & 989,000 & 247,250
 \footnotesize
 \textit{Note:} The left panel shows the relationship between the price-dividend ratio and future cumulative returns. Blue points correspond to normal state and red points correspond to bad state defined as time periods when price-dividend ratio is less than the 25-pctl of its long-run mean. The lines represent the regression fit. 
 The right panel reports estimates from the return-predictability regression
-$\sum_{k=1}^T r_{t+k} -r_t=a+b \log(P_t/D_t)+\varepsilon_{t+k}$, where $T=4$ quarters.
+$\sum_{k=1}^T r_{t+k} -r_t=a+b (P/D)_t+\varepsilon_{t+k}$, where $T=4$ quarters.
 Entries in parentheses are standard errors.
 \end{minipage}
 
 \end{figure}
+\subsection{Role of frictions}
 
+\begin{table}[!t]    
+    \centering% \captionsetup{font=normalsize,labelfont=bf,skip=2pt,labelsep=period}
+	\resizebox{.8\linewidth}{!}{\input{./tables/counterfactuals.tex}}
+    \vspace{2mm}
+    \captionsetup{type=table,font=footnotesize,justification=centering,singlelinecheck=false}
+    \caption{\textbf{Counterfactual experiments.}\\This table reports annualized model-implied moments for the baseline economy and three counterfactuals. In the \textit{homogeneous, unconstrained} economy, $\gamma_c=\gamma_p=\gamma_u=6.15$ and $\bar{\sigma}=10{,}000$. In the \textit{heterogeneous, unconstrained} economy, $\bar{\sigma}=10{,}000$. In the \textit{Passive efficient} case, we set $\overline{\alpha}=1$. All other parameters are set to their baseline values from Table (\ref{tab:calib}). }\label{tab:counterfactual_comparison} 
+	% \caption*{\footnotesize{This table reports the model-implied and empirical moments. All values are annualized.}}    
+\end{table}
+
+This subsection compares the baseline economy to three counterfactuals: (i) homogeneous preferences without leverage constraints, (ii) heterogeneous preferences without leverage constraints, and (iii) an economy with the passive portfolio share set to $\bar{\alpha}=1$. The first sets $\gamma_p=\gamma_c=\gamma_u=6.15$ and $\overline{\sigma}=10{,}000$; the second sets $\overline{\sigma}=10{,}000$; and the third sets $\bar{\alpha}=1$. All remaining parameters are held at their baseline values. Table \ref{tab:counterfactual_comparison} reports the implied moments across economies. We make a few observations. First, the baseline economy features large dividend return volatility ($\sigma_{R,D}=22.55\%$) and a high price-impact $(6.854)$ of dividend claims, consistent with the limited risk-bearing capacity translating shocks into large price movements. In comparison, the counterfactual economies, where one or more frictions are shut, feature low return volatility and price impact. Particularly, the homogeneous unconstrained economy and passive efficient economy features a negligible price impact. A surprising result of our calibration is that heterogeneity itself can generate significant price impact through state-dependent risk sharing, even when constraints are relaxed, although the return volatility is still 5.5\% lower than in the baseline. In all cases, the conditional price impact is larger than the unconditional mean. Overall, the comparison indicates that all three frictions - (i) heterogeneity in risk aversion, (ii) leverage constraint, and (iii) passive risk misallocation are important in generating a large price impact. 
+
+
+
+\input{sections/conclusion}
 
 
 

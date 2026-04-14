@@ -1550,7 +1550,7 @@ The full algorithm is given in Algorithm (\ref{alg:valuation_step}).
  \label{alg:valuation_step}
 \end{algorithm}
 
-The HJB loss in the first-stage training problem converges to a mean-squared loss of $3.7 \times 10^{-8}$. The corresponding valuation-ratio training problems converge to a mean-squared training loss of $1.4 \times 10^{-5}$. These losses are computed from the batch objectives in \eqref{eq:baseline_batch_loss_appendix} and in the valuation-ratio objective, respectively. 
+We follow \cite{Gopalakrishna2026} and use vectorized automatic differentiation to compute the gradients that speeds up the computation. The total time to run the baseline model on a single-threaded computer with 128GB RAM and NVIDIA Ada 4500 GPU is 8 hours. The HJB loss in the first-stage training problem converges to a mean-squared loss of $3.7 \times 10^{-8}$. The corresponding valuation-ratio training problems converge to a normalized mean-squared training loss of $1.4 \times 10^{-5}$. These losses are computed from the batch objectives in \eqref{eq:baseline_batch_loss_appendix} and in the valuation-ratio objective, respectively. 
 
 
 % \section{The unit EIS case}
