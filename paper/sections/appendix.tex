@@ -86,7 +86,7 @@ The Hamilton-Jacobi-Bellman (HJB) equation for investor $j$ can be written as
 \end{align}
 subject to 
 \begin{equation}
-    \alpha_j = \overline{\alpha}_p[ \omega_{D,t}, \omega_{B,t}, 0]^\top \qquad \text{for } j = 0, \qquad \qquad 
+    \alpha_j = \overline{\alpha}_p[ \alpha_{m,D,t}, \alpha_{m,B,t}, 0]^\top \qquad \text{for } j = 0, \qquad \qquad 
     \sigma_j \sigma_j^\top \leq \overline{\sigma}^2 \qquad \text{for } j = 2.
 \end{equation}
 given $\sigma_{j} = \alpha_j^\top \Sigma$.
@@ -130,7 +130,7 @@ The optimal risk exposure for active investors is given by
     \sigma_{j,t}
     =\frac{1}{1+\nu_{j,t}} \left[ \frac{\eta_t}{\gamma_j}  + \frac{1-\gamma_j^{-1}}{\psi-1} \sigma_{c_j,t} \right],
 \end{equation}
-where $\nu_{j,t} \equiv \tilde{\nu}_{j,t} / (V_{j,WW,t} W_{j,t})$.
+where $\nu_{j,t} \equiv \tilde{\nu}_{j,t} / (V_{j,WW,t} W_{j,t})$ is the normalized Lagrange multiplier on the leverage constraint.
 
 Plugging the consumption-wealth ratio into the HJB equation and using Equation \eqref{app:value_function}, we obtain
 \begin{align}
