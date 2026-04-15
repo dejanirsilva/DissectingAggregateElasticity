@@ -84,17 +84,25 @@ The Hamilton-Jacobi-Bellman (HJB) equation for investor $j$ can be written as
     0 &= \max_{C_j, \alpha_j} f_j(C_j,V_j) + V_{j,W}\left[ r W_j + \pi^\top \alpha_j W_j  - C_j\right] +V_{j,X} \mu_X\nonumber\\
     &\qquad + \frac{1}{2} V_{j,WW} W_j^2 \|\sigma_j\|^2 + V_{j,WX}W_j \sigma_X \sigma_j^\top    + \frac{1}{2} \sum_{k=1}^3\ \sigma_{X,k}^\top V_{j,XX} \sigma_{X,k},
 \end{align}
-subject to $\alpha_j \in \Omega_j$ and $\sigma_{j} = \alpha_j^\top \Sigma$.
+subject to 
+\begin{equation}
+    \alpha_j = [\overline{\alpha}_p \omega_{D,t}, \overline{\alpha}_p \omega_{B,t}, 0]^\top \qquad \text{for } j = 0, \qquad \qquad 
+    \sigma_j \sigma_j^\top \leq \overline{\sigma}^2 \qquad \text{for } j = 2.
+\end{equation}
+given $\sigma_{j} = \alpha_j^\top \Sigma$.
 For ease of notation, we dropped time subscripts.
 Note that  $V_{j,X}$ and $V_{j,WX}$ are $1\times N$ vectors, $V_{j,XX}$ is a $N\times N$ matrix, and both $V_{j,W}$ and $V_{j,WW}$ are scalars.
 The drift $\mu_X$ is a $N\times 1$ vector, the diffusion $\sigma_X$ is a $N\times 3$ matrix, while $\sigma_R$ is a $1\times 3$ vector.
 The notation $\sigma_{X,k}$ denotes the $k-$th column of $\sigma_{X}$, that is, the exposure to the $k-$th Brownian motion.
 
+
+
 The optimality condition for consumption and portfolio share are given by
 \begin{align}
     f_{j,C}(C_j,V_j) &= V_{j,W}\\
-    V_{j,W} \pi &= - V_{j,WW} W_j \Sigma \Sigma^\top \alpha_j -  \Sigma (V_{j,WX} \sigma_X)^\top.
+    V_{j,W} \pi &= - V_{j,WW} W_j \Sigma \Sigma^\top \alpha_j -  \Sigma (V_{j,WX} \sigma_X)^\top + \tilde{\nu}_{j,t} \Sigma \Sigma^\top \alpha_{j}.
 \end{align}
+where the second optimality condition holds for $j = 1,2$, and $\tilde{\nu}_{j,t}$ is the Lagrange multiplier on the leverage constraint. 
 
 The optimal consumption is given by
 \begin{equation}
@@ -103,79 +111,132 @@ The optimal consumption is given by
 
 The optimal portfolio share for an active investor is given by
 \begin{equation}
-\sigma_j = \min \left\{ -\frac{V_{j,W}}{V_{j,WW} W_j}  \lambda_j   - \frac{V_{j,WX}}{V_{j,WW} W_j} \sigma_X, \overline{\sigma}_j\right\},
+\sigma_j =  -\frac{V_{j,W}}{V_{j,WW} W_j + \tilde{\nu}_{j,t}}  \lambda_j   - \frac{V_{j,WX}}{V_{j,WW} W_j + \tilde{\nu}_{j,t}} \sigma_X.
 \end{equation}
-using the fact that $\pi = \Sigma \lambda^\top$, and setting $\overline{\sigma}_j = \infty$ for the unconstrained investor
+using the fact that $\pi = \Sigma \lambda^\top$.
 
 Given the homotheticity of preferences, the value function for investor $j$ can be written as
 \begin{equation}\label{app:value_function}
-    V_{j,t} = \left(\frac{\xi_{j,t}}{\rho^\psi}\right)^{\frac{1-\gamma_j}{1-\psi}} \frac{W_{j,t}^{1-\gamma_j}}{1-\gamma_j}.
+    V_{j,t} = \left(\frac{c_{j,t}}{\rho^\psi}\right)^{\frac{1-\gamma_j}{1-\psi}} \frac{W_{j,t}^{1-\gamma_j}}{1-\gamma_j}.
 \end{equation}
 
 This particular parametrization of the value function implies that the consumption-wealth ratio is given by
 \begin{equation}
-    \frac{C_{j,t}}{W_{j,t}} = \xi_{j,t}.
+    \frac{C_{j,t}}{W_{j,t}} = c_{j,t}.
 \end{equation}
 
 The optimal risk exposure for active investors is given by
 \begin{equation}
     \sigma_{j,t}
-    = \min \left\{ \frac{\lambda_t}{\gamma_j}  - \frac{1-\gamma_j^{-1}}{1-\psi} \sigma_{\xi_j,t} , \overline{\sigma}_j\right\}.
+    =\frac{1}{1+\nu_{j,t}} \left[ \frac{\lambda_t}{\gamma_j}  + \frac{1-\gamma_j^{-1}}{\psi-1} \sigma_{c_j,t} \right],
 \end{equation}
+where $\nu_{j,t} \equiv \tilde{\nu}_{j,t} / (V_{j,WW,t} W_{j,t})$.
 
 Plugging the consumption-wealth ratio into the HJB equation and using Equation \eqref{app:value_function}, we obtain
 \begin{align}
-    0 &=  \frac{\rho   }{1-\psi^{-1}} \left[  \rho^{-1} \xi_j-1 \right] + r  + \eta \sigma_j   - \xi_j + \frac{1}{1-\psi} \left[ \frac{\xi_{j,X}}{\xi_j} \mu_X + \frac{1}{2} \sum_{k=1}^d \sigma_{X,k}^\top \frac{\xi_{j,XX}}{\xi_j} \sigma_{X,k}\right]\nonumber\\
-    &\qquad - \frac{\gamma_j}{2} \sigma_j^2  + \frac{1-\gamma_j}{1-\psi} \frac{\xi_{j,X}}{\xi_j} \sigma_X \frac{\sigma_R^\top}{\|\sigma_R\|} \sigma_j    + \frac{1}{2} \frac{\psi-\gamma_j}{(1-\psi)^2} \sum_{k=1}^d \sigma_{X,k}^\top \frac{\xi_{j,X}^\top}{\xi_j} \frac{\xi_{j,X}}{\xi_j} \sigma_{X,k}.
+        0 &=  \frac{\rho   }{1-\psi^{-1}} \left[  \rho^{-1} c_j-1 \right] + r  + \lambda \sigma_j^ \top   - c_j + \frac{1}{1-\psi} \left[ \frac{\xi_{j,X}}{\xi_j} \mu_X + \frac{1}{2} \sum_{k=1}^d \sigma_{X,k}^\top \frac{\xi_{j,XX}}{\xi_j} \sigma_{X,k}\right]\nonumber\\
+    &\qquad - \frac{\gamma_j}{2} \| \sigma_j\|^2  + \frac{1-\gamma_j}{1-\psi} \frac{c_{j,X}}{c_j} \sigma_X  \sigma_j^ \top    + \frac{1}{2} \frac{\psi-\gamma_j}{(1-\psi)^2} \sum_{k=1}^d \sigma_{X,k}^\top \frac{c_{j,X}^\top}{c_j} \frac{c_{j,X}}{c_j} \sigma_{X,k}.
 \end{align}
 
 Rearranging the expression above, we obtain
 \begin{small}
 \begin{equation}
-    \xi_{j,t} = \psi \rho + (1-\psi) \left[ r_t + \eta_t \sigma_{j,t} - \frac{\gamma_j}{2} \sigma_{j,t}^2 \right] + \mu_{\xi_j,t} + (1-\gamma_j)  \sigma_{\xi_j,t} \frac{\sigma_{R,t}^\top}{\|\sigma_{R,t}\|} \sigma_{j,t} + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{\xi_j,t} \|^2}{2},
+    c_{j,t} = \psi \rho + (1-\psi) \left[ r_t + \lambda_t \sigma_{j,t}^\top - \frac{\gamma_j}{2} \| \sigma_{j,t}\|^2 \right] + \mu_{c_j,t} + (1-\gamma_j)  \sigma_{c_j,t} \sigma_{j,t}^\top + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t} \|^2}{2},
 \end{equation}
 \end{small}
-where the law of motion of $\xi_{j,t}$ is given by
+where the law of motion of $c_{j,t}$ is given by
 \begin{equation}
-    \frac{d \xi_{j,t}}{\xi_{j,t}} = \mu_{\xi_j,t} dt + \sigma_{\xi_j,t} d Z_t,
+    \frac{d c_{j,t}}{c_{j,t}} = \mu_{c_j,t} dt + \sigma_{c_j,t} d Z_t,
 \end{equation}
-and the drift and diffusion of $\xi_{j,t}$ are given by Ito's lemma:
+and the drift and diffusion of $c_{j,t}$ are given by Ito's lemma:
 \begin{align}
-    \mu_{\xi_j,t} &= \frac{\xi_{j,X}}{\xi_j} \mu_{X,t} + \frac{1}{2} \sum_{k=1}^d \sigma_{X,k,t}^\top \frac{\xi_{j,XX,t}}{\xi_{j,t}} \sigma_{X,k,t}, \qquad \qquad 
-    \sigma_{\xi_j,t} = \frac{\xi_{j,X}}{\xi_j} \sigma_{X,t}.
+    \mu_{c_j,t} &= \frac{c_{j,X}}{c_j} \mu_{X,t} + \frac{1}{2} \sum_{k=1}^d \sigma_{X,k,t}^\top \frac{c_{j,XX,t}}{c_{j,t}} \sigma_{X,k,t}, \qquad \qquad 
+    \sigma_{c_j,t} = \frac{c_{j,X}}{c_j} \sigma_{X,t}.
 \end{align}
 
 
 \subsection{Pricing condition}
 
-Let $y_t \equiv Y_t/P_t$ denote the dividend yield on the risky asset.
-From Equation~\eqref{eq:risky-asset-ret}, we can write the expected return on the risky asset as:
+Let $p_{D,t} = \frac{P_{D,t}}{D_t}$, $p_{B,t} = \frac{P_{B,t}}{B_t}$, and $p_{Y,t} = \frac{P_{Y,t}}{Y_t}$ denote the price-dividend ratios of the dividend claim, the bond claim, and the aggregate claim, respectively.
+The pricing condition for asset $k \in\{D,B, Y\}$ is given by
 \begin{equation}
-    r_t + \eta_t \| \sigma_{R,t}\| = y_t + \frac{1}{dt} \frac{d(Y_t/y_t)}{(Y_t/y_t)} = y_t + \mu - \mu_{y,t} + \|\sigma_{y,t}\|^2 - \sigma \sigma_{y,t}^\top.
+    r_t + \sigma_{R_k,t} \lambda_t^\top = \frac{1}{p_{k,t}} + \mu_{k,t} + \mu_{p_k,t} + \sigma_{k,t} \sigma_{p_k,t}^\top,
+\end{equation}
+where $\sigma_{R,t} = \sigma + \sigma_{p_k,t}$ and $(\mu_{p_k,t}, \sigma_{p_k,t})$ are given by Ito's lemma:
+\begin{equation}
+    \mu_{p_k,t} = \frac{p_{k,X,t}}{p_{k,t}} \mu_{X,t} + \frac{1}{2}\sum_{k=1}^d \sigma_{X,k,t}^\top\,\frac{p_{k,XX,t}}{p_{k,t}}\,\sigma_{X,k,t}, \qquad \qquad 
+    \sigma_{p_k,t} = \frac{p_{k,X,t}}{p_{k,t}} \sigma_{X,t}.
 \end{equation}
 
-Rearranging the expression above, we obtain
-\begin{equation}\label{app:pricing_cond}
-    y_t = r_t + \eta_t \|\sigma_{R,t}\| -\mu + \mu_{y,t} - \|\sigma_{R,t}\|^2+ \sigma \sigma_{R,t}^\top,
-\end{equation}
-where $\sigma_{R,t} = \sigma - \sigma_{y,t}$ and $(\mu_{y,t}, \sigma_{y,t})$ are given by Ito's lemma:
-\begin{equation}
-    \mu_{y,t} = y_{X,t} \mu_{X,t} + \frac{1}{2}\sum_{k=1}^d \sigma_{X,k,t}^\top\,y_{XX,t}\,\sigma_{X,k,t}, \qquad \qquad 
-    \sigma_{y,t} = y_{X,t} \sigma_{X,t}.
-\end{equation}
+Notice that $\mu_{R_Y,t} = \omega_{D,t} \mu_{R_D,t} + \omega_{B,t} \mu_{R_B,t}$, where $\omega_{D,t} = \frac{P_{D,t}}{P_{Y,t}}$ and $\omega_{B,t} = \frac{P_{B,t}}{P_{Y,t}}$.
+
+% Let $y_t \equiv Y_t/P_t$ denote the dividend yield on the risky asset.
+% From Equation~\eqref{eq:risky-asset-ret}, we can write the expected return on the risky asset as:
+% \begin{equation}
+%     r_t + \eta_t \| \sigma_{R,t}\| = y_t + \frac{1}{dt} \frac{d(Y_t/y_t)}{(Y_t/y_t)} = y_t + \mu - \mu_{y,t} + \|\sigma_{y,t}\|^2 - \sigma \sigma_{y,t}^\top.
+% \end{equation}
+
+% Rearranging the expression above, we obtain
+% \begin{equation}\label{app:pricing_cond}
+%     y_t = r_t + \eta_t \|\sigma_{R,t}\| -\mu + \mu_{y,t} - \|\sigma_{R,t}\|^2+ \sigma \sigma_{R,t}^\top,
+% \end{equation}
+% where $\sigma_{R,t} = \sigma - \sigma_{y,t}$ and $(\mu_{y,t}, \sigma_{y,t})$ are given by Ito's lemma:
+% \begin{equation}
+%     \mu_{y,t} = y_{X,t} \mu_{X,t} + \frac{1}{2}\sum_{k=1}^d \sigma_{X,k,t}^\top\,y_{XX,t}\,\sigma_{X,k,t}, \qquad \qquad 
+%     \sigma_{y,t} = y_{X,t} \sigma_{X,t}.
+% \end{equation}
 
 \subsection{Aggregate state variable}
 
 Define the share of wealth of type-$j$ investors as follows
 \begin{equation}
-    x_{j,t} \equiv \frac{\omega_j W_{j,t}}{P_t}.
+    x_{j,t} \equiv \frac{\omega_j W_{j,t}}{\sum_{i=0}^2 \omega_i W_{i,t}}.
 \end{equation}
 
-We define the aggregate state variable as $X_t = (x_t, \overline{\alpha}_{p,t})$, where $x_t \equiv (x_{1,t}, x_{2,t}, \ldots, x_{J,t})$.
+
+We define the aggregate state variable as $X_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t}, s_t)$.
+
+\paragraph{Market clearing conditions.}
+We can write the market clearing condition for the equity claim, corporate bond claim, and short-term bonds as follows:
+\begin{equation}
+    \sum_{j=0}^2 \omega_j W_{j,t} \alpha_{j,k,t} = P_{k,t}, \qquad 
+    \sum_{j=0}^2 \omega_j W_{j,t} (1-\alpha_{j,D,t}-\alpha_{j,B,t}) = 0,
+\end{equation}
+for $k \in \{D,B\}$.
+
+Using the fact that $P_{Y,t} = P_{D,t} + P_{B,t}$, we obtain:
+\begin{equation}
+    \sum_{j=0}^2 \omega_j W_{j,t} = P_{Y,t}.
+\end{equation}
+
+The market clearing condition for goods is given by
+\begin{equation}
+    \sum_{j=0}^2 x_{j,t} c_{j,t} = \frac{1}{p_{Y,t}}.
+\end{equation}
+
+We can then write the market clearing condition for the equity claim, corporate bond claim, and the derivative as follows:
+\begin{equation}
+    \sum_{j=0}^2 x_{j,t} \alpha_{j,D,t} = \omega_{D,t}, \qquad 
+    \sum_{j=0}^2 x_{j,t} \alpha_{j,B,t} = \omega_{B,t}, \qquad 
+    \sum_{j=0}^2 x_{j,t} \alpha_{j,F,t} = 0.
+\end{equation}  
+
+Let $\omega_t = [\omega_{D,t}, \omega_{B,t},0]^\top$ denote the market weights of the dividend, bond, and derivative claims.
+We can then write the market clearing conditions above in a compact way:
+\begin{equation}
+    \sum_{j=0}^2 x_{j,t} \alpha_{j,t} = \omega_t.
+\end{equation}
+Multiplying both sides by $\Sigma$ and using the fact that $\sigma_{R_Y,t} = \omega_{D,t} \sigma_{R_D,t} + \omega_{B,t} \sigma_{R_B,t}$, we obtain
+\begin{equation}
+    \sum_{j=0}^2 x_{j,t} \sigma_{j,t} = \sigma_{R_Y,t}.
+\end{equation}
+
+\paragraph{Law of motion of the aggregate state variable.}
 The law of motion of $\overline{\alpha}_{p,t}$ is given by \eqref{eq:alpha_p_process}.
+The law of motion of $s_t$ is given by \eqref{eq:s_process}.
 To compute the law of motion of $x_{j,t}$, first, note that the law of motion of wealth for a type-$j$ investor can be written as
 \begin{equation}
-    \frac{d W_{j,t}}{W_{j,t}} = \left[ r_t + \eta_t \sigma_{j,t} - \xi_{j,t} \right]dt + \sigma_{j,t} \frac{\sigma_{R,t}}{\|\sigma_{R,t}\|} d Z_t
+    \frac{d W_{j,t}}{W_{j,t}} = \left[ r_t + \lambda_t \sigma_{j,t}^\top - c_{j,t} \right]dt + \sigma_{j,t} d Z_t.
 \end{equation}
 
 From Ito's lemma, the law of motion of $x_{j,t}$ is given by

@@ -533,13 +533,13 @@ This specification aligns with empirical evidence on passive behavior: household
 \paragraph{Active investors.} 
 
 Investors of type $j = 1,2$ are \textit{active investors}.
-Active investors optimally rebalance their portfolios, choosing allocations across the dividend claim, the bond claim, and the derivative, $(\alpha_{j,D,t}, \alpha_{j,B,t}, \alpha_{j,F,t})$.
+Active investors optimally rebalance their portfolios, choosing allocations across the dividend claim, the bond claim, and the derivative, $\alpha_{j,t} \equiv [\alpha_{j,D,t}, \alpha_{j,B,t}, \alpha_{j,F,t}]^\top$.
 Type-2 investors have low risk aversion, $\gamma_2 < \gamma_1$, and therefore have an incentive to lever up their exposure to risky assets.
 They borrow short-term to increase their risk exposure, subject to a leverage constraint that limits total portfolio risk:
 \begin{equation}\label{eq:leverage_constraint}
     \|\sigma_{j,t}\| \leq \overline{\sigma},
 \end{equation}
-where $\sigma_{j,t} = \alpha_{j,D,t}\,\sigma_{R_D,t} + \alpha_{j,B,t}\,\sigma_{R_B,t} + \alpha_{j,F,t}\,\sigma_{R_F,t}$ is the investor's total risk exposure and $\|\cdot\|$ denotes the Euclidean norm.
+where $\sigma_{j,t} \equiv \alpha_{j,t}^\top \Sigma_t =  \alpha_{j,D,t}\,\sigma_{R_D,t} + \alpha_{j,B,t}\,\sigma_{R_B,t} + \alpha_{j,F,t}\,\sigma_{R_F,t}$ is the investor's total risk exposure and $\|\cdot\|$ denotes the Euclidean norm.
 This constraint resembles a Value-at-Risk (VaR) limit commonly applied to banks and leveraged institutions (see, e.g., \citealt{adrian2014procyclical} and \citealt{brunnermeier2009market}).
 Type-1 investors are more risk averse and do not face a leverage constraint.
 
@@ -552,11 +552,12 @@ An investor of type $j = 0,1,2$ chooses consumption $C_{j,t}$ and portfolio allo
     \mathbb{E}_t \left[ \int_t^\infty f_j(C_{j,s},V_{j,s})\, ds \right], \qquad s.t.
 \end{equation}
 \begin{equation}\label{eq:budget_constraint}
-    dW_{j,t} = \left[r_t + \pi_{t}^\top \,\alpha_{j,t} - \frac{C_{j,t}}{W_{j,t}}\right] W_{j,t}\,dt 
-    + \sigma_{j,t}\, W_{j,t}\, dZ_t,
+    \frac{d W_{j,t}}{W_{j,t}} = \left[r_t + \pi_{t}^\top \,\alpha_{j,t} - \frac{C_{j,t}}{W_{j,t}}\right] dt 
+    + \sigma_{j,t}\, dZ_t,
 \end{equation}
 with $W_{j,t} \geq 0$ and $\alpha_{j,t} \in \Omega_{j,t}$,
-where $W_{j,t}$ denotes the investor's wealth and $\Omega_{j,t}$ is the investment set for type-$j$ investor.
+where $\sigma_{j,t} = \alpha_{j,t}^ \top \Sigma_{t}$ is the investor's risk exposure,
+$W_{j,t}$ denotes the investor's wealth, and $\Omega_{j,t}$ is the investment set for type-$j$ investor.
 
 Portfolio allocations are restricted to lie in an investment set $\Omega_{j,t}$, which depends on investor type and captures differences in financial constraints across investors.\footnote{
     The differences in investment sets here are reminiscent of the difference in the investment universe emphasized by \citet{Koijen/Yogo/19}.
@@ -624,18 +625,18 @@ and $c_{j,t} = c_j(X_t)$ corresponds to the consumption-wealth ratio: $C_{j,t}/W
 From the Hamilton-Jacobi-Bellman equation, the consumption-wealth ratio satisfies
 \begin{equation}\label{eq:HJB_complete}
     c_{j,t} = \psi \rho 
-    + (1-\psi) \left[ r_t + \pi_{t}^\top\,\alpha_{j,t} - \frac{\gamma_j}{2} \|\Sigma_{j,t}\|^2 \right] 
+    + (1-\psi) \left[ r_t + \pi_{t}^\top\,\alpha_{j,t} - \frac{\gamma_j}{2} \|\sigma_{j,t}\|^2 \right] 
     + \xi_{j,t},
 \end{equation}
 where 
 \[
     \xi_{j,t} \equiv \mu_{c_j,t} 
-    + (1-\gamma_j) \sigma_{c_j,t} \Sigma_{j,t}^\top 
+    + (1-\gamma_j) \sigma_{c_j,t} \sigma_{j,t}^\top 
     + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}.
 \]
 
 \paragraph{Optimal portfolio and derivative exposure.} 
-An active investor chooses $(\alpha_{j,D,t},\alpha_{j,B,t},\theta_{j,t})$ to maximize the right-hand side of \eqref{eq:HJB_complete} subject to $\|\Sigma_{j,t}\|\le\overline{\sigma}$. 
+An active investor chooses $\alpha_{j,t}$ to maximize the right-hand side of \eqref{eq:HJB_complete} subject to $\|\sigma_{j,t}\|\le\overline{\sigma}$. 
 Let $\nu_{j,t}\ge 0$ denote the Lagrange multiplier on the leverage constraint. The first-order conditions imply
 \begin{equation}\label{eq:foc_lambda}
     \lambda_{j,t} = \lambda_t,
