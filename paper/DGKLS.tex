@@ -455,7 +455,7 @@ The return on the aggregate claim follows:
 \end{equation}
 
 Investors also have access to a risk-free asset paying rate $r_t$ and, to ensure markets are dynamically complete, a derivative in zero net supply that spans risks not directly traded through the dividend and bond claims. 
-As in a futures contract, there is no initial cash exchange to enter into the contract.
+As in a futures contract, there is no initial cash exchange to enter into the derivative contract.
 The derivative provides risk exposure $\sigma_{R_F,t} \in \mathbb{R}^{1\times d}$, orthogonal to the aggregate claim, $\sigma_{R_F,t}\,\sigma_{R_Y,t}^\top = 0$, so that it provides independent risk exposure, with normalization $\|\sigma_{R_F,t}\| = \|\sigma_{R_Y,t}\|$.
 
 \paragraph{Stochastic discount factor.} Absence of arbitrage implies the existence of a stochastic discount factor (SDF), $\Lambda_t$, which prices all assets in the economy:
@@ -494,7 +494,8 @@ The aggregator is given by:
     f_j(C,V) = \rho \frac{(1-\gamma_j) V}{1-\psi^{-1}} 
     \left[ \left( \frac{C}{\big((1-\gamma_j)V\big)^{\frac{1}{1-\gamma_j}}} \right)^{1-\psi^{-1}} - 1 \right],
 \end{equation}
-where the discount factor $\rho \equiv \hat{\rho}+\kappa$ reflects both time impatience $\hat{\rho}$ and the death probability $\kappa$.
+% where the discount factor $\rho $ reflects both time impatience $\hat{\rho}$ and the death probability $\kappa$.
+where $\rho$ denotes the discount factor.
 
 Each investor chooses consumption $C_{j,t}$ and portfolio allocations across the dividend claim, the bond claim, and the derivative, subject to the constraints specified below.
 
@@ -571,8 +572,10 @@ For passive investors, $j=0$, holdings of the market index fund induce indirect 
     \Omega_{0,t} = \{\alpha_{0,t}:\;
 \alpha_{0,D,t} = \overline{\alpha}_{p,t}\,\omega_{D,t},
 \; \alpha_{0,B,t} = \overline{\alpha}_{p,t}\,\omega_{B,t},
-\; \alpha_{0,F,t} = 0\}.
+\; \alpha_{0,F,t} = 0\},
 \end{equation}
+where $\omega_{k,t} \equiv \frac{P_{k,t}}{P_{Y,t}}$ is the market weight of asset $k \in \{D,B\}$.
+
 Type-1 investors are unconstrained, so their investment set is given by $\Omega_{1,t} = \mathbb{R}^3$.
 For type-$2$ investors, the investment set reflects their leverage constraint:
 \begin{equation}
@@ -726,27 +729,34 @@ Given the optimal risk exposure, the optimal portfolio shares are recovered as $
 % is a forward-looking term capturing how expected shifts in $c_{j,t}$ affect consumption choices.
 % The consumption--wealth ratio depends both on current investment opportunities, summarized by $r_t + \pi_t \alpha_{j,t} - \frac{\gamma_j}{2} \alpha_{j,t}^2 \|\sigma_{R,t}\|^2$, and on future opportunities, summarized by $\xi_{j,t}$. 
 
-\paragraph{Pricing condition.} 
-
-Let $p_t \equiv P_{Y,t}/Y_t$ denote the price-dividend ratio of the aggregate claim. Since the expected return is $r_t + \pi_t = \frac{1}{p_t} + \mu_{P,t}$, the price-dividend ratio satisfies
-\begin{equation}\label{eq:pricing_cond}
-    \frac{1}{p_t} = r_t + \pi_t - (\mu + \mu_{p,t} + \sigma \sigma_{p,t}^\top),
+\paragraph{Market clearing conditions.} From the market clearing conditions, we obtain that the investors' wealth add up to the price of the aggregate claim:
+\begin{equation}
+    \sum_{j=0}^2 \omega_j W_{j,t} = P_{Y,t}.
 \end{equation}
-where $\sigma_{R,t} = \sigma + \sigma_{p,t}$ and $(\mu_{p,t},\sigma_{p,t})$ follow from It\^{o}'s lemma.
-
-\paragraph{Aggregate state variable.} 
 
 Let $x_{j,t}$ denote the wealth share of type-$j$ investors:
 \begin{equation}\nonumber
     x_{j,t} \equiv \frac{\omega_j W_{j,t}}{P_{Y,t}}.
 \end{equation}
-The aggregate state is $X_t = (x_t, \overline{\alpha}_{p,t})$, where $x_t = (x_{1,t}, x_{2,t}, \ldots, x_{J,t})$ and $\overline{\alpha}_{p,t}$ evolves as in \eqref{eq:alpha_p_process}. By It\^{o}'s lemma, the law of motion for $x_{j,t}$ is
-\begin{align*}
-    \frac{dx_{j,t}}{x_{j,t}} 
-    &= \Big[ r_t + \pi_t \alpha_{j,t} - c_{j,t} - \mu_{P,t} 
-        + (1-\alpha_{j,t}) \|\sigma_{R,t}\|^2 
-        + \kappa \frac{\omega_j - x_{j,t}}{x_{j,t}} \Big] dt  + (\alpha_{j,t} - 1)\, \sigma_{R,t}\, dZ_t.
-\end{align*}
+
+The market clearing condition for goods and risky assets are given by:
+\begin{equation}
+    \sum_{j=0}^2 x_{j,t} c_{j,t} = \frac{1}{p_{Y,t}},
+    \qquad \qquad 
+    \sum_{j=0}^2 x_{j,t} \sigma_{j,t} = \sigma_{R_Y,t}.
+\end{equation}
+
+These conditions echoes the one for the simple model. 
+The wealth-weighted consumption-wealth ratio equals the dividend yield in the aggregate claim, and the average risk exposure equals the risk on the assets in positive net supply.
+
+
+% The aggregate state is $X_t = (x_t, \overline{\alpha}_{p,t})$, where $x_t = (x_{1,t}, x_{2,t}, \ldots, x_{J,t})$ and $\overline{\alpha}_{p,t}$ evolves as in \eqref{eq:alpha_p_process}. By It\^{o}'s lemma, the law of motion for $x_{j,t}$ is
+% \begin{align*}
+%     \frac{dx_{j,t}}{x_{j,t}} 
+%     &= \Big[ r_t + \pi_t \alpha_{j,t} - c_{j,t} - \mu_{P,t} 
+%         + (1-\alpha_{j,t}) \|\sigma_{R,t}\|^2 
+%         + \kappa \frac{\omega_j - x_{j,t}}{x_{j,t}} \Big] dt  + (\alpha_{j,t} - 1)\, \sigma_{R,t}\, dZ_t.
+% \end{align*}
 
 
 \paragraph{Risk premium and interest rate.} 
@@ -791,6 +801,16 @@ By It\^{o}'s lemma,
 \end{equation}
 
 Equation~\eqref{eq:_endogenous_vol} shows that endogenous volatility depends on (i) the sensitivity of $p_t$ to changes in the wealth distribution $x_{j,t}$ and the response of wealth shares to shocks, $\sigma_{x,t}$, and (ii) the sensitivity of $p_t$ to changes in passive portfolios and the response of $\overline{\alpha}_{p,t}$ to shocks. The first term is standard in heterogeneous-agent models \citep[see][]{panageas2020implications}, while the second arises only with exogenous portfolio flow shocks and is quantitatively relevant when markets are sufficiently inelastic (i.e., when $\frac{p_{\overline{\alpha}_p}(X_t)}{p(X_t)}$ is large). Thus, \eqref{eq:_endogenous_vol} links market elasticity to return volatility $\|\sigma+\sigma_{p,t}\|$.
+
+\paragraph{Pricing condition.} 
+
+Let $p_{D,t} \equiv P_{D,t}/D_t$ and $p_{B,t} \equiv P_{B,t}/B_t$ denote the price-dividend ratios of the dividend and bond claims, respectively. 
+Since the expected return is $r_t + \pi_{k,t} = \frac{1}{p_{k,t}} + \mu_{P_k,t}$, the price-dividend ratios satisfy
+\begin{equation}\label{eq:pricing_cond}
+    \frac{1}{p_{k,t}} = r_t + \pi_{k,t} - (\mu + \mu_{p_k,t} + \sigma \sigma_{p_k,t}^\top),
+\end{equation}
+where $\sigma_{R,t} = \sigma + \sigma_{p,t}$ and $(\mu_{p,t},\sigma_{p,t})$ follow from It\^{o}'s lemma.
+
 
 \paragraph{Markov equilibrium.} 
 
