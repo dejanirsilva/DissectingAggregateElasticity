@@ -623,7 +623,7 @@ The notional position in the derivative is $F_{j,t} = \alpha_{j,F,t} W_{j,t}$.\f
 \subsection{Equilibrium characterization}\label{sec:equilibrium-char}
 
 We now characterize equilibrium in the dynamic model.
-The key step is to derive the optimality conditions that govern portfolio choice and consumption decisions and their implications for asset pricing.
+We first derive the optimality conditions that govern portfolio choice and consumption decisions, and then outline their implications for asset pricing.
 We then establish a version of the \textit{mutual fund theorem} in our economy with frictions.
 This result shows that, despite the presence of multiple traded assets, equilibrium allocations can be summarized in terms of aggregate risk exposures.
 As a result, the equilibrium reduces to a tractable representation that will be central for our analysis of aggregate market elasticity.
@@ -660,7 +660,7 @@ The term $\xi_{j,t}$ is given by
 This term captures the effect of changes in future investment opportunities on consumption.
 
 As in Section~\ref{sec:simple}, the consumption-wealth ratio depends on both the interest rate $r_t$ and the risk premium $\pi_t$.
-Importantly, it also depends on the investor's portfolio choice $\alpha_{j,t}$ through risk exposure.
+Importantly, it also depends on the investor's portfolio choice $\alpha_{j,t}$.
 Finally, $\xi_{j,t}$ acts as a state-dependent shifter, and it is equal to zero when investment opportunities are constant.
 
 \paragraph{Optimal risk exposure share.}
@@ -711,71 +711,125 @@ The market clearing conditions for goods and risky assets are given by:
 
 These conditions echo those in the simple model. 
 The first condition states that the wealth-weighted average consumption-wealth ratio equals the dividend yield of the aggregate claim.
-The second condition states that the wealth-weighted average risk exposure equals the aggregate risk exposure of the endowment claim.
-These conditions summarize equilibrium in terms of aggregate objects, and will allow us to characterize prices and risk premia using the distribution of wealth across investors.
+The second condition states that the wealth-weighted average risk exposure equals the risk exposure of the economy's endowment claim.
+% These conditions summarize equilibrium in terms of aggregate objects, and will allow us to characterize prices and risk premia using the distribution of wealth across investors.
+
+% \paragraph{Market price of risk.} 
+% We can write the market clearing condition for risky assets as follows:
+% \begin{equation}
+%     \underbrace{\sum_{j=1}^2 \frac{x_{j,t}}{x_{a,t}} \sigma_{j,t}}_{\substack{\text{active demand} \\ \text{for risk}}}, = \underbrace{\chi_{a,t} \sigma_{R_Y,t}}_{\substack{\text{net supply} \\ \text{of risk}}}, 
+% \end{equation}
+% where $\chi_{a,t} \equiv \frac{1- x_{0,t} \overline{\alpha}_{p,t}}{1-x_{0,t}}$ captures the fraction of risk held by active investors, and
+% $x_{a,t} \equiv 1-x_{0,t}$ is the wealth share of active investors.
+
+% The expression above shows that the demand from active investors equals the net supply of risky assets to active investors, captured by the total supply minus the demand from passive investors.
+
+% Using the optimal risk exposure, we can solve for the market price of risk:
+% \begin{equation}\label{eq:market_price_of_risk}
+%     \eta_t = \gamma_{a,t} \left[\chi_{a,t}\sigma_{R_Y,t} - h_{a,t}\right],
+% \end{equation}
+% where $h_{a,t} \equiv \sum_{j=1}^2 \frac{x_{j,t}}{x_{a,t}} \frac{1-\gamma_j^{-1}}{\psi-1} \, \frac{\sigma_{c_j,t}}{1+\nu_{j,t}}$ is the average hedging demand of active investors adjusted for leverage constraints, and $\gamma_{a,t}$ is the average effective risk aversion of active investors:
+% \begin{equation}
+%     \gamma_{a,t} \equiv \left[\sum_{j=1}^2 \frac{x_{j,t}}{x_{a,t}} \frac{1}{\gamma_j(1+\nu_{j,t})}\right]^{-1}.
+% \end{equation}
+
+% Equation~\eqref{eq:market_price_of_risk} shows that the market price of risk depends on three factors. 
+% First, the average effective risk aversion of active investors, $\gamma_{a,t}$. 
+% This will vary over time with the wealth shares of active investors, $x_{j,t}$, and the extent leverage constraints bind, as captured by the Lagrange multipliers $\nu_{j,t}$.
+% Second, the fraction of risk held by active investors, $\chi_{a,t}$.
+% As passive investors hold more of the market index fund, the fraction of risk held by active investors falls, reducing the compensation for risk.
+% Third, the average hedging demand of active investors, $h_{a,t}$.
+% Intuitively, an increase in the average hedging demand of active investors reduces the compensation for risk.
 
 \paragraph{Market price of risk.} 
+
 We can write the market clearing condition for risky assets as follows:
 \begin{equation}
-    \underbrace{\sum_{j=1}^2 \frac{x_{j,t}}{x_{a,t}} \sigma_{j,t}}_{\substack{\text{active demand} \\ \text{for risk}}}, = \underbrace{\chi_{a,t} \sigma_{R_Y,t}}_{\substack{\text{net supply} \\ \text{of risk}}}, 
+    \underbrace{\sum_{j=1}^2 \frac{x_{j,t}}{x_{a,t}} \sigma_{j,t}}_{\substack{\text{active demand} \\ \text{for risk}}}
+    =
+    \underbrace{\chi_{a,t} \sigma_{R_Y,t}}_{\substack{\text{net supply} \\ \text{of risk}}},
 \end{equation}
-where $\chi_{a,t} \equiv \frac{1- x_{0,t} \overline{\alpha}_{p,t}}{1-x_{0,t}}$ captures the fraction of risk held by active investors, and
-$x_{a,t} \equiv 1-x_{0,t}$ is the wealth share of active investors.
+where $\chi_{a,t} \equiv \frac{1- x_{0,t} \overline{\alpha}_{p,t}}{1-x_{0,t}}$ captures the share of aggregate risk that must be absorbed by active investors, and $x_{a,t} \equiv 1-x_{0,t}$ is the wealth share of active investors.
 
-The expression above shows that the demand from active investors equals the net supply of risky assets to active investors, captured by the total supply minus the demand from passive investors.
+This is the dynamic counterpart of the risk market clearing condition in Section~\ref{sec:simple}.
+The expression above states that active investors absorb the net supply of risk, defined as total risk minus the portion held by passive investors.
 
-Using the optimal risk exposure, we can solve for the market price of risk:
+Substituting optimal risk exposures into the market clearing condition yields the market price of risk:
 \begin{equation}\label{eq:market_price_of_risk}
     \eta_t = \gamma_{a,t} \left[\chi_{a,t}\sigma_{R_Y,t} - h_{a,t}\right],
 \end{equation}
-where $h_{a,t} \equiv \sum_{j=1}^2 \frac{x_{j,t}}{x_{a,t}} \frac{1-\gamma_j^{-1}}{\psi-1} \, \frac{\sigma_{c_j,t}}{1+\nu_{j,t}}$ is the average hedging demand of active investors adjusted for leverage constraints, and $\gamma_{a,t}$ is the average effective risk aversion of active investors:
+where $h_{a,t} = \sum_{j=1}^2 \frac{x_{j,t}}{x_{a,t}} \frac{1-\gamma_j^{-1}}{\psi-1} \, \frac{\sigma_{c_j,t}}{1+\nu_{j,t}}$ is the average hedging demand of active investors, adjusted for leverage constraints, and $\gamma_{a,t}$ is the average effective risk aversion:
 \begin{equation}
     \gamma_{a,t} \equiv \left[\sum_{j=1}^2 \frac{x_{j,t}}{x_{a,t}} \frac{1}{\gamma_j(1+\nu_{j,t})}\right]^{-1}.
 \end{equation}
 
-Equation~\eqref{eq:market_price_of_risk} shows that the market price of risk depends on three factors. 
-First, the average effective risk aversion of active investors, $\gamma_{a,t}$. 
-This will vary over time with the wealth shares of active investors, $x_{j,t}$, and the extent leverage constraints bind, as captured by the Lagrange multipliers $\nu_{j,t}$.
-Second, the fraction of risk held by active investors, $\chi_{a,t}$.
-As passive investors hold more of the market index fund, the fraction of risk held by active investors falls, reducing the compensation for risk.
-Third, the average hedging demand of active investors, $h_{a,t}$.
-Intuitively, an increase in the average hedging demand of active investors reduces the compensation for risk.
+Equation~\eqref{eq:market_price_of_risk} shows that the market price of risk is determined by three forces.
 
-\paragraph{Interest rate.} Combining the market clearing condition for goods and the expression for the consumption-wealth ratio, we can solve for the interest rate:   
+First, the average effective risk aversion of active investors, $\gamma_{a,t}$.
+This varies over time with the wealth distribution and the extent to which leverage constraints bind.
+
+Second, the net supply of risk to active investors, captured by $\chi_{a,t}\sigma_{R_Y,t}$.
+As passive investors increase their holdings of the market index, the amount of risk that must be absorbed by active investors falls, reducing the compensation for risk.
+
+Third, the average hedging demand of active investors, $h_{a,t}$.
+Higher hedging demand implies active investors are willing to bear more risk, lowering the equilibrium compensation for risk.
+
+Equation~\eqref{eq:market_price_of_risk} makes clear that portfolio flows affect risk premia through their impact on the net supply of risk absorbed by active investors.
+
+\paragraph{Interest rate.}
+Combining goods market clearing with the expression for the consumption--wealth ratio yields the equilibrium interest rate:
 \begin{align}\label{eq:interest_rate}
-    r_t &= \rho + \psi^{-1} (\mu_{P_Y,t} + \xi_t )
-    + (1-\psi^{-1}) \sum_{j=0}^J x_{j,t} 
-        \frac{\gamma_j \alpha_{j,t}^2}{2} \|\sigma_{R,t}\|^2
+    r_t &= \rho 
+    + \psi^{-1} \left(\mu_{P_Y,t} + \xi_t \right)
+    + (1-\psi^{-1}) \sum_{j=0}^2 x_{j,t} 
+        \frac{\gamma_j \alpha_{j,t}^2}{2} \|\sigma_{R_Y,t}\|^2
     - \pi_{Y,t},
 \end{align}
-where $\xi_t \equiv \sum_{j=0}^J x_{j,t} \xi_{j,t}$.  
-The first two terms reflect impatience and intertemporal substitution, while the third term captures precautionary savings.
+where $\xi_t \equiv \sum_{j=0}^2 x_{j,t} \, \xi_{j,t}$.
 
-\paragraph{Pricing condition.} 
+The first term reflects time preference.
+The second term captures intertemporal substitution through expected capital gains and changes in investment opportunities.
+The third term captures precautionary savings and depends on the distribution of risk exposures across investors.
+The final term reflects the effect of risk premia on the interest rate.
 
-Let $p_{D,t} \equiv P_{D,t}/D_t$ and $p_{B,t} \equiv P_{B,t}/B_t$ denote the price-dividend ratios of the dividend and bond claims, respectively. 
-The price-dividend ratio of the aggregate claim, $p_{Y,t} \equiv P_{Y,t}/Y_t$, is given by $p_{Y,t} = s_t p_{D,t} + (1-s_t) p_{B,t}$.
+This expression highlights that the interest rate is determined jointly by risk premia and the allocation of risk across investors, providing the key general equilibrium link between portfolio flows and saving behavior.
 
-The pricing condition for each claim is given by:
+
+\paragraph{Pricing condition.}
+
+Let $p_{D,t} \equiv P_{D,t}/D_{t}$ and $p_{B,t} \equiv P_{B,t}/B_{t}$ denote the price-dividend ratios of the dividend and corporate bond claims, respectively. 
+The price-dividend ratio of the aggregate claim is $p_{Y,t} \equiv P_{Y,t}/Y_t$, which satisfies $p_{Y,t} = s_t p_{D,t} + (1-s_t) p_{B,t}$.
+
+The pricing condition for each claim $k$ is given by
 \begin{equation}\label{eq:pricing_cond}
-    \frac{1}{p_{k,t}} = r_t + \pi_{k,t} - (\mu_{k,t} + \mu_{p_k,t} + \sigma \sigma_{p_k,t}^\top),
+    \frac{1}{p_{k,t}} = r_t + \pi_{k,t} - \big(\mu_{k,t} + \mu_{p_k,t} + \sigma \, \sigma_{p_k,t}^\top\big),
 \end{equation}
-where $\pi_{k,t}= \sigma_{R_k,t}\eta_t^\top$ is the risk premium on claim $k$, $\mu_{p_k,t}$ is the drift of the price-dividend ratio, and $\sigma_{p_k,t}$ is the diffusion of the price-dividend ratio.
+where $\pi_{k,t} = \sigma_{R_k,t} \, \eta_t^\top$ is the risk premium on claim $k$ implied by no arbitrage.
+The terms $\mu_{p_k,t}$ and $\sigma_{p_k,t}$ denote the drift and diffusion of the price-dividend ratio, respectively.
 
+% Equation~\eqref{eq:pricing_cond} links asset prices to expected returns, risk premia, and the dynamics of valuation ratios.
+% It provides the key condition determining how prices respond to changes in investment opportunities.
 
-\paragraph{State variables.} 
-We have two endogenous state variables, $x_{1,t}$ and $x_{2,t}$, which summarize the wealth distribution in this economy, and two exogenous state variables, $\overline{\alpha}_{p,t}$ and $s_t$, which capture the portfolio choice of passive investors and the dividend share, respectively. 
-Hence, the aggregate state vector is $X_t = (x_t, \overline{\alpha}_{p,t}, s_t)$, where $x_t = (x_{1,t}, x_{2,t})$. 
-The law of motion of $\overline{\alpha}_{p,t}$ is given by \eqref{eq:alpha_p_process} and the law of motion of $s_t$ is given by \eqref{eq:s_process}. 
+\paragraph{State variables.}
 
-By It\^{o}'s lemma, the law of motion for $x_{j,t}$ is
+The aggregate state vector consists of both endogenous and exogenous variables.
+The endogenous state variables are the wealth shares of active investors, $x_{1,t}$ and $x_{2,t}$, which summarize the distribution of wealth.
+The exogenous state variables are the passive portfolio share $\overline{\alpha}_{p,t}$ and the dividend share $s_t$.
+
+Hence, the aggregate state vector is $X_t = (x_t, \overline{\alpha}_{p,t}, s_t)$, where $x_t = (x_{1,t}, x_{2,t})$.
+The processes $\overline{\alpha}_{p,t}$ and $s_t$ evolve according to \eqref{eq:alpha_p_process} and \eqref{eq:s_process}, respectively.
+
+By It\^{o}'s lemma, the law of motion for $x_{j,t}$ is given by
 \begin{align*}
     \frac{dx_{j,t}}{x_{j,t}} 
     &= \Big[ r_t + \pi_t^\top \alpha_{j,t} - c_{j,t} - \mu_{P_Y,t} 
-        - (\sigma_{j,t} - \sigma_{R_Y,t}) \sigma_{R_Y,t}^\top 
-        + \kappa \frac{\omega_j - x_{j,t}}{x_{j,t}} \Big] dt  + (\sigma_{j,t} - \sigma_{R_Y,t})\, dZ_t.
+        - (\sigma_{j,t} - \sigma_{R_Y,t}) \, \sigma_{R_Y,t}^\top 
+        + \kappa \frac{\omega_j - x_{j,t}}{x_{j,t}} \Big] dt  
+        + (\sigma_{j,t} - \sigma_{R_Y,t}) \, dZ_t.
 \end{align*}
 
+% This expression shows that wealth shares evolve with relative returns, consumption decisions, and exposure to aggregate shocks.
+% The final term reflects mean reversion due to the demographic structure.
 
 
 % The aggregate state is $X_t = (x_t, \overline{\alpha}_{p,t})$, where $x_t = (x_{1,t}, x_{2,t}, \ldots, x_{J,t})$ and $\overline{\alpha}_{p,t}$ evolves as in \eqref{eq:alpha_p_process}. By It\^{o}'s lemma, the law of motion for $x_{j,t}$ is
@@ -826,6 +880,46 @@ By It\^{o}'s lemma, the law of motion for $x_{j,t}$ is
 % \end{equation}
 % where $\eta_{j,t} \equiv \gamma_j \left[\Sigma_{j,t} + \frac{1 - \gamma_j^{-1}}{1-\psi} \sigma_{c_j,t}\right] + \frac{\nu_{j,t}}{1-\psi} \Sigma_{j,t}$ is investor $j$'s marginal price of risk. That is, each investor's marginal valuation of risk is equalized to the market price of risk $\eta_t$.
 
+\paragraph{Endogenous volatility.} 
+
+Return volatility has both a cash-flow and a valuation component, $\sigma_{R_k,t} = \sigma_{k,t} + \sigma_{p_k,t}$, where $\sigma_{k,t}$ reflects cash-flow volatility and $\sigma_{p_k,t}$ arises from movements in the price-dividend ratio $p_{k,t}$ for asset $k \in \{D,B\}$. 
+By It\^{o}'s lemma,  
+\begin{equation}\label{eq:_endogenous_vol}
+    \sigma_{p_k,t} = \frac{p_{k,x}(X_t)}{p_{k,t}(X_t)} \sigma_{x,t} 
+    + \frac{p_{k,\overline{\alpha}_p}(X_t)}{p_{k,t}(X_t)} \sigma_{\overline{\alpha}_p,t} 
+    + \frac{p_{k,s}(X_t)}{p_{k,t}(X_t)} \sigma_{s,t}.
+\end{equation}
+
+Equation~\eqref{eq:_endogenous_vol} shows that endogenous volatility depends on the sensitivity of the price-dividend ratio to three variables: (i) the wealth distribution, (ii) the passive portfolio share, and (iii) the dividend share.
+The first term is standard in heterogeneous-agent models \citep[see][]{panageas2020implications}.
+The third term is typical of models with multiple assets.
+The second term arises only in the presence of exogenous portfolio flow shocks.
+This second term is quantitatively important when markets are sufficiently inelastic, that is, when price-dividend ratios are highly sensitive to changes in passive demand.
+Thus, \eqref{eq:_endogenous_vol} provides a direct link between market elasticity and return volatility, as lower elasticity amplifies the sensitivity of prices to portfolio flows and therefore increases endogenous volatility.
+
+Given the volatility of individual claims, the volatility of the aggregate claim follows from aggregation:
+\[
+\sigma_{R_Y,t} = \sum_{k=D,B} \frac{P_{k,t}}{P_{Y,t}} \sigma_{R_{k},t}.
+\]
+
+It remains to determine $\sigma_{R_F,t}$.  
+We assume that $\sigma_{R_F,t}$ does not load on the dividend-share shock, so $\sigma_{R_F,t,3} = 0$.
+We also assume that $\sigma_{R_F,t}$ is orthogonal to the aggregate claim, so $\sigma_{R_F,t}\,\sigma_{R_Y,t}^\top = 0$, and 
+we adopt the normalization $\|\sigma_{R_F,t}\| = \|\sigma_{R_Y,t}\|$. 
+These conditions uniquely determine $\sigma_{R_F,t}$ given $\sigma_{R_Y,t}$.
+
+\paragraph{Markov equilibrium.} 
+
+Equations \eqref{eq:market_price_of_risk} and \eqref{eq:interest_rate} allow us to express the market price of risk $\eta_t$ and the interest rate $r_t$ as functions of the consumption-wealth ratios $c_j(X_t)$ and the valuation ratios $p_k(X_t)$.
+Using It\^{o}'s lemma, the drift and diffusion terms $(\mu_{c_j,t}, \mu_{p_k,t})$ and $(\sigma_{c_j,t}, \sigma_{p_k,t})$ can be written as functions of the state dynamics $(\mu_{X,t}, \sigma_{X,t})$.
+
+Substituting these expressions into the HJB equation \eqref{eq:HJB_complete} and the pricing condition \eqref{eq:pricing_cond}, together with the laws of motion for the state variables, yields a system of five partial differential equations.
+
+These equations jointly determine the consumption-wealth ratios $\{c_j(X_t)\}_{j=0}^2$ and the price-dividend ratios $\{p_k(X_t)\}_{k \in \{D,B\}}$ as functions of four state variables:
+the two active wealth shares $x_{1,t}$ and $x_{2,t}$, the passive portfolio share $\overline{\alpha}_{p,t}$, and the dividend share $s_t$.
+
+\subsubsection{Mutual fund separation equilibrium}\label{sec:pricing_claims}
+
 % \paragraph{Mutual fund theorem.}
 % The availability of three tradable assets (the dividend claim, the bond claim, and the derivative) raises the question of whether the decomposition of the aggregate endowment into separate claims affects equilibrium allocations. The following proposition shows that it does not.
 
@@ -871,34 +965,6 @@ By It\^{o}'s lemma, the law of motion for $x_{j,t}$ is
 % \]
 % is a forward-looking term capturing how expected shifts in $c_{j,t}$ affect consumption choices.
 % The consumption--wealth ratio depends both on current investment opportunities, summarized by $r_t + \pi_t \alpha_{j,t} - \frac{\gamma_j}{2} \alpha_{j,t}^2 \|\sigma_{R,t}\|^2$, and on future opportunities, summarized by $\xi_{j,t}$. 
-
-\paragraph{Endogenous volatility.} 
-
-Return volatility has both an exogenous and an endogenous component, $\sigma_{R_k,t} = \sigma_{k,t} + \sigma_{p_k,t}$, where $\sigma_{k,t}$ reflects cash-flow volatility and $\sigma_{p_k,t}$ arises from movements in the price-dividend ratio $p_{k,t}$ for asset $k \in \{D,B\}$. 
-By It\^{o}'s lemma,  
-\begin{equation}\label{eq:_endogenous_vol}
-    \sigma_{p_k,t} = \frac{p_{k,x}(X_t)}{p_{k,t}(X_t)} \sigma_{x,t} 
-    + \frac{p_{k,\overline{\alpha}_p}(X_t)}{p_{k,t}(X_t)} \sigma_{\overline{\alpha}_p,t} + \frac{p_{k,s}(X_t)}{p_{k,t}(X_t)} \sigma_{s,t}.
-\end{equation}
-
-Equation~\eqref{eq:_endogenous_vol} shows that endogenous volatility depends on the response of the price-dividend ratio to changes in i) the wealth distribution, ii) the passive portfolio, and iii) the dividend share.
-The first term is standard in heterogeneous-agent models \citep[see][]{panageas2020implications} and the third term is typical of models with multiple assets, while the second arises only with exogenous portfolio flow shocks and is quantitatively relevant when markets are sufficiently inelastic (i.e., when $\frac{p_{\overline{\alpha}_p}(X_t)}{p(X_t)}$ is large). Thus, \eqref{eq:_endogenous_vol} links market elasticity to return volatility $\|\sigma_{R_k,t}\|$.
-
-Equation~\eqref{eq:_endogenous_vol} plays a key role connecting portfolio flows, market elasticity, and excess volatility.
-
-Given $\sigma_{R_{k},t}$, we can recover $\sigma_{R_Y,t}$ using the condition $\sigma_{R_Y,t} = \sum_{k=D,B} \frac{P_{k,t}}{P_{Y,t}} \sigma_{R_{k},t}$.
-It remains to determine $\sigma_{R_F,t}$.  
-We assume that $\sigma_{R_F,t}$ does not load on the dividend-share shock, so $\sigma_{R_F,t,3} = 0$.
-We also assume that $\sigma_{R_F,t}$ is orthogonal to the aggregate claim, so $\sigma_{R_F,t}\,\sigma_{R_Y,t}^\top = 0$, and 
-we adopt the normalization $\|\sigma_{R_F,t}\| = \|\sigma_{R_Y,t}\|$. 
-These three conditions uniquely pin down $\sigma_{R_F,t}$ given $\sigma_{R_Y,t}$.
-
-\paragraph{Markov equilibrium.} 
-Equations \eqref{eq:market_price_of_risk} and \eqref{eq:interest_rate} allow us to express $\lambda_t$ and $r_t$ in terms of $c_{j,t}$, $p_{k,t}$, and their derivatives, once $(\mu_{c_j,t}, \mu_{p_k,t})$ and $(\sigma_{c_j,t}, \sigma_{p_k,t})$ are written as functions of $(\mu_{X,t}, \sigma_{X,t})$ via It\^{o}'s lemma. 
-Substituting these into \eqref{eq:HJB_complete} and \eqref{eq:pricing_cond}, together with the laws of motion for the state variables, yields a system of five PDEs in $\{c_j(X_t)\}_{j=0}^2$ and $p(X_t)$. These functions depend on four state variables: the two active wealth shares $x_{1,t}$ and $x_{2,t}$, the passive portfolio share $\overline{\alpha}_{p,t}$, and the dividend share $s_t$.  
-
-
-\subsection{Mutual fund separation equilibrium}\label{sec:pricing_claims}
 
 By Proposition~\ref{prop:mft}, the stochastic discount factor depends only on the aggregate state $X_t$ and is independent of the dividend share $s_t$. Individual claim prices can therefore be determined in a second step, conditional on the equilibrium objects $r(X_t)$ and $\eta(X_t)$ from the aggregate economy.
 
