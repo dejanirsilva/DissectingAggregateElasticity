@@ -406,7 +406,9 @@ The aggregate endowment $Y_t$ follows a geometric Brownian motion:
 \begin{equation}\label{eq:agg_endow}
     \frac{dY_t}{Y_t} = \mu\,dt + \sigma\,dZ_t,
 \end{equation}
-where $\mu \in \mathbb{R}$ and $\sigma \in \mathbb{R}^{1\times d}$ are constants.
+where $\mu \in \mathbb{R}$ and $\sigma \in \mathbb{R}^{1\times d}$ are constants.\footnote{
+    Throughout the paper, we adopt the convention that loadings on the Brownian motion are row vectors.
+}
 The process $Z=\{Z_t\}_{t\ge0}$ is a standard $d$-dimensional Brownian motion on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_t)_{t\ge0},\mathbb{P})$ satisfying the usual conditions.
 In the baseline model, $d = 3$, capturing three sources of risk: (i) aggregate endowment shocks, (ii) portfolio-flow shocks to passive investors, and (iii) shocks to the dividend share.
 % We focus on the case $\sigma = [\sigma_1, 0, 0]$, so the first shock can be interpreted as a shock to the aggregate endowment.
@@ -453,14 +455,16 @@ The return on the aggregate claim follows:
 \end{equation}
 
 Investors also have access to a risk-free asset paying rate $r_t$ and, to ensure markets are dynamically complete, a derivative in zero net supply that spans risks not directly traded through the dividend and bond claims. 
+As in a futures contract, there is no initial cash exchange to enter into the contract.
 The derivative provides risk exposure $\sigma_{R_F,t} \in \mathbb{R}^{1\times d}$, orthogonal to the aggregate claim, $\sigma_{R_F,t}\,\sigma_{R_Y,t}^\top = 0$, so that it provides independent risk exposure, with normalization $\|\sigma_{R_F,t}\| = \|\sigma_{R_Y,t}\|$.
 
-\paragraph{Stochastic discount factor.} Absence of arbitrage implies the existence of a stochastic discount factor (SDF), $\eta_t$, which prices all assets in the economy:
+\paragraph{Stochastic discount factor.} Absence of arbitrage implies the existence of a stochastic discount factor (SDF), $\Lambda_t$, which prices all assets in the economy:
 \begin{equation}
-    \frac{d\eta_t}{\eta_t} = -r_t\,dt - \lambda_t\,dZ_t,
+    \frac{d\Lambda_t}{\Lambda_t} = -r_t\,dt - \eta_t\,dZ_t,
 \end{equation}
-where $\lambda_t \in \mathbb{R}^{1\times d}$ is the market price of risk vector. Risk premia satisfy $\pi_{k,t} = \sigma_{R_k,t}\,\lambda_t^\top$ for each claim $k \in \{D,B,F\}$.
+where $\eta_t \in \mathbb{R}^{1\times d}$ is the market price of risk vector. 
 
+Absence of arbitrage implies that risk premia satisfy $\pi_{k,t} = \sigma_{R_k,t}\,\eta_t^\top$ for each claim $k \in \{D,B,F\}$.
 Let $\Sigma_t$ denote the $3 \times 3$ matrix collecting the risk exposures of all traded assets:
 \begin{equation}
     \Sigma_t = \begin{pmatrix}
@@ -469,9 +473,9 @@ Let $\Sigma_t$ denote the $3 \times 3$ matrix collecting the risk exposures of a
         \sigma_{R_F,t}
     \end{pmatrix},
 \end{equation}
-and $\pi_t \equiv [\pi_{D,t}, \pi_{B,t}, \pi_{F,t}]^\top$, so that $\pi_t = \Sigma_t\,\lambda_t^\top$.
+and $\pi_t \equiv [\pi_{D,t}, \pi_{B,t}, \pi_{F,t}]^\top$, so that $\pi_t = \Sigma_t\,\eta_t^\top$.
 
-In equilibrium, prices depend on an aggregate state vector $X_t \in \mathbb{R}^N$, so we write $r_t = r(X_t)$, $\lambda_t = \lambda(X_t)$, and return coefficients as functions of $X_t$. The state vector evolves as
+In equilibrium, prices depend on an aggregate state vector $X_t \in \mathbb{R}^N$, so we write $r_t = r(X_t)$, $\eta_t = \eta(X_t)$, and return coefficients as functions of $X_t$. The state vector evolves as
 \begin{equation}\label{eq:state_dynamics}
     dX_t = \mu_{X,t}\,dt + \sigma_{X,t}\,dZ_t,
 \end{equation}
@@ -546,7 +550,7 @@ Type-1 investors are more risk averse and do not face a leverage constraint.
 \paragraph{Investors' problem.}
 
 % An investor of type $j = 0,1,2$ chooses consumption $C_{j,t}$ and portfolio allocations $\alpha_{j,t} \equiv [\alpha_{j,D,t}, \alpha_{j,B,t}, \alpha_{j,F,t}]^\top$ to solve the following problem:
-An investor of type $j = 0,1,2$ chooses consumption $C_{j,t}$ and portfolio allocations $\alpha_{j,t}$, where $\alpha_{j,t} \equiv [\alpha_{j,D,t}, \alpha_{j,B,t}, \alpha_{j,F,t}]^\top$, to solve the following problem:
+An investor of type $j = 0,1,2$ chooses consumption $C_{j,t}$ and portfolio allocations $\alpha_{j,t}$ to solve the problem:
 \begin{equation}\label{eq:inv-problem}
     V_{j,t} = \max_{C_{j,t},\alpha_{j,t}} 
     \mathbb{E}_t \left[ \int_t^\infty f_j(C_{j,s},V_{j,s})\, ds \right], \qquad s.t.
@@ -559,7 +563,7 @@ with $W_{j,t} \geq 0$ and $\alpha_{j,t} \in \Omega_{j,t}$,
 where $\sigma_{j,t} = \alpha_{j,t}^ \top \Sigma_{t}$ is the investor's risk exposure,
 $W_{j,t}$ denotes the investor's wealth, and $\Omega_{j,t}$ is the investment set for type-$j$ investor.
 
-Portfolio allocations are restricted to lie in an investment set $\Omega_{j,t}$, which depends on investor type and captures differences in financial constraints across investors.\footnote{
+Portfolio allocations are restricted to lie in an \textit{investment set} $\Omega_{j,t}$, which depends on investor type and captures differences in financial constraints across investors.\footnote{
     The differences in investment sets here are reminiscent of the difference in the investment universe emphasized by \citet{Koijen/Yogo/19}.
     }
 For passive investors, $j=0$, holdings of the market index fund induce indirect holdings of the dividend and bond claims, so their investment set is given by:
@@ -613,14 +617,23 @@ The notional position in the derivative is $F_{j,t} = \alpha_{j,F,t} W_{j,t}$.\f
 
 \subsection{Equilibrium characterization}\label{sec:equilibrium-char}
 
-We first present the investors' optimality conditions, then establish a version of the \textit{mutual fund theorem} in our economy with frictions, which simplifies the equilibrium characterization.
+We now characterize equilibrium in the dynamic model.
+The key step is to derive the optimality conditions that govern portfolio choice and consumption decisions and their implications for asset pricing.
+We then establish a version of the \textit{mutual fund theorem} in our economy with frictions.
+This result shows that, despite the presence of multiple traded assets, equilibrium allocations can be summarized in terms of aggregate risk exposures.
+As a result, the equilibrium reduces to a tractable representation that will be central for our analysis of aggregate market elasticity.
 
-\paragraph{Value function and consumption-wealth ratio.} With homothetic preferences, investor $j$'s value function can be written as
-\begin{equation}\nonumber
+\paragraph{Value function and consumption-wealth ratio.}
+
+With homothetic preferences, investor $j$'s value function can be written as
+\begin{equation}
     V_{j,t} = \left( \frac{c_{j,t}}{\rho^\psi} \right)^{\frac{1-\gamma_j}{1-\psi}} 
-    \frac{W_{j,t}^{1-\gamma_j}}{1-\gamma_j}, \qquad \text{where} \qquad \frac{dc_{j,t}}{c_{j,t}} = \mu_{c_j,t}\, dt + \sigma_{c_j,t}\, dZ_t,
+    \frac{W_{j,t}^{1-\gamma_j}}{1-\gamma_j},
+    \qquad
+    \text{where} \qquad 
+    \frac{dc_{j,t}}{c_{j,t}} = \mu_{c_j,t}\, dt + \sigma_{c_j,t}\, dZ_t.
 \end{equation}
-and $c_{j,t} = c_j(X_t)$ corresponds to the consumption-wealth ratio: $C_{j,t}/W_{j,t} = c_{j,t}$.
+The function $c_{j,t} = c_j(X_t)$ denotes the consumption-wealth ratio, so that $C_{j,t}/W_{j,t} = c_{j,t}$.
 
 From the Hamilton-Jacobi-Bellman equation, the consumption-wealth ratio satisfies
 \begin{equation}\label{eq:HJB_complete}
@@ -628,66 +641,90 @@ From the Hamilton-Jacobi-Bellman equation, the consumption-wealth ratio satisfie
     + (1-\psi) \left[ r_t + \pi_{t}^\top\,\alpha_{j,t} - \frac{\gamma_j}{2} \|\sigma_{j,t}\|^2 \right] 
     + \xi_{j,t},
 \end{equation}
-where 
+where $\sigma_{j,t} = \alpha_{j,t}^\top \Sigma_t$ is the investor's risk exposure.
+The first term reflects time preference, while the second term captures the impact of current investment opportunities on consumption.
+
+The term $\xi_{j,t}$ is given by
 \[
-    \xi_{j,t} \equiv \mu_{c_j,t} 
+    \xi_{j,t} = \mu_{c_j,t} 
     + (1-\gamma_j) \sigma_{c_j,t} \sigma_{j,t}^\top 
     + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}.
 \]
+This term captures the effect of changes in future investment opportunities on current consumption decisions.
 
-\paragraph{Optimal portfolio and derivative exposure.} 
-An active investor chooses $\alpha_{j,t}$ to maximize the right-hand side of \eqref{eq:HJB_complete} subject to $\|\sigma_{j,t}\|\le\overline{\sigma}$. 
-Let $\nu_{j,t}\ge 0$ denote the Lagrange multiplier on the leverage constraint. The first-order conditions imply
-\begin{equation}\label{eq:foc_lambda}
-    \lambda_{j,t} = \lambda_t,
+As in Section~\ref{sec:simple}, the consumption-wealth ratio depends on both the interest rate $r_t$ and the risk premium $\pi_t$.
+Importantly, it also depends on the investor's portfolio choice $\alpha_{j,t}$ through risk exposure.
+Finally, $\xi_{j,t}$ acts as a state-dependent shifter, and it is equal to zero when investment opportunities are constant.
+
+\paragraph{Optimal risk exposure share.}
+The optimal risk exposure for active investors $j = 1,2$ is given by
+\begin{equation}
+    \sigma_{j,t}
+    = \frac{1}{1+\nu_{j,t}} \left[ \frac{\eta_t}{\gamma_j} + \frac{1-\gamma_j^{-1}}{\psi-1} \, \sigma_{c_j,t} \right],
 \end{equation}
-where $\lambda_{j,t} \equiv \gamma_j \left[\Sigma_{j,t} + \frac{1 - \gamma_j^{-1}}{1-\psi} \sigma_{c_j,t}\right] + \frac{\nu_{j,t}}{1-\psi} \Sigma_{j,t}$ is investor $j$'s marginal price of risk. That is, each investor's marginal valuation of risk is equalized to the market price of risk $\lambda_t$.
+where $\nu_{j,t}$ is the Lagrange multiplier on the leverage constraint, so $\nu_{j,t} \ge 0$ and $\nu_{1,t} = 0$.
+When the leverage constraint is not binding, the optimal risk exposure is the sum of two components.
+The first is the myopic demand, $\frac{\eta_t}{\gamma_j}$, which depends on the investor's risk tolerance and the vector of market prices of risk $\eta_t$.
+This term captures the compensation per unit of exposure to each risk factor: $\eta_t^\top = \Sigma_t^{-1} \pi_t$.
+The second is the hedging demand, $\frac{1-\gamma_j^{-1}}{\psi-1} \, \sigma_{c_j,t}$, which reflects the investor's desire to hedge fluctuations in future investment opportunities.
+When the constraint binds, the multiplier $\nu_{j,t} > 0$ scales down exposure uniformly across all risk factors to satisfy $\|\sigma_{j,t}\| \le \overline{\sigma}$.
+This acts like an endogenous increase in effective risk aversion.
+Given the optimal risk exposure, the optimal portfolio shares are recovered as $\alpha_{j,t}^\top = \sigma_{j,t} \, \Sigma_t^{-1}$.
 
-\paragraph{Mutual fund theorem.}
-The availability of three tradable assets (the dividend claim, the bond claim, and the derivative) raises the question of whether the decomposition of the aggregate endowment into separate claims affects equilibrium allocations. The following proposition shows that it does not.
 
-\begin{prop}[Mutual fund theorem]\label{prop:mft}
-Let $(c_{j,t}^*, \alpha_{j,t}^*, \theta_{j,t}^*)$ denote the equilibrium allocation in the economy with a single claim on the aggregate endowment and a derivative. Then the equilibrium of the economy with separate dividend and bond claims is given by:
-\begin{enumerate}[label=(\roman*)]
-    \item $c_{j,t} = c_{j,t}^*$ for all $j$;
-    \item $\alpha_{j,D,t} = \omega_{D,t}\,\alpha_{j,t}^*$ and $\alpha_{j,B,t} = \omega_{B,t}\,\alpha_{j,t}^*$ for all active $j$;
-    \item $\theta_{j,t} = \theta_{j,t}^*$ for all $j$.
-\end{enumerate}
-All investors hold the dividend and bond claims in market-capitalization weights.
-\end{prop}
+% \paragraph{Optimal portfolio and derivative exposure.} 
+% An active investor chooses $\alpha_{j,t}$ to maximize the right-hand side of \eqref{eq:HJB_complete} subject to $\|\sigma_{j,t}\|\le\overline{\sigma}$. 
+% Let $\nu_{j,t}\ge 0$ denote the Lagrange multiplier on the leverage constraint. The first-order conditions imply
+% \begin{equation}\label{eq:foc_eta}
+%     \eta_{j,t} = \eta_t,
+% \end{equation}
+% where $\eta_{j,t} \equiv \gamma_j \left[\Sigma_{j,t} + \frac{1 - \gamma_j^{-1}}{1-\psi} \sigma_{c_j,t}\right] + \frac{\nu_{j,t}}{1-\psi} \Sigma_{j,t}$ is investor $j$'s marginal price of risk. That is, each investor's marginal valuation of risk is equalized to the market price of risk $\eta_t$.
 
-The proof proceeds by verification. Under the conjectured allocation, each investor's total risk exposure becomes $\Sigma_{j,t} = \alpha_{j,t}^*\,\sigma_{R_Y,t} + \theta_{j,t}^*\,\sigma_{R_F,t}$, which has zero loading on the dividend-share shock (the third Brownian component). Since the risk premium on the aggregate claim satisfies $\pi_{Y,t} = \omega_{D,t}\,\pi_{D,t} + \omega_{B,t}\,\pi_{B,t}$ and the aggregate return exposure satisfies $\sigma_{R_Y,t} = \omega_{D,t}\,\sigma_{R_D,t} + \omega_{B,t}\,\sigma_{R_B,t}$, it follows that $c_{j,t} = c_{j,t}^*$ satisfies the HJB equation. The first-order conditions and all market clearing conditions are also satisfied, as the value-weighted sum of market-cap-weighted claims replicates the aggregate endowment.
+% \paragraph{Mutual fund theorem.}
+% The availability of three tradable assets (the dividend claim, the bond claim, and the derivative) raises the question of whether the decomposition of the aggregate endowment into separate claims affects equilibrium allocations. The following proposition shows that it does not.
 
-Proposition~\ref{prop:mft} has two important implications. First, the stochastic discount factor, risk-free rate, and aggregate risk premium depend only on the aggregate state $X_t$ and are independent of the dividend share $s_t$. The perturbation analysis of Section~\ref{sec:elasticity} therefore applies directly to the aggregate equilibrium. Second, individual claim prices can be computed in a second step, by solving a valuation equation conditional on the aggregate equilibrium, as described in Section~\ref{sec:pricing_claims}.
+% \begin{prop}[Mutual fund theorem]\label{prop:mft}
+% Let $(c_{j,t}^*, \alpha_{j,t}^*, \theta_{j,t}^*)$ denote the equilibrium allocation in the economy with a single claim on the aggregate endowment and a derivative. Then the equilibrium of the economy with separate dividend and bond claims is given by:
+% \begin{enumerate}[label=(\roman*)]
+%     \item $c_{j,t} = c_{j,t}^*$ for all $j$;
+%     \item $\alpha_{j,D,t} = \omega_{D,t}\,\alpha_{j,t}^*$ and $\alpha_{j,B,t} = \omega_{B,t}\,\alpha_{j,t}^*$ for all active $j$;
+%     \item $\theta_{j,t} = \theta_{j,t}^*$ for all $j$.
+% \end{enumerate}
+% All investors hold the dividend and bond claims in market-capitalization weights.
+% \end{prop}
 
-In light of Proposition~\ref{prop:mft}, we characterize the aggregate equilibrium in terms of the total risky share $\alpha_{j,t} \equiv \alpha_{j,D,t} + \alpha_{j,B,t}$, the risk premium on the aggregate claim $\pi_t \equiv \mu_{R_Y,t} - r_t$, and the return exposure $\sigma_{R,t} \equiv \sigma_{R_Y,t}$.
+% The proof proceeds by verification. Under the conjectured allocation, each investor's total risk exposure becomes $\Sigma_{j,t} = \alpha_{j,t}^*\,\sigma_{R_Y,t} + \theta_{j,t}^*\,\sigma_{R_F,t}$, which has zero loading on the dividend-share shock (the third Brownian component). Since the risk premium on the aggregate claim satisfies $\pi_{Y,t} = \omega_{D,t}\,\pi_{D,t} + \omega_{B,t}\,\pi_{B,t}$ and the aggregate return exposure satisfies $\sigma_{R_Y,t} = \omega_{D,t}\,\sigma_{R_D,t} + \omega_{B,t}\,\sigma_{R_B,t}$, it follows that $c_{j,t} = c_{j,t}^*$ satisfies the HJB equation. The first-order conditions and all market clearing conditions are also satisfied, as the value-weighted sum of market-cap-weighted claims replicates the aggregate endowment.
 
-\paragraph{Optimal portfolio share.}
-The optimal total risky share for an active investor is
-\begin{equation}\label{eq:portfolio_share}
-    \alpha_{j,t} = \min \left\{ 
-        \frac{\pi_t}{\gamma_j \|\sigma_{R,t}\|^2} + \varsigma_{j,t}, \,
-        \frac{\overline{\sigma}}{\|\sigma_{R,t}\|} 
-    \right\},
-\end{equation}
-where $\varsigma_{j,t} \equiv \frac{1-\gamma_j^{-1}}{\psi-1} 
-\dfrac{\sigma_{c_j,t} \sigma_{R,t}^\top}{\|\sigma_{R,t}\|^2}$ is the hedging component. The myopic demand, $\frac{\pi_t}{\gamma_j \|\sigma_{R,t}\|^2}$, reflects the investor's risk tolerance, while the hedging demand captures the covariance between $c_{j,t}$ and risky returns. The leverage constraint caps exposure at $\overline{\sigma}/\|\sigma_{R,t}\|$.
+% Proposition~\ref{prop:mft} has two important implications. First, the stochastic discount factor, risk-free rate, and aggregate risk premium depend only on the aggregate state $X_t$ and are independent of the dividend share $s_t$. The perturbation analysis of Section~\ref{sec:elasticity} therefore applies directly to the aggregate equilibrium. Second, individual claim prices can be computed in a second step, by solving a valuation equation conditional on the aggregate equilibrium, as described in Section~\ref{sec:pricing_claims}.
 
-From the Hamilton-Jacobi-Bellman equation, the consumption-wealth ratio is
-\begin{equation}\label{eq:xi_j}
-    c_{j,t} = \psi \rho 
-    + (1-\psi) \left[ r_t + \pi_t \alpha_{j,t} 
-        - \frac{\gamma_j}{2} \|\sigma_{R,t}\|^2 \alpha_{j,t}^2 \right] 
-    + \xi_{j,t},
-\end{equation}
-where 
-\[
-    \xi_{j,t} \equiv \mu_{c_j,t} 
-    + (1-\gamma_j) \sigma_{c_j,t} \sigma_{R,t}^\top \alpha_{j,t} 
-    + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}
-\]
-is a forward-looking term capturing how expected shifts in $c_{j,t}$ affect consumption choices.
-The consumption--wealth ratio depends both on current investment opportunities, summarized by $r_t + \pi_t \alpha_{j,t} - \frac{\gamma_j}{2} \alpha_{j,t}^2 \|\sigma_{R,t}\|^2$, and on future opportunities, summarized by $\xi_{j,t}$. 
+% In light of Proposition~\ref{prop:mft}, we characterize the aggregate equilibrium in terms of the total risky share $\alpha_{j,t} \equiv \alpha_{j,D,t} + \alpha_{j,B,t}$, the risk premium on the aggregate claim $\pi_t \equiv \mu_{R_Y,t} - r_t$, and the return exposure $\sigma_{R,t} \equiv \sigma_{R_Y,t}$.
+
+% \paragraph{Optimal portfolio share.}
+% The optimal total risky share for an active investor is
+% \begin{equation}\label{eq:portfolio_share}
+%     \alpha_{j,t} = \min \left\{ 
+%         \frac{\pi_t}{\gamma_j \|\sigma_{R,t}\|^2} + \varsigma_{j,t}, \,
+%         \frac{\overline{\sigma}}{\|\sigma_{R,t}\|} 
+%     \right\},
+% \end{equation}
+% where $\varsigma_{j,t} \equiv \frac{1-\gamma_j^{-1}}{\psi-1} 
+% \dfrac{\sigma_{c_j,t} \sigma_{R,t}^\top}{\|\sigma_{R,t}\|^2}$ is the hedging component. The myopic demand, $\frac{\pi_t}{\gamma_j \|\sigma_{R,t}\|^2}$, reflects the investor's risk tolerance, while the hedging demand captures the covariance between $c_{j,t}$ and risky returns. The leverage constraint caps exposure at $\overline{\sigma}/\|\sigma_{R,t}\|$.
+
+% From the Hamilton-Jacobi-Bellman equation, the consumption-wealth ratio is
+% \begin{equation}\label{eq:xi_j}
+%     c_{j,t} = \psi \rho 
+%     + (1-\psi) \left[ r_t + \pi_t \alpha_{j,t} 
+%         - \frac{\gamma_j}{2} \|\sigma_{R,t}\|^2 \alpha_{j,t}^2 \right] 
+%     + \xi_{j,t},
+% \end{equation}
+% where 
+% \[
+%     \xi_{j,t} \equiv \mu_{c_j,t} 
+%     + (1-\gamma_j) \sigma_{c_j,t} \sigma_{R,t}^\top \alpha_{j,t} 
+%     + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}
+% \]
+% is a forward-looking term capturing how expected shifts in $c_{j,t}$ affect consumption choices.
+% The consumption--wealth ratio depends both on current investment opportunities, summarized by $r_t + \pi_t \alpha_{j,t} - \frac{\gamma_j}{2} \alpha_{j,t}^2 \|\sigma_{R,t}\|^2$, and on future opportunities, summarized by $\xi_{j,t}$. 
 
 \paragraph{Pricing condition.} 
 
@@ -762,7 +799,7 @@ Equations \eqref{eq:sharpe_ratio} and \eqref{eq:interest_rate} allow us to expre
 
 \subsection{Pricing the dividend and risky debt claims}\label{sec:pricing_claims}
 
-By Proposition~\ref{prop:mft}, the stochastic discount factor depends only on the aggregate state $X_t$ and is independent of the dividend share $s_t$. Individual claim prices can therefore be determined in a second step, conditional on the equilibrium objects $r(X_t)$ and $\lambda(X_t)$ from the aggregate economy.
+By Proposition~\ref{prop:mft}, the stochastic discount factor depends only on the aggregate state $X_t$ and is independent of the dividend share $s_t$. Individual claim prices can therefore be determined in a second step, conditional on the equilibrium objects $r(X_t)$ and $\eta(X_t)$ from the aggregate economy.
 
 Let $\hat{X}_t = (X_t, s_t)$ denote the extended state vector. Define the valuation ratio of claim $k \in \{D,B\}$ as $p_{k,t} \equiv P_{k,t}/Y_t = p_k(X_t,s_t)$. Since $P_{k,t} = p_{k,t}\,Y_t$, the return on claim $k$ satisfies
 \begin{equation}
@@ -773,14 +810,14 @@ where $s_{D,t} = s_t$, $s_{B,t} = 1-s_t$, and the diffusion of the valuation rat
 \begin{equation}
     \sigma_{p_k,t} = \frac{1}{p_{k,t}}\!\left(p_{k,X}\,\sigma_X + p_{k,s}\,\sigma_s\right),
 \end{equation}
-with $p_{k,X} \equiv \frac{\partial p_k}{\partial X}$ and $p_{k,s} \equiv \frac{\partial p_k}{\partial s}$. Substituting into the pricing condition $\mu_{R_k,t} - r_t = \sigma_{R_k,t}\,\lambda_t^\top$ yields the partial differential equation for the valuation ratio $p_k(X,s)$:
+with $p_{k,X} \equiv \frac{\partial p_k}{\partial X}$ and $p_{k,s} \equiv \frac{\partial p_k}{\partial s}$. Substituting into the pricing condition $\mu_{R_k,t} - r_t = \sigma_{R_k,t}\,\eta_t^\top$ yields the partial differential equation for the valuation ratio $p_k(X,s)$:
 \begin{align}\label{eq:pde_claim}
 0 =\;&\, p_{k,X}\,\mu_X + p_{k,s}\,\mu_s 
 + \frac{1}{2}\Big[\mathrm{tr}\!\left(\sigma_X\sigma_X^\top\,p_{k,XX}\right) + 2\,p_{k,Xs}\,(\sigma_X\sigma_s^\top) + (\sigma_s\sigma_s^\top)\,p_{k,ss}\Big] \nonumber\\
 &- (r(X)-\mu)\,p_k(X,s) + s_k(s) \nonumber\\
-&+ p_k(X,s)\,\sigma\,\sigma_{p_k}(X,s)^\top - p_k(X,s)\,\sigma\,\lambda(X)^\top - p_k(X,s)\,\sigma_{p_k}(X,s)\,\lambda(X)^\top.
+&+ p_k(X,s)\,\sigma\,\sigma_{p_k}(X,s)^\top - p_k(X,s)\,\sigma\,\eta(X)^\top - p_k(X,s)\,\sigma_{p_k}(X,s)\,\eta(X)^\top.
 \end{align}
-This equation can be solved numerically given the equilibrium functions $r(X)$ and $\lambda(X)$ from the aggregate economy. Since $p_{D}(X,s) + p_{B}(X,s) = p(X)$ by construction, only one of the two claim prices needs to be solved independently.
+This equation can be solved numerically given the equilibrium functions $r(X)$ and $\eta(X)$ from the aggregate economy. Since $p_{D}(X,s) + p_{B}(X,s) = p(X)$ by construction, only one of the two claim prices needs to be solved independently.
 
 % \input{sections/elasticity}
 \section{The Determinants of the Aggregate Market Elasticity}\label{sec:elasticity}
