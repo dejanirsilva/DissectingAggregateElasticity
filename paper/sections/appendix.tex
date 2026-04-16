@@ -466,25 +466,24 @@ Hence, this implies that the portfolio shares of dividend and bond claims are gi
 \end{equation}
 where $\alpha_{j,Y,t}$ is the portfolio share of the market index fund defined.
 
-\paragraph{Pricing the individual claims.} The princing condition for the dividend claim is given by
+\paragraph{Pricing the individual claims.} The price of the dividend claim satisfies the pricing condition:
 \begin{equation}
-    \frac{1}{p_{k,t}} = r_t + \sigma_{R_k,t} \eta_t^\top - \big(\mu_{k,t} + \mu_{p_k,t} + \sigma_{k,t} \, \sigma_{p_k,t}^\top\big),
+    \frac{1}{p_{D,t}} = r_t + \sigma_{R_D,t} \eta_t^\top - \big(\mu_{D,t} + \mu_{p_D,t} + \sigma_{D,t} \, \sigma_{p_D,t}^\top\big),
 \end{equation}
 where
 \begin{equation}
-    \mu_{p_{k,t}} = \frac{p_{k,X,t}}{p_{k,t}} \mu_{X,t} + \frac{1}{2}\sum_{k=1}^3 \sigma_{X,k,t}^\top\,\frac{p_{k,XX,t}}{p_{k,t}}\,\sigma_{X,k,t}, \qquad \qquad 
-    \sigma_{p_{k,t}} = \frac{p_{k,X,t}}{p_{k,t}} \sigma_{X,t}.
+    \mu_{p_{D,t}} = \frac{p_{D,X,t}}{p_{D,t}} \mu_{X,t} + \frac{1}{2}\sum_{k=1}^3 \sigma_{X,k,t}^\top\,\frac{p_{D,XX,t}}{p_{D,t}}\,\sigma_{X,k,t}, \qquad \qquad 
+    \sigma_{p_{D,t}} = \frac{p_{D,X,t}}{p_{D,t}} \sigma_{X,t}.
 \end{equation}
 
-
-\paragraph{Mapping to \citet{MenzlySantosVeronesi2004}.} We can map the dividend share $s$ to notation in \citet{MenzlySantosVeronesi2004} as follows:
-\begin{equation}
-    \sigma_s = v^1- v^0, \qquad (1-\overline{s}) v^0 + \overline{s} v^1 = 0,
-\end{equation}
-which implies that
-\begin{equation}
-    v^0 + \overline{s} (v^1- v^0) = 0 \Rightarrow v^0 = - \overline{s} \sigma_s, \qquad v^1 = (1-\overline{s}) \sigma_s,
-\end{equation}
+% \paragraph{Mapping to \citet{MenzlySantosVeronesi2004}.} We can map the dividend share $s$ to notation in \citet{MenzlySantosVeronesi2004} as follows:
+% \begin{equation}
+%     \sigma_s = v^1- v^0, \qquad (1-\overline{s}) v^0 + \overline{s} v^1 = 0,
+% \end{equation}
+% which implies that
+% \begin{equation}
+%     v^0 + \overline{s} (v^1- v^0) = 0 \Rightarrow v^0 = - \overline{s} \sigma_s, \qquad v^1 = (1-\overline{s}) \sigma_s,
+% \end{equation}
 % \begin{equation}
 %     v^1 - s^ 1 v^ 1 - (1-s^1)v^0 = v^1- v^0 - s^ 1 (v^1- v^0) = (1-s^1)(v^1- v^0)
 % \end{equation}
@@ -557,43 +556,98 @@ The drift and diffusion of the wealth shares are given
 \end{align}
 using the fact that $\kappa = 0$, $\sigma_{j,0}(X) = \sigma_{R_Y,0}(X)$, and $c_{j,0}(X) = \frac{1}{p_{Y,0}(X)}$.
 
+\paragraph{Pricing the dividend claim.}
+The price of the dividend claim satisfies the pricing condition:
+\begin{equation}
+    P_{D,t} = \mathbb{E}_t\left[ \int_t^\infty\frac{\Lambda_\tau}{\Lambda_t} s_\tau Y_\tau d\tau \right],
+\end{equation}
+
+The SDF and the aggregate endowment follow the processes:
+\begin{align}
+    \frac{d \Lambda_t}{\Lambda_t} = -r^* dt - \sigma dZ_t, \qquad \qquad 
+    \frac{d Y_t}{Y_t} = \mu dt + \sigma dZ_t.
+\end{align}
+We can then write the SDF and the aggregate endowment as:
+\begin{align}
+    \Lambda_t = \exp\left( -\int_0^t \left( r^* + \frac{\sigma \sigma^\top}{2} \right) ds - \sigma Z_t \right) \Lambda_0, \qquad 
+    Y_t = \exp\left( \int_0^t \left( \mu - \frac{\sigma \sigma^\top}{2} \right) ds + \sigma Z_t \right) Y_0.
+\end{align}
+
+Combining the expressions for $\Lambda_t$ and $Y_t$, we obtain:
+\begin{equation}
+    P_{D,t} = \int_t^\infty e^{-\delta_D (\tau-t)} \mathbb{E}_t\left[ s_\tau \right] d\tau Y_t,
+\end{equation}
+where $\delta_{D} = r^* - (\mu - \sigma \sigma^\top)$, using the fact that $Z_t$ cancels out in the product $\Lambda_t Y_t$.
+
+The conditional expectation of the dividend share is given by
+\begin{equation}
+    \mathbb{E}_t\left[ s_\tau \right] = \overline{s} + (s_t - \overline{s}) e^{-\kappa_s (\tau-t)}.
+\end{equation}
+
 The price of the dividend claim is given by
 \begin{equation}
-    \frac{1}{p_{D,0}} = r_0 + \sigma_{R_D,0} \eta_0^\top - \big(\mu_{D,0} + \mu_{p_D,0} + \sigma_{D,0} \, \sigma_{p_D,0}^\top\big),
+    P_{D,t} = \left[ \frac{\overline{s}}{\delta_D} + \frac{s_t - \overline{s}}{\delta_D + \kappa_s} \right] Y_t
 \end{equation}
-where
+where $Y_t = \exp\left( \int_0^t \left( \mu - \frac{\sigma \sigma^\top}{2} \right) ds + \sigma Z_t \right) Y_0$.
+
+Hence, the price-dividend ratio is given by
 \begin{equation}
-    \mu_{p_{D,0}} = \frac{p_{D,s,0}}{p_{D,0}} \mu_{s} + \frac{1}{2} \sigma_{X,1,0}^\top\,\frac{p_{D,XX,0}}{p_{D,0}}\,\sigma_{X,1,0}, \qquad \qquad 
-    \sigma_{p_{D,0}} = \frac{p_{D,X,0}}{p_{D,0}} \sigma_{X,1,0}.
+    p_{D,0}(X) = \frac{1}{\delta_D + \kappa_s}\left[1 + \frac{\kappa_s}{\delta_D}  \frac{\overline{s}}{s_t}  \right].
 \end{equation}
+
 
 \end{proof}
 
 \subsection{Proof of Proposition~\ref{prop:first_order}}\label{app:prop_first_order}
 
-\begin{proof} We consider next the first-order correction terms.
-    Note that the diffusion terms for $c_j$ and $p$ are both equal to zero up to the first order, since $\sigma_{c_j,t} = \mathcal{O}(\epsilon^2)$ and $\sigma_{p,t} = \mathcal{O}(\epsilon^2)$.
-    From Ito's lemma:
-\begin{equation}
-    \sigma_{c_j,t} = \underbrace{\frac{c_{j,X}}{c_j}}_{\mathcal{O}(\epsilon)}\underbrace{ \sigma_{X,t}}_{\mathcal{O}(\epsilon)} = \mathcal{O}(\epsilon^2).
-\end{equation}
-We have $c_{j,X} = \mathcal{O}(\epsilon)$, because $c_{j,X,0} = 0$, as $c_{j,0}(X)$ does not depend on $X$.
-Also, $\sigma_{X,t} = \mathcal{O}(\epsilon)$ because $\sigma_{X,0}(X) = 0$.
-This implies that $ \sigma_{c_j,1}(X)=0 $.
-An analogous argument applies to $p_t$, so that we have $\sigma_{p,1}(X) = 0$ and $\|\sigma_{R,1}(X)\| = 0$.
+\begin{proof} We consider next the first-order correction terms. 
+    Consistent with the results from Proposition~\ref{prop:mft}, the consumption-wealth ratios and the price-dividend ratio for the aggregate claim are independent of the dividend share shock.
+    We can then focus on the reduced set of states $\hat{X}_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t})$. 
+    
+    The portfolio share of passive investors is given by $\overline{\alpha}_{p,t} = 1 + \hat{\alpha}_{p,t} \epsilon$, where
+    \begin{equation}
+        d \overline{\alpha}_{p,t} = - \kappa_p \hat{\alpha}_{p,t} \epsilon dt + \sigma_p \epsilon dZ_t,
+    \end{equation}
+    where $\overline{\alpha} = 1$, so the process for $\hat{\alpha}_{p,t}$ is independent of $\epsilon$.
+    
+        This implies that $\mu_{\overline{\alpha}_{p},t} = \mathcal{O}(\epsilon)$ and $\sigma_{\overline{\alpha}_{p},t} = \mathcal{O}(\epsilon)$.
+    Similarly, we have that $\mu_{x_{j},t} = \mathcal{O}(\epsilon)$ and $\sigma_{x_{j},t} = \mathcal{O}(\epsilon)$ for $j = 1,2$, as the drift and diffusion are zero when $\epsilon = 0$.
+    Hence, we have $\mu_{\hat{X},t} = \mathcal{O}(\epsilon)$ and $\sigma_{\hat{X},t} = \mathcal{O}(\epsilon)$.
 
-\paragraph{Risk exposure of active investors.} The risk exposure for active investors can be written as
+
+\paragraph{Diffusion for consumption-wealth ratios and price-dividend ratio.} 
+The consumption-wealth ratios and the price-dividend ratio for the aggregate claim are indepedent of $\hat{X}$ at $\epsilon = 0$.
+This implies that the diffusion terms for the consumption-wealth ratios and the price-dividend ratio are second-order terms in $\epsilon$:
+\begin{align}
+    \sigma_{c_j} = \underbrace{\frac{c_{j,\hat{X}}}{c_j}}_{\mathcal{O}(\epsilon)} \times \underbrace{\sigma_{\hat{X}}}_{\mathcal{O}(\epsilon)} = \mathcal{O}(\epsilon^2), \qquad \qquad 
+    \sigma_{p_Y} = \underbrace{\frac{p_{Y,\hat{X}}}{p_Y}}_{\mathcal{O}(\epsilon)} \times \underbrace{\sigma_{\hat{X}}}_{\mathcal{O}(\epsilon)} = \mathcal{O}(\epsilon^2),
+\end{align}
+where $c_{j,\hat{X}}=\mathcal{O}(\epsilon)$ and $p_{Y,\hat{X}}=\mathcal{O}(\epsilon)$ as these derivatives are zero at order zero.
+Notice this implies that $\sigma_{R_Y,1} = 0_{1\times 3}$. 
+
+\paragraph{Risk exposure of active investors.} The risk exposure for the passive investor is given by
+\begin{equation}
+    \sigma_{0,1} = \hat{\alpha}_{p,1} \sigma. 
+\end{equation}
+
+The risk exposure for the first active investor is given by
+\begin{equation}
+    \sigma_{1,1} = \frac{\eta_1}{\gamma} - \frac{\eta_0}{\gamma} \hat{\gamma}_1.
+\end{equation}
+
+The risk exposure for active investors can be written as
 \begin{equation}
     \sigma_{j}(X,\epsilon) = \min \left\{ \frac{\theta(X,\epsilon)}{\gamma_j}  + \frac{1-\gamma_j^{-1}}{\psi-1} \frac{\sigma_{c_j}(X,\epsilon) \sigma_{R}^\top(X,\epsilon)}{\|\sigma_{R}(X,\epsilon)\|}, \|\sigma\| + \hat{\sigma} \epsilon \right\},
 \end{equation}
-where $\sigma_{j}(X;\epsilon) \equiv \alpha_{j}(X;\epsilon) \|\sigma_{R}(X;\epsilon)\|$ $\theta(X;\epsilon) \equiv \frac{\pi(X;\epsilon)}{\|\sigma_{R}(X;\epsilon)\|}$
-
+where $\sigma_{j}(X,\epsilon) \equiv \alpha_{j}(X;\epsilon) \|\sigma_{R}(X;\epsilon)\|$ $\theta(X;\epsilon) \equiv \frac{\pi(X;\epsilon)}{\|\sigma_{R}(X;\epsilon)\|}$
 Expanding the first term inside brackets in $\epsilon$, we obtain
 \begin{small}
 	\begin{equation}
-		\sigma_{j}(X,\epsilon) = \min \left\{ \frac{\theta_0(X)}{\gamma} + \left(\frac{\theta_1(X)}{\gamma}- \frac{\theta_0(X)}{\gamma} \hat{\gamma}_j \right)\epsilon + \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2}(X) \sigma^\top}{\|\sigma\|} \epsilon^2 + O(\epsilon^3)  , \|\sigma\| + \hat{\sigma} \epsilon \right\}, 
+		\sigma_{j}(X,\epsilon) = \min \left\{ \left(\frac{\theta_1(X)}{\gamma}- \frac{\theta_0(X)}{\gamma} \hat{\gamma}_j -\hat{\sigma}\right)\epsilon + \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2}(X) \sigma^\top}{\|\sigma\|} \epsilon^2 + O(\epsilon^3)  , 0 \right\}+\|\sigma\| + \hat{\sigma} \epsilon.
 	\end{equation}
 \end{small}
+
+
 
 Adding and subtracting $\|\sigma\| + \hat{\sigma}\epsilon$, and using $\frac{\theta_0(X)}{\gamma} = \|\sigma\|$, we obtain
 \begin{small}
