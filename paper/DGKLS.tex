@@ -439,7 +439,7 @@ Third, dividend volatility increases after negative shocks to $s_t$, capturing a
 
 The second claim is a \emph{corporate bond} (risky debt), with payoff flow $B_t = (1-s_t)Y_t$. 
 Since $D_t + B_t = Y_t$, the bond payoff is smoother than aggregate consumption, reflecting the safer nature of debt and its lower exposure to aggregate risk.
-This decomposition allows us to distinguish between claims with different risk exposures, which will be central when considering the implications for price impact.
+This decomposition allows us to distinguish between claims with different risk exposures, with important implications for price impact.
 
 Let $P_{D,t}$ and $P_{B,t}$ denote the ex-dividend prices of the dividend and bond claims, with returns:
 \begin{align}
@@ -517,7 +517,7 @@ Innovations to $\overline{\alpha}_{p,t}$ represent \emph{portfolio flow shocks},
 As in Section~\ref{sec:simple}, a flow shock is an asymmetric demand shock affecting only passive investors and triggering portfolio reallocation.
 
 Portfolio flows may comove with cash-flow shocks or arise independently. 
-For example, consider $\sigma=(\sigma_1,0,0)$ for aggregate endowment risk, $\sigma_{\alpha_p}=(\sigma_{\alpha_p,1},\sigma_{\alpha_p,2},0)$ for the passive-share process, and $\sigma_s=(\sigma_{s,1},0,\sigma_{s,3})$ for the dividend share process.
+We focous on the case where $\sigma=(\sigma_1,0,0)$ for aggregate endowment risk, $\sigma_{\alpha_p}=(\sigma_{\alpha_p,1},\sigma_{\alpha_p,2},0)$ for the passive-share process, and $\sigma_s=(\sigma_{s,1},0,\sigma_{s,3})$ for the dividend share process.
 The first shock represents aggregate endowment risk, the second represents portfolio-flow shocks, and the third represents dividend-share shocks.
 We allow portfolio-flow shocks and dividend-share shocks to load on the aggregate endowment risk factor.
 This implies that aggregate endowment risk can be correlated with both portfolio flows and dividend-share shocks.
@@ -571,11 +571,10 @@ Portfolio allocations are restricted to lie in an \textit{investment set} $\Omeg
 For passive investors, $j=0$, holdings of the market index fund induce indirect holdings of the dividend and bond claims, so their investment set is given by:
 \begin{equation}
     \Omega_{0,t} = \{\alpha_{0,t}:\;
-\alpha_{0,D,t} = \overline{\alpha}_{p,t}\,\alpha_{m,D,t},
-\; \alpha_{0,B,t} = \overline{\alpha}_{p,t}\,\alpha_{m,B,t},
+\alpha_{0,D,t} = \overline{\alpha}_{p,t}\, \frac{P_{D,t}}{P_{Y,t}},
+\; \alpha_{0,B,t} = \overline{\alpha}_{p,t}\, \frac{P_{B,t}}{P_{Y,t}},
 \; \alpha_{0,F,t} = 0\},
 \end{equation}
-where $\alpha_{m,k,t} \equiv \frac{P_{k,t}}{P_{Y,t}}$ is the market weight of asset $k \in \{D,B\}$.
 
 Type-1 investors are unconstrained, so their investment set is given by $\Omega_{1,t} = \mathbb{R}^3$.
 For type-$2$ investors, the investment set reflects their leverage constraint:
@@ -624,10 +623,11 @@ The notional position in the derivative is $F_{j,t} = \alpha_{j,F,t} W_{j,t}$.\f
 \subsection{Equilibrium characterization}\label{sec:equilibrium-char}
 
 We now characterize equilibrium in the dynamic model.
-We first derive the optimality conditions that govern portfolio choice and consumption decisions, and then outline their implications for asset pricing.
+We derive the optimality conditions that govern portfolio choice and consumption decisions, and show how they jointly determine prices and risk premia.
 We then establish a version of the \textit{mutual fund theorem} in our economy with frictions.
-This result shows that, despite the presence of multiple traded assets, equilibrium allocations can be summarized in terms of aggregate risk exposures.
-As a result, the equilibrium reduces to a tractable representation that will be central for our analysis of aggregate market elasticity.
+This result implies that investors hold the dividend and bond claims in proportion to their market-capitalization weights, so that aggregate equilibrium objects are independent of the dividend-share shock.
+As a result, the equilibrium admits a \textit{block-recursive} structure, in which we first solve for the aggregate equilibrium and then recover the prices of individual claims.
+This representation will be central for our analytical characterization of aggregate market elasticity.
 
 \subsubsection{Equilibrium conditions}
 
@@ -794,11 +794,10 @@ Combining goods market clearing with the expression for the consumption--wealth 
 where $\xi_t \equiv \sum_{j=0}^2 x_{j,t} \, \xi_{j,t}$.
 
 The first term reflects time preference.
-The second term captures intertemporal substitution through expected capital gains and changes in investment opportunities.
-The third term captures precautionary savings and depends on the distribution of risk exposures across investors.
-The final term reflects the effect of risk premia on the interest rate.
+The second term captures intertemporal substitution.
+The third term and fourth terms capture the effect of uncertainty on the interest rate.
 
-This expression highlights that the interest rate is determined jointly by risk premia and the allocation of risk across investors, providing the key general equilibrium link between portfolio flows and saving behavior.
+This expression highlights that the interest rate is determined jointly by risk premia and the allocation of risk across investors, providing the key general equilibrium link between portfolio flows, risk allocation, and saving behavior.
 
 
 \paragraph{Pricing condition.}
@@ -896,7 +895,7 @@ By It\^{o}'s lemma,
     + \frac{p_{k,s}(X_t)}{p_{k,t}(X_t)} \sigma_{s,t}.
 \end{equation}
 
-Equation~\eqref{eq:_endogenous_vol} shows that endogenous volatility depends on the sensitivity of the price-dividend ratio to three variables: (i) the wealth distribution, (ii) the passive portfolio share, and (iii) the dividend share.
+Equation~\eqref{eq:_endogenous_vol} shows that endogenous volatility depends on the sensitivity of the price-dividend ratio to three groups of variables: (i) the wealth distribution, (ii) the passive portfolio share, and (iii) the dividend share.
 The first term is standard in heterogeneous-agent models \citep[see][]{panageas2020implications}.
 The third term is typical of models with multiple assets.
 The second term arises only in the presence of exogenous portfolio flow shocks.
@@ -927,17 +926,65 @@ the two active wealth shares $x_{1,t}$ and $x_{2,t}$, the passive portfolio shar
 
 \subsubsection{Block recursivity and the mutual fund theorem}\label{sec:pricing_claims}
 
-We show next that the system of PDEs satisfies an important \textit{block-recursive} structure.
+We show that the system of PDEs admits a block-recursive structure.
 First, we solve for the consumption-wealth ratios and the price-dividend ratio of the aggregate claim in a reduced set of states $\hat{X}_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t})$.
 Second, we solve for the price-dividend ratios of the dividend and corporate bond claims in the full set of states $X_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t}, s_t)$.
-This provides a substantial simplification of the equilibrium characterization, as the economy behaves as if it were a single-claim economy with a single claim on the aggregate endowment and a derivative.
-At the same time, by exploring the block-recursive structure of the system of PDEs, we can still obtain the implications of portfolio flows on the aggregate market elasticity for the dividend claim. 
+% This separation arises because aggregate quantities are independent of the dividend-share shock and market are dynamically complete.
 
-Another important implication of the block-recursive structure is that a version of the \textit{mutual fund theorem} holds in our economy.
-Despite the presence of financial frictions in our dynamic model, investors optimally hold risky claims at market-capitalization weights.
+This provides a substantial simplification, as the equilibrium allocation and pricing kernel are identical to those of an economy with a single claim on the aggregate endowment and a derivative.
+At the same time, the block-recursive structure allows us to recover the pricing implications for individual claims.
+In particular, we can characterize how portfolio flows affect the market elasticity of the dividend claim.
 
+An important implication of the block-recursive structure is that a version of the \textit{mutual fund theorem} holds in our economy.
+Despite financial frictions, investors optimally hold risky claims in proportion to their market-capitalization weights, as in the classic mutual fund theorem.
 
+\begin{prop}[Block recursivity and the mutual fund theorem]\label{prop:mft}
+    Define the reduced set of states as $\hat{X}_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t})$. Then,
+    \begin{enumerate}[label=(\roman*)]
+        \item \textbf{Block recursivity:} The consumption-wealth ratios, $\{c_{j,t}(\hat{X}_t)\}_{j=0}^2$, and the price-dividend ratio for the aggregate claim, $p_Y(\hat{X}_t)$, are a function of the reduced set of states $\hat{X}_t$, and they satisfy the following system of PDEs:
+        \begin{align}
+            c_{j} &= \psi \rho 
+            + (1-\psi) \left[ r + \eta^\top\,\sigma_{j} - \frac{\gamma_j}{2} \|\sigma_{j}\|^2 \right] 
+            +  \mu_{c_j} 
+            + (1-\gamma_j) \sigma_{c_j} \sigma_{j}^\top 
+            + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j}\|^2}{2}\\
+            \frac{1}{p_{Y}} &= r + \eta^\top\,(\sigma + \sigma_{p_Y}) - \big(\mu + \mu_{p_Y} + \sigma \, \sigma_{p_Y}^\top\big),        
+    \end{align}
+    where $(r, \eta, \sigma_{j}, \mu_{c_j}, \sigma_{c_j}, \mu_{p_Y}, \sigma_{p_Y})$ are all functions of $\hat{X}_t$, $(c_j,p_Y)$ and their derivatives.    
+        \item \textbf{Mutual fund theorem:} The portfolio shares of active investors are given by:
+        \begin{align}
+            \alpha_{j,k} = \alpha_{j,Y} \frac{P_k}{P_Y}, \quad \forall k \in \{D,B\},
+        \end{align}
+        where $\alpha_{j,Y}$ denotes the holdings of the market index fund for investor $j$, which satisfies the condition
+        \begin{equation}
+            \sigma_{j} = \alpha_{j,Y} \sigma_{R_Y} + \alpha_{j,F} \sigma_{R_F}.
+        \end{equation}
+    \end{enumerate}
+\end{prop}
 
+Proposition~\ref{prop:mft} shows that the equilibrium with separate dividend and bond claims is equivalent to that of an economy with a single claim on the aggregate endowment and a derivative.
+
+Two assumptions are key to this result.
+First, the aggregate endowment process $Y_t$ is independent of the dividend share $s_t$.
+This assumption follows \citet{MenzlySantosVeronesi2004}, but differs from the two-trees model of \citet{cochraneLongstaffSantaClara2008}, where the dividend share affects aggregate volatility.
+
+Second, markets are dynamically complete.
+In equilibrium, investors are not exposed to the dividend-share shock, which can be perfectly diversified by holding the dividend and bond claims in proportion to their market-capitalization weights.
+Investors can therefore obtain any desired exposure to the fundamental and portfolio-flow shocks by trading the market index fund and the derivative.
+
+Without the derivative, investors would need to deviate from market-capitalization weights to adjust their exposure to these risks, at the cost of bearing dividend-share risk.
+
+\paragraph{Pricing the individual claims.}
+Having solved for the aggregate objects $\{c_{j,t}(\hat{X}_t)\}_{j=0}^2$ and $p_Y(\hat{X}_t)$, we next recover the valuation of individual claims.
+The price-dividend ratios of the dividend and bond claims are functions of the full state vector $X_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t}, s_t)$, as they load on the dividend-share shock.
+
+Given the aggregate equilibrium objects $r(\hat{X}_t)$ and $\eta(\hat{X}_t)$, and using It\^{o}'s lemma to express the drift and diffusion of valuation ratios as functions of the state dynamics and their derivatives, the pricing condition in Equation~\eqref{eq:pricing_cond} yields a linear PDE for $p_{D,t}(X_t)$ and $p_{B,t}(X_t)$.
+
+Thus, individual claim prices are obtained in a second step, conditional on the aggregate equilibrium.
+This separation highlights that portfolio flows affect aggregate quantities through the reduced state vector, while their impact on individual asset prices operates through valuation in the full state space.
+
+This completes the characterization of the equilibrium with separate dividend and bond claims.
+We now turn to an analytical characterization of the aggregate market elasticity in this economy.
 
 % \paragraph{Mutual fund theorem.}
 % The availability of three tradable assets (the dividend claim, the bond claim, and the derivative) raises the question of whether the decomposition of the aggregate endowment into separate claims affects equilibrium allocations. The following proposition shows that it does not.
@@ -985,25 +1032,25 @@ Despite the presence of financial frictions in our dynamic model, investors opti
 % is a forward-looking term capturing how expected shifts in $c_{j,t}$ affect consumption choices.
 % The consumption--wealth ratio depends both on current investment opportunities, summarized by $r_t + \pi_t \alpha_{j,t} - \frac{\gamma_j}{2} \alpha_{j,t}^2 \|\sigma_{R,t}\|^2$, and on future opportunities, summarized by $\xi_{j,t}$. 
 
-By Proposition~\ref{prop:mft}, the stochastic discount factor depends only on the aggregate state $X_t$ and is independent of the dividend share $s_t$. Individual claim prices can therefore be determined in a second step, conditional on the equilibrium objects $r(X_t)$ and $\eta(X_t)$ from the aggregate economy.
+% By Proposition~\ref{prop:mft}, the stochastic discount factor depends only on the aggregate state $X_t$ and is independent of the dividend share $s_t$. Individual claim prices can therefore be determined in a second step, conditional on the equilibrium objects $r(X_t)$ and $\eta(X_t)$ from the aggregate economy.
 
-Let $\hat{X}_t = (X_t, s_t)$ denote the extended state vector. Define the valuation ratio of claim $k \in \{D,B\}$ as $p_{k,t} \equiv P_{k,t}/Y_t = p_k(X_t,s_t)$. Since $P_{k,t} = p_{k,t}\,Y_t$, the return on claim $k$ satisfies
-\begin{equation}
-    \sigma_{R_k,t} = \sigma + \sigma_{p_k,t}, \qquad 
-    \mu_{R_k,t} = \frac{s_{k,t}}{p_{k,t}} + \mu + \mu_{p_k,t} + \sigma\,\sigma_{p_k,t}^\top,
-\end{equation}
-where $s_{D,t} = s_t$, $s_{B,t} = 1-s_t$, and the diffusion of the valuation ratio is
-\begin{equation}
-    \sigma_{p_k,t} = \frac{1}{p_{k,t}}\!\left(p_{k,X}\,\sigma_X + p_{k,s}\,\sigma_s\right),
-\end{equation}
-with $p_{k,X} \equiv \frac{\partial p_k}{\partial X}$ and $p_{k,s} \equiv \frac{\partial p_k}{\partial s}$. Substituting into the pricing condition $\mu_{R_k,t} - r_t = \sigma_{R_k,t}\,\eta_t^\top$ yields the partial differential equation for the valuation ratio $p_k(X,s)$:
-\begin{align}\label{eq:pde_claim}
-0 =\;&\, p_{k,X}\,\mu_X + p_{k,s}\,\mu_s 
-+ \frac{1}{2}\Big[\mathrm{tr}\!\left(\sigma_X\sigma_X^\top\,p_{k,XX}\right) + 2\,p_{k,Xs}\,(\sigma_X\sigma_s^\top) + (\sigma_s\sigma_s^\top)\,p_{k,ss}\Big] \nonumber\\
-&- (r(X)-\mu)\,p_k(X,s) + s_k(s) \nonumber\\
-&+ p_k(X,s)\,\sigma\,\sigma_{p_k}(X,s)^\top - p_k(X,s)\,\sigma\,\eta(X)^\top - p_k(X,s)\,\sigma_{p_k}(X,s)\,\eta(X)^\top.
-\end{align}
-This equation can be solved numerically given the equilibrium functions $r(X)$ and $\eta(X)$ from the aggregate economy. Since $p_{D}(X,s) + p_{B}(X,s) = p(X)$ by construction, only one of the two claim prices needs to be solved independently.
+% Let $\hat{X}_t = (X_t, s_t)$ denote the extended state vector. Define the valuation ratio of claim $k \in \{D,B\}$ as $p_{k,t} \equiv P_{k,t}/Y_t = p_k(X_t,s_t)$. Since $P_{k,t} = p_{k,t}\,Y_t$, the return on claim $k$ satisfies
+% \begin{equation}
+%     \sigma_{R_k,t} = \sigma + \sigma_{p_k,t}, \qquad 
+%     \mu_{R_k,t} = \frac{s_{k,t}}{p_{k,t}} + \mu + \mu_{p_k,t} + \sigma\,\sigma_{p_k,t}^\top,
+% \end{equation}
+% where $s_{D,t} = s_t$, $s_{B,t} = 1-s_t$, and the diffusion of the valuation ratio is
+% \begin{equation}
+%     \sigma_{p_k,t} = \frac{1}{p_{k,t}}\!\left(p_{k,X}\,\sigma_X + p_{k,s}\,\sigma_s\right),
+% \end{equation}
+% with $p_{k,X} \equiv \frac{\partial p_k}{\partial X}$ and $p_{k,s} \equiv \frac{\partial p_k}{\partial s}$. Substituting into the pricing condition $\mu_{R_k,t} - r_t = \sigma_{R_k,t}\,\eta_t^\top$ yields the partial differential equation for the valuation ratio $p_k(X,s)$:
+% \begin{align}\label{eq:pde_claim}
+% 0 =\;&\, p_{k,X}\,\mu_X + p_{k,s}\,\mu_s 
+% + \frac{1}{2}\Big[\mathrm{tr}\!\left(\sigma_X\sigma_X^\top\,p_{k,XX}\right) + 2\,p_{k,Xs}\,(\sigma_X\sigma_s^\top) + (\sigma_s\sigma_s^\top)\,p_{k,ss}\Big] \nonumber\\
+% &- (r(X)-\mu)\,p_k(X,s) + s_k(s) \nonumber\\
+% &+ p_k(X,s)\,\sigma\,\sigma_{p_k}(X,s)^\top - p_k(X,s)\,\sigma\,\eta(X)^\top - p_k(X,s)\,\sigma_{p_k}(X,s)\,\eta(X)^\top.
+% \end{align}
+% This equation can be solved numerically given the equilibrium functions $r(X)$ and $\eta(X)$ from the aggregate economy. Since $p_{D}(X,s) + p_{B}(X,s) = p(X)$ by construction, only one of the two claim prices needs to be solved independently.
 
 % \input{sections/elasticity}
 \section{The Determinants of the Aggregate Market Elasticity}\label{sec:elasticity}
@@ -1470,7 +1517,9 @@ The process for passive demand is modeled as the exogenous CIR process in Equati
 
 To evaluate the quantitative implications of the model, we solve the full dynamic system numerically rather than relying on the perturbation approach of Section~\ref{sec:elasticity}. A global solution method is necessary given the dimensionality of the state space, which includes 4 state variables corresponding to one passive sector, one constrained sector, one unconstrained sector, and a dividend share. We adopt the neural network-based method of \citet{duarte2024machine}, which is well suited for high-dimensional problems. Details of the solution method are provided in the appendix. 
 
-We then simulate the economy at a monthly frequency for 1000 years to compute the model-implied moments. Table~\ref{tab:simulation_moments} reports unconditional moments from the simulated data alongside their empirical counterparts. For the dividend claim, the model delivers a risk premium of 6.7\%, a risk-free rate of 0.60\%, and return volatility of 22.6\%, all close to the corresponding empirical targets. We compute price impact in the model by regressing the change in log price-dividend ratio on passive flow shock. Specifically, the price impact is the slope coefficient $\hat{b}_1$ estimated from the following regression equation: $d\log (P/D)_t = a_0 + b_1 \overline{\alpha}_{p,t}^s + e_t$, where the flow shock is computed as $\overline{\alpha}_{p,t}^s = \overline{\alpha}_{p,t} - \overline{\alpha}_{p,t-1} - E[d\overline{\alpha}_{p,t}]$. The model generates a sizable price impact of 6.85, matching the empirically estimated price impact of around 6.90.\footnote{Price impact in the model is defined as $\frac{d\log(p/d)}{d\alpha_p}$. \citet{gabaix2020search} estimate a price multiplier of around 5, while \citet{Hartzmark/Solomon/2021} estimate a multiplier of 1.9. Taking an average between the two yields 3.45. Considering that the passive investor share is around half, this amounts to a price impact of approximately $3.45 \times 2 = 6.90$.} The model also broadly matches the average asset/equity ratio and risky asset shares of the main sectors.
+We then simulate the economy at a monthly frequency for 1000 years to compute the model-implied moments. Table~\ref{tab:simulation_moments} reports unconditional moments from the simulated data alongside their empirical counterparts. For the dividend claim, the model delivers a risk premium of 6.7\%, a risk-free rate of 0.60\%, and return volatility of 22.6\%, all close to the corresponding empirical targets. We compute price impact in the model by regressing the change in log price-dividend ratio on passive flow shock. Specifically, the price impact is the slope coefficient $\hat{b}_1$ estimated from the following regression equation: 
+$$d\log (P/D)_t = a_0 + b_1 \overline{\alpha}_{p,t}^s + e_t,$$
+where the flow shock is computed as $\overline{\alpha}_{p,t}^s = \overline{\alpha}_{p,t} - \overline{\alpha}_{p,t-1} - E[d\overline{\alpha}_{p,t}]$. The model generates a sizable price impact of 6.85, matching the empirically estimated price impact of around 6.90.\footnote{Price impact in the model is defined as $\frac{d\log(p/d)}{d\alpha_p}$. \citet{gabaix2020search} estimate a price multiplier of around 5, while \citet{Hartzmark/Solomon/2021} estimate a multiplier of 1.9. Taking an average between the two yields 3.45. Considering that the passive investor share is around half, this amounts to a price impact of approximately $3.45 \times 2 = 6.90$.} The model also broadly matches the average asset/equity ratio and risky asset shares of the main sectors.
 
 Figure~\ref{fig:price_impact_dynamic} presents the model-implied conditional price impact. The impact curves are computed by evaluating equilibrium functions on pre-specified state grids. Fixing $\overline{\alpha}_{p,t}$ and $s_t$ at their unconditional means, we vary one wealth-share coordinate at a time and impose a fixed one-quarter passive-flow shock. The shock is mapped through the dynamic transition equations of the state variables to obtain the corresponding next-quarter state, after which the P/D ratio is revalued at both the initial and shocked states. Conditional price impact is measured as the resulting change in log P/D per unit of passive flow. Repeating this exercise across the state grid yields the conditional price-impact curves reported in the off-equilibrium figures. The right panel of the figure shows that, as the wealth share of constrained active investors increases, the price impact goes up, as more agents are constrained in the economy. 
 
@@ -1481,7 +1530,12 @@ Figure~\ref{fig:price_impact_dynamic} presents the model-implied conditional pri
     \label{fig:price_impact_dynamic}
 \end{figure}
 
-Next, we run return predictability tests by regressing the cumulative future returns on the price-dividend ratio. Table~\ref{tab:return_predictability} presents the slope coefficients in (1) the full sample and (2) conditional on bad states defined as time periods when the price-dividend ratio is below 25th percentile of its long-run mean. The table shows that realized future excess returns are negatively predicted by the price-dividend ratio, and this predictability is stronger in bad times.
+Next, we run return predictability tests by regressing the cumulative future returns on the price-dividend ratio. Table~\ref{tab:return_predictability} presents the slope coefficients in (1) the full sample and (2) conditional on bad states defined as time periods when the price-dividend ratio is below the 25th percentile of its long-run mean. The table shows that realized future excess returns are negatively predicted by the price-dividend ratio, and this predictability is stronger in bad times. We perform Campbell-Shiller decomposition to decompose the variance of the price-dividend ratio into the discount rate and cash flow components. The decomposition is given by 
+\begin{align*}
+    Var[pd_t] = Cov\left[ \sum_{k=1}^{\infty} \rho^{k-1}\Delta d_{t+k}, pd_t \right] - Cov \left[ \sum_{k=1}^{\infty} \rho^{k-1}r_{t_k},pd_t \right]
+\end{align*}
+The share of variance explained by the expected return is computed as $\beta_r = -\frac{Cov[\sum_{k=1}^{\infty}\rho^k r_{t_k},pd_t]}{Var[pd_t]}$. We compute this quantity in the simulated data and get a value of 1.09 at a 40 quarter horizon. This indicates that all of the variation in the price dividend ratio is explained by the expected returns, and cash flow negatively predicts the price dividend ratio. This is because dividend share is positively correlated with the aggregate endowment and falls during bad times, implying a positive growth rate of dividends. This attenuates the decline in price-dividend ratio and works against the expected returns. \GG{Dejanir to verify the logic.}
+
 
 \begin{figure}[!t]
 \begin{minipage}[t]{0.48\textwidth}
@@ -1544,8 +1598,7 @@ Entries in parentheses are standard errors.
 	% \caption*{\footnotesize{This table reports the model-implied and empirical moments. All values are annualized.}}    
 \end{table}
 
-This subsection compares the baseline economy to three counterfactuals: (i) homogeneous preferences without leverage constraints, (ii) heterogeneous preferences without leverage constraints, and (iii) an economy with the passive portfolio share set to $\bar{\alpha}=1$. The first sets $\gamma_p=\gamma_c=\gamma_u=6.15$ and $\overline{\sigma}=10{,}000$; the second sets $\overline{\sigma}=10{,}000$; and the third sets $\bar{\alpha}=1$. All remaining parameters are held at their baseline values. Table \ref{tab:counterfactual_comparison} reports the implied moments across economies. We make a few observations. First, the baseline economy features large dividend return volatility ($\sigma_{R,D}=22.55\%$) and a high price-impact $(6.854)$ of dividend claims, consistent with the limited risk-bearing capacity translating shocks into large price movements. In comparison, the counterfactual economies, where one or more frictions are shut, feature low return volatility and price impact. Particularly, the homogeneous unconstrained economy and passive efficient economy features a negligible price impact. A surprising result of our calibration is that heterogeneity itself can generate significant price impact through state-dependent risk sharing, even when constraints are relaxed, although the return volatility is still 5.5\% lower than in the baseline. In all cases, the conditional price impact is larger than the unconditional mean. Overall, the comparison indicates that all three frictions - (i) heterogeneity in risk aversion, (ii) leverage constraint, and (iii) passive risk misallocation are important in generating a large price impact. 
-
+This subsection compares the baseline economy to three counterfactuals: (i) homogeneous preferences without leverage constraints, (ii) heterogeneous preferences without leverage constraints, and (iii) an economy with the passive portfolio share set to $\bar{\alpha}=1$. The first sets $\gamma_p=\gamma_c=\gamma_u=6.15$ and $\overline{\sigma}=10{,}000$; the second sets $\overline{\sigma}=10{,}000$; and the third sets $\bar{\alpha}=1$. All remaining parameters are held at their baseline values. Table \ref{tab:counterfactual_comparison} reports the implied moments across economies. We make a few observations. First, the baseline economy features large dividend return volatility ($\sigma_{R,D}=22.55\%$) and a high price-impact $(6.854)$ of dividend claims, consistent with the limited risk-bearing capacity translating shocks into large price movements. In comparison, the counterfactual economies, where one or more frictions are shut, feature low return volatility and price impact. Particularly, the homogeneous unconstrained economy and passive efficient economy feature a negligible price impact. A surprising result of our calibration is that heterogeneity itself can generate significant price impact through state-dependent risk sharing, even when constraints are relaxed, although the return volatility is still 5.5\% lower than in the baseline. In all cases, the conditional price impact is larger than the unconditional mean. The conditional price impact is computed by regressing the change in the log price-dividend ratio on flow shock in states where the price-dividend ratio falls below the 25th percentile of its long-term average. Overall, the comparison indicates that all three frictions - (i) heterogeneous risk aversion, (ii) leverage constraints, and (iii) passive sector risk misallocation - are important in generating a large price impact. Lastly, we observe that discount rate beta $\beta_r$ is...\GG{Dejanir: Can you help here?}
 
 
 \input{sections/conclusion}
