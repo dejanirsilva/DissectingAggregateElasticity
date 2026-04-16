@@ -678,6 +678,11 @@ The second is the hedging demand, $\frac{1-\gamma_j^{-1}}{\psi-1} \, \sigma_{c_j
 When the constraint binds, the multiplier $\nu_{j,t} > 0$ scales down exposure uniformly across all risk factors to satisfy $\|\sigma_{j,t}\| \le \overline{\sigma}$.
 This acts like an endogenous increase in effective risk aversion.
 
+The Lagrange multiplier $\nu_{2,t}$ satisfies the complementary slackness condition:
+\begin{equation}
+    \nu_{2,t} \left( \|\sigma_{2,t}\| - \overline{\sigma} \right) = 0.
+\end{equation}
+
 For passive investors, risk exposure is given by
 \begin{equation}
     \sigma_{0,t} = \overline{\alpha}_{p,t} \sigma_{R_Y,t},
@@ -783,7 +788,7 @@ Combining goods market clearing with the expression for the consumption--wealth 
     r_t &= \rho 
     + \psi^{-1} \left(\mu_{P_Y,t} + \xi_t \right)
     + (1-\psi^{-1}) \sum_{j=0}^2 x_{j,t} 
-        \frac{\gamma_j \alpha_{j,t}^2}{2} \|\sigma_{R_Y,t}\|^2
+        \frac{\gamma_j}{2} \|\sigma_{j,t}\|^2
     - \pi_{Y,t},
 \end{align}
 where $\xi_t \equiv \sum_{j=0}^2 x_{j,t} \, \xi_{j,t}$.
@@ -803,7 +808,7 @@ The price-dividend ratio of the aggregate claim is $p_{Y,t} \equiv P_{Y,t}/Y_t$,
 
 The pricing condition for each claim $k$ is given by
 \begin{equation}\label{eq:pricing_cond}
-    \frac{1}{p_{k,t}} = r_t + \pi_{k,t} - \big(\mu_{k,t} + \mu_{p_k,t} + \sigma_{k,t}s \, \sigma_{p_k,t}^\top\big),
+    \frac{1}{p_{k,t}} = r_t + \pi_{k,t} - \big(\mu_{k,t} + \mu_{p_k,t} + \sigma_{k,t} \, \sigma_{p_k,t}^\top\big),
 \end{equation}
 where $\pi_{k,t} = \sigma_{R_k,t} \, \eta_t^\top$ is the risk premium on claim $k$ implied by no arbitrage.
 The terms $\mu_{p_k,t}$ and $\sigma_{p_k,t}$ denote the drift and diffusion of the price-dividend ratio, respectively.
@@ -819,12 +824,12 @@ The exogenous state variables are the passive portfolio share $\overline{\alpha}
 
 Hence, the aggregate state vector is $X_t = (x_t, \overline{\alpha}_{p,t}, s_t)$, where $x_t = (x_{1,t}, x_{2,t})$.
 The processes $\overline{\alpha}_{p,t}$ and $s_t$ evolve according to \eqref{eq:alpha_p_process} and \eqref{eq:s_process}, respectively.
+To obtain $\mu_{X,t}$ and $\sigma_{X,t}$, we need to solve for the drift and diffusion of the endogenous state variables, $x_{1,t}$ and $x_{2,t}$.
 
 By It\^{o}'s lemma, the law of motion for $x_{j,t}$ is given by
 \begin{align*}
     \frac{dx_{j,t}}{x_{j,t}} 
-    &= \Big[ r_t + \pi_t^\top \alpha_{j,t} - c_{j,t} - \mu_{P_Y,t} 
-        - (\sigma_{j,t} - \sigma_{R_Y,t}) \, \sigma_{R_Y,t}^\top 
+    &= \Big[ (\eta_t-\sigma_{R_Y,t}) \left( \sigma_{j,t} -\sigma_{R_Y,t} \right)^\top - \left( c_{j,t} - \frac{1}{p_{Y,t}}  \right)
         + \kappa \frac{\omega_j - x_{j,t}}{x_{j,t}} \Big] dt  
         + (\sigma_{j,t} - \sigma_{R_Y,t}) \, dZ_t.
 \end{align*}
@@ -904,9 +909,10 @@ Given the volatility of individual claims, the volatility of the aggregate claim
 \]
 
 It remains to determine $\sigma_{R_F,t}$.  
-We assume that $\sigma_{R_F,t}$ does not load on the dividend-share shock, so $\sigma_{R_F,t,3} = 0$.
-We also assume that $\sigma_{R_F,t}$ is orthogonal to the aggregate claim, so $\sigma_{R_F,t}\,\sigma_{R_Y,t}^\top = 0$, and 
-we adopt the normalization $\|\sigma_{R_F,t}\| = \|\sigma_{R_Y,t}\|$. 
+We make three assumptions about $\sigma_{R_F,t}$:
+(i) it does not load on the dividend-share shock, so $\sigma_{R_F,t,3} = 0$;
+(ii) it is orthogonal to the aggregate claim, so $\sigma_{R_F,t}\,\sigma_{R_Y,t}^\top = 0$;
+(iii) it has the same norm as the aggregate claim, so $\|\sigma_{R_F,t}\| = \|\sigma_{R_Y,t}\|$. 
 These conditions uniquely determine $\sigma_{R_F,t}$ given $\sigma_{R_Y,t}$.
 
 \paragraph{Markov equilibrium.} 
@@ -919,7 +925,19 @@ Substituting these expressions into the HJB equation \eqref{eq:HJB_complete} and
 These equations jointly determine the consumption-wealth ratios $\{c_j(X_t)\}_{j=0}^2$ and the price-dividend ratios $\{p_k(X_t)\}_{k \in \{D,B\}}$ as functions of four state variables:
 the two active wealth shares $x_{1,t}$ and $x_{2,t}$, the passive portfolio share $\overline{\alpha}_{p,t}$, and the dividend share $s_t$.
 
-\subsubsection{Mutual fund separation equilibrium}\label{sec:pricing_claims}
+\subsubsection{Block recursivity and the mutual fund theorem}\label{sec:pricing_claims}
+
+We show next that the system of PDEs satisfies an important \textit{block-recursive} structure.
+First, we solve for the consumption-wealth ratios and the price-dividend ratio of the aggregate claim in a reduced set of states $\hat{X}_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t})$.
+Second, we solve for the price-dividend ratios of the dividend and corporate bond claims in the full set of states $X_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t}, s_t)$.
+This provides a substantial simplification of the equilibrium characterization, as the economy behaves as if it were a single-claim economy with a single claim on the aggregate endowment and a derivative.
+At the same time, by exploring the block-recursive structure of the system of PDEs, we can still obtain the implications of portfolio flows on the aggregate market elasticity for the dividend claim. 
+
+Another important implication of the block-recursive structure is that a version of the \textit{mutual fund theorem} holds in our economy.
+Despite the presence of financial frictions in our dynamic model, investors optimally hold risky claims at market-capitalization weights.
+
+
+
 
 % \paragraph{Mutual fund theorem.}
 % The availability of three tradable assets (the dividend claim, the bond claim, and the derivative) raises the question of whether the decomposition of the aggregate endowment into separate claims affects equilibrium allocations. The following proposition shows that it does not.

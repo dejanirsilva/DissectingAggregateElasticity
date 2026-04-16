@@ -264,8 +264,8 @@ Given the solution of the reduced system of PDEs, we can then solve for $p_{D,t}
 
 We next derive the system of PDEs. 
 We will show that one can solve for a reduced system of PDEs involving $(c_j,p_Y)$.
-This requires expressing all equilibrium quantities as functions of the aggregate state variables $X_t$ and the functions $(c_j,p_Y)$ and their derivatives.
-This step 
+% This requires expressing all equilibrium quantities as functions of the aggregate state variables $X_t$ and the functions $(c_j,p_Y)$ and their derivatives.
+This is the crucial in the obtaining the mutual fund theorem in our setting.
 
 \begin{lemma}
     The consumption-wealth ratios, $\{c_{j,t}(X_t)\}_{j=0}^2$, and the price-dividend ratio for the aggregate claim, $p_Y(X_t)$, satisfy the following system of PDEs:
@@ -283,7 +283,7 @@ where $(r_t, \eta_t, \sigma_{j,t}, \mu_{c_j,t}, \sigma_{c_j,t}, \mu_{p_Y,t}, \si
 \begin{proof}
     We proceed in four steps. 
     First, we show how to solve for the diffusion of the endogenous state variables, $\sigma_{x_1,t}$ and $\sigma_{x_2,t}$, in terms of $X_t$, $(c_j,p_Y)$ and their derivatives.
-    Second, we show how to solve for the drift of the endogenous state variables, $\mu_{x_1,t}$ and $\mu_{x_2,t}$, in terms of $X_t$, $(c_j,p_Y)$ and their derivatives.
+    Second, we show how to solve for the drift of the endogenous state variables, $\mu_{x_1,t}$ and $\mu_{x_2,t}$, again in terms of $X_t$, $(c_j,p_Y)$ and their derivatives.
     Third, we show how to solve for the interest rate, $r_t$.
     Finally, we show how to obtain the PDEs for $(c_j,p_Y)$.
 
@@ -351,8 +351,9 @@ where $(r_t, \eta_t, \sigma_{j,t}, \mu_{c_j,t}, \sigma_{c_j,t}, \mu_{p_Y,t}, \si
 
     The risk exposure of the endogenous state variables is given by
     \begin{equation}
-        \sigma_{x_j} = x_{j} \left[ \sigma_{j} -  \sum_{k=0}^2 x_{k} \sigma_{x_k}  \right].
+        \sigma_{x_j} = x_{j} \left[ \sigma_{j} -  \sum_{k=0}^2 x_{k} \sigma_{k}  \right],
     \end{equation}
+    using the fact that $\sigma_{R_Y} = \sum_{k=0}^2 x_{k} \sigma_{k}$.
     
     This gives us a system of equations determining $\sigma_{x_j,t}$:\small
     \begin{equation}
@@ -403,7 +404,7 @@ We can then solve for $\xi = \sum_{j=0}^2 x_{j} \xi_{j}$ and the interest rate:
     r &= \rho 
     + \psi^{-1} \left(\mu_{p_Y} + \mu + \sigma \sigma_{p_Y}^\top + \xi \right)
     + (1-\psi^{-1}) \sum_{j=0}^2 x_{j} 
-        \frac{\gamma_j \alpha_{j}^2}{2} \|\sigma_{R_Y}\|^2
+        \frac{\gamma_j }{2} \|\sigma_{j}\|^2
     - \pi_{Y}.
 \end{align}
 
@@ -431,6 +432,10 @@ A corollary of the above proposition is that the consumption-wealth ratio and pr
     If $(c_j,p_Y)$ are a function of $\hat{X}$, then their derivatives with respect to $s$ are zero, and $s$ completely drops out of the PDE system for $(c_j,p_Y)$.
 \end{proof}
 
+\subsubsection{The mutual fund theorem}
+
+Lemma~\ref{lemma:mutual_fund_theorem} and its corollary show that the consumption-wealth ratio and price-dividend ratio of the aggregate claim are independent of the dividend share $s$.
+This implies that investor's consumption or wealth choices are not exposed to idiosyncratic dividend-share shocks.
 
 
 
