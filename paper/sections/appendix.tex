@@ -251,7 +251,7 @@ From Ito's lemma, the law of motion of $x_{j,t}$ is given by
 using $\mu_{P_Y,t} = \mu_{R_Y,t} - \mu_{R_D,t} \alpha_{D,t}^m - \mu_{R_B,t} \alpha_{B,t}^m$.
 
 
-\subsection{The reduced system of PDEs and the mutual fund theorem}
+\subsection{Block recursivity and the mutual fund theorem}
 
 To compute the equilibrium, one needs to solve a system of $5$ partial differential equations (PDEs), involving the three consumption-wealth ratios $\{c_{j,t}(X_t)\}_{j=0}^2$ and the two price-dividend ratios $\{p_{k,t}(X_t)\}_{k=D,B}$. %$\xi_{j}(x,\overline{\alpha}_p)$
 These functions depend on $4$ state variables, the $2-$dimensional vector $x_{t}$, the portfolio share of passive investors $\overline{\alpha}_{p,t}$, and the dividend share $s_t$.
@@ -260,14 +260,14 @@ The system of PDEs satisfies an important \textit{block-recursive} structure.
 We can first solve for a reduced system of PDEs involving $(c_j,p_Y)$ in the set of states $\hat{X}_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t})$.
 Given the solution of the reduced system of PDEs, we can then solve for $p_{D,t}$ and $p_{B,t}$ in the full set of states $X_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t}, s_t)$.
 
-\subsubsection{Reduced system of PDEs}
+\subsubsection{Block recursivity}
 
 We next derive the system of PDEs. 
 We will show that one can solve for a reduced system of PDEs involving $(c_j,p_Y)$.
 % This requires expressing all equilibrium quantities as functions of the aggregate state variables $X_t$ and the functions $(c_j,p_Y)$ and their derivatives.
 This is the crucial in the obtaining the mutual fund theorem in our setting.
 
-\begin{lemma}
+\begin{lemma}\label{lemma:block_recursivity}
     The consumption-wealth ratios, $\{c_{j,t}(X_t)\}_{j=0}^2$, and the price-dividend ratio for the aggregate claim, $p_Y(X_t)$, satisfy the following system of PDEs:
     \begin{align}
         c_{j,t} &= \psi \rho 
@@ -434,10 +434,37 @@ A corollary of the above proposition is that the consumption-wealth ratio and pr
 
 \subsubsection{The mutual fund theorem}
 
-Lemma~\ref{lemma:mutual_fund_theorem} and its corollary show that the consumption-wealth ratio and price-dividend ratio of the aggregate claim are independent of the dividend share $s$.
-This implies that investor's consumption or wealth choices are not exposed to idiosyncratic dividend-share shocks.
+Lemma~\ref{lemma:block_recursivity} and its corollary show that the consumption-wealth ratio and price-dividend ratio of the aggregate claim are independent of the dividend share $s$.
+This implies that investor's consumption or wealth choices are not exposed to idiosyncratic dividend-share shocks:
+\begin{equation}
+    \sigma_{j,t,3} = \sigma_{R_Y,t,3} = \sigma_{R_F,t,3} = 0,
+\end{equation}
+where the third component of the risk exposure vector is the dividend-share shock.
 
+We can implement the risk exposure $\sigma_{j,t}$ by holding the market index fund and a derivative.
+Let $\hat{\sigma}_{j,t} = [\sigma_{j,t,1}, \sigma_{j,t,2}]$, $\hat{\Sigma}_{t} = \left[\begin{matrix}
+ \hat{\sigma}_{R_Y,t} \\
+ \hat{\sigma}_{R_F,t}
+\end{matrix}\right]$, and $\hat{\alpha}_{j,t} = [\alpha_{j,Y,t}, \alpha_{j,F,t}]^\top$, then we can define the portfolio shares of the market index fund and the derivative as:
+\begin{equation}
+    \hat{\sigma}_{j,t} = \hat{\alpha}_{j,t}^\top \hat{\Sigma}_{t} \Rightarrow \hat{\alpha}_{j,t}^\top = \hat{\sigma}_{j,t} \hat{\Sigma}_{t}^{-1}.
+\end{equation}
 
+We can then write the risk exposure $\sigma_{j,t}$ as:
+\begin{equation}
+    \sigma_{j,t} = \alpha_{j,Y,t} \sigma_{R_Y,t} + \alpha_{j,F,t} \sigma_{R_F,t}.
+\end{equation}
+Using the fact that $\sigma_{R_Y,t} = \frac{P_{D,t}}{P_{Y,t}} \sigma_{R_D,t} + \frac{P_{B,t}}{P_{Y,t}} \sigma_{R_B,t}$, we obtain:
+\begin{equation}
+    \sigma_{j,t} = \alpha_{j,Y,t} \frac{P_{D,t}}{P_{Y,t}} \sigma_{R_D,t} + \alpha_{j,Y,t} \frac{P_{B,t}}{P_{Y,t}} \sigma_{R_B,t} + \alpha_{j,F,t} \left( \frac{P_{B,t}}{P_{Y,t}} \sigma_{R_Y,t} + \frac{P_{D,t}}{P_{Y,t}} \sigma_{R_D,t} \right).
+\end{equation}
+Hence, this implies that the portfolio shares of dividend and bond claims are given by:
+\begin{equation}
+    \alpha_{j,D,t} = \alpha_{j,Y,t} \frac{P_{D,t}}{P_{Y,t}},
+    \quad
+    \alpha_{j,B,t} = \alpha_{j,Y,t} \frac{P_{B,t}}{P_{Y,t}},
+\end{equation}
+where $\alpha_{j,Y,t}$ is the portfolio share of the market index fund defined above.
 
 \section{Derivations for Section \ref{sec:elasticity}}
 
