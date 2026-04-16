@@ -466,37 +466,79 @@ Hence, this implies that the portfolio shares of dividend and bond claims are gi
 \end{equation}
 where $\alpha_{j,Y,t}$ is the portfolio share of the market index fund defined.
 
+\paragraph{Pricing the individual claims.} The princing condition for the dividend claim is given by
+\begin{equation}
+    \frac{1}{p_{k,t}} = r_t + \sigma_{R_k,t} \eta_t^\top - \big(\mu_{k,t} + \mu_{p_k,t} + \sigma_{k,t} \, \sigma_{p_k,t}^\top\big),
+\end{equation}
+where
+\begin{equation}
+    \mu_{p_{k,t}} = \frac{p_{k,X,t}}{p_{k,t}} \mu_{X,t} + \frac{1}{2}\sum_{k=1}^3 \sigma_{X,k,t}^\top\,\frac{p_{k,XX,t}}{p_{k,t}}\,\sigma_{X,k,t}, \qquad \qquad 
+    \sigma_{p_{k,t}} = \frac{p_{k,X,t}}{p_{k,t}} \sigma_{X,t}.
+\end{equation}
+
+
+\paragraph{Mapping to \citet{MenzlySantosVeronesi2004}.} We can map the dividend share $s$ to notation in \citet{MenzlySantosVeronesi2004} as follows:
+\begin{equation}
+    \sigma_s = v^1- v^0, \qquad (1-\overline{s}) v^0 + \overline{s} v^1 = 0,
+\end{equation}
+which implies that
+\begin{equation}
+    v^0 + \overline{s} (v^1- v^0) = 0 \Rightarrow v^0 = - \overline{s} \sigma_s, \qquad v^1 = (1-\overline{s}) \sigma_s,
+\end{equation}
+% \begin{equation}
+%     v^1 - s^ 1 v^ 1 - (1-s^1)v^0 = v^1- v^0 - s^ 1 (v^1- v^0) = (1-s^1)(v^1- v^0)
+% \end{equation}
+% \begin{equation}
+%     v^0 - s^ 1 v^ 1 - (1-s^1)v^0 = v^0- v^0 - s^ 1 (v^1- v^0)= -s^ 1 (v^1- v^0)
+% \end{equation}
+
 \section{Derivations for Section \ref{sec:elasticity}}
 
 \subsection{Proof of Lemma \ref{lemma:benchmark}}\label{app:lemma1}
 
 \begin{proof} The assumption $\epsilon = 0$ implies that there is no preference heterogeneity and passive investors are fully invested in the risky asset.
-We guess and verify that in this benchmark economy, there are no variation in expected returns.
+We guess and verify that in this benchmark economy, there are no variation in expected returns and the leverage constraint is never binding.
 In particular, the wealth distribution plays no role in the economy.
-This implies that $\mu_{c_j,0}(X) = \sigma_{c_j,0}(X) = \mu_{p,0}(X) = \sigma_{p,0}(X) = 0$.
-In this case, the risk premium is given by
-\begin{equation}
-    \pi_{0}(X) =  \frac{\gamma}{x_{u,t}} \left[ 1-x_{0,t}-x_{c,t} \overline{\alpha}_{c,t}\right] \|\sigma_{R_t}\|^ 2 ,
-\end{equation}
-using the fact that $\varsigma_t = 0$, as $\sigma_{c_j,t} = 0$, and $\overline{\alpha}_{p,t} =1$.
+This implies that $\mu_{c_j,0}(X) = \mu_{p_Y,0}(X) = 0$ and $\sigma_{c_j,0}(X) = \sigma_{p_Y,0}(X) = 0_{1\times 3}$, where $0_{1\times 3}$ is a 1x3 vector of zeros.
 
-%Because $\overline{\alpha}_p = 1$, passive investor neither lend to or borrow from active investors.
-Given that $\sigma_{y,t} = 0$, we have that $\sigma_{R,0}(X) = \sigma$.
-%As $\overline{\sigma} > \|\sigma\|$ by assumption, and $\sigma_{R,0}(X) = \sigma $, then $\alpha_{j,t} > 1$ if investor $j$ is constrained. As active investors are all identical, this implies they would all want to borrow to invest in the risky asset. But given that passive investors are not lending, then active investors cannot be constrained. Therefore, $x_{c,t} = 0$ and $x_{u,t} = 1-x_{0,t}$.
-Using the fact that $\overline{\sigma}=\|\sigma\|$ and $x_{u,t}=1-x_{0,t}-x_{c,t}$, we obtain the risk premium $$\pi_{0}(X) = \gamma \|\sigma\|^2,$$  using $\alpha_{c,t} = 1$.
-Using $\sigma_{c_j,t} = 0$ and the expression for $\pi_0(X)$, we obtain that $\alpha_{j,0}(X) = 1$, for $j=1,\ldots, J$, from Equation \eqref{eq:sharpe_ratio}.
+This implies that the risk exposure for the aggregate claim is given by
+\begin{equation}
+    \sigma_{R_Y,0}(X) = \sigma.
+\end{equation}
+
+In this case, the market price of risk is given by
+\begin{equation}
+    \eta_0(X) = \gamma \sigma,
+\end{equation}
+using the fact that $h_{a,t} = 0$ and $\chi_{a,t} = 1$.
+
+This implies that the risk exposure for investor $j$ is given by
+\begin{equation}
+    \sigma_{j,0}(X) = \sigma.
+\end{equation}
+As $\overline{\sigma} = \|\sigma\|$, this implies that the leverage constraint is satisfied at all times.
+
+
+The risk premium on the aggregate claim is given by
+\begin{equation}
+    \pi_{Y,0}(X) = \gamma \|\sigma\|^2.
+\end{equation}
 
 The interest rate is given by
 \begin{align}
-     r_0(X)   &  =  \rho +\psi^{-1} \mu-  \gamma(1+\psi^{-1})\frac{\|\sigma\|^2}{2} .
+    r_0(X) &= \rho 
+    + \psi^{-1} \mu 
+    -(1+\psi^{-1}) 
+        \frac{\gamma }{2} \|\sigma\|^2.
 \end{align}
 
 The consumption-wealth ratio $c_{j,0}(X)$ is given by
-\begin{equation}
-    c_{j,0}(X) = \psi \rho + (1-\psi) \left[ r_0(X) + \pi_0(X) \alpha_{j,0}(X) - \frac{\gamma}{2} \alpha_{j,0}(X)^2||\sigma||^2 \right].
-\end{equation}
+\begin{align}
+    c_{j,0}(X) &= \psi \rho 
+    + (1-\psi) \left[ r_0(X) + \eta_0(X)^\top\,\sigma - \frac{\gamma}{2} \|\sigma\|^2 \right] 
+\end{align}
 
-Plugging in the expression for $r_0(X)$, $\theta_0(X)$ and $\sigma_{j,0}$, we obtain
+Plugging in the expression for $r_0(X)$ and $\eta_0(X)$, we obtain
 \begin{equation}
     c_{j,0}(X) = \rho  - \left(1-\psi^{-1}\right)  \left( \mu - \frac{\gamma\|\sigma\|^2}{2} \right),
 \end{equation}
@@ -504,16 +546,27 @@ where we assume $\rho  > \left(1-\psi^{-1}\right)  \left( \mu - \frac{\gamma\|\s
 
 From the market clearing condition for goods, we obtain:
 \begin{equation}
-    \frac{1}{p_0(X)} = \rho  - \left(1-\psi^{-1}\right)  \left( \mu - \frac{\gamma\|\sigma\|^2}{2} \right).
+    \frac{1}{p_{Y,0}(X)} = \rho  - \left(1-\psi^{-1}\right)  \left( \mu - \frac{\gamma\|\sigma\|^2}{2} \right).
 \end{equation}
 
 The drift and diffusion of the wealth shares are given
 \begin{align}
-    \mu_{X,j,0}(X) &= x_j \left[ r_0(X) + \pi_0(X) \alpha_{j,0}(X) - c_{j,0}(X) -\mu   \right]\\
-    \sigma_{X,j,0}(X) &= x_j (\alpha_{j,0}(X) - 1)\sigma_{R,0}(X),
+    \mu_{x_j,0}(X) &= 0, \qquad
+    \sigma_{x_j,0}(X) = 0_{1\times 3}, \qquad
+    \forall j \in \{1,2\}.
 \end{align}
-where $\mu_{X,j,0} = \sigma_{X,j,0} = 0$, using the expression for returns, portfolio share, and consumption-wealth ratio.
-The result  $\mu_{X,j,0} = 0$ uses the fact that $\kappa = 0$.
+using the fact that $\kappa = 0$, $\sigma_{j,0}(X) = \sigma_{R_Y,0}(X)$, and $c_{j,0}(X) = \frac{1}{p_{Y,0}(X)}$.
+
+The price of the dividend claim is given by
+\begin{equation}
+    \frac{1}{p_{D,0}} = r_0 + \sigma_{R_D,0} \eta_0^\top - \big(\mu_{D,0} + \mu_{p_D,0} + \sigma_{D,0} \, \sigma_{p_D,0}^\top\big),
+\end{equation}
+where
+\begin{equation}
+    \mu_{p_{D,0}} = \frac{p_{D,s,0}}{p_{D,0}} \mu_{s} + \frac{1}{2} \sigma_{X,1,0}^\top\,\frac{p_{D,XX,0}}{p_{D,0}}\,\sigma_{X,1,0}, \qquad \qquad 
+    \sigma_{p_{D,0}} = \frac{p_{D,X,0}}{p_{D,0}} \sigma_{X,1,0}.
+\end{equation}
+
 \end{proof}
 
 \subsection{Proof of Proposition~\ref{prop:first_order}}\label{app:prop_first_order}
