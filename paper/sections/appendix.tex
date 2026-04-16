@@ -251,100 +251,188 @@ From Ito's lemma, the law of motion of $x_{j,t}$ is given by
 using $\mu_{P_Y,t} = \mu_{R_Y,t} - \mu_{R_D,t} \alpha_{D,t}^m - \mu_{R_B,t} \alpha_{B,t}^m$.
 
 
-\subsection{The system of PDEs}
+\subsection{The reduced system of PDEs and the mutual fund theorem}
 
 To compute the equilibrium, one needs to solve a system of $5$ partial differential equations (PDEs), involving the three consumption-wealth ratios $\{c_{j,t}(X_t)\}_{j=0}^2$ and the two price-dividend ratios $\{p_{k,t}(X_t)\}_{k=D,B}$. %$\xi_{j}(x,\overline{\alpha}_p)$
 These functions depend on $4$ state variables, the $2-$dimensional vector $x_{t}$, the portfolio share of passive investors $\overline{\alpha}_{p,t}$, and the dividend share $s_t$.
 
+The system of PDEs satisfies an important \textit{block-recursive} structure.
+We can first solve for a reduced system of PDEs involving $(c_j,p_Y)$ in the set of states $\hat{X}_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t})$.
+Given the solution of the reduced system of PDEs, we can then solve for $p_{D,t}$ and $p_{B,t}$ in the full set of states $X_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t}, s_t)$.
+
+\subsubsection{Reduced system of PDEs}
+
 We next derive the system of PDEs. 
-We will show that one can solve for a reduced system of PDEs involving $(c_j,p_Y)$, so the split between dividends and bond payments does not affect the equilibrium.
-
+We will show that one can solve for a reduced system of PDEs involving $(c_j,p_Y)$.
 This requires expressing all equilibrium quantities as functions of the aggregate state variables $X_t$ and the functions $(c_j,p_Y)$ and their derivatives.
+This step 
 
-
-\paragraph{Step 1: Risk exposure of endogenous state variables.}
-Consider the following block describing the risk exposure of investor $j = 1,2$:
-\begin{align}
-    \sigma_{j,t} &= \frac{1}{1+\nu_{j,t}} \left[ \frac{\eta_t}{\gamma_j} + \frac{1-\gamma_j^{-1}}{\psi-1} \, \sigma_{c_j,t} \right],\\
-    \eta_t &= \gamma_{a,t} \left[\chi_{a,t}\sigma_{R_Y,t} - \sum_{j=0}^2 x_{j,t} \frac{1-\gamma_j^{-1}}{\psi-1} \, \frac{\sigma_{c_j,t}}{1+\nu_{j,t}}\right],\\
-    \sigma_{R_Y,t} &= \sigma + \sum_{k=1}^2 \frac{p_{Y,x_k,t}}{p_{Y,t}} \sigma_{x_k,t} + \frac{p_{Y,k,\overline{\alpha}_p,t}}{p_{Y,t}} \sigma_{\overline{\alpha}_p,t} + \frac{p_{Y,k,s,t}}{p_{Y,t}} \sigma_{s,t},\\
-    \sigma_{c_j,t} &= \sum_{k=1}^2 \frac{c_{j,x_k,t}}{c_{j,t}} \sigma_{x_k,t} + \frac{c_{j,k,\overline{\alpha}_p,t}}{c_{j,t}} \sigma_{\overline{\alpha}_p,t} + \frac{c_{j,k,s,t}}{c_{j,t}} \sigma_{s,t},
-\end{align}
-where $\alpha_{j,t} = \frac{P_{j,t}}{P_{Y,t}}$ for $j \in \{D,B\}$.
-
-We can then solve for $\sigma_{j,t}$ in terms of the risk exposure of the endogenous state variables:
-\begin{equation}
-    \sigma_{j,t} = \chi_{\sigma_j,0}(X_t) + \chi_{\sigma_j,1}(X_t) \sigma_{x_1,t} + \chi_{\sigma_j,2}(X_t) \sigma_{x_2,t},
-\end{equation}
-where $\chi_{\sigma_j,k}, k=0,1,2$ depend on $c_j$ and $p_{Y}$ and their derivatives and the aggregate state variables $X_t$.
-
-The risk exposure of the endogenous state variables is given by
-\begin{equation}
-    \sigma_{x_j,t} = x_{j,t} \left[ \sigma_{j,t} -  \sum_{k=0}^2 x_{k,t }\sigma_{x_k,t}  \right].
-\end{equation}
-
-This gives us a system of equations determining $\sigma_{x_j,t}$:\small
-\begin{equation}
-        \begin{bmatrix}
-            1 - x_{1,t} \sum_{k=0}^2 \left( \chi_{\sigma_1,1} - \chi_{\sigma_k,1} \right) x_{k,t} & - x_{1,t} \sum_{k=0}^2 \left( \chi_{\sigma_1,2} - \chi_{\sigma_k,2} \right) x_{k,t}\\
-            - x_{2,t} \sum_{k=0}^2 \left( \chi_{\sigma_2,1} - \chi_{\sigma_k,1} \right) x_{k,t} & 1 - x_{2,t} \sum_{k=0}^2 \left( \chi_{\sigma_2,2} - \chi_{\sigma_k,2} \right) x_{k,t}
-        \end{bmatrix}
-        \begin{bmatrix}
-            \sigma_{x_1,t}\\
-            \sigma_{x_2,t}
-        \end{bmatrix}
-        =
-        \begin{bmatrix}
-          x_{1,t} \sum_{k=0}^2 \left( \chi_{\sigma_1,0} - \chi_{\sigma_k,0} \right) x_{k,t} \\
-          x_{2,t} \sum_{k=0}^2 \left( \chi_{\sigma_2,0} - \chi_{\sigma_k,0} \right) x_{k,t}
-        \end{bmatrix}.
-\end{equation}\normalsize
-
-Solving the system above, we obtain $\sigma_{x_j,t}$ as a function of $X_{j,t}$ and the functions $c_j$ and $p_{Y}$ and their derivatives.
-Given $\sigma_{x_j,t}$, we can solve for $\sigma_{j,t},$ $\eta_t$, $\sigma_{c_j,t}$, and $\sigma_{R_Y,t}$ using the expressions above. 
-The risk premium on the aggregate claim is given by $\pi_{Y,t} = \sigma_{R_Y,t} \eta_t^\top$.
-
-\paragraph{Step 2: Drift of endogenous state variables.} The drift of the endogenous state variables is given by 
-\begin{align}
-    \mu_{x_j,t} &= x_{j,t} \left[ 
-        (\eta_t-\sigma_{R_Y,t}) \left( \sigma_{j,t} -\sigma_{R_Y,t} \right)^\top - \left( c_{j,t} - \frac{1}{p_{Y,t}}  \right)
-     \right] + \kappa (\omega_j - x_{j,t}).
-\end{align}
-
-Given $\mu_{x_j,t}$, we can solve for the drift of $c_j,t$ and $p_{Y,t}$ using Ito's lemma:
-\begin{align}
-    \mu_{c_j,t} &= \frac{c_{j,X,t}}{c_{j,t}} \mu_{X,t} + \frac{1}{2}\sum_{k=1}^2 \sigma_{X,k,t}^\top\,\frac{c_{j,XX,t}}{c_{j,t}}\,\sigma_{X,k,t},\\
-    \mu_{p_Y,t} &= \frac{p_{Y,X,t}}{p_{Y,t}} \mu_{X,t} + \frac{1}{2}\sum_{k=1}^2 \sigma_{X,k,t}^\top\,\frac{p_{Y,XX,t}}{p_{Y,t}}\,\sigma_{X,k,t}.
-\end{align}
-
-\paragraph{Step 3: Interest rate.}
-Given the expressions derived in the previous steps, we can solve for the shifter of the consumption-wealth ratio $\xi_{j,t}$:
-\begin{equation}
-    \xi_{j,t} = \mu_{c_j,t} 
-    + (1-\gamma_j) \sigma_{c_j,t} \sigma_{j,t}^\top 
-    + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}.
-\end{equation}
-
-We can then solve for $\xi_t = \sum_{j=0}^2 x_{j,t} \xi_{j,t}$ and the interest rate:
-\begin{align}
-    r_t &= \rho 
-    + \psi^{-1} \left(\mu_{p_Y,t} + \mu + \sigma \sigma_{p_Y,t}^\top + \xi_t \right)
-    + (1-\psi^{-1}) \sum_{j=0}^2 x_{j,t} 
-        \frac{\gamma_j \alpha_{j,t}^2}{2} \|\sigma_{R_Y,t}\|^2
-    - \pi_{Y,t}.
-\end{align}
-
-\paragraph{Step 4: PDE for the consumption-wealth ratio and price-dividend ratio.}
-\begin{align}
+\begin{lemma}
+    The consumption-wealth ratios, $\{c_{j,t}(X_t)\}_{j=0}^2$, and the price-dividend ratio for the aggregate claim, $p_Y(X_t)$, satisfy the following system of PDEs:
+    \begin{align}
         c_{j,t} &= \psi \rho 
         + (1-\psi) \left[ r_t + \eta_{t}^\top\,\sigma_{j,t} - \frac{\gamma_j}{2} \|\sigma_{j,t}\|^2 \right] 
         +  \mu_{c_j,t} 
         + (1-\gamma_j) \sigma_{c_j,t} \sigma_{j,t}^\top 
         + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}\\
-        \frac{1}{p_{Y,t}} &= r_t + \eta_{t}^\top\,\sigma_{R_Y,t} - \big(\mu + \mu_{p_Y,t} + \sigma \, \sigma_{p_Y,t}^\top\big),        
+        \frac{1}{p_{Y,t}} &= r_t + \eta_{t}^\top\,(\sigma + \sigma_{p_Y,t}) - \big(\mu + \mu_{p_Y,t} + \sigma \, \sigma_{p_Y,t}^\top\big),        
 \end{align}
-Notice that $(r_t, \eta_t, \sigma_{j,t}, \mu_{c_j,t}, \sigma_{c_j,t}, \mu_{p_Y,t}, \sigma_{p_Y,t})$ are all functions of $X_t$, $(c_j,p_Y)$ and their derivatives.
+where $(r_t, \eta_t, \sigma_{j,t}, \mu_{c_j,t}, \sigma_{c_j,t}, \mu_{p_Y,t}, \sigma_{p_Y,t})$ are all functions of $X_t$, $(c_j,p_Y)$ and their derivatives.    
+\end{lemma}
+
+\begin{proof}
+    We proceed in four steps. 
+    First, we show how to solve for the diffusion of the endogenous state variables, $\sigma_{x_1,t}$ and $\sigma_{x_2,t}$, in terms of $X_t$, $(c_j,p_Y)$ and their derivatives.
+    Second, we show how to solve for the drift of the endogenous state variables, $\mu_{x_1,t}$ and $\mu_{x_2,t}$, in terms of $X_t$, $(c_j,p_Y)$ and their derivatives.
+    Third, we show how to solve for the interest rate, $r_t$.
+    Finally, we show how to obtain the PDEs for $(c_j,p_Y)$.
+
+    In the derivations below, we drop the explicit dependence on $X$ for brevity.
+
+    \paragraph{Step 1: Risk exposure of endogenous state variables.}
+    Consider the expression for the risk exposure of the aggregate claim and the consumption-wealth ratio:
+    \begin{align}
+        \sigma_{R_Y} &= \sigma + \sum_{k=1}^2 \frac{p_{Y,x_k}}{p_{Y}} \sigma_{x_k} + \frac{p_{Y,\overline{\alpha}_p}}{p_{Y}} \sigma_{\overline{\alpha}_p} + \frac{p_{Y,s}}{p_{Y}} \sigma_{s},\\
+        \sigma_{c_j} &= \sum_{k=1}^2 \frac{c_{j,x_k}}{c_{j}} \sigma_{x_k} + \frac{c_{j,\overline{\alpha}_p}}{c_{j}} \sigma_{\overline{\alpha}_p} + \frac{c_{j,s}}{c_{j}} \sigma_{s},
+    \end{align}
+    
+    Notice that we can write $\sigma_{R_Y}$ as follows:
+    \begin{equation}
+        \sigma_{R_Y} = \chi_{\sigma_{R_Y},0} + \chi_{\sigma_{R_Y},1} \sigma_{x_1} + \chi_{\sigma_{R_Y},2} \sigma_{x_2},
+    \end{equation}
+    where the coefficients $\chi_{\sigma_{R_Y},k}$, $k=0,1,2$, are functions of $X$ given by 
+    \begin{align}
+        \chi_{\sigma_{R_Y},0} &= \sigma  +\frac{p_{Y,\overline{\alpha}_p}}{p_{Y}} \sigma_{\overline{\alpha}_p} + \frac{p_{Y,s}}{p_{Y}} \sigma_{s} ,\\
+        \chi_{\sigma_{R_Y},k} &= \frac{p_{Y,x_k}}{p_{Y}}, k=1,2.
+    \end{align}
+
+    Similarly, we can write $\sigma_{c_j}$ as follows:
+    \begin{equation}
+        \sigma_{c_j} = \chi_{\sigma_{c_j},0} + \chi_{\sigma_{c_j},1} \sigma_{x_1} + \chi_{\sigma_{c_j},2} \sigma_{x_2},
+    \end{equation}
+    where the coefficients $\chi_{\sigma_{c_j},k}$, $k=0,1,2$, are functions of $X$ given by 
+    \begin{align}
+        \chi_{\sigma_{c_j},0} &= \frac{c_{j,\overline{\alpha}_p}}{c_{j}} \sigma_{\overline{\alpha}_p} + \frac{c_{j,s}}{c_{j}} \sigma_{s}\\
+        \chi_{\sigma_{c_j},k} &= \frac{c_{j,x_k}}{c_{j}}, k=1,2.
+    \end{align}
+
+    The market price of risk 
+    \begin{align}
+        \eta &= \gamma_{a} \left[\chi_{a}\sigma_{R_Y} - \sum_{j=0}^2 x_{j} \frac{1-\gamma_j^{-1}}{\psi-1} \, \frac{\sigma_{c_j}}{1+\nu_{j}}\right],
+    \end{align}
+    where $\chi_{a} =\frac{1 - (1-x_{1}-x_{2}) \overline{\alpha}_{p}}{x_{1}+x_{2}}$ is a known function of the aggregate state variables $X$.
+    
+    We can then write $\eta$ as follows:
+    \begin{equation}
+        \eta = \chi_{\eta,0} + \chi_{\eta,1} \sigma_{x_1} + \chi_{\eta,2} \sigma_{x_2},
+    \end{equation}
+    where the coefficients $\chi_{\eta,k}$, $k=0,1,2$, are functions of $X$ given by 
+    \begin{align}
+        \chi_{\eta,k} &= \gamma_{a} \left[ \chi_{a}\chi_{\sigma_{R_Y},k} - \sum_{j=0}^2 x_{j} \frac{1-\gamma_j^{-1}}{\psi-1} \, \frac{\chi_{\sigma_{c_j},k}}{1+\nu_{j}}\right].
+    \end{align}
+
+
+    The risk exposure of investor $j = 0,1,2$ is given by
+    \begin{align}
+        \sigma_{0} &= \overline{\alpha}_{p} \sigma_{R_Y}\\
+        \sigma_{j} &= \frac{1}{1+\nu_{j}} \left[ \frac{\eta}{\gamma_j} + \frac{1-\gamma_j^{-1}}{\psi-1} \, \sigma_{c_j} \right], \qquad j=1,2.
+    \end{align}
+
+    
+    We can then solve for $\sigma_{j}$ in terms of the risk exposure of the endogenous state variables:
+    \begin{equation}
+        \sigma_{j} = \chi_{\sigma_j,0} + \chi_{\sigma_j,1} \sigma_{x_1} + \chi_{\sigma_j,2} \sigma_{x_2},
+    \end{equation}
+    where the coefficients $\chi_{\sigma_j,k}$, $k=0,1,2$, are functions of $X$ given by 
+    \begin{align}
+        \chi_{\sigma_0,k} &= \overline{\alpha}_{p} \chi_{\sigma_{R_Y},k}\\
+        \chi_{\sigma_j,k} &= \frac{1}{1+\nu_{j}} \left[ \frac{\chi_{\eta,k}}{\gamma_j} + \frac{1-\gamma_j^{-1}}{\psi-1} \chi_{\sigma_{c_j},k} \right], \qquad j=1,2.
+    \end{align}
+
+    The risk exposure of the endogenous state variables is given by
+    \begin{equation}
+        \sigma_{x_j} = x_{j} \left[ \sigma_{j} -  \sum_{k=0}^2 x_{k} \sigma_{x_k}  \right].
+    \end{equation}
+    
+    This gives us a system of equations determining $\sigma_{x_j,t}$:\small
+    \begin{equation}
+            \begin{bmatrix}
+                1 - x_{1} \sum_{k=0}^2 \left( \chi_{\sigma_1,1} - \chi_{\sigma_k,1} \right) x_{k} & - x_{1} \sum_{k=0}^2 \left( \chi_{\sigma_1,2} - \chi_{\sigma_k,2} \right) x_{k}\\
+                - x_{2} \sum_{k=0}^2 \left( \chi_{\sigma_2,1} - \chi_{\sigma_k,1} \right) x_{k} & 1 - x_{2} \sum_{k=0}^2 \left( \chi_{\sigma_2,2} - \chi_{\sigma_k,2} \right) x_{k}
+            \end{bmatrix}
+            \begin{bmatrix}
+                \sigma_{x_1}\\
+                \sigma_{x_2}
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+              x_{1} \sum_{k=0}^2 \left( \chi_{\sigma_1,0} - \chi_{\sigma_k,0} \right) x_{k} \\
+              x_{2} \sum_{k=0}^2 \left( \chi_{\sigma_2,0} - \chi_{\sigma_k,0} \right) x_{k}
+            \end{bmatrix}.
+    \end{equation}\normalsize
+    
+    Solving the system above, we obtain $\sigma_{x_j}$ as a function of $X$ and the functions $c_j$ and $p_{Y}$ and their derivatives.
+    Given $\sigma_{x_j}$, we can solve for $\sigma_{j},$ $\eta$, $\sigma_{c_j}$, and $\sigma_{R_Y}$ using the expressions above. 
+    The risk premium on the aggregate claim is given by $\pi_{Y} = \sigma_{R_Y} \eta^\top$.
+
+    \paragraph{Step 2: Drift of endogenous state variables.} 
+Given $(\sigma_j, \eta, \sigma_{R_Y})$, we can solve for the drift of the endogenous state variables:
+\begin{align}
+    \mu_{x_j} &= x_{j} \left[ 
+        (\eta-\sigma_{R_Y}) \left( \sigma_{j} -\sigma_{R_Y} \right)^\top - \left( c_{j} - \frac{1}{p_{Y}}  \right)
+     \right] + \kappa (\omega_j - x_{j}),
+\end{align}
+
+This gives us $\mu_{X}$ and $\sigma_{X}$ in terms of $X$, $(c_j,p_Y)$ and their derivatives.
+We can then solve for the drift of $c_j$ and $p_{Y}$ using Ito's lemma:
+\begin{align}
+    \mu_{c_j} &= \frac{c_{j,X}}{c_{j}} \mu_{X} + \frac{1}{2}\sum_{k=1}^3 \sigma_{X,k}^\top\,\frac{c_{j,XX}}{c_{j}}\,\sigma_{X,k},\\
+    \mu_{p_Y} &= \frac{p_{Y,X}}{p_{Y}} \mu_{X} + \frac{1}{2}\sum_{k=1}^3 \sigma_{X,k}^\top\,\frac{p_{Y,XX}}{p_{Y}}\,\sigma_{X,k}.
+\end{align}
+
+\paragraph{Step 3: Interest rate.}
+Given the expressions derived in the previous steps, we can solve for the shifter of the consumption-wealth ratio $\xi_{j,t}$:
+\begin{equation}
+    \xi_{j} = \mu_{c_j} 
+    + (1-\gamma_j) \sigma_{c_j} \sigma_{j}^\top 
+    + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j}\|^2}{2}.
+\end{equation}
+
+We can then solve for $\xi = \sum_{j=0}^2 x_{j} \xi_{j}$ and the interest rate:
+\begin{align}
+    r &= \rho 
+    + \psi^{-1} \left(\mu_{p_Y} + \mu + \sigma \sigma_{p_Y}^\top + \xi \right)
+    + (1-\psi^{-1}) \sum_{j=0}^2 x_{j} 
+        \frac{\gamma_j \alpha_{j}^2}{2} \|\sigma_{R_Y}\|^2
+    - \pi_{Y}.
+\end{align}
+
+\paragraph{Step 4: PDEs for the consumption-wealth ratio and price-dividend ratio.}
+From the expression for the consumption-wealth ratio and the pricing condition for the aggregate claim, we can write the PDE for $c_j$ and $p_Y$ as follows:
+\begin{align}
+        c_{j} &= \psi \rho 
+        + (1-\psi) \left[ r + \eta^\top\,\sigma_{j} - \frac{\gamma_j}{2} \|\sigma_{j}\|^2 \right] 
+        +  \mu_{c_j} 
+        + (1-\gamma_j) \sigma_{c_j} \sigma_{j}^\top 
+        + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j}\|^2}{2}\\
+        \frac{1}{p_{Y}} &= r + \eta^\top\,\sigma_{R_Y} - \big(\mu + \mu_{p_Y} + \sigma \, \sigma_{p_Y}^\top\big),        
+\end{align}
+Notice that $(r, \eta, \sigma_{j}, \mu_{c_j}, \sigma_{c_j}, \mu_{p_Y}, \sigma_{p_Y})$ are all functions of $X$, $(c_j,p_Y)$ and their derivatives.
 Hence, these equations form a system of PDEs for $(c_j,p_Y)$.
+\end{proof}
+
+A corollary of the above proposition is that the consumption-wealth ratio and price-dividend ratio are independent of the dividend share $s$.
+\begin{cor}
+    The consumption-wealth ratio $c_j$ and price-dividend ratio $p_Y$ are a function of the reduced state vector $\hat{X} = (x_1,x_2,\overline{\alpha}_p)$.
+\end{cor}
+\begin{proof}
+    The dividend share $s$ does not appear in the expressions for PDE system for $(c_j,p_Y)$.
+    They only appear indirectly through $\mu_{s}$ and $\sigma_{s}$.
+    If $(c_j,p_Y)$ are a function of $\hat{X}$, then their derivatives with respect to $s$ are zero, and $s$ completely drops out of the PDE system for $(c_j,p_Y)$.
+\end{proof}
+
+
+
 
 \section{Derivations for Section \ref{sec:elasticity}}
 
