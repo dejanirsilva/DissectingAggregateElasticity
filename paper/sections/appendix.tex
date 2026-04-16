@@ -86,10 +86,10 @@ The Hamilton-Jacobi-Bellman (HJB) equation for investor $j$ can be written as
 \end{align}
 subject to 
 \begin{equation}
-    \alpha_j = \overline{\alpha}_p[ \alpha_{m,D,t}, \alpha_{m,B,t}, 0]^\top \qquad \text{for } j = 0, \qquad \qquad 
+    \alpha_j = \overline{\alpha}_p[ \alpha_{D,t}^m, \alpha_{B,t}^m, 0]^\top \qquad \text{for } j = 0, \qquad \qquad 
     \sigma_j \sigma_j^\top \leq \overline{\sigma}^2 \qquad \text{for } j = 2.
 \end{equation}
-given $\sigma_{j} = \alpha_j^\top \Sigma$.
+given $\sigma_{j} = \alpha_j^\top \Sigma$, where $\alpha_{k,t}^m \equiv \frac{P_{k,t}}{P_{Y,t}}$ for $k \in \{D,B\}$.
 For ease of notation, we dropped time subscripts.
 Note that  $V_{j,X}$ and $V_{j,WX}$ are $1\times N$ vectors, $V_{j,XX}$ is a $N\times N$ matrix, and both $V_{j,W}$ and $V_{j,WW}$ are scalars.
 The drift $\mu_X$ is a $N\times 1$ vector, the diffusion $\sigma_X$ is a $N\times 3$ matrix, while $\sigma_R$ is a $1\times 3$ vector.
@@ -158,7 +158,7 @@ and the drift and diffusion of $c_{j,t}$ are given by Ito's lemma:
 \subsection{Pricing condition}
 
 Let $p_{D,t} = \frac{P_{D,t}}{D_t}$, $p_{B,t} = \frac{P_{B,t}}{B_t}$, and $p_{Y,t} = \frac{P_{Y,t}}{Y_t}$ denote the price-dividend ratios of the dividend claim, the bond claim, and the aggregate claim, respectively.
-The pricing condition for asset $k \in\{D,B, Y\}$ is given by
+The pricing condition for asset $k \in\{D,B\}$ is given by
 \begin{equation}
     r_t + \sigma_{R_k,t} \eta_t^\top = \frac{1}{p_{k,t}} + \mu_{k,t} + \mu_{p_k,t} + \sigma_{k,t} \sigma_{p_k,t}^\top,
 \end{equation}
@@ -168,7 +168,8 @@ where $\sigma_{R,t} = \sigma + \sigma_{p_k,t}$ and $(\mu_{p_k,t}, \sigma_{p_k,t}
     \sigma_{p_k,t} = \frac{p_{k,X,t}}{p_{k,t}} \sigma_{X,t}.
 \end{equation}
 
-Notice that $\mu_{R_Y,t} = \omega_{D,t} \mu_{R_D,t} + \omega_{B,t} \mu_{R_B,t}$, where $\omega_{D,t} = \frac{P_{D,t}}{P_{Y,t}}$ and $\omega_{B,t} = \frac{P_{B,t}}{P_{Y,t}}$.
+The expected return and risk exposure on the aggregate claim are given by
+ $\mu_{R_Y,t} = \alpha_{D,t}^m \mu_{R_D,t} + \alpha_{B,t}^m \mu_{R_B,t}$ and $\sigma_{R_Y,t} = \alpha_{D,t}^m \sigma_{R_D,t} + \alpha_{B,t}^m \sigma_{R_B,t}$, respectively.
 
 % Let $y_t \equiv Y_t/P_t$ denote the dividend yield on the risky asset.
 % From Equation~\eqref{eq:risky-asset-ret}, we can write the expected return on the risky asset as:
@@ -216,15 +217,15 @@ The market clearing condition for goods is given by
 
 We can then write the market clearing condition for the equity claim, corporate bond claim, and the derivative as follows:
 \begin{equation}
-    \sum_{j=0}^2 x_{j,t} \alpha_{j,D,t} = \omega_{D,t}, \qquad 
-    \sum_{j=0}^2 x_{j,t} \alpha_{j,B,t} = \omega_{B,t}, \qquad 
+    \sum_{j=0}^2 x_{j,t} \alpha_{j,D,t} = \alpha_{D,t}^m, \qquad 
+    \sum_{j=0}^2 x_{j,t} \alpha_{j,B,t} = \alpha_{B,t}^m, \qquad 
     \sum_{j=0}^2 x_{j,t} \alpha_{j,F,t} = 0.
 \end{equation}  
 
-Let $\omega_t = [\omega_{D,t}, \omega_{B,t},0]^\top$ denote the market weights of the dividend, bond, and derivative claims.
+Let $\alpha_t^m = [\alpha_{D,t}^m, \alpha_{B,t}^m,0]^\top$ denote the market weights of the dividend, bond, and derivative claims.
 We can then write the market clearing conditions above in a compact way:
 \begin{equation}
-    \sum_{j=0}^2 x_{j,t} \alpha_{j,t} = \omega_t.
+    \sum_{j=0}^2 x_{j,t} \alpha_{j,t} = \alpha_t^m.
 \end{equation}
 Multiplying both sides by $\Sigma$ and using the fact that $\sigma_{R_Y,t} = \omega_{D,t} \sigma_{R_D,t} + \omega_{B,t} \sigma_{R_B,t}$, we obtain
 \begin{equation}
@@ -240,63 +241,110 @@ To compute the law of motion of $x_{j,t}$, first, note that the law of motion of
 \end{equation}
 
 From Ito's lemma, the law of motion of $x_{j,t}$ is given by
-\begin{align}
-    \frac{d x_{j,t}}{x_{j,t}} &= \left( r_t + \theta_t \sigma_{j,t} - \xi_{j,t} -\mu + \mu_{y,t} + \sigma \sigma_{R,t}^\top  - \sigma_{j,t} \|\sigma_{R,t}\|  +\kappa \frac{\omega_j-x_{j,t}}{x_{j,t}}  \right) dt \nonumber\\
-    &\qquad + (\sigma_{j,t} - \|\sigma_{R,t}\|)\frac{\sigma_{R,t}}{\|\sigma_{R,t}\|} d Z_t,
-\end{align}
-using $\mu_{P,t} =\mu - \mu_{y,t} + \|\sigma_{R,t}\|^2 - \sigma \sigma_{R,t}^\top $.
+\begin{align*}
+    \frac{dx_{j,t}}{x_{j,t}} 
+    &= \Big[ r_t + \pi_t^\top \alpha_{j,t} - c_{j,t} - \mu_{P_Y,t} 
+        - (\sigma_{j,t} - \sigma_{R_Y,t}) \, \sigma_{R_Y,t}^\top 
+        + \kappa \frac{\omega_j - x_{j,t}}{x_{j,t}} \Big] dt  
+        + (\sigma_{j,t} - \sigma_{R_Y,t}) \, dZ_t.
+\end{align*}
+using $\mu_{P_Y,t} = \mu_{R_Y,t} - \mu_{R_D,t} \alpha_{D,t}^m - \mu_{R_B,t} \alpha_{B,t}^m$.
 
-\subsection{Asset prices}
-
-% We can write the market clearing conditions in terms of the wealth shares:
-% \begin{equation}
-%     \sum_{j=0}^J x_{j,t} \xi_{j,t} = y_t, \qquad \qquad 
-%     \sum_{j=0}^J x_{j,t} \sigma_{j,t} = \|\sigma_{R_t}\|, \qquad \qquad 
-%     \sum_{j=0}^J x_{j,t} = 1.
-% \end{equation}
-
-Let $\mathcal{J}_t^u \subset \{1,2,\ldots, J\}$ denote the set of unconstrained active investors at period $t$, that is, the set of investors such that $\sigma_{j,t} < \overline{\sigma}$.
-Let $\mathcal{J}_t^c \subset \{1,2,\ldots, J\}$ denote the set of constrained active investors, that is, the set of investors such that $\sigma_{j,t} = \overline{\sigma}$.
-From the market clearing condition for the risky asset in Equation~\eqref{eq:mkt-clearing}, we obtain
-\begin{equation}
-    \theta_{t} =  \frac{\gamma_{u,t}}{x_{u,t}} \left[ (1-\overline{\alpha}_{p,t} x_{0,t})\|\sigma_{R_t}\| - \overline{\sigma} x_{c,t}+ \sum_{j\in \mathcal{J}_t^u} x_{j,t} \frac{1-\gamma_j^{-1}}{1-\psi} \frac{\sigma_{\xi_j,t} \sigma_{R,t}^\top}{\|\sigma_{R,t}\|}\right],
-\end{equation}
-where $x_{u,t} \equiv \sum_{j\in \mathcal{J}_t^u} x_{j,t}$, $x_{c,t} \equiv \sum_{j\in \mathcal{J}_t^c} x_{j,t}$, and $\gamma_{u,t} \equiv \left[\frac{1}{x_{u,t}} \sum_{j\in\mathcal{J}_t^u} \frac{x_{j,t}}{\gamma_j}\right]^{-1}$ is the aggregate risk aversion of the unconstrained investors.
-
-From the market clearing condition for goods, the first term in Equation~\eqref{eq:mkt-clearing}, we obtain
-\begin{align}
-    y_t &= \psi \rho + (1-\psi) \left[ r_t + \theta_t \|\sigma_{R,t}\| - \sum_{j=0}^J x_{j,t}\frac{\gamma_j}{2} \sigma_{j,t}^2 \right] \nonumber\\
-    &\qquad +\sum_{j=0}^J x_{j,t} \left[\mu_{\xi_j,t} + (1-\gamma_j)  \sigma_{\xi_j,t} \frac{\sigma_{R,t}^\top}{\|\sigma_{R,t}\|} \sigma_{j,t} + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{\xi_j,t} \|^2}{2}\right].
-\end{align}
-
-Using the pricing condition \eqref{app:pricing_cond}, we obtain the expression for the risk-free rate
-\begin{align}
-     r_t   &  =  \rho - \theta_t \|\sigma_{R,t}\| +\psi^{-1} (\mu - \mu_{y,t}+\|\sigma_{R,t}\|^2- \sigma \sigma_{R,t}^\top)+ \left(1-\psi^{-1}\right)  \sum_{j=0}^J x_{j,t}\frac{\gamma_j}{2} \sigma_{j,t}^2 \nonumber\\
-    &\qquad +\psi^{-1}\sum_{j=0}^J x_{j,t} \left[\mu_{\xi_j,t} + (1-\gamma_j)  \sigma_{\xi_j,t} \frac{\sigma_{R,t}^\top}{\|\sigma_{R,t}\|} \sigma_{j,t} + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{\xi_j,t} \|^2}{2}\right].
-\end{align}
 
 \subsection{The system of PDEs}
 
-To compute the equilibrium, one needs to solve a system of $J+2$ partial differential equations (PDEs), involving the consumption-wealth ratio $\xi_{j}(X)$ %$\xi_{j}(x,\overline{\alpha}_p)$
-for the $J+1$ type of investors and the dividend yield $y(X)$.
-%$y(x,\overline{\alpha}_p)$.
-These functions depend on $J+1$ state variables, the $J-$dimensional vector $x_{t}$ and the portfolio share of passive investors $\overline{\alpha}_{p,t}$.
+To compute the equilibrium, one needs to solve a system of $5$ partial differential equations (PDEs), involving the three consumption-wealth ratios $\{c_{j,t}(X_t)\}_{j=0}^2$ and the two price-dividend ratios $\{p_{k,t}(X_t)\}_{k=D,B}$. %$\xi_{j}(x,\overline{\alpha}_p)$
+These functions depend on $4$ state variables, the $2-$dimensional vector $x_{t}$, the portfolio share of passive investors $\overline{\alpha}_{p,t}$, and the dividend share $s_t$.
 
-The differential equation for the consumption-wealth ratio is given by
+We next derive the system of PDEs. 
+We will show that one can solve for a reduced system of PDEs involving $(c_j,p_Y)$, so the split between dividends and bond payments does not affect the equilibrium.
+
+This requires expressing all equilibrium quantities as functions of the aggregate state variables $X_t$ and the functions $(c_j,p_Y)$ and their derivatives.
+
+
+\paragraph{Step 1: Risk exposure of endogenous state variables.}
+Consider the following block describing the risk exposure of investor $j = 1,2$:
 \begin{align}
-    \xi_{j,t} &= \psi \rho + (1-\psi) \left[ r_t + \theta_t \sigma_{j,t} - \frac{\gamma_j}{2} \sigma_{j,t}^2 \right] + \frac{\xi_{j,X}}{\xi_j} \mu_{X,t} + \frac{1}{2} \sum_{k=1}^d \sigma_{X,k,t}^\top \frac{\xi_{j,XX,t}}{\xi_{j,t}} \sigma_{X,k,t}\nonumber\\
-    &+ (1-\gamma_j)  \frac{\xi_{j,X}}{\xi_j} \sigma_{X,t} \frac{\sigma_{R,t}^\top}{\|\sigma_{R,t}\|} \sigma_{j,t} + \frac{\psi - \gamma_j}{1-\psi} \frac{1}{2} \left|\left| \frac{\xi_{j,X}}{\xi_j} \sigma_{X,t}\right|\right|^2.
+    \sigma_{j,t} &= \frac{1}{1+\nu_{j,t}} \left[ \frac{\eta_t}{\gamma_j} + \frac{1-\gamma_j^{-1}}{\psi-1} \, \sigma_{c_j,t} \right],\\
+    \eta_t &= \gamma_{a,t} \left[\chi_{a,t}\sigma_{R_Y,t} - \sum_{j=0}^2 x_{j,t} \frac{1-\gamma_j^{-1}}{\psi-1} \, \frac{\sigma_{c_j,t}}{1+\nu_{j,t}}\right],\\
+    \sigma_{R_Y,t} &= \sigma + \sum_{k=1}^2 \frac{p_{Y,x_k,t}}{p_{Y,t}} \sigma_{x_k,t} + \frac{p_{Y,k,\overline{\alpha}_p,t}}{p_{Y,t}} \sigma_{\overline{\alpha}_p,t} + \frac{p_{Y,k,s,t}}{p_{Y,t}} \sigma_{s,t},\\
+    \sigma_{c_j,t} &= \sum_{k=1}^2 \frac{c_{j,x_k,t}}{c_{j,t}} \sigma_{x_k,t} + \frac{c_{j,k,\overline{\alpha}_p,t}}{c_{j,t}} \sigma_{\overline{\alpha}_p,t} + \frac{c_{j,k,s,t}}{c_{j,t}} \sigma_{s,t},
+\end{align}
+where $\alpha_{j,t} = \frac{P_{j,t}}{P_{Y,t}}$ for $j \in \{D,B\}$.
+
+We can then solve for $\sigma_{j,t}$ in terms of the risk exposure of the endogenous state variables:
+\begin{equation}
+    \sigma_{j,t} = \chi_{\sigma_j,0}(X_t) + \chi_{\sigma_j,1}(X_t) \sigma_{x_1,t} + \chi_{\sigma_j,2}(X_t) \sigma_{x_2,t},
+\end{equation}
+where $\chi_{\sigma_j,k}, k=0,1,2$ depend on $c_j$ and $p_{Y}$ and their derivatives and the aggregate state variables $X_t$.
+
+The risk exposure of the endogenous state variables is given by
+\begin{equation}
+    \sigma_{x_j,t} = x_{j,t} \left[ \sigma_{j,t} -  \sum_{k=0}^2 x_{k,t }\sigma_{x_k,t}  \right].
+\end{equation}
+
+This gives us a system of equations determining $\sigma_{x_j,t}$:\small
+\begin{equation}
+        \begin{bmatrix}
+            1 - x_{1,t} \sum_{k=0}^2 \left( \chi_{\sigma_1,1} - \chi_{\sigma_k,1} \right) x_{k,t} & - x_{1,t} \sum_{k=0}^2 \left( \chi_{\sigma_1,2} - \chi_{\sigma_k,2} \right) x_{k,t}\\
+            - x_{2,t} \sum_{k=0}^2 \left( \chi_{\sigma_2,1} - \chi_{\sigma_k,1} \right) x_{k,t} & 1 - x_{2,t} \sum_{k=0}^2 \left( \chi_{\sigma_2,2} - \chi_{\sigma_k,2} \right) x_{k,t}
+        \end{bmatrix}
+        \begin{bmatrix}
+            \sigma_{x_1,t}\\
+            \sigma_{x_2,t}
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+          x_{1,t} \sum_{k=0}^2 \left( \chi_{\sigma_1,0} - \chi_{\sigma_k,0} \right) x_{k,t} \\
+          x_{2,t} \sum_{k=0}^2 \left( \chi_{\sigma_2,0} - \chi_{\sigma_k,0} \right) x_{k,t}
+        \end{bmatrix}.
+\end{equation}\normalsize
+
+Solving the system above, we obtain $\sigma_{x_j,t}$ as a function of $X_{j,t}$ and the functions $c_j$ and $p_{Y}$ and their derivatives.
+Given $\sigma_{x_j,t}$, we can solve for $\sigma_{j,t},$ $\eta_t$, $\sigma_{c_j,t}$, and $\sigma_{R_Y,t}$ using the expressions above. 
+The risk premium on the aggregate claim is given by $\pi_{Y,t} = \sigma_{R_Y,t} \eta_t^\top$.
+
+\paragraph{Step 2: Drift of endogenous state variables.} The drift of the endogenous state variables is given by 
+\begin{align}
+    \mu_{x_j,t} &= x_{j,t} \left[ 
+        (\eta_t-\sigma_{R_Y,t}) \left( \sigma_{j,t} -\sigma_{R_Y,t} \right)^\top - \left( c_{j,t} - \frac{1}{p_{Y,t}}  \right)
+     \right] + \kappa (\omega_j - x_{j,t}).
 \end{align}
 
-Plugging the expressions for interest rate and the Sharpe ratio $(r_t, \theta_t)$, the risk exposure $\sigma_{j,t}$, the drift and diffusion of the aggregate state variables $(\mu_{X,t}, \sigma_{X,t})$, and the aggregate volatility $\|\sigma_{R,t}\|$, we can express the condition above in terms of $\xi_{j,t}$ and $y_t$ and their derivatives.
-
-Similarly, we can write the condition for the dividend yield:
+Given $\mu_{x_j,t}$, we can solve for the drift of $c_j,t$ and $p_{Y,t}$ using Ito's lemma:
 \begin{align}
-    y_t &= r_t + \theta_t \left|\left|\sigma - \frac{y_{X,t}}{y_t} \sigma_{X,t}\right|\right| -\mu + \frac{y_{X,t}}{y_t} \mu_{X,t} + \frac{1}{2} \sum_{k=1}^d \sigma_{X,k,t}^\top \frac{y_{XX,t}}{y_{t}} \sigma_{X,k,t}\nonumber\\
-    &
-    - \left|\left|\sigma - \frac{y_{X,t}}{y_t} \sigma_{X,t}\right|\right|^2+ \sigma \left(\sigma - \frac{y_{X,t}}{y_t} \sigma_{X,t} \right)^\top,
+    \mu_{c_j,t} &= \frac{c_{j,X,t}}{c_{j,t}} \mu_{X,t} + \frac{1}{2}\sum_{k=1}^2 \sigma_{X,k,t}^\top\,\frac{c_{j,XX,t}}{c_{j,t}}\,\sigma_{X,k,t},\\
+    \mu_{p_Y,t} &= \frac{p_{Y,X,t}}{p_{Y,t}} \mu_{X,t} + \frac{1}{2}\sum_{k=1}^2 \sigma_{X,k,t}^\top\,\frac{p_{Y,XX,t}}{p_{Y,t}}\,\sigma_{X,k,t}.
 \end{align}
-which again can be expressed only in terms of $\xi_{j,t}$ and $y_t$ and their derivatives.
+
+\paragraph{Step 3: Interest rate.}
+Given the expressions derived in the previous steps, we can solve for the shifter of the consumption-wealth ratio $\xi_{j,t}$:
+\begin{equation}
+    \xi_{j,t} = \mu_{c_j,t} 
+    + (1-\gamma_j) \sigma_{c_j,t} \sigma_{j,t}^\top 
+    + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}.
+\end{equation}
+
+We can then solve for $\xi_t = \sum_{j=0}^2 x_{j,t} \xi_{j,t}$ and the interest rate:
+\begin{align}
+    r_t &= \rho 
+    + \psi^{-1} \left(\mu_{p_Y,t} + \mu + \sigma \sigma_{p_Y,t}^\top + \xi_t \right)
+    + (1-\psi^{-1}) \sum_{j=0}^2 x_{j,t} 
+        \frac{\gamma_j \alpha_{j,t}^2}{2} \|\sigma_{R_Y,t}\|^2
+    - \pi_{Y,t}.
+\end{align}
+
+\paragraph{Step 4: PDE for the consumption-wealth ratio and price-dividend ratio.}
+\begin{align}
+        c_{j,t} &= \psi \rho 
+        + (1-\psi) \left[ r_t + \eta_{t}^\top\,\sigma_{j,t} - \frac{\gamma_j}{2} \|\sigma_{j,t}\|^2 \right] 
+        +  \mu_{c_j,t} 
+        + (1-\gamma_j) \sigma_{c_j,t} \sigma_{j,t}^\top 
+        + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}\\
+        \frac{1}{p_{Y,t}} &= r_t + \eta_{t}^\top\,\sigma_{R_Y,t} - \big(\mu + \mu_{p_Y,t} + \sigma \, \sigma_{p_Y,t}^\top\big),        
+\end{align}
+Notice that $(r_t, \eta_t, \sigma_{j,t}, \mu_{c_j,t}, \sigma_{c_j,t}, \mu_{p_Y,t}, \sigma_{p_Y,t})$ are all functions of $X_t$, $(c_j,p_Y)$ and their derivatives.
+Hence, these equations form a system of PDEs for $(c_j,p_Y)$.
 
 \section{Derivations for Section \ref{sec:elasticity}}
 

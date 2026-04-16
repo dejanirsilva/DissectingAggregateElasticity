@@ -424,12 +424,12 @@ This specification ensures $s_t \in [0,1]$ at all times and yields a stationary 
 As a result, dividends inherit both aggregate risk and additional variation from movements in the dividend share.
 By It\^{o}'s lemma, dividends follow:
 \begin{equation}\label{eq:D_dynamics}
-    \frac{dD_t}{D_t} = \mu_D(s_t)\,dt + \sigma_D(s_t)\,dZ_t,
+    \frac{dD_t}{D_t} = \mu_{D,t}\,dt + \sigma_{D,t}\,dZ_t,
 \end{equation}
 where
 \begin{equation}\label{eq:D_vol}
-    \sigma_D(s) = \sigma + (1-s)\,\sigma_s, \qquad 
-    \mu_D(s) = \mu + \kappa_s\!\left(\frac{\overline{s}}{s}-1\right) + (1-s)\,\sigma\sigma_s^\top.
+    \sigma_{D,t} = \sigma + (1-s_t)\,\sigma_s, \qquad 
+    \mu_{D,t} = \mu + \kappa_s\!\left(\frac{\overline{s}}{s_t}-1\right) + (1-s_t)\,\sigma\sigma_s^\top.
 \end{equation}
 
 This specification captures several key features of the data.
@@ -455,6 +455,7 @@ The return on the aggregate claim follows:
 \end{equation}
 
 Investors also have access to a risk-free asset paying rate $r_t$ and, to ensure markets are dynamically complete, a derivative in zero net supply that spans risks not directly traded through the dividend and bond claims. 
+In particular, we assume the derivative does not load on dividend-share shocks.
 As in a futures contract, there is no initial cash exchange to enter into the derivative contract.
 The derivative provides risk exposure $\sigma_{R_F,t} \in \mathbb{R}^{1\times d}$, orthogonal to the aggregate claim, $\sigma_{R_F,t}\,\sigma_{R_Y,t}^\top = 0$, so that it provides independent risk exposure, with normalization $\|\sigma_{R_F,t}\| = \|\sigma_{R_Y,t}\|$.
 
@@ -802,7 +803,7 @@ The price-dividend ratio of the aggregate claim is $p_{Y,t} \equiv P_{Y,t}/Y_t$,
 
 The pricing condition for each claim $k$ is given by
 \begin{equation}\label{eq:pricing_cond}
-    \frac{1}{p_{k,t}} = r_t + \pi_{k,t} - \big(\mu_{k,t} + \mu_{p_k,t} + \sigma \, \sigma_{p_k,t}^\top\big),
+    \frac{1}{p_{k,t}} = r_t + \pi_{k,t} - \big(\mu_{k,t} + \mu_{p_k,t} + \sigma_{k,t}s \, \sigma_{p_k,t}^\top\big),
 \end{equation}
 where $\pi_{k,t} = \sigma_{R_k,t} \, \eta_t^\top$ is the risk premium on claim $k$ implied by no arbitrage.
 The terms $\mu_{p_k,t}$ and $\sigma_{p_k,t}$ denote the drift and diffusion of the price-dividend ratio, respectively.
