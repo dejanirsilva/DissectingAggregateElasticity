@@ -2,78 +2,118 @@
 
 \subsection{The bond demand view}
 
-Let $b_j \equiv \frac{B_j}{W_j}$ denote the bond-to-wealth ratio.
+Define the normalized bond demand $b_{j} \equiv \frac{R_f^{-1} B_j}{W_j} = 1 -c_{j}(r,\pi) - \alpha_j (1-c_{j}(r,\pi))$ as the bond-to-wealth ratio:
+\begin{equation}
+    b_j = (1-\alpha_j) (1-c_j(r,\pi)) = 1-c_{j}(r,\pi) - \frac{P Q_j}{W_j}.
+\end{equation}
+
+Notice that the bond demand depends not only on the interest rate, but also on the price of the risky asset, that is, the cross-elasticity will generically be non-zero.
+
 The market clearing condition for bonds can be expressed as follows
 \begin{equation}
-    \underbrace{x_a b_a}_{\textbf{active bond demand}} = \underbrace{- x_p b_p}_{\textbf{net bond supply}}
+    \underbrace{x_a b_a}_{\textbf{active bond demand}} = \underbrace{- x_p b_p}_{\textbf{net bond supply}},
+\end{equation}
+where $x_j \equiv \frac{\omega_j W_{j}}{\omega_a W_a + \omega_p W_p} = \omega_j Q_{j,-1} $ denotes the wealth share of investor $j$.
+
+Notice that $\frac{P Q_j}{W_j} = \frac{P}{Y+P} \frac{\omega_j Q_j}{x_j}$. 
+We can then write the bond market-clearing condition as follows:
+\begin{equation}
+    1 - \overline{c}(\mu-p) -\frac{e^p}{1+e^p} \left[\omega_a Q_a + \omega_p Q_p\right] = 0 \iff
+    \underbrace{\frac{1}{1+e^p} - \overline{c}(\mu-p)}_{\text{excess supply of goods}} -\frac{e^p}{1+e^p} \left[\omega_a Q_a + \omega_p Q_p-1\right] = 0
 \end{equation}
 
-The linearized bond demand for a passive investor is given by
-\begin{equation}
-    b_j - b_j^* = \left[ r -r^* +\frac{c_j'(\mu-p^*)}{1-c_j(\mu-p^*)}   (p-p^*)\right] b_j^* - \alpha_j^* e^{r^*} (1-c_j(\mu-p^*))  \hat{\alpha}_j
-\end{equation}
+The left-hand side of the two expressions above gives you total bond demand. 
+In the partial equilibrium case, the risk premium adjusts to clear the market for risky assets, so $\omega_a Q_a + \omega_p Q_p=1$, keeping the interest rate fixed.
+But, due to the cross-elasticity in bond demand, a change in the price of the risky asset --- keeping the interest rate fixed --- would create a disequilibrium in the bond market.
+For instance, in the case $\chi_p \equiv - \overline{c}'(\mu-p) > 0$, a decrease in the price of the risky asset would create an insufficient demand for goods and an excess demand for bonds.
+The excess demand for bonds would create an incentive to reduce the interest rate, 
 
-For simplicity, focus on the case $\overline{\alpha}_p = 1$, so $b^*_p = b_a^* = 0$.
-The passive bond demand is then given by
-\begin{equation}
-    x_p b_p=  f^b,
-\end{equation}
-where $f^b \equiv  -x_p [1-c_p(\mu-p^*)] \hat{\alpha}_p$.
-The active bond demand is given by
-\begin{equation}
-    x_a b_a  = -\zeta^b_p (p-p^*) - \zeta^b_r (r-r^*),
-\end{equation}
-where $\zeta^b_p = \zeta^b_r = -x_a g_a'(\mu-p^*-r^*)[1-c_a(\mu-p^*)]$.
+% The $\hat{b}_j \equiv b_j - b_j^*$. Then, the linearized bond demand for the passive investor is given by
+% \begin{equation}
+%     \hat{b}_p = -(1-\alpha_p^*) \left[\frac{\partial c_p^*}{\partial r} \hat{r} + \frac{\partial c_p^*}{\partial \pi} \hat{\pi} \right] - (1-c_p^*) \overline{\alpha}_p^* \hat{\alpha}_p. 
+% \end{equation}
 
-The demand system can be written as follows:
-\begin{equation}
-    \left[
-    \begin{matrix}
-        \zeta_p^q & \zeta^q_r\\
-        \zeta_p^b & \zeta^b_r 
-    \end{matrix}
-    \right] \left[ 
-    \begin{matrix}
-        p-p^*\\
-        r-r^*
-    \end{matrix}
-    \right] = \left[ 
-    \begin{matrix}
-        f^q\\
-    f^b
-    \end{matrix}
-    \right],
-\end{equation}
-where we denote here $f^q \equiv f$ for symmetry.
+% The linearized bond demand for the active investor is given by
+% \begin{equation}
+%     \hat{b}_a = -(1-\alpha_a^*) \left[\frac{\partial c_a^*}{\partial r} \hat{r} + \frac{\partial c_a^*}{\partial \pi} \hat{\pi} \right] - (1-c_a^*) \frac{\partial \alpha_a^*}{\partial \pi} \hat{\pi}.
+% \end{equation}
 
-Inverting the system above, we obtain
-\begin{equation}
-    \left[ 
-    \begin{matrix}
-        p-p^*\\
-        r-r^*
-    \end{matrix}
-    \right] = 
-    \frac{1}{\zeta_{p}^q \zeta^b_r - \zeta_r^q \zeta ^b_p } \left[
-    \begin{matrix}
-        \zeta^b_r  & -\zeta^q_r\\
-        -\zeta_p^b & \zeta_p^q
-    \end{matrix}
-    \right] 
-    \left[ 
-    \begin{matrix}
-        f^q\\
-    f^b
-    \end{matrix}
-    \right].
-\end{equation}
+% The risk premium is given by
+% \begin{equation}
+%     \hat{\pi} = - \hat{p} - \hat{r}.
+% \end{equation}
 
-The price is given by
-\begin{equation}
-    p-p^* = \frac{\zeta_r^b f^q - \zeta_r^q f^b}{\zeta_{p}^q \zeta^b_r - \zeta_r^q \zeta ^b_p } = 
-     x_p \hat{\alpha}_p\frac{\zeta_r^b  + \zeta_r^q (1-c_p(\mu-p^*))}{\zeta_{p}^q \zeta^b_r - \zeta_r^q \zeta ^b_p } = 0,
-\end{equation}
-using the fact that $\zeta^q_r = x_a g_a'(\mu-p^*-r^*)$ and $c_a(\mu-p^*) = c_p(\mu-p^*)$.
+% We can then write the bond demand as follows:
+% \begin{equation}
+%     \hat{b}_j = - \zeta_{}
+% \end{equation}
+
+% The linearized bond demand for a passive investor is given by
+% \begin{equation}
+%     b_j - b_j^* = \left[ r -r^* +\frac{c_j'(\mu-p^*)}{1-c_j(\mu-p^*)}   (p-p^*)\right] b_j^* - \alpha_j^* e^{r^*} (1-c_j(\mu-p^*))  \hat{\alpha}_j
+% \end{equation}
+
+% For simplicity, focus on the case $\overline{\alpha}_p = 1$, so $b^*_p = b_a^* = 0$.
+% The passive bond demand is then given by
+% \begin{equation}
+%     x_p b_p=  f^b,
+% \end{equation}
+% where $f^b \equiv  -x_p [1-c_p(\mu-p^*)] \hat{\alpha}_p$.
+% The active bond demand is given by
+% \begin{equation}
+%     x_a b_a  = -\zeta^b_p (p-p^*) - \zeta^b_r (r-r^*),
+% \end{equation}
+% where $\zeta^b_p = \zeta^b_r = -x_a g_a'(\mu-p^*-r^*)[1-c_a(\mu-p^*)]$.
+
+% The demand system can be written as follows:
+% \begin{equation}
+%     \left[
+%     \begin{matrix}
+%         \zeta_p^q & \zeta^q_r\\
+%         \zeta_p^b & \zeta^b_r 
+%     \end{matrix}
+%     \right] \left[ 
+%     \begin{matrix}
+%         p-p^*\\
+%         r-r^*
+%     \end{matrix}
+%     \right] = \left[ 
+%     \begin{matrix}
+%         f^q\\
+%     f^b
+%     \end{matrix}
+%     \right],
+% \end{equation}
+% where we denote here $f^q \equiv f$ for symmetry.
+
+% Inverting the system above, we obtain
+% \begin{equation}
+%     \left[ 
+%     \begin{matrix}
+%         p-p^*\\
+%         r-r^*
+%     \end{matrix}
+%     \right] = 
+%     \frac{1}{\zeta_{p}^q \zeta^b_r - \zeta_r^q \zeta ^b_p } \left[
+%     \begin{matrix}
+%         \zeta^b_r  & -\zeta^q_r\\
+%         -\zeta_p^b & \zeta_p^q
+%     \end{matrix}
+%     \right] 
+%     \left[ 
+%     \begin{matrix}
+%         f^q\\
+%     f^b
+%     \end{matrix}
+%     \right].
+% \end{equation}
+
+% The price is given by
+% \begin{equation}
+%     p-p^* = \frac{\zeta_r^b f^q - \zeta_r^q f^b}{\zeta_{p}^q \zeta^b_r - \zeta_r^q \zeta ^b_p } = 
+%      x_p \hat{\alpha}_p\frac{\zeta_r^b  + \zeta_r^q (1-c_p(\mu-p^*))}{\zeta_{p}^q \zeta^b_r - \zeta_r^q \zeta ^b_p } = 0,
+% \end{equation}
+% using the fact that $\zeta^q_r = x_a g_a'(\mu-p^*-r^*)$ and $c_a(\mu-p^*) = c_p(\mu-p^*)$.
 
 \section{Derivations for Section \ref{sec:model}}
 
