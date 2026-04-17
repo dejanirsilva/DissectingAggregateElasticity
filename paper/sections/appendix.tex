@@ -625,123 +625,200 @@ This implies that the diffusion terms for the consumption-wealth ratios and the 
 where $c_{j,\hat{X}}=\mathcal{O}(\epsilon)$ and $p_{Y,\hat{X}}=\mathcal{O}(\epsilon)$ as these derivatives are zero at order zero.
 Notice this implies that $\sigma_{R_Y,1} = 0_{1\times 3}$. 
 
-\paragraph{Risk exposure of active investors.} The risk exposure for the passive investor is given by
+\paragraph{Risk exposure.} The risk exposure for the passive investor is given by
 \begin{equation}
     \sigma_{0,1} = \hat{\alpha}_{p,1} \sigma. 
 \end{equation}
 
-The risk exposure for the first active investor is given by
+The first-order correction to the risk exposure for an unconstrained active investor is given by
 \begin{equation}
-    \sigma_{1,1} = \frac{\eta_1}{\gamma} - \frac{\eta_0}{\gamma} \hat{\gamma}_1.
+    \sigma_{j,1} = \frac{\eta_1}{\gamma} - \frac{\eta_0}{\gamma} (\hat{\gamma}_j+ \hat{\nu}_{j}).
 \end{equation}
 
-The risk exposure for active investors can be written as
+
+
+The leverage constraint can be written as
 \begin{equation}
-    \sigma_{j}(X,\epsilon) = \min \left\{ \frac{\theta(X,\epsilon)}{\gamma_j}  + \frac{1-\gamma_j^{-1}}{\psi-1} \frac{\sigma_{c_j}(X,\epsilon) \sigma_{R}^\top(X,\epsilon)}{\|\sigma_{R}(X,\epsilon)\|}, \|\sigma\| + \hat{\sigma} \epsilon \right\},
-\end{equation}
-where $\sigma_{j}(X,\epsilon) \equiv \alpha_{j}(X;\epsilon) \|\sigma_{R}(X;\epsilon)\|$ $\theta(X;\epsilon) \equiv \frac{\pi(X;\epsilon)}{\|\sigma_{R}(X;\epsilon)\|}$
-Expanding the first term inside brackets in $\epsilon$, we obtain
-\begin{small}
-	\begin{equation}
-		\sigma_{j}(X,\epsilon) = \min \left\{ \left(\frac{\theta_1(X)}{\gamma}- \frac{\theta_0(X)}{\gamma} \hat{\gamma}_j -\hat{\sigma}\right)\epsilon + \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2}(X) \sigma^\top}{\|\sigma\|} \epsilon^2 + O(\epsilon^3)  , 0 \right\}+\|\sigma\| + \hat{\sigma} \epsilon.
-	\end{equation}
-\end{small}
-
-
-
-Adding and subtracting $\|\sigma\| + \hat{\sigma}\epsilon$, and using $\frac{\theta_0(X)}{\gamma} = \|\sigma\|$, we obtain
-\begin{small}
-	\begin{equation}\label{eq:sigma-j}
-		\sigma_{j}(X,\epsilon) = \min \left\{ \left(\frac{\theta_1(X)}{\gamma}- \frac{\theta_0(X)}{\gamma} \hat{\gamma}_j -\hat{\sigma}\right)\epsilon + \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2}(X) \sigma^\top}{\|\sigma\|} \epsilon^2 + O(\epsilon^3)  , 0 \right\}+\|\sigma\| + \hat{\sigma} \epsilon.
-	\end{equation}
-\end{small}
-
-Consider first the case where the following condition is satisfied:
-\begin{equation}\label{eq:regular_case}
-    \frac{\theta_1(X)}{\gamma}- \frac{\theta_0(X)}{\gamma} \hat{\gamma}_j -\hat{\sigma} = \mathcal{O}(1), 
+    \sqrt{ ( \sigma + \sigma_{j,1} \epsilon) (\sigma + \sigma_{j,1} \epsilon)^\top } + \mathcal{O}(\epsilon^2) \leq \overline{\sigma}.
 \end{equation}
 
-If this is the case, then
+We can write the expression above as
 \begin{equation}
-    \left(\frac{\theta_1(X)}{\gamma}- \frac{\theta_0(X)}{\gamma} \hat{\gamma}_j -\hat{\sigma}\right)\epsilon \gg \left|\frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2}(X) \sigma^\top}{\|\sigma\|} \right| \epsilon^2,
+    \frac{\sigma_{j,1} \sigma^\top }{\sigma \sigma^\top} \leq  \hat{\sigma}.
 \end{equation}
-for small $\epsilon$.
-So, the sign of the term inside the $ \min $ operator in \eqref{eq:sigma-j} is determined by the first term.
 
-We can then write $\sigma_{j}(X,\epsilon)$ as follows:
+\paragraph{Market price of risk.} Expanding the market clearing condition for risky assets, we obtain
 \begin{equation}
-    \sigma_{j}(X,\epsilon) = \|\sigma\| +  \min\left\{ \frac{\theta_1(X)}{\gamma}- \frac{\theta_0(X)}{\gamma} \hat{\gamma}, \hat{\sigma}\right\}\epsilon + \mathcal{O}(\epsilon^2).
+    \sum_{j=0}^2 x_{j} \sigma_{j,1} = 0
 \end{equation}
+using the fact that $\sigma_{R_Y,1} = 0$.
 
-In the region of the state space where condition~\eqref{eq:regular_case} holds, one can determine whether an investor is constrained or unconstrained only based on the first-order terms.
-Suppose now that the following condition holds
-\begin{equation}\label{eq:second-order_case}
-    \frac{\theta_1(X)}{\gamma}- \frac{\theta_0(X)}{\gamma} \hat{\gamma}_j -\hat{\sigma} = \mathcal{O}(\epsilon).
-\end{equation}
-This condition states that, up to the first order, the leverage constraint is either always binding or slack by just a tiny amount parameterized by $ \epsilon $ and $ \epsilon^2 $ terms inside the $ \min $ operator in \eqref{eq:sigma-j}.
-In this case, we can write $\sigma_{j}(X,\epsilon)$ as follows:
-\begin{small}
-	\begin{equation}
-		\sigma_{j}(X,\epsilon) = \|\sigma\| + \hat{\sigma}\epsilon+\min\left\{ \left(\frac{\theta_1(X)}{\gamma}- \frac{\theta_0(X)}{\gamma} \hat{\gamma}_j-\hat{\sigma}\right) \epsilon + \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2}(X) \sigma^\top}{\|\sigma\|} \epsilon^2,0\right\} + \mathcal{O}(\epsilon^3).
-	\end{equation}
-\end{small}
-In this region of the state space where condition~\eqref{eq:second-order_case} is satisfied, we need the second-order term to determine whether an investor is constrained.
-This distinction will be relevant when computing the second-order correction.
-
-For the first-order correction terms here, we focus on the case where condition \eqref{eq:regular_case} holds.
-
-\paragraph{Aggregate risk aversion.} The aggregate risk aversion of unconstrained investors, defined above, is given by
+When the leverage constraint is not binding, we have
 \begin{equation}
-    \gamma_u(X,\epsilon) = \frac{x_u}{\sum_{j\in\mathcal{J}^u} \frac{x_j}{\gamma (1+\hat{\gamma}\epsilon)}} = \gamma + \gamma \sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j\, \epsilon + \mathcal{O}(\epsilon^2)
+   \eta_1  =  \gamma \sigma \left[\sum_{j=1}^2 \frac{x_j}{x_a}(\hat{\gamma}_j+ \hat{\nu}_{j}) -\frac{x_0}{x_a}\hat{\alpha}_{p,1} \right].
 \end{equation}
 
-\paragraph{Market price of risk.} The market price of risk can be written as
+In this case, the risk exposure for the first active investor is given by
+\begin{equation}
+    \sigma_{1,1} = - \left[ \frac{x_2}{x_a}\left(\hat{\gamma}_1 - \hat{\gamma}_2-\hat{\nu}_{2}\right) +\frac{x_0}{x_a}\hat{\alpha}_{p,1} \right]\sigma.
+\end{equation}
+and the risk exposure for the second active investor is given by
+\begin{equation}
+    \sigma_{2,1} = \left[ \frac{x_1}{x_a}\left(\hat{\gamma}_1 - \hat{\gamma}_2 - \hat{\nu}_{2}\right)-\frac{x_0}{x_a}\hat{\alpha}_{p,1}  \right]\sigma.
+\end{equation}
+
+When the leverage constraint is binding, the following condition is satisfied:
+\begin{equation}
+    \frac{x_1}{x_a}\left(\hat{\gamma}_1 - \hat{\gamma}_2 - \hat{\nu}_{2}\right) -\frac{x_0}{x_a}\hat{\alpha}_{p,1} = \hat{\sigma},
+\end{equation}
+rearranging the expression above, we obtain
+\begin{equation}
+    \hat{\nu}_{2} = \hat{\gamma}_1-\hat{\gamma}_2 -\frac{x_0}{x_1}\hat{\alpha}_{p,1} -\frac{x_a}{x_1} \hat{\sigma}.
+\end{equation}
+
+If the constraint is not binding, then $\hat{\nu}_{2} = 0$ and the following condition is satisfied:
+\begin{equation}
+    \frac{x_1}{x_a}\left(\hat{\gamma}_1 - \hat{\gamma}_2 \right) -\frac{x_0}{x_a}\hat{\alpha}_{p,1} < \hat{\sigma} \iff
+    \hat{\gamma}_1-\hat{\gamma}_2 -\frac{x_0}{x_1}\hat{\alpha}_{p,1} -\frac{x_a}{x_1} \hat{\sigma} <0.
+\end{equation}
+
+Hence, the Lagrange multiplier on the leverage constraint is given by
+\begin{equation}
+    \hat{\nu}_{2} = \max\left\{ \hat{\gamma}_1-\hat{\gamma}_2 -\frac{x_0}{x_1}\hat{\alpha}_{p,1} -\frac{x_a}{x_1} \hat{\sigma}, 0 \right\}.
+\end{equation}
+
+When the constraint is binding, the market price of risk is given by
+\begin{equation}
+    \eta_1 = \gamma \sigma \left[\hat{\gamma}_1 - \frac{x_2}{x_1}\hat{\sigma}  -\frac{x_0}{x_1}\hat{\alpha}_{p,1}  \right].
+\end{equation}
+
+\paragraph{Risk premium.} The risk premium is given by
+\begin{equation}
+    \pi_{Y,1} = \eta_1 \sigma^\top = \gamma \|\sigma\|^2 \left[\sum_{j=1}^2 \frac{x_j}{x_a}(\hat{\gamma}_j+ \hat{\nu}_{j}) -\frac{x_0}{x_a}\hat{\alpha}_{p,1} \right].
+\end{equation}
+
+
+
+% The risk exposure for active investors can be written as
+% \begin{equation}
+%     \sigma_{j}(X,\epsilon) = \min \left\{ \frac{\theta(X,\epsilon)}{\gamma_j}  + \frac{1-\gamma_j^{-1}}{\psi-1} \frac{\sigma_{c_j}(X,\epsilon) \sigma_{R}^\top(X,\epsilon)}{\|\sigma_{R}(X,\epsilon)\|}, \|\sigma\| + \hat{\sigma} \epsilon \right\},
+% \end{equation}
+% where $\sigma_{j}(X,\epsilon) \equiv \alpha_{j}(X;\epsilon) \|\sigma_{R}(X;\epsilon)\|$ $\theta(X;\epsilon) \equiv \frac{\pi(X;\epsilon)}{\|\sigma_{R}(X;\epsilon)\|}$
+% Expanding the first term inside brackets in $\epsilon$, we obtain
+% \begin{small}
+% 	\begin{equation}
+% 		\sigma_{j}(X,\epsilon) = \min \left\{ \left(\frac{\theta_1(X)}{\gamma}- \frac{\theta_0(X)}{\gamma} \hat{\gamma}_j -\hat{\sigma}\right)\epsilon + \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2}(X) \sigma^\top}{\|\sigma\|} \epsilon^2 + O(\epsilon^3)  , 0 \right\}+\|\sigma\| + \hat{\sigma} \epsilon.
+% 	\end{equation}
+% \end{small}
+
+
+
+% Adding and subtracting $\|\sigma\| + \hat{\sigma}\epsilon$, and using $\frac{\theta_0(X)}{\gamma} = \|\sigma\|$, we obtain
+% \begin{small}
+% 	\begin{equation}\label{eq:sigma-j}
+% 		\sigma_{j}(X,\epsilon) = \min \left\{ \left(\frac{\theta_1(X)}{\gamma}- \frac{\theta_0(X)}{\gamma} \hat{\gamma}_j -\hat{\sigma}\right)\epsilon + \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2}(X) \sigma^\top}{\|\sigma\|} \epsilon^2 + O(\epsilon^3)  , 0 \right\}+\|\sigma\| + \hat{\sigma} \epsilon.
+% 	\end{equation}
+% \end{small}
+
+% Consider first the case where the following condition is satisfied:
+% \begin{equation}\label{eq:regular_case}
+%     \frac{\theta_1(X)}{\gamma}- \frac{\theta_0(X)}{\gamma} \hat{\gamma}_j -\hat{\sigma} = \mathcal{O}(1), 
+% \end{equation}
+
+% If this is the case, then
+% \begin{equation}
+%     \left(\frac{\theta_1(X)}{\gamma}- \frac{\theta_0(X)}{\gamma} \hat{\gamma}_j -\hat{\sigma}\right)\epsilon \gg \left|\frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2}(X) \sigma^\top}{\|\sigma\|} \right| \epsilon^2,
+% \end{equation}
+% for small $\epsilon$.
+% So, the sign of the term inside the $ \min $ operator in \eqref{eq:sigma-j} is determined by the first term.
+
+% We can then write $\sigma_{j}(X,\epsilon)$ as follows:
+% \begin{equation}
+%     \sigma_{j}(X,\epsilon) = \|\sigma\| +  \min\left\{ \frac{\theta_1(X)}{\gamma}- \frac{\theta_0(X)}{\gamma} \hat{\gamma}, \hat{\sigma}\right\}\epsilon + \mathcal{O}(\epsilon^2).
+% \end{equation}
+
+% In the region of the state space where condition~\eqref{eq:regular_case} holds, one can determine whether an investor is constrained or unconstrained only based on the first-order terms.
+% Suppose now that the following condition holds
+% \begin{equation}\label{eq:second-order_case}
+%     \frac{\theta_1(X)}{\gamma}- \frac{\theta_0(X)}{\gamma} \hat{\gamma}_j -\hat{\sigma} = \mathcal{O}(\epsilon).
+% \end{equation}
+% This condition states that, up to the first order, the leverage constraint is either always binding or slack by just a tiny amount parameterized by $ \epsilon $ and $ \epsilon^2 $ terms inside the $ \min $ operator in \eqref{eq:sigma-j}.
+% In this case, we can write $\sigma_{j}(X,\epsilon)$ as follows:
+% \begin{small}
+% 	\begin{equation}
+% 		\sigma_{j}(X,\epsilon) = \|\sigma\| + \hat{\sigma}\epsilon+\min\left\{ \left(\frac{\theta_1(X)}{\gamma}- \frac{\theta_0(X)}{\gamma} \hat{\gamma}_j-\hat{\sigma}\right) \epsilon + \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2}(X) \sigma^\top}{\|\sigma\|} \epsilon^2,0\right\} + \mathcal{O}(\epsilon^3).
+% 	\end{equation}
+% \end{small}
+% In this region of the state space where condition~\eqref{eq:second-order_case} is satisfied, we need the second-order term to determine whether an investor is constrained.
+% This distinction will be relevant when computing the second-order correction.
+
+% For the first-order correction terms here, we focus on the case where condition \eqref{eq:regular_case} holds.
+
+% \paragraph{Aggregate risk aversion.} The aggregate risk aversion of unconstrained investors, defined above, is given by
+% \begin{equation}
+%     \gamma_u(X,\epsilon) = \frac{x_u}{\sum_{j\in\mathcal{J}^u} \frac{x_j}{\gamma (1+\hat{\gamma}\epsilon)}} = \gamma + \gamma \sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j\, \epsilon + \mathcal{O}(\epsilon^2)
+% \end{equation}
+
+% \paragraph{Market price of risk.} The market price of risk can be written as
+% \begin{align}
+%     \theta(X,\epsilon) &= \frac{\gamma_u(X,\epsilon)}{1-x_{0} - x_c} \left[ (1-(1+\hat{\alpha}_p \epsilon) x_{0})\|\sigma\| - (\|\sigma\|+\hat{\sigma}\epsilon) x_{c}\right] + \mathcal{O}(\epsilon^2),\nonumber\\
+%     &= \theta_0(X)+\gamma \|\sigma\| \left[\sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j -\left(\frac{\hat{\alpha}_p  x_0+\frac{\hat{\sigma}}{\|\sigma\|} x_c }{1-x_0-x_c}\right)\right] \epsilon+ \mathcal{O}(\epsilon^2).
+% \end{align}
+
+% In the region of the state space where all active investors are unconstrained, we have
+% \begin{equation}\label{eq:eta-first-order}
+%     \theta(X,\epsilon) = \theta_0(X)+\gamma \|\sigma\| \left(\sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j -\frac{\hat{\alpha}_p\,  x_0}{1-x_0}\right) \epsilon+ \mathcal{O}(\epsilon^2).
+% \end{equation}
+% The expression above shows the impact of fluctuations in the aggregate risk aversion and the effect of portfolio inflows in the market price of risk.
+% If the average risk aversion in state $X$ is lower than its level at $\epsilon = 0$, %that is,
+% % \textcolor{red}{Shouldn't this condition be $\sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j <\frac{\hat{\alpha}_p  x_0}{1-x_0}$, instead?}
+% % \begin{equation}
+% %     \sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j < \sum_{j=0}^J \omega_j \hat{\gamma}_j = 0, 
+% % \end{equation}
+% then the market price of risk will be lower than its level at $\epsilon = 0$, everything else constant.
+
+% %The second term in Equation~\eqref{eq:eta-first-order} captures the impact of portfolio flows. 
+
+% % All active investors will be unconstrained if the following condition is satisfied
+% % \begin{equation}
+% %     \sum_{k\in\mathcal{J}^u} \frac{x_k}{x_u} \hat{\gamma}_k -\frac{\hat{\alpha}_p  x_0}{1-x_0} - \min_{j\in \{1,\ldots,J\}} \hat{\gamma}_j < \frac{\hat{\sigma}}{\textcolor{red}{\|\sigma\|}}.
+% % \end{equation}
+% % Notice that this condition is more likely to be violated if the average risk aversion is high, that is, low risk aversion agents are relatively under-capitalized, or if flows to the risky asset are sufficiently negative while active investors are relatively under-capitalized.
+
+% % Analogously, an investor will be constrained if the following condition is satisfied
+% % \begin{equation}
+% %     \hat{\gamma}_j < \sum_{k\in\mathcal{J}^u} \frac{x_k}{x_u} \hat{\gamma}_k -\frac{\hat{\alpha}_p  x_0}{1-x_0}  - \frac{\hat{\sigma}}{\textcolor{red}{\|\sigma\|}}.
+% % \end{equation}
+
+% % The presence of constrained investors amplifies the effect of portfolio outflows, as it reduces the wealth share of active investors. The market price of risk is decreasing in $\hat{\sigma}$, which measures the risk bearing capacity of constrained investors.  \textcolor{red}{MK: I don't understand this!}
+
+% % The risk exposure for active investor $j$ can now be written as
+% % \begin{equation}
+% %     \sigma_j(X) = \sigma_{j,0}(X) +\|\sigma\|\min\left\{ \sum_{k\in\mathcal{J}^u} \frac{x_k}{x_u} \hat{\gamma}_k -\left(\frac{\hat{\alpha}_p  x_0+\frac{\hat{\sigma}}{\|\sigma\|} x_c }{1-x_0-x_c}\right)- \hat{\gamma}_j  ,\frac{\hat{\sigma}}{\|\sigma\|}  \right\}\epsilon + \mathcal{O}(\epsilon^2)
+% % \end{equation}
+
+\paragraph{Interest rate.} The first-order correction to the interest rate is given by
 \begin{align}
-    \theta(X,\epsilon) &= \frac{\gamma_u(X,\epsilon)}{1-x_{0} - x_c} \left[ (1-(1+\hat{\alpha}_p \epsilon) x_{0})\|\sigma\| - (\|\sigma\|+\hat{\sigma}\epsilon) x_{c}\right] + \mathcal{O}(\epsilon^2),\nonumber\\
-    &= \theta_0(X)+\gamma \|\sigma\| \left[\sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j -\left(\frac{\hat{\alpha}_p  x_0+\frac{\hat{\sigma}}{\|\sigma\|} x_c }{1-x_0-x_c}\right)\right] \epsilon+ \mathcal{O}(\epsilon^2).
+    r_1 &= (1-\psi^{-1}) \frac{\gamma  \|\sigma\|^2}{2}\sum_{j=0}^2 x_{j} \left(\hat{\gamma}_j+ 2 \sigma_{j,1}\sigma^\top\right)        
+    - \pi_{Y,1}.
 \end{align}
 
-In the region of the state space where all active investors are unconstrained, we have
-\begin{equation}\label{eq:eta-first-order}
-    \theta(X,\epsilon) = \theta_0(X)+\gamma \|\sigma\| \left(\sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j -\frac{\hat{\alpha}_p\,  x_0}{1-x_0}\right) \epsilon+ \mathcal{O}(\epsilon^2).
+Using the fact that $\sum_{j=0}^2 x_{j} \sigma_{j,1} = 0_{1\times 3}$, we obtain
+\begin{equation}
+    r_1 = 
+    - \gamma \|\sigma\|^2 \left[\sum_{j=1}^2 \frac{x_j}{x_a}(\hat{\gamma}_j+ \hat{\nu}_{j})- \sum_{j=0}^2 x_{j} \hat{\gamma}_j  -\frac{x_0}{x_a}\hat{\alpha}_{p,1} +\frac{1+\psi^{-1}}{2} \sum_{j=0}^2 x_{j} \hat{\gamma}_j \right].
 \end{equation}
-The expression above shows the impact of fluctuations in the aggregate risk aversion and the effect of portfolio inflows in the market price of risk.
-If the average risk aversion in state $X$ is lower than its level at $\epsilon = 0$, %that is,
-% \textcolor{red}{Shouldn't this condition be $\sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j <\frac{\hat{\alpha}_p  x_0}{1-x_0}$, instead?}
-% \begin{equation}
-%     \sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j < \sum_{j=0}^J \omega_j \hat{\gamma}_j = 0, 
-% \end{equation}
-then the market price of risk will be lower than its level at $\epsilon = 0$, everything else constant.
 
-%The second term in Equation~\eqref{eq:eta-first-order} captures the impact of portfolio flows. 
+Notice that we 
 
-% All active investors will be unconstrained if the following condition is satisfied
-% \begin{equation}
-%     \sum_{k\in\mathcal{J}^u} \frac{x_k}{x_u} \hat{\gamma}_k -\frac{\hat{\alpha}_p  x_0}{1-x_0} - \min_{j\in \{1,\ldots,J\}} \hat{\gamma}_j < \frac{\hat{\sigma}}{\textcolor{red}{\|\sigma\|}}.
-% \end{equation}
-% Notice that this condition is more likely to be violated if the average risk aversion is high, that is, low risk aversion agents are relatively under-capitalized, or if flows to the risky asset are sufficiently negative while active investors are relatively under-capitalized.
-
-% Analogously, an investor will be constrained if the following condition is satisfied
-% \begin{equation}
-%     \hat{\gamma}_j < \sum_{k\in\mathcal{J}^u} \frac{x_k}{x_u} \hat{\gamma}_k -\frac{\hat{\alpha}_p  x_0}{1-x_0}  - \frac{\hat{\sigma}}{\textcolor{red}{\|\sigma\|}}.
-% \end{equation}
-
-% The presence of constrained investors amplifies the effect of portfolio outflows, as it reduces the wealth share of active investors. The market price of risk is decreasing in $\hat{\sigma}$, which measures the risk bearing capacity of constrained investors.  \textcolor{red}{MK: I don't understand this!}
-
-% The risk exposure for active investor $j$ can now be written as
-% \begin{equation}
-%     \sigma_j(X) = \sigma_{j,0}(X) +\|\sigma\|\min\left\{ \sum_{k\in\mathcal{J}^u} \frac{x_k}{x_u} \hat{\gamma}_k -\left(\frac{\hat{\alpha}_p  x_0+\frac{\hat{\sigma}}{\|\sigma\|} x_c }{1-x_0-x_c}\right)- \hat{\gamma}_j  ,\frac{\hat{\sigma}}{\|\sigma\|}  \right\}\epsilon + \mathcal{O}(\epsilon^2)
-% \end{equation}
-
-\paragraph{Interest rate.} The interest rate is given by
-\begin{small}
-	\begin{align}
-	r(X,\epsilon)   &= r_0(X) +\left[ - \theta_1(X) \|\sigma\| + \left(1-\psi^{-1}\right)\left(\sum_{j=0}^J x_{j,t}\frac{\gamma}{2} 2 \|\sigma\| \sigma_{j,1}(X) + \sum_{j=0}^J x_{j,t}\frac{\gamma}{2}\|\sigma\|^2\hat{\gamma}_j\right)\right]\epsilon+\mathcal{O}(\epsilon^2)\nonumber\\
-	&= r_0(X) +\gamma\|\sigma\|^2 \left[ - \frac{\theta_1(X)}{\gamma\|\sigma\|}  + \left(1-\psi^{-1}\right)  \sum_{j=0}^J x_{j,t}\frac{\hat{\gamma}_j}{2} \right]\epsilon +\mathcal{O}(\epsilon^2)\nonumber\\
-	&= r_0(X) -\gamma\|\sigma\|^2 \left[ \left(\sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j -\sum_{j=0}^J x_{j,t}\frac{\hat{\gamma}_j}{2}\right)-\frac{\hat{\alpha}_p  x_0+\frac{\hat{\sigma}}{\|\sigma\|} x_c }{1-x_0-x_c} + \psi^{-1} \sum_{j=0}^J x_{j,t}\frac{\hat{\gamma}_j}{2} \right]\epsilon +\mathcal{O}(\epsilon^2),\label{eq:r-first-order}
-	%&=r_0(X) +\gamma\|\sigma\|^2 \left[ -\sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j + \left(1-\psi^{-1}\right) \sum_{j=0}^J x_{j,t}\frac{\hat{\gamma}_j}{2} + \frac{\hat{\alpha}_p  x_0+\frac{\hat{\sigma}}{\|\sigma\|} x_c }{1-x_0-x_c}  \right]\epsilon +\mathcal{O}(\epsilon^2),
-	\end{align}\end{small}
-where we use the fact that $ \sum_{j=0}^J x_{j,t}  \sigma_{j,1}(X)  = 0$ from the first-order correction of the risky asset market clearing condition.
+% \begin{small}
+% 	\begin{align}
+% 	r(X,\epsilon)   &= r_0(X) +\left[ - \theta_1(X) \|\sigma\| + \left(1-\psi^{-1}\right)\left(\sum_{j=0}^J x_{j,t}\frac{\gamma}{2} 2 \|\sigma\| \sigma_{j,1}(X) + \sum_{j=0}^J x_{j,t}\frac{\gamma}{2}\|\sigma\|^2\hat{\gamma}_j\right)\right]\epsilon+\mathcal{O}(\epsilon^2)\nonumber\\
+% 	&= r_0(X) +\gamma\|\sigma\|^2 \left[ - \frac{\theta_1(X)}{\gamma\|\sigma\|}  + \left(1-\psi^{-1}\right)  \sum_{j=0}^J x_{j,t}\frac{\hat{\gamma}_j}{2} \right]\epsilon +\mathcal{O}(\epsilon^2)\nonumber\\
+% 	&= r_0(X) -\gamma\|\sigma\|^2 \left[ \left(\sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j -\sum_{j=0}^J x_{j,t}\frac{\hat{\gamma}_j}{2}\right)-\frac{\hat{\alpha}_p  x_0+\frac{\hat{\sigma}}{\|\sigma\|} x_c }{1-x_0-x_c} + \psi^{-1} \sum_{j=0}^J x_{j,t}\frac{\hat{\gamma}_j}{2} \right]\epsilon +\mathcal{O}(\epsilon^2),\label{eq:r-first-order}
+% 	%&=r_0(X) +\gamma\|\sigma\|^2 \left[ -\sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j + \left(1-\psi^{-1}\right) \sum_{j=0}^J x_{j,t}\frac{\hat{\gamma}_j}{2} + \frac{\hat{\alpha}_p  x_0+\frac{\hat{\sigma}}{\|\sigma\|} x_c }{1-x_0-x_c}  \right]\epsilon +\mathcal{O}(\epsilon^2),
+% 	\end{align}\end{small}
+% where we use the fact that $ \sum_{j=0}^J x_{j,t}  \sigma_{j,1}(X)  = 0$ from the first-order correction of the risky asset market clearing condition.
 
 The term in the square brackets in Equation~\eqref{eq:r-first-order} captures the first-order effect of frictions on the interest rate, $ r_1(X) $.
 First, we see that the interest rate is decreasing in the difference between the average risk aversion of unconstrained investors and the average risk aversion of all investors in the economy.
