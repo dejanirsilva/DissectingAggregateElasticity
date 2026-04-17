@@ -500,7 +500,8 @@ We guess and verify that in this benchmark economy, there are no variation in ex
 In particular, the wealth distribution plays no role in the economy.
 This implies that $\mu_{c_j,0}(X) = \mu_{p_Y,0}(X) = 0$ and $\sigma_{c_j,0}(X) = \sigma_{p_Y,0}(X) = 0_{1\times 3}$, where $0_{1\times 3}$ is a 1x3 vector of zeros.
 
-This implies that the risk exposure for the aggregate claim is given by
+\paragraph{Risk exposure and market price of risk.}
+The risk exposure vector for the aggregate claim is given by
 \begin{equation}
     \sigma_{R_Y,0}(X) = \sigma.
 \end{equation}
@@ -517,10 +518,10 @@ This implies that the risk exposure for investor $j$ is given by
 \end{equation}
 As $\overline{\sigma} = \|\sigma\|$, this implies that the leverage constraint is satisfied at all times.
 
-
+\paragraph{Risk premium and interest rate.}
 The risk premium on the aggregate claim is given by
 \begin{equation}
-    \pi_{Y,0}(X) = \gamma \|\sigma\|^2.
+    \pi_{Y,0}(X) = \eta_0(X) \sigma_{R_Y,0}(X)^\top = \gamma \|\sigma\|^2.
 \end{equation}
 
 The interest rate is given by
@@ -528,9 +529,11 @@ The interest rate is given by
     r_0(X) &= \rho 
     + \psi^{-1} \mu 
     -(1+\psi^{-1}) 
-        \frac{\gamma }{2} \|\sigma\|^2.
+        \frac{\gamma }{2} \|\sigma\|^2,
 \end{align}
+using the fact that $\xi_t = 0$, $\sigma_{j,t} = \sigma$, $\mu_{p_Y,t} = 0$, and $\sigma_{p_Y,t} = 0_{1\times 3}$ in the benchmark economy.
 
+\paragraph{Consumption-wealth ratio and price-dividend ratio.}
 The consumption-wealth ratio $c_{j,0}(X)$ is given by
 \begin{align}
     c_{j,0}(X) &= \psi \rho 
@@ -548,6 +551,7 @@ From the market clearing condition for goods, we obtain:
     \frac{1}{p_{Y,0}(X)} = \rho  - \left(1-\psi^{-1}\right)  \left( \mu - \frac{\gamma\|\sigma\|^2}{2} \right).
 \end{equation}
 
+\paragraph{Drift and diffusion of wealth shares.}
 The drift and diffusion of the wealth shares are given
 \begin{align}
     \mu_{x_j,0}(X) &= 0, \qquad
@@ -582,7 +586,7 @@ The portfolio share on the aggregate claim and the derivative satisfy the condit
 Using the fact that $\sigma_{j,0} = \sigma$, we obtain $\alpha_{j,Y} = 1$ and $\alpha_{j,F} = 0$ for $j = 0,1,2$.
 
 
-\paragraph{Pricing the dividend claim.}
+\paragraph{Pricing the individual claims.}
 The price of the dividend claim satisfies the pricing condition:
 \begin{equation}
     P_{D,t} = \mathbb{E}_t\left[ \int_t^\infty\frac{\Lambda_\tau}{\Lambda_t} s_\tau Y_\tau d\tau \right],
@@ -590,10 +594,12 @@ The price of the dividend claim satisfies the pricing condition:
 
 The SDF and the aggregate endowment follow the processes:
 \begin{align}
-    \frac{d \Lambda_t}{\Lambda_t} = -r^* dt - \gamma \sigma dZ_t, \qquad \qquad 
+    \frac{d \Lambda_t}{\Lambda_t} = -r^* dt - \eta^* dZ_t, \qquad \qquad 
     \frac{d Y_t}{Y_t} = \mu dt + \sigma dZ_t.
 \end{align}
-We can then write the SDF and the aggregate endowment as:
+
+We can solve for the price of the dividend claim in closed form in the case $\gamma = 1$, so $\eta^ * = \sigma$.
+In this case, we can then write the SDF and the aggregate endowment as:
 \begin{align}
     \Lambda_t = \exp\left( -\int_0^t \left( r^* + \frac{\sigma \sigma^\top}{2} \right) ds - \sigma Z_t \right) \Lambda_0, \qquad 
     Y_t = \exp\left( \int_0^t \left( \mu - \frac{\sigma \sigma^\top}{2} \right) ds + \sigma Z_t \right) Y_0.
@@ -601,9 +607,9 @@ We can then write the SDF and the aggregate endowment as:
 
 Combining the expressions for $\Lambda_t$ and $Y_t$, we obtain:
 \begin{equation}
-    P_{D,t} = \int_t^\infty e^{-\delta_D (\tau-t)} \mathbb{E}_t\left[ s_\tau \right] d\tau Y_t,
+    P_{D,t} = \int_t^\infty e^{-\delta (\tau-t)} \mathbb{E}_t\left[ s_\tau \right] d\tau Y_t,
 \end{equation}
-where $\delta_{D} = r^* - (\mu - \sigma \sigma^\top)$, using the fact that $Z_t$ cancels out in the product $\Lambda_t Y_t$.
+where $\delta = r^* +\sigma \sigma^\top- \mu $, using the fact that $Z_t$ cancels out in the product $\Lambda_t Y_t$.
 
 The conditional expectation of the dividend share is given by
 \begin{equation}
@@ -612,19 +618,85 @@ The conditional expectation of the dividend share is given by
 
 The price of the dividend claim is given by
 \begin{equation}
-    P_{D,t} = \left[ \frac{\overline{s}}{\delta_D} + \frac{s_t - \overline{s}}{\delta_D + \kappa_s} \right] Y_t
+    P_{D,t} = \left[ \frac{\overline{s}}{\delta} + \frac{s_t - \overline{s}}{\delta + \kappa_s} \right] Y_t
 \end{equation}
 where $Y_t = \exp\left( \int_0^t \left( \mu - \frac{\sigma \sigma^\top}{2} \right) ds + \sigma Z_t \right) Y_0$.
 
 Hence, the price-dividend ratio is given by
 \begin{equation}
-    p_{D,0}(X) = \frac{1}{\delta_D + \kappa_s}\left[1 + \frac{\kappa_s}{\delta_D}  \frac{\overline{s}}{s_t}  \right].
+    p_{D,0}(X) = \frac{1}{\delta + \kappa_s}\left[1 + \frac{\kappa_s}{\delta}  \frac{\overline{s}}{s_t}  \right].
 \end{equation}
 
 Similarly, the price-dividend ratio for the bond claim is given by
 \begin{equation}
-    p_{B,0}(X) = \frac{1}{\delta_D + \kappa_s}\left[1 + \frac{\kappa_s}{\delta_D}  \frac{1-\overline{s}}{1-s_t}  \right].
+    p_{B,0}(X) = \frac{1}{\delta + \kappa_s}\left[1 + \frac{\kappa_s}{\delta}  \frac{1-\overline{s}}{1-s_t}  \right].
 \end{equation}
+
+\paragraph{Portfolio share of individual claims.}
+The portfolio share of investor $j$ on the dividend and bond claims are given by
+\begin{equation}
+    \alpha_{j,D,t} = \frac{p_{D,t} s_t}{p_{Y,t}}, \qquad \qquad 
+    \alpha_{j,B,t} = \frac{p_{B,t} (1-s_t)}{p_{Y,t}}.
+\end{equation}
+
+In the benchmark economy with $\gamma = 1$, we have that 
+\begin{equation}
+    \alpha_{j,D,0}(X) = \frac{\delta}{\delta + \kappa_s} s + \frac{\kappa_s}{\delta + \kappa_s} \overline{s}, \qquad \qquad 
+    \alpha_{j,B,0}(X) = \frac{\delta}{\delta + \kappa_s} (1-s) + \frac{\kappa_s}{\delta + \kappa_s} \frac{1-\overline{s}}{1-s_t},
+\end{equation}
+using the fact that $\delta = 1/p_{Y,0}(X)$ when $\gamma = 1$.
+
+\paragraph{Convenient reparametrization.} 
+It is instructive to consider a convenient reparametrization of the price-dividend ratios.
+Consider the change of variables: $\tilde{p}_{D,t} = p_{D,t} s_t$ and $\tilde{p}_{B,t} = p_{B,t} (1-s_t)$, both being  affine functions of the state $s_t$. 
+Notice this implies that $P_{k,t} = \tilde{p}_{k,t} Y_t$ for $k = D,B$.
+In terms of this reparametrization, the pricing condition for the dividend and bond claims is given by
+\begin{equation}
+    r + \sigma_{R_k} \eta^\top = \frac{s_t}{\tilde{p}_{k}} + \mu + \mu_{\tilde{p}_k} + \sigma \sigma_{\tilde{p}_k}^\top,
+\end{equation}
+where $\sigma_{R_k} = \sigma + \sigma_{p_k}$ and $(\mu_{p_k}, \sigma_{p_k})$ are given by Ito's lemma:
+\begin{equation}
+    \mu_{p_k} = \frac{\tilde{p}_{k,s}}{\tilde{p}_{k}} \mu_s + \frac{1}{2}\frac{\tilde{p}_{k,ss}}{\tilde{p}_{k}} \sigma_s \sigma_s^\top, \qquad \qquad 
+    \sigma_{p_k} = \frac{\tilde{p}_{k,s}}{\tilde{p}_{k}} \sigma_s.
+\end{equation}
+
+In the case $\gamma = 1$, we have that
+\begin{equation}
+    \tilde{p}_D = \frac{1}{\delta} \left[ \frac{\delta}{\delta + \kappa_s} s + \frac{\kappa_s}{\delta + \kappa_s} \overline{s} \right],\qquad \qquad 
+    \tilde{p}_B = \frac{1}{\delta} \left[ \frac{\delta}{\delta + \kappa_s} (1-s) + \frac{\kappa_s}{\delta + \kappa_s} (1-\overline{s}) \right],
+\end{equation}
+
+This implies that
+\begin{equation}
+    \sigma_{\tilde{p}_D} = \frac{1}{\delta + \kappa_s} \frac{\sigma_s}{\tilde{p}_D},\qquad \qquad 
+    \sigma_{\tilde{p}_B} = -\frac{1}{\delta + \kappa_s} \frac{\sigma_s}{\tilde{p}_B}.
+\end{equation}
+
+The risk premium for the dividend and bond claims are given by
+\begin{equation}
+    \pi_{D,0} = \eta_0 \sigma_{R_D}^\top = \sigma \sigma^\top + \frac{1}{\delta + \kappa_s} \frac{\sigma \sigma_s^T}{\tilde{p}_D}, \qquad \qquad 
+    \pi_{B,0} = \eta_0 \sigma_{R_B}^\top = \sigma \sigma^\top -\frac{1}{\delta + \kappa_s} \frac{\sigma \sigma_s^T}{\tilde{p}_B}.
+\end{equation}
+using the fact that $\eta_0 = \sigma$ when $\gamma = 1$.
+
+In this case the drift of $\tilde{p}_D$ and $\tilde{p}_B$ are given by
+\begin{equation}
+    \mu_{\tilde{p}_D} = \frac{1}{\delta + \kappa_s} \frac{\mu_s}{\tilde{p}_D},\qquad \qquad 
+    \mu_{\tilde{p}_B} = -\frac{1}{\delta + \kappa_s} \frac{\mu_s}{\tilde{p}_B},
+\end{equation}
+which implies that
+\begin{equation}
+    \frac{s}{\tilde{p}_D} + \mu_{\tilde{p}_D} = \delta \frac{s}{ \frac{\delta}{\delta + \kappa_s} s + \frac{\kappa_s}{\delta + \kappa_s} \overline{s} }  +
+    \delta\frac{\kappa_s}{\delta+\kappa_s} \frac{\overline{s}-s}{ \frac{\delta}{\delta + \kappa_s} s + \frac{\kappa_s}{\delta + \kappa_s} \overline{s} } = \delta,
+\end{equation}
+and, similarly, $\frac{1-s}{\tilde{p}_B} + \mu_{\tilde{p}_B} = \delta$.
+
+This implies that the pricing condition for the dividend and bond claims reduces to
+\begin{equation}
+    r + \sigma \sigma^\top - \mu = \delta.
+\end{equation}
+% which is consistent with the definition of $\delta$. 
+
 
 \end{proof}
 
@@ -879,12 +951,10 @@ Using the fact that $\eta_0 = \gamma \sigma$ and $\eta_1 \sigma^T = \pi_{Y,1}$, 
     c_{j}(X,\epsilon) = \psi \rho + \left[ r + \pi_Y- \frac{\gamma_j}{2} \|\sigma\|^2 \right] + \mathcal{O}(\epsilon^2).
 \end{equation}
 
-\begin{align}
-    c_{j}(X,\epsilon) &= c_{j,0}(X) + (1-\psi) \left[ r_1(X) + \theta_0(X) \sigma_{j,1}(X) + \theta_{1}(X) \sigma_{j,0}(X)\right.\nonumber\\
-    &\qquad\qquad\qquad\qquad\quad\left. -\gamma \|\sigma\| \sigma_{j,1}(X) - \frac{\gamma}{2} \hat{\gamma}_j \|\sigma\|^2 \right]\epsilon + \mathcal{O}(\epsilon^2)\nonumber\\
-    &= c_{j,0}(X) + (1-\psi) \gamma \|\sigma\|^2 \left[ \frac{r_1(X)}{\gamma \|\sigma\|^2}  + \frac{\theta_{1}(X)}{\gamma \|\sigma\|}  - \frac{\hat{\gamma}_j}{2}  \right]\epsilon + \mathcal{O}(\epsilon^2)\nonumber\\
-    &= c_{j,0}(X) + (1-\psi) \gamma \|\sigma\|^2 \left[\left(1-\psi^{-1}\right)  \sum_{k=0}^J x_{k,t}\frac{\hat{\gamma}_k}{2}- \frac{\hat{\gamma}_j}{2}  \right]\epsilon + \mathcal{O}(\epsilon^2).
-\end{align}
+We can write the first-order correction of the consumption-wealth ratio as follows:
+\begin{equation}
+    c_{j,1} = \frac{\gamma \|\sigma\|^2}{2} \left[ \left(1-\psi^{-1}\right) \sum_{k=0}^2 x_{k,t}\hat{\gamma}_k-\hat{\gamma}_j\right].
+\end{equation}
 
 \paragraph{Dividend yield.} The dividend yield is given by
 \begin{equation}\label{eq:div-yield_first_order}
