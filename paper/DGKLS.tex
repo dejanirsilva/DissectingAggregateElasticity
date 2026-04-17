@@ -517,7 +517,7 @@ Innovations to $\overline{\alpha}_{p,t}$ represent \emph{portfolio flow shocks},
 As in Section~\ref{sec:simple}, a flow shock is an asymmetric demand shock affecting only passive investors and triggering portfolio reallocation.
 
 Portfolio flows may comove with cash-flow shocks or arise independently. 
-We focous on the case where $\sigma=(\sigma_1,0,0)$ for aggregate endowment risk, $\sigma_{\alpha_p}=(\sigma_{\alpha_p,1},\sigma_{\alpha_p,2},0)$ for the passive-share process, and $\sigma_s=(\sigma_{s,1},0,\sigma_{s,3})$ for the dividend share process.
+We focous on the case where $\sigma=(\sigma^1,0,0)$ for aggregate endowment risk, $\sigma_{\alpha_p}=(\sigma_{\alpha_p}^1,\sigma_{\alpha_p}^2,0)$ for the passive-share process, and $\sigma_s=(\sigma_{s}^1,0,\sigma_{s}^3)$ for the dividend share process.
 The first shock represents aggregate endowment risk, the second represents portfolio-flow shocks, and the third represents dividend-share shocks.
 We allow portfolio-flow shocks and dividend-share shocks to load on the aggregate endowment risk factor.
 This implies that aggregate endowment risk can be correlated with both portfolio flows and dividend-share shocks.
@@ -944,11 +944,11 @@ Despite financial frictions, investors optimally hold risky claims in proportion
         \item \textbf{Block recursivity:} The consumption-wealth ratios, $\{c_{j,t}(\hat{X}_t)\}_{j=0}^2$, and the price-dividend ratio for the aggregate claim, $p_Y(\hat{X}_t)$, are a function of the reduced set of states $\hat{X}_t$, and they satisfy the following system of PDEs:
         \begin{align}
             c_{j} &= \psi \rho 
-            + (1-\psi) \left[ r + \eta^\top\,\sigma_{j} - \frac{\gamma_j}{2} \|\sigma_{j}\|^2 \right] 
+            + (1-\psi) \left[ r + \eta\,\sigma_{j}^\top - \frac{\gamma_j}{2} \|\sigma_{j}\|^2 \right] 
             +  \mu_{c_j} 
             + (1-\gamma_j) \sigma_{c_j} \sigma_{j}^\top 
             + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j}\|^2}{2}\\
-            \frac{1}{p_{Y}} &= r + \eta^\top\,(\sigma + \sigma_{p_Y}) - \big(\mu + \mu_{p_Y} + \sigma \, \sigma_{p_Y}^\top\big),        
+            \frac{1}{p_{Y}} &= r + \eta\,(\sigma + \sigma_{p_Y})^\top - \big(\mu + \mu_{p_Y} + \sigma \, \sigma_{p_Y}^\top\big),        
     \end{align}
     where $(r, \eta, \sigma_{j}, \mu_{c_j}, \sigma_{c_j}, \mu_{p_Y}, \sigma_{p_Y})$ are all functions of $\hat{X}_t$, $(c_j,p_Y)$ and their derivatives.    
         \item \textbf{Mutual fund theorem:} The portfolio shares of active investors are given by:
@@ -1056,22 +1056,22 @@ We now turn to an analytical characterization of the aggregate market elasticity
 \section{The Determinants of the Aggregate Market Elasticity}\label{sec:elasticity}
 
 In this section, we analyze how the \emph{aggregate market elasticity} governs the price impact of portfolio flows.  
-The elasticity is determined by the coupled PDE system \eqref{eq:xi_j}–\eqref{eq:pricing_cond}, which generally has no closed-form solution. To study its determinants, we extend the perturbation method of \citet{kogan2001risk} and derive asymptotic closed-form approximations.
+The elasticity is determined by the coupled PDE system discussed in Proposition~\ref{prop:mft}, which generally has no closed-form solution. To study its determinants, we extend the perturbation method of \citet{kogan2001risk} and derive asymptotic closed-form approximations.
 
 \paragraph{State-global perturbations}
 
 Our perturbation approach studies economies in a neighborhood of a benchmark that admits a closed-form solution.
-A convenient benchmark arises when preferences are homogeneous, $\gamma_j=\gamma$, and passive investors are fully invested in the risky asset, $\overline{\alpha}_{p,t}=1$. In this case, the economy collapses to a Lucas economy, as shown in Lemma~\ref{lemma:benchmark}. Throughout, a superscript $\star$ denotes benchmark values.
+A convenient benchmark arises when preferences are homogeneous, $\gamma_j=\gamma$, and passive investors are fully invested in the risky asset, $\overline{\alpha}_{p,t}=1$. In this case, the economy collapses to a Lucas economy, as shown in Lemma~\ref{lemma:benchmark}. Throughout, a superscript $*$ denotes benchmark values.
 
 
 \begin{lemma}[Benchmark economy]\label{lemma:benchmark}
 Suppose $\gamma_j = \gamma$, $\overline{\alpha}_{p,t} = 1$, and $\rho>\big(1-\psi^{-1}\big)\big(\mu - \frac{\gamma \|\sigma\|^2}{2}\big)$. Then, 
 \begin{equation}
-        \pi^\star = \gamma \|\sigma\|^2, \qquad 
-        r^\star = \rho + \psi^{-1}\mu - \big(1+\psi^{-1}\big)\frac{\gamma \|\sigma\|^2}{2}, \qquad 
-        p^\star = \Big[\rho - \big(1-\psi^{-1}\big)\Big(\mu - \frac{\gamma \|\sigma\|^2}{2}\Big)\Big]^{-1},
+        \pi^* = \gamma \|\sigma\|^2, \qquad 
+        r^* = \rho + \psi^{-1}\mu - \big(1+\psi^{-1}\big)\frac{\gamma \|\sigma\|^2}{2}, \qquad 
+        p^* = \Big[\rho - \big(1-\psi^{-1}\big)\Big(\mu - \frac{\gamma \|\sigma\|^2}{2}\Big)\Big]^{-1},
 \end{equation}
-$c_{j}^\star = (p^\star)^{-1}$, and $\alpha_{j}^\star = 1$ for $j = 0, \ldots, J$.
+$c_{j}^* = (p^*)^{-1}$, and $\alpha_{j}^* = 1$ for $j = 0, \ldots, J$.
 \end{lemma}
 
 We analyze small deviations from this benchmark. Formally, consider a family of economies indexed by $\epsilon>0$, where $\epsilon$ scales departures from the benchmark along the following dimensions.
@@ -1112,7 +1112,7 @@ This approach builds on the perturbation method of \citet{kogan2001risk} and, mo
 by \citet{Silva/riskchannel}.
 This method allows us to characterize how aggregate market elasticity varies with the state of the economy.
 
-We proceed in two steps. First, we compute the first-order corrections $p_1(X)$ and $c_{j,1}(X)$. Second, we solve for the second-order terms $p_2(X)$ and $c_{j,2}(X)$. Zeroth-order terms are given by Lemma~\ref{lemma:benchmark}, i.e., $p_0(X)=p^\star$ and $c_{j,0}(X)=c_j^\star$.
+We proceed in two steps. First, we compute the first-order corrections $p_1(X)$ and $c_{j,1}(X)$. Second, we solve for the second-order terms $p_2(X)$ and $c_{j,2}(X)$. Zeroth-order terms are given by Lemma~\ref{lemma:benchmark}, i.e., $p_0(X)=p^*$ and $c_{j,0}(X)=c_j^*$.
 
 
 \subsection{The first-order demand system}
@@ -1135,9 +1135,9 @@ Three results determine $\alpha_{j,1}(X)$. First, the volatility of the price-di
 \]
 since $p_{X,0}=\sigma_{X,0}=0$ (Lemma~\ref{lemma:benchmark}). Second, hedging demand is also $\mathcal{O}(\epsilon^2)$ because $\sigma_{c_j}(X_t)$ is second order. Third, expanding the pricing condition \eqref{eq:pricing_cond} gives
 \begin{equation}
-    \hat{\pi}_t=-\,\hat{r}_t-\frac{1}{p^\star}\hat{p}_t+\mathcal{O}(\epsilon^2),
+    \hat{\pi}_t=-\,\hat{r}_t-\frac{1}{p^*}\hat{p}_t+\mathcal{O}(\epsilon^2),
 \end{equation}
-where $\hat{\pi}_t\equiv \pi_t-\pi^\star$, $\hat{r}_t\equiv r_t-r^\star$, and $\hat{p}_t\equiv \frac{p_t-p^\star}{p^\star}$, using $\mu_{p,t}=\mathcal{O}(\epsilon^2)$.
+where $\hat{\pi}_t\equiv \pi_t-\pi^*$, $\hat{r}_t\equiv r_t-r^*$, and $\hat{p}_t\equiv \frac{p_t-p^*}{p^*}$, using $\mu_{p,t}=\mathcal{O}(\epsilon^2)$.
 
 Substituting into \eqref{eq:portfolio_share}, the first-order demand system is
 \begin{equation}\label{eq:demand_risky}
@@ -1145,7 +1145,7 @@ Substituting into \eqref{eq:portfolio_share}, the first-order demand system is
 \end{equation}
 where, for unconstrained investors,
 \[
-    \zeta_{j,p}=\frac{1}{p^\star}\frac{1}{\gamma\|\sigma\|^2}, 
+    \zeta_{j,p}=\frac{1}{p^*}\frac{1}{\gamma\|\sigma\|^2}, 
     \qquad
     \zeta_{j,r}=\frac{1}{\gamma\|\sigma\|^2}, 
     \qquad
@@ -1165,14 +1165,14 @@ A first-order expansion of \eqref{eq:xi_j} yields
     \;+\; \mathcal{O}(\epsilon^2).
 \end{equation}
 Consistent with Assumption~\ref{assump:c_w_property}, the risk-free rate and the risk premium enter symmetrically at first order. Substituting the expansion
-\(\hat{\pi}_t = -\,\hat{r}_t - p^{\star\,-1}\hat{p}_t + \mathcal{O}(\epsilon^2)\) gives
+\(\hat{\pi}_t = -\,\hat{r}_t - p^{*\,-1}\hat{p}_t + \mathcal{O}(\epsilon^2)\) gives
 \begin{equation}
-    \hat c_{j,t} \;\equiv\; c_{j,t} - c_j^\star
+    \hat c_{j,t} \;\equiv\; c_{j,t} - c_j^*
     \;=\; \chi_{j,0} \;+\; \chi_{j,p}\,\hat{p}_t \;+\; \mathcal{O}(\epsilon^2),
 \end{equation}
 with coefficients
 \[
-    \chi_{j,p}=(\psi-1)\,\frac{1}{p^\star},
+    \chi_{j,p}=(\psi-1)\,\frac{1}{p^*},
     \qquad 
     \chi_{j,0}=(\psi-1)\,\frac{\gamma\|\sigma\|^2}{2}\,\hat{\gamma}_j\,\epsilon.
 \]
@@ -1185,14 +1185,14 @@ Given the demand system, equilibrium prices follow from market clearing in the r
 \[
     \sum_{j=0}^J x_{j,t}\, q_{j,t} = 0,
     \qquad
-    \sum_{j=0}^J x_{j,t}\, \hat{c}_{j,t} = -\frac{1}{p^\star}\,\hat{p}_t .
+    \sum_{j=0}^J x_{j,t}\, \hat{c}_{j,t} = -\frac{1}{p^*}\,\hat{p}_t .
 \]
 
 Aggregating across investors, and dropping the $j$ subscript on coefficients that are common across types, yields the linear system
 \[
     \begin{bmatrix}
         \zeta_p & \zeta_r \\
-        \chi_p + \tfrac{1}{p^\star} & 0
+        \chi_p + \tfrac{1}{p^*} & 0
     \end{bmatrix}
     \begin{bmatrix}
         \hat{p}_t \\[4pt]
@@ -1204,7 +1204,7 @@ Aggregating across investors, and dropping the $j$ subscript on coefficients tha
         -\,\chi_{0,t}
     \end{bmatrix},
 \]
-where $f_t \equiv \sum_{j=0}^J x_{j,t} f_{j,t}$ and $\chi_{0,t} \equiv \sum_{j=0}^J x_j \chi_{j,0}$.
+where $f_t \equiv \sum_{j=0}^J x_{j,t} f_{j,t}$ and $\chi_{0,t} \equiv \sum_{j=0}^J x_{j,t} \chi_{j,0}$.
 
 \begin{defn}[Aggregate market elasticity]
 The aggregate market elasticity $\epsilon_{M,t}$ is defined as the inverse of the proportional change in the price of the risky asset in response to a flow shock $f_t$:
@@ -1282,12 +1282,12 @@ Any deviation from this efficient allocation creates dispersion in portfolios, l
 
 Movements in the passive portfolio therefore shift the aggregate consumption–wealth ratio. Its second-order expansion is
 \begin{equation}
-    \hat c_t \;\equiv\; c_t - c^\star
+    \hat c_t \;\equiv\; c_t - c^*
     \;=\; \chi_{0,t} \;+\; \chi_p\,\hat p_t \;+\; \mathcal{O}(\epsilon^3),
 \end{equation}
 with coefficients
 \[
-    \chi_p = (\psi-1)\,\frac{1}{p^\star},
+    \chi_p = (\psi-1)\,\frac{1}{p^*},
     \qquad
     \chi_{0,t} = (\psi-1)\,\frac{\gamma\|\sigma\|^2}{2}\,
                     \frac{f_t^2}{x_{0,t}(1-x_{0,t})}.
@@ -1315,13 +1315,13 @@ Without preference heterogeneity or leverage constraints, the inverse aggregate 
 \begin{equation}\label{eq:elasticity_passive_demand}
     \varepsilon_{M,t}^{-1}
     \;=\;
-    -\,(\chi_{p}+y^\star)^{-1}\,\frac{\partial \chi_{0,t}}{\partial f_t}
+    -\,(\chi_{p}+y^*)^{-1}\,\frac{\partial \chi_{0,t}}{\partial f_t}
     \;=\;
-    \left(1-\psi^{-1}\right)\frac{\gamma \|\sigma\|^{2}}{y^\star}
+    \left(1-\psi^{-1}\right)\frac{\gamma \|\sigma\|^{2}}{y^*}
     \frac{1-\overline{\alpha}_{p,t}}{x_{a,t}}
     \;+\;\mathcal{O}\!\left(\epsilon^{2}\right),
 \end{equation}
-where $x_{a,t}=1-x_{0,t}$ is the wealth share of active investors and $y^\star=1/p^\star$ is the dividend-price ratio in the benchmark economy.
+where $x_{a,t}=1-x_{0,t}$ is the wealth share of active investors and $y^*=1/p^*$ is the dividend-price ratio in the benchmark economy.
 \end{prop}
 
 Proposition~\ref{prop:elasticity_passive_demand} shows that, unlike in \citet{gabaix2020search}, the risky-asset elasticities $\zeta_p$ and $\zeta_r$ are not the direct drivers of aggregate elasticity. Because the demand system is recursive (interest rates only enters the risky asset demand) the overall price impact is governed instead by how portfolio flows impact the consumption-wealth ratio. %In other words, aggregate elasticity reflects changes in savings behavior rather than the direct slope of risky asset demand.
@@ -1352,7 +1352,7 @@ The inverse aggregate market elasticity is
     \varepsilon_{M,t}^{-1}
     \;=\;
     \bigl(1-\psi^{-1}\bigr)\,
-    \frac{\gamma\,\|\sigma\|^{2}}{y^\star}\,
+    \frac{\gamma\,\|\sigma\|^{2}}{y^*}\,
     \frac{\overline{\alpha}_{p,t}^{\mathrm{opt}}-\overline{\alpha}_{p,t}}{x_{a,t}-x_{c,t}}\,
     \bigl(1-x_{c,t}\bigr)
     \;+\;\mathcal{O}\!\left(\epsilon^{2}\right),
@@ -1390,7 +1390,7 @@ With slack leverage constraints ($x_{c,t}=0$), \eqref{eq:optimal_alpha_p} simpli
 so, unlike the homogeneous preference case, the efficient passive share $\overline{\alpha}_{p,t}^{\mathrm{opt}}$ differs from unity whenever $\gamma_0 \neq \mathbb{E}^u_t[\gamma_j]$. The inverse elasticity in \eqref{eq:elasticity_pref_heterog} becomes
 \[
 \varepsilon_{M,t}^{-1}
-= \bigl(1-\psi^{-1}\bigr)\,\frac{\gamma\|\sigma\|^2}{y^\star}\,
+= \bigl(1-\psi^{-1}\bigr)\,\frac{\gamma\|\sigma\|^2}{y^*}\,
 \frac{\overline{\alpha}_{p,t}^{\mathrm{opt}}-\overline{\alpha}_{p,t}}{x_{a,t}}
 \;+\;\mathcal{O}(\epsilon^2).
 \]

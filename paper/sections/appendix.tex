@@ -10,20 +10,20 @@ The market clearing condition for bonds can be expressed as follows
 
 The linearized bond demand for a passive investor is given by
 \begin{equation}
-    b_j - b_j^\star = \left[ r -r^\star +\frac{c_j'(\mu-p^\star)}{1-c_j(\mu-p^\star)}   (p-p^\star)\right] b_j^\star - \alpha_j^\star e^{r^\star} (1-c_j(\mu-p^\star))  \hat{\alpha}_j
+    b_j - b_j^* = \left[ r -r^* +\frac{c_j'(\mu-p^*)}{1-c_j(\mu-p^*)}   (p-p^*)\right] b_j^* - \alpha_j^* e^{r^*} (1-c_j(\mu-p^*))  \hat{\alpha}_j
 \end{equation}
 
-For simplicity, focus on the case $\overline{\alpha}_p = 1$, so $b^\star_p = b_a^\star = 0$.
+For simplicity, focus on the case $\overline{\alpha}_p = 1$, so $b^*_p = b_a^* = 0$.
 The passive bond demand is then given by
 \begin{equation}
     x_p b_p=  f^b,
 \end{equation}
-where $f^b \equiv  -x_p [1-c_p(\mu-p^\star)] \hat{\alpha}_p$.
+where $f^b \equiv  -x_p [1-c_p(\mu-p^*)] \hat{\alpha}_p$.
 The active bond demand is given by
 \begin{equation}
-    x_a b_a  = -\zeta^b_p (p-p^\star) - \zeta^b_r (r-r^\star),
+    x_a b_a  = -\zeta^b_p (p-p^*) - \zeta^b_r (r-r^*),
 \end{equation}
-where $\zeta^b_p = \zeta^b_r = -x_a g_a'(\mu-p^\star-r^\star)[1-c_a(\mu-p^\star)]$.
+where $\zeta^b_p = \zeta^b_r = -x_a g_a'(\mu-p^*-r^*)[1-c_a(\mu-p^*)]$.
 
 The demand system can be written as follows:
 \begin{equation}
@@ -34,8 +34,8 @@ The demand system can be written as follows:
     \end{matrix}
     \right] \left[ 
     \begin{matrix}
-        p-p^\star\\
-        r-r^\star
+        p-p^*\\
+        r-r^*
     \end{matrix}
     \right] = \left[ 
     \begin{matrix}
@@ -50,8 +50,8 @@ Inverting the system above, we obtain
 \begin{equation}
     \left[ 
     \begin{matrix}
-        p-p^\star\\
-        r-r^\star
+        p-p^*\\
+        r-r^*
     \end{matrix}
     \right] = 
     \frac{1}{\zeta_{p}^q \zeta^b_r - \zeta_r^q \zeta ^b_p } \left[
@@ -70,10 +70,10 @@ Inverting the system above, we obtain
 
 The price is given by
 \begin{equation}
-    p-p^\star = \frac{\zeta_r^b f^q - \zeta_r^q f^b}{\zeta_{p}^q \zeta^b_r - \zeta_r^q \zeta ^b_p } = 
-     x_p \hat{\alpha}_p\frac{\zeta_r^b  + \zeta_r^q (1-c_p(\mu-p^\star))}{\zeta_{p}^q \zeta^b_r - \zeta_r^q \zeta ^b_p } = 0,
+    p-p^* = \frac{\zeta_r^b f^q - \zeta_r^q f^b}{\zeta_{p}^q \zeta^b_r - \zeta_r^q \zeta ^b_p } = 
+     x_p \hat{\alpha}_p\frac{\zeta_r^b  + \zeta_r^q (1-c_p(\mu-p^*))}{\zeta_{p}^q \zeta^b_r - \zeta_r^q \zeta ^b_p } = 0,
 \end{equation}
-using the fact that $\zeta^q_r = x_a g_a'(\mu-p^\star-r^\star)$ and $c_a(\mu-p^\star) = c_p(\mu-p^\star)$.
+using the fact that $\zeta^q_r = x_a g_a'(\mu-p^*-r^*)$ and $c_a(\mu-p^*) = c_p(\mu-p^*)$.
 
 \section{Derivations for Section \ref{sec:model}}
 
@@ -271,11 +271,11 @@ This is the crucial in the obtaining the mutual fund theorem in our setting.
     The consumption-wealth ratios, $\{c_{j,t}(X_t)\}_{j=0}^2$, and the price-dividend ratio for the aggregate claim, $p_Y(X_t)$, satisfy the following system of PDEs:
     \begin{align}
         c_{j,t} &= \psi \rho 
-        + (1-\psi) \left[ r_t + \eta_{t}^\top\,\sigma_{j,t} - \frac{\gamma_j}{2} \|\sigma_{j,t}\|^2 \right] 
+        + (1-\psi) \left[ r_t + \eta_{t}\,\sigma_{j,t}^\top - \frac{\gamma_j}{2} \|\sigma_{j,t}\|^2 \right] 
         +  \mu_{c_j,t} 
         + (1-\gamma_j) \sigma_{c_j,t} \sigma_{j,t}^\top 
         + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}\\
-        \frac{1}{p_{Y,t}} &= r_t + \eta_{t}^\top\,(\sigma + \sigma_{p_Y,t}) - \big(\mu + \mu_{p_Y,t} + \sigma \, \sigma_{p_Y,t}^\top\big),        
+        \frac{1}{p_{Y,t}} &= r_t + \eta_{t}\,(\sigma + \sigma_{p_Y,t})^\top - \big(\mu + \mu_{p_Y,t} + \sigma \, \sigma_{p_Y,t}^\top\big),        
 \end{align}
 where $(r_t, \eta_t, \sigma_{j,t}, \mu_{c_j,t}, \sigma_{c_j,t}, \mu_{p_Y,t}, \sigma_{p_Y,t})$ are all functions of $X_t$, $(c_j,p_Y)$ and their derivatives.    
 \end{lemma}
@@ -412,11 +412,11 @@ We can then solve for $\xi = \sum_{j=0}^2 x_{j} \xi_{j}$ and the interest rate:
 From the expression for the consumption-wealth ratio and the pricing condition for the aggregate claim, we can write the PDE for $c_j$ and $p_Y$ as follows:
 \begin{align}
         c_{j} &= \psi \rho 
-        + (1-\psi) \left[ r + \eta^\top\,\sigma_{j} - \frac{\gamma_j}{2} \|\sigma_{j}\|^2 \right] 
+        + (1-\psi) \left[ r + \eta\,\sigma_{j}^\top - \frac{\gamma_j}{2} \|\sigma_{j}\|^2 \right] 
         +  \mu_{c_j} 
         + (1-\gamma_j) \sigma_{c_j} \sigma_{j}^\top 
         + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j}\|^2}{2}\\
-        \frac{1}{p_{Y}} &= r + \eta^\top\,\sigma_{R_Y} - \big(\mu + \mu_{p_Y} + \sigma \, \sigma_{p_Y}^\top\big),        
+        \frac{1}{p_{Y}} &= r + \eta\,\sigma_{R_Y}^\top - \big(\mu + \mu_{p_Y} + \sigma \, \sigma_{p_Y}^\top\big),        
 \end{align}
 Notice that $(r, \eta, \sigma_{j}, \mu_{c_j}, \sigma_{c_j}, \mu_{p_Y}, \sigma_{p_Y})$ are all functions of $X$, $(c_j,p_Y)$ and their derivatives.
 Hence, these equations form a system of PDEs for $(c_j,p_Y)$.
@@ -556,6 +556,32 @@ The drift and diffusion of the wealth shares are given
 \end{align}
 using the fact that $\kappa = 0$, $\sigma_{j,0}(X) = \sigma_{R_Y,0}(X)$, and $c_{j,0}(X) = \frac{1}{p_{Y,0}(X)}$.
 
+\paragraph{Derivative.} The risk exposure for the derivative is given by
+\begin{equation}
+    \sigma_{R_F,0} = [\sigma_{R_F,0}^1, \sigma_{R_F,0}^2, \sigma_{R_F,0}^3].
+\end{equation}
+These three quantities are defined by the conditions:
+\begin{equation}
+    \sigma_{R_Y,0} \sigma_{R_F,0}^\top = 0, \qquad 
+    \sigma_{R_F,0} \sigma_{R_F,0}^\top = \sigma_{R_Y,0} \sigma_{R_Y,0}^\top,  \qquad 
+    \sigma_{R_F,0}^3 = 0.
+\end{equation}
+
+From the fact that $\sigma_{R_Y,0} = [\sigma^1,0,0]$, we obtain:
+\begin{equation}
+    \sigma_{R_F,0}^1 = 0, \qquad 
+    \sigma_{R_F,0}^2 = \sigma^1, \qquad 
+    \sigma_{R_F,0}^3 = 0.
+\end{equation}
+
+\paragraph{Portfolio share of passive investors.}
+The portfolio share on the aggregate claim and the derivative satisfy the conditions:
+\begin{equation}
+    \sigma_{j,0} = \alpha_{j,Y} \sigma_{R_Y,0} + \alpha_{j,F} \sigma_{R_F,0}.
+\end{equation}
+Using the fact that $\sigma_{j,0} = \sigma$, we obtain $\alpha_{j,Y} = 1$ and $\alpha_{j,F} = 0$ for $j = 0,1,2$.
+
+
 \paragraph{Pricing the dividend claim.}
 The price of the dividend claim satisfies the pricing condition:
 \begin{equation}
@@ -564,7 +590,7 @@ The price of the dividend claim satisfies the pricing condition:
 
 The SDF and the aggregate endowment follow the processes:
 \begin{align}
-    \frac{d \Lambda_t}{\Lambda_t} = -r^* dt - \sigma dZ_t, \qquad \qquad 
+    \frac{d \Lambda_t}{\Lambda_t} = -r^* dt - \gamma \sigma dZ_t, \qquad \qquad 
     \frac{d Y_t}{Y_t} = \mu dt + \sigma dZ_t.
 \end{align}
 We can then write the SDF and the aggregate endowment as:
@@ -595,6 +621,10 @@ Hence, the price-dividend ratio is given by
     p_{D,0}(X) = \frac{1}{\delta_D + \kappa_s}\left[1 + \frac{\kappa_s}{\delta_D}  \frac{\overline{s}}{s_t}  \right].
 \end{equation}
 
+Similarly, the price-dividend ratio for the bond claim is given by
+\begin{equation}
+    p_{B,0}(X) = \frac{1}{\delta_D + \kappa_s}\left[1 + \frac{\kappa_s}{\delta_D}  \frac{1-\overline{s}}{1-s_t}  \right].
+\end{equation}
 
 \end{proof}
 
@@ -625,7 +655,7 @@ This implies that the diffusion terms for the consumption-wealth ratios and the 
 where $c_{j,\hat{X}}=\mathcal{O}(\epsilon)$ and $p_{Y,\hat{X}}=\mathcal{O}(\epsilon)$ as these derivatives are zero at order zero.
 Notice this implies that $\sigma_{R_Y,1} = 0_{1\times 3}$. 
 
-\paragraph{Risk exposure.} The risk exposure for the passive investor is given by
+\paragraph{Risk exposure and market price of risk.} The risk exposure for the passive investor is given by
 \begin{equation}
     \sigma_{0,1} = \hat{\alpha}_{p,1} \sigma. 
 \end{equation}
@@ -635,8 +665,28 @@ The first-order correction to the risk exposure for an unconstrained active inve
     \sigma_{j,1} = \frac{\eta_1}{\gamma} - \frac{\eta_0}{\gamma} (\hat{\gamma}_j+ \hat{\nu}_{j}).
 \end{equation}
 
+Expanding the market clearing condition for risky assets, we obtain
+\begin{equation}
+    \sum_{j=0}^2 x_{j} \sigma_{j,1} = 0
+\end{equation}
+using the fact that $\sigma_{R_Y,1} = 0$.
 
+The first-order correction to the market price of risk is given by
+\begin{equation}
+   \eta_1  =  \gamma \sigma \left[\sum_{j=1}^2 \frac{x_j}{x_a}(\hat{\gamma}_j+ \hat{\nu}_{j}) -\frac{x_0}{x_a}\hat{\alpha}_{p,1} \right],
+\end{equation}
+where $x_a = 1 - x_0$.
 
+In this case, the risk exposure for the first active investor is given by
+\begin{equation}
+    \sigma_{1,1} = - \left[ \frac{x_2}{x_a}\left(\hat{\gamma}_1 - \hat{\gamma}_2-\hat{\nu}_{2}\right) +\frac{x_0}{x_a}\hat{\alpha}_{p,1} \right]\sigma.
+\end{equation}
+and the risk exposure for the second active investor is given by
+\begin{equation}
+    \sigma_{2,1} = \left[ \frac{x_1}{x_a}\left(\hat{\gamma}_1 - \hat{\gamma}_2 - \hat{\nu}_{2}\right)-\frac{x_0}{x_a}\hat{\alpha}_{p,1}  \right]\sigma.
+\end{equation}
+
+\paragraph{Lagrange multiplier on the leverage constraint.}
 The leverage constraint can be written as
 \begin{equation}
     \sqrt{ ( \sigma + \sigma_{j,1} \epsilon) (\sigma + \sigma_{j,1} \epsilon)^\top } + \mathcal{O}(\epsilon^2) \leq \overline{\sigma}.
@@ -647,25 +697,6 @@ We can write the expression above as
     \frac{\sigma_{j,1} \sigma^\top }{\sigma \sigma^\top} \leq  \hat{\sigma}.
 \end{equation}
 
-\paragraph{Market price of risk.} Expanding the market clearing condition for risky assets, we obtain
-\begin{equation}
-    \sum_{j=0}^2 x_{j} \sigma_{j,1} = 0
-\end{equation}
-using the fact that $\sigma_{R_Y,1} = 0$.
-
-When the leverage constraint is not binding, we have
-\begin{equation}
-   \eta_1  =  \gamma \sigma \left[\sum_{j=1}^2 \frac{x_j}{x_a}(\hat{\gamma}_j+ \hat{\nu}_{j}) -\frac{x_0}{x_a}\hat{\alpha}_{p,1} \right].
-\end{equation}
-
-In this case, the risk exposure for the first active investor is given by
-\begin{equation}
-    \sigma_{1,1} = - \left[ \frac{x_2}{x_a}\left(\hat{\gamma}_1 - \hat{\gamma}_2-\hat{\nu}_{2}\right) +\frac{x_0}{x_a}\hat{\alpha}_{p,1} \right]\sigma.
-\end{equation}
-and the risk exposure for the second active investor is given by
-\begin{equation}
-    \sigma_{2,1} = \left[ \frac{x_1}{x_a}\left(\hat{\gamma}_1 - \hat{\gamma}_2 - \hat{\nu}_{2}\right)-\frac{x_0}{x_a}\hat{\alpha}_{p,1}  \right]\sigma.
-\end{equation}
 
 When the leverage constraint is binding, the following condition is satisfied:
 \begin{equation}
@@ -689,7 +720,11 @@ Hence, the Lagrange multiplier on the leverage constraint is given by
 
 When the constraint is binding, the market price of risk is given by
 \begin{equation}
-    \eta_1 = \gamma \sigma \left[\hat{\gamma}_1 - \frac{x_2}{x_1}\hat{\sigma}  -\frac{x_0}{x_1}\hat{\alpha}_{p,1}  \right].
+    \eta_1 = \gamma \sigma \left[\hat{\gamma}_1 - \frac{x_2}{x_1}\hat{\sigma}  -\frac{x_0}{x_1}\hat{\alpha}_{p,1}  \right],
+\end{equation}
+and when the constraint is not binding, the market price of risk is given by
+\begin{equation}
+    \eta_1  =  \gamma \sigma \left[\sum_{j=1}^2 \frac{x_j}{x_a} \hat{\gamma}_j -\frac{x_0}{x_a}\hat{\alpha}_{p,1} \right].
 \end{equation}
 
 \paragraph{Risk premium.} The risk premium is given by
@@ -697,6 +732,7 @@ When the constraint is binding, the market price of risk is given by
     \pi_{Y,1} = \eta_1 \sigma^\top = \gamma \|\sigma\|^2 \left[\sum_{j=1}^2 \frac{x_j}{x_a}(\hat{\gamma}_j+ \hat{\nu}_{j}) -\frac{x_0}{x_a}\hat{\alpha}_{p,1} \right].
 \end{equation}
 
+The risk premium is higher when the average risk aversion of active investors is higher, leverage constraints are binding, and passive investors hold disproportionately more risk.
 
 
 % The risk exposure for active investors can be written as
@@ -809,7 +845,14 @@ Using the fact that $\sum_{j=0}^2 x_{j} \sigma_{j,1} = 0_{1\times 3}$, we obtain
     - \gamma \|\sigma\|^2 \left[\sum_{j=1}^2 \frac{x_j}{x_a}(\hat{\gamma}_j+ \hat{\nu}_{j})- \sum_{j=0}^2 x_{j} \hat{\gamma}_j  -\frac{x_0}{x_a}\hat{\alpha}_{p,1} +\frac{1+\psi^{-1}}{2} \sum_{j=0}^2 x_{j} \hat{\gamma}_j \right].
 \end{equation}
 
-Notice that we 
+Notice that we can write the expression above as
+\begin{equation}
+    r_1 = -\gamma \|\sigma\|^2 \frac{1+\psi^{-1}}{2} \sum_{j=0}^2 x_{j} \hat{\gamma}_j - \left[ \pi_{Y,1} - \pi_{Y,1}^{fb}\right],    
+\end{equation}
+where
+\begin{equation}
+    \pi_{Y,1}^{fb} = \gamma \|\sigma\|^2 \sum_{j=0}^2 x_{j} \hat{\gamma}_j.
+\end{equation}
 
 % \begin{small}
 % 	\begin{align}
@@ -820,14 +863,22 @@ Notice that we
 % 	\end{align}\end{small}
 % where we use the fact that $ \sum_{j=0}^J x_{j,t}  \sigma_{j,1}(X)  = 0$ from the first-order correction of the risky asset market clearing condition.
 
-The term in the square brackets in Equation~\eqref{eq:r-first-order} captures the first-order effect of frictions on the interest rate, $ r_1(X) $.
-First, we see that the interest rate is decreasing in the difference between the average risk aversion of unconstrained investors and the average risk aversion of all investors in the economy.
-These two averages can differ for two reasons.
-First, passive investors may have a risk aversion different from the average unconstrained investor, the first term in parentheses in $ r_1(X) $.
-Second, constrained investors are exactly the ones with low risk aversion, so unconstrained investors are on average more risk averse than all investors in the economy, which include the low risk aversion ones.
+
+The first term in the expression for $r_1$ captures the first-order impact of differences in risk aversion on the interest rate in an economy without frictions, that is, no passive investors or leverage constraints.
+The second term captures the first-order impact of frictions on the interest rate, given by the difference between the risk premium in an economy with frictions and an economy without frictions.
+
 
 
 \paragraph{Consumption-wealth ratio.} The consumption-wealth ratio for investor $j$ is given by
+\begin{align}
+    c_{j,1} &= (1-\psi) \left[ r_1 + \eta_1\,\sigma^T + \eta_0 \sigma_{j,1}^T -\gamma \sigma \sigma_{j,1}^T - \frac{\gamma}{2} \|\sigma\|^2 \hat{\gamma}_j \right].
+\end{align}
+
+Using the fact that $\eta_0 = \gamma \sigma$ and $\eta_1 \sigma^T = \pi_{Y,1}$, we obtain
+\begin{equation}
+    c_{j}(X,\epsilon) = \psi \rho + \left[ r + \pi_Y- \frac{\gamma_j}{2} \|\sigma\|^2 \right] + \mathcal{O}(\epsilon^2).
+\end{equation}
+
 \begin{align}
     c_{j}(X,\epsilon) &= c_{j,0}(X) + (1-\psi) \left[ r_1(X) + \theta_0(X) \sigma_{j,1}(X) + \theta_{1}(X) \sigma_{j,0}(X)\right.\nonumber\\
     &\qquad\qquad\qquad\qquad\quad\left. -\gamma \|\sigma\| \sigma_{j,1}(X) - \frac{\gamma}{2} \hat{\gamma}_j \|\sigma\|^2 \right]\epsilon + \mathcal{O}(\epsilon^2)\nonumber\\
@@ -1740,7 +1791,7 @@ Suppose there is no preference heterogeneity and no leverage constraint.
 Without loss of generality, set $J = 1$.
 In this case, the price-dividend ratio is given by
 \begin{align}
-    p(X,\epsilon) &= p^\star -(p^\star)^2 (1-\psi^{-1}) \frac{\gamma \|\sigma\|^2}{2} \frac{x_0 \hat{\alpha}_p^2}{x_1} \epsilon^2 + \mathcal{O}(\epsilon^3)\\
+    p(X,\epsilon) &= p^* -(p^*)^2 (1-\psi^{-1}) \frac{\gamma \|\sigma\|^2}{2} \frac{x_0 \hat{\alpha}_p^2}{x_1} \epsilon^2 + \mathcal{O}(\epsilon^3)\\
     \pi(X,\epsilon) &= \pi_0(X) - \gamma \|\sigma\|^2 \frac{x_0\hat{\alpha}_p}{x_1} \epsilon  + \mathcal{O}(\epsilon^3)\\
     r(X,\epsilon) &= r_0(X)+\gamma \|\sigma\|^2 \frac{x_0 \hat{\alpha}_p}{x_1} \epsilon +(1-\psi^{-1}) \frac{\gamma \|\sigma\|^2}{2} \frac{x_0 \hat{\alpha}_p^2}{x_1} \epsilon^2 + \mathcal{O}(\epsilon^3)\\
     \alpha_{0}(X,\epsilon) &= 1 + \hat{\alpha}_p\epsilon + \mathcal{O}(\epsilon^3)\\
@@ -1769,26 +1820,26 @@ The law of motion of $x_{1,t}$ can be written as
 
 \paragraph{Diffusion and drift terms.} The derivatives of $p(X,\epsilon)$ with respect to $x_1$ and $\overline{\alpha}_p$ are given by
 \begin{equation}
-    \frac{p_{x_1}(X,\epsilon)}{p^\star} = (1-\psi^{-1})\frac{\gamma\|\sigma\|^2}{2 y^\star} \frac{1}{x_1^2} \hat{\alpha}_p^2 \epsilon^2 + \mathcal{O}(\epsilon^3), \qquad  
-    \frac{p_{\overline{\alpha}_p}(X,\epsilon)}{p^\star} = -(1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{y^\star} \frac{x_0}{x_1} \hat{\alpha}_p \epsilon^2 + \mathcal{O}(\epsilon^3)
+    \frac{p_{x_1}(X,\epsilon)}{p^*} = (1-\psi^{-1})\frac{\gamma\|\sigma\|^2}{2 y^*} \frac{1}{x_1^2} \hat{\alpha}_p^2 \epsilon^2 + \mathcal{O}(\epsilon^3), \qquad  
+    \frac{p_{\overline{\alpha}_p}(X,\epsilon)}{p^*} = -(1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{y^*} \frac{x_0}{x_1} \hat{\alpha}_p \epsilon^2 + \mathcal{O}(\epsilon^3)
 \end{equation}
 
 The diffusion term for $p(X,\epsilon)$ is then given by
 \begin{equation}
-    \sigma_{p,3}(X) =  -(1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{y^\star} \frac{x_0}{x_1} \left[   \frac{\hat{\alpha}_p^3}{2x_1^2} \sigma + \hat{\alpha}_p \sigma_p \sqrt{\overline{\alpha}_p} \right].
+    \sigma_{p,3}(X) =  -(1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{y^*} \frac{x_0}{x_1} \left[   \frac{\hat{\alpha}_p^3}{2x_1^2} \sigma + \hat{\alpha}_p \sigma_p \sqrt{\overline{\alpha}_p} \right].
 \end{equation}
 and $\sigma_{c_j,3}(X) = \sigma_{p,3}(X)$.
 Notice that excess volatility depends on the market elasticity times the volatility of portfolio flows.
 
 The drift of $p$ is given by
 \begin{equation}
-    \mu_{p,3}(X) = (1-\psi^{-1})\frac{\gamma\|\sigma\|^2}{2 y^\star} \frac{1}{x_1^2} \hat{\alpha}_p^2 \mu_{x_1,1} -(1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{y^\star} \frac{x_0}{x_1} \hat{\alpha}_p \theta_p (\overline{\alpha}-\overline{\alpha}_{p,t}),
+    \mu_{p,3}(X) = (1-\psi^{-1})\frac{\gamma\|\sigma\|^2}{2 y^*} \frac{1}{x_1^2} \hat{\alpha}_p^2 \mu_{x_1,1} -(1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{y^*} \frac{x_0}{x_1} \hat{\alpha}_p \theta_p (\overline{\alpha}-\overline{\alpha}_{p,t}),
 \end{equation}
 and $\mu_{c_j,3}(X) = \mu_{p,3}(X)$.
 
 \paragraph{Risk premium.} The risk premium is given by
 \begin{equation}
-\pi(X) = \gamma \|\sigma\|^2 \left[ 1 - \frac{x_0(\overline{\alpha}_p -1) }{x_1}  -  \frac{1-\gamma^{-1}}{\psi-1} \frac{\gamma\|\sigma\|^2}{y^\star} \frac{x_0}{x_1} \left[   \frac{(1-\overline{\alpha}_p)^3}{2x_1^2} \sigma + \hat{\alpha}_p \sigma_p \sqrt{\overline{\alpha}_p} \right] \right]
+\pi(X) = \gamma \|\sigma\|^2 \left[ 1 - \frac{x_0(\overline{\alpha}_p -1) }{x_1}  -  \frac{1-\gamma^{-1}}{\psi-1} \frac{\gamma\|\sigma\|^2}{y^*} \frac{x_0}{x_1} \left[   \frac{(1-\overline{\alpha}_p)^3}{2x_1^2} \sigma + \hat{\alpha}_p \sigma_p \sqrt{\overline{\alpha}_p} \right] \right]
 \end{equation}
 
 \section{Higher-order perturbations}
@@ -1862,7 +1913,7 @@ The term of order 0 is the same as before.
 Consider the case without preference heterogeneity or leverage constraints.
 The price-dividend ratio is given by:
 \begin{equation}
-    \hat{p}_t = - (1-\psi^{-1})\frac{\gamma\|\sigma\|^2}{2 y^\star}\,
+    \hat{p}_t = - (1-\psi^{-1})\frac{\gamma\|\sigma\|^2}{2 y^*}\,
                     \frac{(1-x_{a,t}) (1-\overline{\alpha}_{p,t})^2}{x_{a,t}}.
 \end{equation}
 where, given $\overline{\alpha}_{a,t} \equiv \frac{1-(1-x_{a,t})  \overline{\alpha}_{p,t}}{x_{a,t}}$, we have
@@ -1877,12 +1928,12 @@ The diffusion of $\hat{p}_t$ is given
 \end{equation}
 
 \begin{equation}
-    \hat c_t \;\equiv\; c_t - c^\star
+    \hat c_t \;\equiv\; c_t - c^*
     \;=\; \chi_{0,t} \;+\; \chi_p\,\hat p_t \;+\; \mathcal{O}(\epsilon^3),
 \end{equation}
 with coefficients
 \[
-    \chi_p = (\psi-1)\,\frac{1}{p^\star},
+    \chi_p = (\psi-1)\,\frac{1}{p^*},
     \qquad
     \chi_{0,t} = (\psi-1)\,\frac{\gamma\|\sigma\|^2}{2}\,
                     \frac{f_t^2}{x_{0,t}(1-x_{0,t})}.
