@@ -839,6 +839,11 @@ and when the constraint is not binding, the market price of risk is given by
     \eta_1  =  \gamma \sigma \left[\sum_{j=1}^2 \frac{x_j}{x_a} \hat{\gamma}_j -\frac{x_0}{x_a}\hat{\alpha}_{p,1} \right].
 \end{equation}
 
+A compact way of writing the market price of risk is given by
+\begin{equation}
+    \eta_1 = \gamma \sigma \left[\sum_{j=1}^2 \frac{x_j}{x_a}(\hat{\gamma}_j+ \hat{\nu}_{j}) -\frac{x_0}{x_a}\hat{\alpha}_{p,1} \right].
+\end{equation}
+
 \paragraph{Risk premium.} The risk premium is given by
 \begin{equation}
     \pi_{Y,1} = \eta_1 \sigma^\top = \gamma \|\sigma\|^2 \left[\sum_{j=1}^2 \frac{x_j}{x_a}(\hat{\gamma}_j+ \hat{\nu}_{j}) -\frac{x_0}{x_a}\hat{\alpha}_{p,1} \right].
@@ -988,41 +993,62 @@ The second term captures the first-order impact of frictions on the interest rat
 
 Using the fact that $\eta_0 = \gamma \sigma$ and $\eta_1 \sigma^T = \pi_{Y,1}$, we obtain
 \begin{equation}
-    c_{j}(X,\epsilon) = \psi \rho + \left[ r + \pi_Y- \frac{\gamma_j}{2} \|\sigma\|^2 \right] + \mathcal{O}(\epsilon^2).
+    c_{j}(X,\epsilon) = \psi \rho +(1-\psi) \left[ r + \pi_Y- \frac{\gamma_j}{2} \|\sigma\|^2 \right] + \mathcal{O}(\epsilon^2).
 \end{equation}
 
 We can write the first-order correction of the consumption-wealth ratio as follows:
 \begin{equation}
-    c_{j,1} = \frac{\gamma \|\sigma\|^2}{2} \left[ \left(1-\psi^{-1}\right) \sum_{k=0}^2 x_{k,t}\hat{\gamma}_k-\hat{\gamma}_j\right].
+    c_{j,1} = \frac{\gamma \|\sigma\|^2}{2} (1-\psi)\left[ \left(1-\psi^{-1}\right) \sum_{k=0}^2 x_{k,t}\hat{\gamma}_k-\hat{\gamma}_j\right].
 \end{equation}
 
-\paragraph{Dividend yield.} The dividend yield is given by
-\begin{equation}\label{eq:div-yield_first_order}
-    y(X,\epsilon) = y_0(X) + \left(1-\psi^{-1}\right) \gamma \|\sigma\|^2 \sum_{j=0}^J x_{j,t}\frac{\hat{\gamma}_j}{2} \epsilon + \mathcal{O}(\epsilon^2).
-\end{equation}
-
-Notice that portfolio flows do not affect the dividend yield up to first order.
-The reason is that the interest rate and risk premium effects exactly cancel each other out.
-To derive the effect of portfolio flows on asset prices, we need to consider the second-order correction.
-
-The price-dividend ratio is then given by
 \begin{equation}
-    p(X, \epsilon) = p_0(X) - p_0(X)^2 \left(1-\psi^{-1}\right) \gamma \|\sigma\|^2 \sum_{j=0}^J x_{j,t}\frac{\hat{\gamma}_j}{2} \epsilon + \mathcal{O}(\epsilon^2).
+    (1-\psi) (1-\psi^{-1})  - (1-\psi^{-1}) = - \psi(1-\psi^{-1}) = (1-\psi)
 \end{equation}
 
-\paragraph{State dynamics.} The diffusion of the wealth share of investor $j$, $j=1,\ldots,J$, is given by
+\paragraph{Price-dividend ratio of aggregate claim.} The pricing condition
+\begin{equation}
+    -\frac{1}{(p_{Y}^*)^2} p_{Y,1} = r_1 + \pi_{Y,1}.
+\end{equation}
+
+This implies that the first-order correction to the price-dividend ratio of the aggregate claim is given by  
+\begin{equation}
+    \frac{p_{Y,1}}{p_{Y}^*} = - p_{Y}^* (1-\psi^{-1}) \frac{\gamma  \|\sigma\|^2}{2}\sum_{j=0}^2 x_{j} \hat{\gamma}_j.
+\end{equation}
+Hence, if $\psi>1$, an increase in the average risk aversion of the investors leads to a decrease in the price-dividend ratio of the aggregate claim.
+% \paragraph{Dividend yield.} The dividend yield is given by
+% \begin{equation}\label{eq:div-yield_first_order}
+%     y(X,\epsilon) = y_0(X) + \left(1-\psi^{-1}\right) \gamma \|\sigma\|^2 \sum_{j=0}^J x_{j,t}\frac{\hat{\gamma}_j}{2} \epsilon + \mathcal{O}(\epsilon^2).
+% \end{equation}
+
+% Notice that portfolio flows do not affect the dividend yield up to first order.
+% The reason is that the interest rate and risk premium effects exactly cancel each other out.
+% To derive the effect of portfolio flows on asset prices, we need to consider the second-order correction.
+
+% The price-dividend ratio is then given by
+% \begin{equation}
+%     p(X, \epsilon) = p_0(X) - p_0(X)^2 \left(1-\psi^{-1}\right) \gamma \|\sigma\|^2 \sum_{j=0}^J x_{j,t}\frac{\hat{\gamma}_j}{2} \epsilon + \mathcal{O}(\epsilon^2).
+% \end{equation}
+
+\paragraph{State dynamics.} The diffusion of the wealth share of investor $j$, $j=1,2$, is given by
 \begin{align}
-    \sigma_{X,j}(X) &= x_j \sigma_{j,1}(X) \frac{\sigma}{\|\sigma\|} \epsilon + \mathcal{O}(\epsilon^2)\nonumber\\
-    &= x_j \min\left\{ \sum_{k\in\mathcal{J}^u} \frac{x_k}{x_u} \hat{\gamma}_j -\left(\frac{\hat{\alpha}_p  x_0+\frac{\hat{\sigma}}{\|\sigma\|} x_c }{1-x_0-x_c}\right)- \hat{\gamma}_j  ,\frac{\hat{\sigma}}{\|\sigma\|}  \right\} \sigma \epsilon + \mathcal{O}(\epsilon^2).
+    \sigma_{x_j,1} &= x_j \sigma_{j,1}\nonumber\\
+    &= x_j \left[ \sum_{k=1}^2 \frac{x_k}{x_a}(\hat{\gamma}_k+ \hat{\nu}_k) -\frac{x_0}{x_a}\hat{\alpha}_{p,1} - (\hat{\gamma}_j+ \hat{\nu}_j)\right] \sigma.
+    % &= x_j \min\left\{ \sum_{k\in\mathcal{J}^u} \frac{x_k}{x_u} \hat{\gamma}_j -\left(\frac{\hat{\alpha}_p  x_0+\frac{\hat{\sigma}}{\|\sigma\|} x_c }{1-x_0-x_c}\right)- \hat{\gamma}_j  ,\frac{\hat{\sigma}}{\|\sigma\|}  \right\} \sigma \epsilon + \mathcal{O}(\epsilon^2).
 \end{align}
 
 The drift of the wealth share of investor $j$, $j=1,\ldots,J$, is given by
-\begin{small}
-	\begin{align}
-	\mu_{X,j}(X,\epsilon) &= x_j \left[ r_1(X) + \theta_1(X) \sigma_{j,0}(X)+ \theta_0(X) \sigma_{j,1}(X) - \xi_{j,1}(X) - \sigma_{j,1}(X) \|\sigma\| \right]\epsilon+\kappa (\omega_j-x_{j})+ \mathcal{O}(\epsilon^2)\nonumber\\
-	&= x_j \left[ (\psi-1) \gamma\|\sigma\|^2 \left( \sum_{k=0}^J x_{k,t}\frac{\hat{\gamma}_k}{2}-\frac{\hat{\gamma}_j}{2}\right)+ (\gamma - 1)\|\sigma\| \sigma_{j,1}(X)  \right]\epsilon+\kappa (\omega_j-x_{j})+ \mathcal{O}(\epsilon^2)
-	\end{align}
-\end{small}
+\begin{align}
+    \mu_{x_j,1} &= x_{j} \left[ 
+        (\gamma-1)\sigma  \sigma_{j,1}^\top +\frac{\gamma \|\sigma\|^2}{2} (\psi-1) \left( \sum_{k=0}^2 x_k\hat{\gamma}_k  - \hat{\gamma}_j\right)
+     \right] + \overline{\kappa} (\omega_j - x_{j}),
+\end{align}
+
+% \begin{small}
+% 	\begin{align}
+% 	\mu_{X,j}(X,\epsilon) &= x_j \left[ r_1(X) + \theta_1(X) \sigma_{j,0}(X)+ \theta_0(X) \sigma_{j,1}(X) - \xi_{j,1}(X) - \sigma_{j,1}(X) \|\sigma\| \right]\epsilon+\kappa (\omega_j-x_{j})+ \mathcal{O}(\epsilon^2)\nonumber\\
+% 	&= x_j \left[ (\psi-1) \gamma\|\sigma\|^2 \left( \sum_{k=0}^J x_{k,t}\frac{\hat{\gamma}_k}{2}-\frac{\hat{\gamma}_j}{2}\right)+ (\gamma - 1)\|\sigma\| \sigma_{j,1}(X)  \right]\epsilon+\kappa (\omega_j-x_{j})+ \mathcal{O}(\epsilon^2)
+% 	\end{align}
+% \end{small}
 
 
 The law of motion of $\hat{\alpha}_p$ can be written as follows:
@@ -1031,6 +1057,28 @@ The law of motion of $\hat{\alpha}_p$ can be written as follows:
 \end{equation}
 so the drift of $\overline{\alpha}_p$ is $\mu_{\overline{\alpha}_p} = \theta_p ( \overline{\hat{\alpha}} - \hat{\alpha}_p )\epsilon$ and the diffusion is
 $\sigma_{\overline{\alpha}_p} = \sigma_p \epsilon$.
+
+\paragraph{Pricing individual claims.}
+The pricing condition for the dividend claim is given by
+\begin{equation}
+    \left[r + \sigma \eta^\top - \mu\right] \tilde{p}_k = s_t + \tilde{p}_k\mu_{\tilde{p}_k} + (\sigma-\eta) (\tilde{p}_k\sigma_{\tilde{p}_k})^\top,
+\end{equation}
+where
+\begin{equation}
+    \tilde{p}_{k,t}\mu_{\tilde{p}_k} = \tilde{p}_{k,X,t} \mu_{X,t} + \frac{1}{2}\sum_{k=1}^3 \sigma_{X,k,t}^\top\,\tilde{p}_{k,XX,t}\,\sigma_{X,k,t}, \qquad 
+    \tilde{p}_{k,t} \sigma_{\tilde{p}_k} = \tilde{p}_{k,X,t} \sigma_{X,t}.
+\end{equation}
+
+The first-order correction to the pricing condition for the dividend claim, assuming $\gamma = 1$, is given by
+\begin{equation}
+    \delta \tilde{p}_{k,1} + \left[ r_1 + \pi_{Y,1} \right] \tilde{p}_{k,0} = \tilde{p}_{k,s,1} \mu_{s} + \frac{1}{2} p_{k,ss,1} \sigma_s \sigma_s^\top   -\eta_1 (\tilde{p}_{k,0}\sigma_{\tilde{p}_k,0})^\top.
+\end{equation}
+
+We can write the expression above as follows:
+\begin{equation}
+    \delta \tilde{p}_{D,1} + \left[ r_1 + \pi_{Y,1} \right] \frac{1}{\delta} \left[ \frac{\delta}{\delta + \kappa_s} s + \frac{\kappa_s}{\delta + \kappa_s} \overline{s} \right] = \tilde{p}_{D,s,1} \kappa_s (\overline{s} -s) + \frac{1}{2} p_{D,ss,1} \sigma_s \sigma_s^\top  -\frac{\eta_1 }{\delta + \kappa_s}\sigma_s^\top.
+\end{equation}
+
 
 \end{proof}
 
