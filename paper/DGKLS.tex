@@ -435,7 +435,7 @@ where
 \end{equation}
 
 This specification captures several key features of the data.
-First, it generates the well-documented fact that dividends are more volatile than consumption (see, e.g., \citealt{Abel1999LeverageDividends}; \citealt{Campbell1999AssetPrices}).
+First, it generates the well-documented fact that dividends are more volatile than consumption (see, e.g., \citealt{abel1999risk}; \citealt{Campbell1999AssetPrices}).
 Second, the dividend share predicts future dividend growth, consistent with \citet{MenzlySantosVeronesi2004}.
 Third, dividend volatility increases after negative shocks to $s_t$, capturing a leverage effect.
 
@@ -1508,12 +1508,12 @@ The multiplier is a reduced-form analog of the price impact that our calibration
 
 \begin{table}[!t]
     \centering
-    \input{tables/calibration}
+    \resizebox{.65\linewidth}{!}{\input{tables/calibration}}
 	\vspace{2mm}
     \captionsetup{font=footnotesize}
     \caption{\textbf{Parameter values.}\\
     This table reports the parameter values used to calibrate the baseline economy.
-    Preference parameters ($\psi$, $\gamma_j$, $\rho$) and sectoral masses ($\omega_j$) are chosen to match average sectoral wealth shares and sectoral ``betas'' from time-series regressions of risky-asset holdings on aggregate risky supply.
+    Risk aversion parameters and sectoral masses ($\gamma_j$, $\omega_j$) are chosen to match average sectoral wealth shares and sectoral ``betas'' from time-series regressions of risky-asset holdings on aggregate risky supply.
     Technology parameters ($\mu$, $\sigma$, $\sigma_s$, $\bar{s}$, $\kappa_s$) are standard macro--finance targets.
     Passive-demand parameters ($\overline{\alpha}$, $\theta_p$, $\sigma_p$, $\nu$) are disciplined by the average passive portfolio share, household portfolio inertia \citep{brunnermeier2008wealth}, and the volatility and correlation of quarterly aggregate equity flows with market returns \citep{gabaix2020search}.
     The leverage-constraint tightness $\overline{\sigma}$ targets the empirical asset-to-equity ratio of the constrained sector.}\label{tab:calib}
@@ -1521,59 +1521,40 @@ The multiplier is a reduced-form analog of the price impact that our calibration
 
 \subsection{Moments}\label{sec:moments}
 
-We discipline the calibration with two groups of moments.
-The first group targets the cross-sectional distribution of risky holdings.
-We choose the sector masses $\omega_j$ and the risk-aversion coefficients $\gamma_j$ jointly so that the model matches the average sectoral wealth shares in the Flow of Funds and the sectoral ``betas,'' defined as the slope coefficient from a time-series regression of sector~$j$'s dollar risky-asset holdings on aggregate risky supply.
-These sector betas are the empirical counterpart of the comovement between sector~$j$'s dollar position and the aggregate; we compute them for the two active sectors, $j\in\{c,u\}$.
-The average risk aversion $\overline{\gamma}$ is fixed at $6.15$, a standard value in the macro-finance literature.
-The leverage-constraint tightness $\overline{\sigma}$ is set so that the asset-to-equity ratio of the constrained sector matches its Flow of Funds counterpart.
+We discipline the calibration in three blocks: technology parameters, preference and cross-sectional parameters, and the passive-demand process.
 
-The second group targets the passive-demand process.
-Its long-run mean $\overline{\alpha}$ is set to the household-weighted aggregate implied by our FoF aggregation, which yields $\overline{\alpha}=0.52$.
-This value is intermediate between the one-third estimate in \citet{chinco2024passive}, inferred from index-reconstitution events, and the roughly two-thirds estimate in \citet{koijen2024investors}, which uses active-share measures in the spirit of \citet{cremers2009active}.
-The volatility $\sigma_p$ is disciplined by the observed dispersion of quarterly aggregate equity flows shown in the left panel of Figure~\ref{fig:facts-vol-flow}.
-Following Appendix~D3 of \citet{gabaix2020search}, we scale each sector's dollar equity flow by lagged aggregate market capitalization, purge mechanical revaluation, and aggregate gross flows across sectors, dividing by two to avoid double counting.
-The resulting series replicates the quarterly flows in their Figure~D.7.
-The persistence $\theta_p$ is informed by evidence on household portfolio inertia.
-Using PSID data, \citet{brunnermeier2008wealth} regress the actual change in the household risky-asset share on a counterfactual change that assumes no rebalancing, and find an inertia coefficient near $0.75$, implying that portfolio shares adjust slowly to capital gains and to flow-induced changes in wealth.\footnote{\citet{parker2023retail} show that the adoption of target-date funds has further stabilized household portfolio shares.}
-We choose $\theta_p$ so that the half-life of the passive-demand process in the simulated model matches the half-life implied by this inertia coefficient.
-Finally, we estimate the loading $\nu$ of passive-flow shocks on the aggregate shock indirectly by regressing the quarterly passive-flow series on contemporaneous market returns.
-This yields a model-implied correlation between flows and returns of $0.005$, close to the empirical value of $0.011$.
+\paragraph{Technology.} The endowment growth rate $\mu=1.83\%$ and endowment volatility $\sigma=3.57\%$ are calibrated to be consistent with the U.S. aggregate consumption data (\citealp{campbell1999force}). Following \citet{LettauWachter2011}, we set the correlation of dividend-share shocks with the fundamental at $0.3$ and the dividend-share volatility at $\sigma_s=11\%$. The mean-reversion of the dividend share is $\kappa_s=0.09$, following \cite{santos2006labor}. The mean dividend share is set at $\bar{s}=0.6$, consistent with \cite{abel1999risk}.
 
-Following \citet{LettauWachter2011}, we set the correlation of dividend-share shocks with the fundamental at $0.3$ and the dividend-share volatility at $11\%$.
+\paragraph{Preferences and cross section of holdings.} We set a common elasticity of intertemporal substitution $\psi=1.5$ for all agent types, similar to the value used in \citet{bansal2004risks}. The effective discount rate $\rho$ is chosen to match the average real risk-free rate, yielding $\rho=0.01$. The sector-specific risk aversion coefficients $\gamma_j$ are chosen to match sectoral \emph{asset shares}, defined as the value of risky holdings of sector~$j$ divided by the aggregate value of risky holdings. This leads to average risk aversion of 9.7, within the range of values used in the macro-finance literature.  The sector masses $\omega_j$ are chosen to match the asset-to-equity ratios of the active sectors.  The agent turnover rate $\kappa=0.10$ is calibrated so that the wealth share of the passive sector in the simulated ergodic distribution matches its empirical counterpart of about $0.45$. The leverage constraint tightness $\overline{\sigma}$ is set so that the asset-to-equity ratio of the constrained sector matches its Flow of Funds counterpart.
+
+\paragraph{Passive demand.} The long-run mean $\overline{\alpha}$ is set to the household-weighted aggregate implied by our FoF aggregation, which yields $\overline{\alpha}=0.52$. This value is intermediate between the one-third estimate in \citet{chinco2024passive}, inferred from index-reconstitution events, and the roughly two-thirds estimate in \citet{koijen2024investors}, which uses active-share measures in the spirit of \citet{cremers2009active}. The volatility $\sigma_p$ is disciplined by the observed dispersion of quarterly aggregate equity flows shown in the left panel of Figure~\ref{fig:facts-vol-flow}. Following Appendix~D3 of \citet{gabaix2020search}, we scale each sector's dollar equity flow by lagged aggregate market capitalization, remove mechanical revaluation, and aggregate gross flows across sectors, dividing by two to avoid double counting. The resulting series replicates the quarterly flows in their Figure~D.7. The persistence $\theta_p$ is informed by evidence on household portfolio inertia. Using PSID data, \citet{brunnermeier2008wealth} regress the actual change in the household risky-asset share on a counterfactual change that assumes no rebalancing, and find an inertia coefficient near $0.75$, implying that portfolio shares adjust slowly to capital gains and to flow-induced changes in wealth.\footnote{\citet{parker2023retail} show that the adoption of target-date funds has further stabilized household portfolio shares.} We choose $\theta_p$ so that the half-life of the passive-demand process in the simulated model matches the half-life implied by this inertia coefficient. Finally, we estimate the loading $\nu$ of passive-flow shocks on the aggregate shock indirectly by regressing the quarterly passive-flow series on contemporaneous market returns. This yields a model-implied correlation between flows and returns of $0.005$, close to the empirical value of $0.011$.
 
 \begin{table}[!t]
     \centering
-    \input{./tables/simulation.tex}
+    \resizebox{.8\linewidth}{!}{\input{./tables/simulation.tex}}
     \vspace{2mm}
     \captionsetup{font=footnotesize}
-    \caption{\textbf{Unconditional moments.}\\
-    This table reports model-implied and empirical unconditional moments for the dividend claim and the endowment claim in the baseline economy.
-    Model moments are computed from a $1{,}000$-year monthly simulation of the calibrated economy.
-    The price impact is estimated as the slope coefficient $\hat{b}_1$ of the regression $d\log(P/D)_t = a_0 + b_1\,\overline{\alpha}_{p,t}^{s} + e_t$, where $\overline{\alpha}_{p,t}^{s}$ is the innovation to passive demand.
-    Asset/Equity denotes the ratio of risky-asset holdings to equity for the constrained and unconstrained sectors; asset shares report the fraction of the aggregate risky market held by each sector.
-    Rates, volatilities, and asset shares are reported in percent; Asset/Equity ratios, price impacts, and their standard errors are unit-free.
-    Standard errors for price-impact estimates are reported in separate rows.
-    All values are annualized.}\label{tab:simulation_moments}
+    \caption{\textbf{Unconditional moments.}\\ This table reports model-implied and empirical unconditional moments for the dividend claim and the endowment claim in the baseline economy. Model moments are computed from a $1{,}000$-year monthly simulation of the calibrated economy. The price impact is estimated as the slope coefficient $\hat{b}_1$ of the regression $d\log(P/D)_t = a_0 + b_1\,\overline{\alpha}_{p,t}^{s} + e_t$, where $\overline{\alpha}_{p,t}^{s}$ is the innovation to passive demand. Asset/Equity denotes the ratio of risky-asset holdings to equity for the constrained and unconstrained sectors; asset shares report the fraction of the aggregate risky market held by each sector. Standard errors are in parentheses. All values are annualized.}\label{tab:simulation_moments}
 \end{table}
 
-\FloatBarrier
+% \FloatBarrier
 
 \subsection{Unconditional moments}\label{sec:uncond-moments}
 
+
 We simulate the calibrated economy at monthly frequency for $1{,}000$ years and compare unconditional moments of the simulated data with their empirical counterparts in Table~\ref{tab:simulation_moments}.
-For the dividend claim, the model delivers a risk premium of $6.6\%$, a risk-free rate of $0.6\%$, and a return volatility of $22.4\%$, all close to their empirical targets.
+For the dividend claim, the model delivers a risk premium of $6.6\%$, a risk-free rate of $0.6\%$, and a return volatility of $22.4\%$, all close to their empirical targets (\citealp{shiller2015irrational}).
 We estimate the price impact of the dividend claim by regressing the change in the log price--dividend ratio on the innovation to passive demand,
 \begin{equation}\label{eq:price_impact_regression}
     d\log (P/D)_t = a_0 + b_1\,\overline{\alpha}_{p,t}^{s} + e_t,
 \end{equation}
 where $\overline{\alpha}_{p,t}^{s} = \overline{\alpha}_{p,t} - \overline{\alpha}_{p,t-1} - \mathbb{E}[d\overline{\alpha}_{p,t}]$ is the flow innovation.
 Equation~\eqref{eq:price_impact_regression} is the model counterpart of the empirical price-impact regression in \citet{gabaix2020search}.
-In the data, an OLS projection of returns on observed flows is contaminated by a simultaneity bias: prices and aggregate flows are jointly determined, so flows respond to common macro shocks (e.g.\ to fundamentals or to the equity premium) that also move returns.
+In the data, an OLS projection of returns on observed flows is contaminated by a simultaneity bias: prices and aggregate flows are jointly determined, so flows respond to common macro shocks (e.g., to fundamentals or to the equity premium) that also move returns.
 To address this, \citet{gabaix2020search} build a granular instrumental variable (GIV) following \citet{gabaix2024granular}.
 They decompose sector-level flows into a common factor structure, $\xi_{i,t} = \lambda_i'\eta_t + u_{i,t}$, extract the idiosyncratic component $\hat{u}_{i,t}$ after partialing out observed and principal-component-estimated latent factors $\eta_t$, and form the GIV as the difference between the size-weighted and equal-weighted averages of these idiosyncratic shocks, $z_t = \sum_i (S_{i,t-1}-\tfrac{1}{N})\hat{u}_{i,t}$.
 They then run an instrumental-variables regression of returns on aggregate flows using $z_t$ as the instrument, recovering a multiplier of about $5$ for the U.S.\ aggregate equity market.
-In our setting, the passive-demand innovation $\overline{\alpha}_{p,t}^{s}$ is observed and exogenous by construction (the passive share follows the exogenous CIR process in equation~\eqref{eq:alpha_p_process}), so in simulated data the OLS slope of equation~\eqref{eq:price_impact_regression} directly identifies the model-implied counterpart of the GIV estimand without requiring an instrument.
+In our setting, the passive demand innovation $\overline{\alpha}_{p,t}^{s}$ is observed and exogenous by construction (the passive share follows the exogenous persistent process in equation~\eqref{eq:alpha_p_process}), so in simulated data the OLS slope of equation~\eqref{eq:price_impact_regression} directly identifies the model-implied counterpart of the GIV estimate without requiring an instrument.
 The slope $\hat{b}_1=6.85$ matches the empirical benchmark of about $6.90$.\footnote{Price impact in the model is $d\log(P/D)/d\overline{\alpha}_p$.
 \citet{gabaix2020search} estimate a multiplier of roughly $5$, while \citet{Hartzmark/Solomon/2021} estimate $1.9$.
 Averaging the two gives $3.45$, and scaling by the passive share of roughly one half yields $3.45\times 2\approx 6.90$.}
@@ -1598,9 +1579,8 @@ All other parameters are held at their baseline values from Table~\ref{tab:calib
 
 \begin{table}[!t]
     \centering
-    \resizebox{0.92\linewidth}{!}{\input{./tables/counterfactuals.tex}}
+    \resizebox{.9\linewidth}{!}{\input{./tables/counterfactuals.tex}}
     \vspace{2mm}
-    \captionsetup{font=footnotesize}
     \caption{\textbf{Counterfactual experiments.}\\
     This table reports annualized model-implied moments for the baseline economy and five counterfactuals that shut down or modify individual frictions.
     Counterfactuals are ordered so that frictions are peeled away progressively.
