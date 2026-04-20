@@ -1,14 +1,15 @@
-\begin{tabular}{llc}
+\small
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{0.55\linewidth}S[table-format=2.4,table-number-alignment=center]@{}}
 	\toprule	
-	& Parameter & Choice  \\
+	& Parameter & \multicolumn{1}{c}{Choice}  \\
 	\midrule 
 	&\small \emph{Preferences \& distribution}  & \\
 	\midrule		
 	$\psi$         & EIS & 1.5   \\
+	$\rho$         & Discount rate                  & 0.01 \\
 	$\gamma_0$     & Risk aversion of passive investors               & 10.86    \\
-	$\gamma_j$     & Risk aversion of constrained investors                & 6.15 \\
-    $\gamma_j$     & Risk aversion of unconstrained investors                & 25.52 \\ 
-	$\rho$         & Effective discount rate                  & 0.01 \\
+    $\gamma_1$     & Risk aversion of unconstrained investors                & 25.52 \\ 
+	$\gamma_2$     & Risk aversion of constrained investors                & 6.15 \\
     %$\kappa$       & Agents' entry/exit rate                  & 0.10  \\
     $\omega_0$    & Share of passive agents                & 0.50 \\
     $\omega_1$    & Share of unconstrained agents                & 0.25 \\
@@ -16,18 +17,18 @@
 	\midrule 
 	& \small \emph{Technology}  & \\
 	\midrule 
-	$\mu$          & Endowment growth rate                    & 0.0183  \\
-	$\sigma$       & Endowment volatility                     & 0.0357  \\
+	$\mu$          & Endowment growth rate                    & 0.018  \\
+	$\sigma$       & Endowment volatility                     & 0.036  \\
     $\sigma_s$     & Dividend share volatility                & 0.11 \\ 
-    $\bar{s}$      & Mean dividend share                      & 0.5 \\ 
-    $\kappa_s$     & Mean reversion of dividend share         & 0.1 \\
+    $\bar{s}$      & Mean dividend share                      & 0.50 \\ 
+    $\kappa_s$     & Mean reversion of dividend share         & 0.10 \\
 	\midrule 
 	&\small \emph{Passive demand}&  \\
 	\midrule
 	$\overline{\alpha}$ & Mean &  0.52	\\
     $\theta_p$              & Mean reversion parameter  &  0.75 	\\
     $\sigma_p$             & Passive demand shock exposures &  0.02	\\
-    $\nu$                  & Corr. of passive demand and fundamental shock & 0.5 \\ 
+    $\nu$                  & Corr. of passive demand and fundamental shock & 0.50 \\ 
 
 	\midrule
 	& \small \emph{Leverage constraints}  & \\

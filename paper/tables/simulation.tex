@@ -1,21 +1,32 @@
-\begin{tabular}{@{} l c c @{\hspace{1.2em}} l c c @{} }
+{\renewcommand{\arraystretch}{1.12}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.65\linewidth}S[table-format=3.2]S[table-format=3.2]@{}}
     \toprule
-    Component & Model & Data & Component & Model & Data \\
+    Moment & \multicolumn{1}{c}{Model} & \multicolumn{1}{c}{Data} \\
     \midrule
-    \multicolumn{6}{@{}l}{\textit{Dividend claim}}\\
+    \multicolumn{3}{@{}l}{\textit{Panel A. Dividend-claim moments}} \\
+    Risk premium (\%) & 6.60 & 6.00 \\
+    Risk-free rate (\%) & 0.60 & 1.00 \\
+    Return volatility (\%) & 22.40 & 18.00 \\
+    Flow volatility (\%) & 1.00 & 1.70 \\
+    Price impact & 6.85 & 4.91 \\
+    Standard error (price impact) & 0.01 & \multicolumn{1}{c}{\textemdash} \\
     \midrule
-    Risk premium                  & 0.066 & 0.060 & Assets/Equity (unconstrained) & 0.516 & 0.533 \\
-    Risk-free rate                & 0.006 & 0.010 & Assets/Equity (constrained)    & 1.975 & 1.616 \\
-    Return volatility             & 0.225 & 0.180 & Asset share (passive)          & 0.454 & 0.388 \\
-    Flow volatility               & 0.010 & 0.017 & Asset share (unconstrained)    & 0.223 & 0.201 \\
-    \shortstack{Price impact \\ (s.e.)}                 & \shortstack{6.85 \\ (0.01)} & \shortstack{6.90 \\ (--)}   & Asset share (constrained)      & 0.322 & 0.292 \\
+    \multicolumn{3}{@{}l}{\textit{Panel B. Sector balance-sheet moments}} \\
+    Assets/Equity (unconstrained) & 0.52 & 0.53 \\
+    Assets/Equity (constrained) & 1.98 & 1.62 \\
+    Asset share (passive, \%) & 45.40 & 38.80 \\
+    Asset share (unconstrained, \%) & 22.30 & 20.10 \\
+    Asset share (constrained, \%) & 32.20 & 29.20 \\
     \midrule
-    \multicolumn{6}{@{}l}{\textit{Endowment claim}}\\
-    \midrule
-    Risk premium                  & 0.020 & --    & Return volatility              & 0.045 & -- \\
-    \shortstack{Price impact \\ (s.e.)}                   & \shortstack{0.57 \\ (0.01)} & \shortstack{-- \\ (--)}     &                                &       &    \\
+    \multicolumn{3}{@{}l}{\textit{Panel C. Endowment-claim moments}} \\
+    Risk premium (\%) & 2.00 & \multicolumn{1}{c}{\textemdash} \\
+    Return volatility (\%) & 4.50 & \multicolumn{1}{c}{\textemdash} \\
+    Price impact & 0.57 & \multicolumn{1}{c}{\textemdash} \\
+    Standard error (price impact) & 0.01 & \multicolumn{1}{c}{\textemdash} \\
     \bottomrule
-    \end{tabular}
+\end{tabular}
+}
 % \begin{tabular}{@{} l l @{\hspace{1.2em}} l l @{}}
 % \toprule
 % Component & Model / Data & Component & Model / Data \\

@@ -101,10 +101,10 @@ Assumption~\ref{assump:c_w_property} implies that the system of equations determ
 \subsection{General equilibrium implications of portfolio flows}
 
 We now examine how the price-dividend ratio $p$ and the riskless return $r$ respond to a portfolio flow from the riskless bond into the risky asset.
-Let $\overline{\alpha}_p^*$ denote the passive portfolio share in the initial equilibrium, with $(p^*, r^*)$ the corresponding equilibrium prices.
+Let $\overline{\alpha}_p^\star$ denote the passive portfolio share in the initial equilibrium, with $(p^\star, r^\star)$ the corresponding equilibrium prices.
 
-For a small perturbation, $\overline{\alpha}_p = \overline{\alpha}_p^* e^{\hat{\alpha}_p}$, we linearize demand around the initial equilibrium.
-Defining $\hat{p}\equiv p-p^*$, $\hat{r}\equiv r-r^*$, and $q_j \equiv \log(Q_j/Q_j^*)$, we obtain
+For a small perturbation, $\overline{\alpha}_p = \overline{\alpha}_p^\star e^{\hat{\alpha}_p}$, we linearize demand around the initial equilibrium.
+Defining $\hat{p}\equiv p-p^\star$, $\hat{r}\equiv r-r^\star$, and $q_j \equiv \log(Q_j/Q_j^\star)$, we obtain
 \begin{equation}\label{eq:demand_linear}
     q_j \;=\; -\,\zeta_{j,p}\,\hat{p}\;-\;\zeta_{j,r}\,\hat{r}\;+\;f_j,
 \end{equation}
@@ -123,7 +123,7 @@ Therefore, the prices of the risky and risk-free assets must be jointly determin
 
 
 \paragraph{Equilibrium.}
-Let $s_j \equiv \omega_j Q_j^*$ denote the equilibrium quantity share of the risky asset held by type $j$.
+Let $s_j \equiv \omega_j Q_j^\star$ denote the equilibrium quantity share of the risky asset held by type $j$.
 Linearizing the market-clearing condition $\sum_j \omega_j Q_j = 1$ gives
 \begin{equation}\label{eq:risky_mkt_linear}
 s_a\!\left(-\zeta_{a,p}\,\hat{p}-\zeta_{a,r}\,\hat{r}\right)
@@ -151,15 +151,15 @@ so its linearized contribution $-s_p q_p$ makes net supply upward sloping in $p$
 
 % The left panel of Figure~\ref{fig:mkt_equilibrium} depicts the equilibrium in the market for risky asset. 
 % The downward-sloping curve represents the demand from active investors. 
-% The upward-sloping curve represents the net supply of risky assets, i.e., the fixed supply minus the demand from passive investors.\footnote{As passive demand is $Q_p = \overline{\alpha}_p [1- c_p(r,\mu-p-r)]\frac{P+Y}{P} Q_p$, the linearized net supply $-Q_p^* q_p$ will be increasing in $p$ if $c_p(\cdot)$ does not react too strongly to $p$.} 
+% The upward-sloping curve represents the net supply of risky assets, i.e., the fixed supply minus the demand from passive investors.\footnote{As passive demand is $Q_p = \overline{\alpha}_p [1- c_p(r,\mu-p-r)]\frac{P+Y}{P} Q_p$, the linearized net supply $-Q_p^\star q_p$ will be increasing in $p$ if $c_p(\cdot)$ does not react too strongly to $p$.} 
 
-Linearizing the goods-market condition $\overline{c}(\mu-p)=1/(1+e^{p})$ around $p^*$ yields
+Linearizing the goods-market condition $\overline{c}(\mu-p)=1/(1+e^{p})$ around $p^\star$ yields
 \begin{equation}\label{eq:goods_linear}
     \chi_p\,\hat{p}
     \;=\;
-    -\,\frac{e^{p^*}}{(1+e^{p^*})^2}\,\hat{p},
+    -\,\frac{e^{p^\star}}{(1+e^{p^\star})^2}\,\hat{p},
     \qquad\text{where}\qquad
-    \chi_p \equiv -\,\overline{c}'(\mu-p^*).
+    \chi_p \equiv -\,\overline{c}'(\mu-p^\star).
 \end{equation}
 The right panel of Figure~\ref{fig:mkt_equilibrium} shows the goods market.
 We focus on the case $\chi_p>0$, so the average consumption-wealth ratio is increasing in $p$ (investors save less when expected returns are low).
@@ -223,7 +223,7 @@ By the recursive property, only $p$ enters the goods market clearing condition.
 
 
 \paragraph{The inelastic markets hypothesis.}
-Consider a \emph{partial equilibrium} version of the model in which we hold the interest rate fixed at $r=r^*$ and ignore goods market clearing.
+Consider a \emph{partial equilibrium} version of the model in which we hold the interest rate fixed at $r=r^\star$ and ignore goods market clearing.
 Using the linearized risky asset market condition \eqref{eq:risky_mkt_linear} with $\hat r=0$, the price of the risky asset satisfies
 \begin{equation}\label{eq:mkt-elasticity-pe}
     \hat{p}
@@ -238,7 +238,7 @@ where
 \qquad
 f \;\equiv\; s_p\,f_p,
 \qquad
-s_j \equiv \omega_j Q_j^*.
+s_j \equiv \omega_j Q_j^\star.
 \]
 
 Equation~\eqref{eq:mkt-elasticity-pe} shows that the price-dividend ratio responds to flow shocks, with price impact given by the inverse of the (aggregate) market elasticity---an average of investors' own-price elasticities.
@@ -262,7 +262,7 @@ In general equilibrium, however, both $r$ and $p$ adjust, and the aggregate mark
         \qquad 
         \hat \pi \;=\; -\,\frac{1}{\zeta_r}\,f,
     \]
-    where $\hat{\pi} \equiv \pi - \pi^*$.
+    where $\hat{\pi} \equiv \pi - \pi^\star$.
 \end{prop}
 \begin{proof}
     From Equation~\eqref{eq:goods_linear}, we obtain $\hat{p} = 0$.

@@ -21,16 +21,14 @@
 \usepackage{algorithmic}
 \usepackage{mathrsfs}
 \usepackage{natbib}
-\usepackage[justification=justified,labelfont=bf,font=footnotesize,skip=2pt,labelsep=period]{caption}
-% \captionsetup[table]{justification=raggedright,singlelinecheck=false}
-\captionsetup[table]{justification=justified,singlelinecheck=false}
+\usepackage[justification=justified,labelfont=bf,font=small,skip=2pt,labelsep=period]{caption}
+\captionsetup[table]{justification=raggedright,singlelinecheck=false}
 \usepackage{subcaption}
 \usepackage{setspace}
 \usepackage{arydshln}
 \usepackage{chngpage}
 \usepackage{graphicx}
 \usepackage{float,appendix}
-\usepackage{placeins}
 \usepackage{afterpage}
 \usepackage{verbatim,lscape}
 \usepackage{indentfirst}
@@ -195,7 +193,7 @@
 \newcommand{\comments}[1]
 {\par {\bfseries \color{blue} #1 \par}}
 
-\title{\textbf{Dissecting the Aggregate Market Elasticity\thanks{We thank Andy Atkeson, Tim Johnson, Leonid Kogan, Ralph Koijen, Tyler Muir, Stavros Panageas, Yinan Su, Fabrice Tourre, and Pierre-Olivier Weill; and conference and seminar participants at AFA 2026 Annual Meeting, Liquidity in Macroeconomics Workshop at St. Louis Fed, UIUC, UCLA macro-finance lunch, and University of Zurich for valuable comments and suggestions. We thank Rotman-FinHub for computational resources. All errors are our own.}}}
+\title{\textbf{Dissecting the Aggregate Market Elasticity\thanks{We thank Andy Atkeson, Tim Johnson, Leonid Kogan, Ralph Koijen, Tyler Muir, Stavros Panageas, Yinan Su, Fabrice Tourre, and Pierre-Olivier Weill; and conference and seminar participants at AFA 2026 Annual Meeting, Liquidity in Macroeconomics Workshop at St. Louis Fed, UIUC, UCLA macro-finance lunch, and University of Zurich for valuable comments and suggestions. All errors are our own.}}}
 \author{%
 \begin{tabular}[t]{@{}c@{}}
 Victor Duarte\thanks{Gies College of Business, University of Illinois Urbana-Champaign, \href{mailto:vduarte@illinois.edu}{vduarte@illinois.edu}}
@@ -1420,7 +1418,7 @@ so the efficient passive equity share rises as the active wealth share falls, ty
         \label{fig:impact_vs_w1_by_alphap}
     \end{subfigure}
     \vspace{2mm}
-    \caption{\textbf{Price impact comparisons.}\\ Panel (a) compares heterogeneous and homogeneous preferences. Panel (b) shows the sensitivity of the price impact to wealth distribution among active investors when $J=2$ for different passive portfolio shares.}
+    \caption{Price impact comparisons. Panel (a) compares heterogeneous and homogeneous preferences. Panel (b) shows the sensitivity of the price impact to wealth distribution among active investors when $J=2$ for different passive portfolio shares.}
     \label{fig:price_impact_comparison}
 \end{figure}
 
@@ -1472,281 +1470,135 @@ becomes the key determinant of price impact. The panel (a) of Figure~\ref{fig:pr
 Proposition~\ref{prop_elasticity_pref_heterog} clarifies the main determinants of aggregate market elasticity. The elasticity is \emph{finite} only when risk is misallocated: small portfolio flows around the frictionless allocation have no first-order price impact. Preference heterogeneity amplifies price impact in downturns because, as the active wealth share falls, the efficient passive share rises, widening the gap between efficient and actual portfolios. Binding leverage constraints further increase price impact by shrinking the marginal (unconstrained) risk-bearing capacity, $x_{u,t}$. Taken together, these forces imply rich state dependence of aggregate elasticity in economies with heterogeneous investors and financial frictions.
 
 
-\section{Quantitative Implications}\label{sec:quantitative}
+% \input{sections/quantitative}
+\section{Quantitative Implications}
 
-We now evaluate the quantitative implications of the dynamic model of Section~\ref{sec:model}.
-The exercise has two goals.
-The first is to ask whether a calibration disciplined by U.S. data on sectoral portfolio holdings and passive equity flows can simultaneously deliver an empirically plausible price impact and the standard asset-pricing moments.
-The second is to quantify how much of the variation in return volatility, return predictability, and the variance of the price--dividend ratio is attributable to how portfolio flows interact with preference heterogeneity, leverage constraints, and passive-sector risk misallocation.
-We do the latter by comparing the baseline economy to a set of counterfactuals that turn off these frictions one at a time.
-We solve the full dynamic system numerically using the neural-network method of \citet{duarte2024machine}, which handles the four state variables (passive demand, dividend share, and the wealth shares of the constrained and unconstrained active sectors).
-Appendix~\ref{app:numerical} describes the numerical procedure in detail.
-\subsection{Calibration}\label{sec:calibration}
+In this section, we turn to the quantitative implications of the model described in Section~\ref{sec:model}. We begin by describing our calibration strategy before presenting numerical results.  
 
-We aggregate Flow of Funds (FoF) sectors into three ultimate sectors: a passive sector, a constrained active sector, and an unconstrained active sector.\footnote{We follow the aggregation in \citet{koijen2024investors}.
-Appendix~\ref{app:fof_aggregation} describes the sector mapping and the treatment of pass-through vehicles in detail.}
-The passive sector is modeled as an exogenous CIR process for the portfolio share $\overline{\alpha}_{p,t}$ in Equation~\eqref{eq:alpha_p_process}.
-The two active sectors differ both in risk aversion and in whether they are subject to the leverage constraint.
-Table~\ref{tab:calib} reports the calibrated parameter values, and the next subsection describes the moments used to discipline them.
-
-Figure~\ref{fig:facts-vol-flow} motivates two of the calibration targets.
-The left panel plots quarterly aggregate equity flows, scaled by lagged market capitalization as in Appendix~D3 of \citet{gabaix2020search}, together with realized return volatility.
-The right panel reports the ``volatility multiplier,'' defined as the ratio of return volatility to flow volatility.
-The multiplier is a reduced-form analog of the price impact that our calibration aims to reproduce.
 
 \begin{figure}[!t]
     \centering
     \subfloat{\resizebox{0.49\textwidth}{!}{\input{figures/time-series-vol-flow.tex}}}
     \subfloat{\resizebox{0.49\textwidth}{!}{\input{figures/time-series-vol-multiplier.tex}}}
     \vspace{2mm}
-    \caption{\textbf{Quarterly flows and return volatility.}\\
-    The left panel plots quarterly aggregate equity flows in blue and realized return volatility in red.
-    Quarterly flows are scaled by lagged aggregate market capitalization, following Appendix~D3 of \citet{gabaix2020search}.
-    The right panel plots the ``volatility multiplier,'' defined as the ratio of return volatility to flow volatility; this multiplier is a reduced-form analog of the price impact targeted in the calibration.
-    Source: Flow of Funds and CRSP.}\label{fig:facts-vol-flow}
+    \caption{Quarterly flows and return volatility. The left panel plots quarterly flows (in blue) and return volatility (in red). The right panel plots the ``volatility multiplier,'' defined as the ratio of return volatility to flows. Source: Flow of Funds and CRSP.}\label{fig:facts-vol-flow}
 \end{figure}
 
-\begin{table}[!t]
+\subsection{Calibration strategy}
+To calibrate the model, we process Flow of Funds (FoF) data to construct $J=3$ major sectors: passive, constrained, and constrained.\footnote{The passive sector includes households and non-profits (L.101), government (L.105), the monetary authority (L.109), and money market funds (L.121). Its risky asset holdings is dominated by household. The constrained sector includes depository institutions (L.110), mutual funds (L.122), close-end funds (L.123), ETFs (L.124), government-sponsored enterprises (L.125), agency and GSE-backed mortgage pools (L.126), asset backed securities (L.127), finance companies (L.128), REITs (L.129), and broker-dealers (L.130). The unconstrained sector, which represents relatively long-horizoned investors, include insurance companies (L.115 and L.116), pensions (L.118, L.119, and L.120), and rest of the world (L.133).} We assign sectoral masses $\omega_j$ and risk aversion coefficients $\gamma_j$ to match two sets of moments. First, average sectoral wealth shares are calibrated to match the empirical distribution of stock market holdings. Second, we match sectoral betas from time-series regressions of risky asset holdings on aggregate risky asset supply. These regression coefficients provide an empirical analog to the model-implied relationship between sectoral and aggregate risky positions.  
+
+% A key parameter in the calibration is the average passive portfolio share, $\overline{\alpha}$. Estimates in the literature vary widely. \citet{chinco2024passive} infer a passive share of about one third from index reconstitution events, while \citet{koijen2024investors} report a much higher estimate of roughly two thirds in 2016Q4, based on measures of active share \citep{cremers2009active}. We calibrate the passive share by aggregating total passive wealth and dividing by total risky holdings.  
+
+The process for passive demand is modeled as the exogenous CIR process in Equation~\eqref{eq:alpha_p_process}. Its parameters are calibrated as follows. The mean of the process, $\overline{\alpha}$, is chosen to match the average portfolio share of the passive sector. The volatility $\sigma_p$ is disciplined by observed fluctuations in equity flows, which we measure by scaling quarterly flows by lagged market capitalization, following Appendix~D3 of \citet{gabaix2020search}. We use indirect inference to align model-implied aggregate flows with those in the data (blue line, left panel of Figure~\ref{fig:facts-vol-flow}), in line with their approach. The persistence parameter $\theta_p$ is informed by evidence on household portfolio inertia. \citet{brunnermeier2008wealth} document substantial inertia using PSID data, finding that household portfolios change little absent major events, consistent with slow rebalancing. Their regression analysis suggests an inertia coefficient near 0.75, indicating strong persistence.\footnote{Relatedly, \citet{parker2023retail} show that the adoption of target-date funds has contributed to highly stable household portfolio shares.} We calibrate the correlation between passive flow shocks and aggregate shocks to match the correlation between flows and market returns, estimated by regressing quarterly flows (blue line in the left panel of Figure~\ref{fig:facts-vol-flow}) on aggregate market returns. The model-implied correlation is 0.005, close to the empirical value of 0.011. We set the correlation of dividend share and fundamental shock to 0.3, and set the dividend share volatility to 11\% following \cite{LettauWachter2011}. The parameter values are summarized in Table~\ref{tab:calib}.  
+
+
+
+\begin{table}[t]    
     \centering
-    \input{tables/calibration}
+    \resizebox{.62\linewidth}{!}{\input{tables/calibration}}
+    % \captionsetup{font=normalsize,labelfont=bf,skip=2pt,labelsep=period}
 	\vspace{2mm}
-    \captionsetup{font=footnotesize}
-    \caption{\textbf{Parameter values.}\\
-    This table reports the parameter values used to calibrate the baseline economy.
-    Preference parameters ($\psi$, $\gamma_j$, $\rho$) and sectoral masses ($\omega_j$) are chosen to match average sectoral wealth shares and sectoral ``betas'' from time-series regressions of risky-asset holdings on aggregate risky supply.
-    Technology parameters ($\mu$, $\sigma$, $\sigma_s$, $\bar{s}$, $\kappa_s$) are standard macro--finance targets.
-    Passive-demand parameters ($\overline{\alpha}$, $\theta_p$, $\sigma_p$, $\nu$) are disciplined by the average passive portfolio share, household portfolio inertia \citep{brunnermeier2008wealth}, and the volatility and correlation of quarterly aggregate equity flows with market returns \citep{gabaix2020search}.
-    The leverage-constraint tightness $\overline{\sigma}$ targets the empirical asset-to-equity ratio of the constrained sector.}\label{tab:calib}
+    \captionsetup{type=table,font=footnotesize,justification=centering,singlelinecheck=false}
+    \caption{\textbf{Parameter values.}\\This table reports the parameter values used in calibrating the model.}\label{tab:calib}
+	% \caption*{\footnotesize{This table reports the parameter values used in calibrating the model.}}    
 \end{table}
 
-\subsection{Moments}\label{sec:moments}
 
-We discipline the calibration with two groups of moments.
-The first group targets the cross-sectional distribution of risky holdings.
-We choose the sector masses $\omega_j$ and the risk-aversion coefficients $\gamma_j$ jointly so that the model matches the average sectoral wealth shares in the Flow of Funds and the sectoral ``betas,'' defined as the slope coefficient from a time-series regression of sector~$j$'s dollar risky-asset holdings on aggregate risky supply.
-These sector betas are the empirical counterpart of the comovement between sector~$j$'s dollar position and the aggregate; we compute them for the two active sectors, $j\in\{c,u\}$.
-The average risk aversion $\overline{\gamma}$ is fixed at $6.15$, a standard value in the macro-finance literature.
-The leverage-constraint tightness $\overline{\sigma}$ is set so that the asset-to-equity ratio of the constrained sector matches its Flow of Funds counterpart.
-
-The second group targets the passive-demand process.
-Its long-run mean $\overline{\alpha}$ is set to the household-weighted aggregate implied by our FoF aggregation, which yields $\overline{\alpha}=0.52$.
-This value is intermediate between the one-third estimate in \citet{chinco2024passive}, inferred from index-reconstitution events, and the roughly two-thirds estimate in \citet{koijen2024investors}, which uses active-share measures in the spirit of \citet{cremers2009active}.
-The volatility $\sigma_p$ is disciplined by the observed dispersion of quarterly aggregate equity flows shown in the left panel of Figure~\ref{fig:facts-vol-flow}.
-Following Appendix~D3 of \citet{gabaix2020search}, we scale each sector's dollar equity flow by lagged aggregate market capitalization, purge mechanical revaluation, and aggregate gross flows across sectors, dividing by two to avoid double counting.
-The resulting series replicates the quarterly flows in their Figure~D.7.
-The persistence $\theta_p$ is informed by evidence on household portfolio inertia.
-Using PSID data, \citet{brunnermeier2008wealth} regress the actual change in the household risky-asset share on a counterfactual change that assumes no rebalancing, and find an inertia coefficient near $0.75$, implying that portfolio shares adjust slowly to capital gains and to flow-induced changes in wealth.\footnote{\citet{parker2023retail} show that the adoption of target-date funds has further stabilized household portfolio shares.}
-We choose $\theta_p$ so that the half-life of the passive-demand process in the simulated model matches the half-life implied by this inertia coefficient.
-Finally, we estimate the loading $\nu$ of passive-flow shocks on the aggregate shock indirectly by regressing the quarterly passive-flow series on contemporaneous market returns.
-This yields a model-implied correlation between flows and returns of $0.005$, close to the empirical value of $0.011$.
-
-Following \citet{LettauWachter2011}, we set the correlation of dividend-share shocks with the fundamental at $0.3$ and the dividend-share volatility at $11\%$.
-
-\begin{table}[!t]
-    \centering
-    \input{./tables/simulation.tex}
+\begin{table}[!t]    
+    \centering% \captionsetup{font=normalsize,labelfont=bf,skip=2pt,labelsep=period}
+	\resizebox{.8\linewidth}{!}{\input{./tables/simulation.tex}}
     \vspace{2mm}
-    \captionsetup{font=footnotesize}
-    \caption{\textbf{Unconditional moments.}\\
-    This table reports model-implied and empirical unconditional moments for the dividend claim and the endowment claim in the baseline economy.
-    Model moments are computed from a $1{,}000$-year monthly simulation of the calibrated economy.
-    The price impact is estimated as the slope coefficient $\hat{b}_1$ of the regression $d\log(P/D)_t = a_0 + b_1\,\overline{\alpha}_{p,t}^{s} + e_t$, where $\overline{\alpha}_{p,t}^{s}$ is the innovation to passive demand.
-    Asset/Equity denotes the ratio of risky-asset holdings to equity for the constrained and unconstrained sectors; asset shares report the fraction of the aggregate risky market held by each sector.
-    Rates, volatilities, and asset shares are reported in percent; Asset/Equity ratios, price impacts, and their standard errors are unit-free.
-    Standard errors for price-impact estimates are reported in separate rows.
-    All values are annualized.}\label{tab:simulation_moments}
+    \captionsetup{type=table,font=footnotesize,justification=centering,singlelinecheck=false}
+    \caption{\textbf{Simulation results.}\\This table reports the model-implied and empirical moments. All values are annualized.}\label{tab:simulation_moments} 
+	% \caption*{\footnotesize{This table reports the model-implied and empirical moments. All values are annualized.}}    
 \end{table}
 
-\FloatBarrier
+\subsection{Quantitative results}
 
-\subsection{Unconditional moments}\label{sec:uncond-moments}
+To evaluate the quantitative implications of the model, we solve the full dynamic system numerically rather than relying on the perturbation approach of Section~\ref{sec:elasticity}. A global solution method is necessary given the dimensionality of the state space, which includes 4 state variables corresponding to one passive sector, one constrained sector, one unconstrained sector, and a dividend share. We adopt the neural network-based method of \citet{duarte2024machine}, which is well suited for high-dimensional problems. Details of the solution method are provided in the appendix. 
 
-We simulate the calibrated economy at monthly frequency for $1{,}000$ years and compare unconditional moments of the simulated data with their empirical counterparts in Table~\ref{tab:simulation_moments}.
-For the dividend claim, the model delivers a risk premium of $6.6\%$, a risk-free rate of $0.6\%$, and a return volatility of $22.4\%$, all close to their empirical targets.
-We estimate the price impact of the dividend claim by regressing the change in the log price--dividend ratio on the innovation to passive demand,
-\begin{equation}\label{eq:price_impact_regression}
-    d\log (P/D)_t = a_0 + b_1\,\overline{\alpha}_{p,t}^{s} + e_t,
-\end{equation}
-where $\overline{\alpha}_{p,t}^{s} = \overline{\alpha}_{p,t} - \overline{\alpha}_{p,t-1} - \mathbb{E}[d\overline{\alpha}_{p,t}]$ is the flow innovation.
-Equation~\eqref{eq:price_impact_regression} is the model counterpart of the empirical price-impact regression in \citet{gabaix2020search}.
-In the data, an OLS projection of returns on observed flows is contaminated by a simultaneity bias: prices and aggregate flows are jointly determined, so flows respond to common macro shocks (e.g.\ to fundamentals or to the equity premium) that also move returns.
-To address this, \citet{gabaix2020search} build a granular instrumental variable (GIV) following \citet{gabaix2024granular}.
-They decompose sector-level flows into a common factor structure, $\xi_{i,t} = \lambda_i'\eta_t + u_{i,t}$, extract the idiosyncratic component $\hat{u}_{i,t}$ after partialing out observed and principal-component-estimated latent factors $\eta_t$, and form the GIV as the difference between the size-weighted and equal-weighted averages of these idiosyncratic shocks, $z_t = \sum_i (S_{i,t-1}-\tfrac{1}{N})\hat{u}_{i,t}$.
-They then run an instrumental-variables regression of returns on aggregate flows using $z_t$ as the instrument, recovering a multiplier of about $5$ for the U.S.\ aggregate equity market.
-In our setting, the passive-demand innovation $\overline{\alpha}_{p,t}^{s}$ is observed and exogenous by construction (the passive share follows the exogenous CIR process in equation~\eqref{eq:alpha_p_process}), so in simulated data the OLS slope of equation~\eqref{eq:price_impact_regression} directly identifies the model-implied counterpart of the GIV estimand without requiring an instrument.
-The slope $\hat{b}_1=6.85$ matches the empirical benchmark of about $6.90$.\footnote{Price impact in the model is $d\log(P/D)/d\overline{\alpha}_p$.
-\citet{gabaix2020search} estimate a multiplier of roughly $5$, while \citet{Hartzmark/Solomon/2021} estimate $1.9$.
-Averaging the two gives $3.45$, and scaling by the passive share of roughly one half yields $3.45\times 2\approx 6.90$.}
-The model also matches sectoral asset-to-equity ratios and risky-asset shares.
-The constrained sector is levered (an asset/equity ratio of $1.98$ in the model versus $1.62$ in the data), the unconstrained sector holds a conservative share ($0.52$ versus $0.53$), and the passive sector accounts for about $45\%$ of risky holdings.
-% where $\overline{\alpha}_{p,t}^{s} = \overline{\alpha}_{p,t} - \overline{\alpha}_{p,t-1} - \mathbb{E}[d\overline{\alpha}_{p,t}]$ is the flow innovation. The slope $\hat{b}_1=6.85$ matches the empirical benchmark of about $6.90$.\footnote{Price impact in the model is $d\log(P/D)/d\overline{\alpha}_p$. \citet{gabaix2020search} estimate a multiplier of roughly $5$, while \citet{Hartzmark/Solomon/2021} estimate $1.9$. Averaging the two gives $3.45$, and scaling by the passive share of roughly one half yields $3.45\times 2\approx 6.90$.} The model also matches sectoral asset-to-equity ratios and risky-asset shares. The constrained sector is levered (an asset/equity ratio of $1.98$ in the model versus $1.62$ in the data), the unconstrained sector holds a conservative share ($0.52$ versus $0.53$), and the passive sector accounts for about $45\%$ of risky holdings.
+We then simulate the economy at a monthly frequency for 1000 years to compute the model-implied moments. Table~\ref{tab:simulation_moments} reports unconditional moments from the simulated data alongside their empirical counterparts. For the dividend claim, the model delivers a risk premium of 6.7\%, a risk-free rate of 0.60\%, and return volatility of 22.6\%, all close to the corresponding empirical targets. We compute price impact in the model by regressing the change in log price-dividend ratio on passive flow shock. Specifically, the price impact is the slope coefficient $\hat{b}_1$ estimated from the following regression equation: 
+$$d\log (P/D)_t = a_0 + b_1 \overline{\alpha}_{p,t}^s + e_t,$$
+where the flow shock is computed as $\overline{\alpha}_{p,t}^s = \overline{\alpha}_{p,t} - \overline{\alpha}_{p,t-1} - E[d\overline{\alpha}_{p,t}]$. The model generates a sizable price impact of 6.85, matching the empirically estimated price impact of around 6.90.\footnote{Price impact in the model is defined as $\frac{d\log(p/d)}{d\alpha_p}$. \citet{gabaix2020search} estimate a price multiplier of around 5, while \citet{Hartzmark/Solomon/2021} estimate a multiplier of 1.9. Taking an average between the two yields 3.45. Considering that the passive investor share is around half, this amounts to a price impact of approximately $3.45 \times 2 = 6.90$.} The model also broadly matches the average asset/equity ratio and risky asset shares of the main sectors.
 
-\FloatBarrier
-
-\subsection{Counterfactuals: the role of frictions}\label{sec:counterfactuals}
-
-To quantify the role of each friction, we compare the baseline economy to five counterfactuals that peel the frictions away progressively.
-The first two work through risk aversion and leverage.
-In \textit{heterogeneous, unconstrained}, we keep the baseline heterogeneous risk aversions but set $\overline{\sigma}=10{,}000$, so leverage constraints are slack.
-\textit{Homogeneous, unconstrained} additionally sets $\gamma_p=\gamma_c=\gamma_u=6.15$, eliminating both preference heterogeneity and the leverage constraint.
-The remaining three experiments vary the passive-demand process.
-\textit{Homog.-optimal passive share} sets $\overline{\alpha}=1$, which is the passive share that is optimal under homogeneous preferences and no frictions; with heterogeneous risk aversion the true optimal passive portfolio need not equal unity, and we defer a general optimal-passive-portfolio benchmark to future work.\footnote{Computing the optimal passive portfolio in the heterogeneous-preferences economy would require solving a version of the model in which the passive investor chooses $\overline{\alpha}$ to maximize its own objective.
-We plan to report that benchmark in a later version.}
-\textit{Low passive share} sets $\overline{\alpha}=0.23$, which halves the mass of the passive sector relative to the baseline.
-\textit{Uncorrelated flow} sets $\nu=0$, so passive-demand shocks are orthogonal to fundamentals.
-All other parameters are held at their baseline values from Table~\ref{tab:calib}, and Table~\ref{tab:counterfactual_comparison} reports annualized moments across the five economies.
-
-\begin{table}[!t]
-    \centering
-    \resizebox{\linewidth}{!}{\input{./tables/counterfactuals.tex}}
-    \vspace{2mm}
-    \captionsetup{font=footnotesize}
-    \caption{\textbf{Counterfactual experiments.}\\
-    This table reports annualized model-implied moments for the baseline economy and five counterfactuals that shut down or modify individual frictions.
-    Counterfactuals are ordered so that frictions are peeled away progressively.
-    In \textit{Heterog., unconstr.} we keep the baseline heterogeneous risk aversions but set $\overline{\sigma}=10{,}000$, so leverage constraints are slack.
-    In \textit{Homog., unconstr.} we additionally set $\gamma_c=\gamma_p=\gamma_u=6.15$, eliminating both preference heterogeneity and leverage constraints.
-    \textit{Homog.-opt.\ passive} ($\overline{\alpha}=1$) is the passive share that is optimal only under homogeneous preferences and no frictions; with heterogeneous preferences the true optimal passive share need not equal one, and we defer a general optimal-passive benchmark to future work.
-    \textit{Low passive share} sets $\overline{\alpha}=0.23$, roughly halving the passive sector's size.
-    \textit{Uncorr.\ flow} sets $\nu=0$, so passive-demand shocks are orthogonal to fundamentals.
-    All other parameters are as in Table~\ref{tab:calib}.
-    Price impact $(Y)$ and $(D)$ denote the slope of the regression in equation~\eqref{eq:price_impact_regression} for the endowment and dividend claim, respectively.
-    Conditional price impact restricts the regression to ``bad states'' in which $(P/D)_t$ is below its $25$th percentile.
-    The discount-rate coefficient $\beta_r$ reports the share of the variance of the log price--dividend ratio attributable to discount-rate news at a $40$-quarter horizon.}\label{tab:counterfactual_comparison}
-\end{table}
-
-The baseline economy produces a large dividend-return volatility ($\sigma_{R,D}=22.55\%$) and a sizable price impact ($\hat{b}_1=6.85$), reflecting limited aggregate risk-bearing capacity.
-Turning off leverage constraints while keeping preference heterogeneity (the ``heterogeneous, unconstrained'' column) still generates a substantial price impact of $4.91$ and a return volatility of $17.0\%$.
-Heterogeneity alone therefore delivers roughly three-quarters of the baseline price impact through state-dependent risk sharing.
-Once preference heterogeneity is also removed (the ``homogeneous, unconstrained'' column), return volatility collapses to $3.9\%$ and the price impact falls to $0.10$, values near zero and consistent with the frictionless limit.
-
-The next two experiments vary the size of the passive sector and trace out the two sides of the misallocation channel.
-When $\overline{\alpha}=1$, passive demand is at the level that would be optimal in the homogeneous-preferences economy, constraints and heterogeneity are effectively muted, and the price impact nearly vanishes ($0.25$).
-Reducing $\overline{\alpha}$ to $0.23$ forces the active sector to absorb a much larger share of fundamental risk.
-The unconditional price impact of the dividend claim remains only modestly below the baseline ($4.52$), but the price impact of the endowment claim roughly doubles ($1.20$ versus $0.57$).
-Decorrelating passive flows from fundamentals ($\nu=0$) flips the sign of the dividend-claim price impact.
-Because flows are no longer informative about aggregate risk, pure flow-driven trading pushes prices in the opposite direction of fundamentals, as in the flow-driven risk literature \citep{Deuskar/Johnson/2011}.
-
-These results complement two closely related strands of the recent literature.
-\citet{HHM/2021} derive strong restrictions on how market elasticity should respond to changes in the mass of passive investors under competitive price-taking, and show that the empirical response is inconsistent with a fully competitive market.
-This points to limits on intermediation and on effective risk-bearing capacity.
-Our ``low passive share'' and ``homog.-optimal passive'' experiments provide a structural counterpart: moving along the $\overline{\alpha}$ dimension traces out how aggregate price impact depends on the size of the passive sector, and the non-monotonic response of return volatility across columns indicates that a larger passive sector need not raise price impact once the active sector is near its efficient portfolio.
-\citet{lochstoerMuir2026} provide causal evidence that the secular rise of market-index trading, through index funds, S\&P~500 futures, and extended trading hours, has roughly doubled U.S. stock market volatility since the 1950s, even as macroeconomic fundamentals have become calmer.
-In their account, index-level trading forces arbitrageurs to absorb larger systematic demand shocks, which raises market variance.
-Our counterfactuals offer a complementary structural mechanism for the same force.
-A larger and more inelastic passive sector concentrates aggregate risk on the active sector, and the interaction of heterogeneous risk aversion with leverage constraints amplifies flow shocks into large, state-dependent price movements, even when expectations are rational.
-Heterogeneity and frictions thus appear to be the central ingredients for matching the price-impact and volatility facts.
-
-\FloatBarrier
+Figure~\ref{fig:price_impact_dynamic} presents the model-implied conditional price impact. The impact curves are computed by evaluating equilibrium functions on pre-specified state grids. Fixing $\overline{\alpha}_{p,t}$ and $s_t$ at their unconditional means, we vary one wealth-share coordinate at a time and impose a fixed one-quarter passive-flow shock. The shock is mapped through the dynamic transition equations of the state variables to obtain the corresponding next-quarter state, after which the P/D ratio is revalued at both the initial and shocked states. Conditional price impact is measured as the resulting change in log P/D per unit of passive flow. Repeating this exercise across the state grid yields the conditional price-impact curves reported in the off-equilibrium figures. The right panel of the figure shows that, as the wealth share of constrained active investors increases, the price impact goes up, as more agents are constrained in the economy. 
 
 \begin{figure}[!t]
     \centering
-    \includegraphics[width=0.95\linewidth]{figures/xu_xc_price_impact_off_equilibrium.png}
-    \caption{\textbf{Conditional price impact.}\\
-    Model-implied price impact of the dividend claim evaluated off the ergodic mean.
-    In each panel, $\overline{\alpha}_{p,t}$ and $s_t$ are fixed at their unconditional means and one wealth-share coordinate is varied.
-    Conditional price impact is computed as the change in $\log(P/D)$ per unit of passive-flow shock, where the shock is propagated one quarter forward through the state-variable dynamics.}
+    \includegraphics[width=\linewidth]{figures/xu_xc_price_impact_off_equilibrium.png}
+    \caption{This figure shows the price impact of active investors from the dynamic model.}
     \label{fig:price_impact_dynamic}
 \end{figure}
 
-\subsection{Return predictability and the variance of the price--dividend ratio}\label{sec:predictability}
+Next, we run return predictability tests by regressing the cumulative future returns on the price-dividend ratio. Table~\ref{tab:return_predictability} presents the slope coefficients in (1) the full sample and (2) conditional on bad states defined as time periods when the price-dividend ratio is below the 25th percentile of its long-run mean. The table shows that realized future excess returns are negatively predicted by the price-dividend ratio, and this predictability is stronger in bad times. We perform Campbell-Shiller decomposition to decompose the variance of the price-dividend ratio into the discount rate and cash flow components. The decomposition is given by 
+\begin{align*}
+    Var[pd_t] = Cov\left[ \sum_{k=1}^{\infty} \rho^{k-1}\Delta d_{t+k}, pd_t \right] - Cov \left[ \sum_{k=1}^{\infty} \rho^{k-1}r_{t_k},pd_t \right]
+\end{align*}
+The share of variance explained by the expected return is computed as $\beta_r = -\frac{Cov[\sum_{k=1}^{\infty}\rho^k r_{t_k},pd_t]}{Var[pd_t]}$. We compute this quantity in the simulated data and get a value of 1.09 at a 40 quarter horizon. This indicates that all of the variation in the price dividend ratio is explained by the expected returns, and cash flow negatively predicts the price dividend ratio. This is because dividend share is positively correlated with the aggregate endowment and falls during bad times, implying a positive growth rate of dividends. This attenuates the decline in price-dividend ratio and works against the expected returns. \GG{Dejanir to verify the logic.}
 
-We next examine the predictive relationship between the price--dividend ratio and future excess returns in the simulated economy.
-Figure~\ref{fig:return_predictability} plots cumulative future excess returns against the current $P/D$ ratio, and Table~\ref{tab:return_predictability} reports the corresponding predictive-regression coefficient
-\[
-    \sum_{k=1}^{T} r_{t+k} - r_t = a + b\,(P/D)_t + \varepsilon_{t+T},\qquad T=4\text{ quarters},
-\]
-estimated both on the full sample and on the subsample of ``bad states'' in which $(P/D)_t$ lies below its $25$th percentile.
-The slope is negative in both cases, and it is roughly $2.5$ times larger in magnitude in bad states.
-This pattern is consistent with countercyclical risk premia: when the $P/D$ ratio is depressed, expected returns are high, and the $P/D$ ratio is correspondingly more informative about future returns.
 
 \begin{figure}[!t]
-    \centering
-    \includegraphics[width=0.6\linewidth]{figures/return_predictability.png}
-    \caption{\textbf{Return predictability.}\\
-    Scatter of cumulative future excess returns ($T=4$ quarters) against the current price--dividend ratio in the simulated baseline economy.
-    Blue dots correspond to normal states and red dots to bad states defined as $(P/D)_t$ below the $25$th percentile of its long-run mean.
-    Lines are the corresponding OLS fits.}\label{fig:return_predictability}
-\end{figure}
-
-Following \citet{campbell1988dividend} and \citet{cochrane2011presidential}, we decompose the unconditional variance of $pd_t \equiv \log(P/D)_t$ into a discount-rate component and a cash-flow component,
-\begin{equation}\label{eq:cs_decomp}
-    \var(pd_t) \;=\; \cov\!\left(pd_t,\; \sum_{k=1}^{\infty}\rho^{k-1}\Delta d_{t+k}\right) \;-\; \cov\!\left(pd_t,\; \sum_{k=1}^{\infty}\rho^{k-1} r_{t+k}\right).
-\end{equation}
-Dividing through by $\var(pd_t)$ yields the discount-rate share
-\[
-    \beta_r \;=\; -\,\frac{\cov\!\left(pd_t,\sum_{k=1}^{\infty}\rho^{k-1} r_{t+k}\right)}{\var(pd_t)},
-\]
-which we evaluate at a $40$-quarter horizon.
-In the baseline economy $\beta_r = 1.16$, so essentially all of the variation in the $P/D$ ratio is driven by expected returns.
-The cash-flow component actually \emph{offsets} rather than reinforces $pd_t$: because the dividend share is positively correlated with aggregate fundamentals, expected future dividend growth is higher precisely when $pd_t$ is low, producing a negative cash-flow covariance that mechanically pushes $\beta_r$ above one.
-
-The counterfactuals show that this pattern comes from heterogeneity and frictions.
-In the homogeneous, unconstrained economy $\beta_r = -0.02$, so variation in $pd_t$ reflects cash flows and not discount rates.
-Removing only leverage constraints leaves $\beta_r = 1.24$, close to the baseline, so heterogeneous risk aversion alone is enough to deliver discount-rate-dominated variation in $pd_t$.
-Setting $\overline{\alpha}=1$ yields $\beta_r = -0.21$: at this level passive demand would be optimal under homogeneous preferences with no frictions, so there are no state-dependent movements in the price of risk, and $pd_t$ again reflects cash flows.
-The large $\beta_r$ in the baseline is thus a consequence of the frictions, not of the passive-demand process in isolation.
-These magnitudes are in line with the empirical findings in \citet{cochrane2011presidential}, whose Table~II shows that $\beta_r$ exceeds unity for aggregate U.S. equities and that cash-flow news contributes little or nothing to the variance of $pd_t$.
-
-The accounting identity in~\eqref{eq:cs_decomp} also connects the predictability of returns to the volatility of prices.
-The ``excess volatility'' puzzle documented by \citet{shiller1981} and \citet{leroy1981present}, under which prices are too volatile to be justified by subsequent dividends, is mechanically the same fact as return predictability: if $\beta_r$ is close to one, then almost all of the observed variance of $pd_t$ must show up in predictable movements in future returns.
-Our counterfactuals make this duality sharp.
-Economies in which heterogeneity or leverage constraints bind simultaneously deliver large return volatility, a sizable price impact, and a predictive slope on $(P/D)_t$ close to the data, whereas the frictionless counterfactuals deliver low return volatility, a negligible price impact, and $\beta_r\approx 0$.
-Matching the empirical excess-volatility and predictability facts therefore requires heterogeneity and frictions in the active sector, not just time variation in fundamentals or beliefs.
-
-\begin{table}[!t]
+\begin{minipage}[t]{0.48\textwidth}
+\vspace{0pt}
 \centering
-\resizebox{0.65\textwidth}{!}{
-    \begin{tabular}{@{}lcc@{}}
-    \toprule
-    Dependent variable: & \multicolumn{2}{c}{Cumulative excess return, $\sum_{k=1}^{4} r_{t+k}-r_t$} \\
-    Sample: & Full & Bad state \\
-    \midrule
-    $(P/D)_t$ & $-0.05$ & $-0.12$ \\
-              & $(0.0005)$ & $(0.0048)$ \\
-    \midrule
-    $R^2$        & $0.19$  & $0.06$  \\
-    Observations & $79{,}120$ & $19{,}780$ \\
-    \bottomrule
-    \end{tabular}
-    }
-\vspace{2mm}
-\captionsetup{font=footnotesize}
-\caption{\textbf{Return predictability regression.}\\
-This table reports OLS estimates of the predictive regression $\sum_{k=1}^{T} r_{t+k}-r_t = a + b\,(P/D)_t + \varepsilon_{t+T}$, where $T=4$ quarters, estimated on a $1{,}000$-year monthly simulation of the calibrated baseline economy.
-Column~(1) uses the full sample.
-Column~(2) restricts to ``bad states'' in which $(P/D)_t$ lies below the $25$th percentile of its long-run distribution.
-Standard errors are in parentheses.}\label{tab:return_predictability}
+% Regenerate with: python3 figures/scripts/make_return_predictability_fig.py
+\includegraphics[width=\linewidth]{figures/return_predictability.png}
+\captionof{figure}{Return predictability}
+\label{fig:return_predictability}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\vspace{0pt}
+{\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{0.92}
+
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Dependent Variable: & \multicolumn{2}{c}{Cumulative ex. ret.} \\
+Model: & (1) & (2) \\
+Sample: & Full & Bad state \\
+\midrule
+\textit{Variables} & & \\
+$(P/D)_t$ & -0.05 & -0.12 \\
+                & (0.0005) & (0.0048) \\
+\midrule
+$R^2$ & 0.19 & 0.06 \\
+Observations & 79,120 & 19,780 
+\vspace{0.25cm} \\ 
+\bottomrule  \\ \\
+\end{tabular}
+
+\par
+}
+
+\captionsetup{type=table,font=footnotesize,justification=centering,singlelinecheck=false}
+\captionof{table}{Return predictability regression}
+\label{tab:return_predictability}
+\end{minipage}
+
+\vspace{0.8em}
+\begin{minipage}{0.98\textwidth}
+\footnotesize
+\textit{Note:} The left panel shows the relationship between the price-dividend ratio and future cumulative returns. Blue points correspond to normal state and red points correspond to bad state defined as time periods when price-dividend ratio is less than the 25-pctl of its long-run mean. The lines represent the regression fit. 
+The right panel reports estimates from the return-predictability regression
+$\sum_{k=1}^T r_{t+k} -r_t=a+b (P/D)_t+\varepsilon_{t+k}$, where $T=4$ quarters.
+Entries in parentheses are standard errors.
+\end{minipage}
+
+\end{figure}
+\subsection{Role of frictions}
+
+\begin{table}[!t]    
+    \centering% \captionsetup{font=normalsize,labelfont=bf,skip=2pt,labelsep=period}
+	\resizebox{.8\linewidth}{!}{\input{./tables/counterfactuals.tex}}
+    \vspace{2mm}
+    \captionsetup{type=table,font=footnotesize,justification=centering,singlelinecheck=false}
+    \caption{\textbf{Counterfactual experiments.}\\This table reports annualized model-implied moments for the baseline economy and three counterfactuals. In the \textit{homogeneous, unconstrained} economy, $\gamma_c=\gamma_p=\gamma_u=6.15$ and $\bar{\sigma}=10{,}000$. In the \textit{heterogeneous, unconstrained} economy, $\bar{\sigma}=10{,}000$. In the \textit{Passive efficient} case, we set $\overline{\alpha}=1$. All other parameters are set to their baseline values from Table (\ref{tab:calib}). }\label{tab:counterfactual_comparison} 
+	% \caption*{\footnotesize{This table reports the model-implied and empirical moments. All values are annualized.}}    
 \end{table}
 
-\FloatBarrier
-
-\subsection{Conditional price impact and dynamics}\label{sec:cond-price-impact}
-
-Averaging across states masks the state dependence of aggregate elasticity emphasized in Section~\ref{sec:elasticity}.
-To trace this dependence, we compute the model-implied \emph{conditional} price impact off the ergodic mean, plotted in Figure~\ref{fig:price_impact_dynamic}.
-We fix passive demand $\overline{\alpha}_{p,t}$ and the dividend share $s_t$ at their unconditional means, vary one wealth-share coordinate at a time, and apply a fixed one-quarter passive-flow shock.
-The shock is propagated through the dynamic transition of the state variables.
-We then recompute $\log(P/D)$ at the shocked and unshocked states, and measure the conditional price impact as the resulting change in $\log(P/D)$ per unit of passive-flow shock.
-
-The left panel of Figure~\ref{fig:price_impact_dynamic} shows that the price impact rises sharply as the wealth share of the unconstrained active sector $x_{u,t}$ falls.
-When the sector most capable of absorbing risk is small, the market is less elastic and flow shocks translate into larger price movements.
-The right panel shows that the price impact also rises monotonically in the wealth share of the constrained active sector $x_{c,t}$.
-As more of the active sector hits its leverage limit, the residual risk-bearing capacity in $x_{u,t}$ shrinks and price impact grows.
-These patterns mirror the analytical characterization in Proposition~\ref{prop_elasticity_pref_heterog} and explain why the conditional price impact reported in Table~\ref{tab:counterfactual_comparison} (the row labeled ``Cond.\ price impact ($D$)'' with a value of $8.50$) is substantially larger than its unconditional counterpart.
-
-Combined with the counterfactual results, Figure~\ref{fig:price_impact_dynamic} makes clear that the very states in which risk-bearing capacity is depleted, with low $x_u$ or high $x_c$, are the states in which discount rates are most volatile and the $P/D$ ratio is most informative about future returns.
-The large unconditional $\beta_r$ in Table~\ref{tab:counterfactual_comparison} is therefore driven by these tail states.
-
-\subsection{Takeaways}\label{sec:takeaways}
-
-The quantitative exercise delivers three main messages.
-A calibration disciplined by sectoral FoF data and passive equity flows matches the level of the aggregate price impact, the volatility of dividend-claim returns, and the level of the risk premium.
-Preference heterogeneity is quantitatively central: it alone accounts for roughly three-quarters of the baseline price impact and produces a discount-rate-dominated variance decomposition of the $P/D$ ratio, even when leverage constraints are slack.
-Leverage constraints and a below-efficient passive share are complementary amplifiers that operate through state-dependent risk sharing.
-Finally, the excess-volatility puzzle and return predictability are two sides of the same coin in our economy.
-The same frictions that raise aggregate price impact are the ones that push $\beta_r$ above one, consistent with \citet{cochrane2011presidential}, and counterfactuals that eliminate heterogeneity or shift $\overline{\alpha}$ to its optimum under homogeneous preferences collapse all three facts at once.
-
+This subsection compares the baseline economy to three counterfactuals: (i) homogeneous preferences without leverage constraints, (ii) heterogeneous preferences without leverage constraints, and (iii) an economy with the passive portfolio share set to $\bar{\alpha}=1$. The first sets $\gamma_p=\gamma_c=\gamma_u=6.15$ and $\overline{\sigma}=10{,}000$; the second sets $\overline{\sigma}=10{,}000$; and the third sets $\bar{\alpha}=1$. All remaining parameters are held at their baseline values. Table \ref{tab:counterfactual_comparison} reports the implied moments across economies. We make a few observations. First, the baseline economy features large dividend return volatility ($\sigma_{R,D}=22.55\%$) and a high price-impact $(6.854)$ of dividend claims, consistent with the limited risk-bearing capacity translating shocks into large price movements. In comparison, the counterfactual economies, where one or more frictions are shut, feature low return volatility and price impact. Particularly, the homogeneous unconstrained economy and passive efficient economy feature a negligible price impact. A surprising result of our calibration is that heterogeneity itself can generate significant price impact through state-dependent risk sharing, even when constraints are relaxed, although the return volatility is still 5.5\% lower than in the baseline. In all cases, the conditional price impact is larger than the unconditional mean. The conditional price impact is computed by regressing the change in the log price-dividend ratio on flow shock in states where the price-dividend ratio falls below the 25th percentile of its long-term average. Overall, the comparison indicates that all three frictions - (i) heterogeneous risk aversion, (ii) leverage constraints, and (iii) passive sector risk misallocation - are important in generating a large price impact. Lastly, we observe that discount rate beta $\beta_r$ is...\GG{Dejanir: Can you help here?}
 
 
 \input{sections/conclusion}
