@@ -1479,8 +1479,10 @@ The exercise has two goals.
 The first is to ask whether a calibration disciplined by U.S. data on sectoral portfolio holdings and passive equity flows can simultaneously deliver an empirically plausible price impact and the standard asset-pricing moments.
 The second is to quantify how much of the variation in return volatility, return predictability, and the variance of the price--dividend ratio is attributable to how portfolio flows interact with preference heterogeneity, leverage constraints, and passive-sector risk misallocation.
 We do the latter by comparing the baseline economy to a set of counterfactuals that turn off these frictions one at a time.
-We solve the full dynamic system numerically using the neural-network method of \citet{duarte2024machine}, which handles the four state variables (passive demand, dividend share, and the wealth shares of the constrained and unconstrained active sectors).
+
+We solve the full dynamic system numerically using the neural-network method of \citet{duarte2024machine}, which accommodates the four state variables: passive demand, the dividend share, and the wealth shares of the constrained and unconstrained active sectors.
 Appendix~\ref{app:numerical} describes the numerical procedure in detail.
+
 \subsection{Calibration}\label{sec:calibration}
 
 We aggregate Flow of Funds (FoF) sectors into three ultimate sectors: a passive sector, a constrained active sector, and an unconstrained active sector.\footnote{We follow the aggregation in \citet{koijen2024investors}.
@@ -1491,7 +1493,7 @@ Table~\ref{tab:calib} reports the calibrated parameter values, and the next subs
 
 Figure~\ref{fig:facts-vol-flow} motivates two of the calibration targets.
 The left panel plots quarterly aggregate equity flows, scaled by lagged market capitalization as in Appendix~D3 of \citet{gabaix2020search}, together with realized return volatility.
-The right panel reports the ``volatility multiplier,'' defined as the ratio of return volatility to flow volatility.
+The right panel reports the ``volatility multiplier,'' defined as the ratio of realized return volatility to quarterly flows.
 The multiplier is a reduced-form analog of the price impact that our calibration aims to reproduce.
 
 \begin{figure}[!t]
@@ -1521,13 +1523,14 @@ The multiplier is a reduced-form analog of the price impact that our calibration
 
 \subsection{Moments}\label{sec:moments}
 
-We discipline the calibration in three blocks: technology parameters, preference and cross-sectional parameters, and the passive-demand process.
+We discipline the calibration using three blocks of moments: technology parameters, preference and cross-sectional parameters, and the passive-demand process.
 
 \paragraph{Technology.}
-The endowment growth rate $\mu=1.8\%$ and endowment volatility $\sigma=3.3\%$ are calibrated to be consistent with the U.S. aggregate consumption data (\citealp{campbell1999force}).
-Following \citet{LettauWachter2011}, we set the correlation of dividend-share shocks with the fundamental at $0.3$ and the dividend-share volatility at $\sigma_s=11\%$.
-The mean-reversion of the dividend share is $\kappa_s=0.09$, following \cite{santos2006labor}.
-The mean dividend share is set at $\bar{s}=0.6$, implying a debt-to-equity ratio of 0.67, consistent with \cite{abel1999risk}.
+We set the endowment growth rate to $\mu = 1.8\%$ and endowment volatility to $\sigma = 3.3\%$, consistent with U.S. aggregate consumption data \citep{campbell1999force}.
+Following \citet{LettauWachter2011}, we set the correlation between dividend-share shocks and the fundamental shock to $0.3$, and the volatility of dividend-share shocks to $\sigma_s = 11\%$.
+We set the mean-reversion of the dividend share to $\kappa_s = 0.09$, following \citet{santos2006labor}.
+Finally, we set the mean dividend share to $\bar{s} = 0.6$, which implies a debt-to-equity ratio of $0.66$.
+This target is consistent with the average debt-to-equity ratio of the U.S. corporate sector since the 1980s.
 
 \paragraph{Preferences and cross section of holdings.}
 We set a common elasticity of intertemporal substitution $\psi=1.5$ for all agent types, in line with the value used in \citet{bansal2004risks}.
@@ -1566,22 +1569,67 @@ This yields a model-implied correlation between flows and returns of $0.005$, cl
 
 % \FloatBarrier
 
+
 \subsection{Unconditional moments}\label{sec:uncond-moments}
 
-We simulate the calibrated economy at monthly frequency for $1{,}000$ years and compare unconditional moments of the simulated data with their empirical counterparts in Table~\ref{tab:simulation_moments}.
-For the dividend claim, the model delivers a risk premium of $6.6\%$, a risk-free rate of $0.6\%$, and a return volatility of $22.4\%$, all close to their empirical targets.
-We estimate the price impact of the dividend claim by regressing the change in the log price--dividend ratio on the innovation to passive demand, scaled by the passive sector's lagged wealth share,
+\paragraph{Price impact regression.} 
+We simulate the calibrated economy at monthly frequency for $1{,}000$ years and report unconditional moments in Table~\ref{tab:simulation_moments}.
+To estimate the model-implied price impact of the dividend claim, we regress the change in the log price--dividend ratio on the innovation to passive demand, scaled by the passive sector's lagged wealth share:
 \begin{equation}\label{eq:price_impact_regression}
     \Delta\log (P/D)_t = a_0 + b_1\,\overline{\alpha}_{p,t}^{s}\,x_{p,t-1} + e_t,
 \end{equation}
-where $\overline{\alpha}_{p,t}^{s} = \overline{\alpha}_{p,t} - \overline{\alpha}_{p,t-1} - \mathbb{E}[d\overline{\alpha}_{p,t}]$ is the flow innovation.
-Equation~\eqref{eq:price_impact_regression} is the model counterpart of the price-impact regression of \citet{gabaix2020search}; scaling the innovation by the lagged passive wealth share $x_{p,t-1}$ converts the per-unit-mass shock into an aggregate dollar-weighted flow and mirrors the size-weighting in their granular instrumental variable (GIV) estimator.\footnote{\citet{gabaix2020search}, following \citet{gabaix2024granular}, decompose sector-level flows into a common factor structure $\xi_{i,t} = \lambda_i'\eta_t + u_{i,t}$, extract the idiosyncratic component $\hat{u}_{i,t}$ after partialing out observed and PCA-estimated latent factors, and form the GIV as the difference between the size-weighted and equal-weighted averages of these shocks, $z_t = \sum_i (S_{i,t-1}-\tfrac{1}{N})\hat{u}_{i,t}$.
-They use $z_t$ as an instrument in a regression of aggregate returns on aggregate flows to address the simultaneity bias in OLS (prices and aggregate flows are jointly determined), and estimate a multiplier of about $5$ for the U.S.\ equity market.}
-In our setting, the passive-demand innovation is observed and exogenous by construction (the passive share follows the exogenous persistent process in equation~\eqref{eq:alpha_p_process}), so OLS on equation~\eqref{eq:price_impact_regression} directly identifies the model-implied counterpart of the GIV estimand without requiring an instrument.
-The slope $\hat{b}_1=6.85$ matches the empirical benchmark of about $5$.
-%\footnote{Price impact in the model is $d\log(P/D)/d\overline{\alpha}_p$. \citet{gabaix2020search} estimate a multiplier of roughly $5$, while \citet{Hartzmark/Solomon/2021} estimate $1.9$. Averaging the two gives $3.45$, and scaling by the passive share of roughly one half yields $3.45\times 2\approx 6.90$.}
-The model also matches sectoral asset-to-equity ratios and risky-asset shares.
-The constrained sector is levered (an asset/equity ratio of $1.98$ in the model versus $1.62$ in the data), the unconstrained sector holds a conservative share ($0.52$ versus $0.53$), and the passive sector accounts for about $45\%$ of risky holdings.
+where $\overline{\alpha}_{p,t}^{s}$ denotes the innovation to passive demand.
+
+Equation~\eqref{eq:price_impact_regression} is the model counterpart of the price-impact regression in \citet{gabaix2020search}.
+Scaling by the lagged passive wealth share $x_{p,t-1}$ converts the per-unit-mass shock into an aggregate flow and mirrors the size-weighting in their granular instrumental variable (GIV) estimator.\footnote{
+    \citet{gabaix2020search}, following \citet{gabaix2024granular}, decompose sector-level flows into a common component and an idiosyncratic shock, and construct the granular instrumental variable (GIV) as the difference between size-weighted and equal-weighted averages of these idiosyncratic shocks.
+    This instrument isolates exogenous variation in aggregate flows and addresses the simultaneity bias in OLS, since prices and flows are jointly determined.
+}
+
+In our model, passive-demand innovations are observed and exogenous by construction, so OLS directly identifies the model-implied counterpart of the GIV estimand without requiring an instrument.
+
+\paragraph{Price impact and asset-pricing moments.} 
+The model simultaneously matches a broad set of empirical facts, including asset-pricing moments, the magnitude of portfolio flows, price impact, and sectoral balance sheets.
+
+As shown in Panel A of Table~\ref{tab:simulation_moments}, the model generates a large price impact, with an estimated slope $\hat{b}_1 = 6.85$, close to the empirical benchmark of about $5$.
+For the dividend claim, the model also matches standard asset-pricing moments, delivering a risk premium of $6.6\%$, a risk-free rate of $0.6\%$, and a return volatility of $22.4\%$.
+As we show below, these two successes are closely related: generating realistic price impact for the dividend claim is crucial for matching asset-pricing moments such as the risk premium and return volatility.
+
+A key driver of this result is the explicit modeling of the dividend process.
+Panel B of Table~\ref{tab:simulation_moments} shows that the price impact for the endowment claim is only $0.57$, an order of magnitude smaller than for the dividend claim.
+The risk premium and return volatility for the endowment claim are also much smaller than for the dividend claim.
+Even in a model with heterogeneity and frictions, the endowment claim remains fairly elastic.
+
+The model also matches sectoral balance sheets, as shown in Panel C of Table~\ref{tab:simulation_moments}.
+The constrained sector is levered (asset-to-equity ratio of $1.98$ in the model versus $1.62$ in the data), the unconstrained sector is conservative ($0.52$ versus $0.53$), and the passive sector holds about $45\%$ of risky assets.
+
+% \paragraph{Price impact and asset-pricing moments.} 
+% The model is able to simultaneously match key asset-pricing moments, the magnitude of portfolio flows, price impact, and sectoral balance sheets.
+% As shown in Panel A of Table~\ref{tab:simulation_moments}, the model generates substantial price impact, with an estimated slope of the price-impact regression, $\hat{b}_1 = 6.85$, close to the empirical benchmark of about $5$.
+% For the dividend claim, the model delivers a risk premium of $6.6\%$, a risk-free rate of $0.6\%$, and a return volatility of $22.4\%$, all close to their empirical counterparts.
+
+% Explicitly modeling the dividend process is crucial for generating realistic price impact.
+% Panel B of Table~\ref{tab:simulation_moments} shows that the price impact for the endowment claim is $0.57$, an order of magnitude smaller than the price impact for the dividend claim.
+% The risk premium and return volatility for the endowment claim are also much smaller than for the dividend claim.
+
+% The model also matches sectoral balance sheets, as shown in Panel C of Table~\ref{tab:simulation_moments}.
+% The constrained sector is levered (asset-to-equity ratio of $1.98$ in the model versus $1.62$ in the data), the unconstrained sector is conservative ($0.52$ in the model versus $0.53$ in the data), and the passive sector holds about $45\%$ of risky assets.
+
+% \subsection{Unconditional moments}\label{sec:uncond-moments}
+
+% We simulate the calibrated economy at monthly frequency for $1{,}000$ years and compare unconditional moments of the simulated data with their empirical counterparts in Table~\ref{tab:simulation_moments}.
+% For the dividend claim, the model delivers a risk premium of $6.6\%$, a risk-free rate of $0.6\%$, and a return volatility of $22.4\%$, all close to their empirical targets.
+% We estimate the price impact of the dividend claim by regressing the change in the log price--dividend ratio on the innovation to passive demand, scaled by the passive sector's lagged wealth share,
+% \begin{equation}\label{eq:price_impact_regression}
+%     \Delta\log (P/D)_t = a_0 + b_1\,\overline{\alpha}_{p,t}^{s}\,x_{p,t-1} + e_t,
+% \end{equation}
+% where $\overline{\alpha}_{p,t}^{s} = \overline{\alpha}_{p,t} - \overline{\alpha}_{p,t-1} - \mathbb{E}[d\overline{\alpha}_{p,t}]$ is the flow innovation.
+% Equation~\eqref{eq:price_impact_regression} is the model counterpart of the price-impact regression of \citet{gabaix2020search}; scaling the innovation by the lagged passive wealth share $x_{p,t-1}$ converts the per-unit-mass shock into an aggregate dollar-weighted flow and mirrors the size-weighting in their granular instrumental variable (GIV) estimator.\footnote{\citet{gabaix2020search}, following \citet{gabaix2024granular}, decompose sector-level flows into a common factor structure $\xi_{i,t} = \lambda_i'\eta_t + u_{i,t}$, extract the idiosyncratic component $\hat{u}_{i,t}$ after partialing out observed and PCA-estimated latent factors, and form the GIV as the difference between the size-weighted and equal-weighted averages of these shocks, $z_t = \sum_i (S_{i,t-1}-\tfrac{1}{N})\hat{u}_{i,t}$.
+% They use $z_t$ as an instrument in a regression of aggregate returns on aggregate flows to address the simultaneity bias in OLS (prices and aggregate flows are jointly determined), and estimate a multiplier of about $5$ for the U.S.\ equity market.}
+% In our setting, the passive-demand innovation is observed and exogenous by construction (the passive share follows the exogenous persistent process in equation~\eqref{eq:alpha_p_process}), so OLS on equation~\eqref{eq:price_impact_regression} directly identifies the model-implied counterpart of the GIV estimand without requiring an instrument.
+% The slope $\hat{b}_1=6.85$ matches the empirical benchmark of about $5$.
+% The model also matches sectoral asset-to-equity ratios and risky-asset shares.
+% The constrained sector is levered (an asset/equity ratio of $1.98$ in the model versus $1.62$ in the data), the unconstrained sector holds a conservative share ($0.52$ versus $0.53$), and the passive sector accounts for about $45\%$ of risky holdings.
 
 
 \FloatBarrier
@@ -1601,7 +1649,7 @@ All other parameters are held at their baseline values from Table~\ref{tab:calib
 
 \begin{table}[!t]
     \centering
-    \resizebox{.9\linewidth}{!}{\input{./tables/counterfactuals.tex}}
+    \resizebox{0.92\linewidth}{!}{\input{./tables/counterfactuals.tex}}
     \vspace{2mm}
     \caption{\textbf{Counterfactual experiments.}\\
     This table reports annualized model-implied moments for the baseline economy and five counterfactuals that shut down or modify individual frictions.
