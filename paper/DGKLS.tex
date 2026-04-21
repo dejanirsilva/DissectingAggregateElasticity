@@ -1516,8 +1516,8 @@ The multiplier is a reduced-form analog of the price impact that our calibration
     \caption{\textbf{Parameter values.}\\
     This table reports the parameter values used to calibrate the baseline economy.
     Risk aversion parameters and sectoral masses ($\gamma_j$, $\omega_j$) are chosen to match average sectoral wealth shares and sectoral ``betas'' from time-series regressions of risky-asset holdings on aggregate risky supply.
-    Technology parameters ($\mu$, $\sigma$, $\sigma_s$, $\bar{s}$, $\kappa_s$) are standard macro--finance targets.
-    Passive-demand parameters ($\overline{\alpha}$, $\theta_p$, $\sigma_p$, $\nu$) are disciplined by the average passive portfolio share, household portfolio inertia \citep{brunnermeier2008wealth}, and the volatility and correlation of quarterly aggregate equity flows with market returns \citep{gabaix2020search}.
+    Technology parameters ($\mu$, $\sigma$, $\sigma_s$, $\bar{s}$, $\kappa_s,\nu_s$), where $\nu_s = \frac{\sigma \sigma_s^\top}{\|\sigma\|\,\|\sigma_s\|}$, are standard macro--finance targets.
+    Passive-demand parameters ($\overline{\alpha}$, $\theta_p$, $\sigma_p$, $\nu_p$), where $\nu_p = \frac{\sigma \sigma_p^\top}{\|\sigma\|\,\|\sigma_p\|}$, are disciplined by the average passive portfolio share, household portfolio inertia \citep{brunnermeier2008wealth}, and the volatility and correlation of quarterly aggregate equity flows with market returns \citep{gabaix2020search}.
     The leverage-constraint tightness $\overline{\sigma}$ targets the empirical asset-to-equity ratio of the constrained sector.}\label{tab:calib}
 \end{table}
 
@@ -1563,7 +1563,6 @@ This yields a model-implied correlation between flows and returns of $0.005$, cl
     Model moments are computed from a $1{,}000$-year monthly simulation of the calibrated economy.
     The price impact is estimated as the slope coefficient $\hat{b}_1$ of the regression $\Delta\log(P/D)_t = a_0 + b_1\,\overline{\alpha}_{p,t}^{s}\,x_{p,t-1} + e_t$, where $\overline{\alpha}_{p,t}^{s}$ is the innovation to passive demand.
     Asset/Equity denotes the ratio of risky-asset holdings to equity for the constrained and unconstrained sectors; asset shares report the fraction of the aggregate risky market held by each sector.
-    Standard errors are in parentheses.
     All values are annualized.}\label{tab:simulation_moments}
 \end{table}
 
@@ -1665,8 +1664,8 @@ These results highlight that matching both price impact and asset-pricing moment
     \textit{No leverage constraints} sets $\overline{\sigma}=10{,}000$, so leverage constraints are slack.
     \textit{No preference heterogeneity} sets $\gamma_c=\gamma_p=\gamma_u=6.15$, eliminating heterogeneity in risk aversion, combined with the slack leverage constraint.
     \textit{High passive portfolio share} sets $\overline{\alpha}=1$.
-    \textit{Low passive population share} reduces the passive sector mass (e.g., via a lower $\omega_0$) while increasing active-sector mass.
-    \textit{Flows uncorrelated with fundamentals} sets $\nu=0$, so passive-demand shocks are orthogonal to fundamentals.
+    \textit{Low passive population share} reduces the passive sector mass (via a lower $\omega_0$) while increasing the mass of the unconstrained sector.
+    \textit{Flows uncorrelated with fundamentals} sets $\nu_p=0$, so passive-demand shocks are orthogonal to fundamentals.
     All other parameters are as in Table~\ref{tab:calib}.
     Price impact $(Y)$ and $(D)$ denote the slope of the regression in equation~\eqref{eq:price_impact_regression} for the endowment and dividend claim, respectively.
     Conditional price impact restricts the regression to ``bad states'' in which $(P/D)_t$ is below its $25$th percentile.
