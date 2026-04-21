@@ -1661,17 +1661,18 @@ These results highlight that matching both price impact and asset-pricing moment
     \resizebox{\linewidth}{!}{\input{./tables/counterfactuals.tex}}
     \vspace{2mm}
     \caption{\textbf{Counterfactual experiments.}\\
-    This table reports annualized model-implied moments for the baseline economy and five counterfactuals that shut down or modify individual frictions.
-    Counterfactuals are ordered so that frictions are peeled away progressively.
-    In \textit{Heterog., unconstr.} we keep the baseline heterogeneous risk aversions but set $\overline{\sigma}=10{,}000$, so leverage constraints are slack.
-    In \textit{Homog., unconstr.} we additionally set $\gamma_c=\gamma_p=\gamma_u=6.15$, eliminating both preference heterogeneity and leverage constraints.
-    \textit{Homog.-opt.\ passive} ($\overline{\alpha}=1$) is the passive share that is optimal only under homogeneous preferences and no frictions; with heterogeneous preferences the true optimal passive share need not equal one, and we defer a general optimal-passive benchmark to future work.
-    \textit{Low passive share} sets $\overline{\alpha}=0.23$, roughly halving the passive sector's size.
-    \textit{Uncorr.\ flow} sets $\nu=0$, so passive-demand shocks are orthogonal to fundamentals.
+    This table reports annualized model-implied moments for the baseline economy and five counterfactuals.
+    \textit{No leverage constraints} sets $\overline{\sigma}=10{,}000$, so leverage constraints are slack.
+    \textit{No preference heterogeneity} sets $\gamma_c=\gamma_p=\gamma_u=6.15$, eliminating heterogeneity in risk aversion, combined with the slack leverage constraint.
+    \textit{High passive portfolio share} sets $\overline{\alpha}=1$.
+    \textit{Low passive population share} reduces the passive sector mass (e.g., via a lower $\omega_0$) while increasing active-sector mass.
+    \textit{Flows uncorrelated with fundamentals} sets $\nu=0$, so passive-demand shocks are orthogonal to fundamentals.
     All other parameters are as in Table~\ref{tab:calib}.
     Price impact $(Y)$ and $(D)$ denote the slope of the regression in equation~\eqref{eq:price_impact_regression} for the endowment and dividend claim, respectively.
     Conditional price impact restricts the regression to ``bad states'' in which $(P/D)_t$ is below its $25$th percentile.
+    The variable $\Gamma$ reports the unconditional mean of the wealth-weighted harmonic mean of the risk aversion parameters.
     The discount-rate coefficient $\beta_r$ reports the share of the variance of the log price--dividend ratio attributable to discount-rate news at a $40$-quarter horizon.}\label{tab:counterfactual_comparison}
+
 \end{table}
 
 \paragraph{Passive demand and market elasticity.} These results complement two closely related strands of the recent literature.
