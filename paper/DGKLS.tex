@@ -807,7 +807,7 @@ This expression highlights that the interest rate is determined jointly by risk 
 Let $p_{D,t} \equiv P_{D,t}/D_{t}$ and $p_{B,t} \equiv P_{B,t}/B_{t}$ denote the price-dividend ratios of the dividend and corporate bond claims, respectively. 
 The price-dividend ratio of the aggregate claim is $p_{Y,t} \equiv P_{Y,t}/Y_t$, which satisfies $p_{Y,t} = s_t p_{D,t} + (1-s_t) p_{B,t}$.
 
-The pricing condition for each claim $k$ is given by
+The pricing condition for each claim $k\in\{D,B\}$ is given by
 \begin{equation}\label{eq:pricing_cond}
     \frac{1}{p_{k,t}} = r_t + \pi_{k,t} - \big(\mu_{k,t} + \mu_{p_k,t} + \sigma_{k,t} \, \sigma_{p_k,t}^\top\big),
 \end{equation}
@@ -827,7 +827,7 @@ Hence, the aggregate state vector is $X_t = (x_t, \overline{\alpha}_{p,t}, s_t)$
 The processes $\overline{\alpha}_{p,t}$ and $s_t$ evolve according to \eqref{eq:alpha_p_process} and \eqref{eq:s_process}, respectively.
 To obtain $\mu_{X,t}$ and $\sigma_{X,t}$, we need to solve for the drift and diffusion of the endogenous state variables, $x_{1,t}$ and $x_{2,t}$.
 
-By It\^{o}'s lemma, the law of motion for $x_{j,t}$ is given by
+By It\^{o}'s lemma, the law of motion for $x_{j,t}, j=1,2$, is given by
 \begin{align*}
     \frac{dx_{j,t}}{x_{j,t}} 
     &= \Big[ (\eta_t-\sigma_{R_Y,t}) \left( \sigma_{j,t} -\sigma_{R_Y,t} \right)^\top - \left( c_{j,t} - \frac{1}{p_{Y,t}}  \right)
