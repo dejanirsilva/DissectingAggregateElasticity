@@ -1636,20 +1636,42 @@ The constrained sector is levered (asset-to-equity ratio of $1.98$ in the model 
 
 \subsection{Counterfactuals: the role of frictions}\label{sec:counterfactuals}
 
-To quantify the role of each friction, we compare the baseline economy to five counterfactuals that peel the frictions away progressively.
-The first two work through risk aversion and leverage.
-In \textit{heterogeneous, unconstrained}, we keep the baseline heterogeneous risk aversions but set $\overline{\sigma}=10{,}000$, so leverage constraints are slack.
-\textit{Homogeneous, unconstrained} additionally sets $\gamma_p=\gamma_c=\gamma_u=6.15$, eliminating both preference heterogeneity and the leverage constraint.
-The remaining three experiments vary the passive-demand process.
-\textit{Homog.-optimal passive share} sets $\overline{\alpha}=1$, which is the passive share that is optimal under homogeneous preferences and no frictions; with heterogeneous risk aversion the true optimal passive portfolio need not equal unity, and we defer a general optimal-passive-portfolio benchmark to future work.\footnote{Computing the optimal passive portfolio in the heterogeneous-preferences economy would require solving a version of the model in which the passive investor chooses $\overline{\alpha}$ to maximize its own objective.
-We plan to report that benchmark in a later version.}
-\textit{Low passive share} sets $\overline{\alpha}=0.23$, which halves the mass of the passive sector relative to the baseline.
-\textit{Uncorrelated flow} sets $\nu=0$, so passive-demand shocks are orthogonal to fundamentals.
-All other parameters are held at their baseline values from Table~\ref{tab:calib}, and Table~\ref{tab:counterfactual_comparison} reports annualized moments across the five economies.
+To quantify the role of each friction, we compare the baseline economy to a sequence of counterfactuals that progressively shut down individual frictions.
+We vary one parameter at a time, holding all others fixed at their baseline values in Table~\ref{tab:calib}, so each column isolates the marginal contribution of a given friction.
+
+The baseline economy (column~1) simultaneously delivers a large price impact, a sizable risk premium, and high return volatility, consistent with the data.
+Removing the leverage constraint (column~2) reduces the price impact to $4.91$ and attenuates both the risk premium and return volatility, but these remain substantial.
+Eliminating preference heterogeneity (column~3) reduces the price impact sharply to $0.10$, implying near-perfect market elasticity.
+In this case, excess volatility disappears and the model generates only a modest risk premium.
+
+The next two counterfactuals vary passive demand.
+Setting $\overline{\alpha}=1$ (column~4) raises the passive sector’s exposure to risk and reduces the degree of risk misallocation, lowering the price impact to $0.25$.
+Reducing the mass of passive investors (column~5), by setting $\omega_0=0.25$ and $\omega_1=0.75$, also lowers the price impact to $4.52$, along with the risk premium and return volatility.
+
+Finally, when passive flows are uncorrelated with fundamentals (column~6), so that $\sigma\sigma_p^\top=0$, the model generates a small price impact for the dividend claim, with the opposite sign.
+This points to the importance of imperfect rebalancing and performance-induced flows, which induce correlation between passive flows and fundamentals, in generating price impact.
+
+These results point to a tight connection between price impact, risk premium, and return volatility.
+The model generates asset-pricing moments consistent with the data only when the market is sufficiently inelastic.
+In versions of the model with modest or no price impact, the risk premium and return volatility are also much smaller.
+These results highlight that matching both price impact and asset-pricing moments requires the interaction of frictions with shocks to passive demand.
+
+
+% In \textit{heterogeneous, unconstrained}, we keep the baseline heterogeneous risk aversions but set $\overline{\sigma}=10{,}000$, so leverage constraints are slack.
+% \textit{Homogeneous, unconstrained} additionally sets $\gamma_p=\gamma_c=\gamma_u=6.15$, eliminating both preference heterogeneity and the leverage constraint.
+% The remaining three experiments vary the passive-demand process.
+% \textit{Homog.-optimal passive share} sets $\overline{\alpha}$ to the average portfolio share implied by a version of the model where passive investors choose $\overline{\alpha}$ to the average value in an economy where passive investors can freely adjust their portfolios.
+
+% \footnote{Computing the optimal passive portfolio in the heterogeneous-preferences economy would require solving a version of the model in which the passive investor chooses $\overline{\alpha}$ to maximize its own objective.
+% We plan to report that benchmark in a later version.}
+% \textit{Low passive share} sets $\overline{\alpha}=0.23$, which halves the mass of the passive sector relative to the baseline.
+% \textit{Uncorrelated flow} sets $\nu=0$, so passive-demand shocks are orthogonal to fundamentals.
+% All other parameters are held at their baseline values from Table~\ref{tab:calib}, and Table~\ref{tab:counterfactual_comparison} reports annualized moments across the five economies.
+
 
 \begin{table}[!t]
     \centering
-    \resizebox{0.92\linewidth}{!}{\input{./tables/counterfactuals.tex}}
+    \resizebox{\linewidth}{!}{\input{./tables/counterfactuals.tex}}
     \vspace{2mm}
     \caption{\textbf{Counterfactual experiments.}\\
     This table reports annualized model-implied moments for the baseline economy and five counterfactuals that shut down or modify individual frictions.
@@ -1665,19 +1687,20 @@ All other parameters are held at their baseline values from Table~\ref{tab:calib
     The discount-rate coefficient $\beta_r$ reports the share of the variance of the log price--dividend ratio attributable to discount-rate news at a $40$-quarter horizon.}\label{tab:counterfactual_comparison}
 \end{table}
 
-The baseline economy produces a large dividend-return volatility ($\sigma_{R,D}=22.55\%$) and a sizable price impact ($\hat{b}_1=6.85$), reflecting limited aggregate risk-bearing capacity.
-Turning off leverage constraints while keeping preference heterogeneity (the ``heterogeneous, unconstrained'' column) still generates a substantial price impact of $4.91$ and a return volatility of $17.0\%$.
-Heterogeneity alone therefore delivers roughly three-quarters of the baseline price impact through state-dependent risk sharing.
-Once preference heterogeneity is also removed (the ``homogeneous, unconstrained'' column), return volatility collapses to $3.9\%$ and the price impact falls to $0.10$, values near zero and consistent with the frictionless limit.
+% The baseline economy produces a large dividend-return volatility ($\sigma_{R,D}=22.55\%$) and a sizable price impact ($\hat{b}_1=6.85$), reflecting limited aggregate risk-bearing capacity.
+% Turning off leverage constraints while keeping preference heterogeneity (the ``heterogeneous, unconstrained'' column) still generates a substantial price impact of $4.91$ and a return volatility of $17.0\%$.
+% Heterogeneity alone therefore delivers roughly three-quarters of the baseline price impact through state-dependent risk sharing.
+% Once preference heterogeneity is also removed (the ``homogeneous, unconstrained'' column), return volatility collapses to $3.9\%$ and the price impact falls to $0.10$, values near zero and consistent with the frictionless limit.
 
-The next two experiments vary the size of the passive sector and trace out the two sides of the misallocation channel.
-When $\overline{\alpha}=1$, passive demand is at the level that would be optimal in the homogeneous-preferences economy, constraints and heterogeneity are effectively muted, and the price impact nearly vanishes ($0.25$).
-Reducing $\overline{\alpha}$ to $0.23$ forces the active sector to absorb a much larger share of fundamental risk.
-The unconditional price impact of the dividend claim remains only modestly below the baseline ($4.52$), but the price impact of the endowment claim roughly doubles ($1.20$ versus $0.57$).
-Decorrelating passive flows from fundamentals ($\nu=0$) flips the sign of the dividend-claim price impact.
-Because flows are no longer informative about aggregate risk, pure flow-driven trading pushes prices in the opposite direction of fundamentals, as in the flow-driven risk literature \citep{Deuskar/Johnson/2011}.
+% The next two experiments vary the size of the passive sector and trace out the two sides of the misallocation channel.
+% When $\overline{\alpha}=1$, passive demand is at the level that would be optimal in the homogeneous-preferences economy, constraints and heterogeneity are effectively muted, and the price impact nearly vanishes ($0.25$).
+% Reducing $\overline{\alpha}$ to $0.23$ forces the active sector to absorb a much larger share of fundamental risk.
+% The unconditional price impact of the dividend claim remains only modestly below the baseline ($4.52$), but the price impact of the endowment claim roughly doubles ($1.20$ versus $0.57$).
+% Decorrelating passive flows from fundamentals ($\nu=0$) flips the sign of the dividend-claim price impact.
+% Because flows are no longer informative about aggregate risk, pure flow-driven trading pushes prices in the opposite direction of fundamentals, as in the flow-driven risk literature \citep{Deuskar/Johnson/2011}.
 
-These results complement two closely related strands of the recent literature.
+
+\paragraph{Passive demand and market elasticity.} These results complement two closely related strands of the recent literature.
 \citet{HHM/2021} derive strong restrictions on how market elasticity should respond to changes in the mass of passive investors under competitive price-taking, and show that the empirical response is inconsistent with a fully competitive market.
 This points to limits on intermediation and on effective risk-bearing capacity.
 Our ``low passive share'' and ``homog.-optimal passive'' experiments provide a structural counterpart: moving along the $\overline{\alpha}$ dimension traces out how aggregate price impact depends on the size of the passive sector, and the non-monotonic response of return volatility across columns indicates that a larger passive sector need not raise price impact once the active sector is near its efficient portfolio.
