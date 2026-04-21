@@ -1692,20 +1692,9 @@ Consistent with this evidence, our counterfactuals show that reducing this corre
 % A larger and more inelastic passive sector concentrates aggregate risk on the active sector, and the interaction of heterogeneous risk aversion with leverage constraints amplifies flow shocks into large, state-dependent price movements, even when expectations are rational.
 % Heterogeneity and frictions thus appear to be the central ingredients for matching the price-impact and volatility facts.
 
-\FloatBarrier
-
-\begin{figure}[!t]
-    \centering
-    \includegraphics[width=0.95\linewidth]{figures/xu_xc_price_impact_off_equilibrium.png}
-    \caption{\textbf{Conditional price impact.}\\
-    Model-implied price impact of the dividend claim evaluated off the ergodic mean.
-    In each panel, $\overline{\alpha}_{p,t}$ and $s_t$ are fixed at their unconditional means and one wealth-share coordinate is varied.
-    Conditional price impact is computed as the change in $\log(P/D)$ per unit of passive-flow shock, where the shock is propagated one quarter forward through the state-variable dynamics.}
-    \label{fig:price_impact_dynamic}
-\end{figure}
-
 \subsection{Return predictability and the variance of the price--dividend ratio}\label{sec:predictability}
 
+We have seen how price impact and return volatility are closely related in our economy.
 We next examine the predictive relationship between the price--dividend ratio and future excess returns in the simulated economy.
 Figure~\ref{fig:return_predictability} plots cumulative future excess returns against the current $P/D$ ratio, and Table~\ref{tab:return_predictability} reports the corresponding predictive-regression coefficient
 \[
@@ -1736,6 +1725,33 @@ which we evaluate at a $40$-quarter horizon.
 In the baseline economy $\beta_r = 1.16$, so essentially all of the variation in the $P/D$ ratio is driven by expected returns.
 The cash-flow component actually \emph{offsets} rather than reinforces $pd_t$: because the dividend share is positively correlated with aggregate fundamentals, expected future dividend growth is higher precisely when $pd_t$ is low, producing a negative cash-flow covariance that mechanically pushes $\beta_r$ above one.
 
+\begin{table}[!t]
+    \centering
+    \begin{tabular}{@{}lcc@{}}
+        \toprule
+        & \multicolumn{2}{c}{\textit{Dependent variable: }$\sum_{k=1}^{4}(r_{t+k}-r_t)$} \\
+        \cmidrule(lr){2-3}
+        & (1) & (2) \\
+        & Full sample & Bad states \\
+        \midrule
+        Price--dividend ratio, $(P/D)_t$ & $-0.050$ & $-0.120$ \\
+                                          & $(0.0005)$ & $(0.0048)$ \\
+        \addlinespace
+        $R^2$                             & $0.19$  & $0.06$  \\
+        Observations                      & $79{,}120$ & $19{,}780$ \\
+        \midrule
+        Bad-state threshold               & \multicolumn{2}{c}{$(P/D)_t < 25$th percentile} \\
+        \bottomrule
+    \end{tabular}
+    \vspace{2mm}
+    \captionsetup{font=footnotesize}
+    \caption{\textbf{Return predictability regression.}\\
+    This table reports OLS estimates of the predictive regression $\sum_{k=1}^{T} r_{t+k}-r_t = a + b\,(P/D)_t + \varepsilon_{t+T}$, where $T=4$ quarters, estimated on a $1{,}000$-year monthly simulation of the calibrated baseline economy.
+    Column~(1) uses the full sample.
+    Column~(2) restricts to ``bad states'' in which $(P/D)_t$ lies below the $25$th percentile of its long-run distribution.
+    Standard errors are in parentheses.}\label{tab:return_predictability}
+    \end{table}
+
 The counterfactuals show that this pattern comes from heterogeneity and frictions.
 In the homogeneous, unconstrained economy $\beta_r = -0.02$, so variation in $pd_t$ reflects cash flows and not discount rates.
 Removing only leverage constraints leaves $\beta_r = 1.24$, close to the baseline, so heterogeneous risk aversion alone is enough to deliver discount-rate-dominated variation in $pd_t$.
@@ -1749,32 +1765,17 @@ Our counterfactuals make this duality sharp.
 Economies in which heterogeneity or leverage constraints bind simultaneously deliver large return volatility, a sizable price impact, and a predictive slope on $(P/D)_t$ close to the data, whereas the frictionless counterfactuals deliver low return volatility, a negligible price impact, and $\beta_r\approx 0$.
 Matching the empirical excess-volatility and predictability facts therefore requires heterogeneity and frictions in the active sector, not just time variation in fundamentals or beliefs.
 
-\begin{table}[!t]
-\centering
-\resizebox{0.65\textwidth}{!}{
-    \begin{tabular}{@{}lcc@{}}
-    \toprule
-    Dependent variable: & \multicolumn{2}{c}{Cumulative excess return, $\sum_{k=1}^{4} r_{t+k}-r_t$} \\
-    Sample: & Full & Bad state \\
-    \midrule
-    $(P/D)_t$ & $-0.05$ & $-0.12$ \\
-              & $(0.0005)$ & $(0.0048)$ \\
-    \midrule
-    $R^2$        & $0.19$  & $0.06$  \\
-    Observations & $79{,}120$ & $19{,}780$ \\
-    \bottomrule
-    \end{tabular}
-    }
-\vspace{2mm}
-\captionsetup{font=footnotesize}
-\caption{\textbf{Return predictability regression.}\\
-This table reports OLS estimates of the predictive regression $\sum_{k=1}^{T} r_{t+k}-r_t = a + b\,(P/D)_t + \varepsilon_{t+T}$, where $T=4$ quarters, estimated on a $1{,}000$-year monthly simulation of the calibrated baseline economy.
-Column~(1) uses the full sample.
-Column~(2) restricts to ``bad states'' in which $(P/D)_t$ lies below the $25$th percentile of its long-run distribution.
-Standard errors are in parentheses.}\label{tab:return_predictability}
-\end{table}
-
 \FloatBarrier
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=0.95\linewidth]{figures/xu_xc_price_impact_off_equilibrium.png}
+    \caption{\textbf{Conditional price impact.}\\
+    Model-implied price impact of the dividend claim evaluated off the ergodic mean.
+    In each panel, $\overline{\alpha}_{p,t}$ and $s_t$ are fixed at their unconditional means and one wealth-share coordinate is varied.
+    Conditional price impact is computed as the change in $\log(P/D)$ per unit of passive-flow shock, where the shock is propagated one quarter forward through the state-variable dynamics.}
+    \label{fig:price_impact_dynamic}
+\end{figure}
 
 \subsection{Conditional price impact and dynamics}\label{sec:cond-price-impact}
 
