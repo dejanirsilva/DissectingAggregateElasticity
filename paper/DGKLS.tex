@@ -1550,7 +1550,7 @@ The resulting series replicates the quarterly flows in their Figure~D.7.
 The persistence $\theta_p$ is informed by evidence on household portfolio inertia.
 Using PSID data, \citet{brunnermeier2008wealth} regress the actual change in the household risky-asset share on a counterfactual change that assumes no rebalancing, and find an inertia coefficient near $0.75$, implying that portfolio shares adjust slowly to capital gains and to flow-induced changes in wealth.\footnote{\citet{parker2023retail} show that the adoption of target-date funds has further stabilized household portfolio shares.}
 We choose $\theta_p$ so that the half-life of the passive-demand process in the simulated model matches the half-life implied by this inertia coefficient.
-Finally, we estimate the loading $\nu$ of passive-flow shocks on the aggregate shock indirectly by regressing the quarterly passive-flow series on contemporaneous market returns.
+Finally, we estimate the loading $\nu_p = \frac{\sigma \sigma_p^\top}{\|\sigma\| \|\sigma_p\|}$ of passive-flow shocks on the aggregate shock indirectly by regressing the quarterly passive-flow series on contemporaneous market returns.
 This yields a model-implied correlation between flows and returns of $0.005$, close to the empirical value of $0.011$.
 
 \begin{table}[!t]
@@ -1640,11 +1640,11 @@ We vary one parameter at a time, holding all others fixed at their baseline valu
 
 The baseline economy (column~1) simultaneously delivers a large price impact, a sizable risk premium, and high return volatility, consistent with the data.
 Removing the leverage constraint (column~2) reduces the price impact to $4.91$ and attenuates both the risk premium and return volatility, but these remain substantial.
-Eliminating preference heterogeneity (column~3) reduces the price impact sharply to $0.10$, implying near-perfect market elasticity.
+Eliminating preference heterogeneity (column~3) reduces the price impact sharply to $0.10$, implying a very large market elasticity.
 In this case, excess volatility disappears and the model generates only a modest risk premium.
 
 The next two counterfactuals vary passive demand.
-Setting $\overline{\alpha}=1$ (column~4) raises the passive sector’s exposure to risk and reduces the degree of risk misallocation, lowering the price impact to $0.25$.
+Setting $\overline{\alpha}=1$ (column~4) raises the passive sector's exposure to risk and reduces the degree of risk misallocation, lowering the price impact to $0.25$.
 Reducing the mass of passive investors (column~5), by setting $\omega_0=0.25$ and $\omega_1=0.75$, also lowers the price impact to $4.52$, along with the risk premium and return volatility.
 
 Finally, when passive flows are uncorrelated with fundamentals (column~6), so that $\sigma\sigma_p^\top=0$, the model generates a small price impact for the dividend claim, with the opposite sign.
@@ -1692,38 +1692,42 @@ Consistent with this evidence, our counterfactuals show that reducing this corre
 % A larger and more inelastic passive sector concentrates aggregate risk on the active sector, and the interaction of heterogeneous risk aversion with leverage constraints amplifies flow shocks into large, state-dependent price movements, even when expectations are rational.
 % Heterogeneity and frictions thus appear to be the central ingredients for matching the price-impact and volatility facts.
 
+% --- Polished and tightened version ---
 \subsection{Return predictability and the variance of the price--dividend ratio}\label{sec:predictability}
 
-We have seen how price impact and return volatility are closely related in our economy.
-We next examine the predictive relationship between the price--dividend ratio and future excess returns in the simulated economy.
-Figure~\ref{fig:return_predictability} plots cumulative future excess returns against the current $P/D$ ratio, and Table~\ref{tab:return_predictability} reports the corresponding predictive-regression coefficient
+We have established that price impact and return volatility are tightly linked in our economy. 
+As highlighted in the asset pricing literature (e.g.,~\citealt{cochrane1992explaining}), excess volatility is closely associated with fluctuations in discount rates. 
+This connection suggests that portfolio flows are central to understanding discount-rate dynamics.
+
+When markets are inelastic, portfolio flows induce large swings in the price--dividend ratio that are not driven by changes in expected dividend growth, leading to shifts in discount rates. 
+As a result, the price--dividend ratio becomes a strong predictor of future expected returns. 
+We examine this implication in our simulated economy.
+
+
+Figure~\ref{fig:return_predictability} plots cumulative future excess returns against the current $P/D$ ratio, while Table~\ref{tab:return_predictability} reports the predictive regression coefficient from
 \[
     \sum_{k=1}^{T} r_{t+k} - r_t = a + b\,(P/D)_t + \varepsilon_{t+T},\qquad T=4\text{ quarters},
 \]
-estimated both on the full sample and on the subsample of ``bad states'' in which $(P/D)_t$ lies below its $25$th percentile.
-The slope is negative in both cases, and it is roughly $2.5$ times larger in magnitude in bad states.
-This pattern is consistent with countercyclical risk premia: when the $P/D$ ratio is depressed, expected returns are high, and the $P/D$ ratio is correspondingly more informative about future returns.
+estimated both on the full sample and on the subsample of ``bad states'' where $(P/D)_t$ falls below its $25$th percentile. In both cases, the slope is negative, and its magnitude is about $2.5$ times larger in bad states. This is consistent with countercyclical risk premia: when the $P/D$ ratio is low, expected returns are high, and the $P/D$ ratio is especially informative about future returns.
 
 \begin{figure}[!t]
     \centering
-    \includegraphics[width=0.6\linewidth]{figures/return_predictability.png}
+    \includegraphics[width=0.75\linewidth]{figures/return_predictability.png}
     \caption{\textbf{Return predictability.}\\
     Scatter of cumulative future excess returns ($T=4$ quarters) against the current price--dividend ratio in the simulated baseline economy.
-    Blue dots correspond to normal states and red dots to bad states defined as $(P/D)_t$ below the $25$th percentile of its long-run mean.
-    Lines are the corresponding OLS fits.}\label{fig:return_predictability}
+    Blue dots denote normal states; red dots denote bad states with $(P/D)_t$ below the $25$th percentile of its long-run distribution.
+    Lines show the corresponding OLS fits.}\label{fig:return_predictability}
 \end{figure}
 
-Following \citet{campbell1988dividend} and \citet{cochrane2011presidential}, we decompose the unconditional variance of $pd_t \equiv \log(P/D)_t$ into a discount-rate component and a cash-flow component,
+To quantify the sources of price--dividend ratio fluctuations, we follow \citet{campbell1988dividend} and \citet{cochrane2011presidential} in decomposing the unconditional variance of $pd_t \equiv \log(P/D)_t$ into discount-rate and cash-flow components:
 \begin{equation}\label{eq:cs_decomp}
-    \var(pd_t) \;=\; \cov\!\left(pd_t,\; \sum_{k=1}^{\infty}\rho^{k-1}\Delta d_{t+k}\right) \;-\; \cov\!\left(pd_t,\; \sum_{k=1}^{\infty}\rho^{k-1} r_{t+k}\right).
+    \var(pd_t) = \cov\!\left(pd_t,\, \sum_{k=1}^{\infty}\rho^{k-1}\Delta d_{t+k}\right) - \cov\!\left(pd_t,\, \sum_{k=1}^{\infty}\rho^{k-1} r_{t+k}\right).
 \end{equation}
-Dividing through by $\var(pd_t)$ yields the discount-rate share
+Dividing by $\var(pd_t)$ yields the discount-rate share
 \[
-    \beta_r \;=\; -\,\frac{\cov\!\left(pd_t,\sum_{k=1}^{\infty}\rho^{k-1} r_{t+k}\right)}{\var(pd_t)},
+    \beta_r = -\,\frac{\cov\!\left(pd_t,\sum_{k=1}^{\infty}\rho^{k-1} r_{t+k}\right)}{\var(pd_t)},
 \]
-which we evaluate at a $40$-quarter horizon.
-In the baseline economy $\beta_r = 1.16$, so essentially all of the variation in the $P/D$ ratio is driven by expected returns.
-The cash-flow component actually \emph{offsets} rather than reinforces $pd_t$: because the dividend share is positively correlated with aggregate fundamentals, expected future dividend growth is higher precisely when $pd_t$ is low, producing a negative cash-flow covariance that mechanically pushes $\beta_r$ above one.
+which we evaluate at a $40$-quarter horizon. In the baseline economy, $\beta_r = 1.16$, indicating that nearly all variation in the $P/D$ ratio is attributable to expected returns. Notably, the cash-flow component \emph{offsets} $pd_t$: because the dividend share is positively correlated with fundamentals, expected future dividend growth is higher when $pd_t$ is low, generating a negative cash-flow covariance and pushing $\beta_r$ above one.
 
 \begin{table}[!t]
     \centering
@@ -1746,24 +1750,18 @@ The cash-flow component actually \emph{offsets} rather than reinforces $pd_t$: b
     \vspace{2mm}
     \captionsetup{font=footnotesize}
     \caption{\textbf{Return predictability regression.}\\
-    This table reports OLS estimates of the predictive regression $\sum_{k=1}^{T} r_{t+k}-r_t = a + b\,(P/D)_t + \varepsilon_{t+T}$, where $T=4$ quarters, estimated on a $1{,}000$-year monthly simulation of the calibrated baseline economy.
-    Column~(1) uses the full sample.
-    Column~(2) restricts to ``bad states'' in which $(P/D)_t$ lies below the $25$th percentile of its long-run distribution.
-    Standard errors are in parentheses.}\label{tab:return_predictability}
-    \end{table}
+    OLS estimates of the predictive regression $\sum_{k=1}^{T} r_{t+k}-r_t = a + b\,(P/D)_t + \varepsilon_{t+T}$ ($T=4$ quarters), based on a $1{,}000$-year monthly simulation of the calibrated baseline economy.
+    Column~(1): full sample.
+    Column~(2): ``bad states'' with $(P/D)_t$ below the $25$th percentile.
+    Standard errors in parentheses.}\label{tab:return_predictability}
+\end{table}
 
-The counterfactuals show that this pattern comes from heterogeneity and frictions.
-In the homogeneous, unconstrained economy $\beta_r = -0.02$, so variation in $pd_t$ reflects cash flows and not discount rates.
-Removing only leverage constraints leaves $\beta_r = 1.24$, close to the baseline, so heterogeneous risk aversion alone is enough to deliver discount-rate-dominated variation in $pd_t$.
-Setting $\overline{\alpha}=1$ yields $\beta_r = -0.21$: at this level passive demand would be optimal under homogeneous preferences with no frictions, so there are no state-dependent movements in the price of risk, and $pd_t$ again reflects cash flows.
-The large $\beta_r$ in the baseline is thus a consequence of the frictions, not of the passive-demand process in isolation.
-These magnitudes are in line with the empirical findings in \citet{cochrane2011presidential}, whose Table~II shows that $\beta_r$ exceeds unity for aggregate U.S. equities and that cash-flow news contributes little or nothing to the variance of $pd_t$.
+Counterfactuals reveal that this pattern is driven by heterogeneity and frictions. Table~\ref{tab:counterfactual_comparison} shows that removing leverage constraints leaves $\beta_r = 1.24$, similar to the baseline. Eliminating preference heterogeneity collapses $\beta_r$ to $-0.02$, so variation in $pd_t$ is then driven by cash flows, not discount rates. Setting $\overline{\alpha}=1$, which reduces risk misallocation, yields $\beta_r = -0.21$ and much lower price impact. Similarly, decreasing the mass of passive investors or the correlation between passive demand and fundamentals lowers both price impact and $\beta_r$. Thus, the large value of $\beta_r$ is a consequence of the interaction between frictions and movements in passive demand. These magnitudes are consistent with empirical evidence from \citet{cochrane2011presidential}, who finds that discount-rate variation dominates movements in valuation ratios for U.S. equities.
 
-The accounting identity in~\eqref{eq:cs_decomp} also connects the predictability of returns to the volatility of prices.
-The ``excess volatility'' puzzle documented by \citet{shiller1981} and \citet{leroy1981present}, under which prices are too volatile to be justified by subsequent dividends, is mechanically the same fact as return predictability: if $\beta_r$ is close to one, then almost all of the observed variance of $pd_t$ must show up in predictable movements in future returns.
-Our counterfactuals make this duality sharp.
-Economies in which heterogeneity or leverage constraints bind simultaneously deliver large return volatility, a sizable price impact, and a predictive slope on $(P/D)_t$ close to the data, whereas the frictionless counterfactuals deliver low return volatility, a negligible price impact, and $\beta_r\approx 0$.
-Matching the empirical excess-volatility and predictability facts therefore requires heterogeneity and frictions in the active sector, not just time variation in fundamentals or beliefs.
+These results underscore a demand-based explanation for the excess-volatility puzzle of \citet{shiller1981} and \citet{leroy1981present}. In line with the inelastic market hypothesis of \citet{gabaix2020search}, even modest portfolio flows can generate pronounced price fluctuations and predictable returns. 
+We show this is the case even in economies where interest rates can endogenously respond to portfolio flows in economies with frictions.
+In particular, only economies with sufficiently inelastic markets can jointly match the observed levels of return volatility, price impact, and return predictability. This highlights the importance of modeling market inelasticity to account for key macro-finance moments.
+% Matching the empirical excess-volatility and predictability facts therefore requires heterogeneity and frictions in the active sector, not just time variation in fundamentals or beliefs.
 
 \FloatBarrier
 
@@ -1796,12 +1794,13 @@ The large unconditional $\beta_r$ in Table~\ref{tab:counterfactual_comparison} i
 
 \subsection{Takeaways}\label{sec:takeaways}
 
-The quantitative exercise delivers three main messages.
-A calibration disciplined by sectoral FoF data and passive equity flows matches the level of the aggregate price impact, the volatility of dividend-claim returns, and the level of the risk premium.
-Preference heterogeneity is quantitatively central: it alone accounts for roughly three-quarters of the baseline price impact and produces a discount-rate-dominated variance decomposition of the $P/D$ ratio, even when leverage constraints are slack.
-Leverage constraints and a below-efficient passive share are complementary amplifiers that operate through state-dependent risk sharing.
-Finally, the excess-volatility puzzle and return predictability are two sides of the same coin in our economy.
-The same frictions that raise aggregate price impact are the ones that push $\beta_r$ above one, consistent with \citet{cochrane2011presidential}, and counterfactuals that eliminate heterogeneity or shift $\overline{\alpha}$ to its optimum under homogeneous preferences collapse all three facts at once.
+Three central results emerge from the quantitative analysis.
+First, when calibrated to sectoral FoF holdings and passive equity flows, the model jointly matches aggregate price impact, the volatility of dividend-claim returns, and the risk premium.
+Second, heterogeneity and risk misallocation are essential for matching the asset-pricing moments.
+Removing either preference heterogeneity or risk misallocation collapses price impact, return volatility, and return predictability. 
+Third, leverage constraints further amplify these effects by tightening risk-sharing when risk-bearing capacity is low.
+Finally, the model delivers a demand-based explanation of the excess-volatility puzzle and return predictability, based on how portfolio flows interact with inelastic markets. 
+% The same frictions that raise price impact also drive the discount-rate share $\beta_r$ above one; eliminating heterogeneity or moving $\overline{\alpha}$ to its optimal value collapses all three facts together.
 
 
 

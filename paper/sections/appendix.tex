@@ -2098,7 +2098,11 @@ with coefficients
 \]
 
 
-\section{Numerical methodology}
+\section{Flow of Funds aggregation}\label{app:fof_aggregation}
+
+This appendix describes the procedure used in Section~\ref{sec:calibration} to aggregate Flow of Funds (FoF) sectors into the three ultimate sectors of the model: passive, constrained active, and unconstrained active. We follow the aggregation in \citet{koijen2024investors}, drop sectors with no or minimal equity holdings, and route pass-through vehicles to their ultimate end investors. ETFs (L.124) and closed-end funds (L.123) are aggregated onto the household balance sheet (L.101); mutual-fund holdings (L.122) are split across end investors using the FoF's breakdown, with the household portion kept separate. Defined-contribution pensions (L.118c, L.119c, L.120c) are routed to households. Hedge funds are separated out using Table~B.101.f for domestic funds and the Enhanced Financial Accounts for foreign funds, and the corresponding holdings are subtracted from the household (L.101) and rest-of-the-world (L.133) balance sheets. The remaining insurance and pension sectors (L.115, L.116, L.118b, L.119b, L.120b) are aggregated into a single long-horizon sector. The three ultimate sectors correspond, respectively, to \emph{passive} (households and non-profits net of hedge funds, government, monetary authority, and money-market funds), \emph{constrained} (hedge funds, broker-dealers, and other short-horizon intermediaries), and \emph{unconstrained} (insurance, pensions, and rest-of-the-world net of hedge funds).
+
+\section{Numerical methodology}\label{app:numerical}
 This appendix describes the numerical procedure used to solve the dynamic model in Section \ref{sec:model}.
 We follow a two-step strategy where we first solve a `simplified' model with an aggregate claim in positive net supply and a derivative security in zero net supply.
 In the second step (valuation step), we solve the valuation equation for the dividend and risky debt claims.
