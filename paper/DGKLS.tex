@@ -361,43 +361,31 @@ By contrast, our framework highlights wealth effects as a distinct channel throu
 
 \section{A Dynamic Asset Pricing Model with Passive Investors}\label{sec:model}
 
-This section develops a dynamic heterogeneous-agent asset pricing model that provides a micro-founded demand system.
-Building on the framework of Section~\ref{sec:simple}, the economy features both passive and active investors, but now embeds their behavior in a fully dynamic general equilibrium setting.
+We now develop a dynamic heterogeneous-agent asset pricing model that provides a micro-founded demand system.
+The economy extends the framework of Section~\ref{sec:simple} by embedding passive and active investors in a full general-equilibrium setting.
 
-Passive investors hold exogenously specified, stochastic portfolio shares in risky assets. 
-Shocks to their portfolio share generate portfolio-flow (i.e., noisy trading) shocks imperfectly correlated with cash-flow shocks, so the economy is driven by both fundamental and non-fundamental demand disturbances.
+Passive investors hold exogenously specified, stochastic portfolio shares in risky assets.
+Shocks to these portfolio shares generate portfolio flow (i.e., noise trading) shocks that are imperfectly correlated with cash flow shocks, so the economy is driven by both fundamental and non-fundamental demand shocks.
 Active investors, in contrast, optimally rebalance their portfolios subject to financial frictions.
-There are two types of active investors with different risk aversion: a high risk-aversion (unconstrained) investor and a low risk-aversion investor subject to a leverage constraint.
+We model two types of active investors that differ in risk aversion: a high risk aversion (unconstrained) investor and a low risk aversion investor subject to a leverage constraint.
 
-A key extension relative to the simple model is that investors trade two distinct claims—a \emph{dividend claim} (equity) and a \emph{risky corporate bond}—whose payoffs sum to the aggregate endowment.
-Explicitly modeling the dividend process allows us to study the response of equity prices to portfolio flows, instead of focusing on the aggregate claim.
-% As we show below, this distinction is central: while the aggregate claim remains highly elastic, the dividend claim exhibits large price impact, consistent with the data.
-As we show below, this distinction is central, as the price impact for the dividend claim can differ substantially from the price impact for the aggregate claim.
+Unlike in the simple model in Section~\ref{sec:simple}, investors now trade two distinct claims, a \emph{dividend claim} (equity) and a \emph{risky corporate bond}, whose payoffs sum to the aggregate endowment.
+Modeling the dividend process explicitly lets us study the response of equity prices, rather than of the aggregate claim, to portfolio flows.
+As we show below, this distinction is essential: the price impact of the dividend claim differs substantially from that of the aggregate claim and is the key to matching the data.
 
-% \section{A Dynamic Asset Pricing Model with Passive Investors}\label{sec:model}
 
 % This section develops a dynamic heterogeneous-agent asset pricing model that provides a micro-founded demand system.
 % Building on the framework of Section~\ref{sec:simple}, the economy features both passive and active investors, but now embeds their behavior in a fully dynamic general equilibrium setting.
 
 % Passive investors hold exogenously specified, stochastic portfolio shares in risky assets. 
-% Shocks to their portfolio share generate portfolio-flow (i.e., noisy trading) shocks that are imperfectly correlated with cash-flow shocks, so the economy is driven by both fundamental and non-fundamental demand disturbances.
-% Active investors, in contrast, continuously rebalance their portfolios subject to financial frictions.
+% Shocks to their portfolio share generate portfolio-flow (i.e., noisy trading) shocks imperfectly correlated with cash-flow shocks, so the economy is driven by both fundamental and non-fundamental demand disturbances.
+% Active investors, in contrast, optimally rebalance their portfolios subject to financial frictions.
 % There are two types of active investors with different risk aversion: a high risk-aversion (unconstrained) investor and a low risk-aversion investor subject to a leverage constraint.
 
-% Relative to the simple model, we allow investors to trade two distinct claims—a \emph{dividend claim} (equity) and a \emph{risky corporate bond}—whose payoffs sum to the aggregate endowment.
+% A key extension relative to the simple model is that investors trade two distinct claims—a \emph{dividend claim} (equity) and a \emph{risky corporate bond}—whose payoffs sum to the aggregate endowment.
 % Explicitly modeling the dividend process allows us to study the response of equity prices to portfolio flows, instead of focusing on the aggregate claim.
-% As we show below, the market elasticity of the dividend claim can differ substantially from the market elasticity of the aggregate claim.
+% As we show below, this distinction is central, as the price impact for the dividend claim can differ substantially from the price impact for the aggregate claim.
 
-% A representative firm finances its operations by issuing two types of claims: a \emph{dividend claim} (equity) and a \emph{risky corporate bond}, whose payoffs sum to the aggregate endowment.
-% To capture the well-documented fact that dividends are more volatile than consumption (see, e.g., \citealt{Abel1999LeverageDividends}; \citealt{Campbell1999AssetPrices}), we follow \citet{MenzlySantosVeronesi2004} and model the dividend as a mean-reverting stochastic share of output.
-% In addition, investors can trade a derivative in zero net supply.
-% The derivative plays a key role: by spanning the non-traded Brownian factor, it allows investors to achieve their desired risk exposures without taking asymmetric positions in the individual claims, and is therefore essential for the mutual fund theorem described below.
-
-% A central result of this section is a \emph{mutual fund theorem}: despite access to separate equity and debt claims, all investors optimally hold these claims in proportion to their market-capitalization weights.
-% Because the derivative completes markets with respect to the priced sources of risk, investors can adjust their exposure to the non-dividend-share factor through the derivative alone, and optimally hold the risky claims at market-cap weights.
-% Consequently, the aggregate equilibrium, including the risk-free rate, risk premia, wealth dynamics, and the stochastic discount factor, is identical to that of an economy with a single claim on aggregate output.
-% This separation implies that the perturbation analysis of Section~\ref{sec:elasticity} applies directly to the aggregate equilibrium derived here.
-% Individual claim prices are then obtained by solving an auxiliary valuation equation, conditional on the aggregate equilibrium.
 
 
 \subsection{Environment}
@@ -772,13 +760,10 @@ where $h_{a,t} = \sum_{j=1}^2 \frac{x_{j,t}}{x_{a,t}} \frac{1-\gamma_j^{-1}}{\ps
 \end{equation}
 
 Equation~\eqref{eq:market_price_of_risk} shows that the market price of risk is determined by three forces.
-
 First, the average effective risk aversion of active investors, $\gamma_{a,t}$.
 This varies over time with the wealth distribution and the extent to which leverage constraints bind.
-
 Second, the net supply of risk to active investors, captured by $\chi_{a,t}\sigma_{R_Y,t}$.
 As passive investors increase their holdings of the market index, the amount of risk that must be absorbed by active investors falls, reducing the compensation for risk.
-
 Third, the average hedging demand of active investors, $h_{a,t}$.
 Higher hedging demand implies active investors are willing to bear more risk, lowering the equilibrium compensation for risk.
 
@@ -1487,7 +1472,7 @@ Appendix~\ref{app:numerical} describes the numerical procedure in detail.
 
 We aggregate Flow of Funds (FoF) sectors into three ultimate sectors: a passive sector, a constrained active sector, and an unconstrained active sector.\footnote{We follow the aggregation in \citet{koijen2024investors}.
 Appendix~\ref{app:fof_aggregation} describes the sector mapping and the treatment of pass-through vehicles in detail.}
-The passive sector is modeled as an exogenous CIR process for the portfolio share $\overline{\alpha}_{p,t}$ in Equation~\eqref{eq:alpha_p_process}.
+The passive sector is modeled as an exogenous Ornstein-Uhlenbeck process for the portfolio share $\overline{\alpha}_{p,t}$ in Equation~\eqref{eq:alpha_p_process}.
 The two active sectors differ both in risk aversion and in whether they are subject to the leverage constraint.
 Table~\ref{tab:calib} reports the calibrated parameter values, and the next subsection describes the moments used to discipline them.
 
@@ -1667,7 +1652,7 @@ These results highlight that matching both price impact and asset-pricing moment
     \textit{Low passive population share} reduces the passive sector mass (via a lower $\omega_0$) while increasing the mass of the unconstrained sector.
     \textit{Flows uncorrelated with fundamentals} sets $\nu_p=0$, so passive-demand shocks are orthogonal to fundamentals.
     All other parameters are as in Table~\ref{tab:calib}.
-    Price impact $(Y)$ and $(D)$ denote the slope of the regression in equation~\eqref{eq:price_impact_regression} for the endowment and dividend claim, respectively.
+    Price impacts PI ($Y$) and PI ($D$) denote the slope of the regression in equation~\eqref{eq:price_impact_regression} for the endowment and dividend claim, respectively.
     Conditional price impact restricts the regression to ``bad states'' in which $(P/D)_t$ is below its $25$th percentile.
     The discount-rate coefficient $\beta_r$ reports the share of the variance of the log price--dividend ratio attributable to discount-rate news at a $40$-quarter horizon.
     The variable $\Gamma$ reports the unconditional mean of the wealth-weighted harmonic mean of the risk aversion parameters.
@@ -1695,20 +1680,33 @@ Consistent with this evidence, our counterfactuals show that reducing this corre
 % --- Polished and tightened version ---
 \subsection{Return predictability and the variance of the price--dividend ratio}\label{sec:predictability}
 
-We have established that price impact and return volatility are tightly linked in our economy. 
-As highlighted in the asset pricing literature (e.g.,~\citealt{cochrane1992explaining}), excess volatility is closely associated with fluctuations in discount rates. 
-This connection suggests that portfolio flows are central to understanding discount-rate dynamics.
+The tight link between price impact and return volatility documented above has a natural counterpart in the literature.
+Since \citet{cochrane1992explaining}, excess volatility has been understood as reflecting variation in discount rates rather than in expected cash flows.
+In an inelastic market, portfolio flows move the price--dividend ratio without changing expected dividend growth, so the resulting variation must be absorbed by expected returns.
+The $P/D$ ratio should therefore forecast future excess returns, with a slope that is itself informative about market inelasticity.
+We examine this prediction in the simulated baseline economy.
+% We have established that price impact and return volatility are tightly linked in our economy. 
+% As highlighted in the asset pricing literature (e.g.,~\citealt{cochrane1992explaining}), excess volatility is closely associated with fluctuations in discount rates. 
+% This connection suggests that portfolio flows are central to understanding discount-rate dynamics.
 
-When markets are inelastic, portfolio flows induce large swings in the price--dividend ratio that are not driven by changes in expected dividend growth, leading to shifts in discount rates. 
-As a result, the price--dividend ratio becomes a strong predictor of future expected returns. 
-We examine this implication in our simulated economy.
+% When markets are inelastic, portfolio flows induce large swings in the price--dividend ratio that are not driven by changes in expected dividend growth, leading to shifts in discount rates. 
+% As a result, the price--dividend ratio becomes a strong predictor of future expected returns. 
+% We examine this implication in our simulated economy.
 
 
-Figure~\ref{fig:return_predictability} plots cumulative future excess returns against the current $P/D$ ratio, while Table~\ref{tab:return_predictability} reports the predictive regression coefficient from
+Figure~\ref{fig:return_predictability} plots cumulative future excess returns against the current $P/D$ ratio.
+Table~\ref{tab:return_predictability} reports the corresponding predictive regression
 \[
     \sum_{k=1}^{T} r_{t+k} - r_t = a + b\,(P/D)_t + \varepsilon_{t+T},\qquad T=4\text{ quarters},
 \]
-estimated both on the full sample and on the subsample of ``bad states'' where $(P/D)_t$ falls below its $25$th percentile. In both cases, the slope is negative, and its magnitude is about $2.5$ times larger in bad states. This is consistent with countercyclical risk premia: when the $P/D$ ratio is low, expected returns are high, and the $P/D$ ratio is especially informative about future returns.
+estimated on the full sample and on ``bad states'' in which $(P/D)_t$ falls below its $25$th percentile.
+The slope is negative in both samples and about $2.5$ times larger in magnitude in bad states.
+Risk premia are therefore countercyclical: when the $P/D$ ratio is low, expected returns are high, and the $P/D$ ratio is especially informative about them.
+% Figure~\ref{fig:return_predictability} plots cumulative future excess returns against the current $P/D$ ratio, while Table~\ref{tab:return_predictability} reports the predictive regression coefficient from
+% \[
+%     \sum_{k=1}^{T} r_{t+k} - r_t = a + b\,(P/D)_t + \varepsilon_{t+T},\qquad T=4\text{ quarters},
+% \]
+% estimated both on the full sample and on the subsample of ``bad states'' where $(P/D)_t$ falls below its $25$th percentile. In both cases, the slope is negative, and its magnitude is about $2.5$ times larger in bad states. This is consistent with countercyclical risk premia: when the $P/D$ ratio is low, expected returns are high, and the $P/D$ ratio is especially informative about future returns.
 
 \begin{figure}[!t]
     \centering
@@ -1719,15 +1717,27 @@ estimated both on the full sample and on the subsample of ``bad states'' where $
     Lines show the corresponding OLS fits.}\label{fig:return_predictability}
 \end{figure}
 
-To quantify the sources of price--dividend ratio fluctuations, we follow \citet{campbell1988dividend} and \citet{cochrane2011presidential} in decomposing the unconditional variance of $pd_t \equiv \log(P/D)_t$ into discount-rate and cash-flow components:
+Following \citet{campbell1988dividend} and \citet{cochrane2011presidential}, we decompose the unconditional variance of $pd_t \equiv \log(P/D)_t$ as
 \begin{equation}\label{eq:cs_decomp}
     \var(pd_t) = \cov\!\left(pd_t,\, \sum_{k=1}^{\infty}\rho^{k-1}\Delta d_{t+k}\right) - \cov\!\left(pd_t,\, \sum_{k=1}^{\infty}\rho^{k-1} r_{t+k}\right).
 \end{equation}
-Dividing by $\var(pd_t)$ yields the discount-rate share
+Scaling by $\var(pd_t)$ gives the discount-rate share
 \[
     \beta_r = -\,\frac{\cov\!\left(pd_t,\sum_{k=1}^{\infty}\rho^{k-1} r_{t+k}\right)}{\var(pd_t)},
 \]
-which we evaluate at a $40$-quarter horizon. In the baseline economy, $\beta_r = 1.16$, indicating that nearly all variation in the $P/D$ ratio is attributable to expected returns. Notably, the cash-flow component \emph{offsets} $pd_t$: because the dividend share is positively correlated with fundamentals, expected future dividend growth is higher when $pd_t$ is low, generating a negative cash-flow covariance and pushing $\beta_r$ above one.
+which we compute at a $40$-quarter horizon.
+In the baseline economy, $\beta_r = 1.16$: nearly all variation in $pd_t$ is driven by expected returns.
+The cash-flow term pushes in the opposite direction.
+Because the dividend share is positively correlated with fundamentals, expected dividend growth is higher when $pd_t$ is low, producing a negative cash-flow covariance that lifts $\beta_r$ above one.
+% To quantify the sources of price--dividend ratio fluctuations, we follow \citet{campbell1988dividend} and \citet{cochrane2011presidential} in decomposing the unconditional variance of $pd_t \equiv \log(P/D)_t$ into discount-rate and cash-flow components:
+% \begin{equation}\label{eq:cs_decomp}
+%     \var(pd_t) = \cov\!\left(pd_t,\, \sum_{k=1}^{\infty}\rho^{k-1}\Delta d_{t+k}\right) - \cov\!\left(pd_t,\, \sum_{k=1}^{\infty}\rho^{k-1} r_{t+k}\right).
+% \end{equation}
+% Dividing by $\var(pd_t)$ yields the discount-rate share
+% \[
+%     \beta_r = -\,\frac{\cov\!\left(pd_t,\sum_{k=1}^{\infty}\rho^{k-1} r_{t+k}\right)}{\var(pd_t)},
+% \]
+% which we evaluate at a $40$-quarter horizon. In the baseline economy, $\beta_r = 1.16$, indicating that nearly all variation in the $P/D$ ratio is attributable to expected returns. Notably, the cash-flow component \emph{offsets} $pd_t$: because the dividend share is positively correlated with fundamentals, expected future dividend growth is higher when $pd_t$ is low, generating a negative cash-flow covariance and pushing $\beta_r$ above one.
 
 \begin{table}[!t]
     \centering
@@ -1756,11 +1766,21 @@ which we evaluate at a $40$-quarter horizon. In the baseline economy, $\beta_r =
     Standard errors in parentheses.}\label{tab:return_predictability}
 \end{table}
 
-Counterfactuals reveal that this pattern is driven by heterogeneity and frictions. Table~\ref{tab:counterfactual_comparison} shows that removing leverage constraints leaves $\beta_r = 1.24$, similar to the baseline. Eliminating preference heterogeneity collapses $\beta_r$ to $-0.02$, so variation in $pd_t$ is then driven by cash flows, not discount rates. Setting $\overline{\alpha}=1$, which reduces risk misallocation, yields $\beta_r = -0.21$ and much lower price impact. Similarly, decreasing the mass of passive investors or the correlation between passive demand and fundamentals lowers both price impact and $\beta_r$. Thus, the large value of $\beta_r$ is a consequence of the interaction between frictions and movements in passive demand. These magnitudes are consistent with empirical evidence from \citet{cochrane2011presidential}, who finds that discount-rate variation dominates movements in valuation ratios for U.S. equities.
+The counterfactuals in Table~\ref{tab:counterfactual_comparison} trace this pattern to heterogeneity and frictions.
+Removing leverage constraints leaves $\beta_r = 1.24$, close to the baseline.
+Eliminating preference heterogeneity collapses $\beta_r$ to $-0.02$: variation in $pd_t$ is then driven by cash flows rather than discount rates.
+Setting $\overline{\alpha}=1$, which reduces risk misallocation, yields $\beta_r = -0.21$ and a much lower price impact.
+Reducing the mass of passive investors or the correlation between passive demand and fundamentals has the same qualitative effect, lowering both price impact and $\beta_r$.
+The large baseline value of $\beta_r$ is therefore a joint product of frictions and movements in passive demand, in line with the evidence in \citet{cochrane2011presidential} that discount-rate variation dominates movements in U.S.\ equity valuation ratios.
+% Counterfactuals reveal that this pattern is driven by heterogeneity and frictions. Table~\ref{tab:counterfactual_comparison} shows that removing leverage constraints leaves $\beta_r = 1.24$, similar to the baseline. Eliminating preference heterogeneity collapses $\beta_r$ to $-0.02$, so variation in $pd_t$ is then driven by cash flows, not discount rates. Setting $\overline{\alpha}=1$, which reduces risk misallocation, yields $\beta_r = -0.21$ and much lower price impact. Similarly, decreasing the mass of passive investors or the correlation between passive demand and fundamentals lowers both price impact and $\beta_r$. Thus, the large value of $\beta_r$ is a consequence of the interaction between frictions and movements in passive demand. These magnitudes are consistent with empirical evidence from \citet{cochrane2011presidential}, who finds that discount-rate variation dominates movements in valuation ratios for U.S. equities.
 
-These results underscore a demand-based explanation for the excess-volatility puzzle of \citet{shiller1981} and \citet{leroy1981present}. In line with the inelastic market hypothesis of \citet{gabaix2020search}, even modest portfolio flows can generate pronounced price fluctuations and predictable returns. 
-We show this is the case even in economies where interest rates can endogenously respond to portfolio flows in economies with frictions.
-In particular, only economies with sufficiently inelastic markets can jointly match the observed levels of return volatility, price impact, and return predictability. This highlights the importance of modeling market inelasticity to account for key macro-finance moments.
+Taken together, these results provide a demand-based explanation of the excess-volatility puzzle of \citet{shiller1981} and \citet{leroy1981present}.
+Consistent with the inelastic market hypothesis of \citet{gabaix2020search}, modest portfolio flows generate pronounced price fluctuations and predictable returns, even in an economy where the interest rate responds endogenously to those flows.
+Only economies with sufficiently inelastic markets jointly match return volatility, price impact, and return predictability, so market inelasticity is a central ingredient for matching standard macro-finance moments.
+
+% These results underscore a demand-based explanation for the excess-volatility puzzle of \citet{shiller1981} and \citet{leroy1981present}. In line with the inelastic market hypothesis of \citet{gabaix2020search}, even modest portfolio flows can generate pronounced price fluctuations and predictable returns. 
+% We show this is the case even in economies where interest rates can endogenously respond to portfolio flows in economies with frictions.
+% In particular, only economies with sufficiently inelastic markets can jointly match the observed levels of return volatility, price impact, and return predictability. This highlights the importance of modeling market inelasticity to account for key macro-finance moments.
 % Matching the empirical excess-volatility and predictability facts therefore requires heterogeneity and frictions in the active sector, not just time variation in fundamentals or beliefs.
 
 \FloatBarrier
