@@ -561,8 +561,9 @@ As $\overline{\sigma} = \|\sigma\|$, this implies that the leverage constraint i
 \paragraph{Risk premium and interest rate.}
 The risk premium on the aggregate claim is given by
 \begin{equation}
-    \pi_{Y,0}(X) = \eta_0(X) \sigma_{R_Y,0}(X)^\top = \gamma \|\sigma\|^2.
+    \pi_{Y,0}(X) = \eta_0(X) \sigma_{R_Y,0}(X)^\top = \gamma \|\sigma\|^2,
 \end{equation}
+where $\|\sigma\|^2 = \sigma \sigma^\top$.
 
 The interest rate is given by
 \begin{align}
@@ -577,7 +578,7 @@ using the fact that $\xi_t = 0$, $\sigma_{j,t} = \sigma$, $\mu_{p_Y,t} = 0$, and
 The consumption-wealth ratio $c_{j,0}(X)$ is given by
 \begin{align}
     c_{j,0}(X) &= \psi \rho 
-    + (1-\psi) \left[ r_0(X) + \eta_0(X)^\top\,\sigma - \frac{\gamma}{2} \|\sigma\|^2 \right] 
+    + (1-\psi) \left[ r_0(X) + \eta_0(X)\,\sigma^\top - \frac{\gamma}{2} \|\sigma\|^2 \right] 
 \end{align}
 
 Plugging in the expression for $r_0(X)$ and $\eta_0(X)$, we obtain
@@ -658,9 +659,8 @@ The conditional expectation of the dividend share is given by
 
 The price of the dividend claim is given by
 \begin{equation}
-    P_{D,t} = \left[ \frac{\overline{s}}{\delta} + \frac{s_t - \overline{s}}{\delta + \kappa_s} \right] Y_t
+    P_{D,t} = \left[ \frac{\overline{s}}{\delta} + \frac{s_t - \overline{s}}{\delta + \kappa_s} \right] Y_t.
 \end{equation}
-where $Y_t = \exp\left( \int_0^t \left( \mu - \frac{\sigma \sigma^\top}{2} \right) ds + \sigma Z_t \right) Y_0$.
 
 Hence, the price-dividend ratio is given by
 \begin{equation}
@@ -748,9 +748,9 @@ This implies that the pricing condition for the dividend and bond claims reduces
     
     The portfolio share of passive investors is given by $\overline{\alpha}_{p,t} = 1 + \hat{\alpha}_{p,t} \epsilon$, where
     \begin{equation}
-        d \overline{\alpha}_{p,t} = - \kappa_p \hat{\alpha}_{p,t} \epsilon dt + \sigma_p \epsilon dZ_t,
+        d \overline{\alpha}_{p,t} = \kappa_p (\overline{\hat{\alpha}} - \hat{\alpha}_{p,t}) \epsilon dt + \sigma_p \epsilon dZ_t,
     \end{equation}
-    where $\overline{\alpha} = 1$, so the process for $\hat{\alpha}_{p,t}$ is independent of $\epsilon$.
+    where $\overline{\alpha} = 1 + \overline{\hat{\alpha}}\epsilon$, so the process for $\hat{\alpha}_{p,t}$ is independent of $\epsilon$.
     
         This implies that $\mu_{\overline{\alpha}_{p},t} = \mathcal{O}(\epsilon)$ and $\sigma_{\overline{\alpha}_{p},t} = \mathcal{O}(\epsilon)$.
     Similarly, we have that $\mu_{x_{j},t} = \mathcal{O}(\epsilon)$ and $\sigma_{x_{j},t} = \mathcal{O}(\epsilon)$ for $j = 1,2$, as the drift and diffusion are zero when $\epsilon = 0$.
@@ -772,10 +772,11 @@ Notice this implies that $\sigma_{R_Y,1} = 0_{1\times 3}$.
     \sigma_{0,1} = \hat{\alpha}_{p,1} \sigma. 
 \end{equation}
 
-The first-order correction to the risk exposure for an unconstrained active investor is given by
+The first-order correction to the risk exposure for an active investor is given by
 \begin{equation}
-    \sigma_{j,1} = \frac{\eta_1}{\gamma} - \frac{\eta_0}{\gamma} (\hat{\gamma}_j+ \hat{\nu}_{j}).
+    \sigma_{j,1} = \frac{\eta_1}{\gamma} - \frac{\eta_0}{\gamma} (\hat{\gamma}_j+ \hat{\nu}_{j}),
 \end{equation}
+where $\hat{\nu}_{j} = 0$ for an unconstrained active investor.
 
 Expanding the market clearing condition for risky assets, we obtain
 \begin{equation}
@@ -849,7 +850,7 @@ A compact way of writing the market price of risk is given by
     \pi_{Y,1} = \eta_1 \sigma^\top = \gamma \|\sigma\|^2 \left[\sum_{j=1}^2 \frac{x_j}{x_a}(\hat{\gamma}_j+ \hat{\nu}_{j}) -\frac{x_0}{x_a}\hat{\alpha}_{p,1} \right].
 \end{equation}
 
-The risk premium is higher when the average risk aversion of active investors is higher, leverage constraints are binding, and passive investors hold disproportionately more risk.
+The risk premium is higher when the average risk aversion of active investors is higher, leverage constraints are binding, and active investors hold disproportionately more risk.
 
 
 % The risk exposure for active investors can be written as
