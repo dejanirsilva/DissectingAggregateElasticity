@@ -561,8 +561,9 @@ As $\overline{\sigma} = \|\sigma\|$, this implies that the leverage constraint i
 \paragraph{Risk premium and interest rate.}
 The risk premium on the aggregate claim is given by
 \begin{equation}
-    \pi_{Y,0}(X) = \eta_0(X) \sigma_{R_Y,0}(X)^\top = \gamma \|\sigma\|^2.
+    \pi_{Y,0}(X) = \eta_0(X) \sigma_{R_Y,0}(X)^\top = \gamma \|\sigma\|^2,
 \end{equation}
+where $\|\sigma\|^2 = \sigma \sigma^\top$.
 
 The interest rate is given by
 \begin{align}
@@ -577,7 +578,7 @@ using the fact that $\xi_t = 0$, $\sigma_{j,t} = \sigma$, $\mu_{p_Y,t} = 0$, and
 The consumption-wealth ratio $c_{j,0}(X)$ is given by
 \begin{align}
     c_{j,0}(X) &= \psi \rho 
-    + (1-\psi) \left[ r_0(X) + \eta_0(X)^\top\,\sigma - \frac{\gamma}{2} \|\sigma\|^2 \right] 
+    + (1-\psi) \left[ r_0(X) + \eta_0(X)\,\sigma^\top - \frac{\gamma}{2} \|\sigma\|^2 \right] 
 \end{align}
 
 Plugging in the expression for $r_0(X)$ and $\eta_0(X)$, we obtain
@@ -744,27 +745,75 @@ This implies that the pricing condition for the dividend and bond claims reduces
 
 \begin{proof} We consider next the first-order correction terms. 
     Consistent with the results from Proposition~\ref{prop:mft}, the consumption-wealth ratios and the price-dividend ratio for the aggregate claim are independent of the dividend share shock.
-    We can then focus on the reduced set of states $\hat{X}_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t})$. 
-    
-    The portfolio share of passive investors is given by $\overline{\alpha}_{p,t} = 1 + \hat{\alpha}_{p,t} \epsilon$, where
+    We can then focus on the reduced set of states $\hat{X} = (x_{1}, x_{2}, \hat{\alpha}_{p})$. 
+
+    We assume that the portfolio share of passive investors is given by $\overline{\alpha}_{p} = 1 + \hat{\alpha}_{p} \epsilon$, where $\hat{\alpha}_{p}$ follows the following process independent of $\epsilon$:
     \begin{equation}
-        d \overline{\alpha}_{p,t} = - \kappa_p \hat{\alpha}_{p,t} \epsilon dt + \sigma_p \epsilon dZ_t,
+        d \hat{\alpha}_{p} = \kappa_p (\hat{\alpha} - \hat{\alpha}_{p}) dt + \sigma_p dZ_t.
     \end{equation}
-    where $\overline{\alpha} = 1$, so the process for $\hat{\alpha}_{p,t}$ is independent of $\epsilon$.
+    This implies that $\overline{\alpha} = 1+\hat{\alpha} \epsilon$ and the diffusion of $\overline{\alpha}_{p,t}$ is given by $\sigma_p \epsilon$.
+
+    Notice this implies that $\mu_{\overline{\alpha}_{p}} = \mathcal{O}(\epsilon)$ and $\sigma_{\overline{\alpha}_{p}} = \mathcal{O}(\epsilon)$.
+    Similarly, we have that $\mu_{x_{j}} = \mathcal{O}(\epsilon)$ and $\sigma_{x_{j}} = \mathcal{O}(\epsilon)$ for $j = 1,2$.
+    Hence, we have that $\mu_{\hat{X}} = \mathcal{O}(\epsilon)$ and $\sigma_{\hat{X}} = \mathcal{O}(\epsilon)$.
+
+    % \paragraph{The change of variables.}
+    % To derive the first-order correction to the portfolio share of passive investors, it will be convenient to perform first a change of variables.
+    % Instead of working with $\overline{\alpha}_{p} = 1 + \hat{\alpha}_{p} \epsilon$, we will work with the variable$\hat{\alpha}_{p}$, which capures the deviation from the benchmark portfolio share of passive investors.
     
-        This implies that $\mu_{\overline{\alpha}_{p},t} = \mathcal{O}(\epsilon)$ and $\sigma_{\overline{\alpha}_{p},t} = \mathcal{O}(\epsilon)$.
-    Similarly, we have that $\mu_{x_{j},t} = \mathcal{O}(\epsilon)$ and $\sigma_{x_{j},t} = \mathcal{O}(\epsilon)$ for $j = 1,2$, as the drift and diffusion are zero when $\epsilon = 0$.
-    Hence, we have $\mu_{\hat{X},t} = \mathcal{O}(\epsilon)$ and $\sigma_{\hat{X},t} = \mathcal{O}(\epsilon)$.
+    % % The portfolio share of passive investors is given by $\overline{\alpha}_{p,t} = 1 + \hat{\alpha}_{p,t} \epsilon$, where
+    % % \begin{equation}
+    % %     d \overline{\alpha}_{p,t} =  \kappa_p (\hat{\alpha} - \hat{\alpha}_{p,t}) \epsilon dt + \sigma_p \epsilon dZ_t,
+    % % \end{equation}
+    % % where $\overline{\alpha} = 1+\hat{\alpha} \epsilon$, so the process for $\hat{\alpha}_{p,t}$ is independent of $\epsilon$.
+    % The process for $\hat{\alpha}_{p}$ is independent of $\epsilon$ and can be written as
+    % \begin{equation}
+    %     d \hat{\alpha}_{p} = \underbrace{\kappa_p (\hat{\alpha} - \hat{\alpha}_{p})}_{\mu_{\hat{\alpha}_{p}}} dt + \underbrace{\sigma_p}_{\sigma_{\hat{\alpha}_{p}}} dZ_t.
+    % \end{equation}
+    % This implies that $\overline{\alpha} = 1+\hat{\alpha} \epsilon$ and the diffusion of $\overline{\alpha}_{p,t}$ is given by $\sigma_{\overline{\alpha}_{p,t}} = \sigma_p \epsilon$.
+
+    % The derivatives of the consumption-wealth ratios, and similarly for the price-dividend ratio, with respect to $\overline{\alpha}_{p,t}$ are given by
+    % \begin{equation}
+    %     \frac{\partial c_j}{\partial \hat{\alpha}_{p}} = \frac{\partial c_j}{\partial \overline{\alpha}_{p}} \frac{\partial \overline{\alpha}_{p}}{\partial \hat{\alpha}_{p}} = \frac{\partial c_j}{\partial \overline{\alpha}_{p}} \epsilon, \qquad \qquad 
+    %     \frac{\partial^2 c_j}{\partial \hat{\alpha}_{p}^2} = \frac{\partial^2 c_j}{\partial \overline{\alpha}_{p}^2} \epsilon^2, 
+    %      \qquad \qquad 
+    %     \frac{\partial^2 c_j}{\partial \hat{\alpha}_{p} \partial x_j} = \frac{\partial^2 c_j}{\partial \overline{\alpha}_{p} \partial x_j} \epsilon, 
+    % \end{equation}
+    % and the drift and difussion of $\hat{\alpha}_{p,t}$ are given by   
+    % \begin{equation}
+    %     \mu_{\overline{\alpha}_{p}} = \mu_{\hat{\alpha}_{p}} \epsilon, \qquad \qquad 
+    %     \sigma_{\overline{\alpha}_{p}} = \sigma_{\hat{\alpha}_{p}} \epsilon.
+    % \end{equation}
+
+    % This implies that we can write the terms in the drift and diffusion of the consumption-wealth ratios and the price-dividend ratio as functions of $\hat{\alpha}_{p}$ instead of $\overline{\alpha}_{p}$:
+    % \begin{equation}
+    %     \frac{\partial c_j}{\partial \overline{\alpha}_{p}} \sigma_{\overline{\alpha}_{p}} = \frac{\partial c_j}{\partial \hat{\alpha}_{p}} \sigma_{\hat{\alpha}_{p}}, \qquad 
+    %     \frac{\partial^2 c_j}{\partial \overline{\alpha}_{p}^2} \sigma_{\overline{\alpha}_{p}}^2 = \frac{\partial^2 c_j}{\partial \hat{\alpha}_{p}^2} \sigma_{\hat{\alpha}_{p}}^2, \qquad 
+    %     \frac{\partial^2 c_j}{\partial \overline{\alpha}_{p} \partial x_j} \sigma_{\overline{\alpha}_{p}} \sigma_{x_j} = \frac{\partial^2 c_j}{\partial \hat{\alpha}_{p} \partial x_j} \sigma_{\hat{\alpha}_{p}} \sigma_{x_j}.
+    % \end{equation}
+
+    % Hence, abusing notation, we can write the vector of states as $\hat{X} = (x_{1,t}, x_{2,t}, \hat{\alpha}_{p})$.
+    
+    
+    %     This implies that $\mu_{\overline{\alpha}_{p},t} = \mathcal{O}(\epsilon)$ and $\sigma_{\overline{\alpha}_{p},t} = \mathcal{O}(\epsilon)$.
+    % Similarly, we have that $\mu_{x_{j},t} = \mathcal{O}(\epsilon)$ and $\sigma_{x_{j},t} = \mathcal{O}(\epsilon)$ for $j = 1,2$, as the drift and diffusion are zero when $\epsilon = 0$.
+    % Hence, we have $\mu_{\hat{X},t} = \mathcal{O}(\epsilon)$ and $\sigma_{\hat{X},t} = \mathcal{O}(\epsilon)$.
 
 
 \paragraph{Diffusion for consumption-wealth ratios and price-dividend ratio.} 
-The consumption-wealth ratios and the price-dividend ratio for the aggregate claim are indepedent of $\hat{X}$ at $\epsilon = 0$.
-This implies that the diffusion terms for the consumption-wealth ratios and the price-dividend ratio are second-order terms in $\epsilon$:
+The consumption-wealth ratios and the price-dividend ratio for the aggregate claim are independent of $x_j$ at $\epsilon = 0$.
+This implies that $c_{j,x_j}=\mathcal{O}(\epsilon)$ and $p_{Y,x_j}=\mathcal{O}(\epsilon)$ as these derivatives are zero at order zero.
+Moreover, we will guess-and-verify that the derivatives of the consumption-wealth ratios and the price-dividend ratio with respect to $\overline{\alpha}_{p}$ are first-order in $\epsilon$:
+\begin{equation}
+    c_{j,\overline{\alpha}_{p}} = \mathcal{O}(\epsilon); \qquad \qquad p_{Y,\overline{\alpha}_{p}} = \mathcal{O}(\epsilon).
+\end{equation}
+This implies that $\mu_{c_j, \hat{X}} = \mathcal{O}(\epsilon)$ and $\mu_{p_Y, \hat{X}} = \mathcal{O}(\epsilon)$.
+
+We can then write the diffusion terms for the consumption-wealth ratios and the price-dividend ratio are second-order terms in $\epsilon$:
 \begin{align}
-    \sigma_{c_j} = \underbrace{\frac{c_{j,\hat{X}}}{c_j}}_{\mathcal{O}(\epsilon)} \times \underbrace{\sigma_{\hat{X}}}_{\mathcal{O}(\epsilon)} = \mathcal{O}(\epsilon^2), \qquad \qquad 
+    \sigma_{c_j} &= \underbrace{\frac{c_{j,\hat{X}}}{c_j}}_{\mathcal{O}(\epsilon)} \times \underbrace{\sigma_{\hat{X}}}_{\mathcal{O}(\epsilon)} = \mathcal{O}(\epsilon^2), \qquad \qquad 
     \sigma_{p_Y} = \underbrace{\frac{p_{Y,\hat{X}}}{p_Y}}_{\mathcal{O}(\epsilon)} \times \underbrace{\sigma_{\hat{X}}}_{\mathcal{O}(\epsilon)} = \mathcal{O}(\epsilon^2),
 \end{align}
-where $c_{j,\hat{X}}=\mathcal{O}(\epsilon)$ and $p_{Y,\hat{X}}=\mathcal{O}(\epsilon)$ as these derivatives are zero at order zero.
 Notice this implies that $\sigma_{R_Y,1} = 0_{1\times 3}$. 
 
 \paragraph{Risk exposure and market price of risk.} The risk exposure for the passive investor is given by
@@ -772,10 +821,11 @@ Notice this implies that $\sigma_{R_Y,1} = 0_{1\times 3}$.
     \sigma_{0,1} = \hat{\alpha}_{p,1} \sigma. 
 \end{equation}
 
-The first-order correction to the risk exposure for an unconstrained active investor is given by
+The first-order correction to the risk exposure for an active investor is given by
 \begin{equation}
-    \sigma_{j,1} = \frac{\eta_1}{\gamma} - \frac{\eta_0}{\gamma} (\hat{\gamma}_j+ \hat{\nu}_{j}).
+    \sigma_{j,1} = \frac{\eta_1}{\gamma} - \frac{\eta_0}{\gamma} (\hat{\gamma}_j+ \hat{\nu}_{j}),
 \end{equation}
+where $\hat{n}_{j}$ is the Lagrange multiplier on the leverage constraint for investor $j$.
 
 Expanding the market clearing condition for risky assets, we obtain
 \begin{equation}
@@ -849,7 +899,7 @@ A compact way of writing the market price of risk is given by
     \pi_{Y,1} = \eta_1 \sigma^\top = \gamma \|\sigma\|^2 \left[\sum_{j=1}^2 \frac{x_j}{x_a}(\hat{\gamma}_j+ \hat{\nu}_{j}) -\frac{x_0}{x_a}\hat{\alpha}_{p,1} \right].
 \end{equation}
 
-The risk premium is higher when the average risk aversion of active investors is higher, leverage constraints are binding, and passive investors hold disproportionately more risk.
+The risk premium is higher when the average risk aversion of active investors is higher, leverage constraints are binding, and active investors hold disproportionately more risk.
 
 
 % The risk exposure for active investors can be written as
@@ -949,6 +999,17 @@ The risk premium is higher when the average risk aversion of active investors is
 % % \begin{equation}
 % %     \sigma_j(X) = \sigma_{j,0}(X) +\|\sigma\|\min\left\{ \sum_{k\in\mathcal{J}^u} \frac{x_k}{x_u} \hat{\gamma}_k -\left(\frac{\hat{\alpha}_p  x_0+\frac{\hat{\sigma}}{\|\sigma\|} x_c }{1-x_0-x_c}\right)- \hat{\gamma}_j  ,\frac{\hat{\sigma}}{\|\sigma\|}  \right\}\epsilon + \mathcal{O}(\epsilon^2)
 % % \end{equation}
+
+\paragraph{Drift for consumption-wealth ratios and price-dividend ratio.} 
+It\^o's lemma implies that the drift of the consumption-wealth ratios and the price-dividend ratio are given by
+\begin{align}
+    \mu_{c_j} &= \frac{c_{j,\hat{X}}}{c_j} \mu_{\hat{X}} + \sum_{k=1}^3 \sigma_{\hat{X},k}^\top \frac{c_{j,\hat{X} \hat{X}}}{c_j} \sigma_{\hat{X},k}, \\
+    \mu_{p_Y} &= \frac{p_{Y,\hat{X}}}{p_Y} \mu_{\hat{X}} + \sum_{k=1}^3 \sigma_{\hat{X},k}^\top \frac{p_{Y,\hat{X} \hat{X}}}{p_Y} \sigma_{\hat{X},k},
+\end{align}
+where $\sigma_{\hat{X},k}$ is the $k$-th column of the matrix $\sigma_{\hat{X}}$.
+
+Notice that $\mu_{c_j} = \mathcal{O}(\epsilon^2)$ and $\mu_{p_Y} = \mathcal{O}(\epsilon^2)$, as
+As the first derivatives are $\mathcal{O}(\epsilon)$, and the drift and diffusion terms of $\hat{X}$ are $\mathcal{O}(\epsilon)$, so the two terms in the expressions above are $\mathcal{O}(\epsilon^2)$.
 
 \paragraph{Interest rate.} The first-order correction to the interest rate is given by
 \begin{align}
