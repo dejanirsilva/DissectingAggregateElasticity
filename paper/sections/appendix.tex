@@ -743,9 +743,10 @@ This implies that the pricing condition for the dividend and bond claims reduces
 
 \subsection{Proof of Proposition~\ref{prop:first_order}}\label{app:prop_first_order}
 
-\begin{proof} We consider next the first-order correction terms. 
+\begin{proof} 
     Consistent with the results from Proposition~\ref{prop:mft}, the consumption-wealth ratios and the price-dividend ratio for the aggregate claim are independent of the dividend share shock.
     We can then focus on the reduced set of states $\hat{X} = (x_{1}, x_{2}, \hat{\alpha}_{p})$. 
+
 
     We assume that the portfolio share of passive investors is given by $\overline{\alpha}_{p} = 1 + \hat{\alpha}_{p} \epsilon$, where $\hat{\alpha}_{p}$ follows the following process independent of $\epsilon$:
     \begin{equation}
@@ -756,6 +757,13 @@ This implies that the pricing condition for the dividend and bond claims reduces
     Notice this implies that $\mu_{\overline{\alpha}_{p}} = \mathcal{O}(\epsilon)$ and $\sigma_{\overline{\alpha}_{p}} = \mathcal{O}(\epsilon)$.
     Similarly, we have that $\mu_{x_{j}} = \mathcal{O}(\epsilon)$ and $\sigma_{x_{j}} = \mathcal{O}(\epsilon)$ for $j = 1,2$.
     Hence, we have that $\mu_{\hat{X}} = \mathcal{O}(\epsilon)$ and $\sigma_{\hat{X}} = \mathcal{O}(\epsilon)$.
+
+    We are interested in the first-order correction terms. 
+    For instance, the consumption-wealth ratio of investor $j$ can be written as
+    \begin{equation}
+        c_{j}(x, \overline{\alpha}_p;\epsilon) = c_{j,0}(x, \hat{\alpha}_p) + c_{j,1}(x, \hat{\alpha}_p) \epsilon+ c_{j,2}(x, \hat{\alpha}_p) \epsilon^2 + \mathcal{O}(\epsilon^3).
+    \end{equation}
+    The first-order correction corresponds to $c_{j,1}(x, \hat{\alpha}_p)$.
 
     % \paragraph{The change of variables.}
     % To derive the first-order correction to the portfolio share of passive investors, it will be convenient to perform first a change of variables.
@@ -808,6 +816,14 @@ Moreover, we will guess-and-verify that the derivatives of the consumption-wealt
     c_{j,\overline{\alpha}_{p}} = \mathcal{O}(\epsilon); \qquad \qquad p_{Y,\overline{\alpha}_{p}} = \mathcal{O}(\epsilon).
 \end{equation}
 This implies that $\mu_{c_j, \hat{X}} = \mathcal{O}(\epsilon)$ and $\mu_{p_Y, \hat{X}} = \mathcal{O}(\epsilon)$.
+
+Using the fact that $c_{j,0}(x, \hat{\alpha}_p)$ is independent of $\overline{\alpha}_p$, we can write the derivative with respect to $\overline{\alpha}_p$ as follows:
+\begin{equation}
+    c_{j,\overline{\alpha}_{p}} = \frac{\partial c_{j,1}}{\partial \hat{\alpha}_{p}}  +\mathcal{O}(\epsilon).
+\end{equation}
+Hence, $c_{j,\overline{\alpha}_{p}} = \mathcal{O}(\epsilon)$ is equivalent to $\frac{\partial c_{j,1}}{\partial \hat{\alpha}_{p}} = 0$, that is, $c_{j,1}$ is independent of $\hat{\alpha}_{p}$.
+A similar argument shows that $p_{Y,\overline{\alpha}_{p}} = \mathcal{O}(\epsilon)$ is equivalent to $p_{Y,1}$ being independent of $\hat{\alpha}_{p}$.
+
 
 We can then write the diffusion terms for the consumption-wealth ratios and the price-dividend ratio are second-order terms in $\epsilon$:
 \begin{align}
@@ -1010,6 +1026,8 @@ where $\sigma_{\hat{X},k}$ is the $k$-th column of the matrix $\sigma_{\hat{X}}$
 
 Notice that $\mu_{c_j} = \mathcal{O}(\epsilon^2)$ and $\mu_{p_Y} = \mathcal{O}(\epsilon^2)$, as
 As the first derivatives are $\mathcal{O}(\epsilon)$, and the drift and diffusion terms of $\hat{X}$ are $\mathcal{O}(\epsilon)$, so the two terms in the expressions above are $\mathcal{O}(\epsilon^2)$.
+This implies that $\xi_j = \mathcal{O}(\epsilon^2)$.
+
 
 \paragraph{Interest rate.} The first-order correction to the interest rate is given by
 \begin{align}
@@ -1059,12 +1077,13 @@ Using the fact that $\eta_0 = \gamma \sigma$ and $\eta_1 \sigma^T = \pi_{Y,1}$, 
 
 We can write the first-order correction of the consumption-wealth ratio as follows:
 \begin{equation}
-    c_{j,1} = \frac{\gamma \|\sigma\|^2}{2} (1-\psi)\left[ \left(1-\psi^{-1}\right) \sum_{k=0}^2 x_{k,t}\hat{\gamma}_k-\hat{\gamma}_j\right].
+    c_{j,1} = \frac{\gamma \|\sigma\|^2}{2} (1-\psi)\left[ \left(1-\psi^{-1}\right) \sum_{k=0}^2 x_{k,t}\hat{\gamma}_k-\hat{\gamma}_j\right],
 \end{equation}
+which is independent of $\hat{\alpha}_p$ as conjectured.
 
-\begin{equation}
-    (1-\psi) (1-\psi^{-1})  - (1-\psi^{-1}) = - \psi(1-\psi^{-1}) = (1-\psi)
-\end{equation}
+% \begin{equation}
+%     (1-\psi) (1-\psi^{-1})  - (1-\psi^{-1}) = - \psi(1-\psi^{-1}) = (1-\psi)
+% \end{equation}
 
 \paragraph{Price-dividend ratio of aggregate claim.} The pricing condition
 \begin{equation}
@@ -1073,9 +1092,10 @@ We can write the first-order correction of the consumption-wealth ratio as follo
 
 This implies that the first-order correction to the price-dividend ratio of the aggregate claim is given by  
 \begin{equation}
-    \frac{p_{Y,1}}{p_{Y}^*} = - p_{Y}^* (1-\psi^{-1}) \frac{\gamma  \|\sigma\|^2}{2}\sum_{j=0}^2 x_{j} \hat{\gamma}_j.
+    \frac{p_{Y,1}}{p_{Y}^*} = - p_{Y}^* (1-\psi^{-1}) \frac{\gamma  \|\sigma\|^2}{2}\sum_{j=0}^2 x_{j} \hat{\gamma}_j,
 \end{equation}
-Hence, if $\psi>1$, an increase in the average risk aversion of the investors leads to a decrease in the price-dividend ratio of the aggregate claim.
+which is independent of $\hat{\alpha}_p$ as conjectured.
+If $\psi>1$, an increase in the average risk aversion of the investors leads to a decrease in the price-dividend ratio of the aggregate claim.
 % \paragraph{Dividend yield.} The dividend yield is given by
 % \begin{equation}\label{eq:div-yield_first_order}
 %     y(X,\epsilon) = y_0(X) + \left(1-\psi^{-1}\right) \gamma \|\sigma\|^2 \sum_{j=0}^J x_{j,t}\frac{\hat{\gamma}_j}{2} \epsilon + \mathcal{O}(\epsilon^2).
@@ -1097,7 +1117,7 @@ Hence, if $\psi>1$, an increase in the average risk aversion of the investors le
     % &= x_j \min\left\{ \sum_{k\in\mathcal{J}^u} \frac{x_k}{x_u} \hat{\gamma}_j -\left(\frac{\hat{\alpha}_p  x_0+\frac{\hat{\sigma}}{\|\sigma\|} x_c }{1-x_0-x_c}\right)- \hat{\gamma}_j  ,\frac{\hat{\sigma}}{\|\sigma\|}  \right\} \sigma \epsilon + \mathcal{O}(\epsilon^2).
 \end{align}
 
-The drift of the wealth share of investor $j$, $j=1,\ldots,J$, is given by
+The drift of the wealth share of investor $j$, $j=1,2$, is given by
 \begin{align}
     \mu_{x_j,1} &= x_{j} \left[ 
         (\gamma-1)\sigma  \sigma_{j,1}^\top +\frac{\gamma \|\sigma\|^2}{2} (\psi-1) \left( \sum_{k=0}^2 x_k\hat{\gamma}_k  - \hat{\gamma}_j\right)
@@ -1114,12 +1134,22 @@ The drift of the wealth share of investor $j$, $j=1,\ldots,J$, is given by
 
 The law of motion of $\hat{\alpha}_p$ can be written as follows:
 \begin{equation}
-    d \hat{\alpha}_p = \theta_p ( \overline{\hat{\alpha}} - \hat{\alpha}_p )dt + \sigma_p d Z_t,
+    d \hat{\alpha}_p = \kappa_p ( \overline{\hat{\alpha}} - \hat{\alpha}_p )dt + \sigma_p d Z_t,
 \end{equation}
-so the drift of $\overline{\alpha}_p$ is $\mu_{\overline{\alpha}_p} = \theta_p ( \overline{\hat{\alpha}} - \hat{\alpha}_p )\epsilon$ and the diffusion is
+so the drift of $\overline{\alpha}_p$ is $\mu_{\overline{\alpha}_p} = \kappa_p ( \hat{\alpha} - \hat{\alpha}_p )\epsilon$ and the diffusion is
 $\sigma_{\overline{\alpha}_p} = \sigma_p \epsilon$.
 
 \paragraph{Pricing individual claims.}
+The pricing condition for asset $k$, $k = D,B$, is given by
+\begin{equation}
+    r + \sigma_{R_k} \eta^\top = \frac{s_t}{\tilde{p}_{k}} + \mu + \mu_{\tilde{p}_k} + \sigma \sigma_{\tilde{p}_k}^\top,
+\end{equation}
+where $\sigma_{R_k} = \sigma + \sigma_{p_k}$ and $(\mu_{p_k}, \sigma_{p_k})$ are given by Ito's lemma:
+\begin{equation}
+    \mu_{p_k} = \frac{\tilde{p}_{k,s}}{\tilde{p}_{k}} \mu_s + \frac{1}{2}\frac{\tilde{p}_{k,ss}}{\tilde{p}_{k}} \sigma_s \sigma_s^\top, \qquad \qquad 
+    \sigma_{p_k} = \frac{\tilde{p}_{k,s}}{\tilde{p}_{k}} \sigma_s.
+\end{equation}
+
 The pricing condition for the dividend claim is given by
 \begin{equation}
     \left[r + \sigma \eta^\top - \mu\right] \tilde{p}_k = s_t + \tilde{p}_k\mu_{\tilde{p}_k} + (\sigma-\eta) (\tilde{p}_k\sigma_{\tilde{p}_k})^\top,
