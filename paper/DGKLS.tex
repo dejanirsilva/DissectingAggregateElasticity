@@ -790,15 +790,15 @@ This expression highlights that the interest rate is determined jointly by risk 
 
 \paragraph{Pricing condition.}
 
-Let $p_{D,t} \equiv P_{D,t}/D_{t}$ and $p_{B,t} \equiv P_{B,t}/B_{t}$ denote the price-dividend ratios of the dividend and corporate bond claims, respectively. 
-The price-dividend ratio of the aggregate claim is $p_{Y,t} \equiv P_{Y,t}/Y_t$, which satisfies $p_{Y,t} = s_t p_{D,t} + (1-s_t) p_{B,t}$.
+Let $p_{D,t} \equiv P_{D,t}/Y_t$ and $p_{B,t} \equiv P_{B,t}/Y_t$ denote the price normalized by the aggregate endowment of the dividend and corporate bond claims, respectively. 
+The price-dividend ratio of the aggregate claim is $p_{Y,t} \equiv P_{Y,t}/Y_t$, which satisfies $p_{Y,t} = p_{D,t} + p_{B,t}$.
 
 The pricing condition for each claim $k\in\{D,B\}$ is given by
 \begin{equation}\label{eq:pricing_cond}
-    \frac{1}{p_{k,t}} = r_t + \pi_{k,t} - \big(\mu_{k,t} + \mu_{p_k,t} + \sigma_{k,t} \, \sigma_{p_k,t}^\top\big),
+    \frac{1}{p_{k,t}} = r_t + \pi_{k,t} - \big(\mu + \mu_{p_k,t} + \sigma \, \sigma_{p_k,t}^\top\big),
 \end{equation}
 where $\pi_{k,t} = \sigma_{R_k,t} \, \eta_t^\top$ is the risk premium on claim $k$ implied by no arbitrage.
-The terms $\mu_{p_k,t}$ and $\sigma_{p_k,t}$ denote the drift and diffusion of the price-dividend ratio, respectively.
+The terms $\mu_{p_k,t}$ and $\sigma_{p_k,t}$ denote the drift and diffusion of the normalized prices, respectively.
 
 % Equation~\eqref{eq:pricing_cond} links asset prices to expected returns, risk premia, and the dynamics of valuation ratios.
 % It provides the key condition determining how prices respond to changes in investment opportunities.
@@ -892,7 +892,7 @@ Thus, \eqref{eq:_endogenous_vol} provides a direct link between market elasticit
 
 Given the volatility of individual claims, the volatility of the aggregate claim follows from aggregation:
 \[
-\sigma_{R_Y,t} = \sum_{k=D,B} \frac{P_{k,t}}{P_{Y,t}} \sigma_{R_{k},t}.
+\sigma_{R_Y,t} = \sum_{k=D,B} \frac{p_{k,t}}{p_{Y,t}} \sigma_{R_{k},t}.
 \]
 
 It remains to determine $\sigma_{R_F,t}$.  
@@ -909,7 +909,7 @@ Using It\^{o}'s lemma, the drift and diffusion terms $(\mu_{c_j,t}, \mu_{p_k,t})
 
 Substituting these expressions into the HJB equation \eqref{eq:HJB_complete} and the pricing condition \eqref{eq:pricing_cond}, together with the laws of motion for the state variables, yields a system of five partial differential equations.
 
-These equations jointly determine the consumption-wealth ratios $\{c_j(X_t)\}_{j=0}^2$ and the price-dividend ratios $\{p_k(X_t)\}_{k \in \{D,B\}}$ as functions of four state variables:
+These equations jointly determine the consumption-wealth ratios $\{c_j(X_t)\}_{j=0}^2$ and the normalized prices $\{p_k(X_t)\}_{k \in \{D,B\}}$ as functions of four state variables:
 the two active wealth shares $x_{1,t}$ and $x_{2,t}$, the passive portfolio share $\overline{\alpha}_{p,t}$, and the dividend share $s_t$.
 
 \subsubsection{Block recursivity and the mutual fund theorem}\label{sec:pricing_claims}
@@ -941,7 +941,7 @@ Despite financial frictions, investors optimally hold risky claims in proportion
     where $(r, \eta, \sigma_{j}, \mu_{c_j}, \sigma_{c_j}, \mu_{p_Y}, \sigma_{p_Y})$ are all functions of $\hat{X}_t$, $(c_j,p_Y)$ and their derivatives.    
         \item \textbf{Mutual fund theorem:} The portfolio shares of active investors are given by:
         \begin{align}
-            \alpha_{j,k} = \alpha_{j,Y} \frac{P_k}{P_Y}, \quad \forall k \in \{D,B\},
+            \alpha_{j,k} = \alpha_{j,Y} \frac{p_k}{p_Y}, \quad \forall k \in \{D,B\},
         \end{align}
         where $\alpha_{j,Y}$ denotes the holdings of the market index fund for investor $j$, which satisfies the condition
         \begin{equation}
@@ -964,7 +964,7 @@ Without the derivative, investors would need to deviate from market-capitalizati
 
 \paragraph{Pricing the individual claims.}
 Having solved for the aggregate objects $\{c_{j,t}(\hat{X}_t)\}_{j=0}^2$ and $p_Y(\hat{X}_t)$, we next recover the valuation of individual claims.
-The price-dividend ratios of the dividend and bond claims are functions of the full state vector $X_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t}, s_t)$, as they load on the dividend-share shock.
+The normalized prices of the dividend and bond claims are functions of the full state vector $X_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t}, s_t)$, as they load on the dividend-share shock.
 
 Given the aggregate equilibrium objects $r(\hat{X}_t)$ and $\eta(\hat{X}_t)$, and using It\^{o}'s lemma to express the drift and diffusion of valuation ratios as functions of the state dynamics and their derivatives, the pricing condition in Equation~\eqref{eq:pricing_cond} yields a linear PDE for $p_{D,t}(X_t)$ and $p_{B,t}(X_t)$.
 
