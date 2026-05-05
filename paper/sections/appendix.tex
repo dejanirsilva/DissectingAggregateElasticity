@@ -508,7 +508,7 @@ where $\alpha_{j,Y,t}$ is the portfolio share of the market index fund defined.
 
 \paragraph{Pricing the individual claims.} The normalized price of the dividend claim satisfies the pricing condition:
 \begin{equation}
-    \frac{1}{p_{D,t}} = r_t + \sigma_{R_D,t} \eta_t^\top - \big(\mu + \mu_{p_D,t} + \sigma \, \sigma_{p_D,t}^\top\big),
+    \frac{s_t}{p_{D,t}} = r_t + \sigma_{R_D,t} \eta_t^\top - \big(\mu + \mu_{p_D,t} + \sigma \, \sigma_{p_D,t}^\top\big),
 \end{equation}
 where
 \begin{equation}
@@ -545,7 +545,7 @@ The perturbation is defined by the following parameter restrictions:
     \overline{\sigma} = \|\sigma\| (1+\hat{\sigma} \epsilon), \qquad 
     \kappa = \hat{\kappa} \epsilon, 
 \end{equation}
-where $\sum_{j=0}^J \omega_j \hat{\gamma}_j = 0$.
+where $\sum_{j=0}^2 \omega_j \hat{\gamma}_j = 0$.
 
 We also make assumptions about the dynamics of the exogenous state variables.
 First, the portfolio share of passive investors is written as $\overline{\alpha}_{p} = 1 + \hat{\alpha}_{p} \epsilon$, where $\hat{\alpha}_{p}$ follows the process
@@ -1322,76 +1322,6 @@ The drift of $y_Y,t$ is given by\small
     &= \left(1-\psi^{-1}\right)\frac{\gamma \|\sigma\|^2}{2 y_{Y,0}(x, \hat{\alpha}_p)} \sum_{k=1}^2 \left( \hat{\gamma}_k - \hat{\gamma}_0  \right) x_k\mu_{x_k,1}(x, \hat{\alpha}_p) \epsilon^2+ \mathcal{O}(\epsilon^3).
 \end{align}\normalsize
 
-    % Taking the derivative of the expansion of the consumption-wealth ratio with respect to $\hat{\alpha}_p$, we obtain the following expression:
-% \begin{equation}
-% \frac{\partial c_{j}}{\partial \overline{\alpha}_p} \frac{\partial \overline{\alpha}_p}{\partial \hat{\alpha}_p} = \sum_{l = 1}^2 \frac{\partial c_{j,l}}{\partial \hat{\alpha}_p} \epsilon^l + \mathcal{O}(\epsilon^3).
-% \end{equation}
-
-% Using the fact that $ \frac{\partial \overline{\alpha}_p}{\partial \hat{\alpha}_p} = \epsilon$, we obtain the following expression:
-% \begin{equation}
-%     \frac{\partial c_{j}}{\partial \overline{\alpha}_p} = \frac{\partial c_{j,2}}{\partial \hat{\alpha}_p} \epsilon + \mathcal{O}(\epsilon^2),
-% \end{equation}
-% as $\frac{\partial c_{j,1}}{\partial \hat{\alpha}_p}  = 0$.
-
-% In contrast, taking the derivative with respect to $x$, we obtain the following expression:
-% \begin{equation}
-%     \frac{\partial c_{j}}{\partial x} = \frac{\partial c_{j,1}}{\partial x} \epsilon + \mathcal{O}(\epsilon^2).
-% \end{equation}
-
-% Notice that $\frac{\partial c_{j}}{\partial x}$ depends only on the first-order correction to the consumption-wealth ratio, while $\frac{\partial c_{j}}{\partial \overline{\alpha}_p}$ depends on the second-order correction.
-
-% The expansion of $\sigma_{c_j,t}$ in $\epsilon$ is given by\small
-% \begin{align}
-%     \sigma_{c_j}(\hat{X},\epsilon) &= \frac{c_{j,\hat{X}}(\hat{X},\epsilon)}{c_j(\hat{X},\epsilon)} \sigma_{\hat{X}}(\hat{X},\epsilon) \nonumber\\
-%     &= \frac{c_{j,1,x}(x, \hat{\alpha}_p)}{c_{j,0}(x, \hat{\alpha}_p)} \sigma_{x,1}(x, \hat{\alpha}_p) \epsilon^2 +\frac{c_{j,2, \hat{\alpha}_p}(x, \hat{\alpha}_p)}{c_{j,0}(x, \hat{\alpha}_p)} \sigma_{p} \epsilon^2+\mathcal{O}(\epsilon^3)\nonumber\\
-%     &= -(\psi-1)\frac{\left(1-\psi^{-1}\right)\gamma \|\sigma\|^2}{2 c_{j,0}(x, \hat{\alpha}_p)} \sum_{k=1}^2 \left( \hat{\gamma}_k - \hat{\gamma}_0  \right) x_k\sigma_{k,1}(x, \hat{\alpha}_p) \epsilon^2  +\frac{c_{j,2, \hat{\alpha}_p}(x, \hat{\alpha}_p)}{c_{j,0}(x, \hat{\alpha}_p)} \sigma_{p} \epsilon^2+ \mathcal{O}(\epsilon^3),
-% \end{align}\normalsize
-% % Notice that $\sigma_{c_j,2}(X)$  does not depend on $j$, that is, it is the same for all investors.
-% % Moreover, $\sigma_{c_{j},2}(X)> 0$, as $\sigma_{k,1}(X)$ is inversely related to $\hat{\gamma}_k$.
-
-% It will be convenient to work with the dividend yield instead of the price-dividend ratio.
-% Define the dividend yield as $y_Y = 1/p_{Y}$, and following a similar reasoning, we obtain
-% \begin{align}\label{eq:sig-y2}
-%     \sigma_{y_Y}(\hat{X},\epsilon) &= \frac{y_{Y,\hat{X}}(\hat{X},\epsilon)}{y_{Y}(\hat{X},\epsilon)} \sigma_{\hat{X}}(\hat{X},\epsilon) \epsilon^2+\mathcal{O}(\epsilon^2)\nonumber\\
-%     &= \left(1-\psi^{-1}\right)\frac{\gamma\|\sigma\|^2}{2 y_{Y,0}(\hat{X})} \sum_{k=1}^2 \left( \hat{\gamma}_k - \hat{\gamma}_0  \right) x_k \sigma_{k,1}(\hat{X})  \epsilon^2 +\frac{y_{Y,2, \hat{\alpha}_p}(x, \hat{\alpha}_p)}{y_{Y,0}(\hat{X})} \sigma_{p} \epsilon^2+ \mathcal{O}(\epsilon^3).
-% \end{align}
-% The expression above is negative if $\psi>1$, which implies that $\sigma_{R,2}(X) = -\sigma_{y,2}(X)$ is positive.
-% In this case, a negative aggregate shock redistribute wealth to more risk averse investors, leading to a rise in the risk premium and a decline in the risk-free rate.
-% If $\psi>1$, the risk premium effect dominates, so the price-dividend ratio, $ 1/y $, falls in response to the shock.
-% The movement in the price-dividend ratio amplifies the initial effect of the drop in dividends.
-
-% The drift of $c_{j,t}$ is given by
-% \begin{align}
-%     \mu_{c_j}(X,\epsilon) &= \frac{c_{j,X}(X,\epsilon)}{c_j(X,\epsilon)} \mu_{X}(X,\epsilon)+ \frac{1}{2}  \sigma_{X}^\top(Z,\epsilon) \frac{c_{j,XX}(X,\epsilon)}{c_{j}(X,\epsilon)} \sigma_{X}(X,\epsilon)\nonumber\\
-%     &=  \frac{c_{j,X,1}(X)}{c_{j,0}(X)} \mu_{X,1}(X)\epsilon^2+\mathcal{O}(\epsilon^3)\nonumber\\
-%     &=  -(\psi-1)\left(1-\psi^{-1}\right)\frac{\gamma \sigma^2}{2 c_{j,0}(X)} \sum_{k=1}^J \left( \hat{\gamma}_k - \hat{\gamma}_0  \right) \mu_{X_k,1}(X) \epsilon^2 + \mathcal{O}(\epsilon^3).
-% \end{align}
-
-% The drift for $y_t$ is given by
-% \begin{align}
-%     \mu_{y}(X,\epsilon) &= \frac{y_{X}(X,\epsilon)}{y(X,\epsilon)} \mu_{X}(X,\epsilon)+ \frac{1}{2}  \sigma_{X}^\top(Z,\epsilon) \frac{y_{XX}(X,\epsilon)}{y(X,\epsilon)} \sigma_{X}(X,\epsilon)\nonumber\\
-%     &=  \frac{y_{X,1}(X)}{y_{0}(X)} \mu_{X,1}(X)\epsilon^2+\mathcal{O}(\epsilon^3)\nonumber\\
-%     &= \left(1-\psi^{-1}\right)\frac{\gamma \sigma^2}{2 y_{0}(X)} \sum_{k=1}^J \left( \hat{\gamma}_k - \hat{\gamma}_0  \right) \mu_{X_k,1}(X) \epsilon^2 + \mathcal{O}(\epsilon^3),
-% \end{align}
-% where we used the fact that $c_{j, \overline{\alpha}_p, 1} = y_{\overline{\alpha}_p,1} =  0$.
-
-% \noindent\textbf{Step 2: Drift for $c_j$ and $y_Y$.}\\
-% The second derivative of the consumption-wealth ratio with respect to $\overline{\alpha}_p$ is given by
-% \begin{equation}
-%     \frac{\partial^2 c_{j}}{\partial \overline{\alpha}_p^2} = \frac{\partial^2 c_{j,2}}{\partial \hat{\alpha}_p^2} + \mathcal{O}(\epsilon), \qquad \qquad 
-%     \frac{\partial^2 c_{j}}{\partial \overline{\alpha}_p \partial x} = \frac{\partial^2 c_{j,1}}{\partial \hat{\alpha}_p \partial x} + \mathcal{O}(\epsilon)
-% \end{equation}  
-% where $\frac{\partial^2 c_{j,1}}{\partial \hat{\alpha}_p \partial x} = 0_{1\times 2}$, as $c_{j,1}(x, \hat{\alpha}_p)$ is independent of $\hat{\alpha}_p$.
-
-% The drift of $c_{j,t}$ is given by\small
-% \begin{align}
-%     \mu_{c_j}(\hat{X},\epsilon) &= \frac{c_{j,\hat{X}}(\hat{X},\epsilon)}{c_j(\hat{X},\epsilon)} \mu_{\hat{X}}(\hat{X},\epsilon)+ \sum_{k=1}^3\frac{1}{2}  \sigma_{\hat{X},k}^\top(Z,\epsilon) \frac{c_{j,\hat{X}\hat{X}}(\hat{X},\epsilon)}{c_{j}(\hat{X},\epsilon)} \sigma_{\hat{X},k}(\hat{X},\epsilon)\nonumber\\
-%     &=  \left[\frac{c_{j,1,x}(x, \hat{\alpha}_p)}{c_{j,0}(x, \hat{\alpha}_p)} \mu_{x,1}(x, \hat{\alpha}_p) +\frac{c_{j,2, \hat{\alpha}_p}(x, \hat{\alpha}_p)}{c_{j,0}(x, \hat{\alpha}_p)} \mu_{\overline{\alpha}_p,1}(x, \hat{\alpha}_p) + \frac{c_{j,2,\hat{\alpha}_p^2}(x, \hat{\alpha}_p)}{c_{j,0}(x, \hat{\alpha}_p)} \frac{\sigma_p \sigma_p^\top }{2}
-%     \right]\epsilon^2+\mathcal{O}(\epsilon^3)\nonumber\\
-%     &= \left[ -(\psi-1)\frac{\left(1-\psi^{-1}\right)\gamma \|\sigma\|^2}{2 c_{j,0}(x, \hat{\alpha}_p)} \sum_{k=1}^2 \left( \hat{\gamma}_k - \hat{\gamma}_0  \right) x_k\mu_{x_k,1}(x, \hat{\alpha}_p) \epsilon^2  +\frac{c_{j,2, \hat{\alpha}_p}(x, \hat{\alpha}_p)}{c_{j,0}(x, \hat{\alpha}_p)} \mu_{\overline{\alpha}_p,1}(x, \hat{\alpha}_p)  \right]\epsilon^2+ \\
-%     &+ \frac{c_{j,2,\hat{\alpha}_p^2}(x, \hat{\alpha}_p)}{c_{j,0}(x, \hat{\alpha}_p)} \frac{\sigma_p \sigma_p^\top }{2} \epsilon^2 + \mathcal{O}(\epsilon^3)
-% \end{align}\normalsize
-
 
 \noindent\textbf{Step 2: Risk exposures of investors.}\\
 The risk exposure of an active investor is
@@ -1704,6 +1634,772 @@ This expression separates the second-order interest-rate correction into the agg
 % \end{align}
 
 \noindent\textbf{Step 6: Dividend yield.}\\
+The dividend yield is given by
+\begin{equation}
+    y_Y = r + \eta (\sigma + \sigma_{p_Y})^\top - \left(\mu + \mu_{p_Y} + \sigma \sigma_{p_Y}^\top\right),        
+\end{equation}
+where $\sigma_{p_Y}$ and $\mu_{p_Y}$ denote the diffusion and drift of the price-dividend ratio.
+Since $y_Y=1/p_Y$, we have
+\begin{equation}
+    \sigma_{p_Y,2}=-\sigma_{y_Y,2}, \qquad \mu_{p_Y,2}=-\mu_{y_Y,2},
+\end{equation}
+up to terms of order higher than $\epsilon^2$.
+Expanding the dividend yield to second order gives
+\begin{align}\label{eq:y2-pricing-condition}
+    y_{Y,2}
+    &= r_2 + \sigma \eta_2^\top - \eta_0\sigma_{y_Y,2}^\top
+    + \mu_{y_Y,2} + \sigma\sigma_{y_Y,2}^\top \\
+    &= r_2 + \pi_{Y,2} + \mu_{y_Y,2} + \sigma\sigma_{y_Y,2}^\top,
+\end{align}
+where the second equality uses the expression for $\pi_{Y,2}$ from Step 4.
+Substituting the expression for $r_2$ from \eqref{eq:r2-second-order-simplified}, we obtain
+% Step 6: Dividend yield
+\begin{align}\label{eq:y2-second-order-general}
+    y_{Y,2}
+    &= (1-\psi^{-1})\mu_{y_Y,2}
+    +(1-\psi^{-1})\sigma\sigma_{y_Y,2}^\top
+    + \psi^{-1}\sum_{j=0}^2 x_j\left[\mu_{c_j,2} + (1-\gamma)\sigma_{c_j,2}\sigma^\top\right] \nonumber\\
+    &\quad + (1-\psi^{-1})\gamma \left[-\sigma_{y_Y,2}\sigma^\top
+        + \sum_{j=0}^2 x_j \left(
+        \frac{1}{2}\sigma_{j,1}\sigma_{j,1}^\top
+        + \hat{\gamma}_j \sigma_{j,1}\sigma^\top
+    \right)\right].
+\end{align}
+From Step 1, the first-order corrections imply
+\begin{equation}
+    \mu_{c_j,2}=(1-\psi)\mu_{y_Y,2}, \qquad
+    \sigma_{c_j,2}=(1-\psi)\sigma_{y_Y,2}.
+\end{equation}
+Using $\sum_{j=0}^2 x_j=1$, the terms involving $\mu_{y_Y,2}$ cancel.
+The terms involving $\sigma_{y_Y,2}\sigma^\top$ also cancel.
+Therefore,
+\begin{equation}\label{eq:y2-second-order}
+    y_{Y,2}
+    = (1-\psi^{-1})\gamma
+    \sum_{j=0}^2 x_j \left(
+        \frac{1}{2}\sigma_{j,1}\sigma_{j,1}^\top
+        + \hat{\gamma}_j \sigma_{j,1}\sigma^\top
+    \right).
+\end{equation}
+Equivalently,
+\begin{equation}\label{eq:y2-second-order-scalar-exposure}
+    y_{Y,2}
+    = (1-\psi^{-1})\gamma\|\sigma\|^2
+    \sum_{j=0}^2 x_j \left(
+        \frac{1}{2}m_{j,1}^2 + \hat{\gamma}_j m_{j,1}
+    \right),
+\end{equation}
+where $\sigma_{j,1}=m_{j,1}\sigma$.
+This expression shows that the second-order correction to the dividend yield depends only on first-order risk reallocations and preference heterogeneity.
+The second-order price-dividend-ratio correction follows from the change of variables above:
+\begin{equation}
+    p_{Y,2}=p_{Y,0}^3 y_{Y,1}^2-p_{Y,0}^2 y_{Y,2}.
+\end{equation}
+
+
+\noindent\textbf{Step 7: Consumption-wealth ratio.}\\
+The consumption-wealth ratio is given by
+\begin{equation}
+    c_{j,t} = \psi \rho 
+    + (1-\psi) \left[ r_t + \eta_{t}\,\sigma_{j,t}^\top - \frac{\gamma_j}{2} \|\sigma_{j,t}\|^2 \right] 
+    + \mu_{c_j,t} 
+    + (1-\gamma_j) \sigma_{c_j,t} \sigma_{j,t}^\top 
+    + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}.
+\end{equation}
+
+We expand each term to second order. Using
+\begin{align}
+    r_t &= r_0 + r_1\epsilon + r_2\epsilon^2 + \mathcal{O}(\epsilon^3),\\
+    \eta_t &= \eta_0 + \eta_1\epsilon + \eta_2\epsilon^2 + \mathcal{O}(\epsilon^3),\\
+    \sigma_{j,t} &= \sigma + \sigma_{j,1}\epsilon + \sigma_{j,2}\epsilon^2 + \mathcal{O}(\epsilon^3),
+\end{align}
+and
+\begin{align}
+    \gamma_j &= \gamma(1+\hat{\gamma}_j\epsilon), \\
+    \sigma_{c_j,t} &= \sigma_{c_j,2}\epsilon^2 + \mathcal{O}(\epsilon^3), \\
+    \mu_{c_j,t} &= \mu_{c_j,2}\epsilon^2 + \mathcal{O}(\epsilon^3),
+\end{align}
+we collect second-order terms.
+
+The first-order term is
+\begin{equation}
+    c_{j,1}
+    =
+    (1-\psi)
+    \left[
+        r_1
+        + \eta_1\sigma^\top
+        - \frac{\gamma}{2}\|\sigma\|^2 \hat{\gamma}_j
+    \right],
+\end{equation}
+which matches the previous result.
+
+Before simplifying, the second-order term is
+\begin{align}
+    c_{j,2} &= (1-\psi)\Big[
+        r_2
+        + \eta_2\sigma^\top
+        + \eta_1\sigma_{j,1}^\top
+        + \eta_0\sigma_{j,2}^\top
+        - \gamma\sigma\sigma_{j,2}^\top
+        - \frac{\gamma}{2}\sigma_{j,1}\sigma_{j,1}^\top
+        - \gamma\hat{\gamma}_j\sigma\sigma_{j,1}^\top
+    \Big] \nonumber\\
+    &\quad + \mu_{c_j,2}
+    + (1-\gamma)\sigma_{c_j,2}\sigma^\top.
+\end{align}
+Using $\eta_0=\gamma\sigma$, the terms involving $\sigma_{j,2}$ cancel.
+Therefore,
+\begin{align}
+    c_{j,2} &= (1-\psi)\Big[
+        r_2
+        + \eta_2\sigma^\top
+        + \eta_1\sigma_{j,1}^\top
+        - \frac{\gamma}{2}\sigma_{j,1}\sigma_{j,1}^\top
+        - \gamma\hat{\gamma}_j\sigma\sigma_{j,1}^\top
+    \Big] \nonumber\\
+    &\quad + \mu_{c_j,2}
+    + (1-\gamma)\sigma_{c_j,2}\sigma^\top.
+\end{align}
+
+Substituting the expressions for $r_2$, $\eta_2$, and $\sigma_{j,2}$ derived in Steps 2--5 yields a closed-form expression for $c_{j,2}$ in terms of first-order reallocations and heterogeneity.
+
+\noindent\textbf{Step 8: The dividend claim.}\\
+The normalized price of the dividend claim, $p_D=P_D/Y$, satisfies
+\begin{equation}
+    r_t + (\sigma+\sigma_{p_D,t})\eta_t^\top
+    = \frac{s_t}{p_{D,t}} + \mu + \mu_{p_D,t} + \sigma\sigma_{p_D,t}^\top.
+\end{equation}
+Equivalently, after multiplying by $p_{D,t}$,
+\begin{equation}\label{eq:pD-pricing-condition}
+    \left[r_t+\sigma\eta_t^\top-\mu\right]p_{D,t}
+    = s_t + p_{D,x,t}\mu_{x,t}+p_{D,s,t}\mu_{s,t}
+    +\frac{1}{2}\sum_{k=1}^3 \Sigma_{D,k,t}^\top p_{D,XX,t}\Sigma_{D,k,t}
+    +(\sigma-\eta_t)\left(p_{D,x,t}\sigma_{x,t}+p_{D,s,t}\sigma_{s,t}\right)^\top,
+\end{equation}
+where $X=(x,s)$, $p_{D,XX}$ is the Hessian with respect to $(x,s)$, and $\Sigma_{D,k,t}$ is the $k$-th column of the diffusion matrix of $(x,s)$.
+
+We now introduce the local coordinate
+\begin{equation}
+    s=\bar{s}+\epsilon\hat{s}.
+\end{equation}
+The function $p_D$ is a function of the physical state $(x,s)$, but its perturbation coefficients are functions of $(x,\hat{s})$:
+\begin{equation}\label{eq:pD-expansion-local-s}
+    p_D(x,s;\epsilon)
+    = p_{D,0}+p_{D,1}(x,\hat{s})\epsilon+p_{D,2}(x,\hat{s})\epsilon^2
+    +\mathcal{O}(\epsilon^3).
+\end{equation}
+Because $\hat{s}=(s-\bar{s})/\epsilon$, derivatives with respect to the physical state $s$ satisfy
+\begin{align}
+    p_{D,s}
+    &= p_{D,1,\hat{s}}+\epsilon p_{D,2,\hat{s}}+\mathcal{O}(\epsilon^2),\\
+    p_{D,ss}
+    &= \epsilon^{-1}p_{D,1,\hat{s}\hat{s}}+p_{D,2,\hat{s}\hat{s}}+\mathcal{O}(\epsilon).
+\end{align}
+In the first-order solution below, $p_{D,1}$ is linear in $\hat{s}$, so $p_{D,1,\hat{s}\hat{s}}=0$ and the second derivative is well behaved:
+\begin{equation}
+    p_{D,ss}=p_{D,2,\hat{s}\hat{s}}+\mathcal{O}(\epsilon).
+\end{equation}
+Similarly,
+\begin{equation}
+    p_{D,x}=\epsilon p_{D,1,x}+\epsilon^2p_{D,2,x}+\mathcal{O}(\epsilon^3),
+    \qquad
+    p_{D,xs}=p_{D,1,x\hat{s}}+\epsilon p_{D,2,x\hat{s}}+\mathcal{O}(\epsilon^2).
+\end{equation}
+
+The dividend-share process implies
+\begin{align}
+    \mu_{s,t} &= -\kappa_s(s_t-\bar{s}) = -\kappa_s\hat{s}\epsilon,\\
+    \sigma_{s,t} &= s_t(1-s_t)\sigma_s\epsilon 
+    = \bar{s}(1-\bar{s})\sigma_s\epsilon
+    +(1-2\bar{s})\hat{s}\sigma_s\epsilon^2
+    +\mathcal{O}(\epsilon^3).
+\end{align}
+
+The wealth-share dynamics satisfy
+\begin{equation}
+    \mu_{x,t}=\mu_{x,1}\epsilon+\mathcal{O}(\epsilon^2),
+    \qquad
+    \sigma_{x,t}=\sigma_{x,1}\epsilon+\mathcal{O}(\epsilon^2).
+\end{equation}
+
+Define
+\begin{equation}
+    A_t\equiv r_t+\sigma\eta_t^\top-\mu
+    =\delta+A_1\epsilon+A_2\epsilon^2+\mathcal{O}(\epsilon^3),
+\end{equation}
+where
+\begin{equation}
+    \delta=r_0+\sigma\eta_0^\top-\mu,
+    \qquad
+    A_1=r_1+\sigma\eta_1^\top,
+    \qquad
+    A_2=r_2+\sigma\eta_2^\top.
+\end{equation}
+The payoff satisfies $s_t=\bar{s}+\hat{s}\epsilon$.
+
+The zeroth-order condition is
+\begin{equation}
+    \delta p_{D,0}=\bar{s},
+    \qquad\text{so}\qquad
+    p_{D,0}=\frac{\bar{s}}{\delta}.
+\end{equation}
+
+At first order, the only state-derivative terms come from the drift of $s$ and from the order-$\epsilon$ diffusion of $s$ evaluated at $\bar{s}$.
+The first-order correction satisfies
+\begin{equation}\label{eq:pD-first-order-PDE}
+    \delta p_{D,1}+A_1p_{D,0}
+    =\hat{s}-\kappa_s\hat{s}p_{D,1,\hat{s}}
+    +(\sigma-\eta_0)\left[p_{D,1,\hat{s}}\bar{s}(1-\bar{s})\sigma_s\right]^\top.
+\end{equation}
+This equation is the same first-order pricing equation derived above.
+Its solution is
+\begin{equation}
+    p_{D,1}
+    = \frac{\hat{s}}{\delta+\kappa_s}
+    -(r_1+\pi_{Y,1})\frac{\bar{s}}{\delta^2}
+    -\frac{\gamma-1}{\delta(\delta+\kappa_s)}\bar{s}(1-\bar{s})\sigma\sigma_s^\top.
+\end{equation}
+
+At second order, using $\mu_{s,t}=-\kappa_s\hat{s}\epsilon$ and $p_{D,s}=p_{D,1,\hat{s}}+\epsilon p_{D,2,\hat{s}}+\mathcal{O}(\epsilon^2)$, the correction satisfies
+\begin{align}\label{eq:pD-second-order-PDE}
+    \delta p_{D,2}+A_1p_{D,1}+A_2p_{D,0}
+    &= -\kappa_s\hat{s}p_{D,2,\hat{s}}
+    +(\sigma-\eta_0)\left[p_{D,2,\hat{s}}\bar{s}(1-\bar{s})\sigma_s\right]^\top \nonumber\\
+    &\quad +p_{D,1,x}\mu_{x,1}
+    +(\sigma-\eta_0)\left[p_{D,1,x}\sigma_{x,1}\right]^\top
+    -\eta_1\left[p_{D,1,\hat{s}}\bar{s}(1-\bar{s})\sigma_s\right]^\top \nonumber\\
+    &\quad +(\sigma-\eta_0)\left[p_{D,1,\hat{s}}(1-2\bar{s})\hat{s}\sigma_s\right]^\top
+    +\frac{1}{2}p_{D,2,\hat{s}\hat{s}}\bar{s}^2(1-\bar{s})^2\sigma_s\sigma_s^\top.
+\end{align}
+The potential second-order Hessian terms involving $p_{D,1,x\hat{s}}$ and $p_{D,1,\hat{s}\hat{s}}$ vanish because $p_{D,1}$ is additively separable in $(x,\hat{s})$ and linear in $\hat{s}$.
+Thus, after these simplifications, the right-hand side of \eqref{eq:pD-second-order-PDE} is at most affine in $\hat{s}$, apart from the operator applied to $p_{D,2}$.
+We can solve \eqref{eq:pD-second-order-PDE} by matching coefficients in $\hat{s}$.
+Let
+\begin{equation}
+    B_s \equiv \bar{s}(1-\bar{s}),
+    \qquad
+    \Lambda_s \equiv (\sigma-\eta_0)\sigma_s^\top=(1-\gamma)\sigma\sigma_s^\top.
+\end{equation}
+Write the first-order solution as
+\begin{equation}
+    p_{D,1}(x,\hat{s})=a_1(x,\hat{\alpha}_p)+b_1\hat{s},
+\end{equation}
+where
+\begin{equation}
+    b_1=\frac{1}{\delta+\kappa_s},
+\end{equation}
+and
+\begin{equation}
+    a_1(x,\hat{\alpha}_p)
+    =-(r_1+\pi_{Y,1})\frac{\bar{s}}{\delta^2}
+    -\frac{\gamma-1}{\delta(\delta+\kappa_s)}B_s\sigma\sigma_s^\top.
+\end{equation}
+Equivalently, using $A_1=r_1+\sigma\eta_1^\top=r_1+\pi_{Y,1}$,
+\begin{equation}
+    a_1(x,\hat{\alpha}_p)
+    =-\frac{A_1p_{D,0}}{\delta}+\frac{\Lambda_s B_s}{\delta(\delta+\kappa_s)}.
+\end{equation}
+
+Conjecture that the second-order correction is quadratic in $\hat{s}$:
+\begin{equation}
+    p_{D,2}(x,\hat{s})=a_2(x,\hat{\alpha}_p)+b_2(x,\hat{\alpha}_p)\hat{s}+c_2(x,\hat{\alpha}_p)\hat{s}^2.
+\end{equation}
+Matching the coefficient on $\hat{s}^2$ gives
+\begin{equation}
+    (\delta+\kappa_s)c_2=0,
+\end{equation}
+so
+\begin{equation}
+    c_2=0.
+\end{equation}
+Thus, in this benchmark case, the second-order correction is affine in $\hat{s}$.
+
+Matching the coefficient on $\hat{s}$ gives
+\begin{equation}
+    (\delta+\kappa_s)b_2
+    =-A_1b_1+\Lambda_s(1-2\bar{s})b_1,
+\end{equation}
+so
+\begin{equation}
+    b_2(x,\hat{\alpha}_p)
+    =\frac{\Lambda_s(1-2\bar{s})-A_1}{(\delta+\kappa_s)^2}.
+\end{equation}
+Finally, matching the constant term gives
+\begin{equation}
+    \delta a_2
+    =-A_1a_1-A_2p_{D,0}+\Lambda_sB_sb_2+\mathcal{M}_x
+    -\eta_1\left(b_1B_s\sigma_s\right)^\top,
+\end{equation}
+where
+\begin{equation}
+    \mathcal{M}_x
+    \equiv a_{1,x}\mu_{x,1}
+    +(\sigma-\eta_0)\left[a_{1,x}\sigma_{x,1}\right]^\top.
+\end{equation}
+Therefore,
+\begin{equation}
+    a_2(x,\hat{\alpha}_p)
+    =\frac{1}{\delta}\left[
+        -A_1a_1-A_2p_{D,0}+\Lambda_sB_sb_2+\mathcal{M}_x
+        -\eta_1\left(b_1B_s\sigma_s\right)^\top
+    \right].
+\end{equation}
+Combining the coefficient restrictions, the second-order correction is
+\begin{equation}
+    p_{D,2}(x,\hat{s})=a_2(x,\hat{\alpha}_p)+b_2(x,\hat{\alpha}_p)\hat{s}.
+\end{equation}
+The term proportional to $\eta_1(b_1B_s\sigma_s)^\top$ captures the interaction between first-order changes in the market price of risk and the first-order dividend-share exposure of the dividend claim.
+
+\noindent\textbf{Step 9: Pricing impact for the dividend claim.}\\
+We now compute the derivative of the second-order dividend-claim price with respect to the passive investors' portfolio share $\hat{\alpha}_p$.
+The coefficient representation from Step 8 gives
+\begin{equation}
+    p_{D,2}(x,\hat{s})=a_2(x,\hat{\alpha}_p)+b_2(x,\hat{\alpha}_p)\hat{s},
+\end{equation}
+where
+\begin{equation}
+    b_2(x,\hat{\alpha}_p)
+    =\frac{\Lambda_s(1-2\bar{s})-A_1}{(\delta+\kappa_s)^2}
+\end{equation}
+and
+\begin{equation}
+    a_2(x,\hat{\alpha}_p)
+    =\frac{1}{\delta}\left[
+        -A_1a_1-A_2p_{D,0}+\Lambda_sB_sb_2+\mathcal{M}_x
+        -\eta_1\left(b_1B_s\sigma_s\right)^\top
+    \right].
+\end{equation}
+Recall that
+\begin{equation}
+    A_1=r_1+\sigma\eta_1^\top=r_1+\pi_{Y,1}.
+\end{equation}
+The first-order aggregate-price term is independent of $\hat{\alpha}_p$, so
+\begin{equation}
+    \frac{\partial A_1}{\partial \hat{\alpha}_p}=0.
+\end{equation}
+It follows that $a_1$ and $b_2$ are also independent of $\hat{\alpha}_p$, except through the wealth-share dynamics term $\mathcal{M}_x$ in $a_2$.
+Therefore,
+\begin{equation}
+    \frac{\partial p_{D,2}}{\partial \hat{\alpha}_p}
+    =\frac{\partial a_2}{\partial \hat{\alpha}_p},
+\end{equation}
+and
+\begin{equation}\label{eq:pD2-alpha-derivative-coefficients}
+    \frac{\partial p_{D,2}}{\partial \hat{\alpha}_p}
+    =\frac{1}{\delta}\left[
+        -p_{D,0}\frac{\partial A_2}{\partial \hat{\alpha}_p}
+        +\frac{\partial \mathcal{M}_x}{\partial \hat{\alpha}_p}
+        -\frac{\partial \eta_1}{\partial \hat{\alpha}_p}
+        \left(b_1B_s\sigma_s\right)^\top
+    \right].
+\end{equation}
+Using $p_{D,0}=\bar{s}/\delta$ and $b_1=1/(\delta+\kappa_s)$, this can be written as
+\begin{equation}\label{eq:pD2-alpha-derivative-final}
+    \frac{\partial p_{D,2}}{\partial \hat{\alpha}_p}
+    =-\frac{\bar{s}}{\delta^2}\frac{\partial A_2}{\partial \hat{\alpha}_p}
+    -\frac{B_s}{\delta(\delta+\kappa_s)}
+        \frac{\partial \eta_1}{\partial \hat{\alpha}_p}\sigma_s^\top
+    +\frac{1}{\delta}\frac{\partial \mathcal{M}_x}{\partial \hat{\alpha}_p}.
+\end{equation}
+The first term is the aggregate-price-impact channel.
+The second term is specific to the dividend claim: passive demand changes the first-order market price of risk, and the dividend claim loads on dividend-share risk through $b_1B_s\sigma_s$.
+The last term captures the indirect effect operating through first-order wealth-share dynamics.
+Since
+\begin{equation}
+    \mathcal{M}_x
+    =a_{1,x}\mu_{x,1}+ (\sigma-\eta_0)\left[a_{1,x}\sigma_{x,1}\right]^\top,
+\end{equation}
+and $a_1$ is independent of $\hat{\alpha}_p$, this indirect term is
+%
+\begin{align}
+    \frac{\partial \mathcal{M}_x}{\partial \hat{\alpha}_p}
+    &=a_{1,x}\frac{\partial \mu_{x,1}}{\partial \hat{\alpha}_p}
+    +(\sigma-\eta_0)\left[a_{1,x}\frac{\partial \sigma_{x,1}}{\partial \hat{\alpha}_p}\right]^\top.
+\end{align}
+This term is equal to zero.
+To see this, recall that the first-order diffusion of wealth shares is
+\begin{equation}
+    \sigma_{x_j,1}=x_j\sigma_{j,1},
+\end{equation}
+and the first-order drift of wealth shares is
+\begin{equation}
+    \mu_{x_j,1}=x_j\left[(\eta_0-\sigma)\sigma_{j,1}^\top-c_{j,1}+y_{Y,1}\right].
+\end{equation}
+Since $c_{j,1}$ and $y_{Y,1}$ are independent of $\hat{\alpha}_p$, differentiating with respect to $\hat{\alpha}_p$ gives
+\begin{equation}
+    \frac{\partial \mu_{x_j,1}}{\partial \hat{\alpha}_p}
+    =x_j(\eta_0-\sigma)\frac{\partial \sigma_{j,1}^\top}{\partial \hat{\alpha}_p},
+    \qquad
+    \frac{\partial \sigma_{x_j,1}}{\partial \hat{\alpha}_p}
+    =x_j\frac{\partial \sigma_{j,1}}{\partial \hat{\alpha}_p}.
+\end{equation}
+Therefore,
+\begin{align}
+    \frac{\partial \mathcal{M}_x}{\partial \hat{\alpha}_p}
+    &=\sum_{j=1}^2 a_{1,x_j}x_j(\eta_0-\sigma)\frac{\partial \sigma_{j,1}^\top}{\partial \hat{\alpha}_p}
+    +(\sigma-\eta_0)\sum_{j=1}^2 a_{1,x_j}x_j\frac{\partial \sigma_{j,1}^\top}{\partial \hat{\alpha}_p} \\
+    &=0.
+\end{align}
+Thus the indirect wealth-share-dynamics channel drops out of the dividend-claim price impact.
+Finally, since
+\begin{equation}
+    p_D(x,s;\epsilon)=p_{D,0}+p_{D,1}(x,\hat{s})\epsilon+p_{D,2}(x,\hat{s})\epsilon^2+\mathcal{O}(\epsilon^3)
+\end{equation}
+and $p_{D,1}$ is independent of $\hat{\alpha}_p$, the price impact of passive flows is
+\begin{equation}
+    \frac{\partial p_D(x,s;\epsilon)}{\partial F(x,s;\epsilon)}
+    =\frac{\epsilon}{x_0}\frac{\partial p_{D,2}}{\partial \hat{\alpha}_p}
+    +\mathcal{O}(\epsilon^2).
+\end{equation}
+Thus, the dividend-claim price impact is the sum of an aggregate-price-impact channel and a direct dividend-risk-exposure channel.
+
+
+\subsection{Second-order correction: time-varying passive portfolio share}\label{app:prop_second_order}
+
+We next derive the second-order correction in the case the passive portfolio share is time-varying. 
+Now, $\overline{\alpha}_p$ becomes a state variable. 
+The dynamics of $\overline{\alpha}_p = 1 + \hat{\alpha}_p \epsilon$ is given by
+\begin{align}
+    \mu_{\overline{\alpha}_p,t} &= \kappa_p (\hat{\alpha} - \hat{\alpha}_p) \epsilon, \\
+    \sigma_{\overline{\alpha}_p,t} &= \sigma_p \epsilon. 
+\end{align}
+
+We consider the following expansion of $c_j(x, \overline{\alpha}_p;\epsilon)$:
+\begin{equation}
+    c_{j}(x, \overline{\alpha}_p;\epsilon) = c_{j,0} + c_{j,1}(x, \hat{\alpha}_p) \epsilon + c_{j,2}(x, \hat{\alpha}_p) \epsilon^2 + \mathcal{O}(\epsilon^3). 
+\end{equation}
+
+Because $\hat{\alpha}_p=(\overline{\alpha}_p-1)/\epsilon$, derivatives with respect to the physical state $\overline{\alpha}_p$ satisfy the same chain-rule structure as for $s$.
+For a generic object $f(x,\overline{\alpha}_p;\epsilon)=f_0+f_1(x,\hat{\alpha}_p)\epsilon+f_2(x,\hat{\alpha}_p)\epsilon^2+\mathcal{O}(\epsilon^3)$, we have
+\begin{align}
+    f_{\overline{\alpha}_p}
+    &= f_{1,\hat{\alpha}_p} + \epsilon f_{2,\hat{\alpha}_p} + \mathcal{O}(\epsilon^2),\\
+    f_{\overline{\alpha}_p\overline{\alpha}_p}
+    &= \epsilon^{-1} f_{1,\hat{\alpha}_p\hat{\alpha}_p} + f_{2,\hat{\alpha}_p\hat{\alpha}_p} + \mathcal{O}(\epsilon).
+\end{align}
+
+In our setting, $c_{j,1}$ and $y_{Y,1}$ are independent of $\hat{\alpha}_p$, so
+\begin{equation}
+    f_{1,\hat{\alpha}_p} = 0, \qquad f_{1,\hat{\alpha}_p\hat{\alpha}_p} = 0,
+\end{equation}
+and therefore
+\begin{equation}
+    f_{\overline{\alpha}_p} = \epsilon f_{2,\hat{\alpha}_p} + \mathcal{O}(\epsilon^2),
+    \qquad
+    f_{\overline{\alpha}_p\overline{\alpha}_p} = f_{2,\hat{\alpha}_p\hat{\alpha}_p} + \mathcal{O}(\epsilon).
+\end{equation}
+
+Similarly, cross-derivatives satisfy
+\begin{equation}
+    f_{x\overline{\alpha}_p} = f_{1,x\hat{\alpha}_p} + \epsilon f_{2,x\hat{\alpha}_p} + \mathcal{O}(\epsilon^2) = \epsilon f_{2,x\hat{\alpha}_p} + \mathcal{O}(\epsilon^2),
+\end{equation}
+since $f_{1}$ does not depend on $\hat{\alpha}_p$.
+
+\noindent\textbf{Step 1: Drift and diffusion for $c_j$ and $y_Y$.}
+
+We avoid repeating the derivation for the case in which $\hat{\alpha}_p$ is fixed.
+For any second-order object $z_2$, write
+\begin{equation}
+    z_2=z_2^{0}+\Delta z_2,
+\end{equation}
+where $z_2^{0}$ denotes the second-order correction derived in the fixed-$\hat{\alpha}_p$ economy, and $\Delta z_2$ collects only the additional terms generated by the drift and diffusion of $\overline{\alpha}_p$.
+By construction, $\Delta z_2$ vanishes when $\kappa_p=0$ and $\sigma_p=0_{1\times 3}$.
+
+Because $c_{j,1}$ and $y_{Y,1}$ are independent of $\hat{\alpha}_p$, the diffusion terms coming from the time variation in $\overline{\alpha}_p$ are
+\begin{align}
+    \Delta \sigma_{c_j,2}
+    &= \frac{c_{j,2,\hat{\alpha}_p}}{c_{j,0}}\sigma_p,\\
+    \Delta \sigma_{y_Y,2}
+    &= \frac{y_{Y,2,\hat{\alpha}_p}}{y_{Y,0}}\sigma_p.
+\end{align}
+Therefore,
+\begin{align}
+    \sigma_{c_j,2} &= \sigma_{c_j,2}^{0}+\frac{c_{j,2,\hat{\alpha}_p}}{c_{j,0}}\sigma_p,\\
+    \sigma_{y_Y,2} &= \sigma_{y_Y,2}^{0}+\frac{y_{Y,2,\hat{\alpha}_p}}{y_{Y,0}}\sigma_p.
+\end{align}
+
+Similarly, the new drift terms generated by the time variation in $\overline{\alpha}_p$ are
+\begin{align}
+    \Delta \mu_{c_j,2}
+    &= \frac{c_{j,2,\hat{\alpha}_p}}{c_{j,0}}\kappa_p(\hat{\alpha}-\hat{\alpha}_p)
+    +\frac{1}{2}\frac{c_{j,2,\hat{\alpha}_p\hat{\alpha}_p}}{c_{j,0}}\sigma_p\sigma_p^\top,\\
+    \Delta \mu_{y_Y,2}
+    &= \frac{y_{Y,2,\hat{\alpha}_p}}{y_{Y,0}}\kappa_p(\hat{\alpha}-\hat{\alpha}_p)
+    +\frac{1}{2}\frac{y_{Y,2,\hat{\alpha}_p\hat{\alpha}_p}}{y_{Y,0}}\sigma_p\sigma_p^\top.
+\end{align}
+
+Thus the only new second-order terms are proportional to $\kappa_p$ or $\sigma_p$.
+
+\noindent\textbf{Step 2 (time-varying $\alpha_p$): Risk exposures of investors.}\\
+Write
+\begin{equation}
+    \sigma_{j,2} = \sigma_{j,2}^{0} + \Delta\sigma_{j,2},
+\end{equation}
+where $\sigma_{j,2}^{0}$ is the second-order exposure from the fixed-$\hat{\alpha}_p$ economy and $\Delta\sigma_{j,2}$ collects only the new terms generated by the time variation in $\overline{\alpha}_p$.
+
+The desired exposure remains
+\begin{equation}
+    q_{j,t}
+    \equiv \frac{\eta_t}{\gamma_j}+\frac{1-\gamma_j^{-1}}{\psi-1}\,\sigma_{c_j,t}.
+\end{equation}
+Relative to the fixed-$\hat{\alpha}_p$ economy, the second-order desired exposure changes for two reasons: the market price of risk changes by $\Delta\eta_2$, and the consumption-wealth ratio has an additional diffusion induced by $\sigma_p$.
+Thus,
+\begin{equation}
+    \Delta q_{j,2}
+    =\frac{\Delta\eta_2}{\gamma}
+    +\frac{1-\gamma^{-1}}{\psi-1}\Delta\sigma_{c_j,2}.
+\end{equation}
+Using Steps 1 and 2,
+\begin{equation}
+    \Delta q_{j,2}
+    =\frac{\Delta\eta_2}{\gamma}
+    +\frac{1-\gamma^{-1}}{\psi-1}\frac{c_{j,2,\hat{\alpha}_p}}{c_{j,0}}\sigma_p.
+\end{equation}
+
+For an unconstrained investor, the multiplier is zero, so the incremental second-order exposure is simply
+\begin{equation}
+    \Delta\sigma_{j,2}=\Delta q_{j,2}.
+\end{equation}
+Therefore,
+\begin{equation}\label{eq:delta-sigma-j2-unconstrained-alpha-p}
+    \Delta\sigma_{j,2}
+    =\frac{\Delta\eta_2}{\gamma}
+    +\frac{1-\gamma^{-1}}{\psi-1}\frac{c_{j,2,\hat{\alpha}_p}}{c_{j,0}}\sigma_p.
+\end{equation}
+
+For a constrained investor, the second-order multiplier adjusts to keep the constraint binding.
+Writing
+\begin{equation}
+    \hat{\nu}_{j,2}=\hat{\nu}_{j,2}^{0}+\Delta\hat{\nu}_{j,2},
+\end{equation}
+the incremental exposure is
+\begin{equation}
+    \Delta\sigma_{j,2}
+    =\Delta q_{j,2}-\Delta\hat{\nu}_{j,2}\sigma.
+\end{equation}
+The second-order constraint condition requires the component of $\Delta\sigma_{j,2}$ in the direction of $\sigma$ to vanish:
+\begin{equation}
+    \Delta\sigma_{j,2}\sigma^\top=0.
+\end{equation}
+Hence
+\begin{equation}
+    \Delta\hat{\nu}_{j,2}
+    =\frac{\Delta q_{j,2}\sigma^\top}{\sigma\sigma^\top},
+\end{equation}
+and therefore
+\begin{equation}\label{eq:delta-sigma-j2-constrained-alpha-p}
+    \Delta\sigma_{j,2}
+    =\Delta q_{j,2}
+    -\frac{\Delta q_{j,2}\sigma^\top}{\sigma\sigma^\top}\sigma.
+\end{equation}
+Thus, for constrained investors, only the component of the new desired exposure orthogonal to $\sigma$ affects actual risk exposure; the component parallel to $\sigma$ is absorbed by the second-order multiplier.
+
+Combining the results, the time-varying passive portfolio share affects second-order risk exposures through the new market-price-of-risk term $\Delta\eta_2$ and the new consumption-wealth diffusion term proportional to $\sigma_p$.
+
+\noindent\textbf{Step 3 (time-varying $\alpha_p$): Market price of risk.}\\
+Write
+\begin{equation}
+    \eta_2=\eta_2^{0}+\Delta\eta_2,
+\end{equation}
+where $\eta_2^{0}$ is the second-order market price of risk from the fixed-$\hat{\alpha}_p$ economy and $\Delta\eta_2$ collects only the new terms generated by the time variation in $\overline{\alpha}_p$.
+
+Recall that
+\begin{equation}
+    \eta_t=\gamma_{a,t}\left[\chi_{a,t}\sigma_{R_Y,t}-h_{a,t}\right].
+\end{equation}
+Relative to the fixed-$\hat{\alpha}_p$ economy, there are three new second-order effects.
+First, the aggregate claim has an additional diffusion induced by $\sigma_p$.
+Second, active investors have additional hedging demand because their consumption-wealth ratios load on $\sigma_p$.
+Third, if the leverage constraint binds for investor $2$, the second-order multiplier changes, which changes effective aggregate risk aversion.
+
+From Step 1,
+\begin{equation}
+    \Delta\sigma_{y_Y,2}
+    =\frac{y_{Y,2,\hat{\alpha}_p}}{y_{Y,0}}\sigma_p,
+\end{equation}
+and the additional hedging demand is
+\begin{equation}
+    \Delta h_{a,2}
+    =\frac{1-\gamma^{-1}}{\psi-1}\mathbb{E}_a[\Delta\sigma_{c_j,2}]
+    =\frac{1-\gamma^{-1}}{\psi-1}\mathbb{E}_a\left[\frac{c_{j,2,\hat{\alpha}_p}}{c_{j,0}}\right]\sigma_p.
+\end{equation}
+
+The new contribution to effective aggregate risk aversion comes from the second-order multiplier.
+Using the expansion for $\gamma_{a,t}$ from the fixed-$\hat{\alpha}_p$ case,
+\begin{equation}
+    \Delta\Gamma_{a,2}=\mathbb{E}_a[\Delta\hat{\nu}_{j,2}].
+\end{equation}
+Therefore, the incremental market price of risk is
+\begin{equation}\label{eq:delta-eta2-system-alpha-p}
+    \Delta\eta_2
+    =\gamma\left[
+        \mathbb{E}_a[\Delta\hat{\nu}_{j,2}]\sigma
+        -\Delta\sigma_{y_Y,2}
+        -\Delta h_{a,2}
+    \right].
+\end{equation}
+If no leverage constraint binds, then $\Delta\hat{\nu}_{j,2}=0$ for all active investors and \eqref{eq:delta-eta2-system-alpha-p} reduces to
+\begin{equation}
+    \Delta\eta_2
+    =-\gamma\left[
+        \frac{y_{Y,2,\hat{\alpha}_p}}{y_{Y,0}}
+        +\frac{1-\gamma^{-1}}{\psi-1}\mathbb{E}_a\left[\frac{c_{j,2,\hat{\alpha}_p}}{c_{j,0}}\right]
+    \right]\sigma_p.
+\end{equation}
+
+If the leverage constraint binds for investor $2$, then $\Delta\hat{\nu}_{1,2}=0$ and $\Delta\hat{\nu}_{2,2}$ is pinned down by the incremental second-order constraint.
+Let
+\begin{equation}
+    H_j\equiv\frac{1-\gamma^{-1}}{\psi-1}\frac{c_{j,2,\hat{\alpha}_p}}{c_{j,0}}.
+\end{equation}
+The incremental desired exposure of investor $2$ is
+\begin{equation}
+    \Delta q_{2,2}=\frac{\Delta\eta_2}{\gamma}+H_2\sigma_p.
+\end{equation}
+The binding constraint requires the component of $\Delta\sigma_{2,2}$ in the direction of $\sigma$ to be zero.
+Thus,
+\begin{equation}\label{eq:delta-nu22-alpha-p}
+    \Delta\hat{\nu}_{2,2}
+    =\frac{\Delta q_{2,2}\sigma^\top}{\sigma\sigma^\top}
+    =\frac{\Delta\eta_2\sigma^\top}{\gamma\sigma\sigma^\top}
+    +H_2\frac{\sigma_p\sigma^\top}{\sigma\sigma^\top}.
+\end{equation}
+Substituting \eqref{eq:delta-nu22-alpha-p} into \eqref{eq:delta-eta2-system-alpha-p} gives the linear system
+\begin{align}\label{eq:delta-eta2-constrained-system-alpha-p}
+    \Delta\eta_2
+    &=\gamma\left[
+        \frac{x_2}{x_a}\Delta\hat{\nu}_{2,2}\sigma
+        -\frac{y_{Y,2,\hat{\alpha}_p}}{y_{Y,0}}\sigma_p
+        -\frac{1-\gamma^{-1}}{\psi-1}\mathbb{E}_a\left[\frac{c_{j,2,\hat{\alpha}_p}}{c_{j,0}}\right]\sigma_p
+    \right],\\
+    \Delta\hat{\nu}_{2,2}
+    &=\frac{\Delta\eta_2\sigma^\top}{\gamma\sigma\sigma^\top}
+    +H_2\frac{\sigma_p\sigma^\top}{\sigma\sigma^\top}.
+\end{align}
+Equations~\eqref{eq:delta-eta2-constrained-system-alpha-p} jointly determine the new market-price-of-risk component and the new second-order multiplier when investor $2$ is constrained.
+The key difference relative to the slack case is that part of the new risk is absorbed by the multiplier, which changes effective aggregate risk aversion.
+
+\noindent\textbf{Step 4 (time-varying $\alpha_p$): Risk premium.}\\
+
+The risk premium on the aggregate claim is given by
+\begin{equation}
+    \pi_{Y,t}=\sigma_{R_Y,t}\eta_t^\top.
+\end{equation}
+We write
+\begin{equation}
+    \pi_{Y,2}=\pi_{Y,2}^{0}+\Delta\pi_{Y,2},
+\end{equation}
+where $\pi_{Y,2}^{0}$ is the second-order risk premium in the fixed-$\hat{\alpha}_p$ economy.
+
+Since
+\begin{equation}
+    \sigma_{R_Y,t}=\sigma-\sigma_{y_Y,2}\epsilon^2+\mathcal{O}(\epsilon^3),
+\end{equation}
+the second-order risk premium is
+\begin{equation}
+    \pi_{Y,2}=-\sigma_{y_Y,2}\eta_0^\top+\sigma\eta_2^\top.
+\end{equation}
+Therefore, the incremental risk premium induced by time variation in $\overline{\alpha}_p$ is
+\begin{equation}\label{eq:delta-piY2-alpha-p}
+    \Delta\pi_{Y,2}
+    =-\Delta\sigma_{y_Y,2}\eta_0^\top+\sigma\Delta\eta_2^\top.
+\end{equation}
+Using $\eta_0=\gamma\sigma$ and Step 1,
+\begin{equation}
+    \Delta\pi_{Y,2}
+    =-\gamma\frac{y_{Y,2,\hat{\alpha}_p}}{y_{Y,0}}\sigma_p\sigma^\top
+    +\sigma\Delta\eta_2^\top.
+\end{equation}
+
+If no leverage constraint binds, substituting the expression for $\Delta\eta_2$ from Step 3 gives
+\begin{equation}
+    \Delta\pi_{Y,2}
+    =-\gamma\left[
+        \frac{y_{Y,2,\hat{\alpha}_p}}{y_{Y,0}}\sigma_p\sigma^\top
+        +\left(
+        \frac{y_{Y,2,\hat{\alpha}_p}}{y_{Y,0}}
+        +\frac{1-\gamma^{-1}}{\psi-1}\mathbb{E}_a\left[\frac{c_{j,2,\hat{\alpha}_p}}{c_{j,0}}\right]
+        \right)\sigma\sigma_p^\top
+    \right].
+\end{equation}
+When the leverage constraint binds for investor $2$, the same formula \eqref{eq:delta-piY2-alpha-p} applies, but $\Delta\eta_2$ is jointly determined with $\Delta\hat{\nu}_{2,2}$ by \eqref{eq:delta-eta2-constrained-system-alpha-p}.
+
+\noindent\textbf{Step 5 (time-varying $\alpha_p$): Interest rate.}\\
+We write the second-order interest rate as
+\begin{equation}
+    r_2=r_2^{0}+\Delta r_2,
+\end{equation}
+where $r_2^{0}$ is the fixed-$\hat{\alpha}_p$ expression in \eqref{eq:r2-second-order}, and $\Delta r_2$ collects only the new terms generated by the dynamics of $\overline{\alpha}_p$.
+
+From \eqref{eq:r2-second-order}, the incremental correction is
+\begin{align}\label{eq:delta-r2-alpha-p}
+    \Delta r_2
+    &= -\psi^{-1}\left(\Delta\mu_{y_Y,2}+\sigma\Delta\sigma_{y_Y,2}^\top\right) 
+\nonumber\\
+    &\quad +\psi^{-1}\sum_{j=0}^2 x_j\left[
+        \Delta\mu_{c_j,2}+(1-\gamma)\Delta\sigma_{c_j,2}\sigma^\top
+    \right] \nonumber\\
+    &\quad +(1-\psi^{-1})\gamma\sum_{j=0}^2 x_j
+        \Delta\sigma_{j,2}\sigma^\top
+    -\Delta\pi_{Y,2}.
+\end{align}
+All first-order terms in $\sigma_{j,1}$ and $\hat{\gamma}_j$ are already included in $r_2^{0}$ and therefore do not appear in $\Delta r_2$.
+
+Using Step 1, the new drift and diffusion terms are
+\begin{align}
+    \Delta \sigma_{c_j,2}
+    &=\frac{c_{j,2,\hat{\alpha}_p}}{c_{j,0}}\sigma_p,\\
+    \Delta \sigma_{y_Y,2}
+    &=\frac{y_{Y,2,\hat{\alpha}_p}}{y_{Y,0}}\sigma_p,\\
+    \Delta \mu_{c_j,2}
+    &=\frac{c_{j,2,\hat{\alpha}_p}}{c_{j,0}}\kappa_p(\hat{\alpha}-\hat{\alpha}_p)
+    +\frac{1}{2}\frac{c_{j,2,\hat{\alpha}_p\hat{\alpha}_p}}{c_{j,0}}\sigma_p\sigma_p^\top,\\
+    \Delta \mu_{y_Y,2}
+    &=\frac{y_{Y,2,\hat{\alpha}_p}}{y_{Y,0}}\kappa_p(\hat{\alpha}-\hat{\alpha}_p)
+    +\frac{1}{2}\frac{y_{Y,2,\hat{\alpha}_p\hat{\alpha}_p}}{y_{Y,0}}\sigma_p\sigma_p^\top.
+\end{align}
+Moreover, from Step 4,
+\begin{equation}
+    \Delta\pi_{Y,2}
+    =-\Delta\sigma_{y_Y,2}\eta_0^\top+\sigma\Delta\eta_2^\top.
+\end{equation}
+Substituting this expression into \eqref{eq:delta-r2-alpha-p} gives
+\begin{align}\label{eq:delta-r2-alpha-p-expanded}
+    \Delta r_2
+    &= -\psi^{-1}\Delta\mu_{y_Y,2}
+    -\psi^{-1}\sigma\Delta\sigma_{y_Y,2}^\top 
+\nonumber\\
+    &\quad +\psi^{-1}\sum_{j=0}^2 x_j\left[
+        \Delta\mu_{c_j,2}+(1-\gamma)\Delta\sigma_{c_j,2}\sigma^\top
+    \right] 
+\nonumber\\
+    &\quad +(1-\psi^{-1})\gamma\sum_{j=0}^2 x_j
+        \Delta\sigma_{j,2}\sigma^\top
+    +\Delta\sigma_{y_Y,2}\eta_0^\top
+    -\sigma\Delta\eta_2^\top.
+\end{align}
+Since $\eta_0=\gamma\sigma$, the terms involving $\Delta\sigma_{y_Y,2}$ can also be combined as
+\begin{equation}
+    \left(\gamma-\psi^{-1}\right)\sigma\Delta\sigma_{y_Y,2}^\top.
+\end{equation}
+Thus, equivalently,
+\begin{align}\label{eq:delta-r2-alpha-p-compact}
+    \Delta r_2
+    &= -\psi^{-1}\Delta\mu_{y_Y,2}
+    +\psi^{-1}\sum_{j=0}^2 x_j\Delta\mu_{c_j,2} 
+\nonumber\\
+    &\quad +\psi^{-1}(1-\gamma)\sum_{j=0}^2 x_j\Delta\sigma_{c_j,2}\sigma^\top
+    +(1-\psi^{-1})\gamma\sum_{j=0}^2 x_j\Delta\sigma_{j,2}\sigma^\top 
+\nonumber\\
+    &\quad +\left(\gamma-\psi^{-1}\right)\sigma\Delta\sigma_{y_Y,2}^\top
+    -\sigma\Delta\eta_2^\top.
+\end{align}
+
+When no leverage constraint binds, $\Delta\sigma_{j,2}$ for active investors is given by \eqref{eq:delta-sigma-j2-unconstrained-alpha-p}.
+When the leverage constraint binds for investor $2$, $\Delta\eta_2$ and $\Delta\hat{\nu}_{2,2}$ are jointly determined by \eqref{eq:delta-eta2-constrained-system-alpha-p}, and $\Delta\sigma_{2,2}$ is given by \eqref{eq:delta-sigma-j2-constrained-alpha-p}.
+
+\noindent\textbf{Step 6 (time-varying $\alpha_p$): Dividend yield.}\\
 The dividend yield is given by
 \begin{equation}
     y_Y = r + \eta (\sigma + \sigma_{p_Y})^\top - \left(\mu + \mu_{p_Y} + \sigma \sigma_{p_Y}^\top\right),        
@@ -3153,3 +3849,7 @@ These losses are computed from the batch objectives in \eqref{eq:baseline_batch_
 % \begin{equation}
 %     c_{j,t}^{(k)} = \hat{c}_{j,x}^{(k-1)} \mu_x  + \frac{1}{2}\hat{c}_{j,xx}^{(k-2)}\sigma_x^2 + (1-\gamma_j) \hat{c}_j^{(k-1)} \sigma_x  \sigma^\top \alpha_{j,t} + \frac{\psi - \gamma_j}{1-\psi} \frac{1}{2} \left(\hat{c}_{j,x}^{(k-2)} \sigma_x \right)^2.
 % \end{equation}
+
+
+
+
