@@ -1624,21 +1624,26 @@ Using that $\sigma_{R_Y,1}=0$, expanding the risk premium to second order gives
 \end{equation}
 where we used $\sigma_{R_Y,t} = \sigma - \sigma_{y_Y,2}\epsilon^2 + \mathcal{O}(\epsilon^3)$.
 
-\noindent\textbf{Step 5: Interest rate.}\\
-
-The interest rate is given by
+% Step 5: Interest rate
+\noindent\textbf{Step 5: Interest rate.} 
 \begin{align}
     r_t &= \rho 
-    + \psi^{-1} \left(\mu_{p_Y,t} + \xi_t \right)
+    + \psi^{-1} \left(\mu_{P_Y,t} + \xi_t \right)
     + (1-\psi^{-1}) \sum_{j=0}^2 x_{j,t} 
         \frac{\gamma_j}{2} \|\sigma_{j,t}\|^2
-    - \pi_{Y,t}.
+    - \pi_{Y,t},
 \end{align}
+where $\mu_{P_Y,t}$ is the drift of the aggregate claim value.
+
+Since $P_Y=p_YY$, it satisfies
+\begin{equation}
+    \mu_{P_Y,t}=\mu+\mu_{p_Y,t}+\sigma\sigma_{p_Y,t}^\top.
+\end{equation}
 At second order, working with the dividend yield implies
 \begin{equation}
-    \mu_{p_Y,2} = -\mu_{y_Y,2},
+    \mu_{P_Y,2}= -\mu_{y_Y,2}-\sigma\sigma_{y_Y,2}^\top,
 \end{equation}
-up to terms of order higher than $\epsilon^2$, since $\sigma_{y_Y,t}=\mathcal{O}(\epsilon^2)$.
+up to terms of order higher than $\epsilon^2$, since $\sigma_{y_Y,t}=\mathcal{O}(\epsilon^2)$ and $\sigma_{p_Y,2}=-\sigma_{y_Y,2}$.
 Moreover, the intertemporal-hedging term satisfies
 \begin{equation}
     \xi_2 = \sum_{j=0}^2 x_j\left[\mu_{c_j,2} + (1-\gamma)\sigma_{c_j,2}\sigma^\top\right],
@@ -1657,7 +1662,7 @@ Expanding the risk-compensation term gives
 Therefore, the second-order correction to the interest rate is
 \begin{align}\label{eq:r2-second-order}
     r_2
-    &= -\psi^{-1}\mu_{y_Y,2}
+    &= -\psi^{-1}\left(\mu_{y_Y,2}+\sigma\sigma_{y_Y,2}^\top\right)
     + \psi^{-1}\sum_{j=0}^2 x_j\left[\mu_{c_j,2} + (1-\gamma)\sigma_{c_j,2}\sigma^\top\right] \nonumber\\
     &\quad + (1-\psi^{-1})\gamma \sum_{j=0}^2 x_j \left[
         \sigma_{j,2}\sigma^\top
@@ -1673,7 +1678,7 @@ Using market clearing for the risky claim,
 we can also write
 \begin{align}\label{eq:r2-second-order-simplified}
     r_2
-    &= -\psi^{-1}\mu_{y_Y,2}
+    &= -\psi^{-1}\left(\mu_{y_Y,2}+\sigma\sigma_{y_Y,2}^\top\right)
     + \psi^{-1}\sum_{j=0}^2 x_j\left[\mu_{c_j,2} + (1-\gamma)\sigma_{c_j,2}\sigma^\top\right] \nonumber\\
     &\quad + (1-\psi^{-1})\gamma \left[-\sigma_{y_Y,2}\sigma^\top
         + \sum_{j=0}^2 x_j \left(
@@ -1682,7 +1687,7 @@ we can also write
     \right)\right]
     - \pi_{Y,2}.
 \end{align}
-This expression separates the second-order interest-rate correction into the price-drift term, the intertemporal-hedging term, the second-order change in average risk compensation, and the second-order risk premium.
+This expression separates the second-order interest-rate correction into the aggregate-claim drift term, the intertemporal-hedging term, the second-order change in average risk compensation, and the second-order risk premium.
 
 % The interest rate is given by
 % \begin{align}
@@ -1718,16 +1723,17 @@ Expanding the dividend yield to second order gives
 \end{align}
 where the second equality uses the expression for $\pi_{Y,2}$ from Step 4.
 Substituting the expression for $r_2$ from \eqref{eq:r2-second-order-simplified}, we obtain
+% Step 6: Dividend yield
 \begin{align}\label{eq:y2-second-order-general}
     y_{Y,2}
     &= (1-\psi^{-1})\mu_{y_Y,2}
+    +(1-\psi^{-1})\sigma\sigma_{y_Y,2}^\top
     + \psi^{-1}\sum_{j=0}^2 x_j\left[\mu_{c_j,2} + (1-\gamma)\sigma_{c_j,2}\sigma^\top\right] \nonumber\\
     &\quad + (1-\psi^{-1})\gamma \left[-\sigma_{y_Y,2}\sigma^\top
         + \sum_{j=0}^2 x_j \left(
         \frac{1}{2}\sigma_{j,1}\sigma_{j,1}^\top
         + \hat{\gamma}_j \sigma_{j,1}\sigma^\top
-    \right)\right]
-    + \sigma\sigma_{y_Y,2}^\top.
+    \right)\right].
 \end{align}
 From Step 1, the first-order corrections imply
 \begin{equation}
@@ -1957,7 +1963,7 @@ Let
 \begin{equation}
     F(X,\epsilon)
     \equiv
-    \frac{W_0 (1+\hat{\alpha}_p \epsilon) - W_0}{P}
+    \omega_0 \frac{W_0 (1+\hat{\alpha}_p \epsilon) - W_0}{P}
     =
     \hat{\alpha}_p \epsilon x_0
 \end{equation}
@@ -2153,45 +2159,191 @@ This proves the result.
 
 \subsection{Proof of Proposition~\ref{prop_elasticity_pref_heterog}}\label{app:prop_elasticity_pref_heterog}
 \begin{proof}
-	Consider the case in which active investors have heterogeneous risk aversions, but face no leverage constraints.
-	In this case, the expression for $y_{2}(X)$ in Equation~\eqref{eq:y-second-order} can be written as
-	\begin{small}
-	\begin{align}
-            y_2(X) &=  \left(1-\psi^{-1}\right) \gamma \sigma^2 \left[  \sum_{j=1}^J x_{j}\left( \frac{\sigma_{j,1}^2(X)}{2 \sigma^2} +\hat{\gamma}_j\frac{ \sigma_{j,1}(X)}{\sigma}  \right)\right] + \left(1-\psi^{-1}\right) \gamma \sigma^2 x_0 \left(\frac{\hat{\alpha}_p^2}{2} + \hat{\gamma}_0 \hat{\alpha}_p  \right)
-		% y_2(X) &=  \left(1-\psi^{-1}\right) \gamma \sigma^2 \left[  \sum_{j=1}^J x_{j}\left( \frac{\sigma_{j,1}^2(X)}{2 \sigma^2} - \mathbb{E}^u[\hat{\gamma}_j] \frac{ \hat{\alpha}_p x_0}{1-x_0} - \var^u[\hat{\gamma}_j]-\frac{\theta_1(X)}{\gamma\sigma}\hat{\gamma}_j + \hat{\gamma}_j^2+ \hat{\gamma}_j\frac{ \sigma_{j,1}(X)}{\sigma}  \right)\right] \nonumber\\
-		% &+\left(1-\psi^{-1}\right) \gamma \sigma^2 x_0 \left(\frac{\hat{\alpha}_p^2}{2} + \hat{\gamma}_0 \hat{\alpha}_p  \right)
-		\end{align}
-	\end{small}
-	
-	Note that with unconstrained active investors, the effect of endogenous volatility and hedging demand exactly cancel out.
-	We first compute the derivative of the term involving $\sigma_{j,1}^2$:
-	\begin{align}
-		\sum_{j=0}^J x_j   \frac{\partial \sigma_{j,1}^2}{\partial \hat{\alpha}_p} &= \sum_{j=0}^J 2x_j  \sigma_{j,1} \frac{\partial \sigma_{j,1}}{\partial \hat{\alpha}_p} \nonumber\\
-		&= 2 x_0  \sigma^2 \hat{\alpha}_p  + 2 \sigma^2 \sum_{j=1}^J x_j \left( \sum_{k\in\mathcal{J}^u} \frac{x_k}{x_u} \hat{\gamma}_k -\left(\frac{\hat{\alpha}_p  x_0}{1-x_0}\right)- \hat{\gamma}_j\right) \left( -\frac{x_0}{1-x_0}\right) \nonumber \\
-		&= 2 \sigma^2 \left[ x_0 \hat{\alpha}_p + \frac{\hat{\alpha}_p x_0^2}{1-x_0}+ \left((1-x_0) \sum_{k=1}^J \frac{x_k}{x_u} \hat{\gamma}_k - \sum_{j=1}^J x_j\hat{\gamma}_j\right) \left( -\frac{x_0}{1-x_0}\right)\right] \nonumber \\
-		&= 2 \sigma^2 \frac{\hat{\alpha}_p x_0}{1-x_0}.
-%		\sum_{j=0}^J x_j \gamma  \frac{\partial \sigma_{j,1}^2}{\partial \hat{\alpha}_p} &= \sum_{j=0}^J x_j \gamma 2 \sigma_{j,1} \frac{\partial \sigma_{j,1}}{\partial \hat{\alpha}_p} \nonumber\\
-%		&= 2 x_0 \gamma \sigma^2 \hat{\alpha}_p  + 2 \gamma \sigma^2 \sum_{j=1}^J x_j \left( \sum_{k\in\mathcal{J}^u} \frac{x_k}{x_u} \hat{\gamma}_k -\left(\frac{\hat{\alpha}_p  x_0}{1-x_0}\right)- \hat{\gamma}_j\right) \left( -\frac{x_0}{1-x_0}\right) \nonumber \\
-%		&= 2\gamma \sigma^2 \left[ x_0 \hat{\alpha}_p + \frac{\hat{\alpha}_p x_0^2}{1-x_0}+ \left((1-x_0) \sum_{k=1}^J \frac{x_k}{x_u} \hat{\gamma}_k - \sum_{j=1}^J x_j\hat{\gamma}_j\right) \left( -\frac{x_0}{1-x_0}\right)\right] \nonumber \\
-%		&= 2\gamma \sigma^2 \frac{\hat{\alpha}_p x_0}{1-x_0}.
-	\end{align}
-	
-	% The derivatives of the terms involving $ \E^u\left [\hat{\gamma}_j\right ] $, $ \theta_1(X) $, and $ \sigma_{j,1}(X) $ with respect to $ \hat{\alpha}_p $ are given by:
-	% \begin{align}
-	% \sum_{j=1}^J x_{j} \left[ -\mathbb{E}^u[\hat{\gamma}_k] \frac{x_0}{1-x_0} + \frac{x_0\hat{\gamma}_j}{1-x_0}      \right]&= -\mathbb{E}^u[\hat{\gamma}_k] x_0 + \sum_{j=1}^J\frac{x_j}{1-x_0} \hat{\gamma}_j x_0= 0\\
-	% \frac{1}{\sigma}  \sum_{j=0}^J x_{j} \hat{\gamma}_j \frac{\partial \sigma_{j,1}(X)}{\partial \hat{\alpha}_p} &=  \sum_{j=1}^J x_j \hat{\gamma}_j \left( -\frac{x_0}{1-x_0} \right)+x_0 \hat{\gamma}_0 = x_0 \left( \hat{\gamma}_0 - \mathbb{E}^u[\hat{\gamma}_k] \right)
-	% \end{align}
-The derivatives of the term involving $ \sigma_{j,1}(X) $ with respect to $ \hat{\alpha}_p $ are given by:
+Consider the case in which investors have heterogeneous risk aversions but the leverage constraints are slack.
+Then $\hat{\nu}_{j,1}=0$ for $j=1,2$.
+Let
+\begin{equation}
+    \bar{\gamma}_a \equiv \sum_{j=1}^2 \frac{x_j}{x_a}\hat{\gamma}_j,
+    \qquad x_a\equiv x_1+x_2=1-x_0.
+\end{equation}
+From the first-order solution, the scalar exposure coefficients defined by $\sigma_{j,1}=m_{j,1}\sigma$ are
+\begin{equation}
+    m_{0,1}=\hat{\alpha}_p,
+    \qquad
+    m_{j,1}=\bar{\gamma}_a-\frac{x_0}{x_a}\hat{\alpha}_p-\hat{\gamma}_j,
+    \qquad j=1,2.
+\end{equation}
+The second-order correction to the dividend yield is
+\begin{equation}
+    y_{Y,2}
+    = (1-\psi^{-1})\gamma\|\sigma\|^2
+    \sum_{j=0}^2 x_j\left(\frac{1}{2}m_{j,1}^2+\hat{\gamma}_j m_{j,1}\right).
+\end{equation}
+We differentiate this expression with respect to $\hat{\alpha}_p$.
+Since
+\begin{equation}
+    \frac{\partial m_{0,1}}{\partial \hat{\alpha}_p}=1,
+    \qquad
+    \frac{\partial m_{j,1}}{\partial \hat{\alpha}_p}=-\frac{x_0}{x_a},
+    \qquad j=1,2,
+\end{equation}
+we obtain
 \begin{align}
-    % \sum_{j=1}^J x_{j} \left[ -\mathbb{E}^u[\hat{\gamma}_k] \frac{x_0}{1-x_0} + \frac{x_0\hat{\gamma}_j}{1-x_0}      \right]&= -\mathbb{E}^u[\hat{\gamma}_k] x_0 + \sum_{j=1}^J\frac{x_j}{1-x_0} \hat{\gamma}_j x_0= 0\\
-    \frac{1}{\sigma}  \sum_{j=0}^J x_{j} \hat{\gamma}_j \frac{\partial \sigma_{j,1}(X)}{\partial \hat{\alpha}_p} &=  \sum_{j=1}^J x_j \hat{\gamma}_j \left( -\frac{x_0}{1-x_0} \right)+x_0 \hat{\gamma}_0 = x_0 \left( \hat{\gamma}_0 - \mathbb{E}^u[\hat{\gamma}_k] \right)
+    \frac{\partial y_{Y,2}}{\partial \hat{\alpha}_p}
+    &= (1-\psi^{-1})\gamma\|\sigma\|^2
+    \sum_{j=0}^2 x_j(m_{j,1}+\hat{\gamma}_j)
+    \frac{\partial m_{j,1}}{\partial \hat{\alpha}_p} \nonumber\\
+    &= (1-\psi^{-1})\gamma\|\sigma\|^2 x_0
+    \left[\hat{\alpha}_p+\hat{\gamma}_0
+    -\sum_{j=1}^2 \frac{x_j}{x_a}(m_{j,1}+\hat{\gamma}_j)\right].
 \end{align}
- 
-	Thus, the (inverse) aggregate elasticity is then given by:
-	\begin{align}
-	\frac{1}{p(X,\epsilon)}\frac{\partial p(X,\epsilon)}{\partial F(X,\epsilon)} =  \left(1-\psi^{-1}\right)\frac{\gamma \sigma^2}{y_0(X)} \left[ \frac{1-\overline{\alpha}_p}{x_a} - \frac{\gamma_0-\mathbb{E}^u\left[\gamma_j \right]}{\gamma}\right]+ \mathcal{O}(\epsilon^2),
-	\end{align}
-	where $x_a\equiv1-x_0$ is the wealth share of active investors, and we use $ \gamma_{j}=\gamma\left(1+\hat{\gamma}_j\epsilon\right) $ from Equation~\eqref{eq:gamma-perturb}.
+For active investors,
+\begin{equation}
+    m_{j,1}+\hat{\gamma}_j
+    = \bar{\gamma}_a-\frac{x_0}{x_a}\hat{\alpha}_p.
+\end{equation}
+Therefore,
+\begin{equation}
+    \frac{\partial y_{Y,2}}{\partial \hat{\alpha}_p}
+    = (1-\psi^{-1})\gamma\|\sigma\|^2 x_0
+    \left[\frac{\hat{\alpha}_p}{x_a}+\hat{\gamma}_0-\bar{\gamma}_a\right].
+\end{equation}
+
+Using the change of variables from the market-elasticity derivation,
+\begin{equation}
+    \frac{1}{p(X,\epsilon)}\frac{\partial p(X,\epsilon)}{\partial F(X,\epsilon)}
+    = -\frac{1}{y_0(X)}
+    \frac{\partial y_{Y,2}(X)}{\partial \hat{\alpha}_p}
+    \frac{\epsilon}{x_0}
+    +\mathcal{O}(\epsilon^2).
+\end{equation}
+Substituting the derivative above gives
+\begin{equation}
+    \frac{1}{p(X,\epsilon)}\frac{\partial p(X,\epsilon)}{\partial F(X,\epsilon)}
+    = -(1-\psi^{-1})\frac{\gamma\|\sigma\|^2}{y_0(X)}
+    \left[\frac{\hat{\alpha}_p\epsilon}{x_a}+(\hat{\gamma}_0-\bar{\gamma}_a)\epsilon\right]
+    +\mathcal{O}(\epsilon^2).
+\end{equation}
+Finally, using $\overline{\alpha}_p=1+\hat{\alpha}_p\epsilon$ and $\gamma_j=\gamma(1+\hat{\gamma}_j\epsilon)$, we can write the expression in primitives as
+\begin{equation}
+    \frac{1}{p(X,\epsilon)}\frac{\partial p(X,\epsilon)}{\partial F(X,\epsilon)}
+    = (1-\psi^{-1})\frac{\gamma\|\sigma\|^2}{y_0(X)}
+    \left[
+        \frac{1-\overline{\alpha}_p}{x_a}
+        -\frac{\gamma_0-\mathbb{E}_a[\gamma_j]}{\gamma}
+    \right]
+    +\mathcal{O}(\epsilon^2),
+\end{equation}
+where
+\begin{equation}
+    \mathbb{E}_a[\gamma_j]\equiv \sum_{j=1}^2 \frac{x_j}{x_a}\gamma_j.
+\end{equation}
+Equivalently, this can be written in the form of Proposition~\ref{prop_elasticity_pref_heterog} by setting $x_c=0$, $x_u=x_a$, and
+\begin{equation}
+    \overline{\alpha}_{p}^{\mathrm{opt}}
+    =1-x_a\frac{\gamma_0-\mathbb{E}_a[\gamma_j]}{\gamma} = 1 + \left( \sum_{j=0}^2 x_k \hat{\gamma}_k  - \hat{\gamma}_0 \right) \epsilon,
+\end{equation}
+where the expression above coincides with first-order correction for the passive investor's optimal portfolio share, that is, the portfolio they would choose if they could freely adjust their portfolio share.
+
+Then
+\begin{equation}
+    \frac{1}{p(X,\epsilon)}\frac{\partial p(X,\epsilon)}{\partial F(X,\epsilon)}
+    = (1-\psi^{-1})\frac{\gamma\|\sigma\|^2}{y_0(X)}
+    \frac{\overline{\alpha}_{p}^{\mathrm{opt}}-\overline{\alpha}_p}{x_a}
+    +\mathcal{O}(\epsilon^2).
+\end{equation}
+This proves the version of the result without leverage constraints.
+
+\medskip
+
+We next derive the corresponding expression when investor $2$ is constrained and investor $1$ is unconstrained.
+In this case, the first-order exposure coefficients are
+\begin{equation}
+    m_{0,1}=\hat{\alpha}_p, \qquad
+    m_{2,1}=\hat{\sigma}, \qquad
+    m_{1,1}=-\frac{x_0\hat{\alpha}_p+x_2\hat{\sigma}}{x_1},
+\end{equation}
+where the expression for $m_{1,1}$ follows from market clearing,
+\begin{equation}
+    x_0m_{0,1}+x_1m_{1,1}+x_2m_{2,1}=0.
+\end{equation}
+Using again
+\begin{equation}
+    y_{Y,2}
+    = (1-\psi^{-1})\gamma\|\sigma\|^2
+    \sum_{j=0}^2 x_j\left(\frac{1}{2}m_{j,1}^2+\hat{\gamma}_j m_{j,1}\right),
+\end{equation}
+we differentiate with respect to $\hat{\alpha}_p$.
+Since
+\begin{equation}
+    \frac{\partial m_{0,1}}{\partial \hat{\alpha}_p}=1, \qquad
+    \frac{\partial m_{1,1}}{\partial \hat{\alpha}_p}=-\frac{x_0}{x_1}, \qquad
+    \frac{\partial m_{2,1}}{\partial \hat{\alpha}_p}=0,
+\end{equation}
+we obtain
+\begin{align}
+    \frac{\partial y_{Y,2}}{\partial \hat{\alpha}_p}
+    &= (1-\psi^{-1})\gamma\|\sigma\|^2
+    \left[x_0(m_{0,1}+\hat{\gamma}_0)
+    -x_0(m_{1,1}+\hat{\gamma}_1)\right] \nonumber\\
+    &= (1-\psi^{-1})\gamma\|\sigma\|^2 x_0
+    \left[
+        \frac{x_0+x_1}{x_1}\hat{\alpha}_p
+        +\frac{x_2}{x_1}\hat{\sigma}
+        +\hat{\gamma}_0-\hat{\gamma}_1
+    \right].
+\end{align}
+Using the change of variables from the market-elasticity derivation,
+\begin{equation}
+    \frac{1}{p(X,\epsilon)}\frac{\partial p(X,\epsilon)}{\partial F(X,\epsilon)}
+    = -\frac{1}{y_0(X)}
+    \frac{\partial y_{Y,2}(X)}{\partial \hat{\alpha}_p}
+    \frac{\epsilon}{x_0}
+    +\mathcal{O}(\epsilon^2),
+\end{equation}
+we get
+\begin{align}
+    \frac{1}{p(X,\epsilon)}\frac{\partial p(X,\epsilon)}{\partial F(X,\epsilon)}
+    &= -(1-\psi^{-1})\frac{\gamma\|\sigma\|^2}{y_0(X)}
+    \left[
+        \frac{x_0+x_1}{x_1}\hat{\alpha}_p\epsilon
+        +\frac{x_2}{x_1}\hat{\sigma}\epsilon
+        +(\hat{\gamma}_0-\hat{\gamma}_1)\epsilon
+    \right]
+    +\mathcal{O}(\epsilon^2).
+\end{align}
+Finally, using $\overline{\alpha}_p=1+\hat{\alpha}_p\epsilon$, $\overline{\sigma}=\|\sigma\|(1+\hat{\sigma}\epsilon)$, and $\gamma_j=\gamma(1+\hat{\gamma}_j\epsilon)$, this becomes
+\begin{align}
+    \frac{1}{p(X,\epsilon)}\frac{\partial p(X,\epsilon)}{\partial F(X,\epsilon)}
+    &= (1-\psi^{-1})\frac{\gamma\|\sigma\|^2}{y_0(X)}
+    \left[
+        \frac{x_0+x_1}{x_1}(1-\overline{\alpha}_p)
+        -\frac{x_2}{x_1}\left(\frac{\overline{\sigma}}{\|\sigma\|}-1\right)
+        -\frac{\gamma_0-\gamma_1}{\gamma}
+    \right]
+    +\mathcal{O}(\epsilon^2).
+\end{align}
+Define $x_c\equiv x_2$, $x_u\equiv x_1=x_a-x_c$, and $\mathbb{E}^u[\gamma_j]\equiv\gamma_1$.
+Also define
+\begin{equation}
+    \overline{\alpha}_{p}^{\mathrm{opt}}
+    = 1
+    - \frac{x_u}{1-x_c}\frac{\gamma_0-\mathbb{E}^{u}[\gamma_j]}{\gamma}
+    - \frac{x_c}{1-x_c}\left(\frac{\overline{\sigma}}{\|\sigma\|}-1\right) = 1 + \left( \sum_{j=0}^1 \frac{x_k}{1-x_c} \hat{\gamma}_k  - \hat{\gamma}_0 - \frac{x_c}{1-x_c} \hat{\sigma} \right) \epsilon,
+\end{equation}
+where the expression above coincides with first-order correction for the passive investor's optimal portfolio share when the leverage constraint of investor $2$ binds.
+
+Since $1-x_c=x_0+x_1$, the previous display is equivalent to
+\begin{equation}
+    \frac{1}{p(X,\epsilon)}\frac{\partial p(X,\epsilon)}{\partial F(X,\epsilon)}
+    = (1-\psi^{-1})\frac{\gamma\|\sigma\|^2}{y_0(X)}
+    \frac{\overline{\alpha}_{p}^{\mathrm{opt}}-\overline{\alpha}_{p}}{x_a-x_c}
+    (1-x_c)
+    +\mathcal{O}(\epsilon^2).
+\end{equation}
+This proves the version of the result in the regime in which the leverage constraint of investor $2$ binds.
+
+
 \end{proof}
 % \begin{proof}
 % 	Consider the case where there is no preference heterogeneity and active investors do not face leverage constraints.
