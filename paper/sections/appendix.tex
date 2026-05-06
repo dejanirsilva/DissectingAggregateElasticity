@@ -531,7 +531,7 @@ where
 %     v^0 - s^ 1 v^ 1 - (1-s^1)v^0 = v^0- v^0 - s^ 1 (v^1- v^0)= -s^ 1 (v^1- v^0)
 % \end{equation}
 
-\section{Derivations for Section \ref{sec:elasticity}}
+\section{Derivations for Section \ref{sec:elasticity}: Perturbation Solution}\label{app:derivations-perturbation-solution}
 
 In this section, we discuss the derivations of the perturbation solution in detail. 
 Consistent with the block-recursivity property in Proposition~\ref{prop:mft}, the consumption-wealth ratios and the price-dividend ratio of the aggregate claim are independent of the dividend share $s$.
@@ -2319,7 +2319,6 @@ Thus,
     =\frac{\Delta\eta_2\sigma^\top}{\gamma\sigma\sigma^\top}
     +H_2\frac{\sigma_p\sigma^\top}{\sigma\sigma^\top}.
 \end{equation}
-Substituting \eqref{eq:delta-nu22-alpha-p} into \eqref{eq:delta-eta2-system-alpha-p} gives the linear system
 \begin{align}\label{eq:delta-eta2-constrained-system-alpha-p}
     \Delta\eta_2
     &=\gamma\left[
@@ -2333,6 +2332,61 @@ Substituting \eqref{eq:delta-nu22-alpha-p} into \eqref{eq:delta-eta2-system-alph
 \end{align}
 Equations~\eqref{eq:delta-eta2-constrained-system-alpha-p} jointly determine the new market-price-of-risk component and the new second-order multiplier when investor $2$ is constrained.
 The key difference relative to the slack case is that part of the new risk is absorbed by the multiplier, which changes effective aggregate risk aversion.
+
+\bigskip
+
+This system can be solved explicitly.
+Let
+\begin{equation}
+    C_p
+    \equiv
+    \frac{y_{Y,2,\hat{\alpha}_p}}{y_{Y,0}}
+    +\frac{1-\gamma^{-1}}{\psi-1}\mathbb{E}_a\left[\frac{c_{j,2,\hat{\alpha}_p}}{c_{j,0}}\right],
+    \qquad
+    \zeta_p\equiv\frac{\sigma_p\sigma^\top}{\sigma\sigma^\top}.
+\end{equation}
+Then \eqref{eq:delta-eta2-constrained-system-alpha-p} becomes
+\begin{align}
+    \Delta\eta_2
+    &=\gamma\left[\frac{x_2}{x_a}\Delta\hat{\nu}_{2,2}\sigma-C_p\sigma_p\right],\\
+    \Delta\hat{\nu}_{2,2}
+    &=\frac{\Delta\eta_2\sigma^\top}{\gamma\sigma\sigma^\top}+H_2\zeta_p.
+\end{align}
+Projecting the first equation on $\sigma$ and substituting into the second equation gives
+\begin{equation}
+    \Delta\hat{\nu}_{2,2}
+    =\frac{x_2}{x_a}\Delta\hat{\nu}_{2,2}-C_p\zeta_p+H_2\zeta_p.
+\end{equation}
+Since $1-x_2/x_a=x_1/x_a$, we obtain
+\begin{equation}\label{eq:delta-nu22-alpha-p-solution}
+    \Delta\hat{\nu}_{2,2}
+    =\frac{x_a}{x_1}(H_2-C_p)\zeta_p.
+\end{equation}
+Substituting back into the first equation yields
+\begin{equation}\label{eq:delta-eta2-constrained-alpha-p-solution}
+    \Delta\eta_2
+    =-\gamma C_p\sigma_p
+    +\gamma\frac{x_2}{x_1}(H_2-C_p)\zeta_p\sigma.
+\end{equation}
+Equivalently, using
+\begin{equation}
+    \mathbb{E}_a[H_j]=\frac{x_1}{x_a}H_1+\frac{x_2}{x_a}H_2,
+    \qquad
+    C_p=\frac{y_{Y,2,\hat{\alpha}_p}}{y_{Y,0}}+\mathbb{E}_a[H_j],
+\end{equation}
+we can write
+\begin{equation}
+    H_2-C_p
+    =\frac{x_1}{x_a}(H_2-H_1)-\frac{y_{Y,2,\hat{\alpha}_p}}{y_{Y,0}}.
+\end{equation}
+
+Combining the expressions above, we obtain
+\begin{equation}
+    \Delta\eta_2
+    =-\gamma \left[ \frac{y_{Y,2,\hat{\alpha}_p}}{y_{Y,0}}+\mathbb{E}_a[H_j] \right]\sigma_p
+    -\gamma\frac{x_2}{x_1}\left[\frac{y_{Y,2,\hat{\alpha}_p}}{y_{Y,0}}+\frac{x_1}{x_a}\left(H_1-H_2\right)\right]\frac{\sigma_p\sigma^\top}{\sigma\sigma^\top}\sigma.
+\end{equation}
+Thus the constrained investor absorbs the component of the new desired exposure in the direction of $\sigma$, while the orthogonal component of $\sigma_p$ remains priced through $\Delta\eta_2$.
 
 \noindent\textbf{Step 4 (time-varying $\alpha_p$): Risk premium.}\\
 
@@ -2709,10 +2763,6 @@ Equations~\eqref{eq:delta-r2-alpha-p-compact}, \eqref{eq:delta-eta2-system-alpha
 We now solve for the coefficients of the incremental correction to the consumption-wealth ratios.
 The simplification in Step 5 implies
 \begin{equation}
-    \Delta r_2=-\sigma\Delta\eta_2^\top.
-\end{equation}
-Therefore,
-\begin{equation}
     \Delta r_2+\Delta\eta_2\sigma^\top=0.
 \end{equation}
 Using \eqref{eq:delta-cj2-alpha-p-expanded}, the incremental correction to $c_{j,2}$ satisfies
@@ -2810,148 +2860,1020 @@ Therefore,
 with $d_j$, $b_j$, and $a_j$ given by \eqref{eq:dj-solution-alpha-p-simple}, \eqref{eq:bj-solution-alpha-p-simple}, and \eqref{eq:aj-solution-alpha-p-simple}.
 Because $c_{j,0}=y_{Y,0}$ in the homogeneous benchmark economy and $y_{Y,2}=\sum_{j=0}^2x_jc_{j,2}$, aggregating \eqref{eq:delta-cj2-coeff-solution-alpha-p} across investors recovers the coefficient formulas for $\Delta y_{Y,2}$ derived above.
 
-\subsection{The case of no preference heterogeneity or leverage constraints}
+\noindent\textbf{Step 10 (time-varying $\alpha_p$): Pricing the dividend claim.}\\
+The dividend claim satisfies the pricing condition
+\begin{align}\label{eq:pD-pricing-timevarying-alpha}
+    \left[r_t+\sigma\eta_t^\top-\mu\right]p_{D,t}
+    &= s_t + p_{D,x,t}\mu_{x,t}+p_{D,s,t}\mu_{s,t}
+    +p_{D,\overline{\alpha}_p,t}\mu_{\overline{\alpha}_p,t}
+    +\frac{1}{2}\sum_{k=1}^3 \Sigma_{D,k,t}^\top p_{D,XX,t}\Sigma_{D,k,t}
+    \\
+    &+(\sigma-\eta_t)\left(p_{D,x,t}\sigma_{x,t}+p_{D,s,t}\sigma_{s,t}
+    +p_{D,\overline{\alpha}_p,t}\sigma_p\epsilon\right)^\top,
+\end{align}
+where now $X=(x,s,\overline{\alpha}_p)$.
+Relative to the fixed-$\hat{\alpha}_p$ case, the new terms are those involving derivatives with respect to $\overline{\alpha}_p$ and the covariance between $s$ and $\overline{\alpha}_p$.
 
-Consider the case of no preference heterogeneity or leverage constraints, that is, $\hat{\gamma}_j=0$ for $j=0,1,2$ and $\hat{\nu}_2=0$.
+We write
+\begin{equation}
+    p_{D,2}^{T}(x,\hat{s},\hat{\alpha}_p)
+    \equiv p_{D,2}^{0}(x,\hat{s},\hat{\alpha}_p)+\Delta p_{D,2}(x,\hat{s},\hat{\alpha}_p),
+\end{equation}
+where $p_{D,2}^{0}$ is the fixed-$\hat{\alpha}_p$ correction derived above.
+From the fixed-$\hat{\alpha}_p$ solution,
+\begin{equation}
+    p_{D,2}^{0}(x,\hat{s},\hat{\alpha}_p)
+    =a_2^{0}(x,\hat{\alpha}_p)+b_2^{0}(x)\hat{s},
+\end{equation}
+where $b_2^{0}$ is independent of $\hat{\alpha}_p$.
+We conjecture that the time-varying-$\alpha_p$ correction has the same form,
+\begin{equation}
+    p_{D,2}^{T}(x,\hat{s},\hat{\alpha}_p)
+    =a_2^{T}(x,\hat{\alpha}_p)+b_2^{T}(x,\hat{\alpha}_p)\hat{s}.
+\end{equation}
 
-\begin{prop}
-    The time-varying-$\alpha_p$ contribution to the second-order dividend yield, risk premium, and interest rate is given by
+The simplification in Step 5 implies
+\begin{equation}
+    \Delta A_2
+    \equiv \Delta r_2+\sigma\Delta\eta_2^\top=0.
+\end{equation}
+Thus the aggregate-price term in the dividend-claim pricing equation is unchanged relative to the fixed-$\hat{\alpha}_p$ economy.
+The only new terms come from the generator associated with the additional state variable $\overline{\alpha}_p$.
+Using the chain rule for $\overline{\alpha}_p=1+\epsilon\hat{\alpha}_p$, the additional second-order operator applied to a function $f(\hat{s},\hat{\alpha}_p)$ is
+\begin{equation}\label{eq:L-alpha-pD}
+    \mathcal{L}_{\alpha}f
+    =f_{\hat{\alpha}_p}\left[\kappa_p(\hat{\alpha}-\hat{\alpha}_p)+(\sigma-\eta_0)\sigma_p^\top\right]
+    +\frac{1}{2}f_{\hat{\alpha}_p\hat{\alpha}_p}\sigma_p\sigma_p^\top
+    +B_s f_{\hat{s}\hat{\alpha}_p}\sigma_s\sigma_p^\top,
+\end{equation}
+where $B_s\equiv\bar{s}(1-\bar{s})$.
+Using $\eta_0=\gamma\sigma$, define
+\begin{equation}
+    M_p\equiv\kappa_p\hat{\alpha}+(1-\gamma)\sigma_p\sigma^\top,
+    \qquad
+    V_p\equiv\sigma_p\sigma_p^\top.
+\end{equation}
+Then
+\begin{equation}
+    \mathcal{L}_{\alpha}f
+    =f_{\hat{\alpha}_p}(M_p-\kappa_p\hat{\alpha}_p)
+    +\frac{1}{2}f_{\hat{\alpha}_p\hat{\alpha}_p}V_p
+    +B_s f_{\hat{s}\hat{\alpha}_p}\sigma_s\sigma_p^\top.
+\end{equation}
+
+Subtracting the fixed-$\hat{\alpha}_p$ equation from the time-varying-$\alpha_p$ equation gives
+\begin{equation}\label{eq:delta-pD2-alpha-operator}
+    \delta\Delta p_{D,2}
+    =-\kappa_s\hat{s}\Delta p_{D,2,\hat{s}}
+    +\Lambda_s B_s\Delta p_{D,2,\hat{s}}
+    +\frac{1}{2}B_s^2\sigma_s\sigma_s^\top\Delta p_{D,2,\hat{s}\hat{s}}
+    +\mathcal{L}_{\alpha}p_{D,2}^{T},
+\end{equation}
+where $\Lambda_s\equiv(\sigma-\eta_0)\sigma_s^\top$.
+Because $p_{D,2}^{0}$ is affine in $\hat{s}$ and $b_2^{0}$ is independent of $\hat{\alpha}_p$, the solution remains affine in $\hat{s}$.
+Moreover, matching the coefficient on $\hat{s}$ gives
+\begin{equation}
+    (\delta+\kappa_s)\Delta b_2=\mathcal{L}_{\alpha}b_2^{T} = \mathcal{L}_{\alpha}\Delta b_2,
+\end{equation}
+as $b_2^0 $ is independent of $\hat{\alpha}_p$. Then, $\Delta b_2 = 0$ satisfies the equation above, so
+\begin{equation}\label{eq:pD-b2-timevarying-alpha}
+    b_2^{T}=b_2^{0}.
+\end{equation}
+Thus, time variation in passive demand affects only the constant term in the dividend-claim correction.
+The cross term $B_s f_{\hat{s}\hat{\alpha}_p}\sigma_s\sigma_p^\top$ in \eqref{eq:L-alpha-pD} drops out because $b_2^{T}$ is independent of $\hat{\alpha}_p$.
+
+The constant term satisfies the scalar equation
+\begin{equation}\label{eq:a2-timevarying-alpha-operator}
+    \Delta a_2
+    =\frac{1}{\delta}\left[
+        a_{2,\hat{\alpha}_p}^{T}(M_p-\kappa_p\hat{\alpha}_p)
+        +\frac{1}{2}a_{2,\hat{\alpha}_p\hat{\alpha}_p}^{T}V_p
+    \right].
+\end{equation}
+This equation is identical in form to the coefficient equation for the aggregate dividend yield.
+Indeed, in the benchmark economy $y_{Y,0}=\delta$, where $\delta\equiv r_0+\sigma\eta_0^\top-\mu$.
+Write
+\begin{equation}
+    a_2^{0}(x,\hat{\alpha}_p)=a_D^{0}(x)+b_D^{0}(x)\hat{\alpha}_p+d_D^{0}(x)\hat{\alpha}_p^2,
+\end{equation}
+and
+\begin{equation}
+    \Delta a_2(x,\hat{\alpha}_p)=a_D(x)+b_D(x)\hat{\alpha}_p+d_D(x)\hat{\alpha}_p^2.
+\end{equation}
+Let $b_D^T\equiv b_D^0+b_D$ and $d_D^T\equiv d_D^0+d_D$ denote the linear and quadratic coefficients of $a_2^T=a_2^0+\Delta a_2$.
+Matching coefficients in \eqref{eq:a2-timevarying-alpha-operator} gives
+\begin{align}
+    d_D^T
+    &=\frac{1}{1+\frac{2\kappa_p}{\delta}}d_D^{0},\\
+    b_D^T
+    &=\frac{\delta b_D^{0}+2d_D^T M_p}{\delta+\kappa_p},\\
+    a_D
+    &=\frac{1}{\delta}\left(b_D^T M_p+d_D^T V_p\right).
+\end{align}
+Therefore,
+\begin{equation}\label{eq:pD2-timevarying-alpha-solution}
+    p_{D,2}^{T}(x,\hat{s},\hat{\alpha}_p)
+    =a_D^{0}(x)+a_D(x)+b_D^T(x)\hat{\alpha}_p+d_D^T(x)\hat{\alpha}_p^2
+    +b_2^{0}(x)\hat{s}.
+\end{equation}
+Finally, since $p_{D,1}$ is independent of $\hat{\alpha}_p$, the price impact of passive flows for the dividend claim is
+\begin{equation}\label{eq:pD-price-impact-timevarying-alpha}
+    \frac{\partial p_D(x,s,\overline{\alpha}_p;\epsilon)}{\partial F(x,s,\overline{\alpha}_p;\epsilon)}
+    =\frac{\epsilon}{x_0}\left(b_D^T+2d_D^T\hat{\alpha}_p\right)
+    +\mathcal{O}(\epsilon^2).
+\end{equation}
+We now relate this expression explicitly to the price impact of the aggregate claim.
+Let
+\begin{equation}
+    G_Y^T
+    \equiv \frac{\partial y_{Y,2}^T}{\partial\hat{\alpha}_p}
+    = b_Y^T+2d_Y^T\hat{\alpha}_p,
+\end{equation}
+where $y_{Y,2}^T\equiv y_{Y,2}^0+\Delta y_{Y,2}$.
+Because $p_Y=1/y_Y$ and $y_{Y,1}$ is independent of $\hat{\alpha}_p$,
+\begin{equation}\label{eq:pY-price-impact-timevarying-alpha}
+    \frac{\partial p_Y(x,\overline{\alpha}_p;\epsilon)}{\partial F(x,\overline{\alpha}_p;\epsilon)}
+    =-\frac{\epsilon}{x_0}\frac{1}{\delta^2}G_Y^T
+    +\mathcal{O}(\epsilon^2).
+\end{equation}
+
+The fixed-$\hat{\alpha}_p$ calculation gives the derivative of the dividend-claim correction as
+\begin{equation}\label{eq:pD-fixed-alpha-decomposition-reuse}
+    \frac{\partial p_{D,2}^{0}}{\partial\hat{\alpha}_p}
+    =-\frac{\bar{s}}{\delta^2}\frac{\partial y_{Y,2}^{0}}{\partial\hat{\alpha}_p}
+    -\frac{B_s}{\delta(\delta+\kappa_s)}
+        \frac{\partial\eta_1}{\partial\hat{\alpha}_p}\sigma_s^\top.
+\end{equation}
+The first term is the aggregate-claim channel, while the second term is the dividend-risk-premium channel.
+Equivalently, define the fixed-$\hat{\alpha}_p$ excess slope
+\begin{equation}\label{eq:GD-fixed-excess-slope-alpha}
+    G_D^{\mathrm{ex},0}
+    \equiv
+    \frac{\partial p_{D,2}^{0}}{\partial\hat{\alpha}_p}
+    +\frac{\bar{s}}{\delta^2}\frac{\partial y_{Y,2}^{0}}{\partial\hat{\alpha}_p}
+    =-\frac{B_s}{\delta(\delta+\kappa_s)}
+        \frac{\partial\eta_1}{\partial\hat{\alpha}_p}\sigma_s^\top.
+\end{equation}
+This excess slope is independent of $\hat{\alpha}_p$.
+Therefore, when passive portfolios are time-varying, the same coefficient equation attenuates this slope by the factor $\delta/(\delta+\kappa_p)$, but it does not create an additional $M_p$ term in the dividend-specific component:
+\begin{equation}\label{eq:GD-timevarying-excess-slope-alpha}
+    G_D^{\mathrm{ex},T}
+    =\frac{\delta}{\delta+\kappa_p}G_D^{\mathrm{ex},0}
+    =-\frac{\delta}{\delta+\kappa_p}
+    \frac{B_s}{\delta(\delta+\kappa_s)}
+        \frac{\partial\eta_1}{\partial\hat{\alpha}_p}\sigma_s^\top.
+\end{equation}
+Combining \eqref{eq:pY-price-impact-timevarying-alpha} and \eqref{eq:GD-timevarying-excess-slope-alpha}, the dividend-claim price impact is
+\begin{equation}\label{eq:pD-price-impact-explicit-final-alpha}
+    \frac{\partial p_D}{\partial F}
+    =\bar{s}\frac{\partial p_Y}{\partial F}
+    -\frac{\epsilon}{x_0}
+    \frac{\delta}{\delta+\kappa_p}
+    \frac{B_s}{\delta(\delta+\kappa_s)}
+        \frac{\partial\eta_1}{\partial\hat{\alpha}_p}\sigma_s^\top
+    +\mathcal{O}(\epsilon^2).
+\end{equation}
+Equation~\eqref{eq:pD-price-impact-explicit-final-alpha} is the time-varying-passive-share analogue of the fixed-$\hat{\alpha}_p$ decomposition.
+There are two effects of portfolio dynamics.
+First, $\partial p_Y/\partial F$ is itself modified by mean reversion and passive-demand risk through the coefficients $b_Y^T$ and $d_Y^T$.
+Second, the dividend-specific risk-premium channel is attenuated by $\delta/(\delta+\kappa_p)$.
+There is no separate third dividend-specific term in this benchmark specification because the fixed-$\hat{\alpha}_p$ excess slope in \eqref{eq:GD-fixed-excess-slope-alpha} is constant in $\hat{\alpha}_p$.
+A separate $M_p$ term would appear only if the fixed-$\hat{\alpha}_p$ excess component had a nonzero quadratic coefficient in $\hat{\alpha}_p$.
+
+
+\section{Special Case: No Preference Heterogeneity}
+
+In this section, we consider the special case of no preference heterogeneity or leverage constraints, that is, $\hat{\gamma}_j=0$ for $j=0,1,2$ and $\hat{\nu}_2=0$.
+This will allow us to derive the cleaner expressions for all equilibrium objects.
+For simplicity, we focus on the case where $\hat{\alpha}=0$.
+
+\begin{prop}[Time-varying passive demand without heterogeneity or constraints]
+    Consider the case with no preference heterogeneity and no leverage constraints, that is, $\hat{\gamma}_j=0$ for $j=0,1,2$ and $\hat{\nu}_2=0$.
+    Let
     \begin{equation}
-        \Delta y_{Y,2}
-        =-\frac{G_p}{y_{Y,0}}\sigma_p\sigma^\top,
+        M_p\equiv (1-\gamma)\sigma_p\sigma^\top,
+        \qquad
+        d_Y^T
+        \equiv
+        \frac{1}{1+2\kappa_p/y_{Y,0}}
+        \frac{1}{2}(1-\psi^{-1})\gamma\|\sigma\|^2\frac{x_0}{x_a}.
     \end{equation}
+    Then the second-order correction to the dividend yield is
     \begin{equation}
-        \Delta\pi_{Y,2}
-        =-\frac{\gamma G_p}{y_{Y,0}}\sigma_p\sigma^\top.
+        y_{Y,2}^T
+        =
+        \frac{2d_Y^T}{y_{Y,0}}
+        \left[
+            \frac{M_p^2}{y_{Y,0}+\kappa_p}
+            +\frac{\sigma_p\sigma_p^\top}{2}
+            +\frac{y_{Y,0}}{y_{Y,0}+\kappa_p}M_p\hat{\alpha}_p
+            +\frac{y_{Y,0}}{2}\hat{\alpha}_p^2
+        \right].
     \end{equation}
+    The inverse aggregate market elasticity is
+    \begin{equation}
+        \epsilon_M^{-1}
+        =
+        \left(1-\psi^{-1}\right)
+        \frac{\gamma\|\sigma\|^2}{y_{Y,0}+2\kappa_p}
+        \frac{1}{x_a}
+        \left[
+            1-\overline{\alpha}_p
+            +\frac{(\gamma-1)\sigma_p\epsilon\sigma^\top}{y_{Y,0}+\kappa_p}
+        \right]
+        +\mathcal{O}(\epsilon^2).
+    \end{equation}
+    The return volatility satisfies
+    \begin{equation}
+        \sigma_{R_Y}
+        =
+        \sigma
+        +x_0\epsilon_M^{-1}\sigma_p\epsilon
+        +\mathcal{O}(\epsilon^3).
+    \end{equation}
+    The market price of risk is
+    \begin{equation}
+        \eta
+        = \gamma \sigma \left( \frac{1- x_0 \overline{\alpha}_p}{x_a}\right)
+        +\left[
+            1 -\frac{1-\gamma^{-1}}{1-\psi^{-1}} \left(\frac{1}{x_a} - \psi^{-1}\right)
+        \right]\gamma x_0\epsilon_M^{-1}\sigma_p\epsilon
+        +\mathcal{O}(\epsilon^3).
+    \end{equation}
+    The risk premium is
+    \begin{equation}
+        \pi_Y
+        =
+        \gamma\|\sigma\|^2
+        \left(\frac{1-x_0\overline{\alpha}_p}{x_a}\right)
+        +(2-H_a)\gamma x_0\epsilon_M^{-1}\sigma\sigma_p^\top\epsilon
+        +\mathcal{O}(\epsilon^3),
+    \end{equation}
+    where
+    \begin{equation}
+        H_a
+        \equiv
+        \frac{1-\gamma^{-1}}{1-\psi^{-1}} \left(\frac{1}{x_a} - \psi^{-1}\right).
+    \end{equation}
+    The incremental interest-rate correction is
     \begin{equation}
         \Delta r_2
-        =\gamma\frac{\psi-\gamma^{-1}}{\psi-1}
-        \frac{G_p}{y_{Y,0}}\sigma\sigma_p^\top.
+        =(1-H_a)\gamma
+        \frac{G_p}{y_{Y,0}}\sigma\sigma_p^\top,
+    \end{equation}
+    where
+    \begin{equation}
+        G_p
+        \equiv
+        \frac{\partial y_{Y,2}^T}{\partial \hat{\alpha}_p}
+        =2d_Y^T\left(\hat{\alpha}_p+\frac{M_p}{y_{Y,0}+\kappa_p}\right).
+    \end{equation}
+    Finally, the normalized price impact of the dividend claim satisfies
+    \begin{equation}
+        \frac{1}{p_D}\frac{\partial p_D}{\partial F}
+        =
+        \frac{1}{p_Y}\frac{\partial p_Y}{\partial F}
+        + \frac{\delta\gamma(1-\bar{s})}{(\delta+\kappa_p)(\delta+\kappa_s)}
+        \frac{\epsilon}{x_a}\sigma_s\sigma^\top
+        +\mathcal{O}(\epsilon^2).
     \end{equation}
 \end{prop}
 
-\paragraph{Dividend yield.}
-In the fixed-$\hat{\alpha}_p$ economy, the second-order dividend-yield correction is
-\begin{equation}
-    y_{Y,2}^{0}(x,\hat{\alpha}_p)=d_Y^0\hat{\alpha}_p^2,
-    \qquad
-    d_Y^0=\frac{1}{2}(1-\psi^{-1})\gamma\|\sigma\|^2\frac{x_0}{x_a}.
+\begin{proof}
+    To derive the results, we rely on the general coefficient formulas derived in Appendix~\ref{app:derivations-perturbation-solution}.
+    \paragraph{Dividend yield.}
+In the absence of preference heterogeneity and leverage constraints,
+\[
+a_Y^0=b_Y^0=0,
+\qquad
+d_Y^0
+=
+\frac12(1-\psi^{-1})\gamma\|\sigma\|^2\frac{x_0}{x_a}.
+\]
+
+Applying the general coefficient formulas from
+\eqref{eq:dY-total-solution-alpha-p-simple}--
+\eqref{eq:aY-solution-alpha-p-simple},
+the total second-order dividend-yield correction is
+\[
+y_{Y,2}^T
+=
+a_Y^T+b_Y^T\hat\alpha_p+d_Y^T\hat\alpha_p^2,
+\]
+where
+\[
+d_Y^T
+=
+\frac{1}{1+2\kappa_p/y_{Y,0}}d_Y^0,
+\]
+\[
+b_Y^T
+=
+\frac{2d_Y^TM_p}{y_{Y,0}+\kappa_p},
+\]
+\[
+a_Y^T
+=
+\frac{1}{y_{Y,0}}
+\left(
+b_Y^TM_p+d_Y^TV_p
+\right).
+\]
+Thus, substituting the coefficients above,
+\begin{equation}\label{eq:yY2-total-noheterog-closed-form}
+    y_{Y,2}^T
+    =
+    \frac{2d_Y^T}{y_{Y,0}}
+    \left[
+        \frac{M_p^2}{y_{Y,0}+\kappa_p}
+        +\frac{V_p}{2}
+        +\frac{y_{Y,0}}{y_{Y,0}+\kappa_p}M_p\hat{\alpha}_p
+        +\frac{y_{Y,0}}{2}\hat{\alpha}_p^2
+    \right].
 \end{equation}
-Thus, $a_Y^0=b_Y^0=0$.
-With time-varying passive demand, the total second-order dividend-yield correction is
-\begin{equation}
-    y_{Y,2}^{T}(x,\hat{\alpha}_p)
-    \equiv y_{Y,2}^{0}(x,\hat{\alpha}_p)+\Delta y_{Y,2}(x,\hat{\alpha}_p)
-    =a_Y^T+b_Y^T\hat{\alpha}_p+d_Y^T\hat{\alpha}_p^2.
+Using the expression for $d_Y^T$, this becomes
+\begin{equation}\label{eq:yY2-total-noheterog-primitives}
+    y_{Y,2}^T
+    =
+    \left(1-\psi^{-1}\right)
+    \frac{\gamma\|\sigma\|^2}{y_{Y,0}}
+    \frac{x_0}{x_a}
+    \frac{1}{1+2\kappa_p/y_{Y,0}}
+    \left[
+        \frac{M_p^2}{y_{Y,0}+\kappa_p}
+        +\frac{V_p}{2}
+        +\frac{y_{Y,0}}{y_{Y,0}+\kappa_p}M_p\hat{\alpha}_p
+        +\frac{y_{Y,0}}{2}\hat{\alpha}_p^2
+    \right].
 \end{equation}
-Using the coefficient formulas above,
-\begin{align}
+
+\paragraph{Aggregate market elasticity.}
+The aggregate market elasticity is given by
+\begin{equation}
+    \epsilon_{M}^{-1}
+    = \frac{1}{p(X,\epsilon)}\frac{\partial p(X,\epsilon)}{\partial F(X,\epsilon)}
+    = -\frac{1}{y_{Y,0}}
+    \frac{\partial y_{Y,2}^{T}}{\partial \hat{\alpha}_p}
+    \frac{\epsilon}{x_0}
+    + \mathcal{O}(\epsilon^2).
+\end{equation}
+Using the closed-form slope
+\begin{equation}
+    G_p(x,\hat{\alpha}_p)
+    \equiv
+    \frac{\partial y_{Y,2}^{T}}{\partial \hat{\alpha}_p}
+    =2d_Y^T\left(\hat{\alpha}_p+\frac{M_p}{y_{Y,0}+\kappa_p}\right),
+\end{equation}
+we obtain
+\begin{equation}
+    \epsilon_{M}^{-1}
+    =-\frac{G_p}{y_{Y,0}}\frac{\epsilon}{x_0}
+    +\mathcal{O}(\epsilon^2).
+\end{equation}
+Substituting the expression for $G_p$ and using
+\begin{equation}
     d_Y^T
-    &=\frac{1}{1+\frac{2\kappa_p}{y_{Y,0}}}d_Y^0,\\
-    b_Y^T
-    &=\frac{2d_Y^T M_p}{y_{Y,0}+\kappa_p},\\
-    a_Y^T
-    &=\frac{1}{y_{Y,0}}\left(b_Y^T M_p+d_Y^T V_p\right),
+    =\frac{1}{1+2\kappa_p/y_{Y,0}}d_Y^0,
+    \qquad
+    d_Y^0
+    =\frac{1}{2}(1-\psi^{-1})\gamma\|\sigma\|^2\frac{x_0}{x_a},
+\end{equation}
+gives
+\begin{equation}
+    \epsilon_{M}^{-1}
+    =-
+    \left(1-\psi^{-1}\right)
+    \frac{\gamma\|\sigma\|^2}{y_{Y,0}}
+    \frac{1}{x_a}
+    \frac{1}{1+2\kappa_p/y_{Y,0}}
+    \left(\hat{\alpha}_p+\frac{M_p}{y_{Y,0}+\kappa_p}\right)
+    \epsilon
+    +\mathcal{O}(\epsilon^2).
+\end{equation}
+Finally, using
+\begin{equation}
+    \overline{\alpha}_p=1+\hat{\alpha}_p\epsilon,
+    \qquad
+    M_p=(1-\gamma)\sigma_p\sigma^\top,
+\end{equation}
+where the second equality follows from the assumption $\hat{\alpha}=0$, we obtain
+\begin{equation}\label{eq:elasticity-timevarying-noheterog-final}
+    \epsilon_{M}^{-1}
+    =
+    \left(1-\psi^{-1}\right)
+    \frac{\gamma\|\sigma\|^2}{y_{Y,0}+2\kappa_p}
+    \frac{1}{x_a}
+    \left[
+        1-\overline{\alpha}_p
+        +\frac{(\gamma-1)\sigma_p\epsilon\sigma^\top}{y_{Y,0}+\kappa_p}
+    \right]
+    +\mathcal{O}(\epsilon^2).
+\end{equation}
+Thus, mean reversion in passive demand attenuates the aggregate market elasticity through the factor $(y_{Y,0}+2\kappa_p)^{-1}$, while passive-demand risk introduces an additional correction proportional to $(\gamma-1)\sigma_p\sigma^\top$.
+
+\paragraph{Return volatility.}
+The return volatility is given by
+\begin{equation}
+    \sigma_{R_Y}
+    =
+    \sigma-\sigma_{y_Y},
+\end{equation}
+where
+\begin{equation}
+    \sigma_{y_Y}
+    =
+    \frac{y_{Y,x,t}}{y_{Y,t}}\sigma_{x,t}
+    +
+    \frac{y_{Y,\overline{\alpha}_p,t}}{y_{Y,t}}\sigma_p
+    =
+    \frac{y_{Y,2,\hat{\alpha}_p}}{y_{Y,0}}
+    \sigma_p\epsilon^2
+    +
+    \mathcal O(\epsilon^3).
+\end{equation}
+Using the expression for the aggregate market elasticity,
+\begin{equation}
+    \epsilon_M^{-1}
+    =
+    -\frac{1}{y_{Y,0}}
+    \frac{\partial y_{Y,2}^T}{\partial\hat{\alpha}_p}
+    \frac{\epsilon}{x_0},
+\end{equation}
+we obtain
+\begin{equation}
+    \sigma_{R_Y}
+    =
+    \sigma
+    +
+    x_0\epsilon_M^{-1}\sigma_p\epsilon
+    +
+    \mathcal O(\epsilon^3).
+\end{equation}
+
+\paragraph{Risk exposure.} The risk exposure of passive investors is given by
+\begin{equation}
+    \sigma_0 = \overline{\alpha}_p \sigma_{R_Y} = \sigma + \sigma \hat{\alpha}_p \epsilon - \sigma_{y_Y,2} \epsilon^2 + \mathcal{O}(\epsilon^3), \qquad
+\end{equation}
+From the expression for $\sigma_{y_Y,2}$, we have
+\begin{equation}
+    \sigma_0 =  \sigma + \hat{\alpha}_p \sigma \epsilon + x_0\epsilon_M^{-1}\sigma_p\epsilon+ \mathcal{O}(\epsilon^3), \qquad
+\end{equation}
+
+Using the fact that $\sum_{j=0}^2 x_j\sigma_j = \sigma_{R_Y}$, we can write the risk exposure of active investor $j=1,2$ as
+\begin{equation}
+    \sigma_j = \sigma - \frac{x_0\hat{\alpha}_p}{x_a} \sigma  \epsilon +x_0\epsilon_M^{-1}\sigma_p\epsilon + \mathcal{O}(\epsilon^3), \qquad j=1,2.
+\end{equation}
+
+We then write the first-order correction to the risk exposure as $\sigma_{j,1}=m_j \sigma$, where
+\begin{equation}
+    m_{a} = - \frac{x_0\hat{\alpha}_p}{x_a}, \qquad \qquad 
+    m_{0} = \hat{\alpha}_p,
+\end{equation}
+where $m_{1} = m_{2} = m_a$.
+
+
+\paragraph{Consumption-wealth ratio.}
+The consumption-wealth ratio of investor $j=0,1,2$ can be written as
+\begin{equation}
+    c_j = c_j^0 + \Delta c_j,
+\end{equation}
+where $c_j^0$ is the fixed-$\hat{\alpha}_p$ consumption-wealth ratio and $\Delta c_j$ is the time-varying-$\alpha_p$ correction.
+
+The consumption-wealth ratio in the fixed-$\hat{\alpha}_p$ economy is given by
+\begin{equation}
+    c_{j}^0 = c_{j,0} + c_{j,2}^0 \epsilon^2 + \mathcal{O}(\epsilon^3),
+\end{equation}
+where 
+\begin{equation}
+    c_{j,2}^0 = (1-\psi) \left[ y_{Y,2}^0 + \left(m_{j}m_{a}  - \frac{1}{2}m_j^2  \right)\gamma \|\sigma\|^2 \right].
+\end{equation}
+
+We can then write $c_{j,2}^0 = d_{j}^0 \hat{\alpha}_p^2$, where
+\begin{align}
+    d_{a}^0 &= (1-\psi)\frac{\gamma \|\sigma\|^2}{2} \left[ (1-\psi^{-1}) \frac{x_0}{x_a} + \left( \frac{x_0}{x_a} \right)^2  \right], \qquad 
+    d_{0}^0 = (1-\psi)\gamma \|\sigma\|^2 \left[ \frac{1-\psi^{-1}}{2} \frac{x_0}{x_a} - \left( \frac{x_0}{x_a} +\frac{1}{2}\right)  \right].
+\end{align}
+
+The individual consumption-wealth ratios solve the same coefficient equation as the aggregate dividend yield, but investor by investor.
+In the no-heterogeneity, no-constraint case, active investors are identical, so write
+\begin{equation}
+    c_{0,2}^{T}(x,\hat{\alpha}_p)
+    =a_0^T+b_0^T\hat{\alpha}_p+d_0^T\hat{\alpha}_p^2,
+    \qquad
+    c_{a,2}^{T}(x,\hat{\alpha}_p)
+    =a_a^T+b_a^T\hat{\alpha}_p+d_a^T\hat{\alpha}_p^2,
+\end{equation}
+where $c_{a,2}^{T}$ denotes the common correction for active investors $j=1,2$.
+The coefficients are obtained from the fixed-$\hat{\alpha}_p$ coefficients using
+\begin{align}
+    d_j^T
+    &=\frac{1}{1+2\kappa_p/y_{Y,0}}d_j^0,\\
+    b_j^T
+    &=\frac{2d_j^TM_p}{y_{Y,0}+\kappa_p},\\
+    a_j^T
+    &=\frac{1}{y_{Y,0}}\left(b_j^TM_p+d_j^TV_p\right),
+    \qquad j\in\{0,a\},
+\end{align}
+where we use $c_{j,0}=y_{Y,0}$ in the homogeneous benchmark economy.
+
+\paragraph{Consumption-wealth ratio drift and diffusion.}
+The slope of each individual consumption-wealth ratio with respect to the passive portfolio share is
+\begin{equation}\label{eq:Gcj-noheterog}
+    G_j(x,\hat{\alpha}_p)
+    \equiv \frac{\partial c_{j,2}^{T}}{\partial\hat{\alpha}_p}
+    =2d_j^T\left(\hat{\alpha}_p+\frac{M_p}{y_{Y,0}+\kappa_p}\right),
+    \qquad j\in\{0,a\}.
+\end{equation}
+Hence the diffusion of the consumption-wealth ratio of investor $j$ is
+\begin{equation}\label{eq:sigmacj-noheterog}
+    \sigma_{c_j,t}
+    =\frac{G_j}{y_{Y,0}}\sigma_p\epsilon^2+\mathcal{O}(\epsilon^3),
+    \qquad j\in\{0,a\}.
+\end{equation}
+
+The drift of the consumption-wealth ratio is computed in the same way.
+Since
+\begin{equation}
+    c_{j,2,\hat{\alpha}_p}^{T}=G_j,
+    \qquad
+    c_{j,2,\hat{\alpha}_p\hat{\alpha}_p}^{T}=2d_j^T,
+\end{equation}
+we have
+\begin{equation}\label{eq:mucj-noheterog}
+    \mu_{c_j,t}
+    =\left[
+        \frac{G_j}{y_{Y,0}}\kappa_p(\hat{\alpha}-\hat{\alpha}_p)
+        +\frac{d_j^T}{y_{Y,0}}V_p
+    \right]\epsilon^2
+    +\mathcal{O}(\epsilon^3),
+    \qquad j\in\{0,a\}.
+\end{equation}
+Under the maintained normalization $\hat{\alpha}=0$, this becomes
+\begin{equation}\label{eq:mucj-noheterog-alpha-zero}
+    \mu_{c_j,t}
+    =\left[
+        -\frac{G_j}{y_{Y,0}}\kappa_p\hat{\alpha}_p
+        +\frac{d_j^T}{y_{Y,0}}V_p
+    \right]\epsilon^2
+    +\mathcal{O}(\epsilon^3),
+    \qquad j\in\{0,a\}.
+\end{equation}
+
+By contrast, the diffusion of the aggregate dividend yield is
+\begin{equation}\label{eq:sigmay-noheterog-from-Gp}
+    \sigma_{y_Y,t}
+    =\frac{G_p}{y_{Y,0}}\sigma_p\epsilon^2+\mathcal{O}(\epsilon^3),
+    \qquad
+    G_p=x_0G_0+x_aG_a.
+\end{equation}
+Thus, aggregation implies
+\begin{equation}
+    x_0\sigma_{c_0,t}+x_a\sigma_{c_a,t}=\sigma_{y_Y,t},
+\end{equation}
+
+
+\paragraph{Market price of risk.}
+The market price of risk can be written as
+\begin{equation}
+    \eta_t = \eta_0 + \eta_1 \epsilon + \eta_2 \epsilon^2 + \mathcal{O}(\epsilon^3).
+\end{equation}
+At the benchmark,
+\begin{equation}
+    \eta_0=\gamma\sigma.
+\end{equation}
+At first order, active investors absorb the residual portfolio exposure created by passive investors.
+Since
+\begin{equation}
+    m_a=-\frac{x_0}{x_a}\hat{\alpha}_p,
+\end{equation}
+we have
+\begin{equation}
+    \eta_1=\gamma m_a\sigma
+    =-\gamma\sigma\frac{x_0}{x_a}\hat{\alpha}_p.
+\end{equation}
+
+We next derive the second-order term.
+Because active investors are unconstrained and identical, their optimal exposure satisfies
+\begin{equation}
+    \sigma_{a,t}
+    =\frac{\eta_t}{\gamma}
+    +\frac{1-\gamma^{-1}}{\psi-1}\sigma_{c_a,t}.
+\end{equation}
+Therefore,
+\begin{equation}\label{eq:eta2-noheterog-from-active-exposure}
+    \eta_2
+    =\gamma\left[
+        \sigma_{a,2}
+        -\frac{1-\gamma^{-1}}{\psi-1}\sigma_{c_a,2}
+    \right].
+\end{equation}
+where
+\begin{equation}
+    \sigma_{a,2}=-\sigma_{y_Y,2}.
+\end{equation}
+Substituting into \eqref{eq:eta2-noheterog-from-active-exposure} gives
+\begin{equation}\label{eq:eta2-noheterog-total}
+    \eta_2
+    =-\gamma\left[
+        \sigma_{y_Y,2}
+        +\frac{1-\gamma^{-1}}{\psi-1}\sigma_{c_a,2}
+    \right].
+\end{equation}
+Using the diffusion formulas above,
+\begin{equation}
+    \sigma_{y_Y,2}=\frac{G_p}{y_{Y,0}}\sigma_p,
+    \qquad
+    \sigma_{c_a,2}=\frac{G_a}{y_{Y,0}}\sigma_p,
+\end{equation}
+we obtain the closed-form expression
+\begin{equation}\label{eq:eta2-noheterog-closed-form}
+    \eta_2
+    =-\frac{\gamma}{y_{Y,0}}
+    \left[
+        G_p+\frac{1-\gamma^{-1}}{\psi-1}G_a
+    \right]\sigma_p.
+\end{equation}
+Equivalently, using the explicit slopes
+\begin{equation}
+    G_p=2d_Y^T\left(\hat{\alpha}_p+\frac{M_p}{y_{Y,0}+\kappa_p}\right),
+    \qquad
+    G_a=2d_a^T\left(\hat{\alpha}_p+\frac{M_p}{y_{Y,0}+\kappa_p}\right),
+\end{equation}
+we can write
+\begin{equation}\label{eq:eta2-noheterog-slopes}
+    \eta_2
+    =-\frac{2\gamma}{y_{Y,0}}
+    \left[
+        d_Y^T+\frac{1-\gamma^{-1}}{\psi-1}d_a^T
+    \right]
+    \left(\hat{\alpha}_p+\frac{M_p}{y_{Y,0}+\kappa_p}\right)\sigma_p.
+\end{equation}
+
+It is useful to express this result in terms of the aggregate market elasticity.
+Because $d_a^T$ and $d_Y^T$ are attenuated by the same factor, we have
+\begin{equation}
+    \frac{G_a}{G_p}=\frac{d_a^T}{d_Y^T}=\frac{d_a^0}{d_Y^0}.
+\end{equation}
+Using the expressions for $d_a^0$ and $d_Y^0$, this ratio is
+\begin{equation}\label{eq:Ga-Gp-ratio-noheterog}
+    \chi_a
+    \equiv \frac{G_a}{G_p}
+    =\frac{d_a^0}{d_Y^0}
+    =(1-\psi)
+    \left[
+        1+\frac{x_0/x_a}{1-\psi^{-1}}
+    \right].
+\end{equation}
+Therefore, \eqref{eq:eta2-noheterog-closed-form} can be written as
+\begin{equation}\label{eq:eta2-noheterog-Gp}
+    \eta_2
+    =-\frac{\gamma G_p}{y_{Y,0}}
+    \left[
+        1+\frac{1-\gamma^{-1}}{\psi-1}\chi_a
+    \right]\sigma_p.
+\end{equation}
+Using the expression for $\chi_a$,
+\begin{equation}
+        \frac{1-\gamma^{-1}}{\psi-1}\chi_a
+    =
+    -\frac{1-\gamma^{-1}}{1-\psi^{-1}} \left(\frac{1}{x_a} - \psi^{-1}\right)
+\end{equation}
+
+
+Finally, using the aggregate market elasticity relation
+\begin{equation}
+    \epsilon_M^{-1}
+    =-\frac{G_p}{y_{Y,0}}\frac{\epsilon}{x_0}
+    +\mathcal{O}(\epsilon^2),
+\end{equation}
+we obtain
+\begin{equation}\label{eq:eta2-noheterog-elasticity}
+    \eta
+    = \gamma \sigma \left( \frac{1- x_0 \overline{\alpha}_p}{x_a}\right)
+    +\left[
+        1 -\frac{1-\gamma^{-1}}{1-\psi^{-1}} \left(\frac{1}{x_a} - \psi^{-1}\right)
+    \right]\gamma x_0\epsilon_M^{-1}\sigma_p\epsilon
+    +\mathcal{O}(\epsilon^3).
+\end{equation}
+
+This expression shows that the second-order market price of risk is proportional to the aggregate market elasticity, with an adjustment for the active investors' hedging demand.
+
+\paragraph{Risk premium.}
+The risk premium on the aggregate claim is
+\begin{equation}
+    \pi_Y=\sigma_{R_Y}\eta^\top.
+\end{equation}
+Using the expressions derived above,
+\begin{equation}
+    \sigma_{R_Y}
+    =
+    \sigma+x_0\epsilon_M^{-1}\sigma_p\epsilon
+    +\mathcal O(\epsilon^3),
+\end{equation}
+and
+\begin{equation}
+    \eta
+    =
+    \gamma\sigma\left(\frac{1-x_0\overline{\alpha}_p}{x_a}\right)
+    +
+    (1-H_a) \gamma x_0\epsilon_M^{-1}\sigma_p\epsilon
+    +\mathcal O(\epsilon^3),
+\end{equation}
+where
+\begin{equation}
+    H_a
+    \equiv
+    \frac{1-\gamma^{-1}}{1-\psi^{-1}} \left(\frac{1}{x_a} - \psi^{-1}\right).
+\end{equation}
+Therefore,
+\begin{align}
+    \pi_Y
+    &=
+    \gamma\|\sigma\|^2
+    \left(\frac{1-x_0\overline{\alpha}_p}{x_a}\right) 
+    +x_0\epsilon_M^{-1}\epsilon
+    \left[
+        2-H_a
+    \right] \gamma \sigma\sigma_p^\top
+    +\mathcal O(\epsilon^3).
+\end{align}
+
+The term $H_a$ captures the hedging-demand response of active investors. 
+Under the usual assumptions $\gamma>1$ and $\psi>1$, $H_a>0$, so hedging demand dampens the effect of passive-demand risk on the aggregate risk premium.
+
+\paragraph{Interest rate.}
+The interest rate follows from
+\begin{equation}
+    r=y_Y-\pi_Y-\mu_{y_Y}-\sigma\sigma_{y_Y}^\top .
+\end{equation}
+Using the expressions above,
+\begin{align}
+    r
+    &=y_{Y,0}
+    -\gamma\|\sigma\|^2
+    \left(\frac{1-x_0\overline{\alpha}_p}{x_a}\right)
+    +y_{Y,2}^T\epsilon^2
+    -\mu_{y_Y} 
+    -\left[(2-H_a)\gamma-1\right]
+    x_0\epsilon_M^{-1}\sigma\sigma_p^\top\epsilon
+    +\mathcal O(\epsilon^3),
 \end{align}
 where
 \begin{equation}
-    M_p\equiv \kappa_p\hat{\alpha}+(1-\gamma)\sigma_p\sigma^\top,
-    \qquad
-    V_p\equiv \sigma_p\sigma_p^\top.
+    \mu_{y_Y}
+    =
+    \left[
+        -\frac{G_p}{y_{Y,0}}\kappa_p\hat{\alpha}_p
+        +\frac{d_Y^T}{y_{Y,0}}V_p
+    \right]\epsilon^2
+    +\mathcal O(\epsilon^3).
 \end{equation}
-Equivalently,
-\begin{equation}\label{eq:yY2-total-noheterog}
-    y_{Y,2}^{T}(x,\hat{\alpha}_p)
-    =\frac{1}{y_{Y,0}}\left(b_Y^T M_p+d_Y^T V_p\right)
-    +\frac{2d_Y^T M_p}{y_{Y,0}+\kappa_p}\hat{\alpha}_p
-    +d_Y^T\hat{\alpha}_p^2.
-\end{equation}
-It is useful to define the slope of the total second-order dividend yield with respect to the passive portfolio share,
-\begin{equation}\label{eq:G-alpha-noheterog}
-    G_p(x,\hat{\alpha}_p)
-    \equiv \frac{\partial y_{Y,2}^{T}}{\partial \hat{\alpha}_p}
-    = b_Y^T+2d_Y^T\hat{\alpha}_p
-    =2d_Y^T\left(\hat{\alpha}_p+\frac{M_p}{y_{Y,0}+\kappa_p}\right).
-\end{equation}
-Therefore, the additional drift and diffusion of the dividend yield generated by time-varying passive demand are
-\begin{align}
-    \Delta\sigma_{y_Y,2}
-    &=\frac{G_p}{y_{Y,0}}\sigma_p,\\
-    \Delta\mu_{y_Y,2}
-    &=\frac{G_p}{y_{Y,0}}\kappa_p(\hat{\alpha}-\hat{\alpha}_p)
-    +\frac{d_Y^T}{y_{Y,0}}\sigma_p\sigma_p^\top.
-\end{align}
-The second expression uses $(y_{Y,2}^{T})_{\hat{\alpha}_p\hat{\alpha}_p}=2d_Y^T$.
 
-\paragraph{Risk premium.}
-The risk premium on the aggregate claim is given by
-\begin{equation}
-    \pi_{Y,t}=\sigma_{R_Y,t}\eta_t^\top.
-\end{equation}
-Since $\sigma_{R_Y,t}=\sigma-\sigma_{y_Y,2}\epsilon^2+\mathcal{O}(\epsilon^3)$, the time-varying-$\alpha_p$ contribution to the second-order risk premium is
-\begin{equation}\label{eq:delta-piY2-noheterog-start}
-    \Delta\pi_{Y,2}
-    =-\Delta\sigma_{y_Y,2}\eta_0^\top+\sigma\Delta\eta_2^\top.
-\end{equation}
-In the no-heterogeneity and no-constraint case, $c_{j,2}^{T}=y_{Y,2}^{T}$ for all investors, so
-\begin{equation}
-    \Delta\sigma_{c_j,2}=\Delta\sigma_{y_Y,2}=\frac{G_p}{y_{Y,0}}\sigma_p.
-\end{equation}
-The market price of risk correction from Step 3 therefore becomes
-\begin{equation}
-    \Delta\eta_2
-    =-\gamma\left[1+\frac{1-\gamma^{-1}}{\psi-1}\right]\Delta\sigma_{y_Y,2}.
-\end{equation}
-Using
-\begin{equation}
-    1+\frac{1-\gamma^{-1}}{\psi-1}=\frac{\psi-\gamma^{-1}}{\psi-1},
-\end{equation}
-we obtain
-\begin{equation}\label{eq:delta-eta2-noheterog}
-    \Delta\eta_2
-    =-\gamma\frac{\psi-\gamma^{-1}}{\psi-1}\frac{G_p}{y_{Y,0}}\sigma_p.
-\end{equation}
-Substituting the expression for $\Delta\sigma_{y_Y,2}$ above and \eqref{eq:delta-eta2-noheterog} into \eqref{eq:delta-piY2-noheterog-start}, and using $\eta_0=\gamma\sigma$, gives
-\begin{align}\label{eq:delta-piY2-noheterog}
-    \Delta\pi_{Y,2}
-    &=-\gamma\frac{G_p}{y_{Y,0}}\sigma_p\sigma^\top
-    -\gamma\frac{\psi-\gamma^{-1}}{\psi-1}\frac{G_p}{y_{Y,0}}\sigma\sigma_p^\top \\
-    &=-\frac{\gamma G_p}{y_{Y,0}}
-    \left[\sigma_p\sigma^\top+\frac{\psi-\gamma^{-1}}{\psi-1}\sigma\sigma_p^\top\right].
-\end{align}
-Thus, the time-varying passive-share contribution to the risk premium is proportional to the slope $G_p$ of the total second-order dividend yield with respect to the passive portfolio share.
-
-\paragraph{Interest rate.}
-The interest-rate correction follows directly from the simplification in Step 5.
-The incremental contribution of time-varying passive demand is
+Equivalently, isolating only the incremental effect of time-varying passive demand, Step 5 gives
 \begin{equation}
     \Delta r_2=-\sigma\Delta\eta_2^\top.
 \end{equation}
-Using \eqref{eq:delta-eta2-noheterog}, we obtain
-\begin{equation}\label{eq:delta-r2-noheterog}
+Since
+\begin{equation}
+    \Delta\eta_2\epsilon^2
+    =(1-H_a)\gamma x_0\epsilon_M^{-1}\sigma_p\epsilon
+    +\mathcal O(\epsilon^3),
+\end{equation}
+we obtain
+\begin{equation}
+    \Delta r_2\epsilon^2
+    =-(1-H_a)\gamma x_0\epsilon_M^{-1}
+    \sigma\sigma_p^\top\epsilon
+    +\mathcal O(\epsilon^3).
+\end{equation}
+Equivalently,
+\begin{equation}
     \Delta r_2
-    =\gamma\frac{\psi-\gamma^{-1}}{\psi-1}
+    =(1-H_a)\gamma
     \frac{G_p}{y_{Y,0}}\sigma\sigma_p^\top.
 \end{equation}
-Thus, the effect of time-varying passive demand on the interest rate is governed by the same slope $G_p$ that determines the diffusion of the dividend yield and the risk premium.
 
-The total second-order interest-rate correction is
+
+\paragraph{Price of dividend claim.}
+We now price the dividend claim, whose payoff is $D_t=s_tY_t$.
+Write
 \begin{equation}
-    r_2^T=r_2^0+\Delta r_2,
+    s_t=\bar{s}+\epsilon\hat{s}_t,
 \end{equation}
-where $r_2^0$ denotes the fixed-$\hat{\alpha}_p$ correction.
-Equivalently, using the pricing identity
+and conjecture the expansion
 \begin{equation}
-    y_{Y,2}^T=r_2^T+\pi_{Y,2}^T+\mu_{y_Y,2}^T+\sigma\sigma_{y_Y,2}^{T\top},
+    p_D(x,s,\overline{\alpha}_p;\epsilon)
+    =p_{D,0}+p_{D,1}(\hat{s})\epsilon+p_{D,2}^T(\hat{s},\hat{\alpha}_p)\epsilon^2+\mathcal{O}(\epsilon^3).
+\end{equation}
+At the benchmark,
+\begin{equation}
+    p_{D,0}=\frac{\bar{s}}{\delta},
+    \qquad
+    \delta\equiv y_{Y,0}.
+\end{equation}
+The first-order term is the present value of the transitory dividend-share component:
+\begin{equation}
+    p_{D,1}(\hat{s})=\frac{\hat{s}}{\delta+\kappa_s}.
+\end{equation}
+
+To obtain the second-order term, it is useful to decompose the dividend claim into an aggregate-claim component and a dividend-specific component.
+The aggregate component is simply $\bar{s}$ times the aggregate claim.
+Because
+\begin{equation}
+    p_Y=\frac{1}{y_Y}
+    =\frac{1}{\delta}-\frac{y_{Y,2}^T}{\delta^2}\epsilon^2+\mathcal{O}(\epsilon^3),
+\end{equation}
+this component contributes
+\begin{equation}
+    -\frac{\bar{s}}{\delta^2}y_{Y,2}^T
+\end{equation}
+to $p_{D,2}^T$.
+
+The dividend-specific component comes from the risk premium on the dividend-share shock.
+The fixed-$\hat{\alpha}_p$ calculation gives
+\begin{equation}
+    p_{D,2}^{0}(\hat{s},\hat{\alpha}_p)
+    =-\frac{\bar{s}}{\delta^2}y_{Y,2}^{0}(\hat{\alpha}_p)
+    -\frac{B_s}{\delta(\delta+\kappa_s)}\eta_1\sigma_s^\top
+    +b_2^0\hat{s},
+\end{equation}
+where $B_s\equiv\bar{s}(1-\bar{s})$ and $b_2^0$ is independent of $\hat{\alpha}_p$.
+In the present special case,
+\begin{equation}
+    \eta_1=-\gamma\sigma\frac{x_0}{x_a}\hat{\alpha}_p,
+\end{equation}
+so the fixed-$\hat{\alpha}_p$ excess component is linear in $\hat{\alpha}_p$:
+\begin{equation}
+    e_D^0(\hat{\alpha}_p)
+    \equiv
+    -\frac{B_s}{\delta(\delta+\kappa_s)}\eta_1\sigma_s^\top
+    =\frac{\gamma B_s}{\delta(\delta+\kappa_s)}\frac{x_0}{x_a}\sigma\sigma_s^\top\hat{\alpha}_p.
+\end{equation}
+
+With time-varying passive portfolios, this excess component solves the same scalar coefficient equation as the aggregate dividend-yield correction.
+Because $e_D^0$ is linear in $\hat{\alpha}_p$, there is no quadratic term and hence no new $M_p$ term in its slope.
+Mean reversion attenuates the linear coefficient by $\delta/(\delta+\kappa_p)$.
+Thus the total excess component is
+\begin{equation}
+    e_D^T(\hat{\alpha}_p)
+    =\frac{\delta}{\delta+\kappa_p}e_D^0(\hat{\alpha}_p)
+    +\frac{1}{\delta+\kappa_p}
+    \frac{\gamma B_s}{\delta(\delta+\kappa_s)}\frac{x_0}{x_a}\sigma\sigma_s^\top M_p,
+\end{equation}
+where the second term is the constant term generated by the drift and risk-adjustment operator.
+Equivalently,
+\begin{equation}\label{eq:eD-total-noheterog}
+    e_D^T(\hat{\alpha}_p)
+    =\frac{\gamma B_s}{(\delta+\kappa_p)(\delta+\kappa_s)}\frac{x_0}{x_a}\sigma\sigma_s^\top
+    \left(\hat{\alpha}_p+\frac{M_p}{\delta}\right).
+\end{equation}
+
+Combining the aggregate and dividend-specific components, the second-order price of the dividend claim is
+\begin{equation}\label{eq:pD2-total-noheterog}
+    p_{D,2}^T(\hat{s},\hat{\alpha}_p)
+    =-\frac{\bar{s}}{\delta^2}y_{Y,2}^T(\hat{\alpha}_p)
+    +e_D^T(\hat{\alpha}_p)
+    +b_2^0\hat{s}.
+\end{equation}
+Therefore,
+\begin{equation}\label{eq:pD-total-noheterog}
+    p_D(x,s,\overline{\alpha}_p;\epsilon)
+    =\frac{\bar{s}}{\delta}
+    +\frac{\hat{s}}{\delta+\kappa_s}\epsilon
+    +\left[-\frac{\bar{s}}{\delta^2}y_{Y,2}^T(\hat{\alpha}_p)
+    +e_D^T(\hat{\alpha}_p)+b_2^0\hat{s}\right]\epsilon^2
+    +\mathcal{O}(\epsilon^3).
+\end{equation}
+
+Differentiating with respect to passive flows gives the price impact of passive demand on the dividend claim:
+\begin{align}\label{eq:pD-price-impact-noheterog-final}
+    \frac{\partial p_D}{\partial F}
+    &=\bar{s}\frac{\partial p_Y}{\partial F}
+    +\frac{\epsilon}{x_0}\frac{\partial e_D^T}{\partial\hat{\alpha}_p}
+    +\mathcal{O}(\epsilon^2)\\
+    &=\bar{s}\frac{\partial p_Y}{\partial F}
+    +\frac{\epsilon}{x_0}
+    \frac{\gamma B_s}{(\delta+\kappa_p)(\delta+\kappa_s)}\frac{x_0}{x_a}\sigma\sigma_s^\top
+    +\mathcal{O}(\epsilon^2).
+\end{align}
+
+Equivalently, using $p_{D,0}=\bar{s}/\delta$ and $p_{Y,0}=1/\delta$, the normalized price impact of the dividend claim can be related to the normalized price impact of the aggregate claim as
+\begin{equation}\label{eq:pD-pY-normalized-price-impact-noheterog}
+    \frac{1}{p_D}\frac{\partial p_D}{\partial F}
+    =
+    \frac{1}{p_Y}\frac{\partial p_Y}{\partial F}
+    +\frac{\delta}{\bar{s}}
+    \frac{\epsilon}{x_0}
+    \frac{\gamma B_s}{(\delta+\kappa_p)(\delta+\kappa_s)}
+    \frac{x_0}{x_a}\sigma\sigma_s^\top
+    +\mathcal{O}(\epsilon^2).
+\end{equation}
+Since $B_s=\bar{s}(1-\bar{s})$, this simplifies to
+\begin{equation}\label{eq:pD-pY-normalized-price-impact-noheterog-simplified}
+    \frac{1}{p_D}\frac{\partial p_D}{\partial F}
+    =
+    \frac{1}{p_Y}\frac{\partial p_Y}{\partial F}
+    + \frac{1}{\bar{s}} \frac{\delta\gamma\bar{s}(1-\bar{s})\sigma_s\sigma^\top}{(\delta+\kappa_p)(\delta+\kappa_s)}
+    \frac{\epsilon}{x_a}
+    +\mathcal{O}(\epsilon^2).
+\end{equation}
+
+Thus, the dividend-claim price impact is the sum of two terms.
+The first term is the mechanical exposure to the aggregate claim.
+The second term is the dividend-specific risk-premium channel, attenuated by passive-demand mean reversion through the factor $(\delta+\kappa_p)^{-1}$.
+\end{proof}
+
+
+\subsection{The role of the wealth distribution}
+
+The aggregate market elasticity computed above is a partial derivative: it changes the passive portfolio share while holding the wealth distribution fixed.
+A portfolio-flow shock, however, also changes wealth shares because passive and active investors have different exposures to the risky claim.
+We now show that, in the special case without preference heterogeneity or leverage constraints, this wealth-distribution channel is one order smaller than the direct portfolio-flow channel.
+
+Let $x_0$ denote the wealth share of passive investors and $x_a=1-x_0$ the wealth share of active investors.
+Because passive investors hold the portfolio share $\overline{\alpha}_p$, their wealth-share diffusion is
+\begin{equation}\label{eq:sigmax0-portfolio-flow}
+    \sigma_{x_0,t}
+    =x_{0,t}\left(\sigma_{0,t}-\sigma_{R_Y,t}\right)
+    =x_{0,t}\left(\overline{\alpha}_{p,t}-1\right)\sigma_{R_Y,t}.
+\end{equation}
+Using $\overline{\alpha}_{p,t}=1+\hat{\alpha}_{p,t}\epsilon$ and $\sigma_{R_Y,t}=\sigma+\mathcal{O}(\epsilon^2)$, this gives
+\begin{equation}\label{eq:sigmax0-leading}
+    \sigma_{x_0,t}
+    =x_{0,t}\hat{\alpha}_{p,t}\sigma\epsilon+\\mathcal{O}(\epsilon^3).
+\end{equation}
+Thus, the wealth-distribution state moves in response to the same aggregate return shock that redistributes wealth between passive and active investors.
+
+The aggregate dividend yield satisfies
+\begin{equation}
+    y_Y(x_0,\hat{\alpha}_p;\epsilon)
+    =y_{Y,0}+y_{Y,2}^{T}(x_0,\hat{\alpha}_p)\epsilon^2+\mathcal{O}(\epsilon^3).
+\end{equation}
+Therefore, allowing both $x_0$ and $\hat{\alpha}_p$ to move, its diffusion is
+\begin{equation}\label{eq:sigmay-total-wealth-dist}
+    \sigma_{y_Y,t}
+    =\frac{1}{y_{Y,0}}
+    \left[
+        y_{Y,2,\hat{\alpha}_p}^{T}\sigma_p
+        +y_{Y,2,x_0}^{T}\sigma_{x_0,t}
+    \right]\epsilon^2
+    +\mathcal{O}(\epsilon^4).
+\end{equation}
+The first term is the direct portfolio-flow channel studied above.
+The second term is the wealth-distribution channel.
+Using \eqref{eq:sigmax0-leading},
+\begin{equation}\label{eq:sigmay-total-wealth-dist-expanded}
+    \sigma_{y_Y,t}
+    =\frac{G_p}{y_{Y,0}}\sigma_p\epsilon^2
+    +\frac{x_0\hat{\alpha}_p}{y_{Y,0}}y_{Y,2,x_0}^{T}\sigma\epsilon^3
+    +\mathcal{O}(\epsilon^4),
+\end{equation}
+where
+\begin{equation}
+    G_p\equiv y_{Y,2,\hat{\alpha}_p}^{T}.
+\end{equation}
+Consequently, the price-dividend-ratio diffusion induced by a portfolio-flow shock is
+\begin{equation}\label{eq:sigmapY-total-wealth-dist}
+    \sigma_{p_Y,t}
+    =-\sigma_{y_Y,t}
+    =-\frac{G_p}{y_{Y,0}}\sigma_p\epsilon^2
+    -\frac{x_0\hat{\alpha}_p}{y_{Y,0}}y_{Y,2,x_0}^{T}\sigma\epsilon^3
+    +\mathcal{O}(\epsilon^4).
+\end{equation}
+Using the aggregate market elasticity relation
+\begin{equation}
+    \epsilon_M^{-1}
+    =-\frac{G_p}{y_{Y,0}}\frac{\epsilon}{x_0}+\mathcal{O}(\epsilon^2),
 \end{equation}
 we can write
-\begin{equation}\label{eq:r2-total-noheterog}
-    r_2^T
-    =y_{Y,2}^T-\pi_{Y,2}^T-
-    \mu_{y_Y,2}^T-\sigma\sigma_{y_Y,2}^{T\top}.
+\begin{equation}\label{eq:sigmapY-total-wealth-dist-elasticity}
+    \sigma_{p_Y,t}
+    =x_0\epsilon_M^{-1}\sigma_p\epsilon
+    -\frac{x_0\hat{\alpha}_p}{y_{Y,0}}y_{Y,2,x_0}^{T}\sigma\epsilon^3
+    +\mathcal{O}(\epsilon^4).
 \end{equation}
-In the no-heterogeneity case, the time-varying component of this expression reduces to \eqref{eq:delta-r2-noheterog} because the changes in the dividend-yield drift and diffusion exactly offset the corresponding terms in the pricing identity.
+Thus, to the order at which the aggregate market elasticity is computed, the equilibrium price response to a portfolio-flow shock is the direct partial-equilibrium effect holding the wealth distribution fixed.
+The endogenous movement in the wealth distribution contributes only at the next order.
+
+In the closed-form no-heterogeneity solution, $y_{Y,2}^{T}$ depends on the wealth distribution only through $x_0/x_a$.
+Hence
+\begin{equation}\label{eq:y2x0-noheterog}
+    y_{Y,2,x_0}^{T}
+    =\frac{y_{Y,2}^{T}}{x_0x_a}.
+\end{equation}
+Substituting \eqref{eq:y2x0-noheterog} into \eqref{eq:sigmapY-total-wealth-dist-elasticity} gives the explicit wealth-distribution correction
+\begin{equation}\label{eq:sigmapY-total-wealth-dist-final}
+    \sigma_{p_Y,t}
+    =x_0\epsilon_M^{-1}\sigma_p\epsilon
+    -\frac{\hat{\alpha}_p}{x_a}\frac{y_{Y,2}^{T}}{y_{Y,0}}\sigma\epsilon^3
+    +\mathcal{O}(\epsilon^4).
+\end{equation}
+Equation~\eqref{eq:sigmapY-total-wealth-dist-final} separates the two effects of a portfolio-flow shock.
+The first term is the direct demand effect captured by the aggregate market elasticity.
+The second term is the equilibrium wealth-distribution effect: the price response to the change in $x_0$ caused by the shock itself.
+Because this second term is of order $\epsilon^3$ in price diffusion, it affects the flow-price impact only at order $\epsilon^2$ and does not change the first-order aggregate elasticity formula above.
+
+
 
 % The dividend yield, $y$, is given by
 % \begin{align}
