@@ -5405,6 +5405,38 @@ The HJB loss in the first-stage training problem converges to a mean-squared los
 The corresponding valuation-ratio training problems converge to a normalized mean-squared training loss of $1.4 \times 10^{-5}$.
 These losses are computed from the batch objectives in \eqref{eq:baseline_batch_loss_appendix} and in the valuation-ratio objective, respectively.
 
+\newpage
+
+\section{The first-order demand system}
+
+Hedging demands and endogenous volatility are second order in $\epsilon$:
+\begin{align}
+    \sigma_{c_j} &= \mathcal{O}(\epsilon^2), \qquad \qquad 
+    \sigma_{p_Y} = \mathcal{O}(\epsilon^2).
+\end{align}
+
+Hence, the market price of risk can be written as
+\begin{equation}
+    \eta(x, \hat{\alpha}_p) = \gamma \sigma  \frac{1 -x_0\overline{\alpha}_p}{1-x_0} + \mathcal{O}(\epsilon^2).
+\end{equation}
+
+The risk premium on the aggregate claim is given by
+\begin{equation}
+    \pi_Y = \sigma_{R_Y} \eta^\top = \gamma \|\sigma\|^2  \frac{1 -x_0\overline{\alpha}_p}{1-x_0} + \mathcal{O}(\epsilon^2),
+\end{equation}
+using the fact that $\sigma_{R_Y} = \sigma + \mathcal{O}(\epsilon^2)$.
+
+Hence, the return volatility of the aggregate claim is given by
+\begin{equation}
+    \sigma_{R_Y} = \sigma + \mathcal{O}(\epsilon^2).
+\end{equation}
+
+Using the fact that hedging demands and endogenous volatility are second order, expanding Equation~\eqref{eq:market_price_of_risk} gives the first-order correction to the market price of risk:
+\begin{equation}
+    \eta(x, \hat{\alpha}_p) = \gamma \sigma  \frac{1 -x_0\overline{\alpha}_p}{1-x_0} + \mathcal{O}(\epsilon^2).
+\end{equation}
+
+
 
 % \section{The unit EIS case}
 

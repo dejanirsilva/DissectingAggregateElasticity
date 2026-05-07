@@ -233,8 +233,8 @@ Jiacui Li\thanks{David Eccles School of Business, University of Utah, \href{mail
   %%%%%%%%%%%%%%%%%%%%
   We study aggregate stock market elasticity in a general equilibrium model with heterogeneous investors, passive demand, and financial constraints.
   Without frictions, the elasticity of the endowment claim is infinite, as interest rate and risk premium responses offset each other.
-  With frictions, price impact for the endowment claim remains modest (about 0.7 in our calibration).
-  In contrast, the equity (dividend) claim exhibits large price impact (above 8), consistent with empirical evidence, as frictions dampen interest rate responses while leverage amplifies risk premia responses to portfolio flows.
+  With frictions, price impact for the endowment claim remains modest.
+  In contrast, the equity (dividend) claim exhibits large price impact, consistent with empirical evidence, as frictions dampen interest rate responses while leverage amplifies risk premia responses to portfolio flows.
   We introduce a state-global perturbation method that yields closed-form, state-dependent elasticities.
   Calibrated to match the magnitude of portfolio flows, the model simultaneously matches the equity premium, return volatility, and the level and countercyclical dynamics of price impact.
   % We study why the aggregate stock market is so inelastic and why price impact rises in bad times. In a general equilibrium model with heterogeneous investors, passive demand, and financial constraints, a representative firm issues a risky dividend claim and corporate debt. Because dividends are a levered share of output, equity prices respond more strongly to portfolio flows. A mutual fund theorem reduces the equilibrium to a single-claim economy, and state-global perturbations deliver closed-form expressions for aggregate elasticity. Elasticity is governed by risk allocation: when risk is misallocated, interest rates cannot fully offset risk premium changes, generating finite and time-varying price impact. We solve the full model using deep neural networks, calibrate it to Flow of Funds data and asset pricing moments, and match the magnitude and dynamics of aggregate price impact documented in the empirical literature.  
@@ -794,15 +794,15 @@ This expression highlights that the interest rate is determined jointly by risk 
 
 \paragraph{Pricing condition.}
 
-Let $p_{D,t} \equiv P_{D,t}/Y_t$ and $p_{B,t} \equiv P_{B,t}/Y_t$ denote the price normalized by the aggregate endowment of the dividend and corporate bond claims, respectively. 
-The price-dividend ratio of the aggregate claim is $p_{Y,t} \equiv P_{Y,t}/Y_t$, which satisfies $p_{Y,t} = p_{D,t} + p_{B,t}$.
+Define the valuation ratios $p_{D,t} \equiv P_{D,t}/Y_t$ and $p_{B,t} \equiv P_{B,t}/Y_t$ for the dividend and corporate bond claims, respectively. 
+The valuation ratio of the aggregate claim is $p_{Y,t} \equiv P_{Y,t}/Y_t$, which satisfies $p_{Y,t} = p_{D,t} + p_{B,t}$.
 
 The pricing condition for each claim $k\in\{D,B\}$ is given by
 \begin{equation}\label{eq:pricing_cond}
     \frac{1}{p_{k,t}} = r_t + \pi_{k,t} - \big(\mu + \mu_{p_k,t} + \sigma \, \sigma_{p_k,t}^\top\big),
 \end{equation}
 where $\pi_{k,t} = \sigma_{R_k,t} \, \eta_t^\top$ is the risk premium on claim $k$ implied by no arbitrage.
-The terms $\mu_{p_k,t}$ and $\sigma_{p_k,t}$ denote the drift and diffusion of the normalized prices, respectively.
+The terms $\mu_{p_k,t}$ and $\sigma_{p_k,t}$ denote the drift and diffusion of the valuation ratios, respectively.
 
 % Equation~\eqref{eq:pricing_cond} links asset prices to expected returns, risk premia, and the dynamics of valuation ratios.
 % It provides the key condition determining how prices respond to changes in investment opportunities.
@@ -879,7 +879,7 @@ By It\^{o}'s lemma, the law of motion for $x_{j,t}, j=1,2$, is given by
 
 \paragraph{Endogenous volatility.} 
 
-Return volatility has both a cash-flow and a valuation component, $\sigma_{R_k,t} = \sigma_{k,t} + \sigma_{p_k,t}$, where $\sigma_{k,t}$ reflects cash-flow volatility and $\sigma_{p_k,t}$ arises from movements in the price-dividend ratio $p_{k,t}$ for asset $k \in \{D,B\}$. 
+Return volatility has both a cash-flow and a valuation component, $\sigma_{R_k,t} = \sigma_{k,t} + \sigma_{p_k,t}$, where $\sigma_{k,t}$ reflects cash-flow volatility and $\sigma_{p_k,t}$ arises from movements in the valuation ratio $p_{k,t}$ for asset $k \in \{D,B\}$. 
 By It\^{o}'s lemma,  
 \begin{equation}\label{eq:_endogenous_vol}
     \sigma_{p_k,t} = \frac{p_{k,x}(X_t)}{p_{k,t}(X_t)} \sigma_{x,t} 
@@ -887,7 +887,7 @@ By It\^{o}'s lemma,
     + \frac{p_{k,s}(X_t)}{p_{k,t}(X_t)} \sigma_{s,t}.
 \end{equation}
 
-Equation~\eqref{eq:_endogenous_vol} shows that endogenous volatility depends on the sensitivity of the price-dividend ratio to three groups of variables: (i) the wealth distribution, (ii) the passive portfolio share, and (iii) the dividend share.
+Equation~\eqref{eq:_endogenous_vol} shows that endogenous volatility depends on the sensitivity of the valuation ratio to three groups of variables: (i) the wealth distribution, (ii) the passive portfolio share, and (iii) the dividend share.
 The first term is standard in heterogeneous-agent models \citep[see][]{panageas2020implications}.
 The third term is typical of models with multiple assets.
 The second term arises only in the presence of exogenous portfolio flow shocks.
@@ -919,8 +919,8 @@ the two active wealth shares $x_{1,t}$ and $x_{2,t}$, the passive portfolio shar
 \subsubsection{Block recursivity and the mutual fund theorem}\label{sec:pricing_claims}
 
 We show that the system of PDEs admits a block-recursive structure.
-First, we solve for the consumption-wealth ratios and the price-dividend ratio of the aggregate claim in a reduced set of states $\hat{X}_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t})$.
-Second, we solve for the price-dividend ratios of the dividend and corporate bond claims in the full set of states $X_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t}, s_t)$.
+First, we solve for the consumption-wealth ratios and the price-dividend ratio of the aggregate claim in a reduced set of states $\hat{X}_t = (x_{t}, \overline{\alpha}_{p,t})$.
+Second, we solve for the valuation ratios of the dividend and corporate bond claims in the full set of states $X_t = (x_{t}, \overline{\alpha}_{p,t}, s_t)$.
 % This separation arises because aggregate quantities are independent of the dividend-share shock and market are dynamically complete.
 
 This provides a substantial simplification, as the equilibrium allocation and pricing kernel are identical to those of an economy with a single claim on the aggregate endowment and a derivative.
@@ -931,7 +931,7 @@ An important implication of the block-recursive structure is that a version of t
 Despite financial frictions, investors optimally hold risky claims in proportion to their market-capitalization weights, as in the classic mutual fund theorem.
 
 \begin{prop}[Block recursivity and the mutual fund theorem]\label{prop:mft}
-    Define the reduced set of states as $\hat{X}_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t})$.
+    Define the reduced set of states as $\hat{X}_t = (x_{t}, \overline{\alpha}_{p,t})$, where $x_{t} = (x_{1,t}, x_{2,t})$ is the vector of wealth shares of the active investors.
     Then,
     \begin{enumerate}[label=(\roman*)]
         \item \textbf{Block recursivity:} The consumption-wealth ratios, $\{c_{j,t}(\hat{X}_t)\}_{j=0}^2$, and the price-dividend ratio for the aggregate claim, $p_Y(\hat{X}_t)$, are a function of the reduced set of states $\hat{X}_t$, and they satisfy the following system of PDEs:
@@ -969,7 +969,7 @@ Without the derivative, investors would need to deviate from market-capitalizati
 
 \paragraph{Pricing the individual claims.}
 Having solved for the aggregate objects $\{c_{j,t}(\hat{X}_t)\}_{j=0}^2$ and $p_Y(\hat{X}_t)$, we next recover the valuation of individual claims.
-The normalized prices of the dividend and bond claims are functions of the full state vector $X_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t}, s_t)$, as they load on the dividend-share shock.
+The individual valuation ratios are functions of the full state vector $X_t = (x_{t}, \overline{\alpha}_{p,t}, s_t)$, as they load on the dividend-share shock.
 
 Given the aggregate equilibrium objects $r(\hat{X}_t)$ and $\eta(\hat{X}_t)$, and using It\^{o}'s lemma to express the drift and diffusion of valuation ratios as functions of the state dynamics and their derivatives, the pricing condition in Equation~\eqref{eq:pricing_cond} yields a linear PDE for $p_{D,t}(X_t)$ and $p_{B,t}(X_t)$.
 
@@ -1048,15 +1048,19 @@ We now turn to an analytical characterization of the aggregate market elasticity
 % \input{sections/elasticity}
 \section{The Determinants of the Aggregate Market Elasticity}\label{sec:elasticity}
 
-In this section, we provide a characterization of the \emph{aggregate market elasticity}, which controls the price impact of portfolio flows.  
-The elasticity is determined by the coupled PDE system \eqref{eq:pde_c_j}–\eqref{eq:pde_p_Y}, which generally has no closed-form solution.
-To study its determinants, we extend the perturbation method of \citet{kogan2001risk} and derive asymptotic closed-form approximations.
+This section characterizes the determinants of aggregate market elasticity.
+The key result is that aggregate market elasticity is infinite around efficient allocations, even when individual investors have finite demand elasticities.
+Finite elasticity emerges only when portfolio flows distort the allocation of risk across investors, thereby affecting aggregate saving behavior and equilibrium interest rates.
+Thus, portfolio frictions play a crucial role in determining aggregate market elasticity.
+
+To provide an analytical characterization of aggregate market elasticity, we extend the perturbation method of \citet{kogan2001risk} and derive asymptotic closed-form approximations.
 
 \subsection{Perturbation method}
 
 Our perturbation approach studies economies in a neighborhood of a benchmark that admits a closed-form solution.
 A convenient benchmark arises when preferences are homogeneous, $\gamma_j=\gamma$, and passive investors are fully invested in the risky asset at all times, $\overline{\alpha}_{p,t}=1$.
 In this case, the economy collapses to a Lucas economy, as shown in Lemma~\ref{lemma:benchmark}.
+Thus, the benchmark corresponds to an efficient frictionless allocation.
 Throughout, a superscript $*$ denotes benchmark values.
 
 
@@ -1072,7 +1076,9 @@ $c_{j}^{*} = (p_Y^{*})^{-1}$, and $\alpha_{j}^{*} = 1$ for $j = 0, 1, 2$.
 \end{lemma}
 
 We analyze small deviations from this benchmark.
-Formally, consider a family of economies indexed by $\epsilon>0$, where $\epsilon$ scales departures from the benchmark along the following dimensions.
+Formally, consider a family of economies indexed by $\epsilon>0$, where $\epsilon$ scales departures from the benchmark along several dimensions.
+When $\epsilon=0$, the economy coincides with the benchmark Lucas economy.
+When $\epsilon=1$, we recover the full heterogeneous-agent economy with frictions.
 
 First, investors have heterogeneous risk aversion:
 \begin{equation}\label{eq:gamma-perturb}
@@ -1080,17 +1086,15 @@ First, investors have heterogeneous risk aversion:
     \qquad
     \sum_{j=0}^2 \omega_j \hat{\gamma}_j=0,
 \end{equation}
-so that $\gamma$ is the population-weighted average and $\hat{\gamma}_j$ measures deviations.
-When $\epsilon=0$, preferences are homogeneous; when $\epsilon=1$, we recover the heterogeneous-investor economy.
-
+so that $\gamma$ is the population-weighted average and $\hat{\gamma}_j$ measures deviations from it.
 
 Second, passive investors need not be fully invested in the risky asset.
-Their portfolio share is  
+Their portfolio share is  $\overline{\alpha}_{p,t}=1+\hat{\alpha}_{p,t}\,\epsilon,$ where $\hat{\alpha}_{p,t}$ follows an Ornstein-Uhlenbeck process independent of $\epsilon$:
 \begin{equation}\label{eq:apbar_index}
-    \overline{\alpha}_{p,t}=1+\hat{\alpha}_{p,t}\,\epsilon,
+    d \hat{\alpha}_{p,t} = -\kappa_p \hat{\alpha}_{p,t} dt + \hat{\sigma}_p d Z_t,
 \end{equation}
-where $\hat{\alpha}_{p,t}$ measures deviations from full investment benchmark and evolves as an Ornstein-Uhlenbeck process, consistent with Equation~\eqref{eq:alpha_p_process}.
-
+which requires $\overline{\alpha} = 1$ and $\sigma_p = \hat{\sigma}_p \epsilon$ to be consistent with Equation~\eqref{eq:alpha_p_process}.
+When $\epsilon=0$, passive investors are fully invested in the risky asset at all times, recovering the benchmark case.
 
 Third, the leverage constraint coefficient is perturbed according to
 \begin{equation}\label{eq:sig_bar-perturb}
@@ -1099,49 +1103,71 @@ Third, the leverage constraint coefficient is perturbed according to
 so that the tightness of the constraint is of order $\mathcal{O}(\epsilon)$, matching the order of leverage demand.
 Finally, we assume a small mortality rate, $\kappa=\hat{\kappa}\,\epsilon$.
 
-
-Equilibrium objects now depend on both the state $X_t$ and the parameter $\epsilon$.
-We expand them to second order:
+Equilibrium objects depend on the parameter $\epsilon$ and the aggregate state variable $X_t$.
+From the block recursivity property in Proposition~\ref{prop:mft}, the consumption-wealth ratios and the price-dividend ratio of the aggregate claim depend on the reduced set of states $\hat{X}_t = (x_{t}, \overline{\alpha}_{p,t})$.
+We expand them to second order in $\epsilon$ as follows:
 \begin{align}
-    p(X,\epsilon) &= p_0(X) + p_1(X)\epsilon + p_2(X)\epsilon^2 + \mathcal{O}(\epsilon^3), \\
-    c_j(X,\epsilon) &= c_{j,0}(X) + c_{j,1}(X)\epsilon + c_{j,2}(X)\epsilon^2 + \mathcal{O}(\epsilon^3),
+    p_Y(x, \overline{\alpha}_p;\epsilon) &= p_{Y,0}(x, \hat{\alpha}_p) + p_{Y,1}(x, \hat{\alpha}_p)\epsilon + p_{Y,2}(x, \hat{\alpha}_p)\epsilon^2 + \mathcal{O}(\epsilon^3), \\
+    c_j(x, \overline{\alpha}_p;\epsilon) &= c_{j,0}(x, \hat{\alpha}_p) + c_{j,1}(x, \hat{\alpha}_p)\epsilon + c_{j,2}(x, \hat{\alpha}_p)\epsilon^2 + \mathcal{O}(\epsilon^3), 
 \end{align}
-where $p_k(X)$ and $c_{j,k}(X)$, $k\in\{0,1,2\}$, are functions of the state $X$.
+for $j = 0, 1, 2$. 
 
-Unlike standard DSGE perturbations, which linearize in both $X$ and $\epsilon$, our method is \emph{state-global}: we solve directly for functions of $X$ rather than coefficients around a steady state.\footnote{See \citet{kargar2020competitive} for a comparison with standard perturbation methods.} 
-We refer to this approach as a \emph{state-global perturbation}. 
-This approach builds on the perturbation method of \citet{kogan2001risk} and, more closely, the extension 
-by \citet{Silva/riskchannel}.
-This method allows us to characterize how aggregate market elasticity varies with the state of the economy.
+Unlike standard DSGE perturbations, we do not assume that endowment volatility $\sigma$ is small.
+Moreover, the approximation is local in the exogenous state variable $\overline{\alpha}_p$, but global in the endogenous state variables $x$:
+we solve directly for functions of $x$ rather than coefficients around a deterministic steady state.
+This type of \emph{state-global perturbation} builds on the perturbation method of \citet{kogan2001risk} and, more closely, its extension in \citet{Silva/riskchannel}.\footnote{See \citet{kargar2020competitive} for an application of state-global perturbations to a model with search frictions and a detailed comparison with standard perturbation methods.}
+
+This approach is important for two reasons.
+First, it allows us to capture state-dependent effects and time-varying risk premia in a tractable way.\footnote{In contrast, first-order perturbations around a deterministic steady state feature no risk premia or state dependence, while second-order perturbations only generate constant risk corrections (see, e.g., \citealt{schmitt2004solving}).}
+Second, it allows us to characterize how aggregate market elasticity varies with the state of the economy.
 
 We proceed in two steps.
-First, we compute the first-order corrections $p_1(X)$ and $c_{j,1}(X)$.
-Second, we solve for the second-order terms $p_2(X)$ and $c_{j,2}(X)$.
-Zeroth-order terms are given by Lemma~\ref{lemma:benchmark}, i.e., $p_0(X)=p^{*}$ and $c_{j,0}(X)=c_j^{*}$.
+First, we compute the first-order corrections $p_{Y,1}(x, \hat{\alpha}_p)$ and $c_{j,1}(x, \hat{\alpha}_p)$.
+These capture the effects of a small deviation from the frictionless benchmark.
+Second, we solve for the second-order terms $p_{Y,2}(x, \hat{\alpha}_p)$ and $c_{j,2}(x, \hat{\alpha}_p)$.
+A second-order approximation is necessary to capture how the different frictions interact to determine aggregate market elasticity.
+Zeroth-order terms are given by Lemma~\ref{lemma:benchmark}, i.e., $p_{Y,0}(x, \hat{\alpha}_p)=p_Y^{*}$ and $c_{j,0}(x, \hat{\alpha}_p)=c_j^{*}$.
 
 
 \subsection{The first-order demand system}
 
+We start by characterizing the first-order corrections to equilibrium prices and allocations.
+In particular, we derive the first-order demand system and the consumption-wealth ratio, which jointly determine how risk premia and interest rates respond to portfolio flows.
+
 \paragraph{Demand for risky asset.}  
-Investor $j$’s demand for the risky asset is 
+Given the results in Proposition~\ref{prop:mft}, we can express the holdings of asset $k\in\{D,B\}$ for investor $j$ as follows:
+\begin{equation}
+    Q_{j,k,t} = \alpha_{j,k,t} \frac{W_{j,t}}{P_{k,t}} = \alpha_{j,Y,t} \frac{x_{j,t}}{\omega_j},
+\end{equation}
+where $x_{j,t}$ is the wealth share of investor $j$ and $\alpha_{j,Y,t}$ is the effective exposure to the aggregate claim.
+
+The expression above implies that quantities are equalized across assets, an implication of the mutual fund theorem, so we can define the demand for risky assets as $Q_{j,t} \equiv Q_{j,k,t}$.
+
+In recursive form, investor $j$’s demand for the risky asset is then given by
 \[
-    Q_j(X;\epsilon)=\alpha_j(X;\epsilon)\,\frac{x_j}{\omega_j},
+    Q_j(x, \overline{\alpha}_p;\epsilon)=\alpha_{j,Y}(x, \overline{\alpha}_p;\epsilon)\,\frac{x_j}{\omega_j},
 \]
-where $x_j$ is the wealth share.
+
 Define the proportional deviation from the benchmark as
 \begin{equation}
-    q_{j,t}\;\equiv\;\frac{Q_j(X_t;\epsilon)- Q_j(X_t;0)}{Q_j(X_t;0)}
-    \;=\;\alpha_{j,1}(X_t)\,\epsilon+\mathcal{O}(\epsilon^2),
+    q_{j,t}\;\equiv\;\frac{Q_j(x_t, \overline{\alpha}_{p,t};\epsilon)- Q_j(x_t, \overline{\alpha}_{p,t};0)}{Q_j(x_t, \overline{\alpha}_{p,t};0)}
+    \;=\;\alpha_{j,Y,1}(x_t, \hat{\alpha}_{p,t})\,\epsilon+\mathcal{O}(\epsilon^2),
 \end{equation}
-where $\alpha_{j,1}(X)$ is the first-order correction to the portfolio weight.  
+where $\alpha_{j,Y,1}(x_t, \hat{\alpha}_{p,t})$ is the first-order correction to the portfolio weight.  
 
 Three results determine $\alpha_{j,1}(X)$.
-First, the volatility of the price-dividend ratio is second order:
+First, the volatility of the valuation ratio and consumption-wealth ratios are second order:
 \[
-    \sigma_{p,t}=\frac{p_X(X_t)}{p(X_t)}\,\sigma_X(X_t)=\mathcal{O}(\epsilon^2),
+    \sigma_{p_Y}=\frac{p_{Y,\hat{X}}(\hat{X})}{p(\hat{X})}\,\sigma_{\hat{X}}(\hat{X})=\mathcal{O}(\epsilon^2), \qquad \qquad 
+    \sigma_{c_j}=\frac{c_{j,\hat{X}}(\hat{X})}{c_j(\hat{X})}\,\sigma_{\hat{X}}(\hat{X})=\mathcal{O}(\epsilon^2),
 \]
-since $p_{X,0}=\sigma_{X,0}=0$ (Lemma~\ref{lemma:benchmark}).
-Second, hedging demand is also $\mathcal{O}(\epsilon^2)$ because $\sigma_{c_j}(X_t)$ is second order.
+since $p_{Y,\hat{X}}(\hat{X})$, $c_{j,\hat{X}}(\hat{X})$, $\mu_{\hat{X}}$ and $\sigma_{\hat{X}}$ are first order in $\epsilon$, as shown in Appendix~\ref{app:derivations-perturbation-solution}.
+Second, using the fact that hedging demands and endogenous volatility are second order, expanding Equation~\eqref{eq:market_price_of_risk} gives the first-order correction to the market price of risk:
+\begin{equation}
+    \eta(x, \hat{\alpha}_p) = \gamma \sigma  \frac{1 -x_0\overline{\alpha}_p}{1-x_0} + \mathcal{O}(\epsilon^2).
+\end{equation}
+
+
 Third, expanding the pricing condition \eqref{eq:pricing_cond} gives
 \begin{equation}
     \hat{\pi}_t=-\,\hat{r}_t-\frac{1}{p^{*}}\hat{p}_t+\mathcal{O}(\epsilon^2),
