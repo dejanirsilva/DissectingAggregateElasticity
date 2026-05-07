@@ -197,7 +197,8 @@ and the drift and diffusion of $c_{j,t}$ are given by Ito's lemma:
 
 \subsection{Pricing condition}
 
-Let $p_{D,t} = \frac{P_{D,t}}{Y_t}$ and $p_{B,t} = \frac{P_{B,t}}{Y_t}$ denote the normalized prices of the dividend and bond claims, respectively. The normalized price of the aggregate claim is $p_{Y,t} = \frac{P_{Y,t}}{Y_t}$.
+Let $p_{D,t} = \frac{P_{D,t}}{Y_t}$ and $p_{B,t} = \frac{P_{B,t}}{Y_t}$ denote the normalized prices of the dividend and bond claims, respectively.
+The normalized price of the aggregate claim is $p_{Y,t} = \frac{P_{Y,t}}{Y_t}$.
 The pricing condition for asset $k \in\{D,B\}$ is given by
 \begin{equation}
     r_t + \sigma_{R_k,t} \eta_t^\top = \frac{1}{p_{k,t}} + \mu + \mu_{p_k,t} + \sigma \sigma_{p_k,t}^\top,
@@ -1761,7 +1762,8 @@ The consumption-wealth ratio is given by
     + \frac{\psi - \gamma_j}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}.
 \end{equation}
 
-We expand each term to second order. Using
+We expand each term to second order.
+Using
 \begin{align}
     r_t &= r_0 + r_1\epsilon + r_2\epsilon^2 + \mathcal{O}(\epsilon^3),\\
     \eta_t &= \eta_0 + \eta_1\epsilon + \eta_2\epsilon^2 + \mathcal{O}(\epsilon^3),\\
@@ -2935,7 +2937,8 @@ Moreover, matching the coefficient on $\hat{s}$ gives
 \begin{equation}
     (\delta+\kappa_s)\Delta b_2=\mathcal{L}_{\alpha}b_2^{T} = \mathcal{L}_{\alpha}\Delta b_2,
 \end{equation}
-as $b_2^0 $ is independent of $\hat{\alpha}_p$. Then, $\Delta b_2 = 0$ satisfies the equation above, so
+as $b_2^0 $ is independent of $\hat{\alpha}_p$.
+Then, $\Delta b_2 = 0$ satisfies the equation above, so
 \begin{equation}\label{eq:pD-b2-timevarying-alpha}
     b_2^{T}=b_2^{0}.
 \end{equation}
@@ -5217,7 +5220,13 @@ with coefficients
 
 \section{Flow of Funds aggregation}\label{app:fof_aggregation}
 
-This appendix describes the procedure used in Section~\ref{sec:calibration} to aggregate Flow of Funds (FoF) sectors into the three ultimate sectors of the model: passive, constrained active, and unconstrained active. We follow the aggregation in \citet{koijen2024investors}, drop sectors with no or minimal equity holdings, and route pass-through vehicles to their ultimate end investors. ETFs (L.124) and closed-end funds (L.123) are aggregated onto the household balance sheet (L.101); mutual-fund holdings (L.122) are split across end investors using the FoF's breakdown, with the household portion kept separate. Defined-contribution pensions (L.118c, L.119c, L.120c) are routed to households. Hedge funds are separated out using Table~B.101.f for domestic funds and the Enhanced Financial Accounts for foreign funds, and the corresponding holdings are subtracted from the household (L.101) and rest-of-the-world (L.133) balance sheets. The remaining insurance and pension sectors (L.115, L.116, L.118b, L.119b, L.120b) are aggregated into a single long-horizon sector. The three ultimate sectors correspond, respectively, to \emph{passive} (households and non-profits net of hedge funds, government, monetary authority, and money-market funds), \emph{constrained} (hedge funds, broker-dealers, and other short-horizon intermediaries), and \emph{unconstrained} (insurance, pensions, and rest-of-the-world net of hedge funds).
+This appendix describes the procedure used in Section~\ref{sec:calibration} to aggregate Flow of Funds (FoF) sectors into the three ultimate sectors of the model: passive, constrained active, and unconstrained active.
+We follow the aggregation in \citet{koijen2024investors}, drop sectors with no or minimal equity holdings, and route pass-through vehicles to their ultimate end investors.
+ETFs (L.124) and closed-end funds (L.123) are aggregated onto the household balance sheet (L.101); mutual-fund holdings (L.122) are split across end investors using the FoF's breakdown, with the household portion kept separate.
+Defined-contribution pensions (L.118c, L.119c, L.120c) are routed to households.
+Hedge funds are separated out using Table~B.101.f for domestic funds and the Enhanced Financial Accounts for foreign funds, and the corresponding holdings are subtracted from the household (L.101) and rest-of-the-world (L.133) balance sheets.
+The remaining insurance and pension sectors (L.115, L.116, L.118b, L.119b, L.120b) are aggregated into a single long-horizon sector.
+The three ultimate sectors correspond, respectively, to \emph{passive} (households and non-profits net of hedge funds, government, monetary authority, and money-market funds), \emph{constrained} (hedge funds, broker-dealers, and other short-horizon intermediaries), and \emph{unconstrained} (insurance, pensions, and rest-of-the-world net of hedge funds).
 
 \section{Numerical methodology}\label{app:numerical}
 This appendix describes the numerical procedure used to solve the dynamic model in Section \ref{sec:model}.
