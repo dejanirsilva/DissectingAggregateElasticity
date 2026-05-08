@@ -336,7 +336,7 @@ We establish conditions under which a version of the mutual fund theorem holds i
 This implies that the stochastic discount factor from the aggregate (endowment-claim) economy can be used to price the dividend claim in a second step.
 As a result, the problem separates into an aggregate equilibrium and a simpler pricing problem, reducing its dimensionality.
 
-For the quantitative analysis, we solve the full model using the deep neural network method of \citet{duarte2024machine} and calibrate it to Flow of Funds data.
+For the quantitative analysis, we solve the full model using the deep neural network method of \citet{duarte2024machine} and \cite{Gopalakrishna2026} and calibrate it to Flow of Funds data.
 We target the magnitude of portfolio flows observed in the data.
 The model matches both the level and countercyclical dynamics of price impact, while reproducing key asset pricing moments such as the equity premium and return volatility.
 These results reflect the joint role of frictions, which dampen interest rate responses, and leverage, which amplifies risk premia responses to portfolio flows.
@@ -1572,7 +1572,7 @@ The first is to ask whether a calibration disciplined by U.S. data on sectoral p
 The second is to quantify how much of the variation in return volatility, return predictability, and the variance of the price--dividend ratio is attributable to how portfolio flows interact with preference heterogeneity, leverage constraints, and passive-sector risk misallocation.
 We do the latter by comparing the baseline economy to a set of counterfactuals that turn off these frictions one at a time.
 
-We solve the full dynamic system numerically using the neural-network method of \citet{duarte2024machine}, which accommodates the four state variables: passive demand, the dividend share, and the wealth shares of the constrained and unconstrained active sectors.
+We solve the full dynamic system numerically using the neural-network method of \citet{duarte2024machine}, which accommodates the four state variables: passive demand, the dividend share, and the wealth shares of the constrained and unconstrained active sectors. We follow \cite{Gopalakrishna2026} and use vectorized automatic differentiation to compute derivatives and approximate the set of equilibrium conditions.
 Appendix~\ref{app:numerical} describes the numerical procedure in detail.
 
 \subsection{Calibration}\label{sec:calibration}
