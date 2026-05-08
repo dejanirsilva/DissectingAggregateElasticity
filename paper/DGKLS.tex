@@ -949,8 +949,8 @@ Despite financial frictions, investors optimally hold risky claims in proportion
             \alpha_{j,k} = \alpha_{j,Y} \frac{p_k}{p_Y}, \quad \forall k \in \{D,B\},
         \end{align}
         where $\alpha_{j,Y}$ denotes the holdings of the market index fund for investor $j$, which satisfies the condition
-        \begin{equation}
-            \sigma_{j} = \alpha_{j,Y} \sigma_{R_Y} + \alpha_{j,F} \sigma_{R_F}.
+        \begin{equation}\label{eq:alpha_Y}
+            \alpha_{j,Y}  = \frac{\sigma_{j} \sigma_{R_Y}^\top}{\sigma_{R_Y} \sigma_{R_Y}^\top} 
         \end{equation}
     \end{enumerate}
 \end{prop}
@@ -1072,7 +1072,7 @@ Then,
         r^{*} = \rho + \psi^{-1}\mu - \big(1+\psi^{-1}\big)\frac{\gamma \|\sigma\|^2}{2}, \qquad 
         p_Y^{*} = \Big[\rho - \big(1-\psi^{-1}\big)\Big(\mu - \frac{\gamma \|\sigma\|^2}{2}\Big)\Big]^{-1},
 \end{equation}
-$c_{j}^{*} = (p_Y^{*})^{-1}$, and $\alpha_{j}^{*} = 1$ for $j = 0, 1, 2$.
+$c_{j}^{*} = (p_Y^{*})^{-1}$, and $\alpha_{j,Y}^{*} = 1$ for $j = 0, 1, 2$.
 \end{lemma}
 
 We analyze small deviations from this benchmark.
@@ -1155,26 +1155,33 @@ Define the proportional deviation from the benchmark as
 \end{equation}
 where $\alpha_{j,Y,1}(x_t, \hat{\alpha}_{p,t})$ is the first-order correction to the portfolio weight.  
 
-Three results determine $\alpha_{j,1}(X)$.
-First, the volatility of the valuation ratio and consumption-wealth ratios are second order:
+From Equation~\eqref{eq:alpha_Y}, we have that portfolio weight depends on the return volatility, $\sigma_{R_Y}$, and the risk exposure, $\sigma_{j}$.
+The return volatility is given by $\sigma_{R_Y} = \sigma + \sigma_{p_Y}$, where the volatility of the valuation ratio is second order in $\epsilon$:
 \[
-    \sigma_{p_Y}=\frac{p_{Y,\hat{X}}(\hat{X})}{p(\hat{X})}\,\sigma_{\hat{X}}(\hat{X})=\mathcal{O}(\epsilon^2), \qquad \qquad 
-    \sigma_{c_j}=\frac{c_{j,\hat{X}}(\hat{X})}{c_j(\hat{X})}\,\sigma_{\hat{X}}(\hat{X})=\mathcal{O}(\epsilon^2),
+    \sigma_{p_Y}=\frac{p_{Y,\hat{X}}(\hat{X})}{p(\hat{X})}\,\sigma_{\hat{X}}(\hat{X})=\mathcal{O}(\epsilon^2), 
 \]
-since $p_{Y,\hat{X}}(\hat{X})$, $c_{j,\hat{X}}(\hat{X})$, $\mu_{\hat{X}}$ and $\sigma_{\hat{X}}$ are first order in $\epsilon$, as shown in Appendix~\ref{app:derivations-perturbation-solution}.
-Second, using the fact that hedging demands and endogenous volatility are second order, expanding Equation~\eqref{eq:market_price_of_risk} gives the first-order correction to the market price of risk:
+since $p_{Y,\hat{X}}(\hat{X})$, $\mu_{\hat{X}}$ and $\sigma_{\hat{X}}$ are first order in $\epsilon$, as shown in Appendix~\ref{app:derivations-perturbation-solution}.
+
+Expanding the risk exposure for active investors $j=1,2$ in Equation~\eqref{eq:alpha_Y} gives
 \begin{equation}
-    \eta(x, \hat{\alpha}_p) = \gamma \sigma  \frac{1 -x_0\overline{\alpha}_p}{1-x_0} + \mathcal{O}(\epsilon^2).
+    \sigma_{j,1} = \frac{\eta_1}{\gamma} - \frac{\eta_0}{\gamma} (\hat{\gamma}_j+ \hat{\nu}_{j}),
 \end{equation}
+where $\eta_1$ is the first-order correction to the market price of risk and $\hat{\nu}_j$ is the first-order correction to the Lagrange multiplier on the leverage constraint.
 
-
-Third, expanding the pricing condition \eqref{eq:pricing_cond} gives
+Combining the results above with Equation~\eqref{eq:alpha_Y}, we obtain the portfolio share of active investors:
 \begin{equation}
-    \hat{\pi}_t=-\,\hat{r}_t-\frac{1}{p^{*}}\hat{p}_t+\mathcal{O}(\epsilon^2),
+    \alpha_{j,Y,1} = \frac{\pi_{Y,1}}{\gamma \|\sigma\|^2} - (\hat{\gamma}_j+ \hat{\nu}_{j}),
 \end{equation}
-where $\hat{\pi}_t\equiv \pi_t-\pi^{*}$, $\hat{r}_t\equiv r_t-r^{*}$, and $\hat{p}_t\equiv \frac{p_t-p^{*}}{p^{*}}$, using $\mu_{p,t}=\mathcal{O}(\epsilon^2)$.
+using the fact that $\pi_{Y,1} = \eta_1 \sigma^\top$.
+For passive investors, we have $\alpha_{0,Y,1} = \hat{\alpha}_{p}$.
 
-Substituting into \eqref{eq:portfolio_share}, the first-order demand system is
+From the pricing condition Equation~\eqref{eq:pde_p_Y}, we can express the risk premium in terms of the interest rate and the price of the aggregate claim:
+\begin{equation}
+    \hat{\pi}_{Y,t}=-\,\hat{r}_t-\frac{1}{p^{*}}\hat{p}_{Y,t}+\mathcal{O}(\epsilon^2),
+\end{equation}
+where $\hat{\pi}_{Y,t}\equiv \pi_{Y,t}-\pi_{Y}^{*}$, $\hat{r}_t\equiv r_t-r^{*}$, and $\hat{p}_{Y,t}\equiv \frac{p_{Y,t}-p_{Y}^{*}}{p_{Y}^{*}}$, using $\mu_{p_{Y},t}=\mathcal{O}(\epsilon^2)$.
+
+Substituting into the expression for $q_{j,t}$, we obtain the first-order demand system is
 \begin{equation}\label{eq:demand_risky}
     q_{j,t}=-\,\zeta_{j,p}\,\hat{p}_t-\zeta_{j,r}\,\hat{r}_t+f_{j,t}+\mathcal{O}(\epsilon^2),
 \end{equation}

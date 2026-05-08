@@ -5415,6 +5415,19 @@ Hedging demands and endogenous volatility are second order in $\epsilon$:
     \sigma_{p_Y} = \mathcal{O}(\epsilon^2).
 \end{align}
 
+The risk premium on the aggregate claim is given by
+\begin{equation}
+    \pi_Y = \sigma_{R_Y} \eta^\top =  + \mathcal{O}(\epsilon^2),
+\end{equation}
+using the fact that $\sigma_{R_Y} = \sigma + \mathcal{O}(\epsilon^2)$.
+
+In the absence of endogenous volatility, return volatility is driven only by cash-flow news. 
+Hence, investors have no incentive to trade the derivative, so $\alpha_{j,F} = 0$ for all $j$.
+The exposure to the aggregate claim satisfies the condition:
+\begin{equation}
+    \sigma_{j} = \alpha_{j,Y} \sigma + \mathcal{O}(\epsilon^2) \Rightarrow \sigma_{j} = \alpha_{j,Y} \sigma + \mathcal{O}(\epsilon^2) \Rightarrow \alpha_{j,Y} = \frac{\sigma_{j} \sigma^\top}{\sigma \sigma^\top} + \mathcal{O}(\epsilon^2).
+\end{equation}
+
 Hence, the market price of risk can be written as
 \begin{equation}
     \eta(x, \hat{\alpha}_p) = \gamma \sigma  \frac{1 -x_0\overline{\alpha}_p}{1-x_0} + \mathcal{O}(\epsilon^2).
