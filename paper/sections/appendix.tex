@@ -5407,6 +5407,110 @@ These losses are computed from the batch objectives in \eqref{eq:baseline_batch_
 
 \newpage
 
+\section{Production and monetary policy}
+
+This appendix describes an extension of the baseline model described in Section~\ref{sec:model} to allow for production and monetary policy.
+The response of interest rates played a crucial role in the determination of aggregate market elasticity, but, in practice, the interest rate is under control of the central bank. 
+In this extension, we show that a central bank following an inflation-targeting policy would choose the same interest rate as the one implied by the baseline model.
+
+We describe next a version of the model with production and monetary policy. 
+We focus only on the main changes relative to the baseline model. 
+We first describe the version of the model with production and flexible prices. 
+We then describe the version of the model with sticky prices and monetary policy.
+
+\subsection{The flexible-price version}
+
+\paragraph{Firm's problem.} In the version of the model, we assume that the production function is given by
+\begin{equation}
+    \tilde{Y}_t = A_t L_t^{1-\alpha},
+\end{equation}
+where $A_t$ is the productivity level and $L_t$ is the labor input.
+
+Aggregate productivity follows a geometric Brownian motion:
+\begin{equation}
+    \frac{dA_t}{A_t} = \mu dt + \sigma dZ_t,
+\end{equation}
+where $\mu$ is the drift and $\sigma \in \mathbb{R}^{1\times 3}$ is the volatility. 
+As in the baseline model, we assume that only the first entry of $\sigma$ is non-zero.
+
+The problem of the firm is to maximize profits:
+\begin{equation}
+    \max_{L_t} = A_t L_t^{1-\alpha} - \mathcal{W}_t L_t,
+\end{equation}
+where $\mathcal{W}_t$ is the real wage rate.
+
+The first-order condition gives the labor demand:
+\begin{equation}
+(1-\alpha) A_t L_t^{-\alpha} = \mathcal{W}_t.
+\end{equation}
+
+\paragraph{Household's problem.} 
+As in the baseline model, we have three types of households, $j = 0,1,2$, which differ in their risk aversion and portfolio constraints.
+Following \citet{BigioSilvaZilberman2025}, we assume that households have Epstein-Zin preferences over a GHH composite of consumption and labor. 
+
+Household $j$ chooses consumption $\tilde{C}_{j,t}$, labor supply $L_{j,t}$, and portfolio allocations $\alpha_{j,t}$ to solve the problem
+\begin{equation}\label{eq:inv-problem}
+    V_{j,t} = \max_{\tilde{C}_{j,t},L_{j,t},\alpha_{j,t}} 
+    \mathbb{E}_t \left[ \int_t^\infty f_j(\tilde{C}_{j,s}- \xi_s L_{j,s},V_{j,s})\, ds \right], \qquad s.t.
+\end{equation}
+\begin{equation}\label{eq:budget_constraint}
+    \frac{d W_{j,t}}{W_{j,t}} = \left[r_t + \pi_{t}^\top \,\alpha_{j,t}  - \frac{\tilde{C}_{j,t} - \mathcal{W}_t L_{j,t}}{W_{j,t}}\right] dt 
+    + \sigma_{j,t}\, dZ_t,
+\end{equation}
+with $W_{j,t} \geq 0$ and $\alpha_{j,t} \in \Omega_{j,t}$,
+where $\sigma_{j,t} = \alpha_{j,t}^ \top \Sigma_{t}$ is the household's risk exposure,
+$W_{j,t}$ denotes the household's wealth, $\Omega_{j,t}$ is the investment set for type-$j$ household, and $\xi_t$ controls the disutility of labor supply.
+
+Define \textit{net consumption} as $C_{j,t} = \tilde{C}_{j,t} - \xi_s L_{j,s}$. We can then rewrite the budget constraint as
+\begin{equation}
+    \frac{d W_{j,t}}{W_{j,t}} = \left[r_t + \pi_{t}^\top \,\alpha_{j,t}  - \frac{C_{j,t}}{W_{j,t}} + \frac{\mathcal{W}_t -\xi_t}{W_{j,t}} L_{j,t}\right] dt 
+    + \sigma_{j,t}\, dZ_t.
+\end{equation}
+
+In an interior solution, the real wage rate is given by
+\begin{equation}
+    \mathcal{W}_t = \xi_t.
+\end{equation}
+
+We assume that labor disutility proportional to aggregate producitivity:
+\begin{equation}
+    \xi_t = \xi A_t.
+\end{equation}
+This acts as an income effect on labor supply that ensures that labor supply is stationary despite the growth of aggregate producitivity.
+
+\paragraph{Equilibrium in labor markets and production.} The market clearing condition for labor is given by
+\begin{equation}
+    L_t = \int_{j=0}^2 \omega_j L_{j,t}.
+\end{equation}
+
+By equating labor demand and supply, we obtain the equilibrium labor supply:
+\begin{equation}
+    L_t = \left(  \frac{1-\alpha}{\xi}\right)^{\frac{1}{\alpha}} \equiv \overline{L}.
+\end{equation}
+
+The market clearing condition for goods is given by
+\begin{equation}
+    \sum_{j=0}^2 \omega_j \tilde{C}_{j,t} = \tilde{Y}_t.
+\end{equation}
+Equivalently, we can write the market clearing condition for goods in terms of net consumption and net output:
+\begin{equation}
+    \sum_{j=0}^2 \omega_j C_{j,t} = Y_t.
+\end{equation}
+where $Y_t = \tilde{Y}_t - \xi_t L_t$.
+
+Net output is given by
+\begin{equation}
+    Y_t = \alpha A_t \overline{L}^\alpha.
+\end{equation}
+
+This implies that the aggregate (net) output follows a geometric Brownian motion:
+\begin{equation}
+    \frac{dY_t}{Y_t} = \mu dt + \sigma dZ_t.
+\end{equation}
+
+
+
+
 \section{The first-order demand system}
 
 Hedging demands and endogenous volatility are second order in $\epsilon$:
