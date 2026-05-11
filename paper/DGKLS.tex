@@ -640,7 +640,7 @@ The function $c_{j,t} = c_j(X_t)$ denotes the consumption-wealth ratio, so that 
 From the Hamilton-Jacobi-Bellman equation, the consumption-wealth ratio satisfies
 \begin{equation}\label{eq:HJB_complete}
     c_{j,t} = \psi \rho 
-    + (1-\psi) \left[ r_t + \pi_{t}^\top\,\alpha_{j,t} - \frac{\gamma_j}{2} \|\sigma_{j,t}\|^2 \right] 
+    + (1-\psi) \left[ r_t + \eta_{t} \,\sigma_{j,t}^\top - \frac{\gamma_j}{2} \|\sigma_{j,t}\|^2 \right] 
     + \xi_{j,t},
 \end{equation}
 where $\sigma_{j,t} = \alpha_{j,t}^\top \Sigma_t$ is the investor's risk exposure.
@@ -660,7 +660,7 @@ Finally, $\xi_{j,t}$ acts as a state-dependent shifter, and it is equal to zero 
 
 \paragraph{Optimal risk exposure share.}
 The optimal risk exposure for active investors $j = 1,2$ is given by
-\begin{equation}
+\begin{equation}\label{eq:risk_exposure}
     \sigma_{j,t}
     = \frac{1}{1+\nu_{j,t}} \left[ \frac{\eta_t}{\gamma_j} + \frac{1-\gamma_j^{-1}}{\psi-1} \, \sigma_{c_j,t} \right],
 \end{equation}
@@ -948,7 +948,7 @@ Despite financial frictions, investors optimally hold risky claims in proportion
         \begin{align}
             \alpha_{j,k} = \alpha_{j,Y} \frac{p_k}{p_Y}, \quad \forall k \in \{D,B\},
         \end{align}
-        where $\alpha_{j,Y}$ denotes the holdings of the market index fund for investor $j$, which satisfies the condition
+        so $Q_{j,D} = Q_{j,B}$, where $\alpha_{j,Y}$ denotes the holdings of the market index fund for investor $j$, which satisfies the condition
         \begin{equation}\label{eq:alpha_Y}
             \alpha_{j,Y}  = \frac{\sigma_{j} \sigma_{R_Y}^\top}{\sigma_{R_Y} \sigma_{R_Y}^\top} 
         \end{equation}
@@ -958,14 +958,16 @@ Despite financial frictions, investors optimally hold risky claims in proportion
 Proposition~\ref{prop:mft} shows that the equilibrium with separate dividend and bond claims is equivalent to that of an economy with a single claim on the aggregate endowment and a derivative.
 
 Two assumptions are key to this result.
-First, the aggregate endowment process $Y_t$ is independent of the dividend share $s_t$.
-This assumption follows \citet{MenzlySantosVeronesi2004}, but differs from the two-trees model of \citet{cochraneLongstaffSantaClara2008}, where the dividend share affects aggregate volatility.
+First, the aggregate endowment process is independent of the dividend share $s_t$.
+This assumption follows \citet{MenzlySantosVeronesi2004}, but differs from the two-trees model of \citet{cochraneLongstaffSantaClara2008}, where the dividend share directly affects consumption volatility.
 
 Second, markets are dynamically complete.
 In equilibrium, investors are not exposed to the dividend-share shock, which can be perfectly diversified by holding the dividend and bond claims in proportion to their market-capitalization weights.
 Investors can therefore obtain any desired exposure to the fundamental and portfolio-flow shocks by trading the market index fund and the derivative.
-
 Without the derivative, investors would need to deviate from market-capitalization weights to adjust their exposure to these risks, at the cost of bearing dividend-share risk.
+
+The proposition also implies that a mutual fund theorem holds in our economy, that is, investors hold risky claims in proportion to their market-capitalization weights.
+The holdings of the different risky claims move in lockstep with the market index fund.
 
 \paragraph{Pricing the individual claims.}
 Having solved for the aggregate objects $\{c_{j,t}(\hat{X}_t)\}_{j=0}^2$ and $p_Y(\hat{X}_t)$, we next recover the valuation of individual claims.
@@ -973,7 +975,7 @@ The individual valuation ratios are functions of the full state vector $X_t = (x
 
 Given the aggregate equilibrium objects $r(\hat{X}_t)$ and $\eta(\hat{X}_t)$, and using It\^{o}'s lemma to express the drift and diffusion of valuation ratios as functions of the state dynamics and their derivatives, the pricing condition in Equation~\eqref{eq:pricing_cond} yields a linear PDE for $p_{D,t}(X_t)$ and $p_{B,t}(X_t)$.
 
-Thus, individual claim prices are obtained in a second step, conditional on the aggregate equilibrium.
+Thus, individual claim prices are obtained in a second step.
 This separation highlights that portfolio flows affect aggregate quantities through the reduced state vector, while their impact on individual asset prices operates through valuation in the full state space.
 
 This completes the characterization of the equilibrium with separate dividend and bond claims.
@@ -1053,7 +1055,7 @@ The key result is that aggregate market elasticity is infinite around efficient 
 Finite elasticity emerges only when portfolio flows distort the allocation of risk across investors, thereby affecting aggregate saving behavior and equilibrium interest rates.
 Thus, portfolio frictions play a crucial role in determining aggregate market elasticity.
 
-To provide an analytical characterization of aggregate market elasticity, we extend the perturbation method of \citet{kogan2001risk} and derive asymptotic closed-form approximations.
+To provide an analytical characterization of the aggregate market elasticity, we extend the perturbation method of \citet{kogan2001risk} and derive asymptotic closed-form approximations.
 
 \subsection{Perturbation method}
 
@@ -1096,7 +1098,10 @@ Their portfolio share is  $\overline{\alpha}_{p,t}=1+\hat{\alpha}_{p,t}\,\epsilo
 which requires $\overline{\alpha} = 1$ and $\sigma_p = \hat{\sigma}_p \epsilon$ to be consistent with Equation~\eqref{eq:alpha_p_process}.
 When $\epsilon=0$, passive investors are fully invested in the risky asset at all times, recovering the benchmark case.
 
-Third, the leverage constraint coefficient is perturbed according to
+Third, the dividend share is given by $s = \overline{s} + \hat{s} \epsilon$ and the diffusion coefficient satisfies $\sigma_s = \hat{\sigma}_s \epsilon$. 
+Hence, the perturbation of the dividend share is analogous to the one for the passive portfolio share.
+
+Fourth, the leverage constraint coefficient is perturbed according to
 \begin{equation}\label{eq:sig_bar-perturb}
     \overline{\sigma}=\|\sigma\|\big(1+\hat{\sigma}\,\epsilon\big),
 \end{equation}
@@ -1134,116 +1139,166 @@ Zeroth-order terms are given by Lemma~\ref{lemma:benchmark}, i.e., $p_{Y,0}(x, \
 We start by characterizing the first-order corrections to equilibrium prices and allocations.
 In particular, we derive the first-order demand system and the consumption-wealth ratio, which jointly determine how risk premia and interest rates respond to portfolio flows.
 
-\paragraph{Demand for risky asset.}  
-Given the results in Proposition~\ref{prop:mft}, we can express the holdings of asset $k\in\{D,B\}$ for investor $j$ as follows:
-\begin{equation}
-    Q_{j,k,t} = \alpha_{j,k,t} \frac{W_{j,t}}{P_{k,t}} = \alpha_{j,Y,t} \frac{x_{j,t}}{\omega_j},
-\end{equation}
-where $x_{j,t}$ is the wealth share of investor $j$ and $\alpha_{j,Y,t}$ is the effective exposure to the aggregate claim.
+\paragraph{Endogenous volatility and hedging demands.}
+An important implication of the perturbation assumption is that the drift and diffusion of the state variables are first-order in $\epsilon$: $\mu_{\hat{X}} = \mathcal{O}(\epsilon)$ and $\sigma_{\hat{X}} = \mathcal{O}(\epsilon)$.
+As shown in Appendix~\ref{app:derivations-perturbation-solution}, the derivatives of $p_{Y}$ and $c_{j}$ with respect to the state variables are also first-order in $\epsilon$:
+$p_{Y,\hat{X}}(\hat{X}) = \mathcal{O}(\epsilon)$ and $c_{j, \hat{X}} = \mathcal{O}(\epsilon)$.
 
-The expression above implies that quantities are equalized across assets, an implication of the mutual fund theorem, so we can define the demand for risky assets as $Q_{j,t} \equiv Q_{j,k,t}$.
+Endogenous volatility and hedging demand are then second order in $\epsilon$:
+\begin{align}
+    \sigma_{p_Y}=\frac{p_{Y,\hat{X}}(\hat{X})}{p(\hat{X})}\,\sigma_{\hat{X}}(\hat{X})=\mathcal{O}(\epsilon^2),  \qquad \qquad 
+    \sigma_{c_j}=\frac{c_{j,\hat{X}}(\hat{X})}{c_j(\hat{X})}\,\sigma_{\hat{X}}(\hat{X})=\mathcal{O}(\epsilon^2),
+\end{align}
+so $\sigma_{R,Y} = \sigma + \mathcal{O}(\epsilon^2)$ and $h_a = 0 + \mathcal{O}(\epsilon^2)$. A similar argument implies $\mu_{p_Y} = \mathcal{O}(\epsilon^2)$ and $\mu_{c_j} = \mathcal{O}(\epsilon^2)$.
 
-In recursive form, investor $j$’s demand for the risky asset is then given by
+% Expanding Equation~\eqref{eq:market_price_of_risk}, and using the fact that $\pi_Y = \sigma_{R_Y} \eta^\top$, we obtain the first-order correction to the market price of risk and the risk premium on the aggregate claim:
+% \begin{equation}
+%     \eta(x, \overline{\alpha}_p) = \gamma \sigma  \frac{1 -x_0\overline{\alpha}_p}{1-x_0} + \mathcal{O}(\epsilon^2), \qquad 
+%     \pi_Y(x, \overline{\alpha}_p) = \gamma \|\sigma\|^2  \frac{1 -x_0\overline{\alpha}_p}{1-x_0} + \mathcal{O}(\epsilon^2).
+% \end{equation}
+
+% Hence, the market price of risk and the risk premium increase as passive investors become more underexposed to aggregate risk, that is, as either the passive portfolio share $\overline{\alpha}_p$ or the passive wealth share $x_0$ decreases.
+% In the limiting case where passive investors hold no risky assets, $\overline{\alpha}_{p,t}=0$, the economy resembles the limited-participation setting of \citet{basak1998equilibrium}.
+
+\paragraph{Demand for risky assets.}
+
+By Proposition~\ref{prop:mft}, investors hold the dividend and bond claims in market-capitalization weights.
+Hence, risky-asset holdings coincide across claims:
+$
+    Q_{j,D,t}=Q_{j,B,t}\equiv Q_{j,t},
+$
+where\footnote{See \citet{loWang2000tradingVolume} for a discussion of the implications of the mutual fund theorem for trading volume.}
 \[
-    Q_j(x, \overline{\alpha}_p;\epsilon)=\alpha_{j,Y}(x, \overline{\alpha}_p;\epsilon)\,\frac{x_j}{\omega_j},
+    Q_j(x,\overline{\alpha}_p;\epsilon)
+    =
+    \alpha_{j,Y}(x,\overline{\alpha}_p;\epsilon)\,
+    \frac{x_j}{\omega_j}.
 \]
 
-Define the proportional deviation from the benchmark as
+
+Define the proportional deviation of risky-asset demand from the benchmark allocation as
 \begin{equation}
-    q_{j,t}\;\equiv\;\frac{Q_j(x_t, \overline{\alpha}_{p,t};\epsilon)- Q_j(x_t, \overline{\alpha}_{p,t};0)}{Q_j(x_t, \overline{\alpha}_{p,t};0)}
-    \;=\;\alpha_{j,Y,1}(x_t, \hat{\alpha}_{p,t})\,\epsilon+\mathcal{O}(\epsilon^2),
+    q_{j,t}
+    \;\equiv\;
+    \frac{Q_j(x_t,\overline{\alpha}_{p,t};\epsilon)-Q_j(x_t,\overline{\alpha}_{p,t};0)}
+    {Q_j(x_t,\overline{\alpha}_{p,t};0)}
+    \;=\;
+    \alpha_{j,Y,t}-1+\mathcal{O}(\epsilon^2).
 \end{equation}
-where $\alpha_{j,Y,1}(x_t, \hat{\alpha}_{p,t})$ is the first-order correction to the portfolio weight.  
 
-From Equation~\eqref{eq:alpha_Y}, we have that portfolio weight depends on the return volatility, $\sigma_{R_Y}$, and the risk exposure, $\sigma_{j}$.
-The return volatility is given by $\sigma_{R_Y} = \sigma + \sigma_{p_Y}$, where the volatility of the valuation ratio is second order in $\epsilon$:
-\[
-    \sigma_{p_Y}=\frac{p_{Y,\hat{X}}(\hat{X})}{p(\hat{X})}\,\sigma_{\hat{X}}(\hat{X})=\mathcal{O}(\epsilon^2), 
-\]
-since $p_{Y,\hat{X}}(\hat{X})$, $\mu_{\hat{X}}$ and $\sigma_{\hat{X}}$ are first order in $\epsilon$, as shown in Appendix~\ref{app:derivations-perturbation-solution}.
-
-Expanding the risk exposure for active investors $j=1,2$ in Equation~\eqref{eq:alpha_Y} gives
+Expanding the risk exposure in Equation~\eqref{eq:risk_exposure}, and combining it with the expression for $\alpha_{j,Y}$ in Equation~\eqref{eq:alpha_Y}, yields the first-order correction to the portfolio share of active investors:
 \begin{equation}
-    \sigma_{j,1} = \frac{\eta_1}{\gamma} - \frac{\eta_0}{\gamma} (\hat{\gamma}_j+ \hat{\nu}_{j}),
+    \alpha_{j,Y,t}-1
+    =
+    \frac{\hat{\pi}_{Y,t}}{\gamma \|\sigma\|^2}
+    -
+    (\hat{\gamma}_{j}+\hat{\nu}_{j,t})\,\epsilon
+    +
+    \mathcal{O}(\epsilon^2),
 \end{equation}
-where $\eta_1$ is the first-order correction to the market price of risk and $\hat{\nu}_j$ is the first-order correction to the Lagrange multiplier on the leverage constraint.
+where $\hat{\pi}_{Y,t}\equiv \pi_{Y,t}-\pi_Y^{*}$ denotes the deviation of the risk premium from the benchmark, and $\hat{\nu}_{j,t}$ denotes the Lagrange multiplier on the leverage constraint.
+Hence, since hedging demand is second order in $\epsilon$, the optimal portfolio share depends only on the myopic demand up to first order.
 
-Combining the results above with Equation~\eqref{eq:alpha_Y}, we obtain the portfolio share of active investors:
+Using the pricing condition in Equation~\eqref{eq:pde_p_Y}, we can express the risk premium in terms of the interest rate and the price of the aggregate claim:
 \begin{equation}
-    \alpha_{j,Y,1} = \frac{\pi_{Y,1}}{\gamma \|\sigma\|^2} - (\hat{\gamma}_j+ \hat{\nu}_{j}),
+    \hat{\pi}_{Y,t}
+    =
+    -\,\hat{r}_t
+    -
+    \frac{1}{p_Y^{*}}\hat{p}_{Y,t}
+    +
+    \mathcal{O}(\epsilon^2),
 \end{equation}
-using the fact that $\pi_{Y,1} = \eta_1 \sigma^\top$.
-For passive investors, we have $\alpha_{0,Y,1} = \hat{\alpha}_{p}$.
+where $\hat{r}_t\equiv r_t-r^{*}$ and
+$\hat{p}_{Y,t}\equiv \frac{p_{Y,t}-p_Y^{*}}{p_Y^{*}}$
+denote deviations from the benchmark.
 
-From the pricing condition Equation~\eqref{eq:pde_p_Y}, we can express the risk premium in terms of the interest rate and the price of the aggregate claim:
-\begin{equation}
-    \hat{\pi}_{Y,t}=-\,\hat{r}_t-\frac{1}{p^{*}}\hat{p}_{Y,t}+\mathcal{O}(\epsilon^2),
-\end{equation}
-where $\hat{\pi}_{Y,t}\equiv \pi_{Y,t}-\pi_{Y}^{*}$, $\hat{r}_t\equiv r_t-r^{*}$, and $\hat{p}_{Y,t}\equiv \frac{p_{Y,t}-p_{Y}^{*}}{p_{Y}^{*}}$, using $\mu_{p_{Y},t}=\mathcal{O}(\epsilon^2)$.
-
-Substituting into the expression for $q_{j,t}$, we obtain the first-order demand system is
+Substituting into the expression for $q_{j,t}$ yields the first-order demand system:
 \begin{equation}\label{eq:demand_risky}
-    q_{j,t}=-\,\zeta_{j,p}\,\hat{p}_t-\zeta_{j,r}\,\hat{r}_t+f_{j,t}+\mathcal{O}(\epsilon^2),
+    q_{j,t}
+    =
+    -\,\zeta_{j,p}\,\hat{p}_{Y,t}
+    -
+    \zeta_{j,r}\,\hat{r}_t
+    +
+    f_{j,t}
+    +
+    \mathcal{O}(\epsilon^2),
 \end{equation}
 where, for unconstrained investors,
-\[
-    \zeta_{j,p}=\frac{1}{p^{*}}\frac{1}{\gamma\|\sigma\|^2}, 
+\begin{equation}
+    \zeta_{j,p}
+    =
+    \frac{1}{p_Y^{*}}\frac{1}{\gamma\|\sigma\|^2},
     \qquad
-    \zeta_{j,r}=\frac{1}{\gamma\|\sigma\|^2}, 
+    \zeta_{j,r}
+    =
+    \frac{1}{\gamma\|\sigma\|^2},
     \qquad
-    f_{j,t}=-\,\hat{\gamma}_j\,\epsilon.
-\]
-For passive and constrained investors, own- and cross-price elasticities vanish, $\zeta_{j,p}=\zeta_{j,r}=0$, with demand shifters $f_{j,t}=\hat{\sigma}\,\epsilon$ for constrained investors and $f_{0,t}=\hat{\alpha}_{p,t}\,\epsilon$ for passive investors.  
+    f_{j,t}
+    =
+    -\,\hat{\gamma}_j\,\epsilon.
+\end{equation}
 
-Equation~\eqref{eq:demand_risky} shows that the first-order approximation to the dynamic heterogeneous agent model in Section~\ref{sec:model} provides microfoundations for the demand system in Section~\ref{sec:simple}.
+For passive and constrained investors, own- and cross-price elasticities vanish, $\zeta_{j,p}=\zeta_{j,r}=0$.
+Their portfolio demand depends only on the demand shifters:
+$f_{j,t}=\hat{\sigma}\,\epsilon$ for constrained investors and
+$f_{j,t}=\hat{\alpha}_{p,t}\,\epsilon$ for passive investors.
+
+Equation~\eqref{eq:demand_risky} shows that the first-order approximation to the dynamic heterogeneous-agent model in Section~\ref{sec:model} provides a microfoundation for the demand system in Section~\ref{sec:simple}.
 As in the simple model, unconstrained active investors exhibit nonzero own- and cross-price elasticities, here explicitly linked to structural parameters.
-Shocks to $\overline{\alpha}_{p,t}$ move the passive investors’ demand shifter $f_{0,t}$—the dynamic analog of the comparative statics in Section~\ref{sec:simple}.
-In addition, the model generates further demand shifts from occasionally binding leverage constraints faced by active investors.
+This reflects the fact that investors care about the risk premium, which captures the difference between returns on risky and risk-free assets.
 
+Importantly, the system is exposed to portfolio-flow shocks, that is, shocks that shift the demand of a subset of investors and induce portfolio reallocation.
+Shocks to $\overline{\alpha}_{p,t}$ move the passive investors’ demand shifter $f_{0,t}$, the dynamic analog of the comparative statics in Section~\ref{sec:simple}.
+In addition, the model generates endogenous demand shifts from occasionally binding leverage constraints.
 
 \paragraph{Consumption-wealth ratio.}  
-A first-order expansion of \eqref{eq:xi_j} yields
+A first-order expansion of \eqref{eq:HJB_complete} yields
 \begin{equation}
     c_{j,t}
     \;=\;
-    \psi\rho \;+\; (1-\psi)\!\left[r_t + \pi_t - \frac{\gamma_j\|\sigma\|^2}{2}\right]
+    \psi\rho \;+\; (1-\psi)\!\left[r_t + \pi_{Y,t} - \frac{\gamma_j\|\sigma\|^2}{2}\right]
     \;+\; \mathcal{O}(\epsilon^2).
 \end{equation}
-Consistent with Assumption~\ref{assump:c_w_property}, the risk-free rate and the risk premium enter symmetrically at first order.
-Substituting the expansion
-\(\hat{\pi}_t = -\,\hat{r}_t - p^{*\,-1}\hat{p}_t + \mathcal{O}(\epsilon^2)\) gives
+
+
+Hence, the risk-free rate and the risk premium enter symmetrically, consistent with Assumption~\ref{assump:c_w_property}.
+Substituting $\hat{\pi}_{Y,t} = -\hat{r}_t - \frac{1}{p_{Y}^{*}}\hat{p}_{Y,t}$ into the expression above
+yields
 \begin{equation}
     \hat c_{j,t} \;\equiv\; c_{j,t} - c_j^{*}
-    \;=\; \chi_{j,0} \;+\; \chi_{j,p}\,\hat{p}_t \;+\; \mathcal{O}(\epsilon^2),
+    \;=\; \chi_{j,0} \;+\; \chi_{p}\,\hat{p}_{Y,t} \;+\; \mathcal{O}(\epsilon^2),
 \end{equation}
 with coefficients
 \[
-    \chi_{j,p}=(\psi-1)\,\frac{1}{p^{*}},
+    \chi_{p}=(\psi-1)\,\frac{1}{p_{Y}^{*}},
     \qquad 
     \chi_{j,0}=(\psi-1)\,\frac{\gamma\|\sigma\|^2}{2}\,\hat{\gamma}_j\,\epsilon.
 \]
 
-Hence, conditional on $p_t$, the consumption-wealth ratio is independent of $r_t$, as in Section~\ref{sec:simple}.
-Its slope with respect to $p_t$ depends on the EIS: it rises with $p_t$ when $\psi>1$, the standard assumption in macro-finance models.
-Finally, to first order, the consumption–wealth ratio is unaffected by $\overline{\alpha}_{p,t}$, a property that will be central for aggregate market elasticity.
-
+Conditional on the price-dividend ratio, the consumption--wealth ratio is therefore independent of the interest rate, as in Section~\ref{sec:simple}.
+Its slope with respect to $p_{Y,t}$ depends on the EIS:
+the consumption--wealth ratio rises with $p_{Y,t}$ when $\psi>1$, the standard case in macro-finance models.
+Most importantly, to first order the consumption--wealth ratio is unaffected by $\overline{\alpha}_{p,t}$.
+This property will be central for aggregate market elasticity.
 
 \paragraph{Aggregate market elasticity.}  
 Given the demand system, equilibrium prices follow from market clearing in the risky-asset and goods markets:
 \[
-    \sum_{j=0}^J x_{j,t}\, q_{j,t} = 0,
+    \sum_{j=0}^2 x_{j,t}\, q_{j,t} = 0,
     \qquad
-    \sum_{j=0}^J x_{j,t}\, \hat{c}_{j,t} = -\frac{1}{p^{*}}\,\hat{p}_t .
+    \sum_{j=0}^2 x_{j,t}\, \hat{c}_{j,t} = -\frac{1}{p_{Y}^{*}}\,\hat{p}_{Y,t}.
 \]
 
-Aggregating across investors, and dropping the $j$ subscript on coefficients that are common across types, yields the linear system
+Aggregating the demand system across investors yields
 \[
     \begin{bmatrix}
-        \zeta_p & \zeta_r \\
-        \chi_p + \tfrac{1}{p^{*}} & 0
+        \zeta_{p,t} & \zeta_{r,t} \\
+        \chi_p + \tfrac{1}{p_{Y}^{*}} & 0
     \end{bmatrix}
     \begin{bmatrix}
-        \hat{p}_t \\[4pt]
+        \hat{p}_{Y,t} \\[4pt]
         \hat{r}_t
     \end{bmatrix}
     =
@@ -1252,63 +1307,95 @@ Aggregating across investors, and dropping the $j$ subscript on coefficients tha
         -\,\chi_{0,t}
     \end{bmatrix},
 \]
-where $f_t \equiv \sum_{j=0}^J x_{j,t} f_{j,t}$ and $\chi_{0,t} \equiv \sum_{j=0}^J x_j \chi_{j,0}$.
+where $\zeta_{k,t} \equiv \sum_{j=0}^2 x_{j,t} \zeta_{j,k}$, for $k \in \{p,r\}$,$f_t \equiv \sum_{j=0}^2 x_{j,t} f_{j,t}$ and $\chi_{0,t} \equiv \sum_{j=0}^2 x_{j,t} \chi_{j,0}$.
 
-\begin{defn}[Aggregate market elasticity]
-The aggregate market elasticity $\epsilon_{M,t}$ is defined as the inverse of the proportional change in the price of the risky asset in response to a flow shock $f_t$:
+The aggregate demand shifter $f_t$ captures flow shocks.
+We define the inverse aggregate market elasticity as the proportional price response of the aggregate claim to a flow shock $f_t$:
 \[
-    \epsilon_{M,t} \;\equiv\; \Big[\,\frac{\partial \hat{p}_t}{\partial f_t}\,\Big]^{-1}.
+    \epsilon_{Y,t}^{-1}
+    \equiv
+    \frac{\partial \hat p_{Y,t}}{\partial f_t}.
 \]
-\end{defn}
+
+\paragraph{First-order impact of portfolio flows.}
+We are now ready to characterize the first-order impact of portfolio flows.
+The second row of the demand system shows that the aggregate price-dividend ratio is pinned down by goods market clearing:
+\[
+    \left(\chi_p+\frac{1}{p_Y^*}\right)\hat p_{Y,t}=-\chi_{0,t}.
+\]
+Since $\chi_{0,t}$ is independent of the portfolio-flow shock $f_t$ at first order, portfolio flows do not affect $\hat p_{Y,t}$.
+Instead, the risk premium and interest rate adjust to clear the risky-asset market.
+This result extends the well-known unit-EIS case, where $\chi_p=\chi_{0,t}=0$ and the price-dividend ratio is constant.
+In our economy with heterogeneous investors and $\psi\neq 1$, the price-dividend ratio moves with changes to the average risk aversion in the economy, as captured by the coefficient $\chi_{0,t}$, but it is unaffected by portfolio flows.
+The next proposition formalizes this result.
+
 
 \begin{prop}[First-order impact of portfolio flows]\label{prop:first_order}
-Suppose $\rho>\big(1-\psi^{-1}\big)\big(\mu - \tfrac{\gamma\|\sigma\|^2}{2}\big)$.
+    
+    Consider a first-order approximation of the demand system.
 Then:
 \begin{enumerate}[label=(\roman*)]
-    \item The price impact is zero to first order:
-    \(
-        \epsilon_{M,t}^{-1}=\frac{\partial \hat{p}_t}{\partial f_t}=0 .
-    \)
+    \item The price impact on the aggregate claim is zero:
+    \[
+        \epsilon_{Y,t}^{-1}
+        =
+        \frac{\partial \hat p_{Y,t}}{\partial f_t}
+        =
+        0.
+    \]
     \item The interest rate and risk premium responses satisfy
     \[
-        \frac{\partial \hat{r}_t}{\partial f_t}=\frac{1}{\zeta_r},
+        \frac{\partial \hat r_t}{\partial f_t}
+        =
+        \frac{1}{\zeta_{r,t}},
         \qquad
-        \frac{\partial \hat{\pi}_t}{\partial f_t}=-\,\frac{1}{\zeta_r}.
+        \frac{\partial \hat \pi_{Y,t}}{\partial f_t}
+        =
+        -\,\frac{1}{\zeta_{r,t}}.
     \]
 \end{enumerate}
 \end{prop}
 
-Proposition~\ref{prop:first_order} shows that the main lesson from the simple model in Section~\ref{sec:simple} extends to the dynamic economy: portfolio inflows into the risky asset reduce the risk premium, while the corresponding shift out of bonds raises the risk-free rate.
-To first order, these effects offset exactly, leaving the price-dividend ratio unchanged.
-Hence, the aggregate market is infinitely elastic, regardless of the individual investors’ own-price elasticities $\zeta_{j,p}$.
+Proposition~\ref{prop:first_order} shows that the main lesson from the simple model in Section~\ref{sec:simple} extends to the dynamic economy.
+Portfolio inflows into the risky asset reduce the risk premium, while the shift out of bonds raises the risk-free rate.
+To first order, these effects offset exactly, leaving the aggregate price-dividend ratio unchanged.
+The aggregate market is therefore infinitely elastic.
+
+An important implication of this result is that the aggregate market elasticity is independent of individual investors' own-price elasticities $\zeta_{j,p}$.
+By increasing average risk aversion $\gamma$, individual investors can be made arbitrarily inelastic, while the aggregate market remains infinitely elastic.
 
 
 \paragraph{Why is the market infinitely elastic?}  
-As shown in Figure~\ref{fig:mkt_equilibrium}, price impact is absent as long as the consumption-wealth ratio does not respond directly to the portfolio-flow shock.
+The disconnect between individual and aggregate market elasticity is inherently a general-equilibrium phenomenon.
+Given a shift in the demand for the risky asset, the risk premium must adjust in equilibrium to clear the risky-asset market.
+But this only pins down the \textit{difference} in the response of the price of risky and risk-free assets.
+To determine the absolute level of the price-dividend ratio and the interest rate, we need to know how the consumption-wealth ratio responds to the portfolio-flow shock.
+
+
+As discussed in Section~\ref{sec:simple}, there is no price impact as long as the consumption-wealth ratio does not respond directly to the portfolio-flow shock.
 Otherwise, price changes would generate excess demand or supply in the goods market.
 
-To see why flows leave consumption unchanged to first order, differentiate \eqref{eq:xi_j} with respect to $\alpha_{j,t}$:
+To see why flows do not affect the consumption-wealth ratio to first order, differentiate \eqref{eq:HJB_complete} with respect to $\sigma_{j,t}$:
 \begin{equation}
-    \frac{\partial c_{j,t}}{\partial \alpha_{j,t}}
+    \frac{\partial c_{j,t}}{\partial \sigma_{j,t}}
     \;=\;
-    (1-\psi)\,\gamma_j\,\|\sigma_{R,t}\|^2
+    (1-\psi)\,\gamma_j\,
     \left[
-        \frac{\pi_t}{\gamma_j \|\sigma_{R,t}\|^2}
-        + \frac{1-\gamma_j^{-1}}{\psi-1}\,
-          \frac{\sigma_{c_j,t}\,\sigma_{R,t}^\top}{\|\sigma_{R,t}\|^2}
-        - \alpha_{j,t}
+        \frac{\eta_t}{\gamma_j} + \frac{1-\gamma_j^{-1}}{\psi-1}\, \sigma_{c_j,t}
+        - \sigma_{j,t}
     \right]\!.
 \end{equation}
 
-The term in brackets is equal to zero at the privately optimal portfolio, as implied by the investor’s first-order condition.
-By the envelope theorem, small changes in $\alpha_{j,t}$ around the optimum have negligible welfare effects on welfare and hence do not affect $c_{j,t}$.    
+The term in brackets is equal to zero at the privately optimal portfolio, as implied by the investor’s optimality condition in Equation~\eqref{eq:risk_exposure}.
+By the envelope theorem, small changes in $\alpha_{j,t}$ around the optimum have negligible effects on welfare and hence do not affect $c_{j,t}$.    
 
-In the first-order approximation, this derivative is evaluated at the benchmark Lucas economy, where all investors hold optimal portfolios.
-The derivative is thus zero, and by Proposition~\ref{prop:first_order}, price impact is negligible for small (first-order) deviations from the frictionless allocation: the consumption-wealth ratio does not react to flow shocks.
+In the first-order approximation, this derivative is evaluated around the benchmark Lucas economy, where all investors hold privately optimal portfolios.
+The derivative is thus zero, so the price impact is zero for first-order deviations from the frictionless allocation: the consumption-wealth ratio does not react to flow shocks.
 In the simple model of Section~\ref{sec:simple}, this was imposed as an \emph{assumption}; here it emerges as a \emph{result} of expanding around the efficient allocation.
 
 This reasoning also clarifies when aggregate elasticity becomes finite: when the initial allocation of risk is \textit{inefficient}.
-To study such economies requires larger departures from the benchmark, captured by a second-order approximation of the demand system.
+Capturing these effects requires a second-order approximation of the demand system.
+% To study such economies requires larger departures from the benchmark, captured by a second-order approximation of the demand system.
 
 \subsection{Inefficient passive demand}
 

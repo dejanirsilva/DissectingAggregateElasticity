@@ -5513,6 +5513,7 @@ This implies that the aggregate (net) output follows a geometric Brownian motion
 
 \section{The first-order demand system}
 
+
 Hedging demands and endogenous volatility are second order in $\epsilon$:
 \begin{align}
     \sigma_{c_j} &= \mathcal{O}(\epsilon^2), \qquad \qquad 
@@ -5529,8 +5530,9 @@ In the absence of endogenous volatility, return volatility is driven only by cas
 Hence, investors have no incentive to trade the derivative, so $\alpha_{j,F} = 0$ for all $j$.
 The exposure to the aggregate claim satisfies the condition:
 \begin{equation}
-    \sigma_{j} = \alpha_{j,Y} \sigma + \mathcal{O}(\epsilon^2) \Rightarrow \sigma_{j} = \alpha_{j,Y} \sigma + \mathcal{O}(\epsilon^2) \Rightarrow \alpha_{j,Y} = \frac{\sigma_{j} \sigma^\top}{\sigma \sigma^\top} + \mathcal{O}(\epsilon^2).
+    \sigma_{j} = \alpha_{j,Y} \sigma + \mathcal{O}(\epsilon^2) \Rightarrow \sigma_{j} = \alpha_{j,Y} \sigma + \mathcal{O}(\epsilon^2) \Rightarrow \alpha_{j,Y} = \frac{\sigma_{j} \sigma^\top}{\sigma \sigma^\top} + \mathcal{O}(\epsilon^2),
 \end{equation}
+so $\sigma_{R,Y} = \sigma + \mathcal{O}(\epsilon^2)$ and $h_a = 0 + \mathcal{O}(\epsilon^2)$.
 
 Hence, the market price of risk can be written as
 \begin{equation}
