@@ -1052,7 +1052,7 @@ We now turn to an analytical characterization of the aggregate market elasticity
 
 This section characterizes the determinants of aggregate market elasticity.
 The key result is that aggregate market elasticity is infinite around efficient allocations, even when individual investors have finite demand elasticities.
-Finite elasticity emerges only when portfolio flows distort the allocation of risk across investors, thereby affecting aggregate saving behavior and equilibrium interest rates.
+Finite elasticity emerges only when the allocation of risk across investors is initially distorted.
 Thus, portfolio frictions play a crucial role in determining aggregate market elasticity.
 
 To provide an analytical characterization of the aggregate market elasticity, we extend the perturbation method of \citet{kogan2001risk} and derive asymptotic closed-form approximations.
@@ -1118,7 +1118,7 @@ We expand them to second order in $\epsilon$ as follows:
 for $j = 0, 1, 2$. 
 
 Unlike standard DSGE perturbations, we do not assume that endowment volatility $\sigma$ is small.
-Moreover, the approximation is local in the exogenous state variable $\overline{\alpha}_p$, but global in the endogenous state variables $x$:
+Moreover, the approximation is local in the exogenous state variables $\overline{\alpha}_p$ and $s$, but global in the endogenous state variables $x$:
 we solve directly for functions of $x$ rather than coefficients around a deterministic steady state.
 This type of \emph{state-global perturbation} builds on the perturbation method of \citet{kogan2001risk} and, more closely, its extension in \citet{Silva/riskchannel}.\footnote{See \citet{kargar2020competitive} for an application of state-global perturbations to a model with search frictions and a detailed comparison with standard perturbation methods.}
 
@@ -1149,7 +1149,7 @@ Endogenous volatility and hedging demand are then second order in $\epsilon$:
     \sigma_{p_Y}=\frac{p_{Y,\hat{X}}(\hat{X})}{p(\hat{X})}\,\sigma_{\hat{X}}(\hat{X})=\mathcal{O}(\epsilon^2),  \qquad \qquad 
     \sigma_{c_j}=\frac{c_{j,\hat{X}}(\hat{X})}{c_j(\hat{X})}\,\sigma_{\hat{X}}(\hat{X})=\mathcal{O}(\epsilon^2),
 \end{align}
-so $\sigma_{R,Y} = \sigma + \mathcal{O}(\epsilon^2)$ and $h_a = 0 + \mathcal{O}(\epsilon^2)$. A similar argument implies $\mu_{p_Y} = \mathcal{O}(\epsilon^2)$ and $\mu_{c_j} = \mathcal{O}(\epsilon^2)$.
+so $\sigma_{R,Y} = \sigma + \mathcal{O}(\epsilon^2)$ and $h_a = \mathcal{O}(\epsilon^2)$. A similar argument implies $\mu_{p_Y} = \mathcal{O}(\epsilon^2)$ and $\mu_{c_j} = \mathcal{O}(\epsilon^2)$.
 
 % Expanding Equation~\eqref{eq:market_price_of_risk}, and using the fact that $\pi_Y = \sigma_{R_Y} \eta^\top$, we obtain the first-order correction to the market price of risk and the risk premium on the aggregate claim:
 % \begin{equation}
@@ -1167,7 +1167,7 @@ Hence, risky-asset holdings coincide across claims:
 $
     Q_{j,D,t}=Q_{j,B,t}\equiv Q_{j,t},
 $
-where\footnote{See \citet{loWang2000tradingVolume} for a discussion of the implications of the mutual fund theorem for trading volume.}
+where\footnote{For a discussion of the implications of the mutual fund theorem for trading volume, see \citet{loWang2000tradingVolume}.}
 \[
     Q_j(x,\overline{\alpha}_p;\epsilon)
     =
@@ -1281,7 +1281,7 @@ Conditional on the price-dividend ratio, the consumption--wealth ratio is theref
 Its slope with respect to $p_{Y,t}$ depends on the EIS:
 the consumption--wealth ratio rises with $p_{Y,t}$ when $\psi>1$, the standard case in macro-finance models.
 Most importantly, to first order the consumption--wealth ratio is unaffected by $\overline{\alpha}_{p,t}$.
-This property will be central for aggregate market elasticity.
+This property will be central for the determination of aggregate market elasticity.
 
 \paragraph{Aggregate market elasticity.}  
 Given the demand system, equilibrium prices follow from market clearing in the risky-asset and goods markets:
