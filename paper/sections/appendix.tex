@@ -5557,9 +5557,10 @@ Combining the expressions above, we obtain
     q_{j,t} = \frac{y_{Y,1} - r_{1}}{\gamma \|\sigma\|^2} \epsilon + \left[\frac{y_{Y,2} - r_{2}- \mu_{y_Y,2} + (\gamma-1)\sigma \sigma_{y_Y,2}^\top}{\gamma \|\sigma\|^2} +\frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2} \sigma^\top}{\|\sigma\|^2}\right] \epsilon^2 + \mathcal{O}(\epsilon^3).
 \end{equation}
 
+In the absence of preference heterogeneity, we have $y_{Y,1} = p_{Y,1} = 0$ and $p_{Y,2} = - p_{Y,0}^2 y_{Y,2}$.
 We can then write the demand for risky assets for active investors as follows:
 \begin{equation}
-    q_{j,t} = \zeta_{j,y} \hat{y}_{Y,t} - \zeta_{j,r} \hat{r}_t + f_{j,t} + \mathcal{O}(\epsilon^2),
+    q_{j,t} = -\zeta_{j,p} \hat{p}_{Y,t} - \zeta_{j,r} \hat{r}_t + f_{j,t} + \mathcal{O}(\epsilon^3),
 \end{equation}
 where
 \begin{equation}
@@ -5570,6 +5571,11 @@ The shifter $f_{j,t}$ is constant for active investors, and it is equal to zero 
 The demand for the risky asset for passive investors takes the same form, but with $\zeta_{0,y} = 0$ and $\zeta_{0,r} = 0$, and the shifter $f_{0,t}$ is given by
 \begin{equation}
     f_{0,t} = \hat{\alpha}_{p,t} \epsilon.
+\end{equation}
+
+Using the fact that $p_{Y,2} / p_{Y,0} = - y_{Y,2} / y_{Y,0} $, we can write the shifter $f_{j,t}$ as follows:
+\begin{equation}
+    f_{j,t} =\left[ \frac{\mu_{p_Y,2} + (1-\gamma)\sigma \sigma_{p_Y,2}^\top}{\gamma \|\sigma\|^2} + \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2} \sigma^\top}{\|\sigma\|^2}\right] \epsilon^2.
 \end{equation}
 % \section{The unit EIS case}
 
