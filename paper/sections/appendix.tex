@@ -5511,52 +5511,66 @@ This implies that the aggregate (net) output follows a geometric Brownian motion
 
 
 
-\section{The first-order demand system}
+\section{The second-order demand system}
 
+Consider next the second-order approximation of the demand system. 
+We focus on the case where there is no preference heterogeneity and no leverage constraints.
+Initially, we also assume that the portfolio share of passive investors is fixed, so $\kappa_p = 0$ and $\sigma_p = 0$.
 
-Hedging demands and endogenous volatility are second order in $\epsilon$:
-\begin{align}
-    \sigma_{c_j} &= \mathcal{O}(\epsilon^2), \qquad \qquad 
-    \sigma_{p_Y} = \mathcal{O}(\epsilon^2).
-\end{align}
-
-The risk premium on the aggregate claim is given by
-\begin{equation}
-    \pi_Y = \sigma_{R_Y} \eta^\top =  + \mathcal{O}(\epsilon^2),
-\end{equation}
-using the fact that $\sigma_{R_Y} = \sigma + \mathcal{O}(\epsilon^2)$.
-
-In the absence of endogenous volatility, return volatility is driven only by cash-flow news. 
-Hence, investors have no incentive to trade the derivative, so $\alpha_{j,F} = 0$ for all $j$.
-The exposure to the aggregate claim satisfies the condition:
-\begin{equation}
-    \sigma_{j} = \alpha_{j,Y} \sigma + \mathcal{O}(\epsilon^2) \Rightarrow \sigma_{j} = \alpha_{j,Y} \sigma + \mathcal{O}(\epsilon^2) \Rightarrow \alpha_{j,Y} = \frac{\sigma_{j} \sigma^\top}{\sigma \sigma^\top} + \mathcal{O}(\epsilon^2),
-\end{equation}
-so $\sigma_{R,Y} = \sigma + \mathcal{O}(\epsilon^2)$ and $h_a = 0 + \mathcal{O}(\epsilon^2)$.
-
-Hence, the market price of risk can be written as
-\begin{equation}
-    \eta(x, \hat{\alpha}_p) = \gamma \sigma  \frac{1 -x_0\overline{\alpha}_p}{1-x_0} + \mathcal{O}(\epsilon^2).
+The demand for the risky asset is given by  
+\begin{equation}    
+    q_{j,t} = \alpha_{j,Y,t} -1.
 \end{equation}
 
-The risk premium on the aggregate claim is given by
+The portfolio share of the aggregate claim is given by  
 \begin{equation}
-    \pi_Y = \sigma_{R_Y} \eta^\top = \gamma \|\sigma\|^2  \frac{1 -x_0\overline{\alpha}_p}{1-x_0} + \mathcal{O}(\epsilon^2),
-\end{equation}
-using the fact that $\sigma_{R_Y} = \sigma + \mathcal{O}(\epsilon^2)$.
-
-Hence, the return volatility of the aggregate claim is given by
-\begin{equation}
-    \sigma_{R_Y} = \sigma + \mathcal{O}(\epsilon^2).
+    \alpha_{j,Y} =  \frac{\sigma_{j} \sigma_{R_Y}^\top}{\sigma_{R_Y} 
+    \sigma_{R_Y}^\top} =  \frac{(\sigma+\sigma_{j,1} \epsilon + \sigma_{j,2} \epsilon^2) (\sigma + \sigma_{p_Y,2} \epsilon^2)^\top}{(\sigma + \sigma_{p_Y,2} \epsilon^2)(\sigma + \sigma_{p_Y,2} \epsilon^2)^\top} = 1 + \frac{\sigma_{j,1} \sigma^\top}{\sigma \sigma^\top} \epsilon + \frac{(\sigma_{j,2} -\sigma_{p_Y,2})\sigma^\top}{\sigma \sigma^\top} \epsilon^2 + \mathcal{O}(\epsilon^3).
 \end{equation}
 
-Using the fact that hedging demands and endogenous volatility are second order, expanding Equation~\eqref{eq:market_price_of_risk} gives the first-order correction to the market price of risk:
+The risk exposure of active investors is given by
 \begin{equation}
-    \eta(x, \hat{\alpha}_p) = \gamma \sigma  \frac{1 -x_0\overline{\alpha}_p}{1-x_0} + \mathcal{O}(\epsilon^2).
+    \sigma_{j,t} = \frac{\eta_0}{\gamma} + \frac{\eta_1}{\gamma} \epsilon + \left[\frac{\eta_2}{\gamma} + \frac{1-\gamma^{-1}}{\psi-1} \sigma_{c_j,2}\right] \epsilon^2 + \mathcal{O}(\epsilon^3),
+\end{equation}
+and the risk exposure of the passive investor is given by
+\begin{equation}
+    \sigma_{0,t} = \sigma + \hat{\alpha}_p \epsilon + \sigma_{p_Y,2} \epsilon^2 + \mathcal{O}(\epsilon^3).
 \end{equation}
 
+The dividend yield is given by
+\begin{equation}
+    y_Y = r + \eta (\sigma + \sigma_{p_Y})^\top - \left(\mu + \mu_{p_Y} + \sigma \sigma_{p_Y}^\top\right).        
+\end{equation}
 
+The first-order correction to the dividend yield is given by
+\begin{equation}
+    y_{Y,1} = r_1 + \eta_1 \sigma^\top
+\end{equation}
 
+The second-order correction to the dividend yield is given by
+\begin{equation}
+    y_{Y,2} = r_2 + \eta_2 \sigma^\top - \eta_0 \sigma_{y_Y,2}^\top + \mu_{y_Y,2} + \sigma \sigma_{y_Y,2}^\top.
+\end{equation}
+
+Combining the expressions above, we obtain
+\begin{equation}
+    q_{j,t} = \frac{y_{Y,1} - r_{1}}{\gamma \|\sigma\|^2} \epsilon + \left[\frac{y_{Y,2} - r_{2}- \mu_{y_Y,2} + (\gamma-1)\sigma \sigma_{y_Y,2}^\top}{\gamma \|\sigma\|^2} +\frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2} \sigma^\top}{\|\sigma\|^2}\right] \epsilon^2 + \mathcal{O}(\epsilon^3).
+\end{equation}
+
+We can then write the demand for risky assets for active investors as follows:
+\begin{equation}
+    q_{j,t} = \zeta_{j,y} \hat{y}_{Y,t} - \zeta_{j,r} \hat{r}_t + f_{j,t} + \mathcal{O}(\epsilon^2),
+\end{equation}
+where
+\begin{equation}
+    f_{j,t} =\left[- \frac{\mu_{y_Y,2} + (1-\gamma)\sigma \sigma_{y_Y,2}^\top}{\gamma \|\sigma\|^2} + \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2} \sigma^\top}{\|\sigma\|^2}\right] \epsilon^2.
+\end{equation}
+
+The shifter $f_{j,t}$ is constant for active investors, and it is equal to zero when the portfolio share of passive investors is constant.
+The demand for the risky asset for passive investors takes the same form, but with $\zeta_{0,y} = 0$ and $\zeta_{0,r} = 0$, and the shifter $f_{0,t}$ is given by
+\begin{equation}
+    f_{0,t} = \hat{\alpha}_{p,t} \epsilon.
+\end{equation}
 % \section{The unit EIS case}
 
 % Suppose $\psi = 1$ and $\gamma_j = 1$ for $j = 1,\ldots, J$. In this case, the consumption-wealth ratio satisfies $c_{j,t} = \rho$ and the dividend-yield is given by $y_t = \rho$. This implies that $\sigma_{R,t} = \sigma$. The risk premium is given by
