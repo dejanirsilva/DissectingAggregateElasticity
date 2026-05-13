@@ -5516,14 +5516,14 @@ This implies that the aggregate (net) output follows a geometric Brownian motion
 Consider next the second-order approximation of the demand system. 
 We focus on the case where there is no preference heterogeneity and no leverage constraints.
 
-\paragraph{Drift and diffusion of price-dividend ratio.} The drift of $p_{Y,t}$ is given by
+\paragraph{Diffusion and drift of price-dividend ratio.} The drift of $p_{Y,t}$ is given by
 \begin{equation}
     \sigma_{p_Y} = \frac{p_{Y,\overline{\alpha}_p}}{p_{Y}} \sigma_{p} + \frac{p_{Y,x}}{p_{Y}} \sigma_{x}.
 \end{equation}
 
 The price-dividend ratio is given by
 \begin{equation}
-    p_{Y}(x, \overline{\alpha}_p) = p_{Y,2}(x, \hat{\alpha}_p)\epsilon^2 + \mathcal{O}(\epsilon^3),
+    p_{Y}(x, \overline{\alpha}_p) =p_{Y}^*+ p_{Y,2}(x, \hat{\alpha}_p)\epsilon^2 + \mathcal{O}(\epsilon^3),
 \end{equation}
 using the fact that $p_{Y,1} = 0$ in the absence of preference heterogeneity.
 
@@ -5590,7 +5590,7 @@ and the risk exposure of the passive investor is given by
 
 Combining the expressions above, we obtain the demand for the risky asset for active investors:
 \begin{equation}
-    q_{j,t} = \frac{\eta_t \sigma^\top}{\gamma \|\sigma\|^2} + \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,t} \sigma^\top}{\|\sigma\|^2}+ \mathcal{O}(\epsilon^3).
+    q_{j,t} = \frac{\eta_t \sigma^\top}{\gamma \|\sigma\|^2} + \left[\frac{1-\gamma^{-1}}{\psi-1} \sigma_{c_j,t} - \sigma_{p_Y,t} \right] \frac{\sigma^\top}{\|\sigma\|^2} + \mathcal{O}(\epsilon^3).
 \end{equation}
 The demand for the risky asset for passive investors is given by
 \begin{equation}
@@ -5614,7 +5614,7 @@ Expanding the expression above, we obtain
 
 Using the fact that $p_{Y,1} =0$ in the absence of preference heterogeneity, we obtain
 \begin{equation}
-    q_{j} = -\frac{p_{Y,2}\epsilon^2}{p_{Y,0}^2 \gamma \|\sigma\|^2} - \frac{r_1\epsilon + r_2\epsilon^2}{\gamma \|\sigma\|^2} + \left[ \mu_{p_Y,2} +(1-\gamma) \sigma \sigma_{p_Y,2}^\top \right]\epsilon^2 + \mathcal{O}(\epsilon^3).
+    q_{j} = -\frac{p_{Y,2}\epsilon^2}{p_{Y,0}^2 \gamma \|\sigma\|^2} - \frac{r_1\epsilon + r_2\epsilon^2}{\gamma \|\sigma\|^2} + \left[ \mu_{p_Y,2} +(1-2\gamma) \sigma_{p_Y,2}\sigma^\top + \frac{\gamma-1}{\psi-1} \sigma_{c_j,2} \sigma^\top\right]\frac{\epsilon^2}{\gamma\|\sigma\|^2} + \mathcal{O}(\epsilon^3).
 \end{equation}
 
 Using the fact that $\hat{p}_{Y,t} = \frac{p_{Y,t} - p_{Y,0}}{p_{Y,0}}$, we can write the demand for the risky asset for active investors as follows:
@@ -5623,15 +5623,165 @@ Using the fact that $\hat{p}_{Y,t} = \frac{p_{Y,t} - p_{Y,0}}{p_{Y,0}}$, we can 
 \end{equation}
 where $\zeta_{j,p} = \frac{1}{p_{Y,0}}\frac{1}{\gamma \|\sigma\|^2}$, $\zeta_{j,r} = \frac{1}{\gamma \|\sigma\|^2}$, and the shifter $f_{j,t}$ is given by
 \begin{equation}
-    f_{j,t} = \mu_{p_Y,t} + (1-\gamma) \sigma \sigma_{p_Y,t}^\top.
+    f_{j,t} = \underbrace{\zeta_{j,r} (\mu_{p_Y,t} +\sigma_{p_Y,t}\sigma^\top)}_{\text{expected price appreciation}}- \underbrace{2 \frac{\sigma_{p_Y,t} \sigma ^\top}{\sigma \sigma^\top}}_{\text{endogenous volatility}} +\underbrace{ \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,t} \sigma^\top}{\sigma \sigma^\top}}_{\text{hedging demand}}.
 \end{equation}
 
-The demand for the risky asset for passive investors takes the same form, but with $\zeta_{0,y} = 0$ and $\zeta_{0,r} = 0$, and the shifter $f_{0,t}$ is given by
+The demand for the risky asset for passive investors takes the same form, but with $\zeta_{0,p} =\zeta_{0,r} = 0$, and the shifter $f_{0,t}$ given by
 \begin{equation}
     f_{0,t} = \hat{\alpha}_{p,t} \epsilon.
 \end{equation}
 
+\paragraph{Consumption-wealth ratio.} The aggregate consumption-wealth ratio $c_{t} \equiv \sum_{j=0}^2 x_{j,t} c_{j,t}$ is given by
+\begin{equation}
+    c_{t} = \psi \rho + (1-\psi) \left[ r_t + \eta_t \sigma_{R_Y,t}^\top - \frac{\gamma}{2} \sum_{j=0}^2 x_{j,t} \|\sigma_{j,t}\|^2 \right] + \sum_{j=0}^2 x_{j,t} \left[\mu_{c_j,t} + (1-\gamma) \sigma_{c_j,t} \sigma_{R_Y,t}^\top + \frac{\psi - \gamma}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}\right].
+\end{equation}
 
+The risk exposure of the passive investor is given by $\sigma_{0,t} = \overline{\alpha}_{p,t} \sigma_{R_Y,t}$. From market clearing, the risk exposure of active investors is given by $\sigma_{j,t} = \frac{1-x_{0,t}\overline{\alpha}_{p,t}}{1-x_{0,t}} \sigma_{R_Y,t}$. Hence, the risk exposure of both group of investors is proportional to $\sigma_{R_Y,t}$.
+We can then write the consumption-wealth ratio as follows:
+\begin{equation}
+    c_{t} = \psi \rho + (1-\psi) \left[ r_t + \eta_t \sigma_{R_Y,t}^\top - \frac{\gamma\|\sigma_{R_Y,t}\|^2}{2} \sum_{j=0}^2 x_{j,t} \alpha_{j,Y,t}^2 \right] + \sum_{j=0}^2 x_{j,t} \left[\mu_{c_j,t} + (1-\gamma) \sigma_{c_j,t} \sigma_{R_Y,t}^\top + \frac{\psi - \gamma}{1-\psi} \frac{\|\sigma_{c_j,t}\|^2}{2}\right].
+\end{equation}
+
+Expanding the expression above up to second order, we obtain
+\begin{equation}
+    c_{2} = (1-\psi) \left[ r_2 + \eta_2 \sigma^\top - \frac{\gamma\|\sigma\|^2}{2} \frac{x_0}{x_a}(\overline{\alpha}_{p,t}-1)^2 \right] - \left[\mu_{p_Y,2} + (1-\gamma) \sigma_{p_Y,2} \sigma^\top \right].
+\end{equation}
+
+From the pricing condition for the risky asset, we have
+\begin{equation}
+    r_2 + \eta_2 \sigma^\top = - \frac{p_{Y,2}}{p_{Y,0}^2}  + \mu_{p_Y,2} + (1-\gamma) \sigma_{p_Y,2} \sigma^\top.
+\end{equation}
+
+Combining the expressions above, we obtain
+\begin{equation}
+    c_{2} = (1-\psi) \left[ - \frac{p_{Y,2}}{p_{Y,0}^2}  + \mu_{p_Y,2} + (1-\gamma) \sigma_{p_Y,2} \sigma^\top - \frac{\gamma\|\sigma\|^2}{2} \frac{x_0}{x_a}(\overline{\alpha}_{p,t}-1)^2 \right] - \left[\mu_{p_Y,2} + (1-\gamma) \sigma_{p_Y,2} \sigma^\top \right].
+\end{equation}
+
+The consumption-wealth ratio takes the form
+\begin{equation}
+    \hat{c}_{t} = \chi_{0,t} + \chi_p \hat{p}_{Y,t} + \mathcal{O}(\epsilon^3),
+\end{equation}
+where
+\begin{equation}    
+    \chi_{0,t} = (\psi-1) \frac{\gamma\|\sigma\|^2}{2} \frac{x_0}{x_a}(\overline{\alpha}_{p,t}-1)^2 - \psi \left[ \mu_{p_Y,2} + (1-\gamma) \sigma_{p_Y,2} \sigma^\top \right].
+\end{equation}
+
+\paragraph{The aggregate market elasticity.} 
+Using the market clearing condition for goods, we have
+\begin{equation}
+    c_t = - y^* \hat{p}_{Y,t} + \mathcal{O}(\epsilon^3) \Rightarrow \hat{p}_{Y,t} = - \frac{\chi_{0,t}}{\chi_p + y^*} + \mathcal{O}(\epsilon^3).
+\end{equation}
+
+The left-hand side of the expression above is given by
+\begin{equation}
+    \hat{p}_{Y,t} =  \frac{a_{Y}(x_t)}{2}(\overline{\alpha}_{p,t}-1)^2 + b_{Y}(x_t) (\overline{\alpha}_{p,t}-1) + c_{Y}(x_t)+ \mathcal{O}(\epsilon^3),
+\end{equation}
+
+The right-hand side of the expression above is given by
+\begin{align}
+    \hat{p}_{Y,t} &= 
+    -\left[(1-\psi^{-1}) \gamma\|\sigma\|^2 \frac{x_0}{x_a} + 2\kappa_p a_Y(x) \right] \frac{(\overline{\alpha}_{p,t}-1)^2}{2 y^*} 
+ - \frac{1}{y^*} \left[b_Y(x) \kappa_p +(\gamma-1)  a_Y(x_t)\sigma_p \sigma^\top \right] (\overline{\alpha}_{p,t}-1) \\
+ &+ \frac{1}{y^*} \left[ \frac{1}{2} a_Y(x) \sigma_p \sigma_p^\top + (1-\gamma) b_Y(x_t) \sigma_p \sigma^\top \right]\\
+\end{align}
+
+Matching coefficients, we obtain a condition determining $a_Y(x)$:
+\begin{equation}
+    y^* a_Y(x) = -\left[(1-\psi^{-1}) \gamma\|\sigma\|^2 \frac{x_0}{x_a} + 2\kappa_p a_Y(x) \right].
+\end{equation}
+
+Rearranging the expression above, we obtain
+\begin{equation}
+    a_Y(x) = - (1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{y^* + 2\kappa_p} \frac{x_0}{x_a}.
+\end{equation}
+
+Similarly, we can determine $b_Y(x)$:
+\begin{equation}
+    y^* b_Y(x) = -\left[b_Y(x) \kappa_p +(\gamma-1)  a_Y(x_t)\sigma_p \sigma^\top \right].
+\end{equation}
+Rearranging the expression above, we obtain
+\begin{equation}
+    b_Y(x) =  (1-\gamma)  \frac{\sigma_p \sigma^\top}{y^* + \kappa_p}a_Y(x_t).
+\end{equation}
+
+The derivative of $\hat{p}_{Y,t}$ with respect to $\overline{\alpha}_p$ is given by
+\begin{equation}    
+    \frac{\partial \hat{p}_{Y,t}}{\partial \overline{\alpha}_p} = a_Y(x) (\overline{\alpha}_{p,t}-1) + b_Y(x).
+\end{equation}
+Using the expression above, we obtain
+\begin{equation}
+  \epsilon_{Y,t}^{-1} \equiv  \frac{1}{x_{0,t}}\frac{\partial \hat{p}_{Y,t}}{\partial \overline{\alpha}_p} =  \frac{1-\psi^{-1}}{y^* + 2\kappa_p} \frac{\gamma\|\sigma\|^2}{x_a} \left[ 1- \overline{\alpha}_{p,t} + \frac{\gamma-1}{y^* + \kappa_p}\sigma_p \sigma^\top\right] + \mathcal{O}(\epsilon^2).
+\end{equation}
+
+\paragraph{Endogenous volatility and hedging demand.} The volatility of the price-dividend ratio is given by
+\begin{equation}
+    \sigma_{p_Y,t} = x_{0,t} \epsilon_{Y,t}^{-1} \sigma_p + \mathcal{O}(\epsilon^3).
+\end{equation}
+
+Let $c_{j,t}^0$ denote the consumption-wealth ratio in the fixed-$\hat{\alpha}_p$ economy.
+In this case, we can write $y_{Y,2}^0 = d_Y \hat{\alpha}_p^2$, and the second-order correction to the consumption-wealth ratio of active investor $j=1,2$ is given by
+\begin{equation}
+    c_{j,2}^0 = \left[1 - \frac{1}{x_a} \psi \right] d_Y^0 \hat{\alpha}_p^2,
+\end{equation}
+and the second-order correction to the consumption-wealth ratio of passive investor is given by
+\begin{equation}
+    c_{0,2}^0 =  \left[1 + \frac{1}{x_0} \psi \right] d_Y^0 \hat{\alpha}_p^2.
+\end{equation}
+
+This implies that the diffusion of the consumption-wealth ratio of active investor $j=1,2$ is given by
+\begin{equation}
+    \sigma_{c_j,t} = - \left[1 - \frac{1}{x_a} \psi \right] x_{0,t} \epsilon_{Y,t}^{-1} \sigma_p + \mathcal{O}(\epsilon^3),
+\end{equation}
+and the diffusion of the consumption-wealth ratio for passive investor is given by
+\begin{equation}
+    \sigma_{c_0,t} =  -\left[1 + \frac{1}{x_0} \psi \right] x_{0,t} \epsilon_{Y,t}^{-1} \sigma_p + \mathcal{O}(\epsilon^3).
+\end{equation}
+
+We can then write the hedging demand for active investor $j=1,2$ as follows:
+\begin{equation}
+    h_{j,t} = \frac{1-\gamma_j^{-1}}{\psi-1} \sigma_{c_j,t} = H_{a,t} x_{0,t} \epsilon_{Y,t}^{-1} \sigma_p + \mathcal{O}(\epsilon^3),
+\end{equation}
+where $H_{a,t} = \frac{1-\gamma^{-1}}{\psi-1} \left[\frac{\psi }{x_{a,t}} -1\right]$.
+
+
+\paragraph{Market price of risk and risk premium.} The market price of risk is given by
+\begin{equation}
+    \eta_t = \gamma \sigma \chi_{a,t}+ \left[1 - H_{a,t} \right] \gamma x_{0,t} \epsilon_{Y,t}^{-1} \sigma_p + \mathcal{O}(\epsilon^3),
+\end{equation}
+where $\chi_{a,t} = \frac{1-x_{0,t}\overline{\alpha}_{p,t}}{1-x_{0,t}}$ is the aggregate risky exposure that must be absorbed by active investors per unit of active wealth, and $h_{a,t}$ is the average hedging demand of active investors, adjusted for leverage constraints.
+
+The risk premium is given by
+\begin{equation}
+    \pi_{Y,t} = \gamma \|\sigma\|^2 \chi_{a,t}+ \left[2 - H_{a,t} \right] \gamma x_{0,t} \epsilon_{Y,t}^{-1} \sigma_p \sigma^\top+ \mathcal{O}(\epsilon^3).
+\end{equation}
+
+\paragraph{Interest rate.} 
+The interest rate follows from the pricing condition for the aggregate claim,
+\begin{equation}
+    \frac{1}{p_{Y,t}}
+    = r_t + \eta_t\sigma_{R_Y,t}^\top
+    -\left(\mu+\mu_{p_Y,t}+\sigma\sigma_{p_Y,t}^\top\right).
+\end{equation}
+Thus,
+\begin{equation}
+    r_t
+    = y_{Y,t}+\mu+\mu_{p_Y,t}+\sigma\sigma_{p_Y,t}^\top-\pi_{Y,t},
+\end{equation}
+where $y_{Y,t}=1/p_{Y,t}$ and $\pi_{Y,t}=\eta_t\sigma_{R_Y,t}^\top$.
+
+From the market clearing condition for goods, we have   
+\begin{equation}
+\chi_{0,t} + (\chi_p + y^*) \hat{p}_{Y,t} = \mathcal{O}(\epsilon^3),
+\end{equation}
+which can be written as
+\begin{equation}
+    (1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{2} \frac{x_0}{x_a}(\overline{\alpha}_{p,t}-1)^2 = \left[ \mu_{p_Y,t} + (1-\gamma) \sigma_{p_Y,t} \sigma^\top- y^* \hat{p}_{Y,t} \right] +\mathcal{O}(\epsilon^3).
+\end{equation}
+
+We can then write the interest rate as follows:
+\begin{equation}
+    \hat{r}_t = (1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{2} \frac{x_0}{x_a}(\overline{\alpha}_{p,t}-1)^2 - \hat{\eta}_t \sigma^\top + \mathcal{O}(\epsilon^3).
+\end{equation}
 
 % \section{The unit EIS case}
 
