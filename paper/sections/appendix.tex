@@ -5515,7 +5515,6 @@ This implies that the aggregate (net) output follows a geometric Brownian motion
 
 Consider next the second-order approximation of the demand system. 
 We focus on the case where there is no preference heterogeneity and no leverage constraints.
-Initially, we also assume that the portfolio share of passive investors is fixed, so $\kappa_p = 0$ and $\sigma_p = 0$.
 
 The demand for the risky asset is given by  
 \begin{equation}    
@@ -5534,37 +5533,46 @@ The risk exposure of active investors is given by
 \end{equation}
 and the risk exposure of the passive investor is given by
 \begin{equation}
-    \sigma_{0,t} = \sigma + \hat{\alpha}_p \epsilon + \sigma_{p_Y,2} \epsilon^2 + \mathcal{O}(\epsilon^3).
+    \sigma_{0,t} = \sigma + \hat{\alpha}_p \sigma \epsilon + \sigma_{p_Y,2} \epsilon^2 + \mathcal{O}(\epsilon^3).
 \end{equation}
 
-The dividend yield is given by
+Combining the expressions above, we obtain the demand for the risky asset for active investors:
 \begin{equation}
-    y_Y = r + \eta (\sigma + \sigma_{p_Y})^\top - \left(\mu + \mu_{p_Y} + \sigma \sigma_{p_Y}^\top\right).        
+    q_{j,t} = \frac{\eta_t \sigma^\top}{\gamma \|\sigma\|^2} + \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,t} \sigma^\top}{\|\sigma\|^2}+ \mathcal{O}(\epsilon^3),
+\end{equation}
+and
+The demand for the risky asset for passive investors is given by
+\begin{equation}
+    q_{0,t} = \overline{\alpha}_{p,t} - 1 + \mathcal{O}(\epsilon^3).
 \end{equation}
 
-The first-order correction to the dividend yield is given by
+Next, we eliminate the market price of risk from the demand for the risky asset. 
+From the pricing condition for the risky asset, we have
 \begin{equation}
-    y_{Y,1} = r_1 + \eta_1 \sigma^\top
+    \frac{1}{p_Y} = r + \eta (\sigma + \sigma_{p_Y})^\top - \left(\mu + \mu_{p_Y} + \sigma \sigma_{p_Y}^\top\right).        
+\end{equation}
+Rearranging the expression above, we obtain
+\begin{equation}
+    \eta \sigma^\top = \frac{1}{p_Y} - r + \mu + \mu_{p_Y} + \sigma \sigma_{p_Y}^\top - \eta \sigma_{p_Y}^\top.
 \end{equation}
 
-The second-order correction to the dividend yield is given by
+Expanding the expression above, we obtain
 \begin{equation}
-    y_{Y,2} = r_2 + \eta_2 \sigma^\top - \eta_0 \sigma_{y_Y,2}^\top + \mu_{y_Y,2} + \sigma \sigma_{y_Y,2}^\top.
+    \left[\eta_1\epsilon + \eta_2\epsilon^2 \right] \sigma^\top = \left[-\frac{1}{p_{Y,0}^2}p_{Y,1} - r_1\right]\epsilon + \left[- \frac{p_{Y,2}}{p_{Y,0}^2} + \frac{p_{Y,1}^2}{p_{Y,0}^3} -r_2+ \mu_{p_Y,2} +(1-\gamma) \sigma \sigma_{p_Y,2}^\top \right]\epsilon^2.
 \end{equation}
 
-Combining the expressions above, we obtain
+Using the fact that $p_{Y,1} =0$ in the absence of preference heterogeneity, we obtain
 \begin{equation}
-    q_{j,t} = \frac{y_{Y,1} - r_{1}}{\gamma \|\sigma\|^2} \epsilon + \left[\frac{y_{Y,2} - r_{2}- \mu_{y_Y,2} + (\gamma-1)\sigma \sigma_{y_Y,2}^\top}{\gamma \|\sigma\|^2} +\frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2} \sigma^\top}{\|\sigma\|^2}\right] \epsilon^2 + \mathcal{O}(\epsilon^3).
+    q_{j} = -\frac{p_{Y,2}\epsilon^2}{p_{Y,0}^2 \gamma \|\sigma\|^2} - \frac{r_1\epsilon + r_2\epsilon^2}{\gamma \|\sigma\|^2} + \left[ \mu_{p_Y,2} +(1-\gamma) \sigma \sigma_{p_Y,2}^\top \right]\epsilon^2 + \mathcal{O}(\epsilon^3).
 \end{equation}
 
-In the absence of preference heterogeneity, we have $y_{Y,1} = p_{Y,1} = 0$ and $p_{Y,2} = - p_{Y,0}^2 y_{Y,2}$.
-We can then write the demand for risky assets for active investors as follows:
+We can then write the demand for the risky asset for active investors as follows:
 \begin{equation}
-    q_{j,t} = -\zeta_{j,p} \hat{p}_{Y,t} - \zeta_{j,r} \hat{r}_t + f_{j,t} + \mathcal{O}(\epsilon^3),
+    q_{j,t} = - \zeta_{j,p} \hat{p}_{Y,t} - \zeta_{j,r} \hat{r}_t + f_{j,t} + \mathcal{O}(\epsilon^3),
 \end{equation}
-where
+where $\zeta_{j,p} = \frac{1}{p_{Y,0}}\frac{1}{\gamma \|\sigma\|^2}$, $\zeta_{j,r} = \frac{1}{\gamma \|\sigma\|^2}$, and the shifter $f_{j,t}$ is given by
 \begin{equation}
-    f_{j,t} =\left[- \frac{\mu_{y_Y,2} + (1-\gamma)\sigma \sigma_{y_Y,2}^\top}{\gamma \|\sigma\|^2} + \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2} \sigma^\top}{\|\sigma\|^2}\right] \epsilon^2.
+    f_{j,t} = \mu_{p_Y,t} + (1-\gamma) \sigma \sigma_{p_Y,t}^\top.
 \end{equation}
 
 The shifter $f_{j,t}$ is constant for active investors, and it is equal to zero when the portfolio share of passive investors is constant.
@@ -5577,6 +5585,14 @@ Using the fact that $p_{Y,2} / p_{Y,0} = - y_{Y,2} / y_{Y,0} $, we can write the
 \begin{equation}
     f_{j,t} =\left[ \frac{\mu_{p_Y,2} + (1-\gamma)\sigma \sigma_{p_Y,2}^\top}{\gamma \|\sigma\|^2} + \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2} \sigma^\top}{\|\sigma\|^2}\right] \epsilon^2.
 \end{equation}
+
+We are looking for a solution of the form
+\begin{equation}
+    \hat{p}_{Y,t} = a_{Y}(x) + b_{Y}(x) (\overline{\alpha}-1) + \frac{c_{Y}(x)}{2} (\overline{\alpha}-1)^2 + \mathcal{O}(\epsilon^3),
+\end{equation}
+
+
+
 % \section{The unit EIS case}
 
 % Suppose $\psi = 1$ and $\gamma_j = 1$ for $j = 1,\ldots, J$. In this case, the consumption-wealth ratio satisfies $c_{j,t} = \rho$ and the dividend-yield is given by $y_t = \rho$. This implies that $\sigma_{R,t} = \sigma$. The risk premium is given by
