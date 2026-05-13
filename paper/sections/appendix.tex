@@ -5516,7 +5516,59 @@ This implies that the aggregate (net) output follows a geometric Brownian motion
 Consider next the second-order approximation of the demand system. 
 We focus on the case where there is no preference heterogeneity and no leverage constraints.
 
-The demand for the risky asset is given by  
+\paragraph{Drift and diffusion of price-dividend ratio.} The drift of $p_{Y,t}$ is given by
+\begin{equation}
+    \sigma_{p_Y} = \frac{p_{Y,\overline{\alpha}_p}}{p_{Y}} \sigma_{p} + \frac{p_{Y,x}}{p_{Y}} \sigma_{x}.
+\end{equation}
+
+The price-dividend ratio is given by
+\begin{equation}
+    p_{Y}(x, \overline{\alpha}_p) = p_{Y,2}(x, \hat{\alpha}_p)\epsilon^2 + \mathcal{O}(\epsilon^3),
+\end{equation}
+using the fact that $p_{Y,1} = 0$ in the absence of preference heterogeneity.
+
+The expression above implies that $p_{Y,x} = \mathcal{O}(\epsilon^2)$.
+As $\sigma_{x} = \mathcal{O}(\epsilon)$, we have that $\frac{p_{Y,x}}{p_{Y}} \sigma_{x} = \mathcal{O}(\epsilon^3)$.
+We can then ignore this term in the diffusion of $p_{Y,t}$ up to second order.
+
+Taking the derivative of $p_{Y}$ with respect to $\hat{\alpha}_p$, we obtain
+\begin{equation}
+    \frac{p_{Y,\overline{\alpha}_p}}{p_{Y}} \frac{\partial \overline{\alpha}_p}{\partial \hat{\alpha}_p}= \frac{p_{Y,2, \hat{\alpha}_p}}{p_{Y,0}} \epsilon^2  +\mathcal{O}(\epsilon^3)\Rightarrow \frac{p_{Y,\overline{\alpha}_p}}{p_{Y}} = \frac{p_{Y,2, \hat{\alpha}_p}}{p_{Y,0}} \epsilon  +\mathcal{O}(\epsilon^2),
+\end{equation}
+as $\frac{\partial \overline{\alpha}_p}{\partial \hat{\alpha}_p} =\epsilon$.
+
+Hence, the diffusion of $p_{Y,t}$ can be written as
+\begin{equation}
+    \sigma_{p_Y} =  \frac{p_{Y,2, \hat{\alpha}_p}}{p_{Y,0}} \hat{\sigma}_{p} \epsilon^2 + \mathcal{O}(\epsilon^3). 
+\end{equation}
+
+The price-dividend ratio takes the form
+\begin{equation}
+    \hat{p}_{Y,t} =  \frac{a_{Y}(x_t)}{2}(\overline{\alpha}_{p,t}-1)^2 + b_{Y}(x_t) (\overline{\alpha}_{p,t}-1) + c_{Y}(x_t)+ \mathcal{O}(\epsilon^3),
+\end{equation}
+where $a_{Y}(x_t)$, $b_{Y}(x_t)$, and $c_{Y}(x_t)$ are functions to be determined.
+
+The derivative of the price-dividend ratio with respect to $\overline{\alpha}_p$ is given by
+\begin{equation}
+    \frac{\partial \hat{p}_{Y,t}}{\partial \overline{\alpha}_p} = a_{Y}(x_t) (\overline{\alpha}_{p,t}-1) + b_{Y}(x_t)+ \mathcal{O}(\epsilon^2),
+\end{equation}
+
+The diffusion of the price-dividend ratio is given by
+\begin{equation}
+    \sigma_{p_Y} = \left[ a_Y(x_t) (\overline{\alpha}_{p,t}-1) + b_Y(x_t) \right] \sigma_p +\mathcal{O}(\epsilon^3).
+\end{equation}
+
+The diffusion of the price-dividend ratio is given by
+\begin{equation}
+    \mu_{p_Y} = \frac{p_{Y,\overline{\alpha}_p}}{p_{Y}} \mu_{\overline{\alpha}_p} + \frac{1}{2} \frac{p_{Y,\overline{\alpha}_p\overline{\alpha}_p}}{p_{Y}} \sigma_p \sigma_p^\top + \mathcal{O}(\epsilon^3).
+\end{equation}
+
+We can then write the drift of the price-dividend ratio as follows:
+\begin{equation}
+    \mu_{p_Y} = [a_Y(x) (\overline{\alpha}_{p,t}-1) + b_Y(x)] \kappa_p(1-\overline{\alpha}_p) + \frac{1}{2} a_Y(x) \sigma_p \sigma_p^\top + \mathcal{O}(\epsilon^3).
+\end{equation}
+
+\paragraph{The demand for the risky asset.} The demand for the risky asset is given by  
 \begin{equation}    
     q_{j,t} = \alpha_{j,Y,t} -1.
 \end{equation}
@@ -5538,9 +5590,8 @@ and the risk exposure of the passive investor is given by
 
 Combining the expressions above, we obtain the demand for the risky asset for active investors:
 \begin{equation}
-    q_{j,t} = \frac{\eta_t \sigma^\top}{\gamma \|\sigma\|^2} + \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,t} \sigma^\top}{\|\sigma\|^2}+ \mathcal{O}(\epsilon^3),
+    q_{j,t} = \frac{\eta_t \sigma^\top}{\gamma \|\sigma\|^2} + \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,t} \sigma^\top}{\|\sigma\|^2}+ \mathcal{O}(\epsilon^3).
 \end{equation}
-and
 The demand for the risky asset for passive investors is given by
 \begin{equation}
     q_{0,t} = \overline{\alpha}_{p,t} - 1 + \mathcal{O}(\epsilon^3).
@@ -5566,7 +5617,7 @@ Using the fact that $p_{Y,1} =0$ in the absence of preference heterogeneity, we 
     q_{j} = -\frac{p_{Y,2}\epsilon^2}{p_{Y,0}^2 \gamma \|\sigma\|^2} - \frac{r_1\epsilon + r_2\epsilon^2}{\gamma \|\sigma\|^2} + \left[ \mu_{p_Y,2} +(1-\gamma) \sigma \sigma_{p_Y,2}^\top \right]\epsilon^2 + \mathcal{O}(\epsilon^3).
 \end{equation}
 
-We can then write the demand for the risky asset for active investors as follows:
+Using the fact that $\hat{p}_{Y,t} = \frac{p_{Y,t} - p_{Y,0}}{p_{Y,0}}$, we can write the demand for the risky asset for active investors as follows:
 \begin{equation}
     q_{j,t} = - \zeta_{j,p} \hat{p}_{Y,t} - \zeta_{j,r} \hat{r}_t + f_{j,t} + \mathcal{O}(\epsilon^3),
 \end{equation}
@@ -5575,20 +5626,9 @@ where $\zeta_{j,p} = \frac{1}{p_{Y,0}}\frac{1}{\gamma \|\sigma\|^2}$, $\zeta_{j,
     f_{j,t} = \mu_{p_Y,t} + (1-\gamma) \sigma \sigma_{p_Y,t}^\top.
 \end{equation}
 
-The shifter $f_{j,t}$ is constant for active investors, and it is equal to zero when the portfolio share of passive investors is constant.
 The demand for the risky asset for passive investors takes the same form, but with $\zeta_{0,y} = 0$ and $\zeta_{0,r} = 0$, and the shifter $f_{0,t}$ is given by
 \begin{equation}
     f_{0,t} = \hat{\alpha}_{p,t} \epsilon.
-\end{equation}
-
-Using the fact that $p_{Y,2} / p_{Y,0} = - y_{Y,2} / y_{Y,0} $, we can write the shifter $f_{j,t}$ as follows:
-\begin{equation}
-    f_{j,t} =\left[ \frac{\mu_{p_Y,2} + (1-\gamma)\sigma \sigma_{p_Y,2}^\top}{\gamma \|\sigma\|^2} + \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2} \sigma^\top}{\|\sigma\|^2}\right] \epsilon^2.
-\end{equation}
-
-We are looking for a solution of the form
-\begin{equation}
-    \hat{p}_{Y,t} = a_{Y}(x) + b_{Y}(x) (\overline{\alpha}-1) + \frac{c_{Y}(x)}{2} (\overline{\alpha}-1)^2 + \mathcal{O}(\epsilon^3),
 \end{equation}
 
 
