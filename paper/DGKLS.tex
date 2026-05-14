@@ -1643,9 +1643,7 @@ First, we reintroduce preference heterogeneity and leverage constraints into the
 Second, we consider the price impact of the equity claim instead of the aggregate claim.
 
 \paragraph{Preference heterogeneity and leverage constraints.}
-We now reintroduce preference heterogeneity and leverage constraints into the model.
-These features shift the conditions under which passive investors’ portfolios are efficient and therefore alter the aggregate market elasticity.
-The next proposition provides the main result.
+The next proposition characterizes the aggregate market elasticity in the case with preference heterogeneity and leverage constraints.
 
 \begin{prop}[Aggregate elasticity: heterogeneity and leverage constraints]\label{prop_elasticity_pref_heterog}
 The inverse aggregate market elasticity is
@@ -1653,9 +1651,9 @@ The inverse aggregate market elasticity is
     \varepsilon_{M,t}^{-1}
     \;=\;
     \bigl(1-\psi^{-1}\bigr)\,
-    \frac{\gamma\,\|\sigma\|^{2}}{y^{*}}\,
-    \frac{\overline{\alpha}_{p,t}^{\mathrm{opt}}-\overline{\alpha}_{p,t}}{x_{a,t}-x_{c,t}}\,
-    \bigl(1-x_{c,t}\bigr)
+    \frac{\gamma\,\|\sigma\|^{2}}{y^{*}+2 \kappa_p}\,
+    \frac{1-x_{c,t}}{x_{a,t}-x_{c,t}}\,
+    \left[ \overline{\alpha}_{p,t}^{opt}- \overline{\alpha}_{p,t}+\frac{\kappa_p(\overline{\alpha}_{p,t}^{opt}-\overline{\alpha})}{y_{Y,0}+\kappa_p}  +\frac{(\gamma-1) \sigma_p \sigma^\top}{y_{Y,0}+\kappa_p} \right]
     \;+\;\mathcal{O}\!\left(\epsilon^{2}\right),
 \end{equation}
 where $x_{c,t}$ is the wealth share of constrained active investors and the passive investors’ optimal portfolio share is
@@ -1670,12 +1668,7 @@ where $x_{c,t}$ is the wealth share of constrained active investors and the pass
     \frac{x_{c,t}}{1-x_{c,t}}
     \Bigl(\frac{\overline{\sigma}}{\|\sigma\|}-1\Bigr),
 \end{equation}
-with $x_{u,t}\equiv x_{a,t}-x_{c,t}$ the wealth share of unconstrained active investors and 
-\[
-    \mathbb{E}^{u}_{t}[\gamma_{j}]
-    \;\equiv\;
-    \sum_{j\in\mathcal{J}^{u}}\frac{x_{j,t}}{x_{u,t}}\,\gamma_{j}.
-\]
+with $x_{u,t}\equiv x_{a,t}-x_{c,t}$ the wealth share of unconstrained active investors and wealth-weighted average risk aversion of unconstrained active investors.
 \end{prop}
 
 Proposition~\ref{prop_elasticity_pref_heterog} characterizes aggregate market elasticity in the full model.

@@ -3044,7 +3044,9 @@ There is no separate third dividend-specific term in this benchmark specificatio
 A separate $M_p$ term would appear only if the fixed-$\hat{\alpha}_p$ excess component had a nonzero quadratic coefficient in $\hat{\alpha}_p$.
 
 
-\section{Special Case: No Preference Heterogeneity}
+\section{Deriving the aggregate market elasticity}
+
+\subsection{Special case: no preference heterogeneity or leverage constraints}
 
 In this section, we consider the special case of no preference heterogeneity or leverage constraints, that is, $\hat{\gamma}_j=0$ for $j=0,1,2$ and $\hat{\nu}_2=0$.
 This will allow us to derive the cleaner expressions for all equilibrium objects.
@@ -3786,6 +3788,68 @@ The first term is the mechanical exposure to the aggregate claim.
 The second term is the dividend-specific risk-premium channel, attenuated by passive-demand mean reversion through the factor $(\delta+\kappa_p)^{-1}$.
 \end{proof}
 
+\subsection{Preference heterogeneity and leverage constraints}
+
+We consider next the aggregate market elasticity in the case with preference heterogeneity and leverage constraints.
+
+First, consider the case with no preference heterogeneity and no leverage constraints, that is, $\hat{\gamma}_j=0$ for $j=0,1,2$ and $\hat{\nu}_2=0$.
+In this case, the dividend yield is given by
+\begin{equation}    
+    y_{Y,2}^0 = a_y^0 + b_y^0 \hat{\alpha}_p + d_y^0 \hat{\alpha}_p^2.
+\end{equation}
+
+The inverse aggregate market elasticity is given by
+\begin{align}
+    (\epsilon_{Y,t}^0)^{-1} &= -\frac{1}{x_{0,t} y_{Y,0}} \frac{\partial y_{Y,2}^0}{\partial \hat{\alpha}_p} \epsilon + \mathcal{O}(\epsilon^2). \\
+    &= -\frac{1}{x_{0,t} y_{Y,0}} \left(2 d_y^0 \hat{\alpha}_p + b_y^0 \right) \epsilon + \mathcal{O}(\epsilon^2).
+\end{align}
+
+In the case with preference heterogeneity and leverage constraints, the inverse aggregate market elasticity is given by
+\begin{equation}
+    (\epsilon_{Y,t}^0)^{-1} = (1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{y_{Y,0}} \frac{\overline{\alpha}_p^{opt}-1}{x_a-x_c} (1-x_c) +(1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{y_{Y,0}} \frac{1-\overline{\alpha}_p}{x_a-x_c} (1-x_c)  + \mathcal{O}(\epsilon^2).
+\end{equation}
+
+This implies that the coefficients are given by
+\begin{align}   
+    \frac{2 d_Y^0}{x_{0,t} y_{Y,0}} &= (1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{y_{Y,0}} \frac{(1-x_c)}{x_a-x_c} , \\
+    -\frac{b_Y^0}{x_{0,t} y_{Y,0}} \epsilon &= \frac{2 d_Y^0}{x_{0,t} y_{Y,0}} (\overline{\alpha}_p^{opt}-1).
+\end{align}
+
+The second-order correction for the dividend yield in the case with passive portfolio dynamics is given by
+\begin{equation}    
+    y_{Y,2}^T = a_y^T + b_y^T \hat{\alpha}_p + d_y^T \hat{\alpha}_p^2,
+\end{equation}
+where
+\begin{align}
+    d_{Y}^T &= \frac{y_{Y,0}}{y_{Y,0}+2\kappa_p} d_Y^0,\\
+    b_{Y}^T &= \frac{y_{Y,0}}{y_{Y,0}+\kappa_p} b_Y^0 + \frac{2 d_Y^T}{y_{Y,0}+\kappa_p} M_p,
+\end{align}
+where $M_p = \kappa_p \hat{\alpha} + (1-\gamma) \sigma_p \sigma^\top$.
+
+The inverse aggregate market elasticity is given by
+\begin{align}
+    (\epsilon_{Y,t}^T)^{-1} 
+    &= -\frac{1}{x_{0,t} y_{Y,0}} \left(2 d_Y^T \hat{\alpha}_p + b_Y^T \right) \epsilon + \mathcal{O}(\epsilon^2).
+\end{align}
+
+The coefficient on $1-\overline{\alpha}_p$ can be written as
+\begin{equation}
+    \frac{2 d_Y^T}{x_{0,t} y_{Y,0}} = \frac{y_{Y,0}}{y_{Y,0}+2\kappa_p} \frac{2 d_Y^0}{x_{0,t} y_{Y,0}} = (1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{y_{Y,0}+2\kappa_p} \frac{(1-x_c)}{x_a-x_c} ,
+\end{equation}
+and the intercept term is given by
+\begin{align}
+    -\frac{b_Y^T}{x_{0,t} y_{Y,0}} &= - \frac{y_{Y,0}}{y_{Y,0}+\kappa_p} \frac{b_Y^0}{x_{0,t} y_{Y,0}} - \frac{M_p}{y_{Y,0}+\kappa_p} \frac{2 d_Y^T}{x_{0,t} y_{Y,0}}\\
+    &= \frac{y_{Y,0}}{y_{Y,0}+\kappa_p} \frac{2 d_Y^0}{x_{0,t} y_{Y,0}} \hat{\alpha}_p^{opt} - \frac{M_p}{y_{Y,0}+\kappa_p} \frac{y_{Y,0}}{y_{Y,0}+2\kappa_p} \frac{2 d_Y^0}{x_{0,t} y_{Y,0}}\\
+    &= \frac{y_{Y,0}}{y_{Y,0}+2\kappa_p} \frac{2 d_Y^0}{x_{0,t} y_{Y,0}} \left[ \frac{y_{Y,0}+2 \kappa_p}{y_{Y,0}+\kappa_p} \hat{\alpha}_p^{opt} -\frac{M_p}{y_{Y,0}+\kappa_p} \right],
+\end{align}
+where $\overline{\alpha}_p^{opt} \epsilon \equiv \overline{\alpha}_p^{opt}-1$.
+
+Combining the expressions above, we obtain
+\begin{equation}
+    (\epsilon_{Y,t}^T)^{-1} 
+    =(1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{y_{Y,0}+2\kappa_p} \frac{(1-x_c)}{x_a-x_c} \left[ \overline{\alpha}_{p,t}^{opt}- \overline{\alpha}_{p,t}+\frac{\kappa_p(\overline{\alpha}_{p,t}^{opt}-\overline{\alpha})}{y_{Y,0}+\kappa_p}  +\frac{(\gamma-1) \sigma_p \sigma^\top}{y_{Y,0}+\kappa_p} \right] + \mathcal{O}(\epsilon^2),
+\end{equation}
+using the fact that $\overline{\alpha} = 1 + \hat{\alpha}\epsilon$.
 
 \subsection{The role of the wealth distribution}
 
@@ -4644,184 +4708,6 @@ where we use $ \overline{\sigma}=\sigma+\hat{\sigma}\epsilon $ from Equation~\eq
 % \end{itemize}
 \end{comment}
 
-\section{Market Elasticity with Time-Varying Passive Portfolio Shares}
-
-\noindent\textbf{Step 8 (time-varying $\alpha_p$): Aggregate market elasticity (no heterogeneity or leverage).}\\
-Consider the case without preference heterogeneity or leverage constraints.
-Then $\hat{\gamma}_j=0$ for $j=0,1,2$ and $\hat{\nu}_2=0$.
-In the fixed-$\hat{\alpha}_p$ economy, Step 6 gives
-\begin{equation}
-    y_{Y,2}^{0}(x,\hat{\alpha}_p)
-    =d_Y^{0}\hat{\alpha}_p^2,
-    \qquad
-    d_Y^{0}=\frac{1}{2}(1-\psi^{-1})\gamma\|\sigma\|^2\frac{x_0}{x_a},
-\end{equation}
-so $a_Y^{0}=b_Y^{0}=0$.
-
-With time-varying passive demand, Step 7 implies that the total second-order dividend-yield correction is
-\begin{equation}
-    y_{Y,2}^{T}(x,\hat{\alpha}_p)
-    \equiv y_{Y,2}^{0}(x,\hat{\alpha}_p)+\Delta y_{Y,2}(x,\hat{\alpha}_p)
-    =a_Y^T+b_Y^T\hat{\alpha}_p+d_Y^T\hat{\alpha}_p^2,
-\end{equation}
-where, using $b_Y^{0}=0$,
-\begin{align}
-    d_Y^T
-    &=\frac{1}{1+\frac{2\kappa_p}{y_{Y,0}}}d_Y^{0},\\
-    b_Y^T
-    &=\frac{2d_Y^T M_p}{y_{Y,0}+\kappa_p},\\
-    a_Y^T
-    &=a_Y
-    =\frac{1}{y_{Y,0}}\left(b_Y^T M_p+d_Y^T V_p\right),
-\end{align}
-with
-\begin{equation}
-    M_p\equiv \kappa_p\hat{\alpha}+(1-\gamma)\sigma_p\sigma^\top,
-    \qquad
-    V_p\equiv \sigma_p\sigma_p^\top.
-\end{equation}
-The constant term $a_Y^T$ does not affect the elasticity.
-Differentiating with respect to $\hat{\alpha}_p$ gives
-\begin{equation}\label{eq:dy2-total-alpha-timevarying-noheterog}
-    \frac{\partial y_{Y,2}^{T}}{\partial\hat{\alpha}_p}
-    =b_Y^T+2d_Y^T\hat{\alpha}_p
-    =2d_Y^T\left(\hat{\alpha}_p+\frac{M_p}{y_{Y,0}+\kappa_p}\right).
-\end{equation}
-
-Using the price-dividend-ratio expansion,
-\begin{equation}
-    \frac{1}{p(X,\epsilon)}\frac{\partial p(X,\epsilon)}{\partial F(X,\epsilon)}
-    =-\frac{1}{y_{Y,0}}
-    \frac{\partial y_{Y,2}^{T}}{\partial\hat{\alpha}_p}
-    \frac{\epsilon}{x_0}
-    +\mathcal{O}(\epsilon^2).
-\end{equation}
-Substituting \eqref{eq:dy2-total-alpha-timevarying-noheterog} and the expression for $d_Y^0$ yields
-\begin{align}\label{eq:elasticity-timevarying-noheterog-hatalpha}
-    \frac{1}{p(X,\epsilon)}\frac{\partial p(X,\epsilon)}{\partial F(X,\epsilon)}
-    &=-\frac{1}{y_{Y,0}}
-    \frac{2d_Y^{0}}{1+\frac{2\kappa_p}{y_{Y,0}}}
-    \left(\hat{\alpha}_p+\frac{M_p}{y_{Y,0}+\kappa_p}\right)
-    \frac{\epsilon}{x_0}
-    +\mathcal{O}(\epsilon^2) \\
-    &=-\left(1-\psi^{-1}\right)
-    \frac{\gamma\|\sigma\|^2}{y_{Y,0}}
-    \frac{1}{x_a}
-    \frac{1}{1+\frac{2\kappa_p}{y_{Y,0}}}
-    \left(\hat{\alpha}_p+\frac{M_p}{y_{Y,0}+\kappa_p}\right)
-    \epsilon
-    +\mathcal{O}(\epsilon^2).
-\end{align}
-Equivalently, using $\overline{\alpha}_p=1+\hat{\alpha}_p\epsilon$, this can be written as
-\begin{equation}\label{eq:elasticity-timevarying-noheterog-final}
-    \frac{1}{p(X,\epsilon)}\frac{\partial p(X,\epsilon)}{\partial F(X,\epsilon)}
-    =\left(1-\psi^{-1}\right)
-    \frac{\gamma\|\sigma\|^2}{y_{Y,0}}
-    \frac{1}{x_a}
-    \frac{1}{1+\frac{2\kappa_p}{y_{Y,0}}}
-    \left[1-\overline{\alpha}_p
-    -\frac{\epsilon M_p}{y_{Y,0}+\kappa_p}\right]
-    +\mathcal{O}(\epsilon^2).
-\end{equation}
-The first term is the fixed-passive-share elasticity attenuated by mean reversion in passive demand.
-The additional term involving $M_p$ captures the fact that predictable rebalancing and passive-demand risk affect prices even when the current passive share equals its benchmark value.
-When $\kappa_p=0$ and $\sigma_p=0$, $M_p=0$ and \eqref{eq:elasticity-timevarying-noheterog-final} collapses to the fixed-$\hat{\alpha}_p$ result.
-
-\noindent\textbf{Step 9 (time-varying $\alpha_p$): Aggregate market elasticity (preference heterogeneity).}\\
-Consider next the case with preference heterogeneity but no leverage constraints.
-Then $\hat{\nu}_2=0$, and the first-order exposure coefficients are
-\begin{equation}
-    m_{0,1}=\hat{\alpha}_p,
-    \qquad
-    m_{j,1}=\bar{\gamma}_a-\frac{x_0}{x_a}\hat{\alpha}_p-\hat{\gamma}_j,
-    \qquad j=1,2,
-\end{equation}
-where
-\begin{equation}
-    \bar{\gamma}_a\equiv \sum_{j=1}^2\frac{x_j}{x_a}\hat{\gamma}_j,
-    \qquad
-    x_a\equiv 1-x_0.
-\end{equation}
-In the fixed-$\hat{\alpha}_p$ economy, the second-order dividend-yield correction is
-\begin{equation}
-    y_{Y,2}^{0}(x,\hat{\alpha}_p)
-    =a_Y^{0}(x)+b_Y^{0}(x)\hat{\alpha}_p+d_Y^{0}(x)\hat{\alpha}_p^2,
-\end{equation}
-with
-\begin{equation}
-    b_Y^{0}(x)
-    =(1-\psi^{-1})\gamma\|\sigma\|^2x_0(\hat{\gamma}_0-\bar{\gamma}_a),
-    \qquad
-    d_Y^{0}(x)
-    =\frac{1}{2}(1-\psi^{-1})\gamma\|\sigma\|^2\frac{x_0}{x_a}.
-\end{equation}
-The constant term $a_Y^0$ does not affect the elasticity.
-
-With time-varying passive demand, Step 7 implies that the total second-order dividend-yield correction satisfies
-\begin{equation}
-    y_{Y,2}^{T}(x,\hat{\alpha}_p)
-    \equiv y_{Y,2}^{0}(x,\hat{\alpha}_p)+\Delta y_{Y,2}(x,\hat{\alpha}_p)
-    =a_Y^T+b_Y^T\hat{\alpha}_p+d_Y^T\hat{\alpha}_p^2,
-\end{equation}
-where
-\begin{equation}
-    d_Y^T=\frac{1}{1+\frac{2\kappa_p}{y_{Y,0}}}d_Y^{0},
-    \qquad
-    b_Y^T=\frac{y_{Y,0}b_Y^{0}+2d_Y^T M_p}{y_{Y,0}+\kappa_p},
-\end{equation}
-and
-\begin{equation}
-    M_p\equiv \kappa_p\hat{\alpha}+(1-\gamma)\sigma_p\sigma^\top.
-\end{equation}
-Therefore,
-\begin{align}\label{eq:dy2-total-alpha-timevarying-heterog}
-    \frac{\partial y_{Y,2}^{T}}{\partial\hat{\alpha}_p}
-    &=b_Y^T+2d_Y^T\hat{\alpha}_p \nonumber\\
-    &=\frac{y_{Y,0}b_Y^{0}}{y_{Y,0}+\kappa_p}
-    +2d_Y^T\left(\hat{\alpha}_p+\frac{M_p}{y_{Y,0}+\kappa_p}\right).
-\end{align}
-Using the price-dividend-ratio expansion,
-\begin{equation}
-    \frac{1}{p(X,\epsilon)}\frac{\partial p(X,\epsilon)}{\partial F(X,\epsilon)}
-    =-\frac{1}{y_{Y,0}}
-    \frac{\partial y_{Y,2}^{T}}{\partial\hat{\alpha}_p}
-    \frac{\epsilon}{x_0}
-    +\mathcal{O}(\epsilon^2).
-\end{equation}
-Substituting \eqref{eq:dy2-total-alpha-timevarying-heterog} and the expressions for $b_Y^0$ and $d_Y^0$ gives
-\begin{align}\label{eq:elasticity-timevarying-heterog-hatalpha}
-    \frac{1}{p(X,\epsilon)}\frac{\partial p(X,\epsilon)}{\partial F(X,\epsilon)}
-    &=-\left(1-\psi^{-1}\right)\frac{\gamma\|\sigma\|^2}{y_{Y,0}}
-    \left[
-        \frac{y_{Y,0}}{y_{Y,0}+\kappa_p}(\hat{\gamma}_0-\bar{\gamma}_a)
-        +\frac{1}{x_a}\frac{1}{1+\frac{2\kappa_p}{y_{Y,0}}}
-        \left(\hat{\alpha}_p+\frac{M_p}{y_{Y,0}+\kappa_p}\right)
-    \right]\epsilon
-    +\mathcal{O}(\epsilon^2).
-\end{align}
-Equivalently, using $\overline{\alpha}_p=1+\hat{\alpha}_p\epsilon$ and
-\begin{equation}
-    \frac{\gamma_0-\mathbb{E}_a[\gamma_j]}{\gamma}
-    =(\hat{\gamma}_0-\bar{\gamma}_a)\epsilon,
-\end{equation}
-we can write
-\begin{align}\label{eq:elasticity-timevarying-heterog-final}
-    \frac{1}{p(X,\epsilon)}\frac{\partial p(X,\epsilon)}{\partial F(X,\epsilon)}
-    &=(1-\psi^{-1})\frac{\gamma\|\sigma\|^2}{y_{Y,0}}
-    \left[
-        \frac{1}{x_a}\frac{1}{1+\frac{2\kappa_p}{y_{Y,0}}}
-        \left(1-\overline{\alpha}_p-\frac{\epsilon M_p}{y_{Y,0}+\kappa_p}\right)
-        -\frac{y_{Y,0}}{y_{Y,0}+\kappa_p}
-        \frac{\gamma_0-\mathbb{E}_a[\gamma_j]}{\gamma}
-    \right]
-    +\mathcal{O}(\epsilon^2).
-\end{align}
-Thus, time variation in passive demand attenuates both components of the fixed-passive-share elasticity, but with different attenuation factors.
-The demand-misalignment term is scaled by $(1+2\kappa_p/y_{Y,0})^{-1}$, while the preference-heterogeneity term is scaled by $y_{Y,0}/(y_{Y,0}+\kappa_p)$.
-The term involving $M_p$ is new and captures predictable rebalancing and passive-demand risk.
-When $\kappa_p=0$ and $\sigma_p=0$, \eqref{eq:elasticity-timevarying-heterog-final} collapses to the fixed-$\hat{\alpha}_p$ result with preference heterogeneity.
-
-
 \section{Useful Formula}
 The following are useful for computing the derivatives above:
 \begin{align}
@@ -5185,38 +5071,6 @@ The drift of $y$ is given by
 \end{equation}
 
 The term of order 0 is the same as before.
-
-\section{Volatility}
-
-Consider the case without preference heterogeneity or leverage constraints.
-The price-dividend ratio is given by:
-\begin{equation}
-    \hat{p}_t = - (1-\psi^{-1})\frac{\gamma\|\sigma\|^2}{2 y^*}\,
-                    \frac{(1-x_{a,t}) (1-\overline{\alpha}_{p,t})^2}{x_{a,t}}.
-\end{equation}
-where, given $\overline{\alpha}_{a,t} \equiv \frac{1-(1-x_{a,t})  \overline{\alpha}_{p,t}}{x_{a,t}}$, we have
-\begin{equation}
-    \sigma_{x_a,t} = x_{a,t} (\overline{\alpha}_{a,t}-1) \sigma, \qquad \qquad 
-    \sigma_{\overline{\alpha}_p,t} = \sigma_{\overline{\alpha}_p}
-\end{equation}
-
-The diffusion of $\hat{p}_t$ is given
-\begin{equation}
-    \sigma_{p,t} = \hat{p}_{x_a,t} \sigma_{x_a,t} + \hat{p}_{\overline{\alpha}_p,t} \sigma_{\overline{\alpha}_p}.
-\end{equation}
-
-\begin{equation}
-    \hat c_t \;\equiv\; c_t - c^*
-    \;=\; \chi_{0,t} \;+\; \chi_p\,\hat p_t \;+\; \mathcal{O}(\epsilon^3),
-\end{equation}
-with coefficients
-\[
-    \chi_p = (\psi-1)\,\frac{1}{p^*},
-    \qquad
-    \chi_{0,t} = (\psi-1)\,\frac{\gamma\|\sigma\|^2}{2}\,
-                    \frac{f_t^2}{x_{0,t}(1-x_{0,t})}.
-\]
-
 
 \section{Flow of Funds aggregation}\label{app:fof_aggregation}
 
@@ -5782,64 +5636,6 @@ We can then write the interest rate as follows:
 \begin{equation}
     \hat{r}_t = (1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{2} \frac{x_0}{x_a}(\overline{\alpha}_{p,t}-1)^2 - \hat{\eta}_t \sigma^\top + \mathcal{O}(\epsilon^3).
 \end{equation}
-
-\subsection{The case with frictions}
-
-We consider next the aggregate market elasticity in richer settings. The second-order correction for the dividend yield in the case where the portfolio share of passive investors is fixed takes the form:
-\begin{equation}    
-    y_{Y,2}^0 = a_y^0 + b_y^0 \overline{\alpha}_p + d_y^0 \overline{\alpha}_p^2.
-\end{equation}
-
-The inverse aggregate market elasticity is given by
-\begin{equation}
-    (\epsilon_{Y,t}^0)^{-1} = -\frac{1}{x_{0,t} y_{Y,0}^2} \frac{\partial y_{Y,2}^0}{\partial \hat{\alpha}_p} \epsilon + \mathcal{O}(\epsilon^2).
-\end{equation}
-
-
-% \section{The unit EIS case}
-
-% Suppose $\psi = 1$ and $\gamma_j = 1$ for $j = 1,\ldots, J$. In this case, the consumption-wealth ratio satisfies $c_{j,t} = \rho$ and the dividend-yield is given by $y_t = \rho$. This implies that $\sigma_{R,t} = \sigma$. The risk premium is given by
-% \begin{equation}
-%     \pi_t = \left[1+\frac{x_{0,t} (1- \overline{\alpha}_{p,t}) }{1-x_{0,t}}\right] \|\sigma\|^2.
-% \end{equation}
-
-% The interest rate is given by 
-% \begin{equation}
-%     r_t = \rho + \mu -\left[1+\frac{x_{0,t} (1- \overline{\alpha}_{p,t}) }{1-x_{0,t}}\right] \|\sigma\|^2.
-% \end{equation}
-
-% The portfolio share of active investors is $\alpha_{j,t} = \frac{1-x_{0,t} \overline{\alpha}_{p,t}}{1-x_{0,t}}$.
-% The drift and diffusion of the state variable are given by
-% \begin{align}
-%     \mu_{x,t} &= \left[ r_t + \pi_t \alpha_{j,t} - \rho - \mu + (1-\alpha_{j,t}) \|\sigma\|^2 \right] x_t + \kappa (\omega_j - x_t)\\
-%     \sigma_{x,t} &= (\alpha_{j,t}-1) \sigma 
-% \end{align}
-
-% \newpage
-% The HJB equation can be written as\small
-% \begin{equation}
-%     c_{j,t} = \psi \rho + (1-\psi) \left[ r_t + \pi_t \alpha_{j,t} - \frac{\gamma_j}{2} \| \sigma \|^2 \alpha_{j,t}^2 \right] + \frac{c_{j,x}}{c_j} \mu_x \epsilon + \frac{1}{2} \frac{c_{j,xx}}{c_j} \sigma_x^2 \epsilon^2 + (1-\gamma_j) \frac{c_{j,x}}{c_j} \sigma_x \epsilon \sigma^\top \alpha_{j,t} + \frac{\psi - \gamma_j}{1-\psi} \frac{1}{2} \left(\frac{c_{j,x}}{c_j} \sigma_x \epsilon\right)^2
-% \end{equation}\normalsize
-
-% The zeroth-order term is given by
-% \begin{equation}
-%     c_{j,t}^{(0)} = \psi \rho + (1-\psi) \left[ r_t + \pi_t \alpha_{j,t} - \frac{\gamma_j}{2} \| \sigma \|^2 \alpha_{j,t}^2 \right].
-% \end{equation}
-
-% The first-order term is given by
-% \begin{equation}
-%     c_{j,t}^{(1)} = \frac{c_{j,x}^{(0)}}{c_j^{(0)}} \mu_x  + (1-\gamma_j) \frac{c_{j,x}^{(0)}}{c_j^{(0)}} \sigma_x \sigma^\top \alpha_{j,t}.
-% \end{equation}
-
-% % The second-order term is given by
-% % \begin{equation}
-% %     c_{j,t}^{(2)} = \hat{c}_{j,x}^{(1)} \mu_x  + \frac{1}{2}\hat{c}_{j,xx}^{(0)}\sigma_x^2 + (1-\gamma_j) \hat{c}_j^{(1)} \sigma_x  \sigma^\top \alpha_{j,t} + \frac{\psi - \gamma_j}{1-\psi} \frac{1}{2} \left(\hat{c}_{j,x}^{(0)} \sigma_x \right)^2
-% % \end{equation}
-
-% The term of order $k\geq 2$ is given by
-% \begin{equation}
-%     c_{j,t}^{(k)} = \hat{c}_{j,x}^{(k-1)} \mu_x  + \frac{1}{2}\hat{c}_{j,xx}^{(k-2)}\sigma_x^2 + (1-\gamma_j) \hat{c}_j^{(k-1)} \sigma_x  \sigma^\top \alpha_{j,t} + \frac{\psi - \gamma_j}{1-\psi} \frac{1}{2} \left(\hat{c}_{j,x}^{(k-2)} \sigma_x \right)^2.
-% \end{equation}
 
 
 

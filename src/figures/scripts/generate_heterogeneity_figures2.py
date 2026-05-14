@@ -26,7 +26,7 @@ const = (1.0 - 1.0/psi) * (gamma_sigma2 / y_star)
 w1 = np.linspace(0.0, 1.0, 800)
 
 def inv_elast_w1_xa(w1, xa):
-    """ε_M^{-1}(w1; xa) with α_p fixed."""
+    """ε_Y^{-1}(w1; xa) with α_p fixed."""
     E_u = w1 * gamma1 + (1.0 - w1) * gamma2
     return const * ((1.0 - alpha_p) / xa - (gamma0 - E_u) / gamma_den)
 
@@ -52,7 +52,7 @@ for xa in xa_values:
     )
 
 plt.xlabel(r"Share of type 1 among actives, $w_1$")
-plt.ylabel(r"Inverse market elasticity, $\varepsilon_M^{-1}$")
+plt.ylabel(r"Inverse market elasticity, $\varepsilon_Y^{-1}$")
 plt.axhline(0, linestyle=":", linewidth=1)
 plt.legend(frameon=False, loc="best")
 plt.xlim(0, 1)

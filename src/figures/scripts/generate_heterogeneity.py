@@ -39,11 +39,11 @@ const = (1.0 - 1.0/psi) * (gamma_sigma2 / y_star)
 E_u_gamma = w1 * gamma1 + (1.0 - w1) * gamma2
 
 # Inverse market elasticity with heterogeneity:
-# ε_M^{-1} = const * [ (1 - α_p)/x_a - (γ0 - E^u[γ_j]) / γ ]
+# ε_Y^{-1} = const * [ (1 - α_p)/x_a - (γ0 - E^u[γ_j]) / γ ]
 hetero = const * ((1.0 - alpha_p_hetero) / xa - (gamma0 - E_u_gamma) / gamma_baseline)
 
 # Homogeneous-preferences benchmark (remove γ-term):
-# ε_M^{-1} = const * (1 - α_p) / x_a
+# ε_Y^{-1} = const * (1 - α_p) / x_a
 nohet  = const * ((1.0 - alpha_p_nohet) / xa)
 
 # ----------------------------
@@ -54,7 +54,7 @@ plt.plot(xa, hetero, label="Heterogeneous preferences", color="tab:blue",  lw=3.
 plt.plot(xa, nohet,  label="Homogeneous preferences",   color="tab:orange", lw=3.2, ls="--")
 
 plt.xlabel(r"Wealth share of active investors, $x_a$")
-plt.ylabel(r"Inverse market elasticity, $\varepsilon_M^{-1}$")
+plt.ylabel(r"Inverse market elasticity, $\varepsilon_Y^{-1}$")
 plt.title("Price Impact")
 plt.legend(frameon=False)
 
