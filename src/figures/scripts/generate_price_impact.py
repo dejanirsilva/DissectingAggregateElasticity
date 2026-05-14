@@ -32,8 +32,8 @@ plt.rcParams['ps.fonttype']  = 42
 # Constant multiplier: (1 - ψ^{-1}) * (γ||σ||^2 / y*)
 const = (1.0 - 1.0/psi) * (gamma_sigma2 / y_star)
 
-# x_a grid (start at 0.05, end at 0.5)
-xa = np.linspace(0.05, 0.5, 700)
+# x_a grid (start at 0.15, end at 0.30)
+xa = np.linspace(0.15, 0.30, 700)
 
 def inv_elasticity(xa, alpha_p, const):
     """Inverse market elasticity: ε_M^{-1} = const * (1 - α_p) / x_a"""
@@ -68,7 +68,7 @@ for ap in alpha_ps:
     )
 
 plt.xlabel(r"Wealth share of active investors, $x_a$")
-plt.ylabel(r"Inverse market elasticity, $\varepsilon_M^{-1}$")
+plt.ylabel(r"Inverse market elasticity, $\varepsilon_Y^{-1}$")
 plt.title("Price Impact")
 plt.legend(frameon=False)
 
@@ -76,6 +76,7 @@ plt.legend(frameon=False)
 ymax = const * (1.0 - min(alpha_ps)) / xa.min() * 1.05
 plt.ylim(-0.2, ymax)
 plt.xlim(xa.min(), xa.max())
+plt.xticks(np.arange(0.15, 0.3001, 0.025))
 
 plt.grid(True, linestyle=":", linewidth=1)
 plt.tight_layout()

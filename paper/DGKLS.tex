@@ -367,7 +367,7 @@ We now develop a dynamic heterogeneous-agent asset pricing model that provides a
 The economy extends the framework of Section~\ref{sec:simple} by embedding passive and active investors in a full general-equilibrium setting.
 
 Passive investors hold exogenously specified, stochastic portfolio shares in risky assets.
-Shocks to these portfolio shares generate portfolio flow (i.e., noise trading) shocks that are imperfectly correlated with cash flow shocks, so the economy is driven by both fundamental and non-fundamental demand shocks.
+Shocks to these portfolio shares generate portfolio flow (i.e., noise trading) shocks \citep{DeLong/Shleifer/Summers/Wladmann/1990} that are imperfectly correlated with cash flow shocks, so the economy is driven by both fundamental and non-fundamental demand shocks.
 Active investors, in contrast, optimally rebalance their portfolios subject to financial frictions.
 We model two types of active investors that differ in risk aversion: a high risk aversion (unconstrained) investor and a low risk aversion investor subject to a leverage constraint.
 
@@ -1288,14 +1288,15 @@ Given the demand system, equilibrium prices follow from market clearing in the r
 \[
     \sum_{j=0}^2 x_{j,t}\, q_{j,t} = 0,
     \qquad
-    \sum_{j=0}^2 x_{j,t}\, \hat{c}_{j,t} = -\frac{1}{p_{Y}^{*}}\,\hat{p}_{Y,t}.
+    \sum_{j=0}^2 x_{j,t}\, \hat{c}_{j,t} = -y^*\,\hat{p}_{Y,t},
 \]
+where $y^* = 1/p_{Y}^{*}$.
 
 Aggregating the demand system across investors yields
 \[
     \begin{bmatrix}
         \zeta_{p,t} & \zeta_{r,t} \\
-        \chi_p + \tfrac{1}{p_{Y}^{*}} & 0
+        \chi_p + y^* & 0
     \end{bmatrix}
     \begin{bmatrix}
         \hat{p}_{Y,t} \\[4pt]
@@ -1312,7 +1313,7 @@ where $\zeta_{k,t} \equiv \sum_{j=0}^2 x_{j,t} \zeta_{j,k}$, for $k \in \{p,r\}$
 The aggregate demand shifter $f_t$ captures flow shocks.
 We define the inverse aggregate market elasticity as the proportional price response of the aggregate claim to a flow shock $f_t$:
 \[
-    \epsilon_{Y,t}^{-1}
+    \varepsilon_{Y,t}^{-1}
     \equiv
     \frac{\partial \hat p_{Y,t}}{\partial f_t}.
 \]
@@ -1321,7 +1322,7 @@ We define the inverse aggregate market elasticity as the proportional price resp
 We are now ready to characterize the first-order impact of portfolio flows.
 The second row of the demand system shows that the aggregate price-dividend ratio is pinned down by goods market clearing:
 \[
-    \left(\chi_p+\frac{1}{p_Y^*}\right)\hat p_{Y,t}=-\chi_{0,t}.
+    \left(\chi_p+y^*\right)\hat p_{Y,t}=-\chi_{0,t}.
 \]
 Since $\chi_{0,t}$ is independent of the portfolio-flow shock $f_t$ at first order, portfolio flows do not affect $\hat p_{Y,t}$.
 Instead, the risk premium and interest rate adjust to clear the risky-asset market.
@@ -1337,7 +1338,7 @@ Then:
 \begin{enumerate}[label=(\roman*)]
     \item The price impact on the aggregate claim is zero:
     \[
-        \epsilon_{Y,t}^{-1}
+        \varepsilon_{Y,t}^{-1}
         =
         \frac{\partial \hat p_{Y,t}}{\partial f_t}
         =
@@ -1393,60 +1394,124 @@ In the first-order approximation, this derivative is evaluated around the benchm
 The derivative is thus zero, so the price impact is zero for first-order deviations from the frictionless allocation: the consumption-wealth ratio does not react to flow shocks.
 In the simple model of Section~\ref{sec:simple}, this was imposed as an \emph{assumption}; here it emerges as a \emph{result} of expanding around the efficient allocation.
 
-This reasoning also clarifies when aggregate elasticity becomes finite: when the initial allocation of risk is \textit{inefficient}.
+This reasoning also suggests that an \textit{inefficient} initial allocation of risk plays an important role in delivering finite aggregate market elasticity.
 Capturing these effects requires a second-order approximation of the demand system.
 % To study such economies requires larger departures from the benchmark, captured by a second-order approximation of the demand system.
 
-\subsection{Inefficient passive demand}
+\subsection{Determinants of aggregate market elasticity}
 
-We next turn to a second-order approximation of the demand system to study how risk allocation affects aggregate market elasticity.
-To focus on the mechanism most clearly, consider the special case without preference heterogeneity or leverage constraints.  
+We next turn to a second-order approximation of the demand system to study the determinants of aggregate market elasticity.
+To isolate the mechanism that generates inelastic markets more clearly, we consider the special case without preference heterogeneity or leverage constraints.  
 
-\paragraph{The role of risk misallocation.}  
-In this setting, demand for the risky asset is still given by \eqref{eq:demand_risky} up to second order.
-Without heterogeneity, the relevant demand shifter is  
-\[
-    f_t \equiv x_{0,t}\left(\overline{\alpha}_{p,t}-1\right),
-\]
-where $x_{0,t}$ denotes the wealth share of passive investors.  
+\paragraph{Definition of aggregate market elasticity.}
+Up to second order, the price-dividend ratio for the aggregate claim takes the form:
+\begin{equation}\label{eq:p_Y_second_order}
+    \hat{p}_{Y,t} = a_Y(x_t) \frac{(\overline{\alpha}_{p,t}-1)^2}{2}  + b_Y(x_t) (\overline{\alpha}_{p,t}-1) + c_Y(x_t) + \mathcal{O}(\epsilon^3),
+\end{equation}
+where $a_Y(x)$, $b_Y(x)$, and $c_Y(x)$ are functions to be determined.
 
-The key difference relative to the benchmark arises from the consumption-wealth ratio.
-Aggregating \eqref{eq:HJB_complete} across investors, letting $c_t \equiv \sum_{j=0}^2 x_{j,t} c_{j,t}$, and imposing market clearing $\sum_{j=0}^2 x_{j,t} \sigma_{j,t}=\sigma_{R_Y,t}$, yields
+The aggregate market elasticity corresponds to the inverse of the price impact of a passive flow, that is, a change in $x_{0,t} (\overline{\alpha}_{p,t}-1)$. 
+In this case, the (inverse) aggregate market elasticity is given by:
+\begin{equation}
+    \varepsilon_{Y,t}^{-1} \equiv \frac{1}{x_{0,t}} \frac{\partial \hat{p}_{Y,t}}{\partial \overline{\alpha}_{p,t}} = \frac{a_Y(x_t)}{x_{0,t}} (\overline{\alpha}_{p,t}-1)  + \frac{b_Y(x_t)}{x_{0,t}}+ \mathcal{O}(\epsilon^2).
+\end{equation}
+Hence, to characterize the aggregate market elasticity, we need to determine the coefficients $a_Y(x_t)$ and $b_Y(x_t)$.
+
+\paragraph{Diffusion and drift of the price-dividend ratio.}
+The diffusion of the price-dividend ratio is
+\begin{equation}
+    \sigma_{p_Y} = \frac{p_{Y,\overline{\alpha}_p}}{p_{Y}} \sigma_p + \mathcal{O}(\epsilon^3),
+\end{equation}
+using the fact that $p_{Y,x} = \mathcal{O}(\epsilon^2)$ and $\sigma_{x} = \mathcal{O}(\epsilon)$ in the case without preference heterogeneity.  
+
+We can then write return volatility as follows:
+\begin{equation}\label{eq:sigma_R_Y_second_order}
+    \sigma_{R_Y,t} = \sigma + x_{0,t} \varepsilon_{Y,t}^{-1} \sigma_p + \mathcal{O}(\epsilon^3).
+\end{equation}
+
+The expression above shows that there is a tight connection between aggregate market elasticity, portfolio-flow shocks, and excess return volatility in our economy.
+To generate excess volatility, the aggregate market elasticity must be sufficiently inelastic and the economy must be exposed to portfolio-flow shocks.
+If the market is either perfectly elastic, $\varepsilon_{Y,t}^{-1} = 0$, or not exposed to flow shocks, $\sigma_p = 0$, there is no excess volatility.
+
+The drift of the price-dividend ratio is given by
+\begin{equation}
+    \mu_{p_Y} = \frac{p_{Y,\overline{\alpha}_p}}{p_{Y}} \mu_{\overline{\alpha}_p} + \frac{1}{2} \frac{p_{Y,\overline{\alpha}_p\overline{\alpha}_p}}{p_{Y}} \sigma_p \sigma_p^\top + \mathcal{O}(\epsilon^3).
+\end{equation}
+Given the process for portfolio share $\overline{\alpha}_{p,t}$ and the coefficients in Equation~\eqref{eq:p_Y_second_order}, we obtain:
+\begin{equation}
+    \mu_{p_Y,t} = \left[a_Y(x_t) (\overline{\alpha}_{p,t}-1) + b_Y(x_t)\right] \kappa_p (1-\overline{\alpha}_{p,t})  + \frac{1}{2} a_Y(x_t) \sigma_p \sigma_p^\top + \mathcal{O}(\epsilon^3).
+\end{equation}
+
+\paragraph{Demand for the risky asset.} The second-order demand for the risky asset still takes the form in Equation~\eqref{eq:demand_risky}, with the same definition of own and cross-price elasticities.
+The demand shifter for passive investors is simply $f_{0,t} = \overline{\alpha}_{p,t} - 1$, 
+while the demand shifter for active investors now captures the effect of price dynamics:
+\begin{equation}
+    f_{j,t} = \underbrace{\zeta_{j,r} (\mu_{p_Y,t} +\sigma_{p_Y,t}\sigma^\top)}_{\text{expected price appreciation}} +\underbrace{ \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,t} \sigma^\top}{\sigma \sigma^\top}}_{\text{hedging demand}}- \underbrace{2 \frac{\sigma_{p_Y,t} \sigma ^\top}{\sigma \sigma^\top}}_{\text{endogenous volatility}}.
+\end{equation}
+
+Given the current price-dividend ratio $\hat{p}_{Y,t}$ and interest rate $\hat{r}_t$, active investors have a higher demand for risky assets when there is a positive expected price appreciation or hedging demand.
+Holding expected returns fixed, greater endogenous return volatility reduces demand for risky assets.
+
+\paragraph{Consumption-wealth ratio.} Consider next the consumption-wealth ratio.
+Aggregating \eqref{eq:HJB_complete} across investors, letting $c_t \equiv \sum_{j=0}^2 x_{j,t} c_{j,t}$, yields
 \begin{equation}
     c_t
     \;=\;
     \psi\rho
     \;+\;
-    (1-\psi)\!\left[
-        r_t+\pi_{Y,t}
-        - \frac{\gamma\|\sigma_{R_Y,t}\|^2}{2}\sum_{j=0}^2 x_{j,t}\alpha_{j,Y,t}^2
-    \right] + \xi_t.
+    (1-\psi)\!
+        \underbrace{\left[r_t+\pi_{Y,t}
+        - \frac{\gamma\|\sigma_{R_Y,t}\|^2}{2}\sum_{j=0}^2 x_{j,t}\alpha_{j,Y,t}^2\right]}_{\text{risk-adjusted expected return}}
+     + \xi_t.
 \end{equation}
+The expression above illustrates how the \textit{misallocation} of the risky asset affects the consumption-wealth ratio.
 Under the efficient allocation $\alpha_{j,Y,t}=1$, so $\sum_{j} x_{j,t}\alpha_{j,Y,t}^2 = 1$. 
-Any deviation from this efficient allocation creates dispersion in portfolios, leading to $\sum_j x_{j,t}\alpha_{j,Y,t}^2>1$ by Jensen’s inequality, which lowers the risk-adjusted expected return $r_t+\pi_{Y,t} - \tfrac{\gamma\|\sigma_{R_Y,t}\|^2}{2}\sum_j x_{j,t}\alpha_{j,Y,t}^2$.
+Any deviation from this efficient allocation creates dispersion in portfolios, leading to $\sum_j x_{j,t}\alpha_{j,Y,t}^2>1$ by Jensen’s inequality, which lowers the risk-adjusted expected return.
 When $\psi>1$, this reduction weakens incentives to save and raises the consumption-wealth ratio for a given $r_t+\pi_{Y,t}$.  
 
-Movements in the passive portfolio therefore shift the aggregate consumption–wealth ratio.
-Its second-order expansion is
+The second-order expansion of the consumption-wealth ratio $\hat{c}_t \equiv c_t - c^{*}$ is given by
 \begin{equation}
-    \hat c_t \;\equiv\; c_t - c^{*}
-    \;=\; \chi_{0,t} \;+\; \chi_p\,\hat p_t \;+\; \mathcal{O}(\epsilon^3),
+    \hat{c}_t = \chi_{0,t} + \chi_p \hat{p}_{Y,t} + \mathcal{O}(\epsilon^3),
 \end{equation}
-with coefficients
-\[
-    \chi_p = (\psi-1)\,\frac{1}{p^{*}},
-    \qquad
-    \chi_{0,t} = (\psi-1)\,\frac{\gamma\|\sigma\|^2}{2}\,
-                    \frac{f_t^2}{x_{0,t}(1-x_{0,t})}.
-\]
-Because $\chi_{0,t}$ is quadratic in the flow $f_t$, it is $\mathcal{O}(\epsilon^2)$.
-For example, when passive investors are initially underexposed to the risky asset ($\overline{\alpha}_{p,t}<1$ and $\psi>1$), an inflow into stocks reduces the consumption-wealth ratio:
-\[
-    \frac{\partial \chi_{0,t}}{\partial f_t}
-    \;=\;
-    -\,(\psi-1)\,\gamma\|\sigma\|^2\,\frac{1-\overline{\alpha}_{p,t}}{1-x_{0,t}}.
-\]
-Note that $\chi_{0,t}$ is locally insensitive to portfolio flow changes when passive portfolio is efficient ($\overline{\alpha}_{p,t}=1$), consistent with the first-order analysis.  
+where $\chi_p = (\psi -1) y^* $ and $\chi_{0,t}$ is given by
+\begin{equation}
+    \chi_{0,t} = (\psi-1) \frac{\gamma\|\sigma\|^2}{2} \frac{x_0}{x_a}(\overline{\alpha}_{p,t}-1)^2 - \psi \left[ \mu_{p_Y,2} + (1-\gamma) \sigma_{p_Y,2} \sigma^\top \right].
+\end{equation}
+
+The first term captures the effect of the misallocation of the risky asset.
+It is equal to zero when $\overline{\alpha}_{p,t}=1$, that is, when passive investors initially hold the efficient portfolio.
+The second term captures the effect of price dynamics.
+As we have seen, price dynamics are driven by the process for portfolio-flow shocks. 
+Importantly, both terms respond to portfolio-flow shocks.
+
+\paragraph{The aggregate market elasticity.} As in the first-order analysis, while the market clearing condition for the risky asset is informative about the risk premium, the market clearing condition for goods pins down the price-dividend ratio. 
+In particular, the price-dividend ratio is proportional to the consumption-wealth ratio shifter $\chi_{0,t}$:
+\begin{equation}
+    \chi_{0,t} + \chi_p \hat{p}_{Y,t} = - y^* \hat{p}_{Y,t}  + \mathcal{O}(\epsilon^3)\Rightarrow \hat{p}_{Y,t} = - \frac{\chi_{0,t}}{\chi_p + y^*} + \mathcal{O}(\epsilon^3).
+\end{equation}
+
+Notice that the risky-asset demand elasticities $\zeta_{j,p}$ and $\zeta_{j,r}$ do not enter into the expression above, so they do not directly drive the price-dividend ratio or the aggregate market elasticity.
+Instead, the price impact is governed by how portfolio flows impact the consumption-wealth ratio. %In other words, aggregate elasticity reflects changes in savings behavior rather than the direct slope of risky asset demand.
+
+
+Using the expression for $\mu_{p_{Y},t}$ and $\sigma_{p_Y,t}$, we can write the shifter $\chi_{0,t}$ as a state-dependent quadratic function of the passive portfolio share $\overline{\alpha}_{p,t}$.
+Matching coefficients, we can solve for $a_Y(x_t)$, $b_Y(x_t)$, and $c_Y(x_t)$.
+Given these coefficients, we can then determine the aggregate market elasticity.
+The next proposition provides the main result.
+
+\begin{prop}[Aggregate elasticity: inefficient passive demand]\label{prop:elasticity_passive_demand}
+    Let $x_{a,t}=1-x_{0,t}$ denote the wealth share of active investors.
+    Without preference heterogeneity or leverage constraints, the inverse aggregate market elasticity is given by:
+    \begin{equation}\label{eq:elasticity_passive_demand}
+        \varepsilon_{Y,t}^{-1}
+        \;=\;
+        \frac{1-\psi^{-1}}{y^* + 2\kappa_p} \frac{\gamma\|\sigma\|^2}{x_{a,t}} \left[ 1- \overline{\alpha}_{p,t} + \frac{\gamma-1}{y^* + \kappa_p}\sigma_p \sigma^\top\right]
+        \;+\;\mathcal{O}\!\left(\epsilon^{2}\right).
+    \end{equation}
+\end{prop}
+
+Proposition~\ref{prop:elasticity_passive_demand} provides our main analytical result, a characterization of the aggregate market elasticity in an economy subject to portfolio-flow shocks.
+Several important implications follow from Equation~\eqref{eq:elasticity_passive_demand}.
 
 \begin{figure}[t!]
     \centering
@@ -1456,41 +1521,30 @@ Note that $\chi_{0,t}$ is locally insensitive to portfolio flow changes when pas
     \label{fig:mkt_equilibrium2}
 \end{figure}
 
-Figure~\ref{fig:mkt_equilibrium2} illustrates the effects of portfolio flows when passive investors are initially underexposed to risk, i.e., $\overline{\alpha}_{p,t}<1$.
-An inflow into the risky asset shifts both the net supply curve (left panel) and the average consumption-wealth ratio schedule (right panel) leftward.
-The interest rate adjusts so that active demand meets net supply at the goods market clearing price.
-In this case, portfolio flows have a positive price impact and the aggregate elasticity is \textit{finite}.  
+First, the market is infinitely elastic in the unit EIS case, $\psi=1$.
+As it is well known, the price-dividend ratio is pinned down by the subjective discount rate in this case, so all movements in risk premia are offset by opposite movements in the interest rate.
+The consumption-wealth ratio is then not affected by portfolio flows, causing the aggregate market elasticity to be infinite.
 
-\begin{prop}[Aggregate elasticity: inefficient passive demand]\label{prop:elasticity_passive_demand}
-Without preference heterogeneity or leverage constraints, the inverse aggregate elasticity is
-\begin{equation}\label{eq:elasticity_passive_demand}
-    \varepsilon_{M,t}^{-1}
-    \;=\;
-    -\,(\chi_{p}+y^{*})^{-1}\,\frac{\partial \chi_{0,t}}{\partial f_t}
-    \;=\;
-    \left(1-\psi^{-1}\right)\frac{\gamma \|\sigma\|^{2}}{y^{*}}
-    \frac{1-\overline{\alpha}_{p,t}}{x_{a,t}}
-    \;+\;\mathcal{O}\!\left(\epsilon^{2}\right),
-\end{equation}
-where $x_{a,t}=1-x_{0,t}$ is the wealth share of active investors and $y^{*}=1/p^{*}$ is the dividend-price ratio in the benchmark economy.
-\end{prop}
+Second, in the case $\sigma_p=0$, the aggregate market elasticity is finite as long as the initial allocation of the risky asset is inefficient, that is, $\overline{\alpha}_{p,t} \neq 1$.
+Figure~\ref{fig:mkt_equilibrium2} illustrates the mechanism at work.
+If initially $\overline{\alpha}_{p,t}<1$, a portfolio inflow into the risky asset reduces risk misallocation.
+In the case $\psi > 1$, this increases the incentive to save, reducing the consumption-wealth ratio.\footnote{
+    This mirrors the mechanism in representative agent models in which an increase in uncertainty reduces the price of risky assets only when $\psi>1$ \citep[see, e.g.,][]{bansal2004risks}.}
+This raises the price-dividend ratio, as shown in the right panel of Figure~\ref{fig:mkt_equilibrium2}.
+In equilibrium, interest rate only partially offsets the risk premium response, as shown in the left panel of Figure~\ref{fig:mkt_equilibrium2}.
 
-Proposition~\ref{prop:elasticity_passive_demand} shows that, unlike in \citet{gabaix2020search}, the risky-asset elasticities $\zeta_p$ and $\zeta_r$ are not the direct drivers of aggregate elasticity.
-Because the demand system is recursive (interest rates only enters the risky asset demand) the overall price impact is governed instead by how portfolio flows impact the consumption-wealth ratio. %In other words, aggregate elasticity reflects changes in savings behavior rather than the direct slope of risky asset demand.
+Third, price impact is positive even if the initial allocation of the risky asset is efficient, $\overline{\alpha}_{p,t}=1$, when portfolio flow shocks are positively correlated with fundamental shocks, $\sigma_p \sigma^\top > 0$.
+The mechanism again operates through the consumption-wealth ratio.
+As shown in Equation~\eqref{eq:sigma_R_Y_second_order}, portfolio-flow shocks create excess volatility in the risky asset return, which through a precautionary effect reduces the consumption-wealth ratio when $\psi > 1$, raising the price-dividend ratio.\footnote{In the case $\sigma_p \sigma^\top = 0$, the impact of $\sigma_p$ on return variance is negligible up to second-order, as flow risk is essentially diversifiable. 
+The logic is reminiscent of why zero-beta assets have zero excess returns in the CAPM. 
+}
 
-
-The macro elasticity is finite whenever $\overline{\alpha}_{p,t}\neq 1$ and $\psi\neq 1$.
-In the unit EIS case, the price-dividend ratio is pinned down by the subjective discount rate, so portfolio flows generate offsetting movements in the risk premium and the risk-free rate.
-With efficient risk allocation ($\overline{\alpha}_{p,t}=1$), there is again no price impact.  
-
-The price impact is positive when $\psi>1$ and $\overline{\alpha}_{p,t}<1$: interest rate adjustments no longer fully offset the risk premium response, so the latter dominates.
-This mirrors representative agent models in which uncertainty shocks affect prices only when $\psi>1$ \citep[e.g.,][]{bansal2004risks}.  
-
-The state-global perturbation analysis also makes clear that elasticity is state dependent.
-Figure~\ref{Fig:elasticity_passive-demand} plots the price impact as a function of active investors' wealth for different passive-share levels.
-Price impact rises when active investors are under capitalized, reflecting their limited risk-bearing capacity, and when the passive share deviates further from its efficient level.
-In the extreme case where passive investors hold no equities ($\overline{\alpha}_{p,t}=0$), we recover a version of \citet{basak1998equilibrium} in which price impact is maximized.  
-
+Fourth, the price impact is state-dependent.
+% In particular, our state-global perturbation analysis allows us to capture how the price impact varies with the wealth share of active investors $x_{a,t}$.
+In a numerical illustration, Figure~\ref{Fig:elasticity_passive-demand} shows that the price impact is larger when the active wealth share is low, reflecting their limited risk-bearing capacity.
+Hence, the market is endogenously more inelastic in bad times, when active investors are under capitalized.
+Moreover, a reduction in active wealth share raises the price impact by more when passive investors are further from the efficient allocation.
+For simplicity, we focus on the case $\sigma_p = 0$, so there is no price impact when the passive portfolio is initially efficient.
 
 \begin{figure}[!t]
     \centering
@@ -1500,8 +1554,95 @@ In the extreme case where passive investors hold no equities ($\overline{\alpha}
     \label{Fig:elasticity_passive-demand}
 \end{figure}
 
-\subsection{Preference heterogeneity and leverage constraints}
+Fifth, the market elasticity depends on the persistence of portfolio-flow shocks, $\kappa_p$.
+In particular, the market becomes infinitely elastic when portfolio-flow shocks are transitory, that is, when $\kappa_p \to \infty$.
+This highlights that the mechanism in the model is fundamentally distinct from the market microstructure literature, which studies short-horizon trading frictions rather than equilibrium reallocations of aggregate risk over longer horizons.
+In contrast, our mechanism is closer to a recent literature emphasizing how the \textit{market macrostructure} affects asset prices \citep[see, e.g.,][]{haddadMuir2025marketMacrostructure}.
 
+\paragraph{Risk premium and interest rate.} 
+The next proposition characterizes the asset-pricing implications in more detail.
+
+\begin{prop}[Market price of risk, risk premium, and interest rate]\label{prop:market_price_risk_risk_premium_interest_rate}
+    Consider the case without preference heterogeneity or leverage constraints.
+    Then:
+    \begin{enumerate}
+        \item The market price of risk is given by
+        \begin{equation}\label{eq:market_price_risk_passive_demand}
+            \eta_t
+            =
+            \gamma \chi_{a,t}\sigma
+            +
+            \left[1 - H_{a,t} \right]
+            \gamma x_{0,t}\varepsilon_{Y,t}^{-1}\sigma_p
+            +
+            \mathcal{O}(\epsilon^3),
+        \end{equation}
+        where
+        \[
+            \chi_{a,t}
+            \equiv
+            \frac{1-x_{0,t}\overline{\alpha}_{p,t}}{1-x_{0,t}},
+            \qquad
+            H_{a,t}
+            \equiv
+            \frac{1-\gamma^{-1}}{\psi-1}
+            \left[\frac{\psi}{x_{a,t}}-1\right].
+        \]
+
+        \item The risk premium is given by
+        \begin{equation}\label{eq:risk_premium_passive_demand}
+            \pi_{Y,t}
+            =
+            \eta_t \sigma^\top
+            +
+            \gamma x_{0,t}\varepsilon_{Y,t}^{-1}\sigma_p\sigma^\top
+            +
+            \mathcal{O}(\epsilon^3).
+        \end{equation}
+
+        \item The interest rate is given by
+        \begin{equation}
+            r_t
+            =
+            r^*
+            +
+            (1-\psi^{-1})
+            \frac{\gamma\|\sigma\|^2}{2}
+            \frac{x_0}{x_a}
+            (\overline{\alpha}_{p,t}-1)^2
+            -
+            (\eta_t-\eta^*)\sigma^\top
+            +
+            \mathcal{O}(\epsilon^3).
+        \end{equation}
+    \end{enumerate}
+\end{prop}
+
+Equation~\eqref{eq:market_price_risk_passive_demand} shows that the market price of risk depends on two terms.
+The first captures the net supply of risk absorbed by active investors, summarized by $\chi_{a,t}\sigma$.
+When passive investors hold more of the risky asset, less aggregate risk must be absorbed by active investors, reducing the market price of risk.
+
+The second term captures the effect of endogenous volatility, $x_{0,t}\varepsilon_{Y,t}^{-1}\sigma_p$.
+This implies that portfolio-flow shocks command a non-zero risk premium in equilibrium.
+The magnitude of this effect is attenuated by the hedging demand of active investors, summarized by the coefficient $H_{a,t}$.
+
+The risk premium reflects movements in both the market price of risk and return volatility, as shown in Equation~\eqref{eq:risk_premium_passive_demand}.
+These two terms depend on the endogenous volatility generated by the interaction of portfolio-flow shocks and inelastic aggregate demand.
+Thus, the same mechanism that generates excess volatility also causes portfolio-flow shocks to become priced risk factors.
+
+Notice that the risk premium incorporates compensation for portfolio-flow risk, in line with noise-trader models \citep[see, e.g.,][]{DeLong/Shleifer/Summers/Wladmann/1990} and the preferred-habitat framework of \citet{VayanosVila2021}.
+Unlike these frameworks, however, our model explicitly incorporates wealth effects in portfolio choice, so the wealth share of active investors $x_{a,t}$ plays a central role in determining risk premia.
+
+Most importantly, the interest rate does not perfectly offset movements in the market price of risk, because it is affected by the same risk-misallocation term that drives aggregate market elasticity.
+This is a manifestation of the general-equilibrium mechanism characterized in Proposition~\ref{prop:elasticity_passive_demand}.
+
+\subsection{The role of frictions}
+
+We consider next the aggregate market elasticity in richer settings.
+First, we reintroduce preference heterogeneity and leverage constraints into the model.
+Second, we consider the price impact of the equity claim instead of the aggregate claim.
+
+\paragraph{Preference heterogeneity and leverage constraints.}
 We now reintroduce preference heterogeneity and leverage constraints into the model.
 These features shift the conditions under which passive investors’ portfolios are efficient and therefore alter the aggregate market elasticity.
 The next proposition provides the main result.
