@@ -5273,7 +5273,7 @@ These losses are computed from the batch objectives in \eqref{eq:baseline_batch_
 
 \newpage
 
-\section{Production and monetary policy}
+\section{Production and monetary policy}\label{sec:production_and_monetary_policy}
 
 This appendix describes an extension of the baseline model described in Section~\ref{sec:model} to allow for production and monetary policy.
 The response of interest rates played a crucial role in the determination of aggregate market elasticity, but, in practice, the interest rate is under control of the central bank. 
@@ -5286,7 +5286,7 @@ We then describe the version of the model with sticky prices and monetary policy
 
 \subsection{The flexible-price version}
 
-\paragraph{Firm's problem.} As it is standard in the literature, we assume production is carried by a continuum of monopolistically competitive firms indexed by $i \in [0,1]$.
+\paragraph{Firm's problem.} As it is standard in the literature, production is carried by a continuum of monopolistically competitive firms indexed by $i \in [0,1]$.
 Firm $i$'s production function is given by
 \begin{equation}\label{eq:production_function}
     \tilde{Y}_{i,t} = A_t L_{i,t}^{1-\alpha},
@@ -5300,19 +5300,25 @@ Aggregate productivity follows a geometric Brownian motion:
 where $\mu$ is the drift and $\sigma \in \mathbb{R}^{1\times 3}$ is the volatility. 
 As in the baseline model, we assume that only the first entry of $\sigma$ is non-zero.
 
-The problem of the firm is to maximize profits:
+Using the production function \eqref{eq:production_function} to eliminate $L_{i,t}$, we can write the firm's problem as follows:
 \begin{equation}
-    \max_{L_{i,t}} P_{i,t} \tilde{Y}_{i,t} - \mathcal{W}_{i,t} L_{i,t},
+    \max_{P_{i,t}} P_{i,t} \tilde{Y}_{i,t} - \mathcal{W}_{i,t} \left(\frac{\tilde{Y}_{i,t}}{A_t}\right)^{\frac{1}{1-\alpha}},
 \end{equation}
-subject to the production function \eqref{eq:production_function} and the demand function:
+subject to the demand function:
 \begin{equation}\label{eq:demand_function}
     \tilde{Y}_{i,t} = \left( \frac{P_{i,t}}{P_t} \right)^{-\phi} \tilde{Y}_t,
 \end{equation}
-where $P_t$ is the aggregate price level and $\phi$ is the elasticity of substitution between goods.
+where $\mathcal{W}_t$ is the nominal wage, $P_t = \left[ \int_{i=0}^1 P_{i,t}^{1-\phi} di \right]^{\frac{1}{1-\phi}}$ is the aggregate price level and $\phi$ is the elasticity of substitution between goods.
 
-The first-order condition gives the labor demand:
+The first-order condition gives the usual pricing condition, where the price equals a markup over the marginal cost:
 \begin{equation}
-    \mathcal{W}_{i,t} = (1-\alpha) A_t L_{i,t}^{-\alpha},
+    P_{i,t} = \frac{\phi}{\phi-1} \frac{\mathcal{W}_{i,t}}{1-\alpha} \frac{\tilde{Y}_{i,t}^{\frac{\alpha}{1-\alpha}}}{A_t^{\frac{1}{1-\alpha}}}.
+\end{equation}
+
+In a symmetric equilibrium, all firms charge the same price, so $P_{i,t} = P_t$ for all $i$. 
+We can then write the pricing condition as:     
+\begin{equation}
+    (1-\phi^{-1})(1-\alpha) A_t L_{i,t}^{-\alpha} = \frac{\mathcal{W}_t}{P_t}.
 \end{equation}
 
 \paragraph{Household's problem.} 
@@ -5325,7 +5331,7 @@ Household $j$ chooses consumption $\tilde{C}_{j,t}$, labor supply $L_{j,t}$, and
     \mathbb{E}_t \left[ \int_t^\infty f_j(\tilde{C}_{j,s}- \xi_s L_{j,s},V_{j,s})\, ds \right], \qquad s.t.
 \end{equation}
 \begin{equation}\label{eq:budget_constraint}
-    \frac{d W_{j,t}}{W_{j,t}} = \left[r_t + \pi_{t}^\top \,\alpha_{j,t}  - \frac{\tilde{C}_{j,t} - \mathcal{W}_t L_{j,t}}{W_{j,t}}\right] dt 
+    \frac{d W_{j,t}}{W_{j,t}} = \left[r_t + \pi_{t}^\top \,\alpha_{j,t}  - \frac{\tilde{C}_{j,t} - \mathcal{W}_t / P_t L_{j,t}}{W_{j,t}}\right] dt 
     + \sigma_{j,t}\, dZ_t,
 \end{equation}
 with $W_{j,t} \geq 0$ and $\alpha_{j,t} \in \Omega_{j,t}$,
@@ -5334,13 +5340,13 @@ $W_{j,t}$ denotes the household's wealth, $\Omega_{j,t}$ is the investment set f
 
 Define \textit{net consumption} as $C_{j,t} = \tilde{C}_{j,t} - \xi_s L_{j,s}$. We can then rewrite the budget constraint as
 \begin{equation}
-    \frac{d W_{j,t}}{W_{j,t}} = \left[r_t + \pi_{t}^\top \,\alpha_{j,t}  - \frac{C_{j,t}}{W_{j,t}} + \frac{\mathcal{W}_t -\xi_t}{W_{j,t}} L_{j,t}\right] dt 
+    \frac{d W_{j,t}}{W_{j,t}} = \left[r_t + \pi_{t}^\top \,\alpha_{j,t}  - \frac{C_{j,t}}{W_{j,t}} + \frac{\mathcal{W}_t/P_t -\xi_t}{W_{j,t}} L_{j,t}\right] dt 
     + \sigma_{j,t}\, dZ_t.
 \end{equation}
 
 In an interior solution, the real wage rate is given by
 \begin{equation}
-    \mathcal{W}_t = \xi_t.
+\frac{    \mathcal{W}_t}{P_t} = \xi_t.
 \end{equation}
 
 We assume that labor disutility proportional to aggregate producitivity:
@@ -5349,6 +5355,10 @@ We assume that labor disutility proportional to aggregate producitivity:
 \end{equation}
 This acts as an income effect on labor supply that ensures that labor supply is stationary despite the growth of aggregate producitivity.
 
+\paragraph{Central bank.} We consider a cashless economy with a central bank that sets the nominal interest rate $i_t$. 
+We assume that prices are predetermined, consistent with the behavior under sticky prices, so the nominal interest rate is given by $i_t = r_t + \mu_{P,t}$, where $\mu_{P,t}$ is the drift of the aggregate price level.
+We consider a central bank that implements zero inflation at all periods, so $\mu_{P,t} = 0$, which requires setting the nominal interest rate to the (natural) risk-free rate.
+
 \paragraph{Equilibrium in labor markets and production.} The market clearing condition for labor is given by
 \begin{equation}
     L_t = \int_{j=0}^2 \omega_j L_{j,t}.
@@ -5356,7 +5366,7 @@ This acts as an income effect on labor supply that ensures that labor supply is 
 
 By equating labor demand and supply, we obtain the equilibrium labor supply:
 \begin{equation}
-    L_t = \left(  \frac{1-\alpha}{\xi}\right)^{\frac{1}{\alpha}} \equiv \overline{L}.
+    L_t = \left(  \frac{(1-\alpha)(1-\phi^{-1})}{\xi}\right)^{\frac{1}{\alpha}} \equiv \overline{L}.
 \end{equation}
 
 The market clearing condition for goods is given by
@@ -5379,6 +5389,93 @@ This implies that the aggregate (net) output follows a geometric Brownian motion
     \frac{dY_t}{Y_t} = \mu dt + \sigma dZ_t.
 \end{equation}
 
+Hence, the equilibrium of the flexible-price economy is identical to the equilibrium of the baseline endowment economy considered in Section~\ref{sec:model}, once the nominal interest rate is given by $i_t = r_t$ and the central bank implements zero inflation at all periods.
+
+
+\subsection{The sticky-price version}
+
+Suppose now that firms are subject to Rotemberg adjustment costs in pricing. In this case, the firm's problem is given by
+\begin{equation}
+    Q_{i,t}(P_{i,t}) = \max_{[\pi_{i,s}]_{s\geq t} }\mathbb{E}_t \left[ \int_t^\infty \frac{\Lambda_{s}}{\Lambda_t} \left( \frac{P_{i,s}}{P_s} \tilde{Y}_{i,s} - \frac{\mathcal{W}_{s}}{P_s} \left(\frac{\tilde{Y}_{i,s}}{A_s}\right)^{\frac{1}{1-\alpha}}  - \frac{\varphi}{2} \pi_{i,s}^2\right)ds  \right].
+\end{equation}
+subject to the demand function \eqref{eq:demand_function} and $\tilde{P}_{i,t} = \pi_{i,t}P_{i,t}$, given the initial price $P_{i,t}$.
+
+We assume that the adjustment cost is rebated back to shareholders, so they affect the firm's decision, but it does not represent a real resource cost. 
+This assumption is not essential for the results, but it simplifies the analysis.
+
+The next lemma provides a characterization of the equilibrium inflation rate in this economy. 
+
+\begin{lemma}
+    In a symmetric equilibrium where $P_{i,0} = P_0$, the equilibrium inflation rate $\pi_t \equiv \frac{\dot{P}_t}{P_t}$ is given by
+    \begin{equation}\label{eq:inflation_rate}
+        \pi_{t} = \mathbb{E}_t\left[ \int_t^\infty \frac{\Lambda_s}{\Lambda_t} \frac{\phi-1}{\varphi}\frac{\tilde{Y}_{t}}{P_t} \left( \frac{\phi}{\phi-1} \frac{\mathcal{W}_{t}}{P_{t}} \frac{\tilde{Y}_{t}^{\frac{\alpha}{1-\alpha}}}{(1-\alpha) A_s^{\frac{1}{1-\alpha}}}-1\right) ds\right],
+    \end{equation}
+    where we imposed that $P_{i,t} = P_t$, so we obtain a symmetric solution for all firms.
+\end{lemma}
+
+\begin{proof}
+The value function $Q_{i,t}(P_{i,t}) = Q_i(P_{i,t}; \hat{X}_t)$ is a function of the aggregate state variable $\hat{X}_t$.
+
+The HJB equation is given by
+\begin{equation}
+    0 = \left[\frac{P_{i,t}}{P_t} \tilde{Y}_{i,t} - \frac{\mathcal{W}_{t}}{P_t} \left(\frac{\tilde{Y}_{i,t}}{A_t}\right)^{\frac{1}{1-\alpha}}  - \frac{\varphi}{2} \pi_{i,t}^2 \right] dt+ \frac{\mathbb{E}_t[d(\Lambda_t Q_{i,t})]}{\Lambda_t}.
+\end{equation}
+
+More explicitly, we can write the HJB equation as
+\begin{align}
+    0 &= \frac{P_{i,t}}{P_t} \tilde{Y}_{i,t} - \frac{\mathcal{W}_{t}}{P_t} \left(\frac{\tilde{Y}_{i,t}}{A_t}\right)^{\frac{1}{1-\alpha}}  - \frac{\varphi}{2} \pi_{i,t}^2+ \frac{\partial Q_{i,t}}{\partial P_{i}} \pi_{i,t} P_{i,t}  + \frac{\partial Q_{i,t}}{\partial \hat{X}_t^\top} \mu_{\hat{X},t} + \frac{1}{2}\sum_{k=1}^d  \sigma_{\hat{X},K,t}^\top \frac{\partial^2  Q_{i,t}}{\partial \hat{X}_t\partial \hat{X}_t^\top} \sigma_{\hat{X},K,t}\\
+    &-r_t Q_{i,t} - \eta_t \sigma_{Q_i,t}^\top.
+\end{align}
+
+The first-order condition gives the following pricing condition:
+\begin{equation}
+    \varphi \pi_{i,t} = \frac{\partial Q_{i,t}(P_{i})}{\partial P_{i}} 
+\end{equation}
+
+The envelope condition with respect to $P_{i,t}$ is given by
+\begin{equation}
+0 = (1-\phi)\frac{\tilde{Y}_{i,t}}{P_t} \left[ 1 - \frac{\phi}{\phi-1} \frac{\mathcal{W}_{t}}{P_{i,t}} \frac{\tilde{Y}_{i,t}^{\frac{\alpha}{1-\alpha}}}{(1-\alpha) A_t^{\frac{1}{1-\alpha}}}\right] dt  + \frac{\mathbb{E}_t[d(\Lambda_t \frac{\partial Q_{i,t}}{\partial P_{i,t}})]}{\Lambda_t}.
+\end{equation}
+
+Multiplying both sides by $\varphi^{-1}$ and using the first-order condition, we obtain
+The envelope condition with respect to $P_{i,t}$ is given by
+\begin{equation}
+0 = \varphi^{-1}(1-\phi)\frac{\tilde{Y}_{i,t}}{P_t} \left[ 1 - \frac{\phi}{\phi-1} \frac{\mathcal{W}_{t}}{P_{i,t}} \frac{\tilde{Y}_{i,t}^{\frac{\alpha}{1-\alpha}}}{(1-\alpha) A_t^{\frac{1}{1-\alpha}}}\right] dt  + \frac{\mathbb{E}_t[d(\Lambda_t \pi_{i,t})]}{\Lambda_t}.
+\end{equation}
+
+Equivalently, we can write the inflation rate as follows:
+\begin{equation}
+    \pi_{t} = \mathbb{E}_t\left[ \int_t^\infty \frac{\Lambda_s}{\Lambda_t} \frac{\phi-1}{\varphi}\frac{\tilde{Y}_{t}}{P_t} \left( \frac{\phi}{\phi-1} \frac{\mathcal{W}_{t}}{P_{t}} \frac{\tilde{Y}_{t}^{\frac{\alpha}{1-\alpha}}}{(1-\alpha) A_s^{\frac{1}{1-\alpha}}}-1\right) ds\right],
+\end{equation}
+where we imposed that $P_{i,t} = P_t$, so we obtain a symmetric solution for all firms.
+\end{proof}
+
+Equation~\eqref{eq:inflation_rate} corresponds to the non-linear version of the Phillips curve in our sticky-price model. 
+Crucially, it depends on how much the real marginal cost is expected to deviate from its flexible-price level.
+
+
+\paragraph{Central bank and the zero-inflation equilibrium.} We assume that the central bank adopts the following Taylor rule:
+\begin{equation}
+    i_t = \varrho_t + \phi_\pi \pi_t,
+\end{equation}
+where $\phi_\pi > 1$ is the Taylor coefficient on inflation and $\varrho_t$ is a time-varying intercept. 
+
+Let $r_t^n$ be the natural rate of interest, that is, the real interest rate in the flexible-price economy.
+We assume that the time-varying intercept coincides with the natural rate of interest:  $\varrho_t = r_t^n$.
+This implies that the inflation rate is equal to zero in our sticky-price economy.
+
+To see this is the case, notice that the zero-inflation equilibrium requires the following condition to hold at all periods:
+\begin{equation}
+    \frac{\phi}{\phi-1} \frac{\mathcal{W}_{t}}{P_{t}} \frac{\tilde{Y}_{t}^{\frac{\alpha}{1-\alpha}}}{(1-\alpha) A_s^{\frac{1}{1-\alpha}}}-1 = 0.
+\end{equation}
+
+This coincides with the pricing condition for the flexible-price economy, so the equilibrium labor supply is given by $L_t = \overline{L}$ and aggregate net output is given by $Y_t = \alpha A_t \overline{L}^\alpha$.
+This implies that $Y_t$ follows the process:
+\begin{equation}
+    \frac{dY_t}{Y_t} = \mu dt + \sigma dZ_t.
+\end{equation}
+
+The interest rate in this economy will then coincide with the natural rate of interest: $i_t = r_t^n$, which requires the intercept $\varrho_t$ to be equal to the natural rate of interest: $\varrho_t = r_t^n$.
 
 
 
