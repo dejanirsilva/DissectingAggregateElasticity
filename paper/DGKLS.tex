@@ -250,7 +250,8 @@ Jiacui Li\thanks{David Eccles School of Business, University of Utah, \href{mail
 \end{abstract}
 	
 \newpage
-\doublespacing
+% \doublespacing
+\onehalfspacing
 \setcounter{page}{1}
 	
 % \listoftodos[Notes]
@@ -367,13 +368,13 @@ We now develop a dynamic heterogeneous-agent asset pricing model that provides a
 The economy extends the framework of Section~\ref{sec:simple} by embedding passive and active investors in a full general-equilibrium setting.
 
 Passive investors hold exogenously specified, stochastic portfolio shares in risky assets.
-Shocks to these portfolio shares generate portfolio flow (i.e., noise trading) shocks \citep{DeLong/Shleifer/Summers/Wladmann/1990} that are imperfectly correlated with cash flow shocks, so the economy is driven by both fundamental and non-fundamental demand shocks.
+Shocks to these portfolio shares generate portfolio flow (i.e., noise trading) shocks that are imperfectly correlated with cash flow shocks, so the economy is driven by both fundamental and non-fundamental demand shocks.
 Active investors, in contrast, optimally rebalance their portfolios subject to financial frictions.
 We model two types of active investors that differ in risk aversion: a high risk aversion (unconstrained) investor and a low risk aversion investor subject to a leverage constraint.
 
-Unlike in the simple model in Section~\ref{sec:simple}, investors now trade two distinct claims, a \emph{dividend claim} (equity) and a \emph{risky corporate bond}, whose payoffs sum to the aggregate endowment.
-Modeling the dividend process explicitly lets us study the response of equity prices, rather than of the aggregate claim, to portfolio flows.
-As we show below, this distinction is essential: the price impact of the dividend claim differs substantially from that of the aggregate claim and is the key to matching the data.
+Unlike the model in Section~\ref{sec:simple}, investors trade two distinct claims, a \emph{dividend claim} (equity) and a \emph{risky corporate bond}, whose payoffs sum to the aggregate endowment.
+Modeling the dividend process lets us study the response of equity prices, rather than of the aggregate claim, to portfolio flows.
+This distinction plays an important role quantitatively: the price impact of the dividend claim differs substantially from that of the aggregate claim and is key to matching the data.
 
 
 % This section develops a dynamic heterogeneous-agent asset pricing model that provides a micro-founded demand system.
@@ -799,9 +800,9 @@ The valuation ratio of the aggregate claim is $p_{Y,t} \equiv P_{Y,t}/Y_t$, whic
 
 The pricing condition for each claim $k\in\{D,B\}$ is given by
 \begin{equation}\label{eq:pricing_cond}
-    \frac{1}{p_{k,t}} = r_t + \pi_{k,t} - \big(\mu + \mu_{p_k,t} + \sigma \, \sigma_{p_k,t}^\top\big),
+    \frac{s_{k,t}}{p_{k,t}} = r_t + \pi_{k,t} - \big(\mu + \mu_{p_k,t} + \sigma \, \sigma_{p_k,t}^\top\big),
 \end{equation}
-where $\pi_{k,t} = \sigma_{R_k,t} \, \eta_t^\top$ is the risk premium on claim $k$ implied by no arbitrage.
+where $\pi_{k,t} = \sigma_{R_k,t} \, \eta_t^\top$ is the risk premium on claim $k$, $s_{D,t} = s_t$ and $s_{B,t} = 1-s_t$.
 The terms $\mu_{p_k,t}$ and $\sigma_{p_k,t}$ denote the drift and diffusion of the valuation ratios, respectively.
 
 % Equation~\eqref{eq:pricing_cond} links asset prices to expected returns, risk premia, and the dynamics of valuation ratios.
@@ -966,8 +967,8 @@ In equilibrium, investors are not exposed to the dividend-share shock, which can
 Investors can therefore obtain any desired exposure to the fundamental and portfolio-flow shocks by trading the market index fund and the derivative.
 Without the derivative, investors would need to deviate from market-capitalization weights to adjust their exposure to these risks, at the cost of bearing dividend-share risk.
 
-The proposition also implies that a mutual fund theorem holds in our economy, that is, investors hold risky claims in proportion to their market-capitalization weights.
-The holdings of the different risky claims move in lockstep with the market index fund.
+% The proposition also implies that a mutual fund theorem holds in our economy, that is, investors hold risky claims in proportion to their market-capitalization weights.
+% The holdings of the different risky claims move in lockstep with the market index fund.
 
 \paragraph{Pricing the individual claims.}
 Having solved for the aggregate objects $\{c_{j,t}(\hat{X}_t)\}_{j=0}^2$ and $p_Y(\hat{X}_t)$, we next recover the valuation of individual claims.
@@ -1415,7 +1416,7 @@ In this case, the (inverse) aggregate market elasticity is given by:
 \begin{equation}
     \varepsilon_{Y,t}^{-1} \equiv \frac{1}{x_{0,t}} \frac{\partial \hat{p}_{Y,t}}{\partial \overline{\alpha}_{p,t}} = \frac{a_Y(x_t)}{x_{0,t}} (\overline{\alpha}_{p,t}-1)  + \frac{b_Y(x_t)}{x_{0,t}}+ \mathcal{O}(\epsilon^2).
 \end{equation}
-Hence, to characterize the aggregate market elasticity, we need to determine the coefficients $a_Y(x_t)$ and $b_Y(x_t)$.
+Hence, to characterize the market elasticity, we need to determine the coefficients $a_Y(x_t)$ and $b_Y(x_t)$.
 
 \paragraph{Diffusion and drift of the price-dividend ratio.}
 The diffusion of the price-dividend ratio is
@@ -1450,7 +1451,7 @@ while the demand shifter for active investors now captures the effect of price d
 \end{equation}
 
 Given the current price-dividend ratio $\hat{p}_{Y,t}$ and interest rate $\hat{r}_t$, active investors have a higher demand for risky assets when there is a positive expected price appreciation or hedging demand.
-Holding expected returns fixed, greater endogenous return volatility reduces demand for risky assets.
+Holding expected returns fixed, greater endogenous volatility reduces demand for risky assets.
 
 \paragraph{Consumption-wealth ratio.} Consider next the consumption-wealth ratio.
 Aggregating \eqref{eq:HJB_complete} across investors, letting $c_t \equiv \sum_{j=0}^2 x_{j,t} c_{j,t}$, yields
@@ -1533,6 +1534,15 @@ In the case $\psi > 1$, this increases the incentive to save, reducing the consu
 This raises the price-dividend ratio, as shown in the right panel of Figure~\ref{fig:mkt_equilibrium2}.
 In equilibrium, interest rate only partially offsets the risk premium response, as shown in the left panel of Figure~\ref{fig:mkt_equilibrium2}.
 
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./figures/price_impact_passive2.pdf}
+    \vspace{2mm}
+    \caption{Price impact: inefficient passive demand.}
+    \label{Fig:elasticity_passive-demand}
+\end{figure}
+
 Third, price impact is positive even if the initial allocation of the risky asset is efficient, $\overline{\alpha}_{p,t}=1$, when portfolio flow shocks are positively correlated with fundamental shocks, $\sigma_p \sigma^\top > 0$.
 The mechanism again operates through the consumption-wealth ratio.
 As shown in Equation~\eqref{eq:sigma_R_Y_second_order}, portfolio-flow shocks create excess volatility in the risky asset return, which through a precautionary effect reduces the consumption-wealth ratio when $\psi > 1$, raising the price-dividend ratio.\footnote{In the case $\sigma_p \sigma^\top = 0$, the impact of $\sigma_p$ on return variance is negligible up to second-order, as flow risk is essentially diversifiable. 
@@ -1545,14 +1555,6 @@ In a numerical illustration, Figure~\ref{Fig:elasticity_passive-demand} shows th
 Hence, the market is endogenously more inelastic in bad times, when active investors are under capitalized.
 Moreover, a reduction in active wealth share raises the price impact by more when passive investors are further from the efficient allocation.
 For simplicity, we focus on the case $\sigma_p = 0$, so there is no price impact when the passive portfolio is initially efficient.
-
-\begin{figure}[!t]
-    \centering
-    \includegraphics[width=0.6\textwidth]{./figures/price_impact_passive2.pdf}
-    \vspace{2mm}
-    \caption{Price impact: inefficient passive demand.}
-    \label{Fig:elasticity_passive-demand}
-\end{figure}
 
 Fifth, the market elasticity depends on the persistence of portfolio-flow shocks, $\kappa_p$.
 In particular, the market becomes infinitely elastic when portfolio-flow shocks are transitory, that is, when $\kappa_p \to \infty$.
@@ -1626,81 +1628,57 @@ The second term captures the effect of endogenous volatility, $x_{0,t}\varepsilo
 This implies that portfolio-flow shocks command a non-zero risk premium in equilibrium.
 The magnitude of this effect is attenuated by the hedging demand of active investors, summarized by the coefficient $H_{a,t}$.
 
-The risk premium reflects movements in both the market price of risk and return volatility, as shown in Equation~\eqref{eq:risk_premium_passive_demand}.
+The risk premium reflects movements in both the price and the quantity of risk, as shown in Equation~\eqref{eq:risk_premium_passive_demand}.
 These two terms depend on the endogenous volatility generated by the interaction of portfolio-flow shocks and inelastic aggregate demand.
-Thus, the same mechanism that generates excess volatility also causes portfolio-flow shocks to become priced risk factors.
+Thus, the same mechanism that generates excess volatility also generates a risk premium for portfolio-flow shocks.
 
-Notice that the risk premium incorporates compensation for portfolio-flow risk, in line with noise-trader models \citep[see, e.g.,][]{DeLong/Shleifer/Summers/Wladmann/1990} and the preferred-habitat framework of \citet{VayanosVila2021}.
-Unlike these frameworks, however, our model explicitly incorporates wealth effects in portfolio choice, so the wealth share of active investors $x_{a,t}$ plays a central role in determining risk premia.
+The risk premium incorporates compensation for portfolio-flow risk, in line with noise-trader models \citep[see, e.g.,][]{DeLong/Shleifer/Summers/Wladmann/1990} and the preferred-habitat framework of \citet{VayanosVila2021}.
+Unlike these frameworks, however, our model explicitly incorporates wealth effects in portfolio choice, so the wealth distribution plays a central role in determining risk premia.
 
 Most importantly, the interest rate does not perfectly offset movements in the market price of risk, because it is affected by the same risk-misallocation term that drives aggregate market elasticity.
 This is a manifestation of the general-equilibrium mechanism characterized in Proposition~\ref{prop:elasticity_passive_demand}.
 
-\subsection{The role of frictions}
+\subsection{Amplification mechanisms}
 
-We consider next the aggregate market elasticity in richer settings.
-First, we reintroduce preference heterogeneity and leverage constraints into the model.
-Second, we consider the price impact of the equity claim instead of the aggregate claim.
+We now characterize aggregate market elasticity in richer environments, capturing the role of preference heterogeneity, leverage constraints, and multiple claims.
+These ingredients amplify the sensitivity of prices to portfolio flows by weakening the economy's effective risk-bearing capacity and generating additional state dependence in the allocation of risk.
 
 \paragraph{Preference heterogeneity and leverage constraints.}
 The next proposition characterizes the aggregate market elasticity in the case with preference heterogeneity and leverage constraints.
 
 \begin{prop}[Aggregate elasticity: heterogeneity and leverage constraints]\label{prop_elasticity_pref_heterog}
-The inverse aggregate market elasticity is
+Suppose $\overline{\alpha} = 1 + \hat{\alpha}\epsilon$.
+Then, the inverse aggregate market elasticity is given by
 \begin{equation}\label{eq:elasticity_pref_heterog}
-    \varepsilon_{M,t}^{-1}
+    \varepsilon_{Y,t}^{-1}
     \;=\;
     \bigl(1-\psi^{-1}\bigr)\,
     \frac{\gamma\,\|\sigma\|^{2}}{y^{*}+2 \kappa_p}\,
-    \frac{1-x_{c,t}}{x_{a,t}-x_{c,t}}\,
+    \frac{1-x_{c,t}}{x_{u,t}}\,
     \left[ \overline{\alpha}_{p,t}^{opt}- \overline{\alpha}_{p,t}+\frac{\kappa_p(\overline{\alpha}_{p,t}^{opt}-\overline{\alpha})}{y_{Y,0}+\kappa_p}  +\frac{(\gamma-1) \sigma_p \sigma^\top}{y_{Y,0}+\kappa_p} \right]
     \;+\;\mathcal{O}\!\left(\epsilon^{2}\right),
 \end{equation}
-where $x_{c,t}$ is the wealth share of constrained active investors and the passive investors’ optimal portfolio share is
+where $x_{c,t}$ is the wealth share of constrained active investors,
+$x_{u,t}\equiv x_{a,t}-x_{c,t}$ is the wealth share of unconstrained active investors, 
+ and $\overline{\alpha}_{p,t}^{\mathrm{opt}}$ is the passive investors’ optimal portfolio share, given by
 \begin{equation}\label{eq:optimal_alpha_p}
     \overline{\alpha}_{p,t}^{\mathrm{opt}}
     \;=\;
     1
     \;-\;
-    \frac{x_{a,t}-x_{c,t}}{1-x_{c,t}}\,
+    \frac{x_{u,t}}{1-x_{c,t}}\,
     \frac{\gamma_{0}-\mathbb{E}^{u}_{t}[\gamma_{j}]}{\gamma}
     \;-\;
     \frac{x_{c,t}}{1-x_{c,t}}
     \Bigl(\frac{\overline{\sigma}}{\|\sigma\|}-1\Bigr),
 \end{equation}
-with $x_{u,t}\equiv x_{a,t}-x_{c,t}$ the wealth share of unconstrained active investors and wealth-weighted average risk aversion of unconstrained active investors.
+with $\mathbb{E}^{u}_{t}[\gamma_{j}]$ denoting the wealth-weighted average risk aversion of unconstrained active investors.
 \end{prop}
 
 Proposition~\ref{prop_elasticity_pref_heterog} characterizes aggregate market elasticity in the full model.
-As in the frictionless benchmark, the market remains infinitely elastic when passive investors hold their optimal portfolio share, $\overline{\alpha}_{p,t}=\overline{\alpha}_{p,t}^{\mathrm{opt}}$. 
-The optimal portfolio share corresponds to the value of $\overline{\alpha}_{p,t}$ such that the passive investor would have no incentive to change their portfolio. 
-Under homogeneous preferences ($\gamma_j=\gamma$) and slack leverage constraints ($x_{c,t}=0$), this condition reduces to $\overline{\alpha}_{p,t}=1$.
-More generally, preference heterogeneity and binding leverage constraints shift the efficient passive share away from unity, with its level determined by the wealth distribution and the relative risk aversion of different investor types.
-
-\paragraph{Preference heterogeneity.}
-With slack leverage constraints ($x_{c,t}=0$), \eqref{eq:optimal_alpha_p} simplifies to
-\[
-\overline{\alpha}_{p,t}^{\mathrm{opt}}
-= 1 - x_{a,t}\,\frac{\gamma_0-\mathbb{E}^u_t[\gamma_j]}{\gamma},
-\]
-so, unlike the homogeneous preference case, the efficient passive share $\overline{\alpha}_{p,t}^{\mathrm{opt}}$ differs from unity whenever $\gamma_0 \neq \mathbb{E}^u_t[\gamma_j]$.
-The inverse elasticity in \eqref{eq:elasticity_pref_heterog} becomes
-\[
-\varepsilon_{M,t}^{-1}
-= \bigl(1-\psi^{-1}\bigr)\,\frac{\gamma\|\sigma\|^2}{y^{*}}\,
-\frac{\overline{\alpha}_{p,t}^{\mathrm{opt}}-\overline{\alpha}_{p,t}}{x_{a,t}}
-\;+\;\mathcal{O}(\epsilon^2).
-\]
-
-Optimal risk sharing implies that when passive investors are more risk averse than the average unconstrained active ($\gamma_0>\mathbb{E}^u_t[\gamma_j]$),
-\[
-\frac{\partial \overline{\alpha}_{p,t}^{\mathrm{opt}}}{\partial x_{a,t}}
-= -\,\frac{\gamma_0-\mathbb{E}^u_t[\gamma_j]}{\gamma} < 0,
-\]
-so the efficient passive equity share rises as the active wealth share falls, typically after adverse aggregate shocks that erode active wealth that is more exposed to risk.
-If passive investors do not rebalance in such episodes, market inelasticity increases because $x_{a,t}$ declines (reducing risk-bearing capacity) while the gap $\overline{\alpha}_{p,t}^{\mathrm{opt}}-\overline{\alpha}_{p,t}$ widens (moving the economy farther from the efficient allocation).
-Consequently, price impact rises as $x_{a,t}$ falls, as shown in the left panel (a) of Figure~\ref{fig:price_impact_comparison}: the heterogeneous- and homogeneous-preference curves coincide at $x_{a}=0.20$, but only the former steepens markedly as $x_a$ declines.
-
+The price impact now depends on the difference between the optimal and actual passive portfolio shares, $\overline{\alpha}_{p,t}^{\mathrm{opt}}-\overline{\alpha}_{p,t}$.
+The optimal passive share corresponds to the portfolio that satisfies the first-order condition for the passive investor's portfolio choice problem.
+In the absence of preference heterogeneity, the optimal passive share is simply $\overline{\alpha}_{p,t}^{\mathrm{opt}}=1$, so we recover the result from Proposition~\ref{prop:elasticity_passive_demand} after imposing $\overline{\alpha}=1$.
 
 \begin{figure}[t!]
     \centering
@@ -1718,44 +1696,34 @@ Consequently, price impact rises as $x_{a,t}$ falls, as shown in the left panel 
     \end{subfigure}
     \vspace{2mm}
     \caption{\textbf{Price impact comparisons.}\\ Panel (a) compares heterogeneous and homogeneous preferences.
-    Panel (b) shows the sensitivity of the price impact to wealth distribution among active investors when $J=2$ for different passive portfolio shares.}
+    Panel (b) shows the sensitivity of the price impact to wealth distribution among active investors for different passive portfolio shares.
+    Leverage constraints are slack.}
     \label{fig:price_impact_comparison}
 \end{figure}
 
-Panel (b) of Figure~\ref{fig:price_impact_comparison} shows how the distribution of wealth across active investors shapes price impact.
-With two active types ($J=2$) and $\gamma_1>\gamma_2$, the average risk active aversion is
+Preference heterogeneity and leverage constraints imply that the optimal passive share is time-varying.
+In particular, the optimal passive share tends to rise in bad times.
+When passive investors are more risk averse than active investors ($\gamma_0>\mathbb{E}^u_t[\gamma_j]$) and leverage constraints are slack, passive investors should hold more of the risky asset when active investors are less capitalized:
 \[
-\mathbb{E}^u_t[\gamma_j] \;=\; w_{1,t}\gamma_1 + \bigl(1-w_{1,t}\bigr)\gamma_2,
-\qquad
-w_{1,t}\equiv \frac{x_{1,t}}{x_{a,t}}.
+\frac{\partial \overline{\alpha}_{p,t}^{\mathrm{opt}}}{\partial x_{a,t}}
+= -\,\frac{\gamma_0-\mathbb{E}^u_t[\gamma_j]}{\gamma} < 0.
 \]
-When leverage constraints are slack ($x_{c,t}=0$), the efficient passive share satisfies
-\(
-\overline{\alpha}_{p,t}^{\mathrm{opt}}
-= 1 - x_{a,t}\,(\gamma_0-\mathbb{E}^u_t[\gamma_j])/\gamma,
-\)
-so holding $x_{a,t}$ fixed,
-\[
-\frac{\partial\,\overline{\alpha}_{p,t}^{\mathrm{opt}}}{\partial w_{1,t}}
-= \frac{x_{a,t}}{\gamma}\,(\gamma_1-\gamma_2) \;>\; 0.
-\]
-Thus, as the wealth share of the more risk averse active type rises, $\mathbb{E}^u_t[\gamma_j]$ increases and the passive sector should optimally hold more of the risky asset.
-If the passive portfolio is not adjusted, the deviation $\overline{\alpha}_{p,t}^{\mathrm{opt}}-\overline{\alpha}_{p,t}$ widens, worsening risk allocation and raising price impact, consistent with the upward shift in the panel~(b) of Figure~\ref{fig:price_impact_comparison}.
 
+Hence, the market becomes endogenously more inelastic after shocks that reduce active wealth.
+First, active investors’ risk-bearing capacity declines.
+Second, the gap between the optimal and actual passive portfolio shares widens, pushing the economy farther from the efficient allocation.
+Together, these forces generate a sharp increase in price impact as $x_{a,t}$ declines, as shown in the left panel of Figure~\ref{fig:price_impact_comparison}.
 
+The distribution of wealth among active investors also matters.
+An increase in the share of high risk-aversion active investors, $w_{1,t} \equiv x_{1,t}/x_{a,t}$, raises the average risk aversion of active investors, $\mathbb{E}^u_t[\gamma_j]$, reducing aggregate risk-bearing capacity and making the market more inelastic, as shown in the right panel of Figure~\ref{fig:price_impact_comparison}.
 
-\paragraph{Leverage constraints.}
-When some active investors are constrained ($x_{c,t}>0$), the marginal investors are the \emph{unconstrained} active agents, and their risk-bearing capacity,
-\[
-x_{u,t}\;\equiv\;x_{a,t}-x_{c,t},
-\]
-becomes the key determinant of price impact.
-The panel (a) of Figure~\ref{fig:price_impact_leverage_constraints} plots price impact against the active wealth share $x_{a,t}=1-x_{0,t}$, with and without binding constraints.
+When leverage constraints bind, portfolio-flow shocks must be absorbed by a smaller set of unconstrained investors.
+Their remaining risk-bearing capacity becomes a key determinant of price impact.
+The left panel of Figure~\ref{fig:price_impact_leverage_constraints} plots price impact against the active wealth share $x_{a,t}=1-x_{0,t}$.
 To isolate the role of constraints, we set $\gamma_0=\mathbb{E}_t^{u}[\gamma_j]$, removing pure preference heterogeneity effects.
-As $x_{a,t}$ declines, e.g., after a negative aggregate shock when $\overline{\alpha}_{p,t}<1$, price impact rises more sharply under binding constraints because $x_{u,t}$ shrinks and the risk-bearing capacity of marginal investors is depleted.
+As $x_{a,t}$ declines, price impact rises more sharply under binding constraints.
 Panel (b) holds $x_{a,t}$ fixed and varies the constrained share $x_{c,t}$.
-The price impact increases monotonically with $x_{c,t}$.
-This is intuitive: price impact is larger when a larger share of active investors is constrained.
+Markets therefore become more inelastic as a larger share of active investors becomes constrained.
 
 \begin{figure}[t!]
     \centering
@@ -1770,19 +1738,68 @@ This is intuitive: price impact is larger when a larger share of active investor
         \caption{Varying the wealth share of constrained actives, $x_{c,t}$}
     \end{subfigure}
     \vspace{2mm}
-    \caption{Price impact under leverage constraints.
+    \caption{Price impact under binding leverage constraints.
     Panel (a) compares the cases with and without leverage constraints (holding $x_{c,t}=0.10$).
     Panel (b) plots the price impact as a function of $x_{c,t}$ for different values of $x_{a,t}$.}
     \label{fig:price_impact_leverage_constraints}
 \end{figure}
 
-\paragraph{Taking stock.}
-Proposition~\ref{prop_elasticity_pref_heterog} clarifies the main determinants of aggregate market elasticity.
-The elasticity is \emph{finite} only when risk is misallocated: small portfolio flows around the frictionless allocation have no first-order price impact.
-Preference heterogeneity amplifies price impact in downturns because, as the active wealth share falls, the efficient passive share rises, widening the gap between efficient and actual portfolios.
-Binding leverage constraints further increase price impact by shrinking the marginal (unconstrained) risk-bearing capacity, $x_{u,t}$.
-Taken together, these forces imply rich state dependence of aggregate elasticity in economies with heterogeneous investors and financial frictions.
+\paragraph{Price impact of the dividend claim.} 
+So far, we have focused on how portfolio flows affect the price of the aggregate claim.
+Empirically, however, the main object of interest is the equity market.
+The next proposition characterizes the elasticity of the dividend claim.
 
+\begin{prop}[Aggregate elasticity: dividend-claim]\label{prop_elasticity_dividend_claim}
+Let $\varepsilon_{D,t}^{-1} \equiv \frac{1}{x_{0,t}} \frac{\partial \hat{p}_{D,t}}{\partial \overline{\alpha}_{p,t}}$ denote the inverse elasticity of the dividend claim and define the dividend-share beta:
+$
+    \beta_s
+    \equiv
+    \overline{s}(1-\overline{s})
+    \frac{\sigma_s \sigma^\top}{\sigma \sigma^\top}.
+$
+Then,
+\begin{equation}\label{eq:elasticity_dividend_claim}
+    \varepsilon_{D,t}^{-1}
+    =
+    \varepsilon_{Y,t}^{-1}
+    +
+    \frac{\beta_s}{\overline{s}}
+    \frac{y^*}{y^*+\kappa_p}
+    \frac{\zeta_{r,t}^{-1}}{y^*+\kappa_s}
+    +
+    \mathcal{O}(\epsilon^2),
+\end{equation}
+where
+$
+    \zeta_{r,t}^{-1}
+    \equiv
+    \frac{\gamma\|\sigma\|^2}{x_{u,t}}
+$
+is the inverse of the cross-elasticity of the demand for risky assets.
+\end{prop}
+
+Proposition~\ref{prop_elasticity_dividend_claim} shows that the inverse elasticity of the dividend claim is the sum of the inverse elasticity of the aggregate claim and an additional term capturing the effect of dividend-share shocks.
+Hence, the equity market can exhibit finite elasticity even when the aggregate market is infinitely elastic.
+
+Consider, for example, the case where $\overline{\alpha}_{p,t}=1$ and $\sigma_p = 0$, so that $\varepsilon_{Y,t}^{-1}=0$.
+In this case, the interest rate exactly offsets the change in the risk premium of the aggregate claim.
+However, the interest rate does not offset the change in the risk premium of the dividend claim.
+
+When the dividend-share beta is positive, the equity premium responds more strongly to portfolio-flow shocks than the risk premium on the aggregate claim.
+As shown in Proposition~\ref{prop:first_order}, the response of $\pi_{Y,t}$ to a portfolio-flow shock is determined by the inverse of the cross-elasticity of risky-asset demand, $\zeta_{r,t}^{-1}$.
+The magnitude of the amplification depends on the levered beta of the dividend claim, summarized by the ratio $\beta_s/\overline{s}$.
+
+Finally, the price impact depends both on the persistence of portfolio-flow shocks, governed by $\kappa_p$, and on the persistence of dividend-share shocks, governed by $\kappa_s$.
+This result helps reconcile the relatively small elasticity of the aggregate claim with the large empirical price impact observed in equity markets.
+
+
+\paragraph{Taking stock.}
+This section provides a detailed characterization of the determinants of aggregate market elasticity in a general-equilibrium setting with frictions.
+Aggregate market elasticity is finite only when portfolio flows directly affect saving decisions.
+This occurs when risk is initially misallocated or when the economy is systematically exposed to portfolio-flow shocks.
+Preference heterogeneity and leverage constraints further amplify price impact in bad times by reducing effective risk-bearing capacity.
+Equity markets exhibit larger price impact because dividends are a levered claim on aggregate output, so equity prices respond more strongly to portfolio flows than the aggregate claim.
+We next provide a quantitative evaluation of how these different mechanisms interact to generate inelastic markets.
 
 \section{Quantitative Implications}\label{sec:quantitative}
 

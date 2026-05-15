@@ -26,7 +26,7 @@ The left-hand side of the two expressions above gives you total bond demand.
 In the partial equilibrium case, the risk premium adjusts to clear the market for risky assets, so $\omega_a Q_a + \omega_p Q_p=1$, keeping the interest rate fixed.
 But, due to the cross-elasticity in bond demand, a change in the price of the risky asset --- keeping the interest rate fixed --- would create a disequilibrium in the bond market.
 For instance, in the case $\chi_p \equiv - \overline{c}'(\mu-p) > 0$, a decrease in the price of the risky asset would create an insufficient demand for goods and an excess demand for bonds.
-The excess demand for bonds would create an incentive to reduce the interest rate, 
+The excess demand for bonds would create an incentive to reduce the interest rate.
 
 % The $\hat{b}_j \equiv b_j - b_j^*$. Then, the linearized bond demand for the passive investor is given by
 % \begin{equation}
@@ -299,7 +299,13 @@ These functions depend on $4$ state variables, the $2-$dimensional vector $x_{t}
 
 The system of PDEs satisfies an important \textit{block-recursive} structure.
 We can first solve for a reduced system of PDEs involving $(c_j,p_Y)$ in the set of states $\hat{X}_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t})$.
-Given the solution of the reduced system of PDEs, we can then solve for $p_{D,t}$ and $p_{B,t}$ in the full set of states $X_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t}, s_t)$.
+Given the solution of the reduced system of PDEs, we can then solve for $p_{D,t}$ and $p_{B,t}$ in the full set of states $X_t = (x_{1,t}, x_{2,t}, \overline{\alpha}_{p,t}, s_t)$. 
+Moreover, the solution satisfies the mutual fund theorem, that is, investors hold risky claims in proportion to their market-capitalization weights.
+This result is summarized in Proposition~\ref{prop:mft}.
+
+We provide below the proof of Proposition~\ref{prop:mft} in two steps. 
+First, we derive the system of PDEs and show the block-recursive structure in Lemma~\ref{lemma:block_recursivity}.
+Second, we show the mutual fund theorem holds in Lemma~\ref{lemma:mutual_fund_theorem}.
 
 \subsubsection{Block recursivity}
 
@@ -475,13 +481,21 @@ A corollary of the above proposition is that the consumption-wealth ratio and pr
 
 \subsubsection{The mutual fund theorem}
 
-Lemma~\ref{lemma:block_recursivity} and its corollary show that the consumption-wealth ratio and price-dividend ratio of the aggregate claim are independent of the dividend share $s$.
-This implies that investor's consumption or wealth choices are not exposed to idiosyncratic dividend-share shocks:
-\begin{equation}
-    \sigma_{j,t,3} = \sigma_{R_Y,t,3} = \sigma_{R_F,t,3} = 0,
-\end{equation}
-where the third component of the risk exposure vector is the dividend-share shock.
+We next show that a version of the mutual fund theorem holds in our economy.
 
+\begin{lemma}[Mutual fund theorem]\label{lemma:mutual_fund_theorem}
+    The portfolio shares of active investors are given by:
+    \begin{equation}
+        \alpha_{j,k} = \alpha_{j,Y} \frac{p_k}{p_Y}, \quad \forall k \in \{D,B\},
+    \end{equation}
+    where $\alpha_{j,Y}$ denotes the holdings of the market index fund for investor $j$, which satisfies the condition
+    \begin{equation}
+        \alpha_{j,Y}  = \frac{\sigma_{j} \sigma_{R_Y}^\top}{\sigma_{R_Y} \sigma_{R_Y}^\top}.
+    \end{equation}
+    Moreover, the holdings of the different risky claims are equalized for each investor: $Q_{j,D,t} = Q_{j,B,t}$.
+\end{lemma} 
+
+\begin{proof}
 We can implement the risk exposure $\sigma_{j,t}$ by holding the market index fund and a derivative.
 Let $\hat{\sigma}_{j,t} = [\sigma_{j,t,1}, \sigma_{j,t,2}]$, $\hat{\Sigma}_{t} = \left[\begin{matrix}
  \hat{\sigma}_{R_Y,t} \\
@@ -507,6 +521,26 @@ Hence, this implies that the portfolio shares of dividend and bond claims are gi
 \end{equation}
 where $\alpha_{j,Y,t}$ is the portfolio share of the market index fund defined.
 
+Multiplying the equation for $\sigma_{j,t}$ by $\sigma_{R_Y,t}^\top$, we obtain:
+\begin{equation}
+    \sigma_{j,t} \sigma_{R_Y,t}^\top = \alpha_{j,Y,t} \sigma_{R_Y,t} \sigma_{R_Y,t}^\top \Rightarrow \alpha_{j,Y,t} = \frac{\sigma_{j,t} \sigma_{R_Y,t}^\top}{\sigma_{R_Y,t} \sigma_{R_Y,t}^\top},
+\end{equation}
+using the orthogonality condition $\sigma_{R_F,t} \sigma_{R_Y,t}^\top = 0$.
+
+Similarly, multiplying the equation for $\sigma_{j,t}$ by $\sigma_{R_F,t}^\top$, we obtain:
+\begin{equation}
+    \alpha_{j,F,t} = \frac{\sigma_{j,t} \sigma_{R_F,t}^\top}{\sigma_{R_F,t} \sigma_{R_F,t}^\top} = \frac{\sigma_{j,t} \sigma_{R_F,t}^\top}{\|\sigma_{R_F,t}\|^2}.
+\end{equation}
+
+The holdings of the different risky claims are given by:
+\begin{equation}
+    Q_{j,D,t} = \alpha_{j,D,t} \frac{W_{j,t}}{P_{D,t}} = \alpha_{j,Y,t} \frac{W_{j,t}}{P_{Y,t}},
+    \qquad \qquad 
+    Q_{j,B,t} = \alpha_{j,B,t} \frac{W_{j,t}}{P_{B,t}} = \alpha_{j,Y,t} \frac{W_{j,t}}{P_{Y,t}}.
+\end{equation}
+Hence, the holdings of the dividend claim and the bond claim are equalized for each investor: $Q_{j,D,t} = Q_{j,B,t}$.
+
+
 \paragraph{Pricing the individual claims.} The normalized price of the dividend claim satisfies the pricing condition:
 \begin{equation}
     \frac{s_t}{p_{D,t}} = r_t + \sigma_{R_D,t} \eta_t^\top - \big(\mu + \mu_{p_D,t} + \sigma \, \sigma_{p_D,t}^\top\big),
@@ -516,6 +550,72 @@ where
     \mu_{p_{D,t}} = \frac{p_{D,X,t}}{p_{D,t}} \mu_{X,t} + \frac{1}{2}\sum_{k=1}^3 \sigma_{X,k,t}^\top\,\frac{p_{D,XX,t}}{p_{D,t}}\,\sigma_{X,k,t}, \qquad \qquad 
     \sigma_{p_{D,t}} = \frac{p_{D,X,t}}{p_{D,t}} \sigma_{X,t}.
 \end{equation}
+
+\end{proof}
+
+\subsection{Closed-form solution to individual claims}
+
+I consider next the characterization of the price of the individual claims when the interest rate and the price of risk are constant. 
+This corresponds to the case in the economy without preference heterogeneity and passive investors are fully invested in the risky asset, $\overline{\alpha}_{p,t} = 1$.
+To obtain closed-form solutions, analogous to the ones in \citet{MenzlySantosVeronesi2004}, we focus in the special case $\gamma = 1$. 
+The closed-form solutions provide a useful reference to compare with the perturbation solution derived in the next section.
+
+\paragraph{Pricing the individual claims.}
+The price of the dividend claim satisfies the pricing condition:
+\begin{equation}
+    P_{D,t} = \mathbb{E}_t\left[ \int_t^\infty\frac{\Lambda_\tau}{\Lambda_t} s_\tau Y_\tau d\tau \right],
+\end{equation}
+
+The SDF and the aggregate endowment follow the processes:
+\begin{align}
+    \frac{d \Lambda_t}{\Lambda_t} = -r^* dt - \eta^* dZ_t, \qquad \qquad 
+    \frac{d Y_t}{Y_t} = \mu dt + \sigma dZ_t.
+\end{align}
+
+We can solve for the price of the dividend claim in closed form in the case $\gamma = 1$, so $\eta^ * = \sigma$.
+In this case, we can then write the SDF and the aggregate endowment as:
+\begin{align}
+    \Lambda_t = \exp\left( -\int_0^t \left( r^* + \frac{\sigma \sigma^\top}{2} \right) ds - \sigma Z_t \right) \Lambda_0, \qquad 
+    Y_t = \exp\left( \int_0^t \left( \mu - \frac{\sigma \sigma^\top}{2} \right) ds + \sigma Z_t \right) Y_0.
+\end{align}
+
+Combining the expressions for $\Lambda_t$ and $Y_t$, we obtain:
+\begin{equation}
+    P_{D,t} = \int_t^\infty e^{-\delta (\tau-t)} \mathbb{E}_t\left[ s_\tau \right] d\tau Y_t,
+\end{equation}
+where $\delta = r^* +\sigma \sigma^\top- \mu $, using the fact that $Z_t$ cancels out in the product $\Lambda_t Y_t$.
+
+The conditional expectation of the dividend share is given by
+\begin{equation}
+    \mathbb{E}_t\left[ s_\tau \right] = \overline{s} + (s_t - \overline{s}) e^{-\kappa_s (\tau-t)}.
+\end{equation}
+
+The price of the dividend claim is given by
+\begin{equation}
+    P_{D,t} = \left[ \frac{\overline{s}}{\delta} + \frac{s_t - \overline{s}}{\delta + \kappa_s} \right] Y_t
+\end{equation}
+where $Y_t = \exp\left( \int_0^t \left( \mu - \frac{\sigma \sigma^\top}{2} \right) ds + \sigma Z_t \right) Y_0$.
+
+Hence, the normalized price of the dividend and corporate bond claims are given by
+\begin{equation}
+    p_{D,0}(X) = \frac{1}{\delta}\left[\frac{\delta}{\delta + \kappa_s} s_t + \frac{\kappa_s}{\delta+\kappa_s}  \overline{s}  \right], \qquad \qquad 
+    p_{B,0}(X) = \frac{1}{\delta}\left[\frac{\delta}{\delta + \kappa_s} (1-s_t) + \frac{\kappa_s}{\delta+\kappa_s}  (1-\overline{s})  \right].
+\end{equation}
+
+\paragraph{Portfolio share of individual claims.}
+The portfolio share of investor $j$ on the dividend and bond claims are given by
+\begin{equation}
+    \alpha_{j,D,t} = \frac{p_{D,t}}{p_{Y,t}}, \qquad \qquad 
+    \alpha_{j,B,t} = \frac{p_{B,t}}{p_{Y,t}}.
+\end{equation}
+
+In the benchmark economy with $\gamma = 1$, we have that 
+\begin{equation}
+    \alpha_{j,D,0}(X) = \frac{\delta}{\delta + \kappa_s} s + \frac{\kappa_s}{\delta + \kappa_s} \overline{s}, \qquad \qquad 
+    \alpha_{j,B,0}(X) = \frac{\delta}{\delta + \kappa_s} (1-s) + \frac{\kappa_s}{\delta + \kappa_s} (1-\overline{s}),
+\end{equation}
+using the fact that $\delta = 1/p_{Y,0}(X)$ when $\gamma = 1$.
+
 
 % \paragraph{Mapping to \citet{MenzlySantosVeronesi2004}.} We can map the dividend share $s$ to notation in \citet{MenzlySantosVeronesi2004} as follows:
 % \begin{equation}
@@ -730,68 +830,6 @@ Using $\sigma_{j,0} = \sigma_{R_Y,0}$, we obtain $\alpha_{j,Y} = 1$ and $\alpha_
 
 \end{proof}
 
-\subsection{Closed-form solution to individual claims}
-
-I consider next the characterization of the price of the individual claims when the interest rate and the price of risk are constant. 
-In contrast to the benchmark economy, we do not assume that $s$ is close to $\overline{s}$, instead we show that one can obtain closed-form solutions, analogous to the ones in \citet{MenzlySantosVeronesi2004}, in the special case $\gamma = 1$. 
-The closed-form solutions provide a useful reference to compare with the perturbation solution derived below.
-
-\paragraph{Pricing the individual claims.}
-The price of the dividend claim satisfies the pricing condition:
-\begin{equation}
-    P_{D,t} = \mathbb{E}_t\left[ \int_t^\infty\frac{\Lambda_\tau}{\Lambda_t} s_\tau Y_\tau d\tau \right],
-\end{equation}
-
-The SDF and the aggregate endowment follow the processes:
-\begin{align}
-    \frac{d \Lambda_t}{\Lambda_t} = -r^* dt - \eta^* dZ_t, \qquad \qquad 
-    \frac{d Y_t}{Y_t} = \mu dt + \sigma dZ_t.
-\end{align}
-
-We can solve for the price of the dividend claim in closed form in the case $\gamma = 1$, so $\eta^ * = \sigma$.
-In this case, we can then write the SDF and the aggregate endowment as:
-\begin{align}
-    \Lambda_t = \exp\left( -\int_0^t \left( r^* + \frac{\sigma \sigma^\top}{2} \right) ds - \sigma Z_t \right) \Lambda_0, \qquad 
-    Y_t = \exp\left( \int_0^t \left( \mu - \frac{\sigma \sigma^\top}{2} \right) ds + \sigma Z_t \right) Y_0.
-\end{align}
-
-Combining the expressions for $\Lambda_t$ and $Y_t$, we obtain:
-\begin{equation}
-    P_{D,t} = \int_t^\infty e^{-\delta (\tau-t)} \mathbb{E}_t\left[ s_\tau \right] d\tau Y_t,
-\end{equation}
-where $\delta = r^* +\sigma \sigma^\top- \mu $, using the fact that $Z_t$ cancels out in the product $\Lambda_t Y_t$.
-
-The conditional expectation of the dividend share is given by
-\begin{equation}
-    \mathbb{E}_t\left[ s_\tau \right] = \overline{s} + (s_t - \overline{s}) e^{-\kappa_s (\tau-t)}.
-\end{equation}
-
-The price of the dividend claim is given by
-\begin{equation}
-    P_{D,t} = \left[ \frac{\overline{s}}{\delta} + \frac{s_t - \overline{s}}{\delta + \kappa_s} \right] Y_t
-\end{equation}
-where $Y_t = \exp\left( \int_0^t \left( \mu - \frac{\sigma \sigma^\top}{2} \right) ds + \sigma Z_t \right) Y_0$.
-
-Hence, the normalized price of the dividend and corporate bond claims are given by
-\begin{equation}
-    p_{D,0}(X) = \frac{1}{\delta}\left[\frac{\delta}{\delta + \kappa_s} s_t + \frac{\kappa_s}{\delta+\kappa_s}  \overline{s}  \right], \qquad \qquad 
-    p_{B,0}(X) = \frac{1}{\delta}\left[\frac{\delta}{\delta + \kappa_s} (1-s_t) + \frac{\kappa_s}{\delta+\kappa_s}  (1-\overline{s})  \right].
-\end{equation}
-
-\paragraph{Portfolio share of individual claims.}
-The portfolio share of investor $j$ on the dividend and bond claims are given by
-\begin{equation}
-    \alpha_{j,D,t} = \frac{p_{D,t}}{p_{Y,t}}, \qquad \qquad 
-    \alpha_{j,B,t} = \frac{p_{B,t}}{p_{Y,t}}.
-\end{equation}
-
-In the benchmark economy with $\gamma = 1$, we have that 
-\begin{equation}
-    \alpha_{j,D,0}(X) = \frac{\delta}{\delta + \kappa_s} s + \frac{\kappa_s}{\delta + \kappa_s} \overline{s}, \qquad \qquad 
-    \alpha_{j,B,0}(X) = \frac{\delta}{\delta + \kappa_s} (1-s) + \frac{\kappa_s}{\delta + \kappa_s} (1-\overline{s}),
-\end{equation}
-using the fact that $\delta = 1/p_{Y,0}(X)$ when $\gamma = 1$.
-
 % \paragraph{Convenient reparametrization.} 
 % It is instructive to consider a convenient reparametrization of the price-dividend ratios.
 % Consider the change of variables: $\tilde{p}_{D,t} = p_{D,t} s_t$ and $\tilde{p}_{B,t} = p_{B,t} (1-s_t)$, both being  affine functions of the state $s_t$. 
@@ -844,8 +882,6 @@ using the fact that $\delta = 1/p_{Y,0}(X)$ when $\gamma = 1$.
 % \end{equation}
 % % which is consistent with the definition of $\delta$. 
 
-
-
 \subsection{Proof of Proposition~\ref{prop:first_order}}\label{app:prop_first_order}
 
 \begin{proof}
@@ -856,7 +892,7 @@ We write the portfolio share of passive investors as $\overline{\alpha}_{p} = 1 
 \begin{equation}
     d \hat{\alpha}_{p} = \kappa_p (\hat{\alpha} - \hat{\alpha}_{p}) dt + \sigma_p dZ_t.
 \end{equation}
-This implies $\overline{\alpha} = 1+\hat{\alpha} \epsilon$ and that the diffusion of $\overline{\alpha}_{p}$ is of order $\mathcal{O}(\epsilon)$.
+This implies $\overline{\alpha} = 1+\hat{\alpha} \epsilon$ and that the diffusion of $\overline{\alpha}_{p}$ is of order $\mathcal{O}(\epsilon)$. The main text focus on the case $\hat{\alpha} = 0$, so the unconditional value of the portfolio share is $\overline{\alpha}_{p} = 1$.
 
 We consider the following expansion for the consumption-wealth ratio of investor $j$ and the price-dividend ratio of the aggregate claim:
 \begin{align}
@@ -947,37 +983,37 @@ Therefore, the first-order constraint is
 We assume that investor $1$ is unconstrained and investor $2$ may be constrained, so $\hat{\nu}_1=0$ and $\hat{\nu}_2\geq 0$.
 For investor $2$, using the expression for $\sigma_{2,1}$ above, the first-order leverage constraint is
 \begin{equation}
-    \frac{x_1}{x_a}\left(\hat{\gamma}_1 - \hat{\gamma}_2 - \hat{\nu}_{2}\right) -\frac{x_0}{x_a}\hat{\alpha}_{p,1} \leq \hat{\sigma}.
+    \frac{x_1}{x_a}\left(\hat{\gamma}_1 - \hat{\gamma}_2 - \hat{\nu}_{2}\right) -\frac{x_0}{x_a}\hat{\alpha}_{p} \leq \hat{\sigma}.
 \end{equation}
 If the constraint binds, this condition holds with equality, which implies
 \begin{equation}
     \hat{\nu}_{2} = \hat{\gamma}_1-
-    \hat{\gamma}_2 -\frac{x_0}{x_1}\hat{\alpha}_{p,1} -\frac{x_a}{x_1} \hat{\sigma}.
+    \hat{\gamma}_2 -\frac{x_0}{x_1}\hat{\alpha}_{p} -\frac{x_a}{x_1} \hat{\sigma}.
 \end{equation}
 If the constraint is slack, then $\hat{\nu}_{2}=0$ and
 \begin{equation}
-    \frac{x_1}{x_a}\left(\hat{\gamma}_1 - \hat{\gamma}_2 \right) -\frac{x_0}{x_a}\hat{\alpha}_{p,1} < \hat{\sigma},
+    \frac{x_1}{x_a}\left(\hat{\gamma}_1 - \hat{\gamma}_2 \right) -\frac{x_0}{x_a}\hat{\alpha}_{p} < \hat{\sigma},
 \end{equation}
 or, equivalently,
 \begin{equation}
-    \hat{\gamma}_1-\hat{\gamma}_2 -\frac{x_0}{x_1}\hat{\alpha}_{p,1} -\frac{x_a}{x_1} \hat{\sigma} <0.
+    \hat{\gamma}_1-\hat{\gamma}_2 -\frac{x_0}{x_1}\hat{\alpha}_{p} -\frac{x_a}{x_1} \hat{\sigma} <0.
 \end{equation}
 Hence, the first-order Lagrange multiplier is
 \begin{equation}
-    \hat{\nu}_{2} = \max\left\{ \hat{\gamma}_1-\hat{\gamma}_2 -\frac{x_0}{x_1}\hat{\alpha}_{p,1} -\frac{x_a}{x_1} \hat{\sigma}, 0 \right\}.
+    \hat{\nu}_{2} = \max\left\{ \hat{\gamma}_1-\hat{\gamma}_2 -\frac{x_0}{x_1}\hat{\alpha}_{p} -\frac{x_a}{x_1} \hat{\sigma}, 0 \right\}.
 \end{equation}
 
 When the constraint binds, substituting the expression for $\hat{\nu}_2$ into the market price of risk yields
 \begin{equation}
-    \eta_1 = \gamma \sigma \left[\hat{\gamma}_1 - \frac{x_2}{x_1}\hat{\sigma}  -\frac{x_0}{x_1}\hat{\alpha}_{p,1}  \right].
+    \eta_1 = \gamma \sigma \left[\hat{\gamma}_1 - \frac{x_2}{x_1}\hat{\sigma}  -\frac{x_0}{x_1}\hat{\alpha}_{p}  \right].
 \end{equation}
 When the constraint is slack, $\hat{\nu}_2=0$, and the market price of risk is
 \begin{equation}
-    \eta_1  =  \gamma \sigma \left[\sum_{j=1}^2 \frac{x_j}{x_a} \hat{\gamma}_j -\frac{x_0}{x_a}\hat{\alpha}_{p,1} \right].
+    \eta_1  =  \gamma \sigma \left[\sum_{j=1}^2 \frac{x_j}{x_a} \hat{\gamma}_j -\frac{x_0}{x_a}\hat{\alpha}_{p} \right].
 \end{equation}
 Equivalently, both cases can be summarized as
 \begin{equation}
-    \eta_1 = \gamma \sigma \left[\sum_{j=1}^2 \frac{x_j}{x_a}(\hat{\gamma}_j+ \hat{\nu}_{j}) -\frac{x_0}{x_a}\hat{\alpha}_{p,1} \right],
+    \eta_1 = \gamma \sigma \left[\sum_{j=1}^2 \frac{x_j}{x_a}(\hat{\gamma}_j+ \hat{\nu}_{j}) -\frac{x_0}{x_a}\hat{\alpha}_{p} \right],
 \end{equation}
 with $\hat{\nu}_1=0$ and $\hat{\nu}_2$ given above.
 
@@ -988,6 +1024,12 @@ The first-order risk premium is
 \end{equation}
 It increases with the average risk aversion of active investors, with tighter (binding) leverage constraints, and when active investors bear a larger share of aggregate risk.
 
+The derivative of the risk premium with respect to the portfolio flow is given by
+\begin{equation}
+    \frac{\partial \hat{\pi}_{Y,t}}{\partial f_t} = \frac{1}{x_{0,t}} \frac{\partial \pi_{Y,1}}{\partial \hat{\alpha}_p} = - \frac{\gamma \|\sigma\|^2}{x_{u,t}} = -\frac{1}{\zeta_{r,t}},
+\end{equation}
+using the fact that $\zeta_{r,t} = \frac{x_{u,t}}{\gamma \|\sigma\|^2}$, and $x_{u,t} = x_{a,t}$ when the leverage constraint is slack and $x_{u,t} = x_{1,t}$ when the constraint is binding.
+
 \paragraph{Drift for consumption-wealth ratios and price-dividend ratio.}
 It\^o's lemma implies that the drifts are
 \begin{align}
@@ -997,7 +1039,6 @@ It\^o's lemma implies that the drifts are
 where $\sigma_{\hat{X},k}$ is the $k$-th column of the matrix $\sigma_{\hat{X}}$.
 
 Hence, $\mu_{c_j} = \mathcal{O}(\epsilon^2)$ and $\mu_{p_Y} = \mathcal{O}(\epsilon^2)$, since the gradients are $\mathcal{O}(\epsilon)$ and both $\mu_{\hat{X}}$ and $\sigma_{\hat{X}}$ are $\mathcal{O}(\epsilon)$.
-
 
 
 \paragraph{Interest rate.}
@@ -1026,6 +1067,11 @@ where
 
 The first term captures the effect of heterogeneity in risk aversion in the frictionless benchmark (no passive investors or leverage constraints).
 The second term captures the impact of frictions through the wedge between the equilibrium risk premium and its frictionless counterpart.
+
+This implies that the response of the interest rate to portfolio flows is given by
+\begin{equation}
+    \frac{\partial \hat{r}_t}{\partial f_t} = -\frac{\partial \hat{\pi}_t}{\partial f_t} = \frac{1}{\zeta_{r,t}}.
+\end{equation}
 
 \paragraph{Consumption-wealth ratio.} The consumption-wealth ratio for investor $j$ is given by
 \begin{align}
@@ -1056,6 +1102,11 @@ Hence, the first-order correction to the price-dividend ratio is
 which is independent of $\hat{\alpha}_p$ as conjectured.
 If $\psi>1$, an increase in average risk aversion reduces the price-dividend ratio of the aggregate claim.
 
+This implies that the price impact of the aggregate claim is zero up to first order:
+\begin{equation}
+    \varepsilon_{Y,t}^{-1} = \frac{\partial \hat{p}_{Y,t}}{\partial f_t} = \frac{1}{x_{0,t} p_{Y}^*} \frac{\partial p_{Y,1}}{\partial \hat{\alpha}_p} = 0.
+\end{equation}
+
 \paragraph{State dynamics.} The diffusion of the wealth share of investor $j$, $j=1,2$, is given by
 \begin{align}
     \sigma_{x_j,1} &= x_j (\sigma_{j,1} - \sigma_{R,1})\nonumber\\
@@ -1076,28 +1127,11 @@ Finally, the law of motion of $\hat{\alpha}_p$ is
 \end{equation}
 so the drift and diffusion of $\overline{\alpha}_p$ are $\mu_{\overline{\alpha}_p} = \kappa_p ( \hat{\alpha} - \hat{\alpha}_p )\epsilon$ and $\sigma_{\overline{\alpha}_p} = \sigma_p \epsilon$.
 
-\end{proof}
-
-% REVISED SUBSECTION: First-order correction of individual claims
-\subsection{First-order correction of individual claims}
-We next price the dividend and bond claims, whose payoffs are $D=sY$ and $B=(1-s)Y$.
-It is convenient to work with prices normalized by aggregate output,
-\begin{equation}
-    p_{k} \equiv \frac{P_k}{Y}, \qquad k\in\{D,B\}.
-\end{equation}
+\paragraph{Pricing individual claims.}
+We next solve for the valuation ratios $p_{k,t} \equiv P_{k,t}/Y_t$, $k\in\{D,B\}$.
 We consider the expansion
 \begin{equation}
-    p_k(x, \overline{\alpha}_p, s;\epsilon) = p_{k,0} + p_{k,1}(x, \hat{\alpha}_p, \hat{s}) \epsilon + \mathcal{O}(\epsilon^2),
-\end{equation}
-where $p_{k,0}$ is constant.
-Let $s_D=s$ and $s_B=1-s$, so that
-\begin{equation}
-    s_k = \overline{s}_k + \hat{s}_k \epsilon,
-\end{equation}
-with
-\begin{equation}
-    \overline{s}_D=\overline{s}, \quad \overline{s}_B=1-\overline{s}, \qquad
-    \hat{s}_D=\hat{s}, \quad \hat{s}_B=-\hat{s}.
+    p_k(x, \overline{\alpha}_p, s;\epsilon) = p_{k,0} + p_{k,1}(x, \hat{\alpha}_p, \hat{s}) \epsilon + \mathcal{O}(\epsilon^2).
 \end{equation}
 
 The pricing condition for claim $k$ is
@@ -1105,30 +1139,31 @@ The pricing condition for claim $k$ is
     r + \sigma_{R_k} \eta^\top = \frac{s_k}{p_{k}} + \mu + \mu_{p_k} + \sigma \sigma_{p_k}^\top.
 \end{equation}
 
-\paragraph{Zeroth-order term.}
+Let $s_D=s$ and $s_B=1-s$, so that
+$
+    s_k = \overline{s}_k + \hat{s}_k \epsilon,
+$
+with
+$
+    \overline{s}_D=\overline{s}, \overline{s}_B=1-\overline{s}, 
+    \hat{s}_D=\hat{s}, 
+$ and $\hat{s}_B=-\hat{s}$.
 At $\epsilon=0$, we have
 \begin{equation}
     p_{k,0} = \frac{\overline{s}_k}{\delta}, \qquad
     \delta \equiv r^* + \gamma\|\sigma\|^2 - \mu.
 \end{equation}
 
-\paragraph{First-order correction.}
 The first-order pricing equation implies
 \begin{equation}
     \delta p_{k,1} + (r_1 + \pi_{Y,1}) p_{k,0} = \hat{s}_k - \kappa_s \hat{s} \frac{\partial p_{k,1}}{\partial \hat{s}} + (1-\gamma) \sigma \frac{\partial p_{k,1}}{\partial \hat{s}} \overline{s}(1-\overline{s})\sigma_s^\top.
 \end{equation}
 
-\paragraph{Dividend claim.}
 We conjecture
-\begin{equation}
-    p_{D,1} = a_D(x) + b_D(x) \hat{s}.
-\end{equation}
+$p_{D,1} = a_D(x) + b_D(x) \hat{s}.$
 Matching coefficients gives
 \begin{equation}
-    b_D = \frac{1}{\delta + \kappa_s},
-\end{equation}
-and
-\begin{equation}
+    b_D = \frac{1}{\delta + \kappa_s},\qquad \qquad
     a_D = - (r_1 + \pi_{Y,1}) \frac{\overline{s}}{\delta^2} - \frac{\gamma-1}{\delta(\delta+\kappa_s)} \overline{s}(1-\overline{s}) \sigma \sigma_s^\top.
 \end{equation}
 Hence
@@ -1136,19 +1171,17 @@ Hence
     p_{D,1} = \frac{\hat{s}}{\delta + \kappa_s} - (r_1 + \pi_{Y,1}) \frac{\overline{s}}{\delta^2} - \frac{\gamma-1}{\delta(\delta+\kappa_s)} \overline{s}(1-\overline{s}) \sigma \sigma_s^\top.
 \end{equation}
 
-\paragraph{Bond claim.}
 Similarly, the normalized price of the bond claim is given by
 \begin{equation}
     p_{B,1} = -\frac{\hat{s}}{\delta + \kappa_s} - (r_1 + \pi_{Y,1}) \frac{1-\overline{s}}{\delta^2} + \frac{\gamma-1}{\delta(\delta+\kappa_s)} \overline{s}(1-\overline{s}) \sigma \sigma_s^\top.
 \end{equation}
 
-\paragraph{Consistency.}
-Adding both claims yields
+Adding both claims we recover the first-order correction of the aggregate claim:
 \begin{equation}
     p_{D,1} + p_{B,1} = -\frac{r_1 + \pi_{Y,1}}{\delta^2},
 \end{equation}
-which is consistent with the first-order correction of the aggregate claim.
 
+\end{proof}
 
 % \subsection{Determining the set of constrained agents}
 
@@ -3046,11 +3079,14 @@ A separate $M_p$ term would appear only if the fixed-$\hat{\alpha}_p$ excess com
 
 \section{Deriving the aggregate market elasticity}
 
-\subsection{Special case: no preference heterogeneity or leverage constraints}
+\subsection{No preference heterogeneity or leverage constraints}
 
 In this section, we consider the special case of no preference heterogeneity or leverage constraints, that is, $\hat{\gamma}_j=0$ for $j=0,1,2$ and $\hat{\nu}_2=0$.
 This will allow us to derive the cleaner expressions for all equilibrium objects.
 For simplicity, we focus on the case where $\hat{\alpha}=0$.
+
+The next proposition summarizes the results for this special case.
+It encompasses the results of Proposition~\ref{prop:elasticity_passive_demand} and Proposition~\ref{prop:market_price_risk_risk_premium_interest_rate}.
 
 \begin{prop}[Time-varying passive demand without heterogeneity or constraints]
     Consider the case with no preference heterogeneity and no leverage constraints, that is, $\hat{\gamma}_j=0$ for $j=0,1,2$ and $\hat{\nu}_2=0$.
@@ -3077,7 +3113,7 @@ For simplicity, we focus on the case where $\hat{\alpha}=0$.
     \end{equation}
     The inverse aggregate market elasticity is
     \begin{equation}
-        \epsilon_M^{-1}
+        \varepsilon_{Y,t}^{-1}
         =
         \left(1-\psi^{-1}\right)
         \frac{\gamma\|\sigma\|^2}{y_{Y,0}+2\kappa_p}
@@ -3101,9 +3137,15 @@ For simplicity, we focus on the case where $\hat{\alpha}=0$.
         \eta
         = \gamma \sigma \left( \frac{1- x_0 \overline{\alpha}_p}{x_a}\right)
         +\left[
-            1 -\frac{1-\gamma^{-1}}{1-\psi^{-1}} \left(\frac{1}{x_a} - \psi^{-1}\right)
+            1 -H_{a}
         \right]\gamma x_0\epsilon_M^{-1}\sigma_p\epsilon
-        +\mathcal{O}(\epsilon^3).
+        +\mathcal{O}(\epsilon^3),
+    \end{equation}
+    where
+    \begin{equation}
+        H_a
+        \equiv
+        \frac{1-\gamma^{-1}}{\psi-1} \left(\frac{\psi}{x_a} - 1\right).
     \end{equation}
     The risk premium is
     \begin{equation}
@@ -3112,14 +3154,9 @@ For simplicity, we focus on the case where $\hat{\alpha}=0$.
         \gamma\|\sigma\|^2
         \left(\frac{1-x_0\overline{\alpha}_p}{x_a}\right)
         +(2-H_a)\gamma x_0\epsilon_M^{-1}\sigma\sigma_p^\top\epsilon
-        +\mathcal{O}(\epsilon^3),
+        +\mathcal{O}(\epsilon^3).
     \end{equation}
-    where
-    \begin{equation}
-        H_a
-        \equiv
-        \frac{1-\gamma^{-1}}{1-\psi^{-1}} \left(\frac{1}{x_a} - \psi^{-1}\right).
-    \end{equation}
+    
     The incremental interest-rate correction is
     \begin{equation}
         \Delta r_2
@@ -4708,369 +4745,344 @@ where we use $ \overline{\sigma}=\sigma+\hat{\sigma}\epsilon $ from Equation~\eq
 % \end{itemize}
 \end{comment}
 
-\section{Useful Formula}
-The following are useful for computing the derivatives above:
-\begin{align}
-\gamma \sigma \frac{\partial \sigma_{y,2}(X)}{\partial \hat{\alpha}_p} &= \left(1-\psi^{-1}\right)\frac{\gamma\sigma^2}{2 y_{0}(X)} \sum_{k=1}^J \left( \hat{\gamma}_k - \hat{\gamma}_0  \right) x_k \left(- \frac{\gamma \sigma^2 x_0}{1-x_0} \right).
-\end{align}
-Note that we can write $\sigma_{j,2}(X)$ as follows
-\begin{align}
-\frac{\sigma_{j,2}(X)}{\sigma} &= \frac{\theta_2(X)}{\gamma \sigma} - \frac{\theta_1(X)}{\gamma\sigma}\hat{\gamma}_j + \frac{\theta_0(X)}{\gamma\sigma}\hat{\gamma}_j^2 - (1-\gamma^{-1}) \frac{\sigma_{y,2}(X)}{\sigma}\nonumber\\
-&= -\left( 1 + \frac{ x_c}{x_u}\right)\frac{\sigma_{y,2}(X)}{\sigma}-\mathbb{E}^u[\hat{\gamma}_k] \frac{ \hat{\alpha}_p x_0+ \frac{\hat{\sigma}}{\sigma}x_c }{1-x_0-x_c} -\var^u[\hat{\gamma}_k] +\nonumber\\
-& - \hat{\gamma}_j \left[\sum_{k\in\mathcal{J}^u} \frac{x_k}{x_u} \hat{\gamma}_j -\frac{\hat{\alpha}_p  x_0}{1-x_0}\right]+\hat{\gamma}_j^2.
-\end{align}
 
-\begin{align}
-\sigma_{j,1}(X) &= \sigma\min\left\{ \sum_{k\in\mathcal{J}^u} \frac{x_k}{x_u} \hat{\gamma}_k -\left(\frac{\hat{\alpha}_p  x_0+\frac{\hat{\sigma}}{\|\sigma\|} x_c }{1-x_0-x_c}\right)- \hat{\gamma}_j  ,\frac{\hat{\sigma}}{\sigma}  \right\}\\
-\sigma_{j,2}(X) &= \frac{\theta_2(X)}{\gamma} - \frac{\theta_1(X)}{\gamma}\hat{\gamma}_j + \frac{\theta_0(X)}{\gamma}\hat{\gamma}_j^2 - (1-\gamma^{-1})   \sigma_{y,2}(X)\\
-\sigma_{y,2}(X)  &= \left (1-\psi^{-1}\right )\frac{\gamma\sigma^2}{2 y_{0}(X)} \sum_{k=1}^J \left( \hat{\gamma}_k - \hat{\gamma}_0  \right) x_k \sigma_{k,1}(X)\\
-\theta_1(X) &= \gamma \sigma \left[\sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j -\frac{\hat{\alpha}_p  x_0}{1-x_0}\right]\\
-\theta_2(X) &=  - \frac{(\gamma-1) x_c + 1-x_0}{1-x_0-x_c} \sigma_{y,2}(X) - \gamma \sigma \mathbb{E}^u[\hat{\gamma}_j] \frac{ \hat{\alpha}_p x_0+ \frac{\hat{\sigma}}{\sigma}x_c }{1-x_0-x_c} - \gamma \sigma \var^u[\hat{\gamma}_j],
-\end{align}
-where
-\begin{align}
-\frac{\partial \sigma_{y,2}}{\partial \hat{\alpha}_p} &= \left (1-\psi^{-1}\right )\frac{\gamma\sigma^2}{2 y_{0}(X)} \sum_{k=1}^J \left( \hat{\gamma}_k - \hat{\gamma}_0  \right) x_k \left(- \frac{\sigma x_0}{1-x_0} \right)\nonumber\\
-&=\left (1-\psi^{-1}\right )\frac{\gamma\sigma^2}{2 y_{0}(X)}\sigma\left(\hat{\gamma}_0-\E^u[\hat{\gamma}_j]\right)x_0\\
-\sum_{j=0}^J x_{j}\gamma \sigma \hat{\gamma}_j \frac{\partial \sigma_{j,1}(X)}{\partial \hat{\alpha}_p} &= \gamma \sigma^2 \sum_{j=0}^J x_j \hat{\gamma}_j \left( -\frac{x_0}{1-x_0} \right)
-\end{align}
+% \section{Derivation of the perturbed solution}
 
-\section{Derivation of the perturbed solution}
+% In this section, we compute the first-order and second-order correction of the equilibrium objects.
+% It turns out that the system of equations determining the perturbed solution is block-recursive, so we are able to solve for the equilibrium objects one by one, provided we proceed in the appropriate order.
 
-In this section, we compute the first-order and second-order correction of the equilibrium objects.
-It turns out that the system of equations determining the perturbed solution is block-recursive, so we are able to solve for the equilibrium objects one by one, provided we proceed in the appropriate order.
-
-In contrast to the case considered in the text, we allow for portfolio-flow shocks.
-In particular, we assume that the portfolio share of the passive investor is given by $\alpha_{0,t} = 1 + \epsilon (\overline{\alpha}_{p,t} -1)$, where $\overline{\alpha}_{p,t}$ follows the process
-\begin{equation}
-    d \overline{\alpha}_{p,t} = \theta_p (\overline{\alpha} - \overline{\alpha}_{p,t}) \epsilon dt + \sigma_{p} \sqrt{\overline{\alpha}_{p,t}} \epsilon d Z_t.
-\end{equation}
-Notice that $\alpha_{0,t} = 1$ and $\overline{\alpha}_{p,t}$ is constant when $\epsilon = 0$.
-Finally, we assume that the mortality parameter is given by $\kappa = \hat{\kappa} \epsilon$.
-
-\subsection{First-order correction}
-
-\paragraph{Diffusion and drift terms.} The diffusion term for the price-dividend ratio is given by
-\begin{equation}
-    \sigma_{p,t} = \frac{p_{x}}{p} \sigma_{x} + \frac{p_{\overline{\alpha}_p}}{p} \sigma_{p} \sqrt{\overline{\alpha}_{p,t}} \epsilon = \mathcal{O}(\epsilon^2).
-\end{equation}
-Notice that $p_{x_j} = \mathcal{O}(\epsilon)$ and $\sigma_{x_j} = \mathcal{O}(\epsilon)$, as $p$ and $x_j$ are constant when $\epsilon = 0$, so the zeroth-order terms for $p_{x_j}$, $p_{\overline{\alpha}_p}$, and $\sigma_{x_j}$ are equal to zero.
-This implies that the first-order correction for $\sigma_{p,t}$ is equal to zero.
-A similar argument shows that $\sigma_{c_j,t} = \mathcal{O}(\epsilon^2)$.
-
-The drift of $p$ is given by
-\begin{equation}
-    \mu_{p,t} = \frac{p_{x}}{p} \mu_{x} + \frac{p_{\overline{\alpha}_p}}{p} \theta_{p} (\overline{\alpha} -\overline{\alpha}_{p,t}) \epsilon + \frac{1}{2} \sum_{k=1}^d\left[  \sigma_{x,k}^\top\frac{ p_{xx}}{p} \sigma_{x,k} + 2 \sigma_{p,k} \sqrt{\overline{\alpha}_{p,t}} \epsilon \frac{ p_{x\alpha_p}}{p} \sigma_{x,k} + \frac{p_{\overline{\alpha}_p\overline{\alpha}_p}}{p} \sigma_{p,k}^2 \overline{\alpha}_{p,t} \epsilon^2 \right],
-\end{equation}
-where $\sigma_{x,k}$ is the $k$-th column of the $J\times d$ matrix $\sigma_x$.
-As $p_{x}$ and $p_{\overline{\alpha}_p}$ are first-order in $\epsilon$, and the same goes for $\mu_x$ and $\sigma_x$, then $\mu_{p,t} = \mathcal{O}(\epsilon^2)$.
-A similar argument shows that $\mu_{c_j,t} = \mathcal{O}(\epsilon^2)$.
-Notice these facts imply that $\varsigma_j = \mathcal{O}(\epsilon^2)$ and $\xi_{j,t} = \mathcal{O}(\epsilon^2)$.
-
-\paragraph{Risk premium.} The risk premium is given by
-\begin{equation}
-    \pi_1(X) =  \gamma ||\sigma||^2 \left[  \sum_{j\in \mathcal{J}^u} \frac{x_{j}}{x_u} \hat{\gamma}_j -  \frac{x_0 \hat{\alpha}_{p} + x_c \frac{\hat{\sigma}}{||\sigma||}}{1-x_0 - x_c}\right],
-\end{equation}
-using the fact that $||\sigma_{R,t}|| = ||\sigma|| + \mathcal{O}(\epsilon^2)$, and $\hat{\alpha}_{p,t} \equiv \overline{\alpha}_{p,t}-1$.
-
-\paragraph{Portfolio share.} The portfolio share of an unconstrained investor is given by
-\begin{equation}
-    \alpha_{j}(X,\epsilon) = 1 + \left[ \frac{\pi_1(X)}{\gamma ||\sigma||^2} - \hat{\gamma}_j \right] \epsilon + \mathcal{O}(\epsilon^2),
-\end{equation}
-the portfolio share of a constrained investor is given by
-\begin{equation}
-    \alpha_j(X,\epsilon) = 1 + \frac{\hat{\sigma}}{||\sigma||} \epsilon + \mathcal{O}(\epsilon^2),
-\end{equation}
-and the portfolio share of the passive investor is given by $\alpha_{0}(X,\epsilon) = 1 + \hat{\alpha}_{p,t} \epsilon$.
-Notice that $\sum_{j=0}^J x_j \alpha_{j,1}(X) = 0$, consistent with market clearing.
-
-\paragraph{Interest rate.} The first-order correction for the interest rate is given by
-\begin{equation}
-    r_1(X) = \left(1-\psi^{-1}\right) \gamma ||\sigma||^2\sum_{j=0}^J x_j  \left[ \frac{\hat{\gamma}_j}{2} + \alpha_{j,1}(X)\right]  - \pi_1(X),
-\end{equation}
-using the fact that $\xi_t = \mathcal{O}(\epsilon^2)$, $\mu_{p,t} = \mathcal{O}(\epsilon^2)$, and $\sigma_{p,t} = \mathcal{O}(\epsilon^2)$.
-Given the market clearing for the risky asset, we can write:
-\begin{equation}
-    r_1(X) = \left(1-\psi^{-1}\right) \gamma ||\sigma||^2\sum_{j=0}^J x_j  \frac{\hat{\gamma}_j}{2}  - \pi_1(X),
-\end{equation}
-so $r_1(X) + \pi_1(X)$ is independent of $\overline{\alpha}_{p}$.
-
-\paragraph{Price-dividend ratio.} From the pricing condition, we obtain
-\begin{equation}
-    - \frac{1}{p_0(X)^2} p_1(X) = r_1(X) + \pi_1(X).
-\end{equation}
-Rearranging the expression above, and using the expression for the interest rate, we obtain
-\begin{equation}
-    p_1(X) = - p_0(X)^2 \left(1-\psi^{-1}\right) \gamma ||\sigma||^2\sum_{j=0}^J x_j  \frac{\hat{\gamma}_j}{2},
-\end{equation}
-which is independent of $\overline{\alpha}_{p,t}$.
-
-\paragraph{Consumption-wealth ratio.} The consumption-wealth ratio is given by
-\begin{equation}
-    c_{j,1}(X) = (1-\psi) \left[ r_1(X) + \pi_1(X) + \pi_0(X) \alpha_{j,1}(X)  - \frac{1}{2} \gamma \||\sigma\||^2 (\hat{\gamma}_j + 2 \alpha_{j,1}(X))\right].
-\end{equation}
-Using the expression for $r_1(X)$, we can write the expression above as follows:
-\begin{equation}
-    c_{j,1}(X) = (1-\psi) \left[ (1-\psi^ {-1}) \sum_{i=0}^J x_i  \frac{\hat{\gamma}_i}{2}  - \frac{\hat{\gamma}_j }{2} \right] \gamma \||\sigma\||^2.
-\end{equation}
-
-\paragraph{Wealth dynamics.} The diffusion term of $x_j$ is given by
-\begin{equation}
-    \sigma_{x_j}(X) = x_j \alpha_{j,1}(X) \epsilon \sigma + \mathcal{O}(\epsilon^2).
-\end{equation}
-
-The drift of $x_j$ is given by
-\begin{equation}
-    \mu_{x_j}(X) = x_j\left[r_1(X) + \pi_1(X) + \pi_0(X) \alpha_{j,1}(X) - c_{j,1}(X)- \alpha_{j,1}(X)||\sigma||^2 + \hat{\kappa} \frac{\omega_j - x_j}{x_j} \right] \epsilon + \mathcal{O}(\epsilon^2).
-\end{equation}
-
-We can write the first-order correction of $\mu_{x_j}$ as follows:
-\begin{equation}
-    \mu_{x_j,1}(X) = x_j\left[(\psi-1) \frac{\gamma \||\sigma\||^ 2 }{2} \left(\sum_{i=0}^J x_i \hat{\gamma}_i -\hat{\gamma}_j \right) + (\gamma-1)\||\sigma\||^ 2 \alpha_{j,1}(X) \right] + \hat{\kappa} (\omega_j - x_j).
-\end{equation}
-
-\subsection{Second-order correction}
-
-\paragraph{Diffusion and drift terms.} The diffusion term for the price-dividend ratio is given by
-\begin{equation}
-    \sigma_{p,2}(X) = \frac{p_{x,1}(X)}{p_0(X)} \sigma_{x,1}(X) + \frac{p_{\overline{\alpha}_p,1}(X)}{p_0(X)} \sigma_{p} \sqrt{\overline{\alpha}_{p}}.
-\end{equation}
-We can write the expression above as follows:
-\begin{equation}
-    \sigma_{p,2}(X) = - p_0(X) (1-\psi^{-1})\frac{\gamma \|\sigma\||^ 2}{2} \sum_{j=1}^J \left( \hat{\gamma}_j - \hat{\gamma}_0 \right) x_j \alpha_{j,1}(X) \sigma,
-\end{equation}
-where we used the fact that $p_{\overline{\alpha}_p,1}(X) = 0$.
-
-Similarly, the diffusion for $c_j$ is given by
-\begin{equation}
-    \sigma_{c_j,2}(X) = -(\psi-1) \frac{\gamma \||\sigma\||^2}{2 c_{j,0}(X)} (1-\psi^{-1}) \sum_{i=1}^J\left( \hat{\gamma}_i - \hat{\gamma}_0 \right) x_i \alpha_{i,1}(X) \sigma.
-\end{equation}
-The second-order correction for the hedging demand is then given by $\varsigma_{j,2}(X) = \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2} \sigma^\top }{\||\sigma\||^2}$.
-
-The second-order correction of the drift of $p$ and $c_{j}$ are given by
-\begin{equation}
-    \mu_{p,2}(X) = \frac{p_{x,1}(X)}{p_0(X)} \mu_{x,1}(X), \qquad \qquad 
-    \mu_{c_j,2}(X) = \frac{c_{j,x,1}(X)}{c_{j,0}(X)} \mu_{x,1}(X),
-\end{equation}
-which can be written as
-\begin{align}
-    \mu_{p,2}(X) &= -p_0(X) (1-\psi^{-1}) \frac{\gamma\|\sigma\||^2}{2} \sum_{j=1}^J (\hat{\gamma}_j-\hat{\gamma}_0) \mu_{x_j,1}(X)\\
-    \mu_{c_i,2}(X) &= (1-\psi)(1-\psi^{-1}) \frac{\gamma\|\sigma\||^2}{2 c_{i,0}(X)} \sum_{j=1}^J (\hat{\gamma}_j-\hat{\gamma}_0) \mu_{x_j,1}(X).
-\end{align}
-
-The second-order correction for $\xi_{j,t}$ is then given by $\xi_{j,2}(X) = \mu_{c_j,2}(X) + (1-\gamma) \sigma_{c_j,2} \sigma^\top$.
-
-\paragraph{Risk premium.} The risk premium is given by
-\begin{equation}
-    \pi_2(X) = \gamma \|\sigma\||^2\left[ \frac{\gamma_{u,2}(X)}{\gamma} - \frac{\gamma_{u,1}(X)}{\gamma} \frac{x_0 \hat{\alpha}_{p} + x_c \frac{\hat{\sigma}}{\|\sigma\||}}{1-x_0-x_c}  + 
-    2\sum_{k=1}^d \frac{\sigma_k \sigma_{p,2,k}}{||\sigma||^ 2}
-    -\frac{x_c}{1-x_0 -x_c} \overline{\alpha}_{c,2}(X) - \varsigma_{2}(X) \right].
-\end{equation}
-
-Notice that we can write the aggregate risk aversion as follows:
-\begin{equation}
-    \gamma_u(X) = \gamma \left[ 1 + \mathbb{E}^u[\hat{\gamma}_j] \epsilon - \delta^u[\hat{\gamma}_j] \epsilon^ 2 \right] + \mathcal{O}(\epsilon^3),
-\end{equation}
-where $\mathbb{E}^u[\hat{\gamma}_j] \equiv \sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j$ and $\delta^u[\hat{\gamma}_j] \equiv \sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j^ 2 - \left(\sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j \right)^ 2$, so $\gamma_{u,2}(X) / \gamma = -\delta^u[\hat{\gamma}_j]$.
-
-Combining the previous two expressions, we obtain
-\begin{align}
-    \frac{\pi_2(X)}{\gamma \|\sigma\||^2} &=  -\delta^u[\hat{\gamma}_j] - \mathbb{E}^u[\hat{\gamma}_j] \frac{x_0 \hat{\alpha}_{p} + x_c \frac{\hat{\sigma}}{\|\sigma\||}}{1-x_0-x_c}  + 
-    2\sum_{k=1}^d \frac{\sigma_k \sigma_{p,2,k}}{||\sigma||^ 2}
-    +\frac{x_c}{1-x_0 -x_c} \sum_{k=1}^d  \frac{\sigma_k \sigma_{p,2,k}}{\|\sigma\||^2} - \varsigma_{2}(X) \nonumber\\
-     &=  -\delta^u[\hat{\gamma}_j] - \mathbb{E}^u[\hat{\gamma}_j] \frac{x_0 \hat{\alpha}_{p} + x_c \frac{\hat{\sigma}}{\|\sigma\||}}{1-x_0-x_c}  
-    +\left(1+\gamma^{-1}+\frac{x_c}{1-x_0 -x_c}\right) \sum_{k=1}^d  \frac{\sigma_k \sigma_{p,2,k}}{\|\sigma\||^2},
-\end{align}
-where we used the fact that $\varsigma_{2}(X) = \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2}\sigma^\top}{\|\sigma\||^2}$, $\sigma_{p,2} = \frac{\sigma_{c_j,2}}{\psi-1}$, and $\overline{\alpha}_{c,2}(X) = - \sum_{k=1}^d  \frac{\sigma_k \sigma_{p,2,k}}{\|\sigma\||^2}$.
-
-\paragraph{Portfolio share.} The portfolio share of an unconstrained investor is given by
-\begin{equation}
-    \alpha_{j,2}(X) = \frac{\pi_2(X)}{\gamma \||\sigma\||^2} - \frac{\pi_1(X)}{\gamma \||\sigma\||^2} \hat{\gamma}_j + \hat{\gamma}_j^2 - 2 \sum_{k=1}^d \frac{\sigma_k \sigma_{p,2,k}(X)}{\|\sigma\|^2} + \varsigma_{j,2}(X),
-\end{equation}
-the portfolio share of a constrained investor is $\alpha_{j,2}(X) = - \sum_{k=1}^d  \frac{\sigma_k \sigma_{p,2,k}}{\|\sigma\||^2}$, and the portfolio share of the passive investor satisfies $\alpha_{0,2} = 0$.
-
-We can write the expression above as follows:
-\begin{equation}
-    \alpha_{j,2}(X) = \frac{\pi_2(X)}{\gamma \||\sigma\||^2} - \frac{\pi_1(X)}{\gamma \||\sigma\||^2} \hat{\gamma}_j + \hat{\gamma}_j^2 - (1+\gamma^{-1}) \sum_{k=1}^d \frac{\sigma_k \sigma_{p,2,k}(X)}{\|\sigma\|^2}.
-\end{equation}
-Notice that $\sum_{j=0}^J x_j \alpha_{j,2}(X) = 0 $, consistent with market clearing.
-
-
-\paragraph{Interest rate.} The interest rate is given by
-\begin{align}
-    r_2(X) &= \psi^{-1} (\mu_{p,2}(X) + \sigma \sigma_{p,2}(X)^\top )  + (1-\psi^{-1}).\frac{\gamma \|\sigma\||^ 2}{2} \sum_{j=0}^J x_j \left[ 2\hat{\gamma}_j \alpha_{j,1}(X) + \alpha_{j,1}^2(X) + 2 \alpha_{j,2}(X)\right]\nonumber\\
-    &+(1-\psi^{-1}) \gamma \|\sigma\|^ 2 \sum_{k=1}^d \frac{\sigma_k \sigma_{p,2,k}(X)}{\|\sigma\|^2} -\pi_2(X) + \psi^{-1} \xi_{2}(X),
-\end{align}
-where $\xi_2(X) = (\psi-1) \left[ \mu_{p,2}(X) + (1-\gamma) \sigma_{p,2} \sigma^\top \right]$
-
-We can write the expression for the portfolio of the unconstrained investor as follows:
-\begin{align}
-    r_2(X) &= \mu_{p,2}(X) + \sigma \sigma_{p,2}(X)^\top   + (1-\psi^{-1}) \gamma \|\sigma\||^ 2 \sum_{j=0}^J x_j \left[ \hat{\gamma}_j \alpha_{j,1}(X) + \frac{\alpha_{j,1}^2(X)}{2} \right] -\pi_2(X),
-\end{align}
-
-\paragraph{Price-dividend ratio.} The price-dividend ratio is given by
-\begin{equation}
-\frac{p_1^2(X)}{p_0^3(X)} - \frac{p_2(X)}{p_0^2(X)} = r_2(X) + \pi_2(X) - \mu_{p,2}(X) - \sigma \sigma_{p,2}^\top.
-\end{equation}
-Rearranging the expression above, and using the expression for $r_2(X)$, we obtain
-\begin{equation}
-    \frac{p_2(X)}{p_0(X)} = - p_0(X)  (1-\psi^{-1}) \gamma \|\sigma\||^ 2 \sum_{j=0}^J x_j \left[ \hat{\gamma}_j \alpha_{j,1}(X) + \frac{\alpha_{j,1}^2(X)}{2} \right]  + \left( \frac{p_1(X)}{p_0(X)} \right)^2.
-\end{equation}
-
-\paragraph{Consumption-wealth ratio.} The second-order correction for the consumption-wealth ratio is given by
-\begin{align}
-    c_{j,2}(X) &= (1-\psi) \left[ r_2(X) + \pi_2(X) + \pi_1(X) \alpha_{j,1}(X) + \pi_0(X) \alpha_{j,2}(X) \right] + \xi_{j,2}(X)\\
-    &-(1-\psi) \gamma \|\sigma\||^2 \left[ \alpha_{j,1}(X) \hat{\gamma}_j + \alpha_{j,2}(X) + \frac{\alpha_{j,1}^2(X)}{2} + \sum_{k=1}^d \frac{\sigma_k \sigma_{p,k,2}(X)}{\|\sigma\||^2} \right].
-\end{align}
-
-\paragraph{Wealth dynamics.} The diffusion term of $x_j$ is given by
-\begin{equation}
-    \sigma_{x_j,2}(X) = x_j \alpha_{j,2} \sigma.
-\end{equation}
-
-The drift of $x_j$ is given by
-\begin{equation}
-    \mu_{x_j,2} = x_j \left[ r_2(X) + \pi_2(X) + \pi_1(X) \alpha_{j,1}(X) + \pi_0(X) \alpha_{j,2}(X) - c_{j,2}(X)- \mu_{p,2}(X)- \sigma \sigma_{p,2}(X)^\top - \alpha_{j,2}(X) \|\sigma\|^2 \right].
-\end{equation}
-
-\paragraph{Aggregate market elasticity.} The derivative of $p$ with respect to $\overline{\alpha}_p$ is given by
-\begin{equation}
-    \frac{1}{p(X,\epsilon)}\frac{\partial p(X,\epsilon)}{\partial \overline{\alpha}_p} = \frac{1}{p_0(X)} \frac{\partial p_2(X)}{\partial \overline{\alpha}_p} \epsilon^2 + \mathcal{O}(\epsilon^3).
-\end{equation}
-
-The market elasticity satisfies the condition
-\begin{equation}
-    \frac{1}{p_0(X)} \frac{\partial p_2(X)}{\partial \overline{\alpha}_p} = - p_0(X)  (1-\psi^{-1}) \gamma \|\sigma\||^ 2 \left[ x_0(\hat{\gamma}_0 + \hat{\alpha}_{p}) + \sum_{j\in\mathcal{J}^u} x_j \left( \hat{\gamma}_j + \alpha_{j,1}(X) \right)  \left(- \frac{x_0}{x_u} \right) \right] \epsilon^2.
-\end{equation}
-From the market clearing for the risky asset, we have $x_0 \hat{\alpha}_p + \sum_{j \in \mathcal{J}^u} x_j \alpha_{j,1}(X) + x_c \frac{\hat{\sigma}}{\|\sigma\|} = 0$, so we can write the expression above as follows:
-\begin{equation}
-    \frac{1}{p_0(X)} \frac{\partial p_2(X)}{\partial \overline{\alpha}_p} = p_0(X)  (1-\psi^{-1}) \gamma \|\sigma\||^ 2 \left[ \hat{\gamma}_u(X) - \hat{\gamma}_0 + \frac{1-x_c}{1-x_0 -x_c}  (1-\overline{\alpha}_p) -  \frac{ x_c \frac{\hat{\sigma}}{\|\sigma\||}}{1-x_0 - x_c}  \right] x_0 \epsilon^2.
-\end{equation}
-
-
-\subsection{Third-order approximation}
-
-\subsubsection{Passive demand}
-
-Suppose there is no preference heterogeneity and no leverage constraint.
-Without loss of generality, set $J = 1$.
-In this case, the price-dividend ratio is given by
-\begin{align}
-    p(X,\epsilon) &= p^* -(p^*)^2 (1-\psi^{-1}) \frac{\gamma \|\sigma\|^2}{2} \frac{x_0 \hat{\alpha}_p^2}{x_1} \epsilon^2 + \mathcal{O}(\epsilon^3)\\
-    \pi(X,\epsilon) &= \pi_0(X) - \gamma \|\sigma\|^2 \frac{x_0\hat{\alpha}_p}{x_1} \epsilon  + \mathcal{O}(\epsilon^3)\\
-    r(X,\epsilon) &= r_0(X)+\gamma \|\sigma\|^2 \frac{x_0 \hat{\alpha}_p}{x_1} \epsilon +(1-\psi^{-1}) \frac{\gamma \|\sigma\|^2}{2} \frac{x_0 \hat{\alpha}_p^2}{x_1} \epsilon^2 + \mathcal{O}(\epsilon^3)\\
-    \alpha_{0}(X,\epsilon) &= 1 + \hat{\alpha}_p\epsilon + \mathcal{O}(\epsilon^3)\\
-    \alpha_{1}(X,\epsilon) &= 1 - \frac{x_0}{x_1} \hat{\alpha}_p\epsilon + \mathcal{O}(\epsilon^3)\\
-    c_{j}(X,\epsilon) &= c_{j,0}(X) + (1-\psi^{-1}) \frac{\gamma \|\sigma\|^2}{2} \frac{x_0 \hat{\alpha}_p^2}{x_1} \epsilon^2 + \mathcal{O}(\epsilon^3)\\
-    \sigma_{x_1}(X,\epsilon) &= - \frac{x_0}{x_1} \hat{\alpha}_p \sigma \epsilon  + \mathcal{O}(\epsilon^3)\\
-    \mu_{x_1}(X,\epsilon) &= \left[ (1-\gamma) \|\sigma\|^2 (1-x_1) \hat{\alpha}_p + \hat{\kappa} (\omega_j - x_1)\right]  \epsilon + \mathcal{O}(\epsilon^3),
-\end{align}
-where $\mu_p, \sigma_p, \mu_{c_j},  $ and $\sigma_{c_j}$ are all equal to zero up to second order, and $x_0 = 1-x_1$.
-
-The law of motion of $x_{1,t}$ can be written as
-\begin{equation}
-    \frac{d x_{1,t}}{x_{1,t}} = \left[ x_{0,t} (c_{0,t}-c_{1,t})+x_{0,t}(\alpha_{0,t}-\alpha_{1,t})\left( \|\sigma_{R,t}\|^2-\pi_t \right) 
- + \kappa\frac{\omega_1 - x_{1,t}}{x_{1,t}}\right] dt + (\alpha_{1,t}-1) \sigma_{R,t} d Z_t.
-\end{equation}
-
-% Notice that $\alpha_{1,t} = 1 + \frac{1-x_{1,t}}{x_{1,t}} (1-\alpha_{0,t})$. Define $z = \frac{1-x_1}{x_1}$, so the diffusion term for $z_t$ is given by
+% In contrast to the case considered in the text, we allow for portfolio-flow shocks.
+% In particular, we assume that the portfolio share of the passive investor is given by $\alpha_{0,t} = 1 + \epsilon (\overline{\alpha}_{p,t} -1)$, where $\overline{\alpha}_{p,t}$ follows the process
 % \begin{equation}
-%     \sigma_{z,t} = -\frac{1}{x_{1,t}^2} (1-x_{1,t}) (1-\alpha_{0,t}) \sigma_{R,t} = - \frac{z_{1,t}}{1+z_{1,t}} (1-\alpha_{0,t}) \sigma_{R,t}.
+%     d \overline{\alpha}_{p,t} = \theta_p (\overline{\alpha} - \overline{\alpha}_{p,t}) \epsilon dt + \sigma_{p} \sqrt{\overline{\alpha}_{p,t}} \epsilon d Z_t.
+% \end{equation}
+% Notice that $\alpha_{0,t} = 1$ and $\overline{\alpha}_{p,t}$ is constant when $\epsilon = 0$.
+% Finally, we assume that the mortality parameter is given by $\kappa = \hat{\kappa} \epsilon$.
+
+% \subsection{First-order correction}
+
+% \paragraph{Diffusion and drift terms.} The diffusion term for the price-dividend ratio is given by
+% \begin{equation}
+%     \sigma_{p,t} = \frac{p_{x}}{p} \sigma_{x} + \frac{p_{\overline{\alpha}_p}}{p} \sigma_{p} \sqrt{\overline{\alpha}_{p,t}} \epsilon = \mathcal{O}(\epsilon^2).
+% \end{equation}
+% Notice that $p_{x_j} = \mathcal{O}(\epsilon)$ and $\sigma_{x_j} = \mathcal{O}(\epsilon)$, as $p$ and $x_j$ are constant when $\epsilon = 0$, so the zeroth-order terms for $p_{x_j}$, $p_{\overline{\alpha}_p}$, and $\sigma_{x_j}$ are equal to zero.
+% This implies that the first-order correction for $\sigma_{p,t}$ is equal to zero.
+% A similar argument shows that $\sigma_{c_j,t} = \mathcal{O}(\epsilon^2)$.
+
+% The drift of $p$ is given by
+% \begin{equation}
+%     \mu_{p,t} = \frac{p_{x}}{p} \mu_{x} + \frac{p_{\overline{\alpha}_p}}{p} \theta_{p} (\overline{\alpha} -\overline{\alpha}_{p,t}) \epsilon + \frac{1}{2} \sum_{k=1}^d\left[  \sigma_{x,k}^\top\frac{ p_{xx}}{p} \sigma_{x,k} + 2 \sigma_{p,k} \sqrt{\overline{\alpha}_{p,t}} \epsilon \frac{ p_{x\alpha_p}}{p} \sigma_{x,k} + \frac{p_{\overline{\alpha}_p\overline{\alpha}_p}}{p} \sigma_{p,k}^2 \overline{\alpha}_{p,t} \epsilon^2 \right],
+% \end{equation}
+% where $\sigma_{x,k}$ is the $k$-th column of the $J\times d$ matrix $\sigma_x$.
+% As $p_{x}$ and $p_{\overline{\alpha}_p}$ are first-order in $\epsilon$, and the same goes for $\mu_x$ and $\sigma_x$, then $\mu_{p,t} = \mathcal{O}(\epsilon^2)$.
+% A similar argument shows that $\mu_{c_j,t} = \mathcal{O}(\epsilon^2)$.
+% Notice these facts imply that $\varsigma_j = \mathcal{O}(\epsilon^2)$ and $\xi_{j,t} = \mathcal{O}(\epsilon^2)$.
+
+% \paragraph{Risk premium.} The risk premium is given by
+% \begin{equation}
+%     \pi_1(X) =  \gamma ||\sigma||^2 \left[  \sum_{j\in \mathcal{J}^u} \frac{x_{j}}{x_u} \hat{\gamma}_j -  \frac{x_0 \hat{\alpha}_{p} + x_c \frac{\hat{\sigma}}{||\sigma||}}{1-x_0 - x_c}\right],
+% \end{equation}
+% using the fact that $||\sigma_{R,t}|| = ||\sigma|| + \mathcal{O}(\epsilon^2)$, and $\hat{\alpha}_{p,t} \equiv \overline{\alpha}_{p,t}-1$.
+
+% \paragraph{Portfolio share.} The portfolio share of an unconstrained investor is given by
+% \begin{equation}
+%     \alpha_{j}(X,\epsilon) = 1 + \left[ \frac{\pi_1(X)}{\gamma ||\sigma||^2} - \hat{\gamma}_j \right] \epsilon + \mathcal{O}(\epsilon^2),
+% \end{equation}
+% the portfolio share of a constrained investor is given by
+% \begin{equation}
+%     \alpha_j(X,\epsilon) = 1 + \frac{\hat{\sigma}}{||\sigma||} \epsilon + \mathcal{O}(\epsilon^2),
+% \end{equation}
+% and the portfolio share of the passive investor is given by $\alpha_{0}(X,\epsilon) = 1 + \hat{\alpha}_{p,t} \epsilon$.
+% Notice that $\sum_{j=0}^J x_j \alpha_{j,1}(X) = 0$, consistent with market clearing.
+
+% \paragraph{Interest rate.} The first-order correction for the interest rate is given by
+% \begin{equation}
+%     r_1(X) = \left(1-\psi^{-1}\right) \gamma ||\sigma||^2\sum_{j=0}^J x_j  \left[ \frac{\hat{\gamma}_j}{2} + \alpha_{j,1}(X)\right]  - \pi_1(X),
+% \end{equation}
+% using the fact that $\xi_t = \mathcal{O}(\epsilon^2)$, $\mu_{p,t} = \mathcal{O}(\epsilon^2)$, and $\sigma_{p,t} = \mathcal{O}(\epsilon^2)$.
+% Given the market clearing for the risky asset, we can write:
+% \begin{equation}
+%     r_1(X) = \left(1-\psi^{-1}\right) \gamma ||\sigma||^2\sum_{j=0}^J x_j  \frac{\hat{\gamma}_j}{2}  - \pi_1(X),
+% \end{equation}
+% so $r_1(X) + \pi_1(X)$ is independent of $\overline{\alpha}_{p}$.
+
+% \paragraph{Price-dividend ratio.} From the pricing condition, we obtain
+% \begin{equation}
+%     - \frac{1}{p_0(X)^2} p_1(X) = r_1(X) + \pi_1(X).
+% \end{equation}
+% Rearranging the expression above, and using the expression for the interest rate, we obtain
+% \begin{equation}
+%     p_1(X) = - p_0(X)^2 \left(1-\psi^{-1}\right) \gamma ||\sigma||^2\sum_{j=0}^J x_j  \frac{\hat{\gamma}_j}{2},
+% \end{equation}
+% which is independent of $\overline{\alpha}_{p,t}$.
+
+% \paragraph{Consumption-wealth ratio.} The consumption-wealth ratio is given by
+% \begin{equation}
+%     c_{j,1}(X) = (1-\psi) \left[ r_1(X) + \pi_1(X) + \pi_0(X) \alpha_{j,1}(X)  - \frac{1}{2} \gamma \||\sigma\||^2 (\hat{\gamma}_j + 2 \alpha_{j,1}(X))\right].
+% \end{equation}
+% Using the expression for $r_1(X)$, we can write the expression above as follows:
+% \begin{equation}
+%     c_{j,1}(X) = (1-\psi) \left[ (1-\psi^ {-1}) \sum_{i=0}^J x_i  \frac{\hat{\gamma}_i}{2}  - \frac{\hat{\gamma}_j }{2} \right] \gamma \||\sigma\||^2.
+% \end{equation}
+
+% \paragraph{Wealth dynamics.} The diffusion term of $x_j$ is given by
+% \begin{equation}
+%     \sigma_{x_j}(X) = x_j \alpha_{j,1}(X) \epsilon \sigma + \mathcal{O}(\epsilon^2).
+% \end{equation}
+
+% The drift of $x_j$ is given by
+% \begin{equation}
+%     \mu_{x_j}(X) = x_j\left[r_1(X) + \pi_1(X) + \pi_0(X) \alpha_{j,1}(X) - c_{j,1}(X)- \alpha_{j,1}(X)||\sigma||^2 + \hat{\kappa} \frac{\omega_j - x_j}{x_j} \right] \epsilon + \mathcal{O}(\epsilon^2).
+% \end{equation}
+
+% We can write the first-order correction of $\mu_{x_j}$ as follows:
+% \begin{equation}
+%     \mu_{x_j,1}(X) = x_j\left[(\psi-1) \frac{\gamma \||\sigma\||^ 2 }{2} \left(\sum_{i=0}^J x_i \hat{\gamma}_i -\hat{\gamma}_j \right) + (\gamma-1)\||\sigma\||^ 2 \alpha_{j,1}(X) \right] + \hat{\kappa} (\omega_j - x_j).
+% \end{equation}
+
+% \subsection{Second-order correction}
+
+% \paragraph{Diffusion and drift terms.} The diffusion term for the price-dividend ratio is given by
+% \begin{equation}
+%     \sigma_{p,2}(X) = \frac{p_{x,1}(X)}{p_0(X)} \sigma_{x,1}(X) + \frac{p_{\overline{\alpha}_p,1}(X)}{p_0(X)} \sigma_{p} \sqrt{\overline{\alpha}_{p}}.
+% \end{equation}
+% We can write the expression above as follows:
+% \begin{equation}
+%     \sigma_{p,2}(X) = - p_0(X) (1-\psi^{-1})\frac{\gamma \|\sigma\||^ 2}{2} \sum_{j=1}^J \left( \hat{\gamma}_j - \hat{\gamma}_0 \right) x_j \alpha_{j,1}(X) \sigma,
+% \end{equation}
+% where we used the fact that $p_{\overline{\alpha}_p,1}(X) = 0$.
+
+% Similarly, the diffusion for $c_j$ is given by
+% \begin{equation}
+%     \sigma_{c_j,2}(X) = -(\psi-1) \frac{\gamma \||\sigma\||^2}{2 c_{j,0}(X)} (1-\psi^{-1}) \sum_{i=1}^J\left( \hat{\gamma}_i - \hat{\gamma}_0 \right) x_i \alpha_{i,1}(X) \sigma.
+% \end{equation}
+% The second-order correction for the hedging demand is then given by $\varsigma_{j,2}(X) = \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2} \sigma^\top }{\||\sigma\||^2}$.
+
+% The second-order correction of the drift of $p$ and $c_{j}$ are given by
+% \begin{equation}
+%     \mu_{p,2}(X) = \frac{p_{x,1}(X)}{p_0(X)} \mu_{x,1}(X), \qquad \qquad 
+%     \mu_{c_j,2}(X) = \frac{c_{j,x,1}(X)}{c_{j,0}(X)} \mu_{x,1}(X),
+% \end{equation}
+% which can be written as
+% \begin{align}
+%     \mu_{p,2}(X) &= -p_0(X) (1-\psi^{-1}) \frac{\gamma\|\sigma\||^2}{2} \sum_{j=1}^J (\hat{\gamma}_j-\hat{\gamma}_0) \mu_{x_j,1}(X)\\
+%     \mu_{c_i,2}(X) &= (1-\psi)(1-\psi^{-1}) \frac{\gamma\|\sigma\||^2}{2 c_{i,0}(X)} \sum_{j=1}^J (\hat{\gamma}_j-\hat{\gamma}_0) \mu_{x_j,1}(X).
+% \end{align}
+
+% The second-order correction for $\xi_{j,t}$ is then given by $\xi_{j,2}(X) = \mu_{c_j,2}(X) + (1-\gamma) \sigma_{c_j,2} \sigma^\top$.
+
+% \paragraph{Risk premium.} The risk premium is given by
+% \begin{equation}
+%     \pi_2(X) = \gamma \|\sigma\||^2\left[ \frac{\gamma_{u,2}(X)}{\gamma} - \frac{\gamma_{u,1}(X)}{\gamma} \frac{x_0 \hat{\alpha}_{p} + x_c \frac{\hat{\sigma}}{\|\sigma\||}}{1-x_0-x_c}  + 
+%     2\sum_{k=1}^d \frac{\sigma_k \sigma_{p,2,k}}{||\sigma||^ 2}
+%     -\frac{x_c}{1-x_0 -x_c} \overline{\alpha}_{c,2}(X) - \varsigma_{2}(X) \right].
+% \end{equation}
+
+% Notice that we can write the aggregate risk aversion as follows:
+% \begin{equation}
+%     \gamma_u(X) = \gamma \left[ 1 + \mathbb{E}^u[\hat{\gamma}_j] \epsilon - \delta^u[\hat{\gamma}_j] \epsilon^ 2 \right] + \mathcal{O}(\epsilon^3),
+% \end{equation}
+% where $\mathbb{E}^u[\hat{\gamma}_j] \equiv \sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j$ and $\delta^u[\hat{\gamma}_j] \equiv \sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j^ 2 - \left(\sum_{j\in\mathcal{J}^u} \frac{x_j}{x_u} \hat{\gamma}_j \right)^ 2$, so $\gamma_{u,2}(X) / \gamma = -\delta^u[\hat{\gamma}_j]$.
+
+% Combining the previous two expressions, we obtain
+% \begin{align}
+%     \frac{\pi_2(X)}{\gamma \|\sigma\||^2} &=  -\delta^u[\hat{\gamma}_j] - \mathbb{E}^u[\hat{\gamma}_j] \frac{x_0 \hat{\alpha}_{p} + x_c \frac{\hat{\sigma}}{\|\sigma\||}}{1-x_0-x_c}  + 
+%     2\sum_{k=1}^d \frac{\sigma_k \sigma_{p,2,k}}{||\sigma||^ 2}
+%     +\frac{x_c}{1-x_0 -x_c} \sum_{k=1}^d  \frac{\sigma_k \sigma_{p,2,k}}{\|\sigma\||^2} - \varsigma_{2}(X) \nonumber\\
+%      &=  -\delta^u[\hat{\gamma}_j] - \mathbb{E}^u[\hat{\gamma}_j] \frac{x_0 \hat{\alpha}_{p} + x_c \frac{\hat{\sigma}}{\|\sigma\||}}{1-x_0-x_c}  
+%     +\left(1+\gamma^{-1}+\frac{x_c}{1-x_0 -x_c}\right) \sum_{k=1}^d  \frac{\sigma_k \sigma_{p,2,k}}{\|\sigma\||^2},
+% \end{align}
+% where we used the fact that $\varsigma_{2}(X) = \frac{1-\gamma^{-1}}{\psi-1} \frac{\sigma_{c_j,2}\sigma^\top}{\|\sigma\||^2}$, $\sigma_{p,2} = \frac{\sigma_{c_j,2}}{\psi-1}$, and $\overline{\alpha}_{c,2}(X) = - \sum_{k=1}^d  \frac{\sigma_k \sigma_{p,2,k}}{\|\sigma\||^2}$.
+
+% \paragraph{Portfolio share.} The portfolio share of an unconstrained investor is given by
+% \begin{equation}
+%     \alpha_{j,2}(X) = \frac{\pi_2(X)}{\gamma \||\sigma\||^2} - \frac{\pi_1(X)}{\gamma \||\sigma\||^2} \hat{\gamma}_j + \hat{\gamma}_j^2 - 2 \sum_{k=1}^d \frac{\sigma_k \sigma_{p,2,k}(X)}{\|\sigma\|^2} + \varsigma_{j,2}(X),
+% \end{equation}
+% the portfolio share of a constrained investor is $\alpha_{j,2}(X) = - \sum_{k=1}^d  \frac{\sigma_k \sigma_{p,2,k}}{\|\sigma\||^2}$, and the portfolio share of the passive investor satisfies $\alpha_{0,2} = 0$.
+
+% We can write the expression above as follows:
+% \begin{equation}
+%     \alpha_{j,2}(X) = \frac{\pi_2(X)}{\gamma \||\sigma\||^2} - \frac{\pi_1(X)}{\gamma \||\sigma\||^2} \hat{\gamma}_j + \hat{\gamma}_j^2 - (1+\gamma^{-1}) \sum_{k=1}^d \frac{\sigma_k \sigma_{p,2,k}(X)}{\|\sigma\|^2}.
+% \end{equation}
+% Notice that $\sum_{j=0}^J x_j \alpha_{j,2}(X) = 0 $, consistent with market clearing.
+
+
+% \paragraph{Interest rate.} The interest rate is given by
+% \begin{align}
+%     r_2(X) &= \psi^{-1} (\mu_{p,2}(X) + \sigma \sigma_{p,2}(X)^\top )  + (1-\psi^{-1}).\frac{\gamma \|\sigma\||^ 2}{2} \sum_{j=0}^J x_j \left[ 2\hat{\gamma}_j \alpha_{j,1}(X) + \alpha_{j,1}^2(X) + 2 \alpha_{j,2}(X)\right]\nonumber\\
+%     &+(1-\psi^{-1}) \gamma \|\sigma\|^ 2 \sum_{k=1}^d \frac{\sigma_k \sigma_{p,2,k}(X)}{\|\sigma\|^2} -\pi_2(X) + \psi^{-1} \xi_{2}(X),
+% \end{align}
+% where $\xi_2(X) = (\psi-1) \left[ \mu_{p,2}(X) + (1-\gamma) \sigma_{p,2} \sigma^\top \right]$
+
+% We can write the expression for the portfolio of the unconstrained investor as follows:
+% \begin{align}
+%     r_2(X) &= \mu_{p,2}(X) + \sigma \sigma_{p,2}(X)^\top   + (1-\psi^{-1}) \gamma \|\sigma\||^ 2 \sum_{j=0}^J x_j \left[ \hat{\gamma}_j \alpha_{j,1}(X) + \frac{\alpha_{j,1}^2(X)}{2} \right] -\pi_2(X),
+% \end{align}
+
+% \paragraph{Price-dividend ratio.} The price-dividend ratio is given by
+% \begin{equation}
+% \frac{p_1^2(X)}{p_0^3(X)} - \frac{p_2(X)}{p_0^2(X)} = r_2(X) + \pi_2(X) - \mu_{p,2}(X) - \sigma \sigma_{p,2}^\top.
+% \end{equation}
+% Rearranging the expression above, and using the expression for $r_2(X)$, we obtain
+% \begin{equation}
+%     \frac{p_2(X)}{p_0(X)} = - p_0(X)  (1-\psi^{-1}) \gamma \|\sigma\||^ 2 \sum_{j=0}^J x_j \left[ \hat{\gamma}_j \alpha_{j,1}(X) + \frac{\alpha_{j,1}^2(X)}{2} \right]  + \left( \frac{p_1(X)}{p_0(X)} \right)^2.
+% \end{equation}
+
+% \paragraph{Consumption-wealth ratio.} The second-order correction for the consumption-wealth ratio is given by
+% \begin{align}
+%     c_{j,2}(X) &= (1-\psi) \left[ r_2(X) + \pi_2(X) + \pi_1(X) \alpha_{j,1}(X) + \pi_0(X) \alpha_{j,2}(X) \right] + \xi_{j,2}(X)\\
+%     &-(1-\psi) \gamma \|\sigma\||^2 \left[ \alpha_{j,1}(X) \hat{\gamma}_j + \alpha_{j,2}(X) + \frac{\alpha_{j,1}^2(X)}{2} + \sum_{k=1}^d \frac{\sigma_k \sigma_{p,k,2}(X)}{\|\sigma\||^2} \right].
+% \end{align}
+
+% \paragraph{Wealth dynamics.} The diffusion term of $x_j$ is given by
+% \begin{equation}
+%     \sigma_{x_j,2}(X) = x_j \alpha_{j,2} \sigma.
+% \end{equation}
+
+% The drift of $x_j$ is given by
+% \begin{equation}
+%     \mu_{x_j,2} = x_j \left[ r_2(X) + \pi_2(X) + \pi_1(X) \alpha_{j,1}(X) + \pi_0(X) \alpha_{j,2}(X) - c_{j,2}(X)- \mu_{p,2}(X)- \sigma \sigma_{p,2}(X)^\top - \alpha_{j,2}(X) \|\sigma\|^2 \right].
+% \end{equation}
+
+% \paragraph{Aggregate market elasticity.} The derivative of $p$ with respect to $\overline{\alpha}_p$ is given by
+% \begin{equation}
+%     \frac{1}{p(X,\epsilon)}\frac{\partial p(X,\epsilon)}{\partial \overline{\alpha}_p} = \frac{1}{p_0(X)} \frac{\partial p_2(X)}{\partial \overline{\alpha}_p} \epsilon^2 + \mathcal{O}(\epsilon^3).
+% \end{equation}
+
+% The market elasticity satisfies the condition
+% \begin{equation}
+%     \frac{1}{p_0(X)} \frac{\partial p_2(X)}{\partial \overline{\alpha}_p} = - p_0(X)  (1-\psi^{-1}) \gamma \|\sigma\||^ 2 \left[ x_0(\hat{\gamma}_0 + \hat{\alpha}_{p}) + \sum_{j\in\mathcal{J}^u} x_j \left( \hat{\gamma}_j + \alpha_{j,1}(X) \right)  \left(- \frac{x_0}{x_u} \right) \right] \epsilon^2.
+% \end{equation}
+% From the market clearing for the risky asset, we have $x_0 \hat{\alpha}_p + \sum_{j \in \mathcal{J}^u} x_j \alpha_{j,1}(X) + x_c \frac{\hat{\sigma}}{\|\sigma\|} = 0$, so we can write the expression above as follows:
+% \begin{equation}
+%     \frac{1}{p_0(X)} \frac{\partial p_2(X)}{\partial \overline{\alpha}_p} = p_0(X)  (1-\psi^{-1}) \gamma \|\sigma\||^ 2 \left[ \hat{\gamma}_u(X) - \hat{\gamma}_0 + \frac{1-x_c}{1-x_0 -x_c}  (1-\overline{\alpha}_p) -  \frac{ x_c \frac{\hat{\sigma}}{\|\sigma\||}}{1-x_0 - x_c}  \right] x_0 \epsilon^2.
 % \end{equation}
 
 
+% \subsection{Third-order approximation}
+
+% \subsubsection{Passive demand}
+
+% Suppose there is no preference heterogeneity and no leverage constraint.
+% Without loss of generality, set $J = 1$.
+% In this case, the price-dividend ratio is given by
+% \begin{align}
+%     p(X,\epsilon) &= p^* -(p^*)^2 (1-\psi^{-1}) \frac{\gamma \|\sigma\|^2}{2} \frac{x_0 \hat{\alpha}_p^2}{x_1} \epsilon^2 + \mathcal{O}(\epsilon^3)\\
+%     \pi(X,\epsilon) &= \pi_0(X) - \gamma \|\sigma\|^2 \frac{x_0\hat{\alpha}_p}{x_1} \epsilon  + \mathcal{O}(\epsilon^3)\\
+%     r(X,\epsilon) &= r_0(X)+\gamma \|\sigma\|^2 \frac{x_0 \hat{\alpha}_p}{x_1} \epsilon +(1-\psi^{-1}) \frac{\gamma \|\sigma\|^2}{2} \frac{x_0 \hat{\alpha}_p^2}{x_1} \epsilon^2 + \mathcal{O}(\epsilon^3)\\
+%     \alpha_{0}(X,\epsilon) &= 1 + \hat{\alpha}_p\epsilon + \mathcal{O}(\epsilon^3)\\
+%     \alpha_{1}(X,\epsilon) &= 1 - \frac{x_0}{x_1} \hat{\alpha}_p\epsilon + \mathcal{O}(\epsilon^3)\\
+%     c_{j}(X,\epsilon) &= c_{j,0}(X) + (1-\psi^{-1}) \frac{\gamma \|\sigma\|^2}{2} \frac{x_0 \hat{\alpha}_p^2}{x_1} \epsilon^2 + \mathcal{O}(\epsilon^3)\\
+%     \sigma_{x_1}(X,\epsilon) &= - \frac{x_0}{x_1} \hat{\alpha}_p \sigma \epsilon  + \mathcal{O}(\epsilon^3)\\
+%     \mu_{x_1}(X,\epsilon) &= \left[ (1-\gamma) \|\sigma\|^2 (1-x_1) \hat{\alpha}_p + \hat{\kappa} (\omega_j - x_1)\right]  \epsilon + \mathcal{O}(\epsilon^3),
+% \end{align}
+% where $\mu_p, \sigma_p, \mu_{c_j},  $ and $\sigma_{c_j}$ are all equal to zero up to second order, and $x_0 = 1-x_1$.
+
+% The law of motion of $x_{1,t}$ can be written as
+% \begin{equation}
+%     \frac{d x_{1,t}}{x_{1,t}} = \left[ x_{0,t} (c_{0,t}-c_{1,t})+x_{0,t}(\alpha_{0,t}-\alpha_{1,t})\left( \|\sigma_{R,t}\|^2-\pi_t \right) 
+%  + \kappa\frac{\omega_1 - x_{1,t}}{x_{1,t}}\right] dt + (\alpha_{1,t}-1) \sigma_{R,t} d Z_t.
+% \end{equation}
+
+% % Notice that $\alpha_{1,t} = 1 + \frac{1-x_{1,t}}{x_{1,t}} (1-\alpha_{0,t})$. Define $z = \frac{1-x_1}{x_1}$, so the diffusion term for $z_t$ is given by
+% % \begin{equation}
+% %     \sigma_{z,t} = -\frac{1}{x_{1,t}^2} (1-x_{1,t}) (1-\alpha_{0,t}) \sigma_{R,t} = - \frac{z_{1,t}}{1+z_{1,t}} (1-\alpha_{0,t}) \sigma_{R,t}.
+% % \end{equation}
 
 
 
 
-\paragraph{Diffusion and drift terms.} The derivatives of $p(X,\epsilon)$ with respect to $x_1$ and $\overline{\alpha}_p$ are given by
-\begin{equation}
-    \frac{p_{x_1}(X,\epsilon)}{p^*} = (1-\psi^{-1})\frac{\gamma\|\sigma\|^2}{2 y^*} \frac{1}{x_1^2} \hat{\alpha}_p^2 \epsilon^2 + \mathcal{O}(\epsilon^3), \qquad  
-    \frac{p_{\overline{\alpha}_p}(X,\epsilon)}{p^*} = -(1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{y^*} \frac{x_0}{x_1} \hat{\alpha}_p \epsilon^2 + \mathcal{O}(\epsilon^3)
-\end{equation}
 
-The diffusion term for $p(X,\epsilon)$ is then given by
-\begin{equation}
-    \sigma_{p,3}(X) =  -(1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{y^*} \frac{x_0}{x_1} \left[   \frac{\hat{\alpha}_p^3}{2x_1^2} \sigma + \hat{\alpha}_p \sigma_p \sqrt{\overline{\alpha}_p} \right].
-\end{equation}
-and $\sigma_{c_j,3}(X) = \sigma_{p,3}(X)$.
-Notice that excess volatility depends on the market elasticity times the volatility of portfolio flows.
 
-The drift of $p$ is given by
-\begin{equation}
-    \mu_{p,3}(X) = (1-\psi^{-1})\frac{\gamma\|\sigma\|^2}{2 y^*} \frac{1}{x_1^2} \hat{\alpha}_p^2 \mu_{x_1,1} -(1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{y^*} \frac{x_0}{x_1} \hat{\alpha}_p \theta_p (\overline{\alpha}-\overline{\alpha}_{p,t}),
-\end{equation}
-and $\mu_{c_j,3}(X) = \mu_{p,3}(X)$.
+% \paragraph{Diffusion and drift terms.} The derivatives of $p(X,\epsilon)$ with respect to $x_1$ and $\overline{\alpha}_p$ are given by
+% \begin{equation}
+%     \frac{p_{x_1}(X,\epsilon)}{p^*} = (1-\psi^{-1})\frac{\gamma\|\sigma\|^2}{2 y^*} \frac{1}{x_1^2} \hat{\alpha}_p^2 \epsilon^2 + \mathcal{O}(\epsilon^3), \qquad  
+%     \frac{p_{\overline{\alpha}_p}(X,\epsilon)}{p^*} = -(1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{y^*} \frac{x_0}{x_1} \hat{\alpha}_p \epsilon^2 + \mathcal{O}(\epsilon^3)
+% \end{equation}
 
-\paragraph{Risk premium.} The risk premium is given by
-\begin{equation}
-\pi(X) = \gamma \|\sigma\|^2 \left[ 1 - \frac{x_0(\overline{\alpha}_p -1) }{x_1}  -  \frac{1-\gamma^{-1}}{\psi-1} \frac{\gamma\|\sigma\|^2}{y^*} \frac{x_0}{x_1} \left[   \frac{(1-\overline{\alpha}_p)^3}{2x_1^2} \sigma + \hat{\alpha}_p \sigma_p \sqrt{\overline{\alpha}_p} \right] \right]
-\end{equation}
+% The diffusion term for $p(X,\epsilon)$ is then given by
+% \begin{equation}
+%     \sigma_{p,3}(X) =  -(1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{y^*} \frac{x_0}{x_1} \left[   \frac{\hat{\alpha}_p^3}{2x_1^2} \sigma + \hat{\alpha}_p \sigma_p \sqrt{\overline{\alpha}_p} \right].
+% \end{equation}
+% and $\sigma_{c_j,3}(X) = \sigma_{p,3}(X)$.
+% Notice that excess volatility depends on the market elasticity times the volatility of portfolio flows.
 
-\section{Higher-order perturbations}
+% The drift of $p$ is given by
+% \begin{equation}
+%     \mu_{p,3}(X) = (1-\psi^{-1})\frac{\gamma\|\sigma\|^2}{2 y^*} \frac{1}{x_1^2} \hat{\alpha}_p^2 \mu_{x_1,1} -(1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{y^*} \frac{x_0}{x_1} \hat{\alpha}_p \theta_p (\overline{\alpha}-\overline{\alpha}_{p,t}),
+% \end{equation}
+% and $\mu_{c_j,3}(X) = \mu_{p,3}(X)$.
 
-Suppose we have the $(n-1)$-th order perturbation of $c_{j}(X,\epsilon) = \sum_{k=0}^{n-1}c_{j,k}(X) \epsilon^k$ and the law of motion of $X$.
-Let $lc_{j}(X,\epsilon) = \sum_{k=0}^{n-1} lc_{j,k}(X) \epsilon^k$ denote the expansion of log $c_j(X,\epsilon)$.
-Then we can compute $\sigma_{j}(X)$ up to order $n$:
-\begin{equation}
-    \sigma_{c_j,n}(X) = \sum_{k=1}^{n-1} lc_{j,k,X}(X) \sigma_{X,n-k}(X),
-\end{equation}
-which is independent of the $n$-th order term in $c_{j}(X,\epsilon)$ and $\sigma_X(X,\epsilon)$, as $lc_{j,0,X}(X) = 0$.
-Similarly, we can compute $\sigma_{y,n}(X)$.
-A similar argument gives $\mu_{p,n}(X)$ and $\mu_{c_j,n}(X)$.
-We can then compute $\pi_n(X)$ and $\alpha_{j,n}(X)$.
-The $n$-th term of the consumption-wealth ratio satisfies the condition
-\begin{equation}
-c_{j,t} = \psi \rho + (1-\psi) \left[ \pi_t (\alpha_{j,t}-1) + \mu + \mu_{p,t} + \sigma \sigma_{p,t}^\top - \frac{\gamma_j}{2} \|\sigma_{R,t}\|^2 \alpha_{j,t}^2 + \sum_{j=0}^J x_j c_{j,t} \right] + \xi_{j,t}
-\end{equation}
+% \paragraph{Risk premium.} The risk premium is given by
+% \begin{equation}
+% \pi(X) = \gamma \|\sigma\|^2 \left[ 1 - \frac{x_0(\overline{\alpha}_p -1) }{x_1}  -  \frac{1-\gamma^{-1}}{\psi-1} \frac{\gamma\|\sigma\|^2}{y^*} \frac{x_0}{x_1} \left[   \frac{(1-\overline{\alpha}_p)^3}{2x_1^2} \sigma + \hat{\alpha}_p \sigma_p \sqrt{\overline{\alpha}_p} \right] \right]
+% \end{equation}
 
-We can rewrite the system above in matrix form as follows:
-\begin{align}
-    [ I - (1-\psi) \textbf{1}_{J+1} x_t^\top] c_t = \zeta_t,
-\end{align}
-where $c_t = [c_{0,t},\ldots, c_{J,t}]^\top$, $x_t=[x_{0,t},\ldots ,x_{J,t}]^\top$, $\textbf{1}_{J+1}$ is a $(J+1)$-th dimensional vector of ones, and
-$\zeta_{j,t} \equiv \psi \rho + (1-\psi) \left[ \pi_t (\alpha_{j,t}-1) + \mu + \mu_{p,t} + \sigma \sigma_{p,t}^\top - \frac{\gamma_j}{2} \|\sigma_{R,t}\|^2 \alpha_{j,t}^2 \right] + \xi_{j,t}$.
-Applying the Sherman-Morrison formula, we obtain
-\begin{equation}
-    c_t = [I - (1-\psi^{-1}) \textbf{1}_{J+1} x_t^\top] \zeta_t,
-\end{equation}
-or $c_{j,t} = \zeta_{j,t} - (1-\psi^{-1}) x_t^\top \zeta_t$.
-Notice that $\zeta_t$ can be computed at order $n$ based on the coefficients of order $n-1$ and their derivatives.
+% \section{Higher-order perturbations}
 
-\paragraph{Computing the derivatives.} The derivation above shows that, given the order $n-1$ expansion of $\zeta_j(X,\epsilon)$ and its derivatives, we can compute the expansion of order $n$.
-Suppose the expansion of $\zeta_{j}(X,\epsilon)$ is given by
-\begin{equation}
-    \zeta_j(X,\epsilon) = \sum_{k=0}^{n-1} \zeta_{j,k}(X) \epsilon^k,
-\end{equation}
-where $\zeta_{j,k}(X)$ takes the form:
-\begin{equation}
-    \zeta_{j,k}(X) = A_{j,k} + B_{j,k}^\top (X-\overline{X}) + \frac{1}{2} (X- \overline{X})^\top C_{j,k} (X - \overline{X}),
-\end{equation}
-where $\overline{X}$ is a reference point, $A_{j,k}$ is a scalar, $B_{j,k}$ is a vector, and $C_{j,k}$ is a matrix.
-Notice that .
-$\zeta_{j,k}(\overline{X}) = A_{j,k}$, $\zeta_{j,k,X}(\overline{X}) = B_{j,k}$ and $\zeta_{j,k,XX} = C_{j,k}$.
-Given this expansion, we can compute $c_j(X,\epsilon) = \sum_{k=0}^{n-1} c_{j,k}(X) \epsilon^k$.
+% Suppose we have the $(n-1)$-th order perturbation of $c_{j}(X,\epsilon) = \sum_{k=0}^{n-1}c_{j,k}(X) \epsilon^k$ and the law of motion of $X$.
+% Let $lc_{j}(X,\epsilon) = \sum_{k=0}^{n-1} lc_{j,k}(X) \epsilon^k$ denote the expansion of log $c_j(X,\epsilon)$.
+% Then we can compute $\sigma_{j}(X)$ up to order $n$:
+% \begin{equation}
+%     \sigma_{c_j,n}(X) = \sum_{k=1}^{n-1} lc_{j,k,X}(X) \sigma_{X,n-k}(X),
+% \end{equation}
+% which is independent of the $n$-th order term in $c_{j}(X,\epsilon)$ and $\sigma_X(X,\epsilon)$, as $lc_{j,0,X}(X) = 0$.
+% Similarly, we can compute $\sigma_{y,n}(X)$.
+% A similar argument gives $\mu_{p,n}(X)$ and $\mu_{c_j,n}(X)$.
+% We can then compute $\pi_n(X)$ and $\alpha_{j,n}(X)$.
+% The $n$-th term of the consumption-wealth ratio satisfies the condition
+% \begin{equation}
+% c_{j,t} = \psi \rho + (1-\psi) \left[ \pi_t (\alpha_{j,t}-1) + \mu + \mu_{p,t} + \sigma \sigma_{p,t}^\top - \frac{\gamma_j}{2} \|\sigma_{R,t}\|^2 \alpha_{j,t}^2 + \sum_{j=0}^J x_j c_{j,t} \right] + \xi_{j,t}
+% \end{equation}
 
-\subsection{Inner region}
+% We can rewrite the system above in matrix form as follows:
+% \begin{align}
+%     [ I - (1-\psi) \textbf{1}_{J+1} x_t^\top] c_t = \zeta_t,
+% \end{align}
+% where $c_t = [c_{0,t},\ldots, c_{J,t}]^\top$, $x_t=[x_{0,t},\ldots ,x_{J,t}]^\top$, $\textbf{1}_{J+1}$ is a $(J+1)$-th dimensional vector of ones, and
+% $\zeta_{j,t} \equiv \psi \rho + (1-\psi) \left[ \pi_t (\alpha_{j,t}-1) + \mu + \mu_{p,t} + \sigma \sigma_{p,t}^\top - \frac{\gamma_j}{2} \|\sigma_{R,t}\|^2 \alpha_{j,t}^2 \right] + \xi_{j,t}$.
+% Applying the Sherman-Morrison formula, we obtain
+% \begin{equation}
+%     c_t = [I - (1-\psi^{-1}) \textbf{1}_{J+1} x_t^\top] \zeta_t,
+% \end{equation}
+% or $c_{j,t} = \zeta_{j,t} - (1-\psi^{-1}) x_t^\top \zeta_t$.
+% Notice that $\zeta_t$ can be computed at order $n$ based on the coefficients of order $n-1$ and their derivatives.
 
-Consider the case of no preference heterogeneity and no leverage constraints.
-Consider the following change of variables: $x_1 = \epsilon \tilde{x}_1$.
-Define $\tilde{c}_j( \tilde{x}_1, \overline{\alpha}_p ) = c_j\left(x_1, \overline{\alpha}_p\right) $, so $c_{j,x_1}= \frac{1}{\epsilon} \tilde{c}_{j,\tilde{x}_1}  $ and $ c_{j,x_1 x_1}= \frac{1}{\epsilon^2} \tilde{c}_{j,\tilde{x}_1 \tilde{x}_1}$.
-This implies the following is true:
-\begin{equation}
-    \sigma_{c_j} =  \frac{1}{\epsilon}\frac{\tilde{c}_{j,\tilde{x}_1}}{\tilde{c}_j} \sigma_{x_1},
-\end{equation}
-where $\sigma_{x_1} = - \frac{1-\epsilon \tilde{x}_1}{\tilde{x}_1} \hat{\alpha}_p \sigma_R$ .
-Similarly, we can write $\sigma_{y}$
-\begin{equation}
-    \sigma_y = \frac{1}{\epsilon} \frac{\tilde{y}_{x_1}}{y} \sigma_{x_1}.
-\end{equation}
+% \paragraph{Computing the derivatives.} The derivation above shows that, given the order $n-1$ expansion of $\zeta_j(X,\epsilon)$ and its derivatives, we can compute the expansion of order $n$.
+% Suppose the expansion of $\zeta_{j}(X,\epsilon)$ is given by
+% \begin{equation}
+%     \zeta_j(X,\epsilon) = \sum_{k=0}^{n-1} \zeta_{j,k}(X) \epsilon^k,
+% \end{equation}
+% where $\zeta_{j,k}(X)$ takes the form:
+% \begin{equation}
+%     \zeta_{j,k}(X) = A_{j,k} + B_{j,k}^\top (X-\overline{X}) + \frac{1}{2} (X- \overline{X})^\top C_{j,k} (X - \overline{X}),
+% \end{equation}
+% where $\overline{X}$ is a reference point, $A_{j,k}$ is a scalar, $B_{j,k}$ is a vector, and $C_{j,k}$ is a matrix.
+% Notice that .
+% $\zeta_{j,k}(\overline{X}) = A_{j,k}$, $\zeta_{j,k,X}(\overline{X}) = B_{j,k}$ and $\zeta_{j,k,XX} = C_{j,k}$.
+% Given this expansion, we can compute $c_j(X,\epsilon) = \sum_{k=0}^{n-1} c_{j,k}(X) \epsilon^k$.
 
-The drift of $y$ is given by
-\begin{equation}
-    \mu_{y} = \frac{1}{\epsilon} \frac{\tilde{y}_{\tilde{x}_1}}{y} \mu_{\tilde{x}_1} + \frac{1}{2 \epsilon^2}  \frac{\tilde{y}_{\tilde{x}_1 \tilde{x}_1}}{y} \sigma_{\tilde{x}_1}^2.
-\end{equation}
+% \subsection{Inner region}
 
-The term of order 0 is the same as before.
+% Consider the case of no preference heterogeneity and no leverage constraints.
+% Consider the following change of variables: $x_1 = \epsilon \tilde{x}_1$.
+% Define $\tilde{c}_j( \tilde{x}_1, \overline{\alpha}_p ) = c_j\left(x_1, \overline{\alpha}_p\right) $, so $c_{j,x_1}= \frac{1}{\epsilon} \tilde{c}_{j,\tilde{x}_1}  $ and $ c_{j,x_1 x_1}= \frac{1}{\epsilon^2} \tilde{c}_{j,\tilde{x}_1 \tilde{x}_1}$.
+% This implies the following is true:
+% \begin{equation}
+%     \sigma_{c_j} =  \frac{1}{\epsilon}\frac{\tilde{c}_{j,\tilde{x}_1}}{\tilde{c}_j} \sigma_{x_1},
+% \end{equation}
+% where $\sigma_{x_1} = - \frac{1-\epsilon \tilde{x}_1}{\tilde{x}_1} \hat{\alpha}_p \sigma_R$ .
+% Similarly, we can write $\sigma_{y}$
+% \begin{equation}
+%     \sigma_y = \frac{1}{\epsilon} \frac{\tilde{y}_{x_1}}{y} \sigma_{x_1}.
+% \end{equation}
+
+% The drift of $y$ is given by
+% \begin{equation}
+%     \mu_{y} = \frac{1}{\epsilon} \frac{\tilde{y}_{\tilde{x}_1}}{y} \mu_{\tilde{x}_1} + \frac{1}{2 \epsilon^2}  \frac{\tilde{y}_{\tilde{x}_1 \tilde{x}_1}}{y} \sigma_{\tilde{x}_1}^2.
+% \end{equation}
+
+% The term of order 0 is the same as before.
 
 \section{Flow of Funds aggregation}\label{app:fof_aggregation}
 
@@ -5274,11 +5286,12 @@ We then describe the version of the model with sticky prices and monetary policy
 
 \subsection{The flexible-price version}
 
-\paragraph{Firm's problem.} In the version of the model, we assume that the production function is given by
-\begin{equation}
-    \tilde{Y}_t = A_t L_t^{1-\alpha},
+\paragraph{Firm's problem.} As it is standard in the literature, we assume production is carried by a continuum of monopolistically competitive firms indexed by $i \in [0,1]$.
+Firm $i$'s production function is given by
+\begin{equation}\label{eq:production_function}
+    \tilde{Y}_{i,t} = A_t L_{i,t}^{1-\alpha},
 \end{equation}
-where $A_t$ is the productivity level and $L_t$ is the labor input.
+where $A_t$ is the productivity level and $L_{i,t}$ is the labor input.
 
 Aggregate productivity follows a geometric Brownian motion:
 \begin{equation}
@@ -5289,13 +5302,17 @@ As in the baseline model, we assume that only the first entry of $\sigma$ is non
 
 The problem of the firm is to maximize profits:
 \begin{equation}
-    \max_{L_t} = A_t L_t^{1-\alpha} - \mathcal{W}_t L_t,
+    \max_{L_{i,t}} P_{i,t} \tilde{Y}_{i,t} - \mathcal{W}_{i,t} L_{i,t},
 \end{equation}
-where $\mathcal{W}_t$ is the real wage rate.
+subject to the production function \eqref{eq:production_function} and the demand function:
+\begin{equation}\label{eq:demand_function}
+    \tilde{Y}_{i,t} = \left( \frac{P_{i,t}}{P_t} \right)^{-\phi} \tilde{Y}_t,
+\end{equation}
+where $P_t$ is the aggregate price level and $\phi$ is the elasticity of substitution between goods.
 
 The first-order condition gives the labor demand:
 \begin{equation}
-(1-\alpha) A_t L_t^{-\alpha} = \mathcal{W}_t.
+    \mathcal{W}_{i,t} = (1-\alpha) A_t L_{i,t}^{-\alpha},
 \end{equation}
 
 \paragraph{Household's problem.} 
