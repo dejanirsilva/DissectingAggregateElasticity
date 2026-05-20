@@ -2144,7 +2144,7 @@ and $p_{D,1}$ is independent of $\hat{\alpha}_p$, the price impact of passive fl
 Thus, the dividend-claim price impact is the sum of an aggregate-price-impact channel and a direct dividend-risk-exposure channel.
 
 
-\subsection{Second-order correction: time-varying passive portfolio share}\label{app:prop_second_order}
+\subsection{Second-order correction: time-varying passive portfolio share}\label{app:prop_second_order_time_varying}
 
 We next derive the second-order correction in the case the passive portfolio share is time-varying. 
 Now, $\overline{\alpha}_p$ becomes a state variable. 
@@ -5326,11 +5326,11 @@ As in the baseline model, we have three types of households, $j = 0,1,2$, which 
 Following \citet{BigioSilvaZilberman2025}, we assume that households have Epstein-Zin preferences over a GHH composite of consumption and labor. 
 
 Household $j$ chooses consumption $\tilde{C}_{j,t}$, labor supply $L_{j,t}$, and portfolio allocations $\alpha_{j,t}$ to solve the problem
-\begin{equation}\label{eq:inv-problem}
+\begin{equation}\label{eq:inv-problem-appendix}
     V_{j,t} = \max_{\tilde{C}_{j,t},L_{j,t},\alpha_{j,t}} 
     \mathbb{E}_t \left[ \int_t^\infty f_j(\tilde{C}_{j,s}- \xi_s L_{j,s},V_{j,s})\, ds \right], \qquad s.t.
 \end{equation}
-\begin{equation}\label{eq:budget_constraint}
+\begin{equation}\label{eq:budget_constraint-appendix}
     \frac{d W_{j,t}}{W_{j,t}} = \left[r_t + \pi_{t}^\top \,\alpha_{j,t}  - \frac{\tilde{C}_{j,t} - \mathcal{W}_t / P_t L_{j,t}}{W_{j,t}}\right] dt 
     + \sigma_{j,t}\, dZ_t,
 \end{equation}
@@ -5476,6 +5476,7 @@ This implies that $Y_t$ follows the process:
 \end{equation}
 
 The interest rate in this economy will then coincide with the natural rate of interest: $i_t = r_t^n$, which requires the intercept $\varrho_t$ to be equal to the natural rate of interest: $\varrho_t = r_t^n$.
+
 
 
 
@@ -5750,7 +5751,5 @@ We can then write the interest rate as follows:
 \begin{equation}
     \hat{r}_t = (1-\psi^{-1}) \frac{\gamma\|\sigma\|^2}{2} \frac{x_0}{x_a}(\overline{\alpha}_{p,t}-1)^2 - \hat{\eta}_t \sigma^\top + \mathcal{O}(\epsilon^3).
 \end{equation}
-
-
 
 
