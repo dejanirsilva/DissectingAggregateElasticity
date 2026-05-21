@@ -34,8 +34,8 @@
 \usepackage{afterpage}
 \usepackage{verbatim,lscape}
 \usepackage{indentfirst}
-% \usepackage[left=1in,right=1in,top=1.5in,bottom=1.5in]{geometry}
-\usepackage[margin=1in]{geometry}
+\usepackage[left=1in,right=1in,top=1.5in,bottom=1.5in]{geometry}
+% \usepackage[margin=1in]{geometry}
 % \usepackage[usenames, dvipsnames]{color} % causes option clash; color already loaded via other packages
 \usepackage{hyperref}
 \usepackage{adjustbox}
@@ -99,14 +99,19 @@
 \newcommand{\var}{\mathrm{Var}}
 \newcommand{\cov}{\mathrm{Cov}}
 
-% --- Calibration headline numbers (update when Section 5 is re-run) ---
-\newcommand{\PIDhat}{6.85}        % dividend claim price impact (Table 2 Panel A)
-\newcommand{\PIYhat}{0.57}        % endowment claim price impact (Table 2 Panel B)
-\newcommand{\PIcondBad}{8.50}     % conditional price impact in bad states (Table 3)
-\newcommand{\RPbase}{6.6\%}       % equity premium
-\newcommand{\rfbase}{0.6\%}       % risk-free rate
-\newcommand{\volbase}{22.4\%}     % equity return volatility
-\newcommand{\betaR}{1.16}         % discount rate share of var(pd)
+
+% --- Simulation headline numbers (update when Section 5 is re-run) ---
+\newcommand{\PIDhat}{5.5}        % dividend claim price impact (Table 2 Panel A)
+\newcommand{\PIYhat}{0.55}        % endowment claim price impact (Table 2 Panel B)
+\newcommand{\PIcondBad}{9.4}     % conditional price impact in bad states (Table 3)
+\newcommand{\RPbase}{5.6\%}       % equity premium dividend claim 
+\newcommand{\RPYbase}{1.79\%}       % equity premium endowment claim
+\newcommand{\rfbase}{0.7\%}       % risk-free rate
+\newcommand{\volbase}{19.6\%}     % equity return volatility 
+\newcommand{\volYbase}{4.12\%}     % equity return volatility
+\newcommand{\betaR}{1.11}         % discount rate share of var(pd)
+\newcommand{\GammaAgg}{9.78}
+% - Counterfactuals -
 \newcommand{\PIDnoHet}{0.10}      % counterfactual: no preference heterogeneity
 \newcommand{\PIDeffPassive}{0.25} % counterfactual: \bar{\alpha}=1
 \newcommand{\predSlopeRatio}{2.5} % bad-state vs full-sample predictive slope ratio
@@ -348,7 +353,7 @@ Aggregate elasticity is therefore infinite even when individual demands are high
 
 This result highlights a central distinction between individual and aggregate elasticities.
 In the inelastic markets framework of \citet{gabaix2020search}, the risk-free rate is constant and aggregate elasticity is the equity-weighted average of individual elasticities, so inelastic individual demand directly produces an inelastic aggregate market.\footnote{In their basic model, the risk-free rate is taken as exogenous. In their general equilibrium extension, the rate is endogenously pinned down by the consumption Euler equation, but the assumption of i.i.d. growth implies that it is constant in equilibrium and therefore does not respond to flows. This is a natural starting point given the well-known difficulty of jointly determining asset prices and interest rates in heterogeneous agent general equilibrium with portfolio flows.}
-Building on that insight, we allow the interest rate to adjust endogenously and characterize a complementary general equilibrium channel through which aggregate elasticity also depends on how portfolio flows affect saving incentives.
+Building on that insight, we allow the interest rate to adjust endogenously and characterize a complementary general equilibrium channel through which aggregate elasticity also depends on how portfolio flows affect saving incentives.\footnote{In Appendix~\ref{sec:production_and_monetary_policy}, we extend the analysis to a production economy with sticky prices and an inflation-targeting central bank, and show that the central bank implements the same interest rate as in the baseline endowment economy. Our results therefore describe the behavior of the natural rate of interest in response to portfolio flows, and aggregate elasticity is unaffected by the introduction of monetary policy.}
 When flows do not alter these incentives, movements in the risk-free rate fully offset movements in the risk premium, so asset prices remain unchanged.
 
 Aggregate elasticity becomes finite when risk is misallocated, that is, when investors hold too much or too little risk relative to the efficient allocation.
@@ -425,6 +430,7 @@ Section~\ref{sec:model} builds the dynamic heterogeneous agent economy with pass
 Section~\ref{sec:elasticity} characterizes the determinants of aggregate market elasticity using the state global perturbation method.
 Section~\ref{sec:quantitative} reports the quantitative analysis, the counterfactuals, and the predictability and conditional price impact results.
 A short conclusion follows.
+
 
 
 % \input{sections/simple} 
@@ -2005,7 +2011,8 @@ Unlike these frameworks, however, our model explicitly incorporates wealth effec
 Most importantly, the interest rate does not perfectly offset movements in the market price of risk, because it is affected by the same risk-misallocation term that drives aggregate market elasticity.
 This is a manifestation of the general-equilibrium mechanism characterized in Proposition~\ref{prop:elasticity_passive_demand}.
 
-\subsection{What about the Fed?}
+% \subsection{What about the Fed?}
+\subsection{The role of monetary policy}
 
 So far, we have characterized aggregate market elasticity in an endowment economy in which the interest rate adjusts endogenously to clear the goods market.
 In practice, however, short-term interest rates are controlled by the central bank.
@@ -2030,8 +2037,9 @@ For evidence on this mechanism, see, e.g.,  \citet{CieslakVissingJorgensen2021Fe
 The resulting recession would create deflationary pressures.
 To stabilize inflation, the central bank would have to reduce the real interest rate by exactly the same amount implied by the baseline model.
 
-Hence, our results characterize the behavior of the \textit{natural} interest rate---the real interest rate in the flexible-price economy---in response to portfolio-flow shocks.
+Hence, our results characterize the behavior of the \textit{natural} interest rate, defined as the real interest rate in the flexible-price economy, in response to portfolio-flow shocks.
 An inflation-targeting central bank therefore tracks the same natural-rate adjustment mechanism characterized in the baseline model.
+
 
 \subsection{Amplification mechanisms}
 
@@ -2253,14 +2261,14 @@ We discipline the calibration using three blocks of moments: technology paramete
 We set the endowment growth rate to $\mu = 1.8\%$ and endowment volatility to $\sigma = 3.3\%$, consistent with U.S. aggregate consumption data \citep{campbell1999force}.
 Following \citet{LettauWachter2011}, we set the correlation between dividend-share shocks and the fundamental shock to $0.3$, and the volatility of dividend-share shocks to $\sigma_s = 11\%$.
 We set the mean-reversion of the dividend share to $\kappa_s = 0.09$, following \citet{santos2006labor}.
-Finally, we set the mean dividend share to $\bar{s} = 0.6$, which implies a debt-to-equity ratio of $0.66$.
+Finally, we set the mean dividend share to $\bar{s} = 0.56$, which implies a debt-to-equity ratio of $0.78$.
 This target is consistent with the average debt-to-equity ratio of the U.S. corporate sector since the 1980s.
 
 \paragraph{Preferences and cross section of holdings.}
 We set a common elasticity of intertemporal substitution $\psi=1.5$ for all agent types, in line with the value used in \citet{bansal2004risks}.
 The discount rate $\rho$ is chosen to match the average real risk-free rate, yielding $\rho=0.01$.
 The sector-specific risk aversion coefficients $\gamma_j$ are chosen to match sectoral \emph{asset shares}, defined as the value of risky holdings of sector~$j$ divided by the aggregate value of risky holdings.
-This leads to average risk aversion of 9.7, within the range of values used in the macro-finance literature.
+This leads to an average risk aversion of 9.7, within the range of values used in the macro-finance literature.
 The sector masses $\omega_j$ are chosen to match the asset-to-equity ratios of the active sectors.
 The agent turnover rate $\kappa=0.10$ is calibrated so that the wealth share of the passive sector in the simulated ergodic distribution matches its empirical counterpart of about $0.45$.
 The leverage constraint tightness $\overline{\sigma}$ is set so that the asset-to-equity ratio of the constrained sector matches its Flow of Funds counterpart.
@@ -2275,7 +2283,7 @@ The persistence $\theta_p$ is informed by evidence on household portfolio inerti
 Using PSID data, \citet{brunnermeier2008wealth} regress the actual change in the household risky-asset share on a counterfactual change that assumes no rebalancing, and find an inertia coefficient near $0.75$, implying that portfolio shares adjust slowly to capital gains and to flow-induced changes in wealth.\footnote{\citet{parker2023retail} show that the adoption of target-date funds has further stabilized household portfolio shares.}
 We choose $\theta_p$ so that the half-life of the passive-demand process in the simulated model matches the half-life implied by this inertia coefficient.
 Finally, we estimate the loading $\nu_p = \frac{\sigma \sigma_p^\top}{\|\sigma\| \|\sigma_p\|}$ of passive-flow shocks on the aggregate shock indirectly by regressing the quarterly passive-flow series on contemporaneous market returns.
-This yields a model-implied correlation between flows and returns of $0.005$, close to the empirical value of $0.011$.
+This yields a model-implied correlation between flows and returns of $0.003$, close to the empirical value of $0.011$.
 
 \begin{table}[!t]
     \centering
@@ -2314,17 +2322,17 @@ In our model, passive-demand innovations are observed and exogenous by construct
 \paragraph{Price impact and asset-pricing moments.} 
 The model simultaneously matches a broad set of empirical facts, including asset pricing moments, the magnitude of portfolio flows, price impact, and sectoral balance sheets.
 
-As shown in Panel A of Table~\ref{tab:simulation_moments}, the model generates a large price impact, with an estimated slope $\hat{b}_1 = 6.85$, close to the empirical benchmark of about $5$ (\citealp{gabaix2020search}).
-For the dividend claim, the model also matches standard asset pricing moments, delivering a risk premium of $6.6\%$, a risk-free rate of $0.6\%$, and a return volatility of $22.4\%$.
+As shown in Panel A of Table~\ref{tab:simulation_moments}, the model generates a large price impact, with an estimated slope $\hat{b}_1 = \PIDhat$, close to the empirical benchmark of about $5$ (\citealp{gabaix2020search}).
+For the dividend claim, the model also matches standard asset pricing moments, delivering a risk premium of $\RPbase$, a risk-free rate of $\rfbase$, and a return volatility of $\volbase$.
 As we show below, these two successes are closely related: generating realistic price impact for the dividend claim is crucial for matching asset-pricing moments such as the risk premium and return volatility.
 
 A key driver of this result is the explicit modeling of the dividend process.
-Panel B of Table~\ref{tab:simulation_moments} shows that the price impact for the endowment claim is only $0.57$, an order of magnitude smaller than for the dividend claim.
+Panel B of Table~\ref{tab:simulation_moments} shows that the price impact for the endowment claim is only $\PIYhat$, an order of magnitude smaller than for the dividend claim.
 The risk premium and return volatility for the endowment claim are also much smaller than for the dividend claim.
 Even in a model with heterogeneity and frictions, the endowment claim remains fairly elastic.
 
 The model also matches sectoral balance sheets, as shown in Panel C of Table~\ref{tab:simulation_moments}.
-The constrained sector is levered (asset-to-equity ratio of $1.98$ in the model versus $1.62$ in the data), the unconstrained sector is conservative ($0.52$ versus $0.53$), and the passive sector holds about $45\%$ of risky assets.
+The constrained sector is levered (asset-to-equity ratio of $2.0$ in the model versus $1.62$ in the data), the unconstrained sector is conservative ($0.52$ versus $0.53$), and the passive sector holds about $45.7\%$ of risky assets.
 
 % \paragraph{Price impact and asset-pricing moments.} 
 % The model is able to simultaneously match key asset-pricing moments, the magnitude of portfolio flows, price impact, and sectoral balance sheets.

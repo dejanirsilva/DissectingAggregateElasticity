@@ -1,6 +1,6 @@
-\section{Derivations for Section \ref{sec:simple}}
-
-\subsection{The bond demand view}
+\section{Derivations}
+\subsection{Derivations for Section \ref{sec:simple}}
+\subsubsection{The bond demand view}
 
 Define the normalized bond demand $b_{j} \equiv \frac{R_f^{-1} B_j}{W_j} = 1 -c_{j}(r,\pi) - \alpha_j (1-c_{j}(r,\pi))$ as the bond-to-wealth ratio:
 \begin{equation}
@@ -115,9 +115,9 @@ The excess demand for bonds would create an incentive to reduce the interest rat
 % \end{equation}
 % using the fact that $\zeta^q_r = x_a g_a'(\mu-p^*-r^*)$ and $c_a(\mu-p^*) = c_p(\mu-p^*)$.
 
-\section{Derivations for Section \ref{sec:model}}
+\subsection{Derivations for Section \ref{sec:model}}
 
-\subsection{Investors' problem}
+\subsubsection{Investors' problem}
 
 The Hamilton-Jacobi-Bellman (HJB) equation for investor $j$ can be written as
 \begin{align}
@@ -195,7 +195,7 @@ and the drift and diffusion of $c_{j,t}$ are given by Ito's lemma:
 \end{align}
 
 
-\subsection{Pricing condition}
+\subsubsection{Pricing condition}
 
 Let $p_{D,t} = \frac{P_{D,t}}{Y_t}$ and $p_{B,t} = \frac{P_{B,t}}{Y_t}$ denote the normalized prices of the dividend and bond claims, respectively.
 The normalized price of the aggregate claim is $p_{Y,t} = \frac{P_{Y,t}}{Y_t}$.
@@ -228,7 +228,7 @@ The expected return and risk exposure on the aggregate claim are given by
 %     \sigma_{y,t} = y_{X,t} \sigma_{X,t}.
 % \end{equation}
 
-\subsection{Aggregate state variable}
+\subsubsection{Aggregate state variable}
 
 Define the share of wealth of type-$j$ investors as follows
 \begin{equation}
@@ -292,7 +292,7 @@ From Ito's lemma, the law of motion of $x_{j,t}$ is given by
 using $\mu_{P_Y,t} = \mu_{R_Y,t} - \mu_{R_D,t} \alpha_{D,t}^m - \mu_{R_B,t} \alpha_{B,t}^m$.
 
 
-\subsection{Block recursivity and the mutual fund theorem}
+\subsubsection{Block recursivity and the mutual fund theorem}
 
 To compute the equilibrium, one needs to solve a system of $5$ partial differential equations (PDEs), involving the three consumption-wealth ratios $\{c_{j,t}(X_t)\}_{j=0}^2$ and the two price-dividend ratios $\{p_{k,t}(X_t)\}_{k=D,B}$. %$\xi_{j}(x,\overline{\alpha}_p)$
 These functions depend on $4$ state variables, the $2-$dimensional vector $x_{t}$, the portfolio share of passive investors $\overline{\alpha}_{p,t}$, and the dividend share $s_t$.
@@ -307,8 +307,7 @@ We provide below the proof of Proposition~\ref{prop:mft} in two steps.
 First, we derive the system of PDEs and show the block-recursive structure in Lemma~\ref{lemma:block_recursivity}.
 Second, we show the mutual fund theorem holds in Lemma~\ref{lemma:mutual_fund_theorem}.
 
-\subsubsection{Block recursivity}
-
+\paragraph{Block recursivity.}
 We next derive the system of PDEs. 
 We will show that one can solve for a reduced system of PDEs involving $(c_j,p_Y)$.
 % This requires expressing all equilibrium quantities as functions of the aggregate state variables $X_t$ and the functions $(c_j,p_Y)$ and their derivatives.
@@ -479,7 +478,7 @@ A corollary of the above proposition is that the consumption-wealth ratio and pr
     If $(c_j,p_Y)$ are a function of $\hat{X}$, then their derivatives with respect to $s$ are zero, and $s$ completely drops out of the PDE system for $(c_j,p_Y)$.
 \end{proof}
 
-\subsubsection{The mutual fund theorem}
+\paragraph{The mutual fund theorem}
 
 We next show that a version of the mutual fund theorem holds in our economy.
 
@@ -553,7 +552,7 @@ where
 
 \end{proof}
 
-\subsection{Closed-form solution to individual claims}
+\subsubsection{Closed-form solution to individual claims}
 
 I consider next the characterization of the price of the individual claims when the interest rate and the price of risk are constant. 
 This corresponds to the case in the economy without preference heterogeneity and passive investors are fully invested in the risky asset, $\overline{\alpha}_{p,t} = 1$.
@@ -632,7 +631,7 @@ using the fact that $\delta = 1/p_{Y,0}(X)$ when $\gamma = 1$.
 %     v^0 - s^ 1 v^ 1 - (1-s^1)v^0 = v^0- v^0 - s^ 1 (v^1- v^0)= -s^ 1 (v^1- v^0)
 % \end{equation}
 
-\section{Derivations for Section \ref{sec:elasticity}: Perturbation Solution}\label{app:derivations-perturbation-solution}
+\subsection{Derivations for Section \ref{sec:elasticity}: Perturbation Solution}\label{app:derivations-perturbation-solution}
 
 In this section, we discuss the derivations of the perturbation solution in detail. 
 Consistent with the block-recursivity property in Proposition~\ref{prop:mft}, the consumption-wealth ratios and the price-dividend ratio of the aggregate claim are independent of the dividend share $s$.
@@ -733,7 +732,7 @@ Finally, we derive the corresponding corrections to the price-dividend ratios of
 
 
 
-\subsection{Proof of Lemma~\ref{lemma:benchmark}}\label{app:lemma1}
+\subsubsection{Proof of Lemma~\ref{lemma:benchmark}}\label{app:lemma1}
 
 \begin{proof}
 The assumption $\epsilon = 0$ implies that there is no preference heterogeneity and that passive investors are fully invested in the aggregate risky claim.
@@ -882,7 +881,7 @@ Using $\sigma_{j,0} = \sigma_{R_Y,0}$, we obtain $\alpha_{j,Y} = 1$ and $\alpha_
 % \end{equation}
 % % which is consistent with the definition of $\delta$. 
 
-\subsection{Proof of Proposition~\ref{prop:first_order}}\label{app:prop_first_order}
+\subsubsection{Proof of Proposition~\ref{prop:first_order}}\label{app:prop_first_order}
 
 \begin{proof}
 Consistent with Proposition~\ref{prop:mft}, the consumption-wealth ratios and the price-dividend ratio of the aggregate claim are independent of the dividend-share shock $s$.
@@ -1258,7 +1257,7 @@ Adding both claims we recover the first-order correction of the aggregate claim:
 % \end{equation}
 
 
-\subsection{Second-order correction: no dynamics in passive portfolio share}\label{app:prop_second_order}
+\subsubsection{Second-order correction: no dynamics in passive portfolio share}\label{app:prop_second_order}
 
 We next derive the second-order correction.
 To keep the algebra transparent, we proceed in two steps.
@@ -2144,7 +2143,7 @@ and $p_{D,1}$ is independent of $\hat{\alpha}_p$, the price impact of passive fl
 Thus, the dividend-claim price impact is the sum of an aggregate-price-impact channel and a direct dividend-risk-exposure channel.
 
 
-\subsection{Second-order correction: time-varying passive portfolio share}\label{app:prop_second_order_time_varying}
+\subsubsection{Second-order correction: time-varying passive portfolio share}\label{app:prop_second_order_time_varying}
 
 We next derive the second-order correction in the case the passive portfolio share is time-varying. 
 Now, $\overline{\alpha}_p$ becomes a state variable. 
@@ -5084,195 +5083,6 @@ where we use $ \overline{\sigma}=\sigma+\hat{\sigma}\epsilon $ from Equation~\eq
 
 % The term of order 0 is the same as before.
 
-\section{Flow of Funds aggregation}\label{app:fof_aggregation}
-
-This appendix describes the procedure used in Section~\ref{sec:calibration} to aggregate Flow of Funds (FoF) sectors into the three ultimate sectors of the model: passive, constrained active, and unconstrained active.
-We follow the aggregation in \citet{koijen2024investors}, drop sectors with no or minimal equity holdings, and route pass-through vehicles to their ultimate end investors.
-ETFs (L.124) and closed-end funds (L.123) are aggregated onto the household balance sheet (L.101); mutual-fund holdings (L.122) are split across end investors using the FoF's breakdown, with the household portion kept separate.
-Defined-contribution pensions (L.118c, L.119c, L.120c) are routed to households.
-Hedge funds are separated out using Table~B.101.f for domestic funds and the Enhanced Financial Accounts for foreign funds, and the corresponding holdings are subtracted from the household (L.101) and rest-of-the-world (L.133) balance sheets.
-The remaining insurance and pension sectors (L.115, L.116, L.118b, L.119b, L.120b) are aggregated into a single long-horizon sector.
-The three ultimate sectors correspond, respectively, to \emph{passive} (households and non-profits net of hedge funds, government, monetary authority, and money-market funds), \emph{constrained} (hedge funds, broker-dealers, and other short-horizon intermediaries), and \emph{unconstrained} (insurance, pensions, and rest-of-the-world net of hedge funds).
-
-\section{Numerical methodology}\label{app:numerical}
-This appendix describes the numerical procedure used to solve the dynamic model in Section \ref{sec:model}.
-We follow a two-step strategy where we first solve a `simplified' model with an aggregate claim in positive net supply and a derivative security in zero net supply.
-In the second step (valuation step), we solve the valuation equation for the dividend and risky debt claims.
-This ordering is justified since, once the equilibrium is computed in the first step, the market prices of risk and interest rates are known functions of the simplified model, and the individual valuation ratios can be recovered from the respective pricing  equations.
-
-\subsection{Simplified economy}
-The state variables in the simplified economy are
-\[
-X=(x_c,x_u,\alpha_p)\in\mathcal S,
-\qquad x_p=1-x_c-x_u,
-\]
-
-where $x_{c}$ and $x_{u}$ are the wealth shares of the constrained and unconstrained active investors, and $\alpha_{p}$ is the exogenous risky-share demand of the passive sector.
-The aggregate claim is in positive net supply and the derivative is in zero net supply.
-Denote the active portfolio exposures by $(\alpha_{j,Y},\theta_j)$, where $\alpha_{j,Y}$ is the exposure to the aggregate claim and $\alpha_{j,F}$ is the exposure to the derivative.
-The passive investor has exposure $(\alpha_{p,t},0)$.
-We approximate
-\[
-{\xi}_c(X),\quad {\xi}_u(X), \quad {\xi}_p(X),\quad
-{\alpha}_{c,Y}(X), \quad {\alpha}_{c,F}(X),\quad
-{\alpha}_{u,Y}(X), \quad {\alpha}_{u,F}(X)
-\]
-with neural networks parameterized by $\Theta$:
-\begin{align}
-    \hat\xi_j &: \mathcal S\to\mathbb R_+, \qquad j\in\{c,u,p\}, \\
-    \hat\alpha_{j,Y}&: \mathcal S\to\mathbb R, \qquad j\in\{c,u\}, \\
-    \hat\alpha_{j,F} &: \mathcal S\to\mathbb R, \qquad j\in\{c,u\}.
-\end{align}
-and derive for all other equilibrium quantities as functions of the state variables and the approximated objects.
-Note that the passive investor does not trade the derivative, so $\alpha_{p,F}(X)\equiv 0$, while the passive exposure to the aggregate claim is the state variable itself, $\alpha_{p,Y}(X)=\alpha_p$.
-Thus the passive portfolio is imposed directly rather than approximated.
-We use fully connected feed-forward neural networks with 8 hidden layers and 10 neurons in each layer.
-Each neuron in the hidden and final layer is represented by a softplus activation function for the consumption-wealth ratios $\hat\xi_j$'s, and a linear function for the others.
-The state space is sampled globally using Latin-hypercube points on the simplex
-\[
-\{(x_c,x_u,\alpha_p): x_c>0,\ x_u>0, \alpha_p >0, \ x_c+x_u<1\}
-\]
-Given a candidate collection of network outputs at $X$, the remaining equilibrium objects are recovered analytically.
-
-First, goods-market clearing implies the aggregate claim dividend yield
-\begin{equation}
-\hat y(X)=x_c\hat\xi_c(X)+x_u\hat\xi_u(X)+x_p\hat\xi_p(X).
-\end{equation}
-
-Second, the volatility of the dividend yield is recovered from the It\^o consistency condition.
-Third, once $\sigma_y(X)$ is known, the excess-return volatilities of the aggregate claim and the derivative, denoted $(\sigma_{R,Y}(X),\sigma_{R,F}(X))$, are recovered.
-The unconstrained active investor's first-order conditions then pin down the two risk premia $\pi_Y(X), \pi_F(X)$.
-Fourth, conditional on $(\hat y,\pi_Y,\pi_F,\sigma_y)$, the risk-free rate $r(X)$, the state drift $\mu_X(X)$, the state diffusion matrix $\Sigma_X(X)$, the consumption-wealth ratio drifts $\mu_{c_j}(X)$, and the market price of risk vector $\eta(X)$ are all recovered from the equilibrium identities and It\^o's lemma.
-These calculations are explicit once the neural-network outputs and their first and second derivatives are known.
-The problem reduces to minimizing the following loss functions
-
-\begin{enumerate}
-    \item \textbf{HJB residuals.} For each investor type $j\in\{c,u,p\}$, we construct the residual from the investor's Hamilton--Jacobi--Bellman equation after replacing all equilibrium objects by either neural-network outputs or the derived quantities defined above.
-    We denote these residuals by
-    \[
-    \mathcal L^{\mathrm{HJB}}_j(X;\Theta).
-    \]
-
-    \item \textbf{Portfolio FOCs.} The constrained investor's first-order conditions for the aggregate claim and derivative lead to two residuals denoted as:
-    \[
-    \mathcal L^{\mathrm{FOC}}_{c,Y}(X;\Theta),
-    \qquad
-    \mathcal L^{\mathrm{FOC}}_{c,F}(X;\Theta).
-    \]
-    Note that the unconstrained investor's first-order conditions are used to recover $(\pi_Y,\pi_F)$ exactly and therefore do not appear separately in the loss.
-
-    \item \textbf{Market-clearing residuals.} We impose clearing in the aggregate-claim and derivative markets as residuals:
-    \[
-    \mathcal L^{\mathrm{MC}}_Y(X;\Theta),
-    \qquad
-    \mathcal L^{\mathrm{MC}}_F(X;\Theta).
-    \]
-\end{enumerate}
-The resulting loss is
-\begin{equation}
-    \label{eq:baseline_pointwise_loss_appendix}
-    \mathcal L(X;\Theta)
-    =
-    \sum_{j\in\{c,u,p\}}\bigl(\mathcal L^{\mathrm{HJB}}_j(X;\Theta)\bigr)^2
-    +\bigl(\mathcal L^{\mathrm{FOC}}_{c,Y}(X;\Theta)\bigr)^2
-    +\bigl(\mathcal L^{\mathrm{FOC}}_{c,F}(X;\Theta)\bigr)^2
-    +\bigl(\mathcal L^{\mathrm{MC}}_{Y}(X;\Theta)\bigr)^2
-    +\bigl(\mathcal L^{\mathrm{MC}}_{F}(X;\Theta)\bigr)^2.
-\end{equation}
-For a training batch $\{X^n\}_{n=1}^N$, the training objective is the empirical mean
-\begin{equation}
-\label{eq:baseline_batch_loss_appendix}
-\widehat{\mathcal L}(\Theta)
-=\frac{1}{N}\sum_{n=1}^N \mathcal L(X^n;\Theta).
-\end{equation}
-The full algorithm is given in Algorithm (\ref{alg:first_step}).
-
-
-
-\begin{algorithm}[!ht]
-\setstretch{1.08}
-\begin{algorithmic}[1]
-\STATE Initialize NNs
-$\{\hat\xi_c,\hat\xi_u,\hat\xi_p,\hat\alpha_{c,Y},\hat\alpha_{c,F},\hat\alpha_{u,Y},\hat\alpha_{u,F}\}$
-with parameters $\Theta$.
-\FOR{$t=1,2,\dots,T_{\max}$}
- \STATE Sample a batch of aggregate states $\{X^n=(x_c^n,x_u^n,\alpha_p^n)\}_{n=1}^N$.
- \STATE Evaluate the seven network outputs at each sampled state.
- \STATE Recover the derived equilibrium objects state-by-state:
- \begin{enumerate}[label*=(\alph*)]
- \item compute $\hat y(X^n)$ from goods-market clearing;
- \item compute $\sigma_y(X^n)$ using It\^o's lemma;
- \item recover $(\sigma_{R,Y}(X^n),\sigma_{R,F}(X^n))$;
- \item compute the hedging terms from the gradients of $(\hat\xi_c,\hat\xi_u,\hat\xi_p)$;
- \item recover $(\pi_Y(X^n),\pi_F(X^n))$ from the unconstrained investor's first-order conditions;
- \item get $(r(X^n),\mu_X(X^n),\Sigma_X(X^n),\mu_{\xi_j}(X^n))$ from equilibrium identities and It\^o's lemma.
-\end{enumerate}
- \STATE Construct the residual blocks
- $\mathcal L^{\mathrm{HJB}}_j$, $\mathcal L^{\mathrm{FOC}}_{c,Y}$, $\mathcal L^{\mathrm{FOC}}_{c,F}$, $\mathcal L^{\mathrm{MC}}_Y$, and $\mathcal L^{\mathrm{MC}}_F$.
- \STATE Form the batch loss $\widehat{\mathcal L}(\Theta)$ in \eqref{eq:baseline_batch_loss_appendix}.
- \STATE Update $\Theta$ using ADAM, and update learning-rate scheduler using the current training loss.
-\ENDFOR
-\end{algorithmic}
-\caption{First-stage training.}
-\label{alg:first_step}
-\end{algorithm}
-
-
-
-\subsection{Valuation ratios}
-After solving the simplified economy, we price the dividend and risky-debt claims as a function of the state variables $(X,s)$, where $s\in[0,1]$ denote the dividend share of the aggregate claim.
-We solve for the valuation ratio of the dividend claim, denoted by $p_D(X,s)$, and the valuation ratio of risky-debt claim, denoted by $p_B(X,s)$.
-We approximate these functions by two additional neural networks parameterized by $\Theta_D$ and $\Theta_B$, respectively:
-\begin{align}
-\hat p_D &: \mathcal S\times[0,1]\to\mathbb R_+, \\
-\hat p_B&: \mathcal S\times[0,1]\to\mathbb R_+,
-\end{align}
-At this stage the first-stage simplified equilibrium is held fixed.
-For each state $(X,s)$, the first-stage solution supplies the coefficients entering the claim-pricing PDEs: the risk-free rate $r(X)$, the market price of risk $\eta(X)$, the state drift $\mu_X(X)$, the state diffusion matrix $\Sigma_X(X)$, and the aggregate-claim return volatility.
-The remaining coefficients associated with the $s$-state are known analytically from the decomposition of the aggregate claim into dividend and risky-debt components.
-Given a candidate valuation ratio $\hat p_k(X,s)$ for claim $k\in\{D,B\}$, we compute its first and second derivatives with respect to $(X,s)$ using automatic differentiation, leading to the residual
-\[
-\mathcal L^{\mathrm{val}}_k(X,s;\Theta_k),
-\qquad k\in\{D,B\}.
-\]
-The training objective is simply the empirical mean squared PDE residual,
-\begin{equation}
-\widehat{\mathcal L}^{\mathrm{val}}_k(\Theta_k)
-=\frac{1}{N}\sum_{n=1}^N
-\bigl(\mathcal L^{\mathrm{val}}_k(X^n,s^n;\Theta_k)\bigr)^2,
-\qquad k\in\{D,B\}.
-\end{equation}
-
-The full algorithm is given in Algorithm (\ref{alg:valuation_step}).
-
-
-\begin{algorithm}[h!]
- \setstretch{1.08}
- \begin{algorithmic}[1]
- \STATE Load the trained first-stage networks.
- \STATE Initialize the valuation-ratio network $\hat p_k$ for claim $k\in\{D,B\}$ with parameters $\Theta_k$.
-\FOR{$t=1,2,\dots,T_{\max}^{\mathrm{val}}$}
- \STATE Sample a batch of states $\{(X^n,s^n)\}_{n=1}^N$.
- \STATE Evaluate $\hat p_k(X^n,s^n)$ and compute its first and second derivatives with respect to $(X,s)$.
- \STATE Recover the drift and volatility of the valuation ratio from It\^o's lemma.
- \STATE Use the fixed baseline solution to evaluate the coefficients entering the pricing PDE.
- \STATE Construct the claim-pricing residual $\mathcal L_k^{\mathrm{val}}(X^n,s^n;\Theta_k)$.
- \STATE Compute batch loss $\widehat{\mathcal L}^{\mathrm{val}}_k(\Theta_k)$.
- \STATE Update $\Theta_k$ using ADAM step, update the learning-rate scheduler using current training loss.
- \ENDFOR
-\end{algorithmic}
- \caption{Valuation-ratio step.}
- \label{alg:valuation_step}
-\end{algorithm}
-
-We follow \cite{Gopalakrishna2026} and use vectorized automatic differentiation to compute the gradients that speeds up the computation.
-The total time to run the baseline model on a single-threaded computer with 128GB RAM and NVIDIA Ada 4500 GPU is 8 hours.
-The HJB loss in the first-stage training problem converges to a mean-squared loss of $3.7 \times 10^{-8}$.
-The corresponding valuation-ratio training problems converge to a normalized mean-squared training loss of $1.4 \times 10^{-5}$.
-These losses are computed from the batch objectives in \eqref{eq:baseline_batch_loss_appendix} and in the valuation-ratio objective, respectively.
-
-\newpage
-
 \section{Production and monetary policy}\label{sec:production_and_monetary_policy}
 
 This appendix describes an extension of the baseline model described in Section~\ref{sec:model} to allow for production and monetary policy.
@@ -5753,3 +5563,191 @@ We can then write the interest rate as follows:
 \end{equation}
 
 
+\section{Details of Section~\ref{sec:quantitative}}
+
+\subsection{Flow of Funds aggregation}\label{app:fof_aggregation}
+
+This appendix describes the procedure used in Section~\ref{sec:calibration} to aggregate Flow of Funds (FoF) sectors into the three ultimate sectors of the model: passive, constrained active, and unconstrained active.
+We follow the aggregation in \citet{koijen2024investors}, drop sectors with no or minimal equity holdings, and route pass-through vehicles to their ultimate end investors.
+ETFs (L.124) and closed-end funds (L.123) are aggregated onto the household balance sheet (L.101); mutual-fund holdings (L.122) are split across end investors using the FoF's breakdown, with the household portion kept separate.
+Defined-contribution pensions (L.118c, L.119c, L.120c) are routed to households.
+Hedge funds are separated out using Table~B.101.f for domestic funds and the Enhanced Financial Accounts for foreign funds, and the corresponding holdings are subtracted from the household (L.101) and rest-of-the-world (L.133) balance sheets.
+The remaining insurance and pension sectors (L.115, L.116, L.118b, L.119b, L.120b) are aggregated into a single long-horizon sector.
+The three ultimate sectors correspond, respectively, to \emph{passive} (households and non-profits net of hedge funds, government, monetary authority, and money-market funds), \emph{constrained} (hedge funds, broker-dealers, and other short-horizon intermediaries), and \emph{unconstrained} (insurance, pensions, and rest-of-the-world net of hedge funds).
+
+\subsection{Numerical methodology}\label{app:numerical}
+This appendix describes the numerical procedure used to solve the dynamic model in Section \ref{sec:model}.
+We follow a two-step strategy where we first solve a `simplified' model with an aggregate claim in positive net supply and a derivative security in zero net supply.
+In the second step (valuation step), we solve the valuation equation for the dividend and risky debt claims.
+This ordering is justified since, once the equilibrium is computed in the first step, the market prices of risk and interest rates are known functions of the simplified model, and the individual valuation ratios can be recovered from the respective pricing  equations.
+
+\subsubsection{Simplified economy}
+The state variables in the simplified economy are
+\[
+X=(x_c,x_u,\alpha_p)\in\mathcal S,
+\qquad x_p=1-x_c-x_u,
+\]
+
+where $x_{c}$ and $x_{u}$ are the wealth shares of the constrained and unconstrained active investors, and $\alpha_{p}$ is the exogenous risky-share demand of the passive sector.
+The aggregate claim is in positive net supply and the derivative is in zero net supply.
+Denote the active portfolio exposures by $(\alpha_{j,Y},\theta_j)$, where $\alpha_{j,Y}$ is the exposure to the aggregate claim and $\alpha_{j,F}$ is the exposure to the derivative.
+The passive investor has exposure $(\alpha_{p,t},0)$.
+We approximate
+\[
+{\xi}_c(X),\quad {\xi}_u(X), \quad {\xi}_p(X),\quad
+{\alpha}_{c,Y}(X), \quad {\alpha}_{c,F}(X),\quad
+{\alpha}_{u,Y}(X), \quad {\alpha}_{u,F}(X)
+\]
+with neural networks parameterized by $\Theta$:
+\begin{align}
+    \hat\xi_j &: \mathcal S\to\mathbb R_+, \qquad j\in\{c,u,p\}, \\
+    \hat\alpha_{j,Y}&: \mathcal S\to\mathbb R, \qquad j\in\{c,u\}, \\
+    \hat\alpha_{j,F} &: \mathcal S\to\mathbb R, \qquad j\in\{c,u\}.
+\end{align}
+and derive for all other equilibrium quantities as functions of the state variables and the approximated objects.
+Note that the passive investor does not trade the derivative, so $\alpha_{p,F}(X)\equiv 0$, while the passive exposure to the aggregate claim is the state variable itself, $\alpha_{p,Y}(X)=\alpha_p$.
+Thus the passive portfolio is imposed directly rather than approximated.
+We use fully connected feed-forward neural networks with 8 hidden layers and 10 neurons in each layer.
+Each neuron in the hidden and final layer is represented by a softplus activation function for the consumption-wealth ratios $\hat\xi_j$'s, and a linear function for the others.
+The state space is sampled globally using Latin-hypercube points on the simplex
+\[
+\{(x_c,x_u,\alpha_p): x_c>0,\ x_u>0, \alpha_p >0, \ x_c+x_u<1\}
+\]
+Given a candidate collection of network outputs at $X$, the remaining equilibrium objects are recovered analytically.
+
+First, goods-market clearing implies the aggregate claim dividend yield
+\begin{equation}
+\hat y(X)=x_c\hat\xi_c(X)+x_u\hat\xi_u(X)+x_p\hat\xi_p(X).
+\end{equation}
+
+Second, the volatility of the dividend yield is recovered from the It\^o consistency condition.
+Third, once $\sigma_y(X)$ is known, the excess-return volatilities of the aggregate claim and the derivative, denoted $(\sigma_{R,Y}(X),\sigma_{R,F}(X))$, are recovered.
+The unconstrained active investor's first-order conditions then pin down the two risk premia $\pi_Y(X), \pi_F(X)$.
+Fourth, conditional on $(\hat y,\pi_Y,\pi_F,\sigma_y)$, the risk-free rate $r(X)$, the state drift $\mu_X(X)$, the state diffusion matrix $\Sigma_X(X)$, the consumption-wealth ratio drifts $\mu_{c_j}(X)$, and the market price of risk vector $\eta(X)$ are all recovered from the equilibrium identities and It\^o's lemma.
+These calculations are explicit once the neural-network outputs and their first and second derivatives are known.
+The problem reduces to minimizing the following loss functions
+
+\begin{enumerate}
+    \item \textbf{HJB residuals.} For each investor type $j\in\{c,u,p\}$, we construct the residual from the investor's Hamilton--Jacobi--Bellman equation after replacing all equilibrium objects by either neural-network outputs or the derived quantities defined above.
+    We denote these residuals by
+    \[
+    \mathcal L^{\mathrm{HJB}}_j(X;\Theta).
+    \]
+
+    \item \textbf{Portfolio FOCs.} The constrained investor's first-order conditions for the aggregate claim and derivative lead to two residuals denoted as:
+    \[
+    \mathcal L^{\mathrm{FOC}}_{c,Y}(X;\Theta),
+    \qquad
+    \mathcal L^{\mathrm{FOC}}_{c,F}(X;\Theta).
+    \]
+    Note that the unconstrained investor's first-order conditions are used to recover $(\pi_Y,\pi_F)$ exactly and therefore do not appear separately in the loss.
+
+    \item \textbf{Market-clearing residuals.} We impose clearing in the aggregate-claim and derivative markets as residuals:
+    \[
+    \mathcal L^{\mathrm{MC}}_Y(X;\Theta),
+    \qquad
+    \mathcal L^{\mathrm{MC}}_F(X;\Theta).
+    \]
+\end{enumerate}
+The resulting loss is
+\begin{equation}
+    \label{eq:baseline_pointwise_loss_appendix}
+    \mathcal L(X;\Theta)
+    =
+    \sum_{j\in\{c,u,p\}}\bigl(\mathcal L^{\mathrm{HJB}}_j(X;\Theta)\bigr)^2
+    +\bigl(\mathcal L^{\mathrm{FOC}}_{c,Y}(X;\Theta)\bigr)^2
+    +\bigl(\mathcal L^{\mathrm{FOC}}_{c,F}(X;\Theta)\bigr)^2
+    +\bigl(\mathcal L^{\mathrm{MC}}_{Y}(X;\Theta)\bigr)^2
+    +\bigl(\mathcal L^{\mathrm{MC}}_{F}(X;\Theta)\bigr)^2.
+\end{equation}
+For a training batch $\{X^n\}_{n=1}^N$, the training objective is the empirical mean
+\begin{equation}
+\label{eq:baseline_batch_loss_appendix}
+\widehat{\mathcal L}(\Theta)
+=\frac{1}{N}\sum_{n=1}^N \mathcal L(X^n;\Theta).
+\end{equation}
+The full algorithm is given in Algorithm (\ref{alg:first_step}).
+
+
+
+\begin{algorithm}[!t]
+\setstretch{1.08}
+\begin{algorithmic}[1]
+\STATE Initialize NNs
+$\{\hat\xi_c,\hat\xi_u,\hat\xi_p,\hat\alpha_{c,Y},\hat\alpha_{c,F},\hat\alpha_{u,Y},\hat\alpha_{u,F}\}$
+with parameters $\Theta$.
+\FOR{$t=1,2,\dots,T_{\max}$}
+ \STATE Sample a batch of aggregate states $\{X^n=(x_c^n,x_u^n,\alpha_p^n)\}_{n=1}^N$.
+ \STATE Evaluate the seven network outputs at each sampled state.
+ \STATE Recover the derived equilibrium objects state-by-state:
+ \begin{enumerate}[label*=(\alph*)]
+ \item compute $\hat y(X^n)$ from goods-market clearing;
+ \item compute $\sigma_y(X^n)$ using It\^o's lemma;
+ \item recover $(\sigma_{R,Y}(X^n),\sigma_{R,F}(X^n))$;
+ \item compute the hedging terms from the gradients of $(\hat\xi_c,\hat\xi_u,\hat\xi_p)$;
+ \item recover $(\pi_Y(X^n),\pi_F(X^n))$ from the unconstrained investor's first-order conditions;
+ \item get $(r(X^n),\mu_X(X^n),\Sigma_X(X^n),\mu_{\xi_j}(X^n))$ from equilibrium identities and It\^o's lemma.
+\end{enumerate}
+ \STATE Construct the residual blocks
+ $\mathcal L^{\mathrm{HJB}}_j$, $\mathcal L^{\mathrm{FOC}}_{c,Y}$, $\mathcal L^{\mathrm{FOC}}_{c,F}$, $\mathcal L^{\mathrm{MC}}_Y$, and $\mathcal L^{\mathrm{MC}}_F$.
+ \STATE Form the batch loss $\widehat{\mathcal L}(\Theta)$ in \eqref{eq:baseline_batch_loss_appendix}.
+ \STATE Update $\Theta$ using ADAM, and update learning-rate scheduler using the current training loss.
+\ENDFOR
+\end{algorithmic}
+\caption{First-stage training.}
+\label{alg:first_step}
+\end{algorithm}
+
+
+
+\subsubsection{Valuation ratios}
+After solving the simplified economy, we price the dividend and risky-debt claims as a function of the state variables $(X,s)$, where $s\in[0,1]$ denote the dividend share of the aggregate claim.
+We solve for the valuation ratio of the dividend claim, denoted by $p_D(X,s)$, and the valuation ratio of risky-debt claim, denoted by $p_B(X,s)$.
+We approximate these functions by two additional neural networks parameterized by $\Theta_D$ and $\Theta_B$, respectively:
+\begin{align}
+\hat p_D &: \mathcal S\times[0,1]\to\mathbb R_+, \\
+\hat p_B&: \mathcal S\times[0,1]\to\mathbb R_+,
+\end{align}
+At this stage the first-stage simplified equilibrium is held fixed.
+For each state $(X,s)$, the first-stage solution supplies the coefficients entering the claim-pricing PDEs: the risk-free rate $r(X)$, the market price of risk $\eta(X)$, the state drift $\mu_X(X)$, the state diffusion matrix $\Sigma_X(X)$, and the aggregate-claim return volatility.
+The remaining coefficients associated with the $s$-state are known analytically from the decomposition of the aggregate claim into dividend and risky-debt components.
+Given a candidate valuation ratio $\hat p_k(X,s)$ for claim $k\in\{D,B\}$, we compute its first and second derivatives with respect to $(X,s)$ using automatic differentiation, leading to the residual
+\[
+\mathcal L^{\mathrm{val}}_k(X,s;\Theta_k),
+\qquad k\in\{D,B\}.
+\]
+The training objective is simply the empirical mean squared PDE residual,
+\begin{equation}
+\widehat{\mathcal L}^{\mathrm{val}}_k(\Theta_k)
+=\frac{1}{N}\sum_{n=1}^N
+\bigl(\mathcal L^{\mathrm{val}}_k(X^n,s^n;\Theta_k)\bigr)^2,
+\qquad k\in\{D,B\}.
+\end{equation}
+
+The full algorithm is given in Algorithm (\ref{alg:valuation_step}).
+
+
+\begin{algorithm}[!t]
+ \setstretch{1.08}
+ \begin{algorithmic}[1]
+ \STATE Load the trained first-stage networks.
+ \STATE Initialize the valuation-ratio network $\hat p_k$ for claim $k\in\{D,B\}$ with parameters $\Theta_k$.
+\FOR{$t=1,2,\dots,T_{\max}^{\mathrm{val}}$}
+ \STATE Sample a batch of states $\{(X^n,s^n)\}_{n=1}^N$.
+ \STATE Evaluate $\hat p_k(X^n,s^n)$ and compute its first and second derivatives with respect to $(X,s)$.
+ \STATE Recover the drift and volatility of the valuation ratio from It\^o's lemma.
+ \STATE Use the fixed baseline solution to evaluate the coefficients entering the pricing PDE.
+ \STATE Construct the claim-pricing residual $\mathcal L_k^{\mathrm{val}}(X^n,s^n;\Theta_k)$.
+ \STATE Compute batch loss $\widehat{\mathcal L}^{\mathrm{val}}_k(\Theta_k)$.
+ \STATE Update $\Theta_k$ using ADAM step, update the learning-rate scheduler using current training loss.
+ \ENDFOR
+\end{algorithmic}
+ \caption{Valuation-ratio step.}
+ \label{alg:valuation_step}
+\end{algorithm}
+
+We follow \cite{Gopalakrishna2026} and use vectorized automatic differentiation to compute the gradients that speeds up the computation.
+The total time to run the baseline model on a single-threaded computer with 128GB RAM and NVIDIA Ada 4500 GPU is 8 hours.
+The HJB loss in the first-stage training problem converges to a mean-squared loss of $3.7 \times 10^{-8}$.
+The corresponding valuation-ratio training problems converge to a normalized mean-squared training loss of $1.4 \times 10^{-5}$.
+These losses are computed from the batch objectives in \eqref{eq:baseline_batch_loss_appendix} and in the valuation-ratio objective, respectively.
